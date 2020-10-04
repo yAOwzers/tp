@@ -1,4 +1,4 @@
-# Joel Neo - Project Portfolio Page
+# Neo Yao Jie, Joel - Project Portfolio Page
 
 ## Overview
 
