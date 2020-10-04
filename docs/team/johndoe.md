@@ -1,4 +1,4 @@
-# John Doe - Project Portfolio Page
+# Joel Neo - Project Portfolio Page
 
 ## Overview
 
