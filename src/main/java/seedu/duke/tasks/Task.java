@@ -15,8 +15,6 @@ public class Task {
     protected DateFormat dateTime = new SimpleDateFormat("dd-MM-yyyy HHmm"); // in 24h format
     protected DateFormat outputFormat = new SimpleDateFormat("MMM dd yyyy hh.mm aa"); // in 12h format
     protected boolean isDone;
-    protected String tick = "\u2713";
-    protected String cross = "\u2718";
 
     public Task(String title, String by) {
         this.title = title;
@@ -42,7 +40,7 @@ public class Task {
     }
 
     public String getStatusIcon() {
-        return (isDone ? tick : cross); //return tick or X symbols
+        return (isDone ? "o" : "x");
     }
 
     @Override
