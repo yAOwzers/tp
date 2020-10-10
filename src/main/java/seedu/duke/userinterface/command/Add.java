@@ -8,26 +8,28 @@ import seedu.duke.userinterface.CliMessages;
 import seedu.duke.userinterface.InputParser;
 
 public class Add extends CliCommand {
+    public static final String COMMAND_WORD = "add";
+    public static final String TASK_DELIMITER = "/t";
+    public static final String DEADLINE_DELIMITER = "/by";
     private final TaskList taskArrayList;
     private String input;
 
-    public Add (TaskList taskArrayList, String input) {
+    public Add(TaskList taskArrayList, String input) {
         this.taskArrayList = taskArrayList;
         this.input = input;
     }
 
     @Override
     public void execute() {
-        String title = null;
         try {
-            title = InputParser.getTaskTitle(input);
+            String title = InputParser.parseTaskTitle(input);
+            taskArrayList.addTask(new Task(title));
+            CliMessages.printAddedTaskMessage(title);
         } catch (TaskTitleException t) {
             System.out.println("\tYour task is missing a title!");
             System.out.println("\tPlease type in the format: add /tTITLE");
         } catch (TaskWrongFormatException w) {
             System.out.println("\tPlease type in the format: add /tTITLE");
         }
-        taskArrayList.addTask(new Task(title));
-        CliMessages.printAddedTaskMessage(title);
     }
 }
