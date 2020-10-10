@@ -23,13 +23,13 @@ public class Task {
     }
 
     public LocalDate getDueDate() {
-        String[] dayTime = by.split(" ",2 );
+        String[] dayTime = by.split(" ",2);
         dueDate = LocalDate.parse(dayTime[0].trim());
         return dueDate;
     }
 
     public LocalTime getTime() {
-        String[] dayTime = by.split(" ",2 );
+        String[] dayTime = by.split(" ",2);
         dueTime = LocalTime.parse(dayTime[1].trim());
         return dueTime;
     }

@@ -10,6 +10,7 @@ public class Duke {
     public static boolean notQuit = true;
     private static final TaskList list = new TaskList();
     private static int numberOfTasks = 0;
+
     /**
      * Main entry-point for the java.duke.Duke application.
      */
@@ -21,7 +22,7 @@ public class Duke {
             String userInput = in.nextLine();
             try {
                 ui.executeCommand(userInput);
-            } catch (InvalidCommandException i ) {
+            } catch (InvalidCommandException i) {
                 System.out.println("\tSorry, I did not get that. ");
             }
         }

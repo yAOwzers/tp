@@ -22,7 +22,7 @@ public class CliUserInterface {
         final String commandWord = input[0];
         final String argument = userInput.replace(commandWord, "").trim();
 
-        switch(commandWord) {
+        switch (commandWord) {
         case Add.COMMAND_WORD:
             add = new Add(list, argument);
             add.execute();

@@ -6,7 +6,7 @@ public class TaskList {
     private ArrayList<Task> taskArrayList;
     private static int numberOfTasks = 0;
 
-    public TaskList(){
+    public TaskList() {
         taskArrayList = new ArrayList<>();
     }
 
