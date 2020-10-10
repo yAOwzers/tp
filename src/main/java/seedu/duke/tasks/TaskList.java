@@ -19,8 +19,12 @@ public class TaskList {
         return numberOfTasks;
     }
 
-    @Override
-    public String toString() {
-        return "[" + numberOfTasks + "]" + super.toString();
+    public Task getTask(int index) {
+        try {
+            return taskArrayList.get(index);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("\ttask does not exist");
+        }
+        return null;
     }
 }

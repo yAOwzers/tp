@@ -1,9 +1,6 @@
 package seedu.duke.userinterface;
 
 import seedu.duke.exceptions.InvalidCommandException;
-import seedu.duke.exceptions.TaskTitleException;
-import seedu.duke.exceptions.TaskWrongFormatException;
-import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.command.Add;
 
@@ -25,10 +22,9 @@ public class CliUserInterface {
         final String commandWord = input[0];
         final String argument = userInput.replace(commandWord, "").trim();
 
-        add = new Add(list, argument);
-
         switch(commandWord) {
         case Add.COMMAND_WORD:
+            add = new Add(list, argument);
             add.execute();
             break;
         default:
