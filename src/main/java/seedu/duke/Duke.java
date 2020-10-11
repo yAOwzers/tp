@@ -9,13 +9,27 @@ import java.util.Scanner;
 
 public class Duke {
     private static boolean notQuit = true;
-    private static final TaskList taskList = new TaskList();
-    private static final NotebookShelf notebookShelf = new NotebookShelf();
+    protected TaskList taskList;
+    protected NotebookShelf notebookShelf;
+    
+    public Duke() {
+        taskList = new TaskList();
+        notebookShelf = new notebookShelf();
+    }
     
     /**
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) throws Exception {
+        new Duke().run();
+    }
+    
+    /**
+     * Runs the program until termination
+     *
+     * @param args arguments supplied by the user at program launch
+     */
+    public static void run(String[] args) {
         CliUserInterface ui = new CliUserInterface(taskList,notebookShelf);
         Scanner in = new Scanner(System.in);
         ui.startUI();
