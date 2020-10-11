@@ -11,8 +11,8 @@ import java.lang.String;
 import java.util.Scanner;
 
 public class CliUserInterface {
-    private final TaskList taskList;
-    private final NotebookShelf notebookShelf;
+    private static TaskList taskList;
+    private static NotebookShelf notebookShelf;
 
     public CliUserInterface(TaskList taskList, NotebookShelf notebookShelf) {
         this.taskList = taskList;
