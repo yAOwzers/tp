@@ -6,6 +6,8 @@ package seedu.duke.userinterface;
  * @version 0.1
  */
 
+import seedu.duke.tasks.TaskList;
+
 public class CliMessages {
 
     //TODO: fill these sections with the appropriate user documentation, possibly taken from the final UG
@@ -76,5 +78,9 @@ public class CliMessages {
         printGeneralHelp();
         printNotebookModeHelp();
         printTimetableModeHelp();
+    }
+    public static void printAddedTaskMessage(TaskList taskList, String title) {
+        System.out.println("Added: " + title);
+        System.out.println(taskList.getNumberOfTasks() + ":" + taskList.getTask(taskList.getNumberOfTasks() - 1));
     }
 }
