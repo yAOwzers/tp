@@ -19,6 +19,14 @@ public class Section {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setPageArrayList(ArrayList<Page> pageArrayList) {
+        this.pageArrayList = pageArrayList;
+    }
+
     public ArrayList<Page> getPageArrayList() {
         return pageArrayList;
     }
