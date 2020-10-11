@@ -3,8 +3,12 @@ package seedu.duke.userinterface.command;
 import seedu.duke.userinterface.Mode;
 
 public abstract class CliCommand {
-    private Mode uiMode;
-    private String commandParams;
+    protected Mode uiMode;
+    protected String commandParams;
+
+    public CliCommand() {
+        this.uiMode = Mode.TIMETABLE;
+    }
 
     public abstract void execute();
 
