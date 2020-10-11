@@ -3,17 +3,20 @@ package seedu.duke.userinterface.command;
 import seedu.duke.userinterface.CliMessages;
 
 /**
- * @author neilbaner
- * @version 0.1
  * This class is to be instantiated when the user enters the keyword "help". The arguments for the command are then
  * passed into the Help object, and executing it will display help appropriately.
+ *
+ * @author neilbaner
+ * @version 0.1
  */
+
 public class Help extends CliCommand {
     // the arguments added by the user
     String commandArgs;
 
     /**
      * Constructor for Help.
+     *
      * @param commandArgs the arguments input by the user. Precondition: these must be all lowercase, and with all
      *                    leading and trailing spaces stripped.
      */
@@ -28,7 +31,7 @@ public class Help extends CliCommand {
     @Override
     public void execute() {
         CliMessages messages = new CliMessages();
-        switch(commandArgs) {
+        switch (commandArgs) {
         case "notebook":
             messages.printNotebookModeHelp();
             break;

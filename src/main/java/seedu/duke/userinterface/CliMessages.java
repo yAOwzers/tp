@@ -1,9 +1,9 @@
 package seedu.duke.userinterface;
 
 /**
+ * A class containing all the messages displayed to the user during operation.
  * @author neilbaner
  * @version 0.1
- * A class containing all the messages displayed to the user during operation.
  */
 
 public class CliMessages {
@@ -12,30 +12,39 @@ public class CliMessages {
     public void printAddTaskHelp() {
 
     }
+
     public void printAddNotebookSectionPageHelp() {
 
     }
+
     public void printDoneTaskHelp() {
 
     }
+
     public void printExitHelp() {
 
     }
+
     public void printListTaskHelp() {
 
     }
+
     public void printListNotebookSectionPageHelp() {
 
     }
+
     public void printModeSwitchHelp() {
 
     }
+
     public void printRemoveTaskHelp() {
 
     }
+
     public void printRemoveNotebookSectionPageHelp() {
 
     }
+
     public void printSelectHelp() {
 
     }
@@ -47,6 +56,7 @@ public class CliMessages {
         printSelectHelp();
         printRemoveNotebookSectionPageHelp();
     }
+
     public void printTimetableModeHelp() {
         System.out.println("Here are some commands to help you work with the Timetable mode: ");
         printAddTaskHelp();
@@ -54,6 +64,7 @@ public class CliMessages {
         printListTaskHelp();
         printRemoveTaskHelp();
     }
+
     public void printGeneralHelp() {
         System.out.println("Here are some general commands that will work throughout Zer0Note: ");
         printModeSwitchHelp();
