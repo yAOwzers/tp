@@ -8,11 +8,10 @@ import seedu.duke.userinterface.CliUserInterface;
 import java.util.Scanner;
 
 public class Duke {
-    public static boolean notQuit = true;
+    private static boolean notQuit = true;
     private static final TaskList taskList = new TaskList();
-    public static final NotebookShelf notebookShelf = new NotebookShelf();
-    private static int numberOfTasks = 0;
-
+    private static final NotebookShelf notebookShelf = new NotebookShelf();
+    
     /**
      * Main entry-point for the java.duke.Duke application.
      */

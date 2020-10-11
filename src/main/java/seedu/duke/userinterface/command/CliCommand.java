@@ -5,6 +5,7 @@ import seedu.duke.userinterface.Mode;
 public abstract class CliCommand {
     protected Mode uiMode;
     protected String commandParams;
+    public static final String COMMAND_WORD = "";
 
     public CliCommand() {
         this.uiMode = Mode.TIMETABLE;
