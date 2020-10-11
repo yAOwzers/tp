@@ -19,7 +19,7 @@ public class List extends CliCommand {
                 System.out.println("  |-- " + section.getTitle());
                 for (Page page: section.getPageArrayList()) {
                     System.out.println("        |-- " + page.getTitle());
-                    System.out.println("            "+page.getContent());
+                    System.out.println("            " + page.getContent());
                 }
             }
         }
