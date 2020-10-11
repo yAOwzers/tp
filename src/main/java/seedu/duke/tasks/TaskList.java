@@ -7,7 +7,7 @@ public class TaskList {
     private static int numberOfTasks = 0;
 
     public TaskList() {
-        taskList = new ArrayList<>();
+        taskArrayList = new ArrayList<>();
     }
 
     public Task removeTask(int index) {
