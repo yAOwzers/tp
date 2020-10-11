@@ -9,6 +9,8 @@ import seedu.duke.userinterface.CliMessages;
 import seedu.duke.userinterface.InputParser;
 
 public class Add extends CliCommand {
+    //TODO have subclasses of CliCommand for commands with and without arguments, and the subclass with arguments could
+    // contain these fields to be overridden.
     public static final String COMMAND_WORD = "add";
     public static final String TASK_DELIMITER = "/t";
     public static final String DEADLINE_DELIMITER = "/by";
@@ -33,6 +35,7 @@ public class Add extends CliCommand {
             } else {
                 throw new TaskWrongFormatException();
             }
+            // TODO Add more OOP: catch exceptions in CliUserInterface, and use an inherited printErrorMessage() method
         } catch (TaskTitleException t) {
             System.out.println("\tYour task is missing a title!");
             System.out.println("\tPlease type in the format: add /tTITLE /byDEADLINE");
@@ -41,8 +44,6 @@ public class Add extends CliCommand {
         } catch (IncorrectDeadlineFormatException d) {
             System.out.println("\tOops! Your deadline should be in this format");
             System.out.println("\tdd/MM/yyyy HHmm where time is in 24h");
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }

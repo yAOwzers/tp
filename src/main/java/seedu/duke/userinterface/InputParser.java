@@ -34,7 +34,7 @@ public class InputParser {
      * @throws IncorrectDeadlineFormatException when the deadline input is in the wrong format.
      * @throws TaskWrongFormatException when the deadline input is blank.
      */
-    public static String parseDeadline(String input) throws Exception {
+    public static String parseDeadline(String input) throws TaskWrongFormatException, IncorrectDeadlineFormatException {
         int dividerPos = input.indexOf(DEADLINE_DELIMITER);
         input = input.substring(dividerPos);
         if (input.startsWith(DEADLINE_DELIMITER)) {
