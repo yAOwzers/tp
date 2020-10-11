@@ -3,7 +3,7 @@ package seedu.duke.tasks;
 import java.util.ArrayList;
 
 public class TaskList {
-    private ArrayList<Task> taskList;
+    private ArrayList<Task> taskArrayList;
     private static int numberOfTasks = 0;
 
     public TaskList() {
@@ -11,7 +11,7 @@ public class TaskList {
     }
 
     public Task removeTask(int index) {
-        Task removedTask = taskList.get(index);
+        Task removedTask = taskArrayList.get(index);
         taskList.remove(removedTask);
         return removedTask;
     }
