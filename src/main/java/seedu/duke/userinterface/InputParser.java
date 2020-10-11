@@ -14,6 +14,7 @@ import static seedu.duke.userinterface.command.Add.TASK_DELIMITER;
 public class InputParser {
     public int parseTaskIndex(String args) throws NumberFormatException {
         return Integer.parseInt(args) - 1;
+    }
 
     public static String parseTaskTitle(String input) throws TaskWrongFormatException, TaskTitleException {
         if (input.startsWith(TASK_DELIMITER)) {
