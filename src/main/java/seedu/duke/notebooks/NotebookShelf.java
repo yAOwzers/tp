@@ -6,6 +6,6 @@ public class NotebookShelf {
     private ArrayList<Notebook> notebooksArrayList;
     
     public NoteBookShelf() {
-        notebooksArrayList = new ArrayList<Notebook>();
+        notebooksArrayList = new ArrayList<>();
     }
 }
