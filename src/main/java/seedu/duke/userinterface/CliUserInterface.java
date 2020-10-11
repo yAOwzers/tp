@@ -26,7 +26,7 @@ public class CliUserInterface {
 
         switch (commandWord) {
         case Add.COMMAND_WORD:
-            Add add = new Add(list, argument);
+            Add add = new Add(taskList, argument);
             add.execute();
         case Remove.COMMAND_WORD:
             Remove removeCommand = new Remove(taskList, notebookShelf, argument);
