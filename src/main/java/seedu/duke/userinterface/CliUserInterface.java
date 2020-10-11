@@ -20,7 +20,7 @@ public class CliUserInterface {
     public void executeCommand(String userInput) throws Exception {
         String[] input = userInput.trim().split(" ", 2); // split input into command and arguments
         final String commandWord = input[0];
-        final String argument = userInput.replace(commandWord, "").trim();
+        final String argument = input[1].trim();
 
         switch (commandWord) {
         case Add.COMMAND_WORD:

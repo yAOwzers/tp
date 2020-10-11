@@ -48,7 +48,7 @@ public class Task {
         try {
             return "[" + this.getStatusIcon() + "] " + this.title + " (by: " + reformatDate() + ")";
         } catch (ParseException e) {
-            e.printStackTrace();
+            System.out.println("\tAn error occurred while reading the given deadline.");
         }
         return null;
     }

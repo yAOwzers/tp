@@ -56,7 +56,6 @@ public class InputParser {
      *
      * @param by is the string containing the deadline's due date and time.
      * @return true when the input is in the correct format, otherwise false.
-     * @throws DateTimeParseException thrown when the user's input is in the wrong format.
      */
     private static boolean correctTimeFormat(String by) {
         DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
