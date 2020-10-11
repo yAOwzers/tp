@@ -25,9 +25,9 @@ public class Duke {
     }
     
     /**
-     * Runs the program until termination
+     * Runs the program until termination.
      *
-     * @param args arguments supplied by the user at program launch
+     * @param args arguments supplied by the user at program launch.
      */
     public void run(String[] args) {
         CliUserInterface ui = new CliUserInterface(taskList,notebookShelf);

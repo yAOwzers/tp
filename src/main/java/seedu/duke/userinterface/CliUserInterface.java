@@ -19,16 +19,18 @@ public class CliUserInterface {
         this.notebookShelf = notebookShelf;
     }
     
-    public void executeCommand(String userInput) throws Exception {
+    public void executeCommand(String userInput) throws InvalidCommandException {
         String[] input = userInput.trim().split(" ", 2); // split input into command and arguments
         final String commandWord = input[0];
-        final String argument = input[1].trim();
 
         switch (commandWord) {
         case Add.COMMAND_WORD:
+            String argument = input[1].trim();
             Add add = new Add(taskList, argument);
             add.execute();
+            break;
         case Remove.COMMAND_WORD:
+            argument = input[1].trim();
             Remove removeCommand = new Remove(taskList, notebookShelf, argument);
             removeCommand.execute();
             break;

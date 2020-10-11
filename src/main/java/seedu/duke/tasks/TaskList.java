@@ -13,8 +13,8 @@ public class TaskList {
         taskArrayList.add(task);
     }
     
-    public Task removeTask(int index) {
-        Task removedTask = getTask(index);
+    public Task removeTask(int index) throws IndexOutOfBoundsException {
+        Task removedTask = taskArrayList.get(index);
         taskArrayList.remove(removedTask);
         return removedTask;
     }
