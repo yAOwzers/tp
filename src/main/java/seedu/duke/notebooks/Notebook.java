@@ -22,7 +22,7 @@ public class Notebook {
         this.sectionArrayList = sectionArrayList;
     }
 
-    public Notebook (String title) {
+    public Notebook(String title) {
         this.title = title;
     }
 

@@ -1,4 +1,5 @@
 package seedu.duke.userinterface.command;
+
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Page;
@@ -11,7 +12,7 @@ public class List extends CliCommand {
 
     }
 
-    public static void listBookshelfNSP(NotebookShelf notebookShelf) {
+    public static void listBookshelf_nsp(NotebookShelf notebookShelf) {
         for (Notebook notebook: notebookShelf.getNotebooksArrayList()) {
             System.out.println(notebook.getTitle());
             for (Section section: notebook.getSectionArrayList()) {
@@ -23,7 +24,7 @@ public class List extends CliCommand {
         }
     }
 
-    public static void listBookshelfNS(NotebookShelf notebookShelf) {
+    public static void listBookshelf_ns(NotebookShelf notebookShelf) {
         for (Notebook notebook: notebookShelf.getNotebooksArrayList()) {
             System.out.println(notebook.getTitle());
             for (Section section: notebook.getSectionArrayList()) {
@@ -32,13 +33,13 @@ public class List extends CliCommand {
         }
     }
 
-    public static void listBookshelfN(NotebookShelf notebookShelf) {
+    public static void listBookshelf_n(NotebookShelf notebookShelf) {
         for (Notebook notebook: notebookShelf.getNotebooksArrayList()) {
             System.out.println(notebook.getTitle());
         }
     }
 
-    public void listNotebookSP(Notebook notebook) {
+    public void listNotebook_sp(Notebook notebook) {
         for (Section section: notebook.getSectionArrayList()) {
             System.out.println(section.getTitle());
             for (Page page: section.getPageArrayList()) {
@@ -47,7 +48,7 @@ public class List extends CliCommand {
         }
     }
 
-    public void listNotebookS(Notebook notebook) {
+    public void listNotebook_s(Notebook notebook) {
         for (Section section: notebook.getSectionArrayList()) {
             System.out.println(section.getTitle());
         }
