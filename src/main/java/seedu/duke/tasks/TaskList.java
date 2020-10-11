@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class TaskList {
     private ArrayList<Task> taskArrayList;
-    private static int numberOfTasks = 0;
+    private int numberOfTasks = 0;
 
     public TaskList() {
         taskArrayList = new ArrayList<>();
@@ -15,7 +15,7 @@ public class TaskList {
         numberOfTasks++;
     }
 
-    public static int getNumberOfTasks() {
+    public int getNumberOfTasks() {
         return numberOfTasks;
     }
 

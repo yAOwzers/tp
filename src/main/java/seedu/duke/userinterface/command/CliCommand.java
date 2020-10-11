@@ -5,6 +5,7 @@ import seedu.duke.userinterface.Mode;
 public abstract class CliCommand {
     private Mode uiMode;
     private String commandParams;
+    public static final String COMMAND_WORD = "";
 
     public abstract void execute();
 
