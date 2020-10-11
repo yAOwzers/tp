@@ -12,6 +12,4 @@ public class NotebookShelf {
     public ArrayList<Notebook> getNotebooksArrayList() {
         return notebooksArrayList;
     }
-
-
 }

@@ -14,11 +14,12 @@ public class List extends CliCommand {
 
     public static void listBookshelf_nsp(NotebookShelf notebookShelf) {
         for (Notebook notebook: notebookShelf.getNotebooksArrayList()) {
-            System.out.println(notebook.getTitle());
+            System.out.println("* " + notebook.getTitle());
             for (Section section: notebook.getSectionArrayList()) {
                 System.out.println("  |-- " + section.getTitle());
                 for (Page page: section.getPageArrayList()) {
-                    System.out.println("        |-- " + page);
+                    System.out.println("        |-- " + page.getTitle());
+                    System.out.println("            "+page.getContent());
                 }
             }
         }
@@ -26,7 +27,7 @@ public class List extends CliCommand {
 
     public static void listBookshelf_ns(NotebookShelf notebookShelf) {
         for (Notebook notebook: notebookShelf.getNotebooksArrayList()) {
-            System.out.println(notebook.getTitle());
+            System.out.println("* " + notebook.getTitle());
             for (Section section: notebook.getSectionArrayList()) {
                 System.out.println("  |-- " + section.getTitle());
             }
@@ -35,28 +36,30 @@ public class List extends CliCommand {
 
     public static void listBookshelf_n(NotebookShelf notebookShelf) {
         for (Notebook notebook: notebookShelf.getNotebooksArrayList()) {
-            System.out.println(notebook.getTitle());
+            System.out.println("* " + notebook.getTitle());
         }
     }
 
-    public void listNotebook_sp(Notebook notebook) {
+    public static void listNotebook_sp(Notebook notebook) {
         for (Section section: notebook.getSectionArrayList()) {
-            System.out.println(section.getTitle());
+            System.out.println("* " + section.getTitle());
             for (Page page: section.getPageArrayList()) {
                 System.out.println("  |-- " + page);
+                System.out.println("        " + page.getContent());
             }
         }
     }
 
-    public void listNotebook_s(Notebook notebook) {
+    public static void listNotebook_s(Notebook notebook) {
         for (Section section: notebook.getSectionArrayList()) {
-            System.out.println(section.getTitle());
+            System.out.println("* " + section.getTitle());
         }
     }
 
-    public void listSection(Section section) {
+    public static void listSection(Section section) {
         for (Page page: section.getPageArrayList()) {
-            System.out.println(page);
+            System.out.println("* " + page.getTitle());
+            System.out.println("    " + page.getContent());
         }
     }
 
