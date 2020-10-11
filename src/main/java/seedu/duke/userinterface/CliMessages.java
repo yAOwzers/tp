@@ -1,7 +1,14 @@
 package seedu.duke.userinterface;
 
+/**
+ * @author neilbaner
+ * @version 0.1
+ * A class containing all the messages displayed to the user during operation.
+ */
+
 public class CliMessages {
 
+    //TODO: fill these sections with the appropriate user documentation, possibly taken from the final UG
     public void printAddTaskHelp() {
 
     }
