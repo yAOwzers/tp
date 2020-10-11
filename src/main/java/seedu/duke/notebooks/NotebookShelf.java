@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class NotebookShelf {
     private ArrayList<Notebook> notebooksArrayList;
 
-    public NoteBookShelf() {
+    public NotebookShelf() {
         notebooksArrayList = new ArrayList<>();
       
     public NotebookShelf(ArrayList<Notebook> notebooksArrayList) {
