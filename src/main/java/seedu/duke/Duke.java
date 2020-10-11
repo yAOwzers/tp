@@ -14,14 +14,14 @@ public class Duke {
     
     public Duke() {
         taskList = new TaskList();
-        notebookShelf = new notebookShelf();
+        notebookShelf = new NotebookShelf();
     }
     
     /**
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) throws Exception {
-        new Duke().run();
+        new Duke().run(args);
     }
     
     /**
@@ -29,7 +29,7 @@ public class Duke {
      *
      * @param args arguments supplied by the user at program launch
      */
-    public static void run(String[] args) {
+    public void run(String[] args) {
         CliUserInterface ui = new CliUserInterface(taskList,notebookShelf);
         Scanner in = new Scanner(System.in);
         ui.startUI();
