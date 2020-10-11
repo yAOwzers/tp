@@ -12,7 +12,7 @@ public class TaskList {
 
     public Task removeTask(int index) {
         Task removedTask = taskArrayList.get(index);
-        taskList.remove(removedTask);
+        taskArrayList.remove(removedTask);
         return removedTask;
     }
 
