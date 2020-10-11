@@ -9,9 +9,8 @@ public class TaskList {
         taskArrayList = new ArrayList<>();
     }
 
-    public void addTask(Task t) {
-        taskArrayList.add(t);
-        numberOfTasks++;
+    public void addTask(Task task) {
+        taskArrayList.add(task);
     }
     
     public Task removeTask(int index) {
