@@ -15,7 +15,7 @@ public class List extends CliCommand {
 
     @Override
     public void execute() {
-        switch(applicationState.getAppMode()) {
+        switch (applicationState.getAppMode()) {
         case NOTEBOOK_SHELF:
             switch (commandParams) {
             case ("/s"):
@@ -33,13 +33,17 @@ public class List extends CliCommand {
             switch (commandParams) {
             case("/a"):
                 listNotebook_s(applicationState.getCurrentNotebook());
+                break;
             default:
-                listNotebook_s(applicationState.getCurrentNotebook());
+                listNotebook_sp(applicationState.getCurrentNotebook());
                 break;
             }
             break;
         case NOTEBOOK_SECTION:
             listSection(applicationState.getCurrentSection());
+            break;
+        default:
+            System.out.println("Error in list class");
             break;
         }
 
