@@ -5,8 +5,6 @@ import seedu.duke.exceptions.IncorrectDeadlineFormatException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.CliUserInterface;
-
-import static org.junit.jupiter.api.Assertions.*;
 /*
 public class AddTest {
     @Test
