@@ -8,6 +8,10 @@ public abstract class CliCommand {
 
     public static final String COMMAND_WORD = "";
 
+    public CliCommand() {
+
+    }
+
     public abstract void execute();
 
     public AppState getAppState() {

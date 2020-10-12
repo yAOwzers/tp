@@ -9,8 +9,18 @@ public class TaskList {
         taskArrayList = new ArrayList<>();
     }
 
-    public void addTask(Task t) {
-        taskArrayList.add(t);
+    public TaskList(ArrayList<Task> taskArrayList) {
+        setTaskArrayList(taskArrayList);
+    }
+
+    public void addTask(Task task) {
+        taskArrayList.add(task);
+    }
+    
+    public Task removeTask(int index) throws IndexOutOfBoundsException {
+        Task removedTask = taskArrayList.get(index);
+        taskArrayList.remove(removedTask);
+        return removedTask;
     }
 
     public int getNumberOfTasks() {
