@@ -11,6 +11,7 @@ public class Add extends CliCommand {
     // contain these fields to be overridden.
     public static final String COMMAND_WORD = "add";
     private String name;
+    private String content;
 
     public Add(String argument, AppState uiMode) {
         this.setAppState(uiMode);
@@ -32,12 +33,14 @@ public class Add extends CliCommand {
         case NOTEBOOK_SECTION:
             addNotebookPage(appState.getCurrentSection());
             break;
-        case NOTEBOOK_PAGE:
-            addContent();
         default:
             System.out.println("\tunable to add notebook/section/page");
             break;
         }
+    }
+
+    private String addContent() {
+        return content;
     }
 
     private void addNotebook(NotebookShelf currentBookShelf) {
@@ -49,6 +52,6 @@ public class Add extends CliCommand {
     }
 
     private void addNotebookPage(Section currentSection) {
-        new Page(name);
+        new Page(name, content);
     }
 }

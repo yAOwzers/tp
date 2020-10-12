@@ -20,6 +20,7 @@ import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
 import seedu.duke.userinterface.command.List;
 import seedu.duke.userinterface.command.ListTimetable;
+import seedu.duke.userinterface.command.Select;
 
 
 import java.time.LocalDate;
@@ -28,6 +29,7 @@ import java.time.format.DateTimeParseException;
 
 import static seedu.duke.userinterface.command.AddTimetable.DEADLINE_DELIMITER;
 import static seedu.duke.userinterface.command.AddTimetable.TASK_DELIMITER;
+import static seedu.duke.userinterface.command.Select.NOTEBOOK_DELIMITER;
 
 public class InputParser {
     public int parseTaskIndex(String args) throws NumberFormatException {
@@ -102,13 +104,13 @@ public class InputParser {
             argument = input[1].trim();
         }
 
-        CliCommand command;
+        CliCommand command = null;
         switch (commandWord) {
         case Add.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                command = new Add(argument, appState);
-            } else {
                 command = new AddTimetable(argument, appState);
+            } else {
+                command = new Add(argument, appState);
             }
             break;
         case List.COMMAND_WORD:
@@ -123,6 +125,13 @@ public class InputParser {
             break;
         case Help.COMMAND_WORD:
             command = new Help(argument);
+            break;
+        case Select.COMMAND_WORD:
+            if (appState.getAppMode() != AppMode.TIMETABLE) {
+                command = new Select(argument, appState);
+            } else {
+                System.out.println("\tYou cannot select in this mode!");
+            }
             break;
         default:
             throw new InvalidCommandException();
