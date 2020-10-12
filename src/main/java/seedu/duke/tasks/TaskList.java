@@ -9,6 +9,10 @@ public class TaskList {
         taskArrayList = new ArrayList<>();
     }
 
+    public TaskList(ArrayList<Task> taskArrayList) {
+        setTaskArrayList(taskArrayList);
+    }
+
     public void addTask(Task task) {
         taskArrayList.add(task);
     }
@@ -30,5 +34,13 @@ public class TaskList {
             System.out.println("\ttask does not exist");
         }
         return null;
+    }
+
+    public ArrayList<Task> getTaskArrayList() {
+        return taskArrayList;
+    }
+
+    public void setTaskArrayList(ArrayList<Task> taskArrayList) {
+        this.taskArrayList = taskArrayList;
     }
 }
