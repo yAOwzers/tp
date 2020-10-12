@@ -1,38 +1,29 @@
 package seedu.duke;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
-import seedu.duke.exceptions.InvalidCommandException;
-import seedu.duke.tasks.TaskList;
-import seedu.duke.userinterface.CliUserInterface;
+import seedu.duke.exceptions.TaskWrongFormatException;
+import seedu.duke.userinterface.InputParser;
 
 import static org.junit.jupiter.api.Assertions.*;
-/*
-public class AddTest {
+
+public class AddTaskTest {
     @Test
     void addTask_dateFormat_expectException() throws IncorrectDeadlineFormatException {
-        TaskList list = new TaskList();
-        CliUserInterface ui = new CliUserInterface();
-        String inputString = "add /tplay game /by18 Oct";
-        try {
-            ui.executeCommand(inputString);
-        } catch (InvalidCommandException i) {
-            System.out.println("invalid command");
-        }
-        assertEquals(list.getNumberOfTasks(), 0);
+        InputParser parser = new InputParser();
+        String inputString = "/by18 Oct";
+        Assertions.assertThrows(IncorrectDeadlineFormatException.class, () -> {
+            parser.parseDeadline(inputString);
+        });
     }
 
     @Test
-    void addTask_correctFormat() {
-        TaskList list = new TaskList();
-        CliUserInterface ui = new CliUserInterface();
-        String inputString = "add /tplay game /by18-10-2020 1900";
-        try {
-            ui.executeCommand(inputString);
-        } catch (InvalidCommandException i) {
-            System.out.println("invalid command");
-        }
-        assertEquals(list.getNumberOfTasks(), 1);
+    void addTask_correctFormat() throws TaskWrongFormatException, IncorrectDeadlineFormatException {
+        InputParser parser = new InputParser();
+        String inputString = "/by18-10-2020 1900";
+        String expectedString = "18-10-2020 1900";
+        assertEquals(expectedString, parser.parseDeadline(inputString));
     }
 }
-*/
+

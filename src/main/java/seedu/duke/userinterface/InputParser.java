@@ -5,6 +5,7 @@ import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
 import seedu.duke.userinterface.command.Add;
+import seedu.duke.userinterface.command.AddTimetable;
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
@@ -15,8 +16,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-import static seedu.duke.userinterface.command.Add.DEADLINE_DELIMITER;
-import static seedu.duke.userinterface.command.Add.TASK_DELIMITER;
+import static seedu.duke.userinterface.command.AddTimetable.DEADLINE_DELIMITER;
+import static seedu.duke.userinterface.command.AddTimetable.TASK_DELIMITER;
 
 public class InputParser {
     public static String parseTaskTitle(String input) throws TaskWrongFormatException, TaskTitleException {
@@ -87,10 +88,12 @@ public class InputParser {
             argument = input[1].trim();
         }
 
-        CliCommand command;
+        CliCommand command = null;
         switch (commandWord) {
         case Add.COMMAND_WORD:
-            command = new Add(argument, appState);
+            if (appState.getAppMode() == AppMode.TIMETABLE) {
+                command = new AddTimetable(argument, appState);
+            }
             break;
         case List.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
