@@ -2,6 +2,7 @@ package seedu.duke.userinterface;
 
 /**
  * A class containing all the messages displayed to the user during operation.
+ *
  * @author neilbaner
  * @version 0.1
  */
@@ -79,6 +80,7 @@ public class CliMessages {
         printNotebookModeHelp();
         printTimetableModeHelp();
     }
+
     public static void printAddedTaskMessage(TaskList taskList, String title) {
         System.out.println("Added: " + title);
         System.out.println(taskList.getNumberOfTasks() + ":" + taskList.getTask(taskList.getNumberOfTasks() - 1));
