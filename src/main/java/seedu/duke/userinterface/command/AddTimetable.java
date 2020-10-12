@@ -36,7 +36,8 @@ public class AddTimetable extends CliCommand {
             } else {
                 throw new TaskWrongFormatException();
             }
-            // TODO AddTimetable more OOP: catch exceptions in CliUserInterface, and use an inherited printErrorMessage() method
+            // TODO AddTimetable more OOP: catch exceptions in CliUserInterface,
+            //  and use an inherited printErrorMessage() method
         } catch (TaskTitleException t) {
             System.out.println("\tYour task is missing a title!");
             System.out.println("\tPlease type in the format: add /tTITLE /byDEADLINE");

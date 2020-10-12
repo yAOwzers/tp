@@ -5,6 +5,7 @@ import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
 import seedu.duke.userinterface.command.Add;
+import seedu.duke.userinterface.command.AddTimetable;
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
@@ -138,4 +139,6 @@ public class InputParser {
         }
         return command;
     }
+
+    
 }
