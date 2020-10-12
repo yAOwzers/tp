@@ -74,7 +74,7 @@ public class InputParser {
         }
     }
 
-    public CliCommand getCommandFromInput(String userInput, Mode appState) {
+    public CliCommand getCommandFromInput(String userInput, AppState appState) {
         String[] input = userInput.trim().split(" ", 2); // split input into command and arguments
         final String commandWord = input[0];
         final String argument = input[1].trim();

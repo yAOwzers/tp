@@ -5,7 +5,7 @@ import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Section;
 import seedu.duke.tasks.TaskList;
 
-public class Mode {
+public class AppState {
     private AppMode appMode;
     private TaskList taskList;
     private NotebookShelf currentBookShelf;

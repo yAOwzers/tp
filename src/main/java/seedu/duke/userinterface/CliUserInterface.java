@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class CliUserInterface {
     private static int numberOfTasks;
     private static TaskList list;
-    private static Mode appState;
+    private static AppState appState;
     public Add add;
 
     public CliUserInterface(TaskList list, int numberOfTasks) {

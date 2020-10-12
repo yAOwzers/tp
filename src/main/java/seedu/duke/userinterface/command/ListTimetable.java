@@ -1,12 +1,12 @@
 package seedu.duke.userinterface.command;
 
 import seedu.duke.tasks.Task;
-import seedu.duke.userinterface.Mode;
+import seedu.duke.userinterface.AppState;
 
 public class ListTimetable extends CliCommand {
 
-    public ListTimetable(String argument, Mode uiMode) {
-        this.setUiMode(uiMode);
+    public ListTimetable(String argument, AppState appState) {
+        this.setAppState(appState);
         this.commandParams = argument;
     }
 
@@ -26,13 +26,13 @@ public class ListTimetable extends CliCommand {
     }
 
     private void printAllTasks() {
-        for (Task task: applicationState.getTaskList().getTaskArrayList()) {
+        for (Task task: appState.getTaskList().getTaskArrayList()) {
             System.out.println(task);
         }
     }
 
     private void printDoneTasks() {
-        for (Task task: applicationState.getTaskList().getTaskArrayList()) {
+        for (Task task: appState.getTaskList().getTaskArrayList()) {
             if (task.isDone()) {
                 System.out.println(task);
             }
@@ -40,7 +40,7 @@ public class ListTimetable extends CliCommand {
     }
 
     private void printUndoneTasks() {
-        for (Task task: applicationState.getTaskList().getTaskArrayList()) {
+        for (Task task: appState.getTaskList().getTaskArrayList()) {
             if (!task.isDone()) {
                 System.out.println(task);
             }

@@ -4,43 +4,43 @@ import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Page;
 import seedu.duke.notebooks.Section;
-import seedu.duke.userinterface.Mode;
+import seedu.duke.userinterface.AppState;
 
 public class List extends CliCommand {
 
-    public List(String argument, Mode uiMode) {
-        this.setUiMode(uiMode);
+    public List(String argument, AppState uiMode) {
+        this.setAppState(uiMode);
         this.setCommandParams(argument);
     }
 
     @Override
     public void execute() {
-        switch (applicationState.getAppMode()) {
+        switch (appState.getAppMode()) {
         case NOTEBOOK_SHELF:
             switch (commandParams) {
             case ("/s"):
-                listBookshelf_ns(applicationState.getCurrentBookShelf());
+                listBookshelf_ns(appState.getCurrentBookShelf());
                 break;
             case ("/a"):
-                listBookshelf_nsp(applicationState.getCurrentBookShelf());
+                listBookshelf_nsp(appState.getCurrentBookShelf());
                 break;
             default:
-                listBookshelf_n(applicationState.getCurrentBookShelf());
+                listBookshelf_n(appState.getCurrentBookShelf());
                 break;
             }
             break;
         case NOTEBOOK_BOOK:
             switch (commandParams) {
             case("/a"):
-                listNotebook_s(applicationState.getCurrentNotebook());
+                listNotebook_s(appState.getCurrentNotebook());
                 break;
             default:
-                listNotebook_sp(applicationState.getCurrentNotebook());
+                listNotebook_sp(appState.getCurrentNotebook());
                 break;
             }
             break;
         case NOTEBOOK_SECTION:
-            listSection(applicationState.getCurrentSection());
+            listSection(appState.getCurrentSection());
             break;
         default:
             System.out.println("Error in list class");
