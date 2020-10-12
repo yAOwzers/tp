@@ -3,6 +3,7 @@ package seedu.duke.userinterface;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Section;
+import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 
 public class AppState {
@@ -10,6 +11,11 @@ public class AppState {
     private TaskList taskList;
     private NotebookShelf currentBookShelf;
 
+    public AppState() {
+        taskList = new TaskList();
+        appMode = AppMode.TIMETABLE;
+        currentBookShelf = new NotebookShelf();
+    }
     public Notebook getCurrentNotebook() {
         return currentNotebook;
     }

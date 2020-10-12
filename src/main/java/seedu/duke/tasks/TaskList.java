@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class TaskList {
     private ArrayList<Task> taskArrayList;
-    private int numberOfTasks = 0;
 
     public TaskList() {
         taskArrayList = new ArrayList<>();
@@ -12,11 +11,10 @@ public class TaskList {
 
     public void addTask(Task t) {
         taskArrayList.add(t);
-        numberOfTasks++;
     }
 
     public int getNumberOfTasks() {
-        return numberOfTasks;
+        return taskArrayList.size();
     }
 
     public Task getTask(int index) {
