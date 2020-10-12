@@ -11,6 +11,7 @@ import seedu.duke.userinterface.CliMessages;
  */
 
 public class Help extends CliCommand {
+    public static final String COMMAND_WORD = "help";
     // the arguments added by the user
     String commandArgs;
 

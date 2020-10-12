@@ -81,8 +81,12 @@ public class CliMessages {
         printTimetableModeHelp();
     }
 
-    public static void printAddedTaskMessage(TaskList taskList, String title) {
+    public void printAddedTaskMessage(TaskList taskList, String title) {
         System.out.println("Added: " + title);
         System.out.println(taskList.getNumberOfTasks() + ":" + taskList.getTask(taskList.getNumberOfTasks() - 1));
+    }
+
+    public void printGoodBye() {
+        System.out.println("Bye!");
     }
 }
