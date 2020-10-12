@@ -7,6 +7,7 @@ import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.CliMessages;
 import seedu.duke.userinterface.InputParser;
+import seedu.duke.userinterface.AppState;
 
 public class Add extends CliCommand {
     //TODO have subclasses of CliCommand for commands with and without arguments, and the subclass with arguments could

@@ -43,6 +43,10 @@ public class Task {
         return (isDone ? "o" : "x");
     }
 
+    public boolean isDone() {
+        return isDone;
+    }
+
     @Override
     public String toString() {
         try {
