@@ -1,10 +1,17 @@
 package seedu.duke.userinterface;
 
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
+import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
-import seedu.duke.userinterface.command.*;
-
+import seedu.duke.userinterface.command.Add;
+import seedu.duke.userinterface.command.CliCommand;
+import seedu.duke.userinterface.command.Exit;
+import seedu.duke.userinterface.command.Help;
+import seedu.duke.userinterface.command.List;
+import seedu.duke.userinterface.command.ListTimetable;
+import seedu.duke.userinterface.command.Remove;
+import seedu.duke.userinterface.command.RemoveTask;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -36,9 +43,11 @@ public class InputParser {
      * Parses user's input to extract deadline.
      *
      * @param input input from user which contains the deadline.
+     *
      * @return deadline
+     *
      * @throws IncorrectDeadlineFormatException when the deadline input is in the wrong format.
-     * @throws TaskWrongFormatException when the deadline input is blank.
+     * @throws TaskWrongFormatException         when the deadline input is blank.
      */
     public static String parseDeadline(String input) throws TaskWrongFormatException, IncorrectDeadlineFormatException {
         int dividerPos = input.indexOf(DEADLINE_DELIMITER);
@@ -61,6 +70,7 @@ public class InputParser {
      * Checks if [deadline] input by the user is in the correct format.
      *
      * @param by is the string containing the deadline's due date and time.
+     *
      * @return true when the input is in the correct format, otherwise false.
      */
     private static boolean correctTimeFormat(String by) {
@@ -74,31 +84,37 @@ public class InputParser {
         }
     }
 
-    public CliCommand getCommandFromInput(String userInput, AppState appState) {
-        String[] input = userInput.trim().split(" ", 2); // split input into command and arguments
-        final String commandWord = input[0];
-        final String args = input[1].trim();
+    public CliCommand getCommandFromInput(String userInput, AppState appState) throws InvalidCommandException {
+        String trimmedInput = userInput.trim();
+        String[] input = trimmedInput.split(" ", 2); // split input into command and arguments
+        String commandWord = input[0];
+        String argument = "";
+        if (input.length > 1) {
+            argument = input[1].trim();
+        }
 
+        CliCommand command;
         switch (commandWord) {
-        case "add":
-            //return new Add(argument, appState)
-        case Remove.COMMAND_WORD:
+        case Add.COMMAND_WORD:
+            return new Add(argument, appState);
+        case RemoveTask.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                int argument = parseTaskIndex(args);
+                return new RemoveTask(parseTaskIndex(argument), appState);
+            } else {
                 return new Remove(argument, appState);
             }
         case List.COMMAND_WORD:
-            switch (appState.getAppMode()) {
-            case TIMETABLE:
-                return new ListTimetable(args, appState);
-            default:
-                return new List(args, appState);
+            if (appState.getAppMode() == AppMode.TIMETABLE) {
+                return new ListTimetable(argument, appState);
+            } else {
+                return new List(argument, appState);
             }
-
-        case "exit":
-            return new Exit(args, appState);
+        case Exit.COMMAND_WORD:
+            return new Exit(argument, appState);
+        case Help.COMMAND_WORD:
+            return new Help(argument);
         default:
-            return new Help(args, appState);
+            throw new InvalidCommandException();
         }
     }
 }

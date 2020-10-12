@@ -1,38 +1,58 @@
 package seedu.duke.userinterface;
 
-import seedu.duke.notebooks.NotebookShelf;
-import seedu.duke.tasks.TaskList;
+import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.command.CliCommand;
-
-import java.lang.String;
+import seedu.duke.userinterface.command.Exit;
 
 import java.util.Scanner;
 
 public class CliUserInterface {
-    private static TaskList taskList;
-    private static AppState appState;
+    private AppState appState;
 
-    public CliUserInterface(TaskList taskList, NotebookShelf notebookShelf) {
-        this.taskList = taskList;
+    private boolean toQuit = false;
+
+    public CliUserInterface() {
+
     }
 
-    public void executeCommand(String userInput) throws Exception {
+    private void loadState() {
+        Storage storage = new Storage();
+        appState = storage.readFromFile();
+    }
 
+    private void saveState() {
+        Storage storage = new Storage();
+        storage.saveToFile(appState);
+    }
+
+    public void run() {
+        startUI();
+        loadState();
+        String userInput;
+        Scanner keyboard = new Scanner(System.in);
+        while (!toQuit) {
+            userInput = keyboard.nextLine();
+            if (userInput.equals(Exit.COMMAND_WORD)) {
+                saveState();
+                toQuit = true;
+            }
+            try {
+                executeCommand(userInput);
+            } catch (Exception e) {
+                // TODO: actually make exceptions that make sense
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void executeCommand(String userInput) throws Exception {
         InputParser parser = new InputParser();
         CliCommand command = parser.getCommandFromInput(userInput, appState);
         command.execute();
     }
 
-    public void startUI() {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+    private void startUI() {
+        System.out.println("Welcome to Zer0Note!");
+        // TODO: Make this prettier
     }
 }

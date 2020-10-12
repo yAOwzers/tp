@@ -13,6 +13,12 @@ public class AppState {
     private Section currentSection;
     private int indexOfCurrentNotebook;
 
+    public AppState() {
+        taskList = new TaskList();
+        appMode = AppMode.TIMETABLE;
+        currentBookShelf = new NotebookShelf();
+    }
+
     public AppMode getAppMode() {
         return appMode;
     }

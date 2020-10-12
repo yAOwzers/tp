@@ -21,25 +21,7 @@ public class Duke {
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) throws Exception {
-        new Duke().run(args);
-    }
-    
-    /**
-     * Runs the program until termination.
-     *
-     * @param args arguments supplied by the user at program launch.
-     */
-    public void run(String[] args) {
-        CliUserInterface ui = new CliUserInterface(taskList,notebookShelf);
-        Scanner in = new Scanner(System.in);
-        ui.startUI();
-        while (notQuit) {
-            String userInput = in.nextLine();
-            try {
-                ui.executeCommand(userInput);
-            } catch (InvalidCommandException i) {
-                System.out.println("\tSorry, I did not get that. ");
-            }
-        }
+        CliUserInterface ui = new CliUserInterface();
+        ui.run();
     }
 }

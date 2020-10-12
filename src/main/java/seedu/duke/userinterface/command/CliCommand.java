@@ -3,8 +3,9 @@ package seedu.duke.userinterface.command;
 import seedu.duke.userinterface.AppState;
 
 public abstract class CliCommand {
-    protected static AppState appState;
+    protected AppState appState;
     protected String commandParams;
+
     public static final String COMMAND_WORD = "";
 
     public CliCommand() {
@@ -13,12 +14,12 @@ public abstract class CliCommand {
 
     public abstract void execute();
 
-    public static AppState getAppState() {
+    public AppState getAppState() {
         return appState;
     }
 
-    public static void setAppState(AppState appState) {
-        CliCommand.appState = appState;
+    public void setAppState(AppState appState) {
+        this.appState = appState;
     }
 
     public static String getCommandWord() {
