@@ -15,24 +15,25 @@ public class Add extends CliCommand {
     public static final String COMMAND_WORD = "add";
     public static final String TASK_DELIMITER = "/t";
     public static final String DEADLINE_DELIMITER = "/by";
-    private final TaskList taskArrayList;
-    private String input;
+    private String argument;
     private static InputParser parser;
+    private CliMessages messages = new CliMessages();
 
-    public Add(TaskList taskArrayList, String input) {
-        this.taskArrayList = taskArrayList;
-        this.input = input;
+    public Add(String argument, AppState appState) {
+        this.appState = appState;
+        this.argument = argument;
     }
 
     @Override
     public void execute() {
         parser = new InputParser();
+        TaskList currentTaskList = appState.getTaskList();
         try {
-            if (input.contains("/by")) {
-                String title = parser.parseTaskTitle(input);
-                String deadline = parser.parseDeadline(input);
-                taskArrayList.addTask(new Task(title, deadline));
-                CliMessages.printAddedTaskMessage(taskArrayList, title);
+            if (argument.contains("/by")) {
+                String title = parser.parseTaskTitle(argument);
+                String deadline = parser.parseDeadline(argument);
+                currentTaskList.addTask(new Task(title, deadline));
+                messages.printAddedTaskMessage(currentTaskList, title);
             } else {
                 throw new TaskWrongFormatException();
             }
