@@ -94,12 +94,14 @@ public class InputParser {
             argument = input[1].trim();
         }
 
-        CliCommand command = null;
+        CliCommand command;
         switch (commandWord) {
         case Add.COMMAND_WORD:
-          if (appState.getAppMode() == AppMode.TIMETABLE) {
-              return new AddTimetable(argument, appState);
-          }
+            if (appState.getAppMode() == AppMode.TIMETABLE) {
+                return new AddTimetable(argument, appState);
+            } else {
+                return new Add(argument, appState);
+            }
         case RemoveTask.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
                 return new RemoveTask(parseTaskIndex(argument), appState);
