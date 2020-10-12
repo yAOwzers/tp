@@ -9,13 +9,12 @@ import java.util.Scanner;
 public class Duke {
     public static boolean notQuit = true;
     private static final TaskList list = new TaskList();
-    private static int numberOfTasks = 0;
 
     /**
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) throws Exception {
-        CliUserInterface ui = new CliUserInterface(list, numberOfTasks);
+        CliUserInterface ui = new CliUserInterface(list);
         Scanner in = new Scanner(System.in);
         ui.startUI();
         while (notQuit) {

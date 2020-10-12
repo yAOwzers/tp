@@ -8,16 +8,14 @@ import java.lang.String;
 import java.util.Scanner;
 
 public class CliUserInterface {
-    private static int numberOfTasks;
     private static TaskList list;
     public Add add;
 
-    public CliUserInterface(TaskList list, int numberOfTasks) {
+    public CliUserInterface(TaskList list) {
         this.list = list;
-        this.numberOfTasks = numberOfTasks;
     }
 
-    public void executeCommand(String userInput) throws Exception {
+    public void executeCommand(String userInput) throws InvalidCommandException {
         String[] input = userInput.trim().split(" ", 2); // split input into command and arguments
         final String commandWord = input[0];
         final String argument = input[1].trim();
