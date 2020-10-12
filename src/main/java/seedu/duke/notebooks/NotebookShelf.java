@@ -9,6 +9,10 @@ public class NotebookShelf {
         this.notebooksArrayList = notebooksArrayList;
     }
 
+    public NotebookShelf() {
+        notebooksArrayList = new ArrayList<>();
+    }
+
     public ArrayList<Notebook> getNotebooksArrayList() {
         return notebooksArrayList;
     }
