@@ -1,48 +1,52 @@
 package seedu.duke.userinterface.command;
 
-import seedu.duke.exceptions.IncorrectDeadlineFormatException;
-import seedu.duke.exceptions.TaskTitleException;
-import seedu.duke.exceptions.TaskWrongFormatException;
-import seedu.duke.tasks.Task;
-import seedu.duke.tasks.TaskList;
-import seedu.duke.userinterface.CliMessages;
-import seedu.duke.userinterface.InputParser;
+import seedu.duke.notebooks.Notebook;
+import seedu.duke.notebooks.NotebookShelf;
+import seedu.duke.notebooks.Page;
+import seedu.duke.notebooks.Section;
+import seedu.duke.userinterface.AppState;
 
 public class Add extends CliCommand {
     public static final String COMMAND_WORD = "add";
-    public static final String TASK_DELIMITER = "/t";
-    public static final String DEADLINE_DELIMITER = "/by";
-    private final TaskList taskArrayList;
-    private String input;
-    private static InputParser parser;
+    private String name;
 
-    public Add(TaskList taskArrayList, String input) {
-        this.taskArrayList = taskArrayList;
-        this.input = input;
+    public Add(String argument, AppState uiMode) {
+        this.setAppState(uiMode);
+        this.getName(argument);
     }
 
-    @Override
+    private String getName(String argument) {
+        name  = argument.replace("add", "");
+        return name;
+    }
+
     public void execute() {
-        parser = new InputParser();
-        try {
-            if (input.contains("/by")) {
-                String title = parser.parseTaskTitle(input);
-                String deadline = parser.parseDeadline(input);
-                taskArrayList.addTask(new Task(title, deadline));
-                CliMessages.printAddedTaskMessage(taskArrayList, title);
-            } else {
-                throw new TaskWrongFormatException();
-            }
-        } catch (TaskTitleException t) {
-            System.out.println("\tYour task is missing a title!");
-            System.out.println("\tPlease type in the format: add /tTITLE /byDEADLINE");
-        } catch (ArrayIndexOutOfBoundsException | TaskWrongFormatException w) {
-            System.out.println("\tPlease type in the format: add /tTITLE /byDEADLINE");
-        } catch (IncorrectDeadlineFormatException d) {
-            System.out.println("\tOops! Your deadline should be in this format");
-            System.out.println("\tdd/MM/yyyy HHmm where time is in 24h");
-        } catch (Exception e) {
-            e.printStackTrace();
+        switch (appState.getAppMode()) {
+        case NOTEBOOK_SHELF:
+            addNotebook(appState.getCurrentBookShelf());
+        case NOTEBOOK_BOOK:
+            addNotebookSection(appState.getCurrentNotebook());
+            break;
+        case NOTEBOOK_SECTION:
+            addNotebookPage(appState.getCurrentSection());
+            break;
+        case NOTEBOOK_PAGE:
+            addContent();
+        default:
+            System.out.println("\tunable to add notebook/section/page");
+            break;
         }
+    }
+
+    private void addNotebook(NotebookShelf currentBookShelf) {
+        new Notebook(name);
+    }
+
+    private void addNotebookSection(Notebook currentNotebook) {
+        new Section(name);
+    }
+
+    private void addNotebookPage(Section currentSection) {
+        new Page(name);
     }
 }

@@ -4,12 +4,21 @@ import seedu.duke.exceptions.IncorrectDeadlineFormatException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
 
+import seedu.duke.userinterface.command.Add;
+import seedu.duke.userinterface.command.AddTimetable;
+import seedu.duke.userinterface.command.CliCommand;
+import seedu.duke.userinterface.command.Exit;
+import seedu.duke.userinterface.command.Help;
+import seedu.duke.userinterface.command.List;
+import seedu.duke.userinterface.command.ListTimetable;
+
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-import static seedu.duke.userinterface.command.Add.DEADLINE_DELIMITER;
-import static seedu.duke.userinterface.command.Add.TASK_DELIMITER;
+import static seedu.duke.userinterface.command.AddTimetable.DEADLINE_DELIMITER;
+import static seedu.duke.userinterface.command.AddTimetable.TASK_DELIMITER;
 
 public class InputParser {
     public static String parseTaskTitle(String input) throws TaskWrongFormatException, TaskTitleException {
@@ -66,5 +75,42 @@ public class InputParser {
         } catch (DateTimeParseException d) {
             return false;
         }
+    }
+
+    public CliCommand getCommandFromInput(String userInput, AppState appState) throws InvalidCommandException {
+        String trimmedInput = userInput.trim();
+        String[] input = trimmedInput.split(" ", 2); // split input into command and arguments
+        String commandWord = input[0];
+        String argument = "";
+        if (input.length > 1) {
+            argument = input[1].trim();
+        }
+
+        CliCommand command;
+        switch (commandWord) {
+        case Add.COMMAND_WORD:
+            if (appState.getAppMode() == AppMode.TIMETABLE) {
+                command = new Add(argument, appState);
+            } else {
+                command = new AddTimetable(argument, appState);
+            }
+            break;
+        case List.COMMAND_WORD:
+            if (appState.getAppMode() == AppMode.TIMETABLE) {
+                command = new List(argument, appState);
+            } else {
+                command = new ListTimetable(argument, appState);
+            }
+            break;
+        case Exit.COMMAND_WORD:
+            command = new Exit(argument, appState);
+            break;
+        case Help.COMMAND_WORD:
+            command = new Help(argument);
+            break;
+        default:
+            throw new InvalidCommandException();
+        }
+        return command;
     }
 }
