@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class TaskList {
     private ArrayList<Task> taskArrayList;
-    private int numberOfTasks = 0;
 
     public TaskList() {
         taskArrayList = new ArrayList<>();
@@ -12,11 +11,10 @@ public class TaskList {
 
     public void addTask(Task t) {
         taskArrayList.add(t);
-        numberOfTasks++;
     }
 
     public int getNumberOfTasks() {
-        return numberOfTasks;
+        return this.taskArrayList.size();
     }
 
     public Task getTask(int index) {
@@ -27,4 +25,16 @@ public class TaskList {
         }
         return null;
     }
+
+    public Task markAsDone(int i) {
+        Task task = this.taskArrayList.get(i - 1);
+        task.markAsDone();
+        return task;
+    }
+
+    public ArrayList<Task> getTaskList() {
+        return this.taskArrayList;
+    }
+
+
 }

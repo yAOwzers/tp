@@ -45,5 +45,6 @@ public class Add extends CliCommand {
             System.out.println("\tOops! Your deadline should be in this format");
             System.out.println("\tdd/MM/yyyy HHmm where time is in 24h");
         }
+
     }
 }

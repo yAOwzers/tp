@@ -1,6 +1,7 @@
 package seedu.duke.userinterface;
 
 import seedu.duke.exceptions.InvalidCommandException;
+import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.command.Add;
 
@@ -44,4 +45,15 @@ public class CliUserInterface {
         Scanner in = new Scanner(System.in);
         System.out.println("Hello " + in.nextLine());
     }
+
+    public void showMarkDone(Task task) {
+        String markDoneMessage = "Yay! I've marked these task as done:";
+        String taskDetails = task.getTask();
+        System.out.println(markDoneMessage + "\n " + taskDetails + "\n");
+    }
+
+    public String printExit() {
+        return "GOODBYE HOPE TO SEE YOU AGAIN";
+    }
+
 }

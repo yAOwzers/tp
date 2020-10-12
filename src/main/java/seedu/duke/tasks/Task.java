@@ -34,6 +34,14 @@ public class Task {
         return dueTime;
     }
 
+    public void markAsDone() {
+        this.isDone = true;
+    }
+
+    public String getTask() {
+        return this.title;
+    }
+
     public String reformatDate() throws ParseException {
         Date date = dateTime.parse(by);
         return outputFormat.format(date);
@@ -50,6 +58,11 @@ public class Task {
         } catch (ParseException e) {
             System.out.println("\tAn error occurred while reading the given deadline.");
         }
+        return null;
+    }
+
+    public String toTxtFormat() {
+        // ...
         return null;
     }
 }
