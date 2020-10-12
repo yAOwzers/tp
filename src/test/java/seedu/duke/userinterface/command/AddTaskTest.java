@@ -1,19 +1,19 @@
 package seedu.duke.userinterface.command;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
 import seedu.duke.exceptions.TaskWrongFormatException;
 import seedu.duke.userinterface.InputParser;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AddTaskTest {
     @Test
     void addTask_dateFormat_expectException() throws IncorrectDeadlineFormatException {
         InputParser parser = new InputParser();
         String inputString = "/by18 Oct";
-        Assertions.assertThrows(IncorrectDeadlineFormatException.class, () -> {
+        assertThrows(IncorrectDeadlineFormatException.class, () -> {
             parser.parseDeadline(inputString);
         });
     }
