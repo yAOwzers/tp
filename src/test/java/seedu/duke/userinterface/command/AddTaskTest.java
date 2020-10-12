@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.userinterface.command;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
