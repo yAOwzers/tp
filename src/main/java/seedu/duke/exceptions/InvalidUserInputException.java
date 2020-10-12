@@ -1,7 +1,7 @@
 package seedu.duke.exceptions;
 
-public class InvalidUserInputException extends Exception {
-    public InvalidUserInputException(String errorMessage) {
-        super(errorMessage);
+public class InvalidUserInputException extends ZeroNoteException {
+    public InvalidUserInputException(String userInput) {
+        super("Sorry but " + userInput + " is invalid!");
     }
 }

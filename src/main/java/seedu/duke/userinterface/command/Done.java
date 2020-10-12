@@ -26,7 +26,7 @@ public class Done extends CliCommand {
     public void execute() throws InvalidUserInputException {
         // Retrieves the number after the 'done' keyword
         if(this.userInput.length() == 4) {
-            throw new InvalidUserInputException("Sorry please fill up the description!");
+            throw new InvalidUserInputException(userInput);
         }
             try {
                 String intSubstring = this.userInput.substring(5);

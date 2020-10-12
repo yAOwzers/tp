@@ -32,9 +32,11 @@ public class TaskList {
         return task;
     }
 
-    public ArrayList<Task> getTaskList() {
-        return this.taskArrayList;
+    public ArrayList<Task> getTaskArrayList() {
+        return taskArrayList;
     }
 
-
+    public void setTaskArrayList(ArrayList<Task> taskArrayList) {
+        this.taskArrayList = taskArrayList;
+    }
 }

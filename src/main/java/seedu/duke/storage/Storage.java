@@ -1,6 +1,7 @@
 package seedu.duke.storage;
 
 import seedu.duke.tasks.Task;
+import seedu.duke.userinterface.AppState;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -13,8 +14,9 @@ public class Storage {
 
     private String filepath;
 
-    public Storage(String filepath) {
-        this.filepath = filepath;
+    // To include String filepath
+    public Storage() {
+//        this.filepath = filepath;
     }
 
     // Saves the given task to txt format
@@ -38,5 +40,13 @@ public class Storage {
             System.out.println("Error in IO!");
         }
     }
-}
 
+    public void saveToFile(AppState currentAppState) {
+        // TODO: Implement
+    }
+
+    public AppState readFromFile() {
+        // TODO: Implement
+        return new AppState();
+    }
+}
