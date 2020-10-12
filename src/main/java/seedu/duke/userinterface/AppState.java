@@ -9,6 +9,7 @@ public class AppState {
     private AppMode appMode;
     private TaskList taskList;
     private NotebookShelf currentBookShelf;
+
     private Notebook currentNotebook;
     private Section currentSection;
     private int indexOfCurrentNotebook;
