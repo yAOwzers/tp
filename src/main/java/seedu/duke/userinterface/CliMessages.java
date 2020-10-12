@@ -1,5 +1,8 @@
 package seedu.duke.userinterface;
 
+import seedu.duke.tasks.Task;
+import seedu.duke.tasks.TaskList;
+
 /**
  * A class containing all the messages displayed to the user during operation.
  *
@@ -7,9 +10,8 @@ package seedu.duke.userinterface;
  * @version 0.1
  */
 
-import seedu.duke.tasks.TaskList;
-
 public class CliMessages {
+    private static final String REMOVE_TASK_SUCCESS_MESSAGE = "Noted. I've removed this task:";
 
     //TODO: fill these sections with the appropriate user documentation, possibly taken from the final UG
     public void printAddTaskHelp() {
@@ -81,9 +83,19 @@ public class CliMessages {
         printTimetableModeHelp();
     }
 
-    public void printAddedTaskMessage(TaskList taskList, String title) {
+    public void printAddedTaskMessage(TaskList tasksList, String title) {
         System.out.println("Added: " + title);
-        System.out.println(taskList.getNumberOfTasks() + ":" + taskList.getTask(taskList.getNumberOfTasks() - 1));
+        System.out.println(tasksList.getNumberOfTasks() + ":" + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
+    }
+
+    public static void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
+        System.out.println(REMOVE_TASK_SUCCESS_MESSAGE);
+        System.out.println(deletedTask.toString());
+        if (numberOfTasks == 1) {
+            System.out.println("\tNow you have " + numberOfTasks + " task in the list.");
+        } else {
+            System.out.println("\tNow you have " + numberOfTasks + " tasks in the list.");
+        }
     }
 
     public void printGoodBye() {
