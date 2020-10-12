@@ -3,6 +3,7 @@ package seedu.duke.userinterface;
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
+import seedu.duke.userinterface.command.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -65,6 +66,24 @@ public class InputParser {
             return true;
         } catch (DateTimeParseException d) {
             return false;
+        }
+    }
+
+    public CliCommand getCommandFromInput(String userInput, Mode appState) {
+        String[] input = userInput.trim().split(" ", 2); // split input into command and arguments
+        final String commandWord = input[0];
+        final String argument = input[1].trim();
+
+        switch(commandWord) {
+        case "add":
+            //return new Add(argument, appState)
+            break;
+        case "list":
+            return new ListTimetable(argument, appState);
+            break;
+        case "exit":
+            return new Exit(argument, appState);
+            break;
         }
     }
 }

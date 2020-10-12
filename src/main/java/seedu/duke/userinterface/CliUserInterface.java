@@ -3,6 +3,7 @@ package seedu.duke.userinterface;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.command.Add;
+import seedu.duke.userinterface.command.CliCommand;
 
 import java.lang.String;
 import java.util.Scanner;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 public class CliUserInterface {
     private static int numberOfTasks;
     private static TaskList list;
+    private static Mode appState;
     public Add add;
 
     public CliUserInterface(TaskList list, int numberOfTasks) {
@@ -18,18 +20,11 @@ public class CliUserInterface {
     }
 
     public void executeCommand(String userInput) throws Exception {
-        String[] input = userInput.trim().split(" ", 2); // split input into command and arguments
-        final String commandWord = input[0];
-        final String argument = input[1].trim();
 
-        switch (commandWord) {
-        case Add.COMMAND_WORD:
-            add = new Add(list, argument);
-            add.execute();
-            break;
-        default:
-            throw new InvalidCommandException();
-        }
+        InputParser parser = new InputParser();
+        CliCommand command = parser.getCommandFromInput(userInput, appState);
+        command.execute();
+
     }
 
     public void startUI() {

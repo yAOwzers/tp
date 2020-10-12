@@ -4,8 +4,14 @@ import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Page;
 import seedu.duke.notebooks.Section;
+import seedu.duke.userinterface.Mode;
 
 public class List extends CliCommand {
+
+    public List(String argument, Mode uiMode) {
+        this.setUiMode(uiMode);
+        this.setCommandParams(argument);
+    }
 
     @Override
     public void execute() {
