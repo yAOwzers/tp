@@ -15,6 +15,33 @@ public class List extends CliCommand {
 
     @Override
     public void execute() {
+        switch(applicationState.getAppMode()) {
+        case NOTEBOOK_SHELF:
+            switch (commandParams) {
+            case ("/s"):
+                listBookshelf_ns(applicationState.getCurrentBookShelf());
+                break;
+            case ("/a"):
+                listBookshelf_nsp(applicationState.getCurrentBookShelf());
+                break;
+            default:
+                listBookshelf_n(applicationState.getCurrentBookShelf());
+                break;
+            }
+            break;
+        case NOTEBOOK_BOOK:
+            switch (commandParams) {
+            case("/a"):
+                listNotebook_s(applicationState.getCurrentNotebook());
+            default:
+                listNotebook_s(applicationState.getCurrentNotebook());
+                break;
+            }
+            break;
+        case NOTEBOOK_SECTION:
+            listSection(applicationState.getCurrentSection());
+            break;
+        }
 
     }
 

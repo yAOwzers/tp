@@ -2,20 +2,32 @@ package seedu.duke.userinterface;
 
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
+import seedu.duke.notebooks.Section;
 import seedu.duke.tasks.TaskList;
 
 public class Mode {
-    private int state; //0 for
+    private AppMode appMode;
     private TaskList taskList;
     private NotebookShelf currentBookShelf;
-    private int indexOfCurrentNotebook;
 
-    public int getState() {
-        return state;
+    public Notebook getCurrentNotebook() {
+        return currentNotebook;
     }
 
-    public void setState(int state) {
-        this.state = state;
+    public Section getCurrentSection() {
+        return currentSection;
+    }
+
+    private Notebook currentNotebook;
+    private Section currentSection;
+    private int indexOfCurrentNotebook;
+
+    public AppMode getAppMode() {
+        return appMode;
+    }
+
+    public void setAppMode(AppMode appMode) {
+        this.appMode = appMode;
     }
 
     public TaskList getTaskList() {

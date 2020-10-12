@@ -3,10 +3,7 @@ package seedu.duke.userinterface;
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
-import seedu.duke.userinterface.command.CliCommand;
-import seedu.duke.userinterface.command.ListTimetable;
-import seedu.duke.userinterface.command.Exit;
-import seedu.duke.userinterface.command.Help;
+import seedu.duke.userinterface.command.*;
 
 
 import java.time.LocalDate;
@@ -82,7 +79,13 @@ public class InputParser {
         case "add":
             //return new Add(argument, appState)
         case "list":
-            return new ListTimetable(argument, appState);
+            switch (appState.getAppMode()) {
+            case TIMETABLE:
+                return new List(argument, appState);
+            default:
+                return new ListTimetable(argument, appState);
+            }
+
         case "exit":
             return new Exit(argument, appState);
         default:
