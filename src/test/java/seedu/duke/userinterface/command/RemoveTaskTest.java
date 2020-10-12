@@ -22,19 +22,4 @@ class RemoveTaskTest {
 
         assertEquals(taskslist.getNumberOfTasks(), 0);
     }
-
-    @Test
-    void execute_DeleteTaskZero_IndexOutOfBoundsExceptionThrown() {
-        TaskList taskslist = new TaskList();
-        AppState appState = new AppState();
-
-        String input = "add /tTask1 /by12-10-2020 2252";
-        Add add = new Add(input,appState);
-        add.execute();
-
-        RemoveTask remove = new RemoveTask(-1,appState);
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
-            remove.execute();
-        });
-    }
 }
