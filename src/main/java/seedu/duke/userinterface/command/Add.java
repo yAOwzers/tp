@@ -7,6 +7,8 @@ import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.AppState;
 
 public class Add extends CliCommand {
+    //TODO have subclasses of CliCommand for commands with and without arguments, and the subclass with arguments could
+    // contain these fields to be overridden.
     public static final String COMMAND_WORD = "add";
     private String name;
 
