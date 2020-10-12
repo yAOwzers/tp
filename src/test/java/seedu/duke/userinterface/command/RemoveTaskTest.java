@@ -14,7 +14,7 @@ class RemoveTaskTest {
         AppState appState = new AppState();
 
         String input = "add /tTask1 /by12-10-2020 2252";
-        Add add = new Add(input,appState);
+        AddTimetable add = new AddTimetable(input,appState);
         add.execute();
 
         RemoveTask remove = new RemoveTask(1,appState);
