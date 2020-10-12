@@ -27,4 +27,12 @@ public class TaskList {
         }
         return null;
     }
+
+    public ArrayList<Task> getTaskArrayList() {
+        return taskArrayList;
+    }
+
+    public void setTaskArrayList(ArrayList<Task> taskArrayList) {
+        this.taskArrayList = taskArrayList;
+    }
 }
