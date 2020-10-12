@@ -8,6 +8,7 @@ public class Exit extends CliCommand {
         this.setUiMode(uiMode);
         this.setCommandParams(argument);
     }
+
     public void execute() {
     }
 }
