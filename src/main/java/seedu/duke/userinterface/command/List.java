@@ -9,8 +9,8 @@ import seedu.duke.userinterface.AppState;
 public class List extends CliCommand {
     public static final String COMMAND_WORD = "list";
 
-    public List(String argument, AppState uiMode) {
-        this.setAppState(uiMode);
+    public List(String argument, AppState appState) {
+        this.setAppState(appState);
         this.setCommandParams(argument);
     }
 
