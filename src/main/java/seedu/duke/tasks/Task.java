@@ -1,10 +1,10 @@
 package seedu.duke.tasks;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.text.ParseException;
 import java.util.Date;
 
 public class Task {
@@ -12,6 +12,7 @@ public class Task {
     private String by;
     private LocalDate dueDate;
     private LocalTime dueTime;
+    
     protected DateFormat dateTime = new SimpleDateFormat("dd-MM-yyyy HHmm"); // in 24h format
     protected DateFormat outputFormat = new SimpleDateFormat("MMM dd yyyy hh.mm aa"); // in 12h format
     protected boolean isDone;
@@ -34,6 +35,14 @@ public class Task {
         return dueTime;
     }
 
+    public void markAsDone() {
+        this.isDone = true;
+    }
+
+    public String getTask() {
+        return this.title;
+    }
+
     public String reformatDate() throws ParseException {
         Date date = dateTime.parse(by);
         return outputFormat.format(date);
@@ -43,6 +52,10 @@ public class Task {
         return (isDone ? "o" : "x");
     }
 
+    public boolean isDone() {
+        return isDone;
+    }
+
     @Override
     public String toString() {
         try {
@@ -50,6 +63,15 @@ public class Task {
         } catch (ParseException e) {
             System.out.println("\tAn error occurred while reading the given deadline.");
         }
+        return null;
+    }
+
+    public String getTaskInMessagesFormat() {
+        return "[" + this.getStatusIcon() + "] " + this.title;
+    }
+
+    public String toTxtFormat() {
+        // ...
         return null;
     }
 }
