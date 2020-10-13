@@ -118,6 +118,8 @@ public class InputParser {
             return new Exit(argument, appState);
         case Help.COMMAND_WORD:
             return new Help(argument);
+        case ModeSwitch.COMMAND_WORD:
+            return new ModeSwitch(argument, appState);
         default:
             throw new InvalidCommandException();
         }
