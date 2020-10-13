@@ -6,7 +6,7 @@ public abstract class CliCommand {
     protected AppState appState;
     protected String commandParams;
 
-    public static final String COMMAND_WORD = "";
+    public static final String COMMAND_WORD = "mode";
 
     public CliCommand() {
 
