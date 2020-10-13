@@ -12,17 +12,26 @@ public class ListTimetable extends CliCommand {
 
     @Override
     public void execute() {
-        switch (commandParams) {
-        case "/d":
-            printDoneTasks();
-            break;
-        case "/u":
-            printUndoneTasks();
-            break;
-        default:
-            printAllTasks();
-            break;
+        try {
+            if (appState.getTaskList().getTaskArrayList().size() == 0) {
+                System.out.println("The list of tasks is empty");
+                return;
+            }
+            switch (commandParams) {
+            case "/d":
+                printDoneTasks();
+                break;
+            case "/u":
+                printUndoneTasks();
+                break;
+            default:
+                printAllTasks();
+                break;
+            }
+        } catch (NullPointerException e) {
+            System.out.println("The list of tasks is empty");
         }
+
     }
 
     private void printAllTasks() {

@@ -4,14 +4,24 @@ import seedu.duke.exceptions.IncorrectDeadlineFormatException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
-import seedu.duke.userinterface.command.*;
+
+import seedu.duke.userinterface.command.Add;
+import seedu.duke.userinterface.command.AddTimetable;
+import seedu.duke.userinterface.command.CliCommand;
+import seedu.duke.userinterface.command.Exit;
+import seedu.duke.userinterface.command.Help;
+import seedu.duke.userinterface.command.List;
+import seedu.duke.userinterface.command.ListTimetable;
+import seedu.duke.userinterface.command.Remove;
+import seedu.duke.userinterface.command.RemoveTask;
+
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-import static seedu.duke.userinterface.command.Add.DEADLINE_DELIMITER;
-import static seedu.duke.userinterface.command.Add.TASK_DELIMITER;
+import static seedu.duke.userinterface.command.AddTimetable.DEADLINE_DELIMITER;
+import static seedu.duke.userinterface.command.AddTimetable.TASK_DELIMITER;
 
 public class InputParser {
     public int parseTaskIndex(String args) throws NumberFormatException {
@@ -89,7 +99,11 @@ public class InputParser {
         CliCommand command;
         switch (commandWord) {
         case Add.COMMAND_WORD:
-            return new Add(argument, appState);
+            if (appState.getAppMode() == AppMode.TIMETABLE) {
+                return new AddTimetable(argument, appState);
+            } else {
+                return new Add(argument, appState);
+            }
         case RemoveTask.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
                 return new RemoveTask(parseTaskIndex(argument), appState);
@@ -108,6 +122,8 @@ public class InputParser {
             return new Help(argument);
         case Done.COMMAND_WORD:
             return new Done(argument, appState);
+        case ModeSwitch.COMMAND_WORD:
+            return new ModeSwitch(argument, appState);
         default:
             throw new InvalidCommandException();
         }
