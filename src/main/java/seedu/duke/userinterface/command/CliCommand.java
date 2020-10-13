@@ -10,8 +10,11 @@ public abstract class CliCommand {
 
     public static final String COMMAND_WORD = "";
 
-
     public abstract void execute() throws InvalidUserInputException;
+
+    public CliCommand() {
+
+    }
 
     public AppState getAppState() {
         return appState;

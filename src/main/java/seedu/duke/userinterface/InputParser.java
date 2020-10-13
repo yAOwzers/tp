@@ -4,12 +4,7 @@ import seedu.duke.exceptions.IncorrectDeadlineFormatException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
-import seedu.duke.userinterface.command.Add;
-import seedu.duke.userinterface.command.CliCommand;
-import seedu.duke.userinterface.command.Exit;
-import seedu.duke.userinterface.command.Help;
-import seedu.duke.userinterface.command.List;
-import seedu.duke.userinterface.command.ListTimetable;
+import seedu.duke.userinterface.command.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -19,6 +14,10 @@ import static seedu.duke.userinterface.command.Add.DEADLINE_DELIMITER;
 import static seedu.duke.userinterface.command.Add.TASK_DELIMITER;
 
 public class InputParser {
+    public int parseTaskIndex(String args) throws NumberFormatException {
+        return Integer.parseInt(args) - 1;
+    }
+
     public static String parseTaskTitle(String input) throws TaskWrongFormatException, TaskTitleException {
         if (input.startsWith(TASK_DELIMITER)) {
             String taskTitle = input.replace(TASK_DELIMITER, "");
@@ -90,24 +89,27 @@ public class InputParser {
         CliCommand command;
         switch (commandWord) {
         case Add.COMMAND_WORD:
-            command = new Add(argument, appState);
-            break;
+            return new Add(argument, appState);
+        case RemoveTask.COMMAND_WORD:
+            if (appState.getAppMode() == AppMode.TIMETABLE) {
+                return new RemoveTask(parseTaskIndex(argument), appState);
+            } else {
+                return new Remove(argument, appState);
+            }
         case List.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                command = new List(argument, appState);
+                return new ListTimetable(argument, appState);
             } else {
-                command = new ListTimetable(argument, appState);
+                return new List(argument, appState);
             }
-            break;
         case Exit.COMMAND_WORD:
-            command = new Exit(argument, appState);
-            break;
+            return new Exit(argument, appState);
         case Help.COMMAND_WORD:
-            command = new Help(argument);
-            break;
+            return new Help(argument);
+        case Done.COMMAND_WORD:
+            return new Done(argument, appState);
         default:
-            throw new InvalidCommandException(commandWord);
+            throw new InvalidCommandException();
         }
-        return command;
     }
 }

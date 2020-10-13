@@ -61,11 +61,7 @@ public class CliUserInterface {
         // TODO: Make this prettier
     }
 
-    public void showMarkDone(Task task) {
-        String markDoneMessage = "Yay! I've marked these task as done:";
-        String taskDetails = task.getTask();
-        System.out.println(markDoneMessage + "\n " + taskDetails + "\n");
-    }
+
 
     public String printExit() {
         return "GOODBYE HOPE TO SEE YOU AGAIN";

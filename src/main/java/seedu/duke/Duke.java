@@ -1,6 +1,5 @@
 package seedu.duke;
 
-import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.CliUserInterface;
 

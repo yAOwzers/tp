@@ -4,35 +4,29 @@ import seedu.duke.exceptions.InvalidUserInputException;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
+import seedu.duke.userinterface.AppState;
+import seedu.duke.userinterface.CliMessages;
 import seedu.duke.userinterface.CliUserInterface;
 
 public class Done extends CliCommand {
 
     public static final String COMMAND_WORD = "done";
 
-    private TaskList taskList;
-    private NotebookShelf notebookShelf;
-    private String userInput;
-    private CliUserInterface ui;
+    private AppState appState;
+    private String arguement;
+    private CliMessages messages = new CliMessages();
 
-    public Done(TaskList taskList, NotebookShelf notebookShelf, String userInput, CliUserInterface ui) {
-        this.taskList = taskList;
-        this.notebookShelf = notebookShelf;
-        this.userInput = userInput;
-        this.ui = ui;
+    public Done(String arguement, AppState appState) {
+       this.arguement = arguement;
+       this.appState = appState;
     }
 
     @Override
-    public void execute() throws InvalidUserInputException {
-        // Retrieves the number after the 'done' keyword
-        if(this.userInput.length() == 4) {
-            throw new InvalidUserInputException(userInput);
-        }
+    public void execute() {
             try {
-                String intSubstring = this.userInput.substring(5);
-                int indexOfNumberAfterDone = Integer.parseInt(intSubstring);
-                Task taskDone = this.taskList.markAsDone(indexOfNumberAfterDone);
-                ui.showMarkDone(taskDone);
+                int indexOfNumberAfterDone = Integer.parseInt(this.arguement);
+                Task taskDone = this.appState.markTaskAsDone(indexOfNumberAfterDone);
+                messages.printMarkDone(taskDone);
             } catch (NumberFormatException e) {
                 System.out.println("I'm sorry, please enter a valid number!");
             }
