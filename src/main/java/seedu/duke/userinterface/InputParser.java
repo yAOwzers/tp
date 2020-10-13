@@ -105,40 +105,36 @@ public class InputParser {
             argument = input[1].trim();
         }
 
-        CliCommand command = null;
+        CliCommand command;
         switch (commandWord) {
         case Add.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                command = new AddTimetable(argument, appState);
+                return new AddTimetable(argument, appState);
             } else {
-                command = new Add(argument, appState);
+                return new Add(argument, appState);
             }
-            break;
+        case RemoveTask.COMMAND_WORD:
+            if (appState.getAppMode() == AppMode.TIMETABLE) {
+                return new RemoveTask(parseTaskIndex(argument), appState);
+            } else {
+                return new Remove(argument, appState);
+            }
         case List.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                command = new List(argument, appState);
+                return new ListTimetable(argument, appState);
             } else {
-                command = new ListTimetable(argument, appState);
+                return new List(argument, appState);
             }
-            break;
         case Exit.COMMAND_WORD:
-            command = new Exit(argument, appState);
-            break;
+            return new Exit(argument, appState);
         case Help.COMMAND_WORD:
-            command = new Help(argument);
-            break;
+            return new Help(argument);
         case Select.COMMAND_WORD:
             if (appState.getAppMode() != AppMode.TIMETABLE) {
-                command = new Select(argument, appState);
-            } else {
-                System.out.println("\tYou cannot select in this mode!");
+                return new Select(argument, appState);
             }
-            break;
         default:
             throw new InvalidCommandException();
         }
-        return command;
     }
-
-    
 }

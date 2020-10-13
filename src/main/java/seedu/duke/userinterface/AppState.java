@@ -40,8 +40,16 @@ public class AppState {
         return currentNotebook;
     }
 
+    public void setCurrentNotebook(Notebook currentNotebook) {
+        this.currentNotebook = currentNotebook;
+    }
+
     public Section getCurrentSection() {
         return currentSection;
+    }
+
+    public void setCurrentSection(Section currentSection) {
+        this.currentSection = currentSection;
     }
 
     public TaskList getTaskList() {

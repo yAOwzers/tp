@@ -6,6 +6,8 @@ import seedu.duke.notebooks.Page;
 import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.AppState;
 
+import static seedu.duke.userinterface.command.List.listBookshelf_ns;
+
 public class Add extends CliCommand {
     public static final String COMMAND_WORD = "add";
     private String name;
@@ -25,8 +27,12 @@ public class Add extends CliCommand {
         switch (appState.getAppMode()) {
         case NOTEBOOK_SHELF:
             addNotebook(appState.getCurrentBookShelf());
+
+            listBookshelf_ns(appState.getCurrentBookShelf());
+            break;
         case NOTEBOOK_BOOK:
             addNotebookSection(appState.getCurrentNotebook());
+
             break;
         case NOTEBOOK_SECTION:
             addNotebookPage(appState.getCurrentSection());
