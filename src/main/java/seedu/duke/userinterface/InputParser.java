@@ -11,6 +11,7 @@ import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
 import seedu.duke.userinterface.command.List;
 import seedu.duke.userinterface.command.ListTimetable;
+import seedu.duke.userinterface.command.ModeSwitch;
 import seedu.duke.userinterface.command.Remove;
 import seedu.duke.userinterface.command.RemoveTask;
 
