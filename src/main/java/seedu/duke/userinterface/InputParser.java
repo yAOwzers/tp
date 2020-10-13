@@ -129,6 +129,8 @@ public class InputParser {
             return new Exit(argument, appState);
         case Help.COMMAND_WORD:
             return new Help(argument);
+        case ModeSwitch.COMMAND_WORD:
+            return new ModeSwitch(argument, appState);
         case Select.COMMAND_WORD:
             if (appState.getAppMode() != AppMode.TIMETABLE) {
                 return new Select(argument, appState);
