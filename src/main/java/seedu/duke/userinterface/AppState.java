@@ -10,6 +10,18 @@ public class AppState {
     private TaskList taskList;
     private NotebookShelf currentBookShelf;
 
+    public AppState() {
+        taskList = new TaskList();
+    }
+
+    public Notebook getCurrentNotebook() {
+        return currentNotebook;
+    }
+
+    public Section getCurrentSection() {
+        return currentSection;
+    }
+
     private Notebook currentNotebook;
     private Section currentSection;
     private int indexOfCurrentNotebook;
