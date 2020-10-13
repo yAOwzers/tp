@@ -4,19 +4,27 @@ import java.util.ArrayList;
 
 public class TaskList {
     private ArrayList<Task> taskArrayList;
-    private int numberOfTasks = 0;
 
     public TaskList() {
         taskArrayList = new ArrayList<>();
     }
 
-    public void addTask(Task t) {
-        taskArrayList.add(t);
-        numberOfTasks++;
+    public TaskList(ArrayList<Task> taskArrayList) {
+        setTaskArrayList(taskArrayList);
+    }
+
+    public void addTask(Task task) {
+        taskArrayList.add(task);
+    }
+    
+    public Task removeTask(int index) throws IndexOutOfBoundsException {
+        Task removedTask = taskArrayList.get(index);
+        taskArrayList.remove(removedTask);
+        return removedTask;
     }
 
     public int getNumberOfTasks() {
-        return numberOfTasks;
+        return taskArrayList.size();
     }
 
     public Task getTask(int index) {
