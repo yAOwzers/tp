@@ -15,6 +15,5 @@ public class Add extends CliCommand {
     }
 
     public void execute() {
-
     }
 }

@@ -1,9 +1,7 @@
 package seedu.duke;
 
-import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.CliUserInterface;
 
-import java.util.Scanner;
 
 public class Duke {
 
