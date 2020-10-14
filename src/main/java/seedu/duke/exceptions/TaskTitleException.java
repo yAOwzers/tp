@@ -8,6 +8,7 @@ package seedu.duke.exceptions;
 public class TaskTitleException extends ZeroNoteException {
     @Override
     public void printErrorMessage() {
-        System.out.println("Missing Task Title");
+        System.out.println("\tYour task is missing a title!");
+        System.out.println("\tPlease type in the format: add /tTITLE /byDEADLINE");
     }
 }
