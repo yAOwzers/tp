@@ -85,7 +85,6 @@ public class InputParser {
         DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
         LocalDate date = null;
         try {
-            System.out.println(by);
             date = LocalDate.parse(by, dateTime);
             return true;
         } catch (DateTimeParseException d) {
@@ -146,6 +145,36 @@ public class InputParser {
         }
     }
 
+    public String parsePageTitle(String input) throws InvalidPageException {
+        if (input.startsWith(PAGE_DELIMITER)) {
+            String pageTitle = input.replace(PAGE_DELIMITER, "").trim();
+            if (pageTitle.isBlank()) {
+                throw new InvalidPageException();
+            }
+            if (pageTitle.contains(";")) {
+                int indexPos = pageTitle.indexOf(";");
+                pageTitle = pageTitle.substring(0, indexPos).trim();
+            }
+            return pageTitle;
+        } else {
+            throw new InvalidPageException();
+        }
+    }
+
+    public String parsePageContent(String input) throws InvalidPageException {
+        int dividerPos = input.indexOf(";");
+        input = input.substring(dividerPos);
+        if (input.startsWith(";")) {
+            String content = input.replace(";", "").trim();
+            if (content.isBlank()) {
+                throw new InvalidPageException();
+            }
+            return content;
+        } else {
+            throw new InvalidPageException();
+        }
+    }
+
     public CliCommand getCommandFromInput(String userInput, AppState appState) throws Exception {
         String trimmedInput = userInput.trim();
         String[] input = trimmedInput.split(" ", 2); // split input into command and arguments
@@ -169,8 +198,12 @@ public class InputParser {
                     titleToAdd = parseSectionTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
                 }
-                // TODO: implement adding pages
-                return new AddCommandNotebookMode(titleToAdd, contentToAdd, appState);
+                if (appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
+                    // TODO: implement adding pages
+                    titleToAdd = parsePageTitle(argument);
+                    contentToAdd = parsePageContent(argument);
+                    return new AddCommandNotebookMode(titleToAdd, contentToAdd, appState);
+                }
             }
         case ListCommandTimetableMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
