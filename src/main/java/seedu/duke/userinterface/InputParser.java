@@ -7,27 +7,22 @@ import seedu.duke.exceptions.InvalidPageException;
 import seedu.duke.exceptions.InvalidSectionException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
-import seedu.duke.userinterface.command.Add;
-import seedu.duke.userinterface.command.AddTimetable;
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
-import seedu.duke.userinterface.command.List;
-import seedu.duke.userinterface.command.ListTimetable;
 import seedu.duke.userinterface.command.ModeSwitch;
-import seedu.duke.userinterface.command.Remove;
-import seedu.duke.userinterface.command.RemoveTask;
-import seedu.duke.userinterface.command.Select;
+import seedu.duke.userinterface.command.notebook.Select;
+import seedu.duke.userinterface.command.timetable.Add;
+import seedu.duke.userinterface.command.timetable.List;
+import seedu.duke.userinterface.command.timetable.Remove;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-import static seedu.duke.userinterface.command.AddTimetable.DEADLINE_DELIMITER;
-import static seedu.duke.userinterface.command.AddTimetable.TASK_DELIMITER;
-import static seedu.duke.userinterface.command.Select.NOTEBOOK_DELIMITER;
-import static seedu.duke.userinterface.command.Select.PAGE_DELIMITER;
-import static seedu.duke.userinterface.command.Select.SECTION_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.Select.*;
+import static seedu.duke.userinterface.command.timetable.Add.DEADLINE_DELIMITER;
+import static seedu.duke.userinterface.command.timetable.Add.TASK_DELIMITER;
 
 public class InputParser {
     public static String parseTaskTitle(String input) throws TaskWrongFormatException, TaskTitleException {
@@ -48,7 +43,9 @@ public class InputParser {
      * Parses user's input to extract deadline.
      *
      * @param input input from user which contains the deadline.
+     *
      * @return deadline
+     *
      * @throws IncorrectDeadlineFormatException when the deadline input is in the wrong format.
      * @throws TaskWrongFormatException         when the deadline input is blank.
      */
@@ -73,6 +70,7 @@ public class InputParser {
      * Checks if [deadline] input by the user is in the correct format.
      *
      * @param by is the string containing the deadline's due date and time.
+     *
      * @return true when the input is in the correct format, otherwise false.
      */
     private static boolean correctTimeFormat(String by) {
@@ -140,7 +138,7 @@ public class InputParser {
         }
     }
 
-    public CliCommand getCommandFromInput(String userInput, AppState appState) throws InvalidCommandException {
+    public CliCommand getCommandFromInput(String userInput, AppState appState) throws Exception {
         String trimmedInput = userInput.trim();
         String[] input = trimmedInput.split(" ", 2); // split input into command and arguments
         String commandWord = input[0];
@@ -150,23 +148,34 @@ public class InputParser {
         }
 
         switch (commandWord) {
-        case Add.COMMAND_WORD:
+        case seedu.duke.userinterface.command.notebook.Add.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                return new AddTimetable(argument, appState);
-            } else {
                 return new Add(argument, appState);
-            }
-        case RemoveTask.COMMAND_WORD:
-            if (appState.getAppMode() == AppMode.TIMETABLE) {
-                return new RemoveTask(parseTaskIndex(argument), appState);
             } else {
-                return new Remove(argument, appState);
+                String titleToAdd;
+                String contentToAdd;
+                if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
+                    titleToAdd = parseNotebookTitle(argument);
+                } else if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
+                    titleToAdd = parseSectionTitle(argument);
+                } else {
+                    // TODO: implement adding pages
+                    titleToAdd = "";
+                    contentToAdd = "";
+                }
+                return new seedu.duke.userinterface.command.notebook.Add(titleToAdd, appState);
             }
-        case List.COMMAND_WORD:
+        case Remove.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                return new ListTimetable(argument, appState);
+                return new Remove(parseTaskIndex(argument), appState);
             } else {
+                return new seedu.duke.userinterface.command.notebook.Remove(argument, appState);
+            }
+        case seedu.duke.userinterface.command.notebook.List.COMMAND_WORD:
+            if (appState.getAppMode() == AppMode.TIMETABLE) {
                 return new List(argument, appState);
+            } else {
+                return new seedu.duke.userinterface.command.notebook.List(argument, appState);
             }
         case Exit.COMMAND_WORD:
             return new Exit(argument, appState);

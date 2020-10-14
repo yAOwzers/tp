@@ -1,10 +1,11 @@
-package seedu.duke.userinterface.command;
+package seedu.duke.userinterface.command.notebook;
 
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Page;
 import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.AppState;
+import seedu.duke.userinterface.command.CliCommand;
 
 public class List extends CliCommand {
     public static final String COMMAND_WORD = "list";

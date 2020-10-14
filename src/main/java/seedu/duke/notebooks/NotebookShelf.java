@@ -9,11 +9,11 @@ public class NotebookShelf {
         notebooksArrayList = new ArrayList<>();
     }
 
-    public NotebookShelf(ArrayList<Notebook> notebooksArrayList) {
-        this.notebooksArrayList = notebooksArrayList;
-    }
-
     public ArrayList<Notebook> getNotebooksArrayList() {
         return notebooksArrayList;
+    }
+
+    public void addNotebook(String title) {
+        notebooksArrayList.add(new Notebook(title));
     }
 }

@@ -1,9 +1,10 @@
 package seedu.duke.userinterface.command;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.AppState;
+import seedu.duke.userinterface.command.timetable.Add;
+import seedu.duke.userinterface.command.timetable.Remove;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,10 +15,10 @@ class RemoveTaskTest {
         AppState appState = new AppState();
 
         String input = "add /tTask1 /by12-10-2020 2252";
-        AddTimetable add = new AddTimetable(input,appState);
+        Add add = new Add(input,appState);
         add.execute();
 
-        RemoveTask remove = new RemoveTask(1,appState);
+        Remove remove = new Remove(1,appState);
         remove.execute();
 
         assertEquals(taskslist.getNumberOfTasks(), 0);

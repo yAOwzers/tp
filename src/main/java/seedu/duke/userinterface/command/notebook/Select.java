@@ -1,4 +1,4 @@
-package seedu.duke.userinterface.command;
+package seedu.duke.userinterface.command.notebook;
 
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidNotebookException;
@@ -11,6 +11,7 @@ import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.AppMode;
 import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.InputParser;
+import seedu.duke.userinterface.command.CliCommand;
 
 import java.util.ArrayList;
 
