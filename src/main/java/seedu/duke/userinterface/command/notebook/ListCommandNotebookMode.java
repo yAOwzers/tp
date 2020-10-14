@@ -16,6 +16,7 @@ public class ListCommandNotebookMode extends CliCommand {
     }
 
     // TODO: Break into functions and avoid repeated code, arrowhead code
+
     public static void listBookshelf_nsp(NotebookShelf notebookShelf) {
         for (Notebook notebook : notebookShelf.getNotebooksArrayList()) {
             System.out.println("* " + notebook.getTitle());
@@ -106,7 +107,5 @@ public class ListCommandNotebookMode extends CliCommand {
             System.out.println("Error in list class");
             break;
         }
-
     }
-
 }

@@ -1,15 +1,13 @@
 package seedu.duke.userinterface.command;
 
+import seedu.duke.exceptions.InvalidUserInputException;
+import seedu.duke.userinterface.AppMode;
 import seedu.duke.userinterface.AppState;
 
 public abstract class CliCommand {
     public static final String COMMAND_WORD = "mode";
     protected AppState appState;
     protected String commandParams;
-
-    public CliCommand() {
-
-    }
 
     public static String getCommandWord() {
         return COMMAND_WORD;

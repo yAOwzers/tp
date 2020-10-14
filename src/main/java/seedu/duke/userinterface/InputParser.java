@@ -7,9 +7,12 @@ import seedu.duke.exceptions.InvalidPageException;
 import seedu.duke.exceptions.InvalidSectionException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
+
 import seedu.duke.userinterface.command.CliCommand;
+import seedu.duke.userinterface.command.Done;
 import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
+import seedu.duke.userinterface.command.ModeSwitch;
 import seedu.duke.userinterface.command.ModeSwitch;
 import seedu.duke.userinterface.command.notebook.AddCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.ListCommandNotebookMode;
@@ -18,6 +21,7 @@ import seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode;
 import seedu.duke.userinterface.command.timetable.AddCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.ListCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
+
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -185,6 +189,8 @@ public class InputParser {
             return new Exit(argument, appState);
         case Help.COMMAND_WORD:
             return new Help(argument);
+        case Done.COMMAND_WORD:
+            return new Done(argument, appState);
         case ModeSwitch.COMMAND_WORD:
             return new ModeSwitch(argument, appState);
         case SelectCommandNotebookMode.COMMAND_WORD:
