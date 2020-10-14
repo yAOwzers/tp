@@ -31,8 +31,8 @@ public class CliMessages {
         System.out.println("\t" + section.getTitle());
     }
 
-    public static void printRemovePageMessage(Page page, int index) {
-        System.out.println("Noted. I've removed this page: " + index);
+    public static void printRemovePageMessage(Page page) {
+        System.out.println("Noted. I've removed this page: " + page.getTitle());
         page.printPage();
     }
 
@@ -118,5 +118,11 @@ public class CliMessages {
 
     public void printGoodBye() {
         System.out.println("Bye!");
+    }
+
+    public void printMarkDone(Task task) {
+        String markDoneMessage = "Yay! I've marked these task as done:";
+        String taskDetails = task.getTask();
+        System.out.println(markDoneMessage + "\n " + task.getTaskInMessagesFormat());
     }
 }

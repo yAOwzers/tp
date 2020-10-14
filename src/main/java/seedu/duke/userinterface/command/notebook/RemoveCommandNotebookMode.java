@@ -56,7 +56,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
     private void removeFromSection() throws InvalidCommandException {
         if (pageNumberToRemove > -1) {
             Page pageRemoved = currentSection.removePage(pageNumberToRemove);
-            CliMessages.printRemovePageMessage(pageRemoved, pageNumberToRemove);
+            CliMessages.printRemovePageMessage(pageRemoved);
         } else {
             throw new InvalidCommandException("Please enter in the format:/n"
                     + "delete /pPAGE_NUMBER");
@@ -68,7 +68,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
             int indexOfSectionToRemove = currentNotebook.findSection(sectionTitleToRemove);
             Section section = currentNotebook.getSectionAtIndex(indexOfSectionToRemove);
             Page pageRemoved = section.removePage(pageNumberToRemove);
-            CliMessages.printRemovePageMessage(pageRemoved, pageNumberToRemove);
+            CliMessages.printRemovePageMessage(pageRemoved);
         } else if (!sectionTitleToRemove.equals("") && pageNumberToRemove == -1) {
             int indexOfSectionToRemove = currentNotebook.findSection(sectionTitleToRemove);
             Section sectionRemoved = currentNotebook.removeSection(indexOfSectionToRemove);
@@ -89,7 +89,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
             int indexOfSectionToRemove = notebook.findSection(sectionTitleToRemove);
             Section section = notebook.getSectionAtIndex(indexOfSectionToRemove);
             Page pageRemoved = section.removePage(pageNumberToRemove);
-            CliMessages.printRemovePageMessage(pageRemoved, pageNumberToRemove);
+            CliMessages.printRemovePageMessage(pageRemoved);
         } else if (!notebookTitleToRemove.equals("") && !sectionTitleToRemove.equals("")
                 && pageNumberToRemove == -1) {
             Notebook notebook = currentBookshelf.getNotebookAtIndex(indexOfNotebookToRemove);

@@ -1,6 +1,8 @@
 package seedu.duke.userinterface;
 
+
 import seedu.duke.exceptions.ZeroNoteException;
+
 import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Exit;
@@ -25,6 +27,7 @@ public class CliUserInterface {
         Storage storage = new Storage();
         storage.saveToFile(appState);
     }
+
 
     public void run() {
         startUI();
@@ -60,4 +63,11 @@ public class CliUserInterface {
         System.out.println("You are now in timetable mode");
         // TODO: Make this prettier
     }
+
+
+
+    public String printExit() {
+        return "GOODBYE HOPE TO SEE YOU AGAIN";
+    }
+
 }

@@ -3,6 +3,7 @@ package seedu.duke.userinterface;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Section;
+import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 
 public class AppState {
@@ -66,6 +67,11 @@ public class AppState {
 
     public void setIndexOfCurrentNotebook(int indexOfCurrentNotebook) {
         this.indexOfCurrentNotebook = indexOfCurrentNotebook;
+    }
+
+    public Task markTaskAsDone(int index) {
+        Task task = this.taskList.markAsDone(index);
+        return task;
     }
 
     public int getIndexOfCurrentSection() {

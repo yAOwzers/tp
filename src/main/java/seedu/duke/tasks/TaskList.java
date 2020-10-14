@@ -26,6 +26,12 @@ public class TaskList {
         return taskArrayList.get(index);
     }
 
+    public Task markAsDone(int i) {
+        Task task = this.taskArrayList.get(i - 1);
+        task.markAsDone();
+        return task;
+    }
+
     public ArrayList<Task> getTaskArrayList() {
         return taskArrayList;
     }

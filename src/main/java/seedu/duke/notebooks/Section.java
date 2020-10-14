@@ -1,5 +1,7 @@
 package seedu.duke.notebooks;
 
+import seedu.duke.userinterface.AppMode;
+
 import java.util.ArrayList;
 
 public class Section {
@@ -32,6 +34,15 @@ public class Section {
             index++;
         }
         return -1;
+    }
+
+    public void getPage(int pageNum) {
+        try {
+            Page page = pageArrayList.get(pageNum);
+            page.printPage();
+        } catch (ArrayIndexOutOfBoundsException | NullPointerException e) {
+            System.out.println("\tpage doesn't exist");
+        }
     }
 
     public Page removePage(int indexToRemove) {
