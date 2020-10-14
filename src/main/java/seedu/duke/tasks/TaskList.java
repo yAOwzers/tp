@@ -3,11 +3,7 @@ package seedu.duke.tasks;
 import java.util.ArrayList;
 
 public class TaskList {
-    private ArrayList<Task> taskArrayList;
-
-    public TaskList(ArrayList<Task> taskArrayList) {
-        setTaskArrayList(taskArrayList);
-    }
+    private final ArrayList<Task> taskArrayList;
 
     public TaskList() {
         taskArrayList = new ArrayList<>();
@@ -16,10 +12,10 @@ public class TaskList {
     public void addTask(Task task) {
         taskArrayList.add(task);
     }
-    
-    public Task removeTask(int index) throws IndexOutOfBoundsException {
-        Task removedTask = taskArrayList.get(index);
-        taskArrayList.remove(removedTask);
+
+    public Task removeTask(int indexToRemove) throws IndexOutOfBoundsException {
+        Task removedTask = taskArrayList.get(indexToRemove);
+        taskArrayList.remove(indexToRemove);
         return removedTask;
     }
 
@@ -27,13 +23,8 @@ public class TaskList {
         return taskArrayList.size();
     }
 
-    public Task getTask(int index) {
-        try {
-            return taskArrayList.get(index);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("\ttask does not exist");
-        }
-        return null;
+    public Task getTask(int index) throws IndexOutOfBoundsException {
+        return taskArrayList.get(index);
     }
 
     public Task markAsDone(int i) {
@@ -44,9 +35,5 @@ public class TaskList {
 
     public ArrayList<Task> getTaskArrayList() {
         return taskArrayList;
-    }
-
-    public void setTaskArrayList(ArrayList<Task> taskArrayList) {
-        this.taskArrayList = taskArrayList;
     }
 }

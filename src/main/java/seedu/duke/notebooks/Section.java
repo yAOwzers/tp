@@ -4,15 +4,11 @@ import java.util.ArrayList;
 
 public class Section {
     private String title;
-    private ArrayList<Page> pageArrayList;
-
-    public Section(String title, ArrayList<Page> pageArrayList) {
-        this.title = title;
-        this.pageArrayList = pageArrayList;
-    }
+    private final ArrayList<Page> pageArrayList;
 
     public Section(String title) {
         this.title = title;
+        pageArrayList = new ArrayList<>();
     }
 
     public String getTitle() {
@@ -23,12 +19,39 @@ public class Section {
         this.title = title;
     }
 
-    public void setPageArrayList(ArrayList<Page> pageArrayList) {
-        this.pageArrayList = pageArrayList;
+    public void addPage(String title, String content) {
+        pageArrayList.add(new Page(title, content));
+    }
+
+    public int getPage(String searchKey) {
+        int index = 0;
+        for (Page p : pageArrayList) {
+            if (p.getTitle().equals(searchKey)) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
+    }
+
+    public void removePage(int indexToRemove) {
+        pageArrayList.remove(indexToRemove);
+    }
+
+    public void removePage(String titleToRemove) {
+        int indexToRemove = getPage(titleToRemove);
+        if (indexToRemove >= 0) {
+            removePage(indexToRemove);
+        } else {
+            System.out.println("doesn't exist");
+        }
+    }
+
+    public Page getPageAtIndex(int index) {
+        return pageArrayList.get(index);
     }
 
     public ArrayList<Page> getPageArrayList() {
         return pageArrayList;
     }
-
 }

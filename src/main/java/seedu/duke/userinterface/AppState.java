@@ -10,10 +10,10 @@ public class AppState {
     private AppMode appMode;
     private TaskList taskList;
     private NotebookShelf currentBookShelf;
-
     private Notebook currentNotebook;
     private Section currentSection;
     private int indexOfCurrentNotebook;
+    private int indexOfCurrentSection;
 
     public AppState() {
         taskList = new TaskList();
@@ -41,8 +41,16 @@ public class AppState {
         return currentNotebook;
     }
 
+    public void setCurrentNotebook(Notebook currentNotebook) {
+        this.currentNotebook = currentNotebook;
+    }
+
     public Section getCurrentSection() {
         return currentSection;
+    }
+
+    public void setCurrentSection(Section currentSection) {
+        this.currentSection = currentSection;
     }
 
     public TaskList getTaskList() {
@@ -52,7 +60,7 @@ public class AppState {
     public void setTaskList(TaskList taskList) {
         this.taskList = taskList;
     }
-    
+
     public int getIndexOfCurrentNotebook() {
         return indexOfCurrentNotebook;
     }
@@ -64,5 +72,13 @@ public class AppState {
     public Task markTaskAsDone(int index) {
         Task task = this.taskList.markAsDone(index);
         return task;
+    }
+
+    public int getIndexOfCurrentSection() {
+        return indexOfCurrentSection;
+    }
+
+    public void setIndexOfCurrentSection(int indexOfCurrentSection) {
+        this.indexOfCurrentSection = indexOfCurrentSection;
     }
 }
