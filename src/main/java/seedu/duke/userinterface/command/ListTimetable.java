@@ -35,13 +35,13 @@ public class ListTimetable extends CliCommand {
     }
 
     private void printAllTasks() {
-        for (Task task: appState.getTaskList().getTaskArrayList()) {
+        for (Task task : appState.getTaskList().getTaskArrayList()) {
             System.out.println(task);
         }
     }
 
     private void printDoneTasks() {
-        for (Task task: appState.getTaskList().getTaskArrayList()) {
+        for (Task task : appState.getTaskList().getTaskArrayList()) {
             if (task.isDone()) {
                 System.out.println(task);
             }
@@ -49,7 +49,7 @@ public class ListTimetable extends CliCommand {
     }
 
     private void printUndoneTasks() {
-        for (Task task: appState.getTaskList().getTaskArrayList()) {
+        for (Task task : appState.getTaskList().getTaskArrayList()) {
             if (!task.isDone()) {
                 System.out.println(task);
             }
