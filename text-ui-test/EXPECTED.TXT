@@ -1,2 +1,3 @@
 Welcome to Zer0Note!
+You are now in timetable mode
 Bye!
