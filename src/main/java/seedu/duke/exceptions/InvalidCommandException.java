@@ -7,6 +7,7 @@ public class InvalidCommandException extends ZeroNoteException {
     public InvalidCommandException(String problematicInput) {
         super(problematicInput);
     }
+
     @Override
     public void printErrorMessage() {
         System.out.println("You have entered an invalid command. " + problematicInput);
