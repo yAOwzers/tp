@@ -7,10 +7,10 @@ import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.command.CliCommand;
 
-public class List extends CliCommand {
+public class ListNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "list";
 
-    public List(String argument, AppState appState) {
+    public ListNotebookMode(String argument, AppState appState) {
         this.setAppState(appState);
         this.setCommandParams(argument);
     }

@@ -10,7 +10,7 @@ import seedu.duke.userinterface.CliMessages;
 import seedu.duke.userinterface.InputParser;
 import seedu.duke.userinterface.command.CliCommand;
 
-public class Add extends CliCommand {
+public class AddTimetableMode extends CliCommand {
     //TODO have subclasses of CliCommand for commands with and without arguments, and the subclass with arguments could
     // contain these fields to be overridden.
     public static final String TASK_DELIMITER = "/t";
@@ -19,7 +19,7 @@ public class Add extends CliCommand {
     private final String argument;
     private final CliMessages messages = new CliMessages();
 
-    public Add(String argument, AppState appState) {
+    public AddTimetableMode(String argument, AppState appState) {
         this.appState = appState;
         this.argument = argument;
     }

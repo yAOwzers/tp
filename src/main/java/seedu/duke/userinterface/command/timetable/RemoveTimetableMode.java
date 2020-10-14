@@ -8,13 +8,13 @@ import seedu.duke.userinterface.command.CliCommand;
 
 import java.util.ArrayList;
 
-public class Remove extends CliCommand {
+public class RemoveTimetableMode extends CliCommand {
 
     public static final String COMMAND_WORD = "delete";
 
     private final int indexToRemove;
 
-    public Remove(int indexToRemove, AppState uiMode) {
+    public RemoveTimetableMode(int indexToRemove, AppState uiMode) {
         this.setAppState(uiMode);
         this.indexToRemove = indexToRemove;
     }

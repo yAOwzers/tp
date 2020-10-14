@@ -11,18 +11,21 @@ import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
 import seedu.duke.userinterface.command.ModeSwitch;
-import seedu.duke.userinterface.command.notebook.Select;
-import seedu.duke.userinterface.command.timetable.Add;
-import seedu.duke.userinterface.command.timetable.List;
-import seedu.duke.userinterface.command.timetable.Remove;
+import seedu.duke.userinterface.command.notebook.AddNotebookMode;
+import seedu.duke.userinterface.command.notebook.ListNotebookMode;
+import seedu.duke.userinterface.command.notebook.RemoveNotebookMode;
+import seedu.duke.userinterface.command.notebook.SelectNotebookMode;
+import seedu.duke.userinterface.command.timetable.AddTimetableMode;
+import seedu.duke.userinterface.command.timetable.ListTimetableMode;
+import seedu.duke.userinterface.command.timetable.RemoveTimetableMode;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-import static seedu.duke.userinterface.command.notebook.Select.*;
-import static seedu.duke.userinterface.command.timetable.Add.DEADLINE_DELIMITER;
-import static seedu.duke.userinterface.command.timetable.Add.TASK_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.SelectNotebookMode.*;
+import static seedu.duke.userinterface.command.timetable.AddTimetableMode.DEADLINE_DELIMITER;
+import static seedu.duke.userinterface.command.timetable.AddTimetableMode.TASK_DELIMITER;
 
 public class InputParser {
     public static String parseTaskTitle(String input) throws TaskWrongFormatException, TaskTitleException {
@@ -148,9 +151,9 @@ public class InputParser {
         }
 
         switch (commandWord) {
-        case seedu.duke.userinterface.command.notebook.Add.COMMAND_WORD:
+        case AddNotebookMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                return new Add(argument, appState);
+                return new AddTimetableMode(argument, appState);
             } else {
                 String titleToAdd;
                 String contentToAdd;
@@ -163,19 +166,19 @@ public class InputParser {
                     titleToAdd = "";
                     contentToAdd = "";
                 }
-                return new seedu.duke.userinterface.command.notebook.Add(titleToAdd, appState);
+                return new AddNotebookMode(titleToAdd, appState);
             }
-        case Remove.COMMAND_WORD:
+        case RemoveTimetableMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                return new Remove(parseTaskIndex(argument), appState);
+                return new RemoveTimetableMode(parseTaskIndex(argument), appState);
             } else {
-                return new seedu.duke.userinterface.command.notebook.Remove(argument, appState);
+                return new RemoveNotebookMode(argument, appState);
             }
-        case seedu.duke.userinterface.command.notebook.List.COMMAND_WORD:
+        case ListNotebookMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                return new List(argument, appState);
+                return new ListTimetableMode(argument, appState);
             } else {
-                return new seedu.duke.userinterface.command.notebook.List(argument, appState);
+                return new ListNotebookMode(argument, appState);
             }
         case Exit.COMMAND_WORD:
             return new Exit(argument, appState);
@@ -183,9 +186,9 @@ public class InputParser {
             return new Help(argument);
         case ModeSwitch.COMMAND_WORD:
             return new ModeSwitch(argument, appState);
-        case Select.COMMAND_WORD:
+        case SelectNotebookMode.COMMAND_WORD:
             if (appState.getAppMode() != AppMode.TIMETABLE) {
-                return new Select(argument, appState);
+                return new SelectNotebookMode(argument, appState);
             } else {
                 throw new InvalidCommandException();
             }

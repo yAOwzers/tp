@@ -4,9 +4,9 @@ import seedu.duke.tasks.Task;
 import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.command.CliCommand;
 
-public class List extends CliCommand {
+public class ListTimetableMode extends CliCommand {
 
-    public List(String argument, AppState appState) {
+    public ListTimetableMode(String argument, AppState appState) {
         this.setAppState(appState);
         this.commandParams = argument;
     }

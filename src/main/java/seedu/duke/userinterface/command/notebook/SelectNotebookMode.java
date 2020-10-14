@@ -15,7 +15,7 @@ import seedu.duke.userinterface.command.CliCommand;
 
 import java.util.ArrayList;
 
-public class Select extends CliCommand {
+public class SelectNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "select";
     public static final String NOTEBOOK_DELIMITER = "/n";
     public static final String SECTION_DELIMITER = "/s";
@@ -27,7 +27,7 @@ public class Select extends CliCommand {
     private Notebook notebook;
     private Section section;
 
-    public Select(String argument, AppState uiMode) {
+    public SelectNotebookMode(String argument, AppState uiMode) {
         this.setAppState(uiMode);
         this.argument = argument;
     }
