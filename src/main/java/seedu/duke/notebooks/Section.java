@@ -31,4 +31,7 @@ public class Section {
         return pageArrayList;
     }
 
+    public Page get(int pageNum) {
+        return pageArrayList.get(pageNum);
+    }
 }

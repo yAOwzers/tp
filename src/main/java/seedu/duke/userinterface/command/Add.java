@@ -4,38 +4,76 @@ import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Page;
 import seedu.duke.notebooks.Section;
+import seedu.duke.userinterface.AppMode;
 import seedu.duke.userinterface.AppState;
 
+import static seedu.duke.userinterface.command.List.listBookshelf_n;
 import static seedu.duke.userinterface.command.List.listBookshelf_ns;
+import static seedu.duke.userinterface.command.List.listBookshelf_nsp;
 
 public class Add extends CliCommand {
     public static final String COMMAND_WORD = "add";
     private String name;
     private String content;
+    private NotebookShelf currentBookshelf;
+    private Notebook currentNotebook;
+    private Section currentSection;
+
+    public Add() {
+        currentBookshelf = appState.getCurrentBookShelf();
+        currentNotebook = appState.getCurrentNotebook();
+        currentSection = appState.getCurrentSection();
+    }
 
     public Add(String argument, AppState uiMode) {
         this.setAppState(uiMode);
-        this.getName(argument);
+        this.splitParams(argument);
     }
 
-    private String getName(String argument) {
-        name  = argument.replace("add", "");
+    private void splitParams(String argument) {
+        name = argument;
+        if (appState.getAppMode().equals(AppMode.NOTEBOOK_PAGE)) {
+            String[] input = argument.split(";", 2);
+            name = input[0];
+            content = input[1];
+            System.out.println("added page titled: " + name);
+            System.out.println("content added: " + content);
+        }
+    }
+
+    private String getName() {
         return name;
+    }
+
+    private String getContent() {
+        return content;
     }
 
     public void execute() {
         switch (appState.getAppMode()) {
         case NOTEBOOK_SHELF:
-            addNotebook(appState.getCurrentBookShelf());
-
-            listBookshelf_ns(appState.getCurrentBookShelf());
+            System.out.println("now in " + appState.getAppMode());
+            currentBookshelf = appState.getCurrentBookShelf();
+            addNotebook(currentBookshelf);
+            currentNotebook = appState.getCurrentNotebook();
+            appState.setCurrentNotebook(currentNotebook);
+            listBookshelf_n(currentBookshelf);
+            appState.setCurrentBookShelf(currentBookshelf);
             break;
         case NOTEBOOK_BOOK:
-            addNotebookSection(appState.getCurrentNotebook());
-
+            System.out.println("now in " + appState.getAppMode());
+            currentNotebook = getAppState().getCurrentNotebook();
+            addNotebookSection(currentNotebook);
+            appState.setCurrentNotebook(currentNotebook);
+            currentSection = appState.getCurrentSection();
+            appState.setCurrentSection(currentSection);
+            listBookshelf_ns(currentBookshelf);
             break;
         case NOTEBOOK_SECTION:
-            addNotebookPage(appState.getCurrentSection());
+            System.out.println("now in " + appState.getAppMode());
+            addNotebookPage(currentSection, content);
+            listBookshelf_nsp(currentBookshelf);
+            System.out.println("now in " + appState.getAppMode());
             break;
         default:
             System.out.println("\tunable to add notebook/section/page");
@@ -43,19 +81,20 @@ public class Add extends CliCommand {
         }
     }
 
-    private String addContent() {
-        return content;
-    }
-
     private void addNotebook(NotebookShelf currentBookShelf) {
-        new Notebook(name);
+        currentBookShelf.getNotebooksArrayList().add(new Notebook(name));
+        currentNotebook = appState.getCurrentNotebook();
+        appState.setCurrentBookShelf(currentBookshelf);
+        appState.setCurrentNotebook(currentNotebook);
     }
 
     private void addNotebookSection(Notebook currentNotebook) {
-        new Section(name);
+        currentNotebook.getSectionArrayList().add(new Section(name));
+        currentSection = appState.getCurrentSection();
+        appState.setCurrentSection(currentSection);
     }
 
-    private void addNotebookPage(Section currentSection) {
-        new Page(name, content);
+    private void addNotebookPage(Section currentSection, String content) {
+        currentSection.getPageArrayList().add(new Page(name, content));
     }
 }

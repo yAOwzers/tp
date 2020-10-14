@@ -9,10 +9,17 @@ public enum AppMode {
 
     @Override
     public String toString() {
-        switch(this) {
+        switch (this) {
         case TIMETABLE:
             return "timetable";
+        case NOTEBOOK_BOOK:
+            return "notebook book";
+        case NOTEBOOK_SECTION:
+            return "notebook section";
+        case NOTEBOOK_PAGE:
+            return "notebook page";
         case NOTEBOOK_SHELF:
+            //Fallthrough
         default:
             return "notebook";
         }

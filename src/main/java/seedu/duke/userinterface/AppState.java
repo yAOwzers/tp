@@ -9,10 +9,10 @@ public class AppState {
     private AppMode appMode;
     private TaskList taskList;
     private NotebookShelf currentBookShelf;
-
     private Notebook currentNotebook;
     private Section currentSection;
     private int indexOfCurrentNotebook;
+    private int indexOfCurrentSection;
 
     public AppState() {
         taskList = new TaskList();
@@ -66,5 +66,13 @@ public class AppState {
 
     public void setIndexOfCurrentNotebook(int indexOfCurrentNotebook) {
         this.indexOfCurrentNotebook = indexOfCurrentNotebook;
+    }
+
+    public int getIndexOfCurrentSection() {
+        return indexOfCurrentSection;
+    }
+
+    public void setIndexOfCurrentSection(int indexOfCurrentSection) {
+        this.indexOfCurrentSection = indexOfCurrentSection;
     }
 }
