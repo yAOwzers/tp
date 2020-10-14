@@ -95,7 +95,6 @@ public class SelectCommandNotebookMode extends CliCommand {
         case NOTEBOOK_BOOK:
             //parser.extractParams(argument, appState);
             extractParams(argument);
-            System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentSection().getTitle());
             break;
         case NOTEBOOK_SECTION:
             //parser.extractParams(argument, appState);
@@ -143,7 +142,7 @@ public class SelectCommandNotebookMode extends CliCommand {
     private void findPage(Section section, int pageNum) {
         try {
             ArrayList<Page> pageArrayList = section.getPageArrayList();
-            Page page = pageArrayList.get(pageNum-1);
+            Page page = pageArrayList.get(pageNum);
             page.printPage();
             appState.setAppMode(AppMode.NOTEBOOK_PAGE);
         } catch (ArrayIndexOutOfBoundsException | NullPointerException e) {
