@@ -65,6 +65,10 @@ public class Notebook {
         return -1;
     }
 
+    public Section getSectionAtIndex(int index) {
+        return sectionArrayList.get(index);
+    }
+
     public ArrayList<Section> getSectionArrayList() {
         return sectionArrayList;
     }
