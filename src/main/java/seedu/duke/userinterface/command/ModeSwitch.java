@@ -4,6 +4,8 @@ import seedu.duke.userinterface.AppMode;
 import seedu.duke.userinterface.AppState;
 
 public class ModeSwitch extends CliCommand {
+    public static final String COMMAND_WORD = "mode";
+
     public ModeSwitch(String argument, AppState appState) {
         this.setAppState(appState);
         this.setCommandParams(argument);
