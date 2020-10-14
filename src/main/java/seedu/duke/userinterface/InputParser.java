@@ -156,8 +156,8 @@ public class InputParser {
             if (appState.getAppMode() == AppMode.TIMETABLE) {
                 return new AddCommandTimetableMode(argument, appState);
             } else {
-                String titleToAdd;
-                String contentToAdd;
+                String titleToAdd = "";
+                String contentToAdd = "";
                 if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
                     titleToAdd = parseNotebookTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
@@ -167,8 +167,6 @@ public class InputParser {
                     return new AddCommandNotebookMode(titleToAdd, appState);
                 }
                 // TODO: implement adding pages
-                titleToAdd = "";
-                contentToAdd = "";
                 return new AddCommandNotebookMode(titleToAdd, contentToAdd, appState);
             }
         case RemoveCommandTimetableMode.COMMAND_WORD:

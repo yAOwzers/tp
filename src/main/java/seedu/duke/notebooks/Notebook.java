@@ -12,7 +12,7 @@ public class Notebook {
     }
 
     /**
-     * Get the title of this notebook
+     * Get the title of this notebook.
      *
      * @return the title of the notebook
      */
@@ -21,7 +21,7 @@ public class Notebook {
     }
 
     /**
-     * Set the title of this notebook
+     * Set the title of this notebook.
      *
      * @param title the desired new title of the notebook
      */
@@ -30,7 +30,7 @@ public class Notebook {
     }
 
     /**
-     * Add a new section with a given title to this notebook
+     * Add a new section with a given title to this notebook.
      *
      * @param title the title of the section to be added
      */
@@ -39,7 +39,7 @@ public class Notebook {
     }
 
     /**
-     * Remove a section from the notebook
+     * Remove a section from the notebook.
      *
      * @param indexToRemove the index of the section to remove
      */
@@ -48,7 +48,7 @@ public class Notebook {
     }
 
     /**
-     * Find a section with a given title in this notebook\
+     * Find a section with a given title in this notebook.
      *
      * @param searchKey the title of the section to search for in the notebook
      *

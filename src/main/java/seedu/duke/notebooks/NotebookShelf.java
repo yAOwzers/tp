@@ -14,7 +14,7 @@ public class NotebookShelf {
     }
 
     /**
-     * Find the notebook on the shelf with the given title
+     * Find the notebook on the shelf with the given title.
      *
      * @param title the title of the notebook we want to find
      *
@@ -32,7 +32,7 @@ public class NotebookShelf {
     }
 
     /**
-     * Get the notebook at a particular index in the ArrayList. Use findNotebook() to get an index from a given title
+     * Get the notebook at a particular index in the ArrayList. Use findNotebook() to get an index from a given title.
      *
      * @param index the index of the notebook to be found
      *
@@ -44,7 +44,7 @@ public class NotebookShelf {
     }
 
     /**
-     * Add a notebook with a given title to the shelf
+     * Add a notebook with a given title to the shelf.
      *
      * @param title the title of the notebook to be added
      */
