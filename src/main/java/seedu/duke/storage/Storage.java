@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Represents the storage of where Zer0Note is loading from and saving information to
+ * Represents the storage of where Zer0Note is loading from and saving information to.
  */
 public class Storage {
 

@@ -17,8 +17,8 @@ public class Done extends CliCommand {
     private CliMessages messages = new CliMessages();
 
     public Done(String argument, AppState appState) {
-       this.argument = argument;
-       this.appState = appState;
+        this.argument = argument;
+        this.appState = appState;
     }
 
     @Override
