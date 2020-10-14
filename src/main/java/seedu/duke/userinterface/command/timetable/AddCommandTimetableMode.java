@@ -13,6 +13,7 @@ import seedu.duke.userinterface.command.CliCommand;
 public class AddCommandTimetableMode extends CliCommand {
     //TODO have subclasses of CliCommand for commands with and without arguments, and the subclass with arguments could
     // contain these fields to be overridden.
+    public static final String COMMAND_WORD = "add";
     public static final String TASK_DELIMITER = "/t";
     public static final String DEADLINE_DELIMITER = "/by";
     private static InputParser parser;
