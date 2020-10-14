@@ -1,5 +1,6 @@
 package seedu.duke.userinterface.command.notebook;
 
+import seedu.duke.exceptions.IncorrectAppModeException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.notebooks.Notebook;
@@ -44,9 +45,11 @@ public class RemoveCommandNotebookMode extends CliCommand {
             case NOTEBOOK_SECTION:
                 removeFromSection();
                 break;
+            default:
+                throw new IncorrectAppModeException();
             }
-        } catch (InvalidCommandException ice) {
-            ice.printErrorMessage();
+        } catch (ZeroNoteException zne) {
+            zne.printErrorMessage();
         }
     }
 

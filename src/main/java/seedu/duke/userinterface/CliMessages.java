@@ -23,12 +23,12 @@ public class CliMessages {
 
     public static void printRemoveNotebookMessage(Notebook notebook) {
         System.out.println("Noted. I've removed this notebook: ");
-        System.out.println("\t"+notebook.getTitle());
+        System.out.println("\t" + notebook.getTitle());
     }
 
     public static void printRemoveSectionMessage(Section section) {
         System.out.println("Noted. I've removed this section: ");
-        System.out.println("\t"+section.getTitle());
+        System.out.println("\t" + section.getTitle());
     }
 
     public static void printRemovePageMessage(Page page, int index) {
