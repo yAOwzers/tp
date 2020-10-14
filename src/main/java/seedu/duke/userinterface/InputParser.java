@@ -30,10 +30,6 @@ import static seedu.duke.userinterface.command.Select.PAGE_DELIMITER;
 import static seedu.duke.userinterface.command.Select.SECTION_DELIMITER;
 
 public class InputParser {
-    public int parseTaskIndex(String args) throws NumberFormatException {
-        return Integer.parseInt(args) - 1;
-    }
-
     public static String parseTaskTitle(String input) throws TaskWrongFormatException, TaskTitleException {
         if (input.startsWith(TASK_DELIMITER)) {
             String taskTitle = input.replace(TASK_DELIMITER, "");
@@ -85,8 +81,7 @@ public class InputParser {
         try {
             date = LocalDate.parse(by, dateTime);
             return true;
-        }
-        catch (DateTimeParseException d) {
+        } catch (DateTimeParseException d) {
             return false;
         }
     }
@@ -123,6 +118,10 @@ public class InputParser {
         } else {
             throw new InvalidSectionException();
         }
+    }
+
+    public int parseTaskIndex(String args) throws NumberFormatException {
+        return Integer.parseInt(args) - 1;
     }
 
     public int parsePageNumber(String input) throws InvalidPageException {

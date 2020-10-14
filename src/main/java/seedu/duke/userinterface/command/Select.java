@@ -19,7 +19,7 @@ public class Select extends CliCommand {
     public static final String NOTEBOOK_DELIMITER = "/n";
     public static final String SECTION_DELIMITER = "/s";
     public static final String PAGE_DELIMITER = "/p";
-    private String argument;
+    private final String argument;
     private String notebookTitle = null;
     private String sectionTitle = null;
     private int pageNum;
@@ -34,11 +34,11 @@ public class Select extends CliCommand {
     private void extractParams(String argument) {
         InputParser parser = new InputParser();
         try {
-            if (argument.startsWith(NOTEBOOK_DELIMITER) && appState.getAppMode()==AppMode.NOTEBOOK_SHELF) {
+            if (argument.startsWith(NOTEBOOK_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
                 extractNotebookParams(argument, parser);
-            } else if (argument.startsWith(SECTION_DELIMITER) && appState.getAppMode()==AppMode.NOTEBOOK_BOOK) {
+            } else if (argument.startsWith(SECTION_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
                 extractSectionParams(argument, parser);
-            } else if (argument.startsWith(PAGE_DELIMITER) && appState.getAppMode()==AppMode.NOTEBOOK_SECTION) {
+            } else if (argument.startsWith(PAGE_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
                 pageNum = parser.parsePageNumber(argument);
                 findPage(appState.getCurrentSection(), pageNum);
             } else {
@@ -55,7 +55,8 @@ public class Select extends CliCommand {
         }
     }
 
-    private void extractSectionParams(String argument, InputParser parser) throws InvalidSectionException, InvalidPageException {
+    private void extractSectionParams(String argument, InputParser parser) throws InvalidSectionException,
+            InvalidPageException {
         sectionTitle = InputParser.parseSectionTitle(argument);
         section = findSection(notebook, sectionTitle);
         if (argument.contains(PAGE_DELIMITER)) {
@@ -64,7 +65,8 @@ public class Select extends CliCommand {
         }
     }
 
-    private void extractNotebookParams(String argument, InputParser parser) throws InvalidNotebookException, InvalidSectionException, InvalidPageException {
+    private void extractNotebookParams(String argument, InputParser parser)
+            throws InvalidNotebookException, InvalidSectionException, InvalidPageException {
         notebookTitle = InputParser.parseNotebookTitle(argument);
         notebook = findNotebook(appState.getCurrentBookShelf(), notebookTitle);
         if (argument.contains(SECTION_DELIMITER)) {
@@ -85,11 +87,11 @@ public class Select extends CliCommand {
             break;
         case NOTEBOOK_BOOK:
             extractParams(argument);
-            System.out.println("now in " + appState.getAppMode() + ": "+ appState.getCurrentSection().getTitle());
+            System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentSection().getTitle());
             break;
         case NOTEBOOK_SECTION:
             extractParams(argument);
-            System.out.println("now in " + appState.getAppMode() + ": "+ appState.getCurrentNotebook().getTitle());
+            System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentNotebook().getTitle());
             break;
         default:
             System.out.println("\tError occurred when selecting");
@@ -101,12 +103,12 @@ public class Select extends CliCommand {
     private Notebook findNotebook(NotebookShelf currentBookshelf, String notebookTitle) {
         ArrayList<Notebook> notebookArrayList = currentBookshelf.getNotebooksArrayList();
         int i = 0;
-        for (Notebook notebook: notebookArrayList) {
+        for (Notebook notebook : notebookArrayList) {
             if (notebook.getTitle().equals(notebookTitle)) {
                 notebook = notebookArrayList.get(i);
                 appState.setCurrentNotebook(notebook);
                 appState.setAppMode(AppMode.NOTEBOOK_BOOK);
-                System.out.println("now in " + appState.getAppMode() + ": "+ notebook.getTitle());
+                System.out.println("now in " + appState.getAppMode() + ": " + notebook.getTitle());
                 return notebook;
             }
             i++;
@@ -117,8 +119,8 @@ public class Select extends CliCommand {
 
     private Section findSection(Notebook notebook, String sectionTitle) {
         ArrayList<Section> sectionArrayList = notebook.getSectionArrayList();
-        for (Section section: sectionArrayList) {
-            if (section.getTitle().equals(sectionTitle)){
+        for (Section section : sectionArrayList) {
+            if (section.getTitle().equals(sectionTitle)) {
                 appState.setCurrentSection(section);
                 appState.setAppMode(AppMode.NOTEBOOK_SECTION);
                 return section;

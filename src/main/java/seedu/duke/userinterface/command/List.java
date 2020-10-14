@@ -14,42 +14,6 @@ public class List extends CliCommand {
         this.setCommandParams(argument);
     }
 
-    @Override
-    public void execute() {
-        switch (appState.getAppMode()) {
-        case NOTEBOOK_SHELF:
-            switch (commandParams) {
-            case ("/s"):
-                listBookshelf_ns(appState.getCurrentBookShelf());
-                break;
-            case ("/a"):
-                listBookshelf_nsp(appState.getCurrentBookShelf());
-                break;
-            default:
-                listBookshelf_n(appState.getCurrentBookShelf());
-                break;
-            }
-            break;
-        case NOTEBOOK_BOOK:
-            switch (commandParams) {
-            case ("/a"):
-                listNotebook_s(appState.getCurrentNotebook());
-                break;
-            default:
-                listNotebook_sp(appState.getCurrentNotebook());
-                break;
-            }
-            break;
-        case NOTEBOOK_SECTION:
-            listSection(appState.getCurrentSection());
-            break;
-        default:
-            System.out.println("Error in list class");
-            break;
-        }
-
-    }
-
     public static void listBookshelf_nsp(NotebookShelf notebookShelf) {
         for (Notebook notebook : notebookShelf.getNotebooksArrayList()) {
             System.out.println("* " + notebook.getTitle());
@@ -99,6 +63,42 @@ public class List extends CliCommand {
             System.out.println("* " + page.getTitle());
             System.out.println("    " + page.getContent());
         }
+    }
+
+    @Override
+    public void execute() {
+        switch (appState.getAppMode()) {
+        case NOTEBOOK_SHELF:
+            switch (commandParams) {
+            case ("/s"):
+                listBookshelf_ns(appState.getCurrentBookShelf());
+                break;
+            case ("/a"):
+                listBookshelf_nsp(appState.getCurrentBookShelf());
+                break;
+            default:
+                listBookshelf_n(appState.getCurrentBookShelf());
+                break;
+            }
+            break;
+        case NOTEBOOK_BOOK:
+            switch (commandParams) {
+            case ("/a"):
+                listNotebook_s(appState.getCurrentNotebook());
+                break;
+            default:
+                listNotebook_sp(appState.getCurrentNotebook());
+                break;
+            }
+            break;
+        case NOTEBOOK_SECTION:
+            listSection(appState.getCurrentSection());
+            break;
+        default:
+            System.out.println("Error in list class");
+            break;
+        }
+
     }
 
 }

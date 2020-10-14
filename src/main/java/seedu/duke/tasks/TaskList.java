@@ -16,7 +16,7 @@ public class TaskList {
     public void addTask(Task task) {
         taskArrayList.add(task);
     }
-    
+
     public Task removeTask(int index) throws IndexOutOfBoundsException {
         Task removedTask = taskArrayList.get(index);
         taskArrayList.remove(removedTask);

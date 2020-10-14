@@ -24,12 +24,12 @@ public class Section {
         this.title = title;
     }
 
-    public void setPageArrayList(ArrayList<Page> pageArrayList) {
-        this.pageArrayList = pageArrayList;
-    }
-
     public ArrayList<Page> getPageArrayList() {
         return pageArrayList;
+    }
+
+    public void setPageArrayList(ArrayList<Page> pageArrayList) {
+        this.pageArrayList = pageArrayList;
     }
 
     public Page get(int pageNum) {

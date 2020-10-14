@@ -84,7 +84,7 @@ public class Add extends CliCommand {
         currentBookShelf.getNotebooksArrayList().add(currentNotebook);
         appState.setCurrentBookShelf(currentBookshelf);
         appState.setCurrentNotebook(currentNotebook);
-        appState.setIndexOfCurrentNotebook(currentBookShelf.getNotebooksArrayList().size()-1);
+        appState.setIndexOfCurrentNotebook(currentBookShelf.getNotebooksArrayList().size() - 1);
         System.out.println("now there are " + currentBookShelf.getNotebooksArrayList().size() + " notebooks");
     }
 
@@ -92,7 +92,7 @@ public class Add extends CliCommand {
         currentSection = new Section(name);
         currentNotebook.getSectionArrayList().add(currentSection);
         appState.setCurrentNotebook(currentNotebook);
-        appState.setIndexOfCurrentSection(currentNotebook.getSectionArrayList().size()-1);
+        appState.setIndexOfCurrentSection(currentNotebook.getSectionArrayList().size() - 1);
         appState.setCurrentSection(currentSection);
     }
 

@@ -59,7 +59,7 @@ public class AppState {
     public void setTaskList(TaskList taskList) {
         this.taskList = taskList;
     }
-    
+
     public int getIndexOfCurrentNotebook() {
         return indexOfCurrentNotebook;
     }
