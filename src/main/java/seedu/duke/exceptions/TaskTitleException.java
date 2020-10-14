@@ -5,5 +5,9 @@ package seedu.duke.exceptions;
 /**
  * Signals that the user's input is missing a title.
  */
-public class TaskTitleException extends Exception {
+public class TaskTitleException extends ZeroNoteException {
+    @Override
+    public void printErrorMessage() {
+        System.out.println("Missing Task Title");
+    }
 }
