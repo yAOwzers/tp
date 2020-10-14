@@ -47,6 +47,10 @@ public class Section {
         }
     }
 
+    public Page getPageAtIndex(int index) {
+        return pageArrayList.get(index);
+    }
+
     public ArrayList<Page> getPageArrayList() {
         return pageArrayList;
     }
