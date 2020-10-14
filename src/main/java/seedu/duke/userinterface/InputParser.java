@@ -85,7 +85,6 @@ public class InputParser {
         DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
         LocalDate date = null;
         try {
-            System.out.println(by);
             date = LocalDate.parse(by, dateTime);
             return true;
         } catch (DateTimeParseException d) {

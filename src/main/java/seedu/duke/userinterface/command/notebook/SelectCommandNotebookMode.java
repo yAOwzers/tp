@@ -118,7 +118,6 @@ public class SelectCommandNotebookMode extends CliCommand {
                 notebook = notebookArrayList.get(i);
                 appState.setCurrentNotebook(notebook);
                 appState.setAppMode(AppMode.NOTEBOOK_BOOK);
-                System.out.println("now in " + appState.getAppMode() + ": " + notebook.getTitle());
                 return notebook;
             }
             i++;

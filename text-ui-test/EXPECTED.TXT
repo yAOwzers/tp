@@ -1,6 +1,5 @@
 Welcome to Zer0Note!
 You are now in timetable mode
-15-10-2020 2359
 Added: task
 1:[x] task (by: Oct 15 2020 11.59 PM)
 Yay! I've marked these task as done:
@@ -18,7 +17,6 @@ Added page with title:
 Added page with title:
 Noted. I've removed this page:
 
-now in notebook section: Section 1
 Added page with title:
 You are now in notebook mode
 Noted. I've removed this section:

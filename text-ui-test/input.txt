@@ -10,7 +10,6 @@ select /sSection 1
 add /pPage 1
 add /pPage 2
 delete /p2
-select /sSection 1
 add /pPage 3
 mode /n
 delete /nNotebook 1 /sSection 1
