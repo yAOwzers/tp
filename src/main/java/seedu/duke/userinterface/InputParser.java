@@ -85,7 +85,6 @@ public class InputParser {
         DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
         LocalDate date = null;
         try {
-            System.out.println(by);
             date = LocalDate.parse(by, dateTime);
             return true;
         } catch (DateTimeParseException d) {
@@ -141,6 +140,36 @@ public class InputParser {
             }
             int pageNum = Integer.parseInt(page) - 1;
             return pageNum;
+        } else {
+            throw new InvalidPageException();
+        }
+    }
+
+    public String parsePageTitle(String input) throws InvalidPageException {
+        if (input.startsWith(PAGE_DELIMITER)) {
+            String pageTitle = input.replace(PAGE_DELIMITER, "").trim();
+            if (pageTitle.isBlank()) {
+                throw new InvalidPageException();
+            }
+            if (pageTitle.contains(";")) {
+                int indexPos = pageTitle.indexOf(";");
+                pageTitle = pageTitle.substring(0, indexPos).trim();
+            }
+            return pageTitle;
+        } else {
+            throw new InvalidPageException();
+        }
+    }
+
+    public String parsePageContent(String input) throws InvalidPageException {
+        int dividerPos = input.indexOf(";");
+        input = input.substring(dividerPos);
+        if (input.startsWith(";")) {
+            String content = input.replace(";", "").trim();
+            if (content.isBlank()) {
+                throw new InvalidPageException();
+            }
+            return content;
         } else {
             throw new InvalidPageException();
         }
@@ -217,36 +246,6 @@ public class InputParser {
             return new ModeSwitch(argument, appState);
         default:
             throw new InvalidCommandException("Please key in a valid command.");
-        }
-    }
-
-    public String parsePageTitle(String input) throws InvalidPageException {
-        if (input.startsWith(PAGE_DELIMITER)) {
-            String pageTitle = input.replace(PAGE_DELIMITER, "").trim();
-            if (pageTitle.isBlank()) {
-                throw new InvalidPageException();
-            }
-            if (pageTitle.contains(";")) {
-                int indexPos = pageTitle.indexOf(";");
-                pageTitle = pageTitle.substring(0, indexPos).trim();
-            }
-            return pageTitle;
-        } else {
-            throw new InvalidPageException();
-        }
-    }
-
-    public String parsePageContent(String input) throws InvalidPageException {
-        int dividerPos = input.indexOf(";");
-        input = input.substring(dividerPos);
-        if (input.startsWith(";")) {
-            String content = input.replace(";", "").trim();
-            if (content.isBlank()) {
-                throw new InvalidPageException();
-            }
-            return content;
-        } else {
-            throw new InvalidPageException();
         }
     }
 }
