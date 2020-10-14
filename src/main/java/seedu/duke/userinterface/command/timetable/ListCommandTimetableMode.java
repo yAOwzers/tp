@@ -5,6 +5,7 @@ import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.command.CliCommand;
 
 public class ListCommandTimetableMode extends CliCommand {
+    public static final String COMMAND_WORD = "list";
 
     public ListCommandTimetableMode(String argument, AppState appState) {
         this.setAppState(appState);

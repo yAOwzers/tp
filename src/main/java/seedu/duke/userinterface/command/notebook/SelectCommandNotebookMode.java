@@ -45,7 +45,7 @@ public class SelectCommandNotebookMode extends CliCommand {
                 pageNum = parser.parsePageNumber(argument);
                 findPage(appState.getCurrentSection(), pageNum);
             } else {
-                throw new InvalidCommandException();
+                throw new InvalidCommandException("Please key in the format:");
             }
         } catch (InvalidNotebookException e) {
             System.out.println("invalid notebook input");

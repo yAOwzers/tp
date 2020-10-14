@@ -51,4 +51,8 @@ public class NotebookShelf {
     public void addNotebook(String title) {
         notebooksArrayList.add(new Notebook(title));
     }
+
+    public Notebook removeNotebook(int indexToRemove) {
+        return notebooksArrayList.remove(indexToRemove);
+    }
 }

@@ -13,7 +13,6 @@ import seedu.duke.userinterface.command.Done;
 import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
 import seedu.duke.userinterface.command.ModeSwitch;
-import seedu.duke.userinterface.command.ModeSwitch;
 import seedu.duke.userinterface.command.notebook.AddCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.ListCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.RemoveCommandNotebookMode;
@@ -140,7 +139,7 @@ public class InputParser {
             if (page.isBlank()) {
                 throw new InvalidPageException();
             }
-            int pageNum = Integer.parseInt(page);
+            int pageNum = Integer.parseInt(page) - 1;
             return pageNum;
         } else {
             throw new InvalidPageException();
@@ -156,7 +155,7 @@ public class InputParser {
             argument = input[1].trim();
         }
         switch (commandWord) {
-        case AddCommandNotebookMode.COMMAND_WORD:
+        case AddCommandTimetableMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
                 return new AddCommandTimetableMode(argument, appState);
             } else {
@@ -173,17 +172,36 @@ public class InputParser {
                 // TODO: implement adding pages
                 return new AddCommandNotebookMode(titleToAdd, contentToAdd, appState);
             }
-        case RemoveCommandTimetableMode.COMMAND_WORD:
-            if (appState.getAppMode() == AppMode.TIMETABLE) {
-                return new RemoveCommandTimetableMode(parseTaskIndex(argument), appState);
-            } else {
-                return new RemoveCommandNotebookMode(argument, appState);
-            }
-        case ListCommandNotebookMode.COMMAND_WORD:
+        case ListCommandTimetableMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
                 return new ListCommandTimetableMode(argument, appState);
             } else {
                 return new ListCommandNotebookMode(argument, appState);
+            }
+        case RemoveCommandTimetableMode.COMMAND_WORD:
+            if (appState.getAppMode() == AppMode.TIMETABLE) {
+                return new RemoveCommandTimetableMode(parseTaskIndex(argument), appState);
+            } else {
+                String notebookTitleToRemove = "";
+                String sectionTitleToRemove = "";
+                int pageNumberToRemove = -1;
+                if (argument.contains(NOTEBOOK_DELIMITER)) {
+                    notebookTitleToRemove = parseNotebookTitle(argument);
+                }
+                if (argument.contains(SECTION_DELIMITER)) {
+                    sectionTitleToRemove = parseSectionTitle(argument);
+                }
+                if (argument.contains(PAGE_DELIMITER)) {
+                    pageNumberToRemove = parsePageNumber(argument);
+                }
+                return new RemoveCommandNotebookMode(notebookTitleToRemove,
+                        sectionTitleToRemove, pageNumberToRemove, appState);
+            }
+        case SelectCommandNotebookMode.COMMAND_WORD:
+            if (appState.getAppMode() != AppMode.TIMETABLE) {
+                return new SelectCommandNotebookMode(argument, appState);
+            } else {
+                throw new InvalidCommandException("Please key in the format:");
             }
         case Exit.COMMAND_WORD:
             return new Exit(argument, appState);
@@ -193,14 +211,8 @@ public class InputParser {
             return new Done(argument, appState);
         case ModeSwitch.COMMAND_WORD:
             return new ModeSwitch(argument, appState);
-        case SelectCommandNotebookMode.COMMAND_WORD:
-            if (appState.getAppMode() != AppMode.TIMETABLE) {
-                return new SelectCommandNotebookMode(argument, appState);
-            } else {
-                throw new InvalidCommandException();
-            }
         default:
-            throw new InvalidCommandException();
+            throw new InvalidCommandException("Please key in a valid command.");
         }
     }
 }
