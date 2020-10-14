@@ -5,8 +5,17 @@ import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
 
-import seedu.duke.userinterface.command.*;
-
+import seedu.duke.userinterface.command.Add;
+import seedu.duke.userinterface.command.AddTimetable;
+import seedu.duke.userinterface.command.CliCommand;
+import seedu.duke.userinterface.command.RemoveTask;
+import seedu.duke.userinterface.command.Done;
+import seedu.duke.userinterface.command.ModeSwitch;
+import seedu.duke.userinterface.command.Help;
+import seedu.duke.userinterface.command.Exit;
+import seedu.duke.userinterface.command.List;
+import seedu.duke.userinterface.command.ListTimetable;
+import seedu.duke.userinterface.command.Remove;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

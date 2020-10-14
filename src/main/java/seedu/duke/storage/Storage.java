@@ -16,7 +16,7 @@ public class Storage {
 
     // To include String filepath
     public Storage() {
-//        this.filepath = filepath;
+
     }
 
     // Saves the given task to txt format
@@ -26,7 +26,7 @@ public class Storage {
             file.getParentFile().mkdir(); // create a directory
             file.createNewFile(); // create a .txt file
 
-            //checks whether the file exist
+            // checks whether the file exist
             if (file.length() > 0) {
                 FileWriter saveFile = new FileWriter(file, true);
                 saveFile.write(System.lineSeparator() + task.toTxtFormat());

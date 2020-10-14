@@ -8,7 +8,7 @@ public enum AppMode {
 
     @Override
     public String toString() {
-        switch(this) {
+        switch (this) {
         case TIMETABLE:
             return "timetable";
         case NOTEBOOK_SHELF:

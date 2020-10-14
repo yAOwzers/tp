@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class TaskList {
     private ArrayList<Task> taskArrayList;
 
-//    public TaskList(ArrayList<Task> taskArrayList) {
-//        setTaskArrayList(taskArrayList);
-//    }
+    public TaskList(ArrayList<Task> taskArrayList) {
+        setTaskArrayList(taskArrayList);
+    }
 
     public TaskList() {
         taskArrayList = new ArrayList<>();
