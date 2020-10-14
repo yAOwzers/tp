@@ -13,6 +13,7 @@ public class Section {
 
     public Section(String title) {
         this.title = title;
+        pageArrayList = new ArrayList<>();
     }
 
     public String getTitle() {
@@ -23,12 +24,15 @@ public class Section {
         this.title = title;
     }
 
-    public void setPageArrayList(ArrayList<Page> pageArrayList) {
-        this.pageArrayList = pageArrayList;
-    }
-
     public ArrayList<Page> getPageArrayList() {
         return pageArrayList;
     }
 
+    public void setPageArrayList(ArrayList<Page> pageArrayList) {
+        this.pageArrayList = pageArrayList;
+    }
+
+    public Page get(int pageNum) {
+        return pageArrayList.get(pageNum);
+    }
 }
