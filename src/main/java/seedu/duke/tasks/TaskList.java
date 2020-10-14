@@ -3,7 +3,7 @@ package seedu.duke.tasks;
 import java.util.ArrayList;
 
 public class TaskList {
-    private ArrayList<Task> taskArrayList;
+    private final ArrayList<Task> taskArrayList;
 
     public TaskList() {
         taskArrayList = new ArrayList<>();
@@ -23,7 +23,7 @@ public class TaskList {
         return taskArrayList.size();
     }
 
-    public Task getTask(int index) throws IndexOutOfBoundsException{
+    public Task getTask(int index) throws IndexOutOfBoundsException {
         return taskArrayList.get(index);
     }
 

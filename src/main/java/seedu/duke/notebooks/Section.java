@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Section {
     private String title;
-    private ArrayList<Page> pageArrayList;
+    private final ArrayList<Page> pageArrayList;
 
     public Section(String title) {
         this.title = title;

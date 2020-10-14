@@ -90,7 +90,7 @@ public class InputParser {
 
     public static String parseNotebookTitle(String input) throws InvalidNotebookException {
         if (input.startsWith(NOTEBOOK_DELIMITER)) {
-            String notebookTitle = input.replace(NOTEBOOK_DELIMITER, "");
+            String notebookTitle = input.replace(NOTEBOOK_DELIMITER, "").trim();
             if (notebookTitle.isBlank()) {
                 throw new InvalidNotebookException();
             }
@@ -149,7 +149,6 @@ public class InputParser {
         if (input.length > 1) {
             argument = input[1].trim();
         }
-
         switch (commandWord) {
         case AddNotebookMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
@@ -159,14 +158,16 @@ public class InputParser {
                 String contentToAdd;
                 if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
                     titleToAdd = parseNotebookTitle(argument);
-                } else if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
-                    titleToAdd = parseSectionTitle(argument);
-                } else {
-                    // TODO: implement adding pages
-                    titleToAdd = "";
-                    contentToAdd = "";
+                    return new AddNotebookMode(titleToAdd, appState);
                 }
-                return new AddNotebookMode(titleToAdd, appState);
+                if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
+                    titleToAdd = parseSectionTitle(argument);
+                    return new AddNotebookMode(titleToAdd, appState);
+                }
+                // TODO: implement adding pages
+                titleToAdd = "";
+                contentToAdd = "";
+                return new AddNotebookMode(titleToAdd, contentToAdd, appState);
             }
         case RemoveTimetableMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {

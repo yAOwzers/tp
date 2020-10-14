@@ -6,8 +6,6 @@ import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.CliMessages;
 import seedu.duke.userinterface.command.CliCommand;
 
-import java.util.ArrayList;
-
 public class RemoveTimetableMode extends CliCommand {
 
     public static final String COMMAND_WORD = "delete";
