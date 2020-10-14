@@ -15,7 +15,7 @@ import seedu.duke.userinterface.command.CliCommand;
 
 import java.util.ArrayList;
 
-public class SelectNotebookMode extends CliCommand {
+public class SelectCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "select";
     public static final String NOTEBOOK_DELIMITER = "/n";
     public static final String SECTION_DELIMITER = "/s";
@@ -27,11 +27,12 @@ public class SelectNotebookMode extends CliCommand {
     private Notebook notebook;
     private Section section;
 
-    public SelectNotebookMode(String argument, AppState uiMode) {
+    public SelectCommandNotebookMode(String argument, AppState uiMode) {
         this.setAppState(uiMode);
         this.argument = argument;
     }
 
+    // TODO: Refactor to InputParser
     private void extractParams(String argument) {
         InputParser parser = new InputParser();
         try {
@@ -56,6 +57,7 @@ public class SelectNotebookMode extends CliCommand {
         }
     }
 
+    // TODO: Refactor to InputParser
     private void extractSectionParams(String argument, InputParser parser) throws InvalidSectionException,
             InvalidPageException {
         sectionTitle = InputParser.parseSectionTitle(argument);
@@ -66,6 +68,7 @@ public class SelectNotebookMode extends CliCommand {
         }
     }
 
+    // TODO: Refactor to InputParser
     private void extractNotebookParams(String argument, InputParser parser)
             throws InvalidNotebookException, InvalidSectionException, InvalidPageException {
         notebookTitle = InputParser.parseNotebookTitle(argument);
@@ -101,6 +104,7 @@ public class SelectNotebookMode extends CliCommand {
     }
 
     // problem because currentBookshelf is null
+    // TODO: Delete, replace with NotebookShelf.findNotebook(), NotebookShelf.getNotebookAtIndex()
     private Notebook findNotebook(NotebookShelf currentBookshelf, String notebookTitle) {
         ArrayList<Notebook> notebookArrayList = currentBookshelf.getNotebooksArrayList();
         int i = 0;
@@ -118,6 +122,7 @@ public class SelectNotebookMode extends CliCommand {
         return null;
     }
 
+    // TODO: Delete, replace with Notebook.findSection(), Notebook.getSectionAtIndex()
     private Section findSection(Notebook notebook, String sectionTitle) {
         ArrayList<Section> sectionArrayList = notebook.getSectionArrayList();
         for (Section section : sectionArrayList) {
@@ -131,6 +136,7 @@ public class SelectNotebookMode extends CliCommand {
         return null;
     }
 
+    // TODO: Delete, replace with Section.findPage(), Section.getPageAtIndex()
     private void findPage(Section section, int pageNum) {
         try {
             ArrayList<Page> pageArrayList = section.getPageArrayList();

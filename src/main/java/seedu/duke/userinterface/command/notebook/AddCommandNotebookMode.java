@@ -6,7 +6,7 @@ import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.command.CliCommand;
 
-public class AddNotebookMode extends CliCommand {
+public class AddCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "add";
     private String title;
     private String content;
@@ -14,29 +14,17 @@ public class AddNotebookMode extends CliCommand {
     private Notebook currentNotebook;
     private Section currentSection;
 
-    public AddNotebookMode() {
+    public AddCommandNotebookMode(String title, AppState appState) {
+        this.appState = appState;
+        this.title = title;
         currentBookshelf = appState.getCurrentBookShelf();
         currentNotebook = appState.getCurrentNotebook();
         currentSection = appState.getCurrentSection();
     }
 
-    public AddNotebookMode(String title, AppState appState) {
-        this.appState = appState;
-        this.title = title;
-    }
-
-    public AddNotebookMode(String title, String content, AppState appState) {
-        this.appState = appState;
-        this.title = title;
+    public AddCommandNotebookMode(String title, String content, AppState appState) {
+        this(title, appState);
         this.content = content;
-    }
-
-    private String getTitle() {
-        return title;
-    }
-
-    private String getContent() {
-        return content;
     }
 
     public void execute() {

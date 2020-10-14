@@ -6,13 +6,13 @@ import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.CliMessages;
 import seedu.duke.userinterface.command.CliCommand;
 
-public class RemoveTimetableMode extends CliCommand {
+public class RemoveCommandTimetableMode extends CliCommand {
 
     public static final String COMMAND_WORD = "delete";
 
     private final int indexToRemove;
 
-    public RemoveTimetableMode(int indexToRemove, AppState uiMode) {
+    public RemoveCommandTimetableMode(int indexToRemove, AppState uiMode) {
         this.setAppState(uiMode);
         this.indexToRemove = indexToRemove;
     }
