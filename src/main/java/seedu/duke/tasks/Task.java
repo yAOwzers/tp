@@ -8,14 +8,13 @@ import java.time.LocalTime;
 import java.util.Date;
 
 public class Task {
-    private String title;
-    private String by;
-    private LocalDate dueDate;
-    private LocalTime dueTime;
-    
+    private final String title;
+    private final String by;
     protected DateFormat dateTime = new SimpleDateFormat("dd-MM-yyyy HHmm"); // in 24h format
     protected DateFormat outputFormat = new SimpleDateFormat("MMM dd yyyy hh.mm aa"); // in 12h format
     protected boolean isDone;
+    private LocalDate dueDate;
+    private LocalTime dueTime;
 
     public Task(String title, String by) {
         this.title = title;
@@ -24,13 +23,13 @@ public class Task {
     }
 
     public LocalDate getDueDate() {
-        String[] dayTime = by.split(" ",2);
+        String[] dayTime = by.split(" ", 2);
         dueDate = LocalDate.parse(dayTime[0].trim());
         return dueDate;
     }
 
     public LocalTime getTime() {
-        String[] dayTime = by.split(" ",2);
+        String[] dayTime = by.split(" ", 2);
         dueTime = LocalTime.parse(dayTime[1].trim());
         return dueTime;
     }

@@ -24,4 +24,8 @@ public class Page {
     public void setContent(String content) {
         this.content = content;
     }
+
+    public void printPage() {
+        System.out.println(content);
+    }
 }
