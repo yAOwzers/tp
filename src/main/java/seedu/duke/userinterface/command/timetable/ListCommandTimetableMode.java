@@ -1,11 +1,12 @@
-package seedu.duke.userinterface.command;
+package seedu.duke.userinterface.command.timetable;
 
 import seedu.duke.tasks.Task;
 import seedu.duke.userinterface.AppState;
+import seedu.duke.userinterface.command.CliCommand;
 
-public class ListTimetable extends CliCommand {
+public class ListCommandTimetableMode extends CliCommand {
 
-    public ListTimetable(String argument, AppState appState) {
+    public ListCommandTimetableMode(String argument, AppState appState) {
         this.setAppState(appState);
         this.commandParams = argument;
     }
