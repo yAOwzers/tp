@@ -58,7 +58,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
             Page pageRemoved = currentSection.removePage(pageNumberToRemove);
             CliMessages.printRemovePageMessage(pageRemoved);
         } else {
-            throw new InvalidCommandException("Please enter in the format:/n"
+            throw new InvalidCommandException("Please enter in the format:\n"
                     + "delete /pPAGE_NUMBER");
         }
     }
@@ -74,7 +74,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
             Section sectionRemoved = currentNotebook.removeSection(indexOfSectionToRemove);
             CliMessages.printRemoveSectionMessage(sectionRemoved);
         } else {
-            throw new InvalidCommandException("Please enter in the format:/n"
+            throw new InvalidCommandException("Please enter in the format:\n"
                     + "delete /sSECTION /pPAGE_NUMBER");
         }
     }
@@ -101,7 +101,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
             Notebook notebookRemoved = currentBookshelf.removeNotebook(indexOfNotebookToRemove);
             CliMessages.printRemoveNotebookMessage(notebookRemoved);
         } else {
-            throw new InvalidCommandException("Please enter in the format:/n"
+            throw new InvalidCommandException("Please enter in the format:\n"
                     + "delete /nNOTEBOOK /sSECTION /pPAGE_NUMBER");
         }
     }

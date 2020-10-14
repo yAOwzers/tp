@@ -13,7 +13,6 @@ import seedu.duke.userinterface.command.Done;
 import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
 import seedu.duke.userinterface.command.ModeSwitch;
-import seedu.duke.userinterface.command.ModeSwitch;
 import seedu.duke.userinterface.command.notebook.AddCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.ListCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.RemoveCommandNotebookMode;
@@ -186,13 +185,13 @@ public class InputParser {
                 String notebookTitleToRemove = "";
                 String sectionTitleToRemove = "";
                 int pageNumberToRemove = -1;
-                if (argument.contains("/n")) {
+                if (argument.contains(NOTEBOOK_DELIMITER)) {
                     notebookTitleToRemove = parseNotebookTitle(argument);
                 }
-                if (argument.contains("/s")) {
+                if (argument.contains(SECTION_DELIMITER)) {
                     sectionTitleToRemove = parseSectionTitle(argument);
                 }
-                if (argument.contains("/p")) {
+                if (argument.contains(PAGE_DELIMITER)) {
                     pageNumberToRemove = parsePageNumber(argument);
                 }
                 return new RemoveCommandNotebookMode(notebookTitleToRemove,
