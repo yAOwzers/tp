@@ -1,1 +1,4 @@
+add /t task /by15-10-2020 2359
+done 1
+list
 exit

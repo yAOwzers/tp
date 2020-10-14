@@ -13,6 +13,16 @@ import seedu.duke.tasks.TaskList;
 public class CliMessages {
     private static final String REMOVE_TASK_SUCCESS_MESSAGE = "Noted. I've removed this task:";
 
+    public static void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
+        System.out.println(REMOVE_TASK_SUCCESS_MESSAGE);
+        System.out.println(deletedTask.toString());
+        if (numberOfTasks == 1) {
+            System.out.println("\tNow you have " + numberOfTasks + " task in the list.");
+        } else {
+            System.out.println("\tNow you have " + numberOfTasks + " tasks in the list.");
+        }
+    }
+
     //TODO: fill these sections with the appropriate user documentation, possibly taken from the final UG
     public void printAddTaskHelp() {
 
@@ -88,17 +98,13 @@ public class CliMessages {
         System.out.println(tasksList.getNumberOfTasks() + ":" + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
     }
 
-    public static void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
-        System.out.println(REMOVE_TASK_SUCCESS_MESSAGE);
-        System.out.println(deletedTask.toString());
-        if (numberOfTasks == 1) {
-            System.out.println("\tNow you have " + numberOfTasks + " task in the list.");
-        } else {
-            System.out.println("\tNow you have " + numberOfTasks + " tasks in the list.");
-        }
-    }
-
     public void printGoodBye() {
         System.out.println("Bye!");
+    }
+
+    public void printMarkDone(Task task) {
+        String markDoneMessage = "Yay! I've marked these task as done:";
+        String taskDetails = task.getTask();
+        System.out.println(markDoneMessage + "\n " + task.getTaskInMessagesFormat());
     }
 }

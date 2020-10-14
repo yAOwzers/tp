@@ -1,2 +1,9 @@
 Welcome to Zer0Note!
+You are now in timetable mode
+15-10-2020 2359
+Added: task
+1:[x] task (by: Oct 15 2020 11.59 PM)
+Yay! I've marked these task as done:
+ [o] task
+[o] task (by: Oct 15 2020 11.59 PM)
 Bye!

@@ -2,30 +2,38 @@ package seedu.duke.userinterface;
 
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
 import seedu.duke.exceptions.InvalidCommandException;
+import seedu.duke.exceptions.InvalidNotebookException;
+import seedu.duke.exceptions.InvalidPageException;
+import seedu.duke.exceptions.InvalidSectionException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
-import seedu.duke.userinterface.command.Add;
-import seedu.duke.userinterface.command.AddTimetable;
+
 import seedu.duke.userinterface.command.CliCommand;
+import seedu.duke.userinterface.command.Done;
 import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
-import seedu.duke.userinterface.command.List;
-import seedu.duke.userinterface.command.ListTimetable;
-import seedu.duke.userinterface.command.Remove;
-import seedu.duke.userinterface.command.RemoveTask;
+import seedu.duke.userinterface.command.ModeSwitch;
+import seedu.duke.userinterface.command.ModeSwitch;
+import seedu.duke.userinterface.command.notebook.AddCommandNotebookMode;
+import seedu.duke.userinterface.command.notebook.ListCommandNotebookMode;
+import seedu.duke.userinterface.command.notebook.RemoveCommandNotebookMode;
+import seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode;
+import seedu.duke.userinterface.command.timetable.AddCommandTimetableMode;
+import seedu.duke.userinterface.command.timetable.ListCommandTimetableMode;
+import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
+
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-import static seedu.duke.userinterface.command.AddTimetable.DEADLINE_DELIMITER;
-import static seedu.duke.userinterface.command.AddTimetable.TASK_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode.NOTEBOOK_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode.PAGE_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode.SECTION_DELIMITER;
+import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.DEADLINE_DELIMITER;
+import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.TASK_DELIMITER;
 
 public class InputParser {
-    public int parseTaskIndex(String args) throws NumberFormatException {
-        return Integer.parseInt(args) - 1;
-    }
-
     public static String parseTaskTitle(String input) throws TaskWrongFormatException, TaskTitleException {
         if (input.startsWith(TASK_DELIMITER)) {
             String taskTitle = input.replace(TASK_DELIMITER, "");
@@ -54,7 +62,7 @@ public class InputParser {
         int dividerPos = input.indexOf(DEADLINE_DELIMITER);
         input = input.substring(dividerPos);
         if (input.startsWith(DEADLINE_DELIMITER)) {
-            String deadline = input.replace(DEADLINE_DELIMITER, "");
+            String deadline = input.replace(DEADLINE_DELIMITER, "").trim();
             if (deadline.isBlank()) {
                 throw new TaskWrongFormatException();
             }
@@ -78,6 +86,7 @@ public class InputParser {
         DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
         LocalDate date = null;
         try {
+            System.out.println(by);
             date = LocalDate.parse(by, dateTime);
             return true;
         } catch (DateTimeParseException d) {
@@ -85,7 +94,60 @@ public class InputParser {
         }
     }
 
-    public CliCommand getCommandFromInput(String userInput, AppState appState) throws InvalidCommandException {
+    public static String parseNotebookTitle(String input) throws InvalidNotebookException {
+        if (input.startsWith(NOTEBOOK_DELIMITER)) {
+            String notebookTitle = input.replace(NOTEBOOK_DELIMITER, "").trim();
+            if (notebookTitle.isBlank()) {
+                throw new InvalidNotebookException();
+            }
+            if (notebookTitle.contains(SECTION_DELIMITER)) {
+                int indexPos = notebookTitle.indexOf(SECTION_DELIMITER);
+                notebookTitle = notebookTitle.substring(0, indexPos).trim();
+            }
+            return notebookTitle;
+        } else {
+            throw new InvalidNotebookException();
+        }
+    }
+
+    public static String parseSectionTitle(String input) throws InvalidSectionException {
+        int dividerPos = input.indexOf(SECTION_DELIMITER);
+        input = input.substring(dividerPos);
+        if (input.startsWith(SECTION_DELIMITER)) {
+            String sectionTitle = input.replace(SECTION_DELIMITER, "");
+            if (sectionTitle.isBlank()) {
+                throw new InvalidSectionException();
+            }
+            if (sectionTitle.contains(PAGE_DELIMITER)) {
+                int indexPos = sectionTitle.indexOf(PAGE_DELIMITER);
+                sectionTitle = sectionTitle.substring(0, indexPos).trim();
+            }
+            return sectionTitle;
+        } else {
+            throw new InvalidSectionException();
+        }
+    }
+
+    public int parseTaskIndex(String args) throws NumberFormatException {
+        return Integer.parseInt(args) - 1;
+    }
+
+    public int parsePageNumber(String input) throws InvalidPageException {
+        int dividerPos = input.indexOf(PAGE_DELIMITER);
+        input = input.substring(dividerPos);
+        if (input.startsWith(PAGE_DELIMITER)) {
+            String page = input.replace(PAGE_DELIMITER, "");
+            if (page.isBlank()) {
+                throw new InvalidPageException();
+            }
+            int pageNum = Integer.parseInt(page);
+            return pageNum;
+        } else {
+            throw new InvalidPageException();
+        }
+    }
+
+    public CliCommand getCommandFromInput(String userInput, AppState appState) throws Exception {
         String trimmedInput = userInput.trim();
         String[] input = trimmedInput.split(" ", 2); // split input into command and arguments
         String commandWord = input[0];
@@ -93,33 +155,50 @@ public class InputParser {
         if (input.length > 1) {
             argument = input[1].trim();
         }
-
-        CliCommand command;
         switch (commandWord) {
-        case Add.COMMAND_WORD:
+        case AddCommandNotebookMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                return new AddTimetable(argument, appState);
+                return new AddCommandTimetableMode(argument, appState);
             } else {
-                return new Add(argument, appState);
+                String titleToAdd = "";
+                String contentToAdd = "";
+                if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
+                    titleToAdd = parseNotebookTitle(argument);
+                    return new AddCommandNotebookMode(titleToAdd, appState);
+                }
+                if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
+                    titleToAdd = parseSectionTitle(argument);
+                    return new AddCommandNotebookMode(titleToAdd, appState);
+                }
+                // TODO: implement adding pages
+                return new AddCommandNotebookMode(titleToAdd, contentToAdd, appState);
             }
-        case RemoveTask.COMMAND_WORD:
+        case RemoveCommandTimetableMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                return new RemoveTask(parseTaskIndex(argument), appState);
+                return new RemoveCommandTimetableMode(parseTaskIndex(argument), appState);
             } else {
-                return new Remove(argument, appState);
+                return new RemoveCommandNotebookMode(argument, appState);
             }
-        case List.COMMAND_WORD:
+        case ListCommandNotebookMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                return new ListTimetable(argument, appState);
+                return new ListCommandTimetableMode(argument, appState);
             } else {
-                return new List(argument, appState);
+                return new ListCommandNotebookMode(argument, appState);
             }
         case Exit.COMMAND_WORD:
             return new Exit(argument, appState);
         case Help.COMMAND_WORD:
             return new Help(argument);
+        case Done.COMMAND_WORD:
+            return new Done(argument, appState);
         case ModeSwitch.COMMAND_WORD:
             return new ModeSwitch(argument, appState);
+        case SelectCommandNotebookMode.COMMAND_WORD:
+            if (appState.getAppMode() != AppMode.TIMETABLE) {
+                return new SelectCommandNotebookMode(argument, appState);
+            } else {
+                throw new InvalidCommandException();
+            }
         default:
             throw new InvalidCommandException();
         }
