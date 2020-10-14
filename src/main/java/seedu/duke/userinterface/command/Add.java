@@ -13,19 +13,21 @@ import static seedu.duke.userinterface.command.List.listBookshelf_nsp;
 
 public class Add extends CliCommand {
     public static final String COMMAND_WORD = "add";
+    private AppState uiMode;
     private String name;
     private String content;
-    private NotebookShelf currentBookshelf;
+    private NotebookShelf currentBookshelf = new NotebookShelf();
     private Notebook currentNotebook;
     private Section currentSection;
 
     public Add() {
-        currentBookshelf = appState.getCurrentBookShelf();
-        currentNotebook = appState.getCurrentNotebook();
-        currentSection = appState.getCurrentSection();
+        currentBookshelf = uiMode.getCurrentBookShelf();
+        currentNotebook = uiMode.getCurrentNotebook();
+        currentSection = uiMode.getCurrentSection();
     }
 
     public Add(String argument, AppState uiMode) {
+        this.uiMode = uiMode;
         this.setAppState(uiMode);
         this.splitParams(argument);
     }
@@ -55,10 +57,7 @@ public class Add extends CliCommand {
             System.out.println("now in " + appState.getAppMode());
             currentBookshelf = appState.getCurrentBookShelf();
             addNotebook(currentBookshelf);
-            currentNotebook = appState.getCurrentNotebook();
-            appState.setCurrentNotebook(currentNotebook);
             listBookshelf_n(currentBookshelf);
-            appState.setCurrentBookShelf(currentBookshelf);
             break;
         case NOTEBOOK_BOOK:
             System.out.println("now in " + appState.getAppMode());
@@ -73,7 +72,6 @@ public class Add extends CliCommand {
             System.out.println("now in " + appState.getAppMode());
             addNotebookPage(currentSection, content);
             listBookshelf_nsp(currentBookshelf);
-            System.out.println("now in " + appState.getAppMode());
             break;
         default:
             System.out.println("\tunable to add notebook/section/page");
@@ -82,15 +80,19 @@ public class Add extends CliCommand {
     }
 
     private void addNotebook(NotebookShelf currentBookShelf) {
-        currentBookShelf.getNotebooksArrayList().add(new Notebook(name));
-        currentNotebook = appState.getCurrentNotebook();
+        currentNotebook = new Notebook(name);
+        currentBookShelf.getNotebooksArrayList().add(currentNotebook);
         appState.setCurrentBookShelf(currentBookshelf);
         appState.setCurrentNotebook(currentNotebook);
+        appState.setIndexOfCurrentNotebook(currentBookShelf.getNotebooksArrayList().size()-1);
+        System.out.println("now there are " + currentBookShelf.getNotebooksArrayList().size() + " notebooks");
     }
 
     private void addNotebookSection(Notebook currentNotebook) {
-        currentNotebook.getSectionArrayList().add(new Section(name));
-        currentSection = appState.getCurrentSection();
+        currentSection = new Section(name);
+        currentNotebook.getSectionArrayList().add(currentSection);
+        appState.setCurrentNotebook(currentNotebook);
+        appState.setIndexOfCurrentSection(currentNotebook.getSectionArrayList().size()-1);
         appState.setCurrentSection(currentSection);
     }
 

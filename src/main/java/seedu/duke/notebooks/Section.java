@@ -13,6 +13,7 @@ public class Section {
 
     public Section(String title) {
         this.title = title;
+        pageArrayList = new ArrayList<>();
     }
 
     public String getTitle() {

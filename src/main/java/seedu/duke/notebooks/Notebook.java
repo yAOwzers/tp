@@ -24,6 +24,7 @@ public class Notebook {
 
     public Notebook(String title) {
         this.title = title;
+        sectionArrayList = new ArrayList<>();
     }
 
     public Notebook(String title, ArrayList<Section> sectionArrayList) {
