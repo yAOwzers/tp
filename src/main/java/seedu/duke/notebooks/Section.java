@@ -45,8 +45,8 @@ public class Section {
         }
     }
 
-    public void removePage(int indexToRemove) {
-        pageArrayList.remove(indexToRemove);
+    public Page removePage(int indexToRemove) {
+        return pageArrayList.remove(indexToRemove);
     }
 
     public void removePage(String titleToRemove) {
