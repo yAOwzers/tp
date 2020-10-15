@@ -45,7 +45,7 @@ public class SelectCommandNotebookMode extends CliCommand {
                 pageNum = parser.parsePageNumber(argument);
                 findPage(appState.getCurrentSection(), pageNum);
             } else {
-                throw new InvalidCommandException();
+                throw new InvalidCommandException("Please key in the format:");
             }
         } catch (InvalidNotebookException e) {
             System.out.println("invalid notebook input");
@@ -86,22 +86,19 @@ public class SelectCommandNotebookMode extends CliCommand {
 
     @Override
     public void execute() {
-        InputParser parser = new InputParser();
+        //InputParser parser = new InputParser();
         switch (appState.getAppMode()) {
         case NOTEBOOK_SHELF:
             //parser.extractParams(argument, appState);
             extractParams(argument);
-            System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentNotebook().getTitle());
             break;
         case NOTEBOOK_BOOK:
             //parser.extractParams(argument, appState);
             extractParams(argument);
-            System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentSection().getTitle());
             break;
         case NOTEBOOK_SECTION:
-            extractParams(argument);
-            System.out.println("now in notebook section: " + appState.getCurrentSection().getTitle());
             //parser.extractParams(argument, appState);
+            extractParams(argument);
             break;
         default:
             System.out.println("\tError occurred when selecting");
