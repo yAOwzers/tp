@@ -131,6 +131,7 @@ public class SelectCommandNotebookMode extends CliCommand {
             if (section.getTitle().equals(sectionTitle)) {
                 appState.setCurrentSection(section);
                 appState.setAppMode(AppMode.NOTEBOOK_SECTION);
+                System.out.println("now in " + appState.getAppMode() + ": " + section.getTitle());
                 return section;
             }
         }
