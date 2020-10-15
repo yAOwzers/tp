@@ -264,12 +264,10 @@ public class InputParser {
                 if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
                     titleToAdd = parseNotebookTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
-                }
-                if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
+                } else if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
                     titleToAdd = parseSectionTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
-                }
-                if (appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
+                } else if (appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
                     titleToAdd = parsePageTitle(argument);
                     contentToAdd = parsePageContent(argument);
                     return new AddCommandNotebookMode(titleToAdd, contentToAdd, appState);

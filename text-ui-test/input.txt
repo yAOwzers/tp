@@ -7,11 +7,8 @@ add /nNotebook 1
 select /nNotebook 1
 add /sSection 1
 select /sSection 1
-add /pPage 1
-add /pPage 2
-delete /p2
-select /sSection 1
-add /pPage 3
+add /pPage 1; some text
+add /pPage 3; some text
 mode /n
 delete /nNotebook 1 /sSection 1
 list
