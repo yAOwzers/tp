@@ -1,5 +1,6 @@
 package seedu.duke.userinterface;
 
+import seedu.duke.exceptions.IncorrectAppModeException;
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidNotebookException;
@@ -7,9 +8,8 @@ import seedu.duke.exceptions.InvalidPageException;
 import seedu.duke.exceptions.InvalidSectionException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
-
-import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Notebook;
+import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Done;
@@ -23,7 +23,6 @@ import seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode;
 import seedu.duke.userinterface.command.timetable.AddCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.ListCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
-
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -54,9 +53,7 @@ public class InputParser {
      * Parses user's input to extract deadline.
      *
      * @param input input from user which contains the deadline.
-     *
      * @return deadline
-     *
      * @throws IncorrectDeadlineFormatException when the deadline input is in the wrong format.
      * @throws TaskWrongFormatException         when the deadline input is blank.
      */
@@ -81,14 +78,12 @@ public class InputParser {
      * Checks if [deadline] input by the user is in the correct format.
      *
      * @param by is the string containing the deadline's due date and time.
-     *
      * @return true when the input is in the correct format, otherwise false.
      */
     private static boolean correctTimeFormat(String by) {
         DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
-        LocalDate date = null;
         try {
-            date = LocalDate.parse(by, dateTime);
+            LocalDate date = LocalDate.parse(by, dateTime);
             return true;
         } catch (DateTimeParseException d) {
             return false;
@@ -101,27 +96,18 @@ public class InputParser {
      * @param argument contains notebook title, section title or/and page number.
      * @param appState is the state of the application.
      */
-    public void extractParams(String argument, AppState appState) {
-        try {
-            if (argument.startsWith(NOTEBOOK_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
-                extractNotebookParams(argument, appState);;
-            } else if (argument.startsWith(SECTION_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
-                extractSectionParams(argument, appState);
-            } else if (argument.startsWith(PAGE_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
-                Section section = appState.getCurrentSection();
-                int pageNum = parsePageNumber(argument);
-                section.getPage(pageNum);
-            } else {
-                throw new InvalidCommandException(argument);
-            }
-        } catch (InvalidNotebookException e) {
-            System.out.println("invalid notebook input" + argument);
-        } catch (InvalidSectionException e) {
-            System.out.println("invalid section input" + argument);
-        } catch (InvalidPageException e) {
-            System.out.println("invalid page input" + argument);
-        } catch (NullPointerException | InvalidCommandException e) {
-            System.out.println("wrong format");
+    public void extractParams(String argument, AppState appState)
+            throws InvalidCommandException, InvalidNotebookException, InvalidPageException, InvalidSectionException {
+        if (argument.startsWith(NOTEBOOK_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
+            extractNotebookParams(argument, appState);
+        } else if (argument.startsWith(SECTION_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
+            extractSectionParams(argument, appState);
+        } else if (argument.startsWith(PAGE_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
+            Section section = appState.getCurrentSection();
+            int pageNum = parsePageNumber(argument);
+            section.getPage(pageNum);
+        } else {
+            throw new InvalidCommandException(argument);
         }
     }
 
@@ -223,8 +209,7 @@ public class InputParser {
             if (page.isBlank()) {
                 throw new InvalidPageException();
             }
-            int pageNum = Integer.parseInt(page) - 1;
-            return pageNum;
+            return Integer.parseInt(page) - 1;
         } else {
             throw new InvalidPageException();
         }
@@ -274,8 +259,8 @@ public class InputParser {
             if (appState.getAppMode() == AppMode.TIMETABLE) {
                 return new AddCommandTimetableMode(argument, appState);
             } else {
-                String titleToAdd = "";
-                String contentToAdd = "";
+                String titleToAdd;
+                String contentToAdd;
                 if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
                     titleToAdd = parseNotebookTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
@@ -319,7 +304,7 @@ public class InputParser {
             if (appState.getAppMode() != AppMode.TIMETABLE) {
                 return new SelectCommandNotebookMode(argument, appState);
             } else {
-                throw new InvalidCommandException("Please key in the format: select /nNOTEBOOK /sSECTION /p1");
+                throw new IncorrectAppModeException();
             }
         case Exit.COMMAND_WORD:
             return new Exit(argument, appState);
@@ -330,7 +315,7 @@ public class InputParser {
         case ModeSwitch.COMMAND_WORD:
             return new ModeSwitch(argument, appState);
         default:
-            throw new InvalidCommandException("Please key in a valid command.");
+            throw new InvalidCommandException(userInput);
         }
     }
 }

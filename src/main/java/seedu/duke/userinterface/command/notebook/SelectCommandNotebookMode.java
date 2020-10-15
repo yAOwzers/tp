@@ -1,5 +1,6 @@
 package seedu.duke.userinterface.command.notebook;
 
+import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.InputParser;
 import seedu.duke.userinterface.command.CliCommand;
@@ -19,15 +20,19 @@ public class SelectCommandNotebookMode extends CliCommand {
     @Override
     public void execute() {
         InputParser parser = new InputParser();
-        switch (appState.getAppMode()) {
-        case NOTEBOOK_SHELF:
-        case NOTEBOOK_BOOK:
-        case NOTEBOOK_SECTION:
-            parser.extractParams(argument, appState);
-            break;
-        default:
-            System.out.println("\tError occurred when selecting");
-            break;
+        try {
+            switch (appState.getAppMode()) {
+            case NOTEBOOK_SHELF:
+            case NOTEBOOK_BOOK:
+            case NOTEBOOK_SECTION:
+                parser.extractParams(argument, appState);
+                break;
+            default:
+                System.out.println("\tError occurred when selecting");
+                break;
+            }
+        } catch (ZeroNoteException e) {
+            e.printErrorMessage();
         }
     }
 }
