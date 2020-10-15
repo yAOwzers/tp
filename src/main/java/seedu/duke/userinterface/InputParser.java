@@ -7,7 +7,6 @@ import seedu.duke.exceptions.InvalidPageException;
 import seedu.duke.exceptions.InvalidSectionException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
-
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Done;
 import seedu.duke.userinterface.command.Exit;
@@ -20,7 +19,6 @@ import seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode;
 import seedu.duke.userinterface.command.timetable.AddCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.ListCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
-
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -193,12 +191,10 @@ public class InputParser {
                 if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
                     titleToAdd = parseNotebookTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
-                }
-                if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
+                } else if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
                     titleToAdd = parseSectionTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
-                }
-                if (appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
+                } else {
                     // TODO: implement adding pages
                     titleToAdd = parsePageTitle(argument);
                     contentToAdd = parsePageContent(argument);
