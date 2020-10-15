@@ -8,6 +8,9 @@ import seedu.duke.exceptions.InvalidSectionException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
 
+import seedu.duke.notebooks.NotebookShelf;
+import seedu.duke.notebooks.Notebook;
+import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Done;
 import seedu.duke.userinterface.command.Exit;
@@ -92,6 +95,88 @@ public class InputParser {
         }
     }
 
+    /**
+     * Extracts the parameters given by the user when selecting in notebook mode.
+     *
+     * @param argument contains notebook title, section title or/and page number.
+     * @param appState is the state of the application.
+     */
+    public void extractParams(String argument, AppState appState) {
+        try {
+            if (argument.startsWith(NOTEBOOK_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
+                extractNotebookParams(argument, appState);;
+            } else if (argument.startsWith(SECTION_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
+                extractSectionParams(argument, appState);
+            } else if (argument.startsWith(PAGE_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
+                Section section = appState.getCurrentSection();
+                int pageNum = parsePageNumber(argument);
+                section.getPage(pageNum);
+            } else {
+                throw new InvalidCommandException(argument);
+            }
+        } catch (InvalidNotebookException e) {
+            System.out.println("invalid notebook input" + argument);
+        } catch (InvalidSectionException e) {
+            System.out.println("invalid section input" + argument);
+        } catch (InvalidPageException e) {
+            System.out.println("invalid page input" + argument);
+        } catch (NullPointerException | InvalidCommandException e) {
+            System.out.println("wrong format");
+        }
+    }
+
+    public void extractNotebookParams(String argument, AppState appState)
+            throws InvalidNotebookException, InvalidSectionException, InvalidPageException {
+        Notebook notebook;
+        Section section = null;
+        String notebookTitle = parseNotebookTitle(argument);
+        NotebookShelf notebookShelf = appState.getCurrentBookShelf();
+        int notebookIndex = notebookShelf.findNotebook(notebookTitle);
+        if (notebookIndex == -1) {
+            throw new InvalidNotebookException();
+        }
+        notebook = notebookShelf.getNotebookAtIndex(notebookIndex);
+        appState.setAppMode(AppMode.NOTEBOOK_BOOK);
+        appState.setCurrentNotebook(notebook);
+        System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentNotebook().getTitle());
+        if (argument.contains(SECTION_DELIMITER)) {
+            String sectionTitle = InputParser.parseSectionTitle(argument);
+            int sectionIndex = notebook.findSection(sectionTitle);
+            if (sectionIndex == -1) {
+                throw new InvalidSectionException();
+            }
+            section = notebook.getSectionAtIndex(sectionIndex);
+            appState.setAppMode(AppMode.NOTEBOOK_SECTION);
+            appState.setCurrentSection(section);
+            System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentSection().getTitle());
+        }
+        if (argument.contains(PAGE_DELIMITER) && section != null) {
+            int pageNum = parsePageNumber(argument);
+            section.getPage(pageNum);
+        }
+    }
+
+    public void extractSectionParams(String argument, AppState appState) throws InvalidSectionException,
+            InvalidPageException {
+        Notebook notebook = appState.getCurrentNotebook();
+        String sectionTitle = parseSectionTitle(argument);
+        int sectionIndex = notebook.findSection(sectionTitle);
+        if (sectionIndex == -1) {
+            throw new InvalidSectionException();
+        }
+        Section section = notebook.getSectionAtIndex(sectionIndex);
+        appState.setAppMode(AppMode.NOTEBOOK_SECTION);
+        appState.setCurrentSection(section);
+        System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentSection().getTitle());
+        if (argument.contains(PAGE_DELIMITER)) {
+            int pageNum = parsePageNumber(argument);
+            if (pageNum > section.getPageArrayList().size()) {
+                throw new InvalidPageException();
+            }
+            section.getPage(pageNum);
+        }
+    }
+
     public static String parseNotebookTitle(String input) throws InvalidNotebookException {
         if (input.startsWith(NOTEBOOK_DELIMITER)) {
             String notebookTitle = input.replace(NOTEBOOK_DELIMITER, "").trim();
@@ -151,10 +236,11 @@ public class InputParser {
             if (pageTitle.isBlank()) {
                 throw new InvalidPageException();
             }
-            if (pageTitle.contains(";")) {
-                int indexPos = pageTitle.indexOf(";");
-                pageTitle = pageTitle.substring(0, indexPos).trim();
+            if (!pageTitle.contains(";")) {
+                throw new InvalidPageException();
             }
+            int indexPos = pageTitle.indexOf(";");
+            pageTitle = pageTitle.substring(0, indexPos).trim();
             return pageTitle;
         } else {
             throw new InvalidPageException();
@@ -199,7 +285,6 @@ public class InputParser {
                     return new AddCommandNotebookMode(titleToAdd, appState);
                 }
                 if (appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
-                    // TODO: implement adding pages
                     titleToAdd = parsePageTitle(argument);
                     contentToAdd = parsePageContent(argument);
                     return new AddCommandNotebookMode(titleToAdd, contentToAdd, appState);
@@ -234,7 +319,7 @@ public class InputParser {
             if (appState.getAppMode() != AppMode.TIMETABLE) {
                 return new SelectCommandNotebookMode(argument, appState);
             } else {
-                throw new InvalidCommandException("Please key in the format:");
+                throw new InvalidCommandException("Please key in the format: select /nNOTEBOOK /sSECTION /p1");
             }
         case Exit.COMMAND_WORD:
             return new Exit(argument, appState);
