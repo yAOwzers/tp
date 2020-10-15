@@ -271,6 +271,8 @@ public class InputParser {
                     titleToAdd = parsePageTitle(argument);
                     contentToAdd = parsePageContent(argument);
                     return new AddCommandNotebookMode(titleToAdd, contentToAdd, appState);
+                } else {
+                    throw new InvalidCommandException(userInput);
                 }
             }
         case ListCommandTimetableMode.COMMAND_WORD:
