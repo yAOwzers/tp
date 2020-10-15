@@ -1,4 +1,4 @@
-package seedu.duke.userinterface.command;
+package seedu.duke.userinterface.command.notebook;
 
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidNotebookException;
@@ -11,10 +11,11 @@ import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.AppMode;
 import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.InputParser;
+import seedu.duke.userinterface.command.CliCommand;
 
 import java.util.ArrayList;
 
-public class Select extends CliCommand {
+public class SelectCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "select";
     public static final String NOTEBOOK_DELIMITER = "/n";
     public static final String SECTION_DELIMITER = "/s";
@@ -26,15 +27,17 @@ public class Select extends CliCommand {
     private Notebook notebook;
     private Section section;
 
-    public Select(String argument, AppState uiMode) {
+    public SelectCommandNotebookMode(String argument, AppState uiMode) {
         this.setAppState(uiMode);
         this.argument = argument;
     }
 
+    // TODO: Refactor to InputParser
     private void extractParams(String argument) {
         InputParser parser = new InputParser();
         try {
             if (argument.startsWith(NOTEBOOK_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
+                //parser.extractNotebookParams(argument, parser, appState);
                 extractNotebookParams(argument, parser);
             } else if (argument.startsWith(SECTION_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
                 extractSectionParams(argument, parser);
@@ -42,7 +45,7 @@ public class Select extends CliCommand {
                 pageNum = parser.parsePageNumber(argument);
                 findPage(appState.getCurrentSection(), pageNum);
             } else {
-                throw new InvalidCommandException();
+                throw new InvalidCommandException("Please key in the format:");
             }
         } catch (InvalidNotebookException e) {
             System.out.println("invalid notebook input");
@@ -55,16 +58,18 @@ public class Select extends CliCommand {
         }
     }
 
+    // TODO: Refactor to InputParser
     private void extractSectionParams(String argument, InputParser parser) throws InvalidSectionException,
             InvalidPageException {
         sectionTitle = InputParser.parseSectionTitle(argument);
-        section = findSection(notebook, sectionTitle);
+        section = findSection(appState.getCurrentNotebook(), sectionTitle);
         if (argument.contains(PAGE_DELIMITER)) {
             pageNum = parser.parsePageNumber(argument);
             findPage(appState.getCurrentSection(), pageNum);
         }
     }
 
+    // TODO: Refactor to InputParser
     private void extractNotebookParams(String argument, InputParser parser)
             throws InvalidNotebookException, InvalidSectionException, InvalidPageException {
         notebookTitle = InputParser.parseNotebookTitle(argument);
@@ -81,17 +86,19 @@ public class Select extends CliCommand {
 
     @Override
     public void execute() {
+        //InputParser parser = new InputParser();
         switch (appState.getAppMode()) {
         case NOTEBOOK_SHELF:
+            //parser.extractParams(argument, appState);
             extractParams(argument);
             break;
         case NOTEBOOK_BOOK:
+            //parser.extractParams(argument, appState);
             extractParams(argument);
-            System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentSection().getTitle());
             break;
         case NOTEBOOK_SECTION:
+            //parser.extractParams(argument, appState);
             extractParams(argument);
-            System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentNotebook().getTitle());
             break;
         default:
             System.out.println("\tError occurred when selecting");
@@ -99,7 +106,7 @@ public class Select extends CliCommand {
         }
     }
 
-    // problem because currentBookshelf is null
+    // TODO: Delete, replace with NotebookShelf.findNotebook(), NotebookShelf.getNotebookAtIndex()
     private Notebook findNotebook(NotebookShelf currentBookshelf, String notebookTitle) {
         ArrayList<Notebook> notebookArrayList = currentBookshelf.getNotebooksArrayList();
         int i = 0;
@@ -117,6 +124,7 @@ public class Select extends CliCommand {
         return null;
     }
 
+    // TODO: Delete, replace with Notebook.findSection(), Notebook.getSectionAtIndex()
     private Section findSection(Notebook notebook, String sectionTitle) {
         ArrayList<Section> sectionArrayList = notebook.getSectionArrayList();
         for (Section section : sectionArrayList) {
@@ -130,6 +138,7 @@ public class Select extends CliCommand {
         return null;
     }
 
+    // TODO: Delete, replace with Section.findPage(), Section.getPageAtIndex()
     private void findPage(Section section, int pageNum) {
         try {
             ArrayList<Page> pageArrayList = section.getPageArrayList();

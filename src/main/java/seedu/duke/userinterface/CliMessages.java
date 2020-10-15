@@ -1,5 +1,8 @@
 package seedu.duke.userinterface;
 
+import seedu.duke.notebooks.Notebook;
+import seedu.duke.notebooks.Page;
+import seedu.duke.notebooks.Section;
 import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 
@@ -12,6 +15,26 @@ import seedu.duke.tasks.TaskList;
 
 public class CliMessages {
     private static final String REMOVE_TASK_SUCCESS_MESSAGE = "Noted. I've removed this task:";
+
+    public void printAddedTaskMessage(TaskList tasksList, String title) {
+        System.out.println("Added: " + title);
+        System.out.println(tasksList.getNumberOfTasks() + ":" + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
+    }
+
+    public static void printRemoveNotebookMessage(Notebook notebook) {
+        System.out.println("Noted. I've removed this notebook: ");
+        System.out.println("\t" + notebook.getTitle());
+    }
+
+    public static void printRemoveSectionMessage(Section section) {
+        System.out.println("Noted. I've removed this section: ");
+        System.out.println("\t" + section.getTitle());
+    }
+
+    public static void printRemovePageMessage(Page page) {
+        System.out.println("Noted. I've removed this page: " + page.getTitle());
+        page.printPage();
+    }
 
     public static void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
         System.out.println(REMOVE_TASK_SUCCESS_MESSAGE);
@@ -93,12 +116,13 @@ public class CliMessages {
         printTimetableModeHelp();
     }
 
-    public void printAddedTaskMessage(TaskList tasksList, String title) {
-        System.out.println("Added: " + title);
-        System.out.println(tasksList.getNumberOfTasks() + ":" + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
-    }
-
     public void printGoodBye() {
         System.out.println("Bye!");
+    }
+
+    public void printMarkDone(Task task) {
+        String markDoneMessage = "Yay! I've marked these task as done:";
+        String taskDetails = task.getTask();
+        System.out.println(markDoneMessage + "\n " + task.getTaskInMessagesFormat());
     }
 }
