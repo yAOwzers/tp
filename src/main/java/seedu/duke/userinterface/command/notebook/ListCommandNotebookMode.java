@@ -52,7 +52,7 @@ public class ListCommandNotebookMode extends CliCommand {
         for (Section section : notebook.getSectionArrayList()) {
             System.out.println("* " + section.getTitle());
             for (Page page : section.getPageArrayList()) {
-                System.out.println("  |-- " + page);
+                System.out.println("  |-- " + page.getTitle());
                 System.out.println("        " + page.getContent());
             }
         }
@@ -92,10 +92,10 @@ public class ListCommandNotebookMode extends CliCommand {
         case NOTEBOOK_BOOK:
             switch (commandParams) {
             case ("/a"):
-                listNotebook_s(appState.getCurrentNotebook());
+                listNotebook_sp(appState.getCurrentNotebook());
                 break;
             default:
-                listNotebook_sp(appState.getCurrentNotebook());
+                listNotebook_s(appState.getCurrentNotebook());
                 break;
             }
             break;

@@ -96,7 +96,6 @@ public class SelectCommandNotebookMode extends CliCommand {
         case NOTEBOOK_BOOK:
             //parser.extractParams(argument, appState);
             extractParams(argument);
-            System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentSection().getTitle());
             break;
         case NOTEBOOK_SECTION:
             //parser.extractParams(argument, appState);
