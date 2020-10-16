@@ -19,6 +19,7 @@ public class AddCommandNotebookMode extends CliCommand {
     public AddCommandNotebookMode(String title, AppState appState) {
         this.appState = appState;
         this.title = title;
+        assert title != null;
         currentBookshelf = appState.getCurrentBookShelf();
         currentNotebook = appState.getCurrentNotebook();
         currentSection = appState.getCurrentSection();
