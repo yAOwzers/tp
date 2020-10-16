@@ -2,7 +2,7 @@
 
 ## Introduction
 
-{Give a product intro}
+Zer0Note is a notetaking and organisation application that combines the ease of use and feature set of graphical tools like OneNote, Evernote, Notion etc. with the interaction speed of command-line based tools like vim and emacs. The target audience is students with intermediate to advanced proficiency with computers. 
 
 ## Quick Start
 
