@@ -1,4 +1,4 @@
-# Duke
+# Zer0Note
 
 {Give product intro here}
 
