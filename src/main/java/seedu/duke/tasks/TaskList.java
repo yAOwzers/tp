@@ -36,4 +36,8 @@ public class TaskList {
     public ArrayList<Task> getTaskArrayList() {
         return taskArrayList;
     }
+
+    public void load(Task task) {
+        taskArrayList.add(task);
+    }
 }

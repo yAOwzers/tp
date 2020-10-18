@@ -8,15 +8,16 @@ import seedu.duke.tasks.TaskList;
 
 public class AppState {
     private AppMode appMode;
-    private TaskList taskList;
+    private TaskList currentTaskList;
     private NotebookShelf currentBookShelf;
     private Notebook currentNotebook;
     private Section currentSection;
     private int indexOfCurrentNotebook;
     private int indexOfCurrentSection;
 
+
     public AppState() {
-        taskList = new TaskList();
+        currentTaskList = new TaskList();
         appMode = AppMode.TIMETABLE;
         currentBookShelf = new NotebookShelf();
     }
@@ -45,22 +46,6 @@ public class AppState {
         this.currentNotebook = currentNotebook;
     }
 
-    public Section getCurrentSection() {
-        return currentSection;
-    }
-
-    public void setCurrentSection(Section currentSection) {
-        this.currentSection = currentSection;
-    }
-
-    public TaskList getTaskList() {
-        return taskList;
-    }
-
-    public void setTaskList(TaskList taskList) {
-        this.taskList = taskList;
-    }
-
     public int getIndexOfCurrentNotebook() {
         return indexOfCurrentNotebook;
     }
@@ -69,9 +54,12 @@ public class AppState {
         this.indexOfCurrentNotebook = indexOfCurrentNotebook;
     }
 
-    public Task markTaskAsDone(int index) {
-        Task task = this.taskList.markAsDone(index);
-        return task;
+    public Section getCurrentSection() {
+        return currentSection;
+    }
+
+    public void setCurrentSection(Section currentSection) {
+        this.currentSection = currentSection;
     }
 
     public int getIndexOfCurrentSection() {
@@ -81,4 +69,21 @@ public class AppState {
     public void setIndexOfCurrentSection(int indexOfCurrentSection) {
         this.indexOfCurrentSection = indexOfCurrentSection;
     }
+
+    public TaskList getTaskList() {
+        return currentTaskList;
+    }
+
+    public void setTaskList(TaskList taskList) {
+        this.currentTaskList = taskList;
+    }
+
+    public Task markTaskAsDone(int index) {
+        Task task = this.currentTaskList.markAsDone(index);
+        return task;
+    }
+
+
+
+
 }

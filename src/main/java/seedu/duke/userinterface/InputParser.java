@@ -19,6 +19,7 @@ import seedu.duke.userinterface.command.notebook.ListCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.RemoveCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode;
 import seedu.duke.userinterface.command.timetable.AddCommandTimetableMode;
+import seedu.duke.userinterface.command.timetable.DoneCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.ListCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
 
@@ -189,8 +190,8 @@ public class InputParser {
             return new Exit(argument, appState);
         case Help.COMMAND_WORD:
             return new Help(argument);
-        case Done.COMMAND_WORD:
-            return new Done(argument, appState);
+        case DoneCommandTimetableMode.COMMAND_WORD:
+            return new DoneCommandTimetableMode(argument, appState);
         case ModeSwitch.COMMAND_WORD:
             return new ModeSwitch(argument, appState);
         case SelectCommandNotebookMode.COMMAND_WORD:

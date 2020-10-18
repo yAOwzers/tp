@@ -23,7 +23,8 @@ public class AddCommandNotebookMode extends CliCommand {
     }
 
     public AddCommandNotebookMode(String title, String content, AppState appState) {
-        this(title, appState);
+        this.title = title;
+        this.appState = appState;
         this.content = content;
     }
 

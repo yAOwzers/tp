@@ -49,4 +49,5 @@ public class AddCommandTimetableMode extends CliCommand {
             System.out.println("\tdd-MM-yyyy HHmm where time is in 24h");
         }
     }
+
 }

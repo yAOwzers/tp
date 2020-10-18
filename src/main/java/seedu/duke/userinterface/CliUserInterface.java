@@ -14,17 +14,22 @@ public class CliUserInterface {
 
     private boolean toQuit = false;
 
+    // TODO change the filepath to an appropriate one
+    private static final String filepath = "data/data.txt";
+
     public CliUserInterface() {
 
     }
 
+    // TODO change
     private void loadState() {
-        Storage storage = new Storage();
+        Storage storage = new Storage(this.filepath);
         appState = storage.readFromFile();
     }
 
+    // TODO change
     private void saveState() {
-        Storage storage = new Storage();
+        Storage storage = new Storage(this.filepath);
         storage.saveToFile(appState);
     }
 
@@ -37,7 +42,7 @@ public class CliUserInterface {
         while (!toQuit) {
             userInput = keyboard.nextLine();
             if (userInput.equals(Exit.COMMAND_WORD)) {
-                saveState();
+                saveState(); // TODO change saveState at every command
                 toQuit = true;
             }
             try {

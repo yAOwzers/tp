@@ -23,6 +23,10 @@ public class CliMessages {
         }
     }
 
+    public static String printUnknownError() {
+        return "Sorry unknown error!";
+    }
+
     //TODO: fill these sections with the appropriate user documentation, possibly taken from the final UG
     public void printAddTaskHelp() {
 

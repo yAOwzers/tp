@@ -1,11 +1,21 @@
 package seedu.duke.storage;
 
+import seedu.duke.exceptions.InvalidUserInputException;
+import seedu.duke.notebooks.Notebook;
+import seedu.duke.notebooks.NotebookShelf;
+import seedu.duke.notebooks.Page;
+import seedu.duke.notebooks.Section;
 import seedu.duke.tasks.Task;
+import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.AppState;
+import seedu.duke.userinterface.CliMessages;
+import seedu.duke.userinterface.CliUserInterface;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Represents the storage of where Zer0Note is loading from and saving information to.
@@ -15,8 +25,8 @@ public class Storage {
     private String filepath;
 
     // To include String filepath
-    public Storage() {
-
+    public Storage(String filepath) {
+        this.filepath = filepath;
     }
 
     // Saves the given task to txt format
@@ -48,5 +58,62 @@ public class Storage {
     public AppState readFromFile() {
         // TODO: Implement
         return new AppState();
+    }
+
+    /**
+     * Loads the data in the text file from the file path to an assigned tasks.TaskList.
+     * @param taskList to load data to.
+     * @throws InvalidUserInputException if there are any invalid inputs in the file
+     * that are unable to be parsed into a Task.
+     */
+    public void loadTaskList(TaskList taskList) throws InvalidUserInputException {
+        File file = new File(this.filepath); // create a File for the given file path
+        try {
+            Scanner s = new Scanner(file); // create a Scanner using the File as the source
+            while (s.hasNext()) {
+                Task loadTaskList = Task.parse(s.nextLine());
+                taskList.load(loadTaskList);
+            }
+        } catch (FileNotFoundException e) {
+            // If file is not found, a new file will be created
+        }
+    }
+
+    /**
+     * Overwrites and saves an entire tasklist into the txt file from the file path.
+     * @param taskList to be saved into the txt file.
+     */
+    public void saveTaskList(TaskList taskList) {
+        try {
+            FileWriter overwriteFile = new FileWriter(this.filepath);
+            if (taskList.getNumberOfTasks() > 0) {
+                overwriteFile.write(taskList.getTask(0).toTxtFormat());
+                overwriteFile.close();
+                for (int i = 1; i < taskList.getTaskArrayList().size(); i++) {
+                    saveTask(taskList.getTask(i));
+                }
+            } else {
+                overwriteFile.write("");
+                overwriteFile.close();
+            }
+        } catch (IOException e) {
+            System.out.println(CliMessages.printUnknownError());
+        }
+    }
+
+    public void savePage(Page page) {
+
+    }
+
+    public void saveSection(Section section) {
+
+    }
+
+    public void saveNotebook(Notebook notebook) {
+
+    }
+
+    public void saveNotebookShelf(NotebookShelf notebookShelf) {
+
     }
 }

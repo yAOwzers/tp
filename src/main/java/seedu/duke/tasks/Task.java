@@ -1,10 +1,13 @@
 package seedu.duke.tasks;
 
+import seedu.duke.exceptions.InvalidUserInputException;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Task {
@@ -70,7 +73,42 @@ public class Task {
     }
 
     public String toTxtFormat() {
-        // ...
-        return null;
+        return (isDone ? "1" : "0") + " | " + this.title;
     }
+
+    public static Task parse(String txtFormat) throws InvalidUserInputException {
+        String[] txtArray = txtFormat.split("\\|");
+        String isDoneInteger = txtArray[0].trim();
+        String description = txtArray[1].trim();
+        String[] unFormattedDateTime = txtArray[2].trim().split(" ");
+        String[] formattedDateTime = formatDateTime(unFormattedDateTime);
+        String finalDateTime = formattedDateTime[0] + " " + formattedDateTime[1];
+        Task newTask = new Task(description, finalDateTime);
+        if(isDoneInteger.equals("1")) {
+            newTask.markAsDone();
+        }
+        return newTask;
+    }
+
+    private static String[] formatDateTime(String[] unformattedDateAndTime) {
+        String[] formattedDateAndTime = new String[3];
+
+        String unformattedDate =
+                unformattedDateAndTime[0] + " " + unformattedDateAndTime[1] + " " + unformattedDateAndTime[2];
+        String unformattedTime =
+                unformattedDateAndTime[3] + " " + unformattedDateAndTime[4];
+
+        String formattedDate =
+                LocalDate.parse(unformattedDate, DateTimeFormatter.ofPattern("d MMMM yyyy")).toString();
+        String time =
+                LocalTime.parse(unformattedTime, DateTimeFormatter.ofPattern("hh:mm a")).toString();
+
+        String formattedTime = time.substring(0, time.indexOf(':'))
+                + time.substring(time.indexOf(':') + 1);
+
+        formattedDateAndTime[0] = formattedDate;
+        formattedDateAndTime[1] = formattedTime;
+        return formattedDateAndTime;
+    }
+
 }
