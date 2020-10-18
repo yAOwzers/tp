@@ -1,13 +1,16 @@
 package seedu.duke.userinterface;
 
+import seedu.duke.exceptions.EmptyPageException;
 import seedu.duke.exceptions.IncorrectAppModeException;
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidNotebookException;
 import seedu.duke.exceptions.InvalidPageException;
 import seedu.duke.exceptions.InvalidSectionException;
+import seedu.duke.exceptions.NotebookOutOfBoundsException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
+import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Section;
@@ -32,6 +35,7 @@ import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.C
 import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.NOTEBOOK_DELIMITER;
 import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.PAGE_DELIMITER;
 import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.SECTION_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode.SHOW_ALL;
 import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.DEADLINE_DELIMITER;
 import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.TASK_DELIMITER;
 
@@ -106,7 +110,8 @@ public class InputParser {
      * @param appState is the state of the application.
      */
     public void extractParams(String argument, AppState appState)
-            throws InvalidNotebookException, InvalidSectionException, InvalidPageException, InvalidCommandException {
+            throws InvalidNotebookException, InvalidSectionException, InvalidPageException, InvalidCommandException,
+            NotebookOutOfBoundsException {
         if (argument.startsWith(NOTEBOOK_DELIMITER)) {
             extractNotebookParams(argument, appState);
         } else if (argument.startsWith(SECTION_DELIMITER)) {
@@ -115,6 +120,8 @@ public class InputParser {
             Section section = appState.getCurrentSection();
             int pageNum = parsePageNumber(argument);
             section.getPage(pageNum);
+        } else if (argument.startsWith(SHOW_ALL)) {
+            appState.setAppMode(AppMode.NOTEBOOK_SHELF);
         } else {
             throw new InvalidCommandException(argument);
         }
@@ -130,14 +137,15 @@ public class InputParser {
      * @throws InvalidPageException     when the page number input by the user does not exist.
      */
     public void extractNotebookParams(String argument, AppState appState)
-            throws InvalidNotebookException, InvalidSectionException, InvalidPageException {
+            throws InvalidNotebookException, InvalidSectionException, InvalidPageException,
+            NotebookOutOfBoundsException {
         Notebook notebook;
         Section section = null;
         String notebookTitle = parseNotebookTitle(argument);
         NotebookShelf notebookShelf = appState.getCurrentBookShelf();
         int notebookIndex = notebookShelf.findNotebook(notebookTitle);
         if (notebookIndex == -1) {
-            throw new InvalidNotebookException();
+            throw new InvalidNotebookException(notebookTitle);
         }
         notebook = notebookShelf.getNotebookAtIndex(notebookIndex);
         appState.setAppMode(AppMode.NOTEBOOK_BOOK);
@@ -147,7 +155,7 @@ public class InputParser {
             String sectionTitle = InputParser.parseSectionTitle(argument);
             int sectionIndex = notebook.findSection(sectionTitle);
             if (sectionIndex == -1) {
-                throw new InvalidSectionException();
+                throw new InvalidSectionException(sectionTitle);
             }
             section = notebook.getSectionAtIndex(sectionIndex);
             appState.setAppMode(AppMode.NOTEBOOK_SECTION);
@@ -174,7 +182,7 @@ public class InputParser {
         String sectionTitle = parseSectionTitle(argument);
         int sectionIndex = notebook.findSection(sectionTitle);
         if (sectionIndex == -1) {
-            throw new InvalidSectionException();
+            throw new InvalidSectionException(sectionTitle);
         }
         Section section = notebook.getSectionAtIndex(sectionIndex);
         appState.setAppMode(AppMode.NOTEBOOK_SECTION);
@@ -200,7 +208,7 @@ public class InputParser {
         if (input.startsWith(NOTEBOOK_DELIMITER)) {
             String notebookTitle = input.replace(NOTEBOOK_DELIMITER, "").trim();
             if (notebookTitle.isBlank()) {
-                throw new InvalidNotebookException();
+                throw new InvalidNotebookException(null);
             }
             if (notebookTitle.contains(SECTION_DELIMITER)) {
                 int indexPos = notebookTitle.indexOf(SECTION_DELIMITER);
@@ -208,7 +216,7 @@ public class InputParser {
             }
             return notebookTitle;
         } else {
-            throw new InvalidNotebookException();
+            throw new InvalidNotebookException(input);
         }
     }
 
@@ -221,12 +229,17 @@ public class InputParser {
      *                                 section title is blank.
      */
     public static String parseSectionTitle(String input) throws InvalidSectionException {
-        int dividerPos = input.indexOf(SECTION_DELIMITER);
-        input = input.substring(dividerPos);
+        try {
+            int dividerPos = input.indexOf(SECTION_DELIMITER);
+            input = input.substring(dividerPos);
+        } catch (StringIndexOutOfBoundsException e) {
+            throw new InvalidSectionException(input);
+        }
+
         if (input.startsWith(SECTION_DELIMITER)) {
             String sectionTitle = input.replace(SECTION_DELIMITER, "");
             if (sectionTitle.isBlank()) {
-                throw new InvalidSectionException();
+                throw new InvalidSectionException(null);
             }
             if (sectionTitle.contains(PAGE_DELIMITER)) {
                 int indexPos = sectionTitle.indexOf(PAGE_DELIMITER);
@@ -234,7 +247,7 @@ public class InputParser {
             }
             return sectionTitle;
         } else {
-            throw new InvalidSectionException();
+            throw new InvalidSectionException(input);
         }
     }
 
@@ -251,8 +264,13 @@ public class InputParser {
      *                              wrong format.
      */
     public int parsePageNumber(String input) throws InvalidPageException {
-        int dividerPos = input.indexOf(PAGE_DELIMITER);
-        input = input.substring(dividerPos);
+        try {
+            int dividerPos = input.indexOf(PAGE_DELIMITER);
+            input = input.substring(dividerPos);
+        } catch (StringIndexOutOfBoundsException e) {
+            throw new InvalidPageException();
+        }
+
         if (input.startsWith(PAGE_DELIMITER)) {
             String page = input.replace(PAGE_DELIMITER, "");
             if (page.isBlank()) {
@@ -270,17 +288,18 @@ public class InputParser {
      * @param input is the user's input.
      * @return the page title input by the user.
      * @throws InvalidPageException when the user's input is in the wrong format, or when the page title is blank.
+     * @throws EmptyPageException   when the user's page input does not contain the content delimiter.
      */
-    public String parsePageTitle(String input) throws InvalidPageException {
+    public String parsePageTitle(String input) throws InvalidPageException, EmptyPageException {
         if (input.startsWith(PAGE_DELIMITER)) {
             String pageTitle = input.replace(PAGE_DELIMITER, "").trim();
             if (pageTitle.isBlank()) {
                 throw new InvalidPageException();
             }
-            if (!pageTitle.contains(";")) {
-                throw new InvalidPageException();
+            if (!pageTitle.contains(CONTENT_DELIMITER)) {
+                throw new EmptyPageException();
             }
-            int indexPos = pageTitle.indexOf(";");
+            int indexPos = pageTitle.indexOf(CONTENT_DELIMITER);
             pageTitle = pageTitle.substring(0, indexPos).trim();
             return pageTitle;
         } else {
@@ -296,13 +315,14 @@ public class InputParser {
      * @throws InvalidPageException when the user's input does not contain the page content delimiter, or when there
      *                              is no content.
      */
-    public String parsePageContent(String input) throws InvalidPageException {
+    public String parsePageContent(String input) throws InvalidPageException, EmptyPageException {
         int dividerPos = input.indexOf(CONTENT_DELIMITER);
         input = input.substring(dividerPos);
-        if (input.startsWith(";")) {
+
+        if (input.startsWith(CONTENT_DELIMITER)) {
             String content = input.replace(CONTENT_DELIMITER, "").trim();
             if (content.isBlank()) {
-                throw new InvalidPageException();
+                throw new EmptyPageException();
             }
             return content;
         } else {
@@ -310,7 +330,7 @@ public class InputParser {
         }
     }
 
-    public CliCommand getCommandFromInput(String userInput, AppState appState) throws Exception {
+    public CliCommand getCommandFromInput(String userInput, AppState appState) throws ZeroNoteException {
         String trimmedInput = userInput.trim();
         String[] input = trimmedInput.split(" ", 2); // split input into command and arguments
         String commandWord = input[0];

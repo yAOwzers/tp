@@ -7,6 +7,7 @@ import seedu.duke.userinterface.command.CliCommand;
 
 public class SelectCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "select";
+    public static final String SHOW_ALL = "/all";
     private final String argument;
 
     public SelectCommandNotebookMode(String argument, AppState uiMode) {

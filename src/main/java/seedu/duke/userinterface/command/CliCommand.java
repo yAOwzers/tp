@@ -1,7 +1,5 @@
 package seedu.duke.userinterface.command;
 
-import seedu.duke.exceptions.InvalidUserInputException;
-import seedu.duke.userinterface.AppMode;
 import seedu.duke.userinterface.AppState;
 
 public abstract class CliCommand {

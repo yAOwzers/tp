@@ -4,6 +4,10 @@ package seedu.duke.exceptions;
  * Signals that the user has input an invalid section name.
  */
 public class InvalidSectionException extends ZeroNoteException {
+    public InvalidSectionException(String problematicInput) {
+        this.problematicInput = problematicInput;
+    }
+
     @Override
     public void printErrorMessage() {
         System.out.println("Invalid Section Name " + problematicInput);
