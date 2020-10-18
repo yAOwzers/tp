@@ -10,6 +10,10 @@ import seedu.duke.userinterface.command.CliCommand;
 
 public class AddCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "add";
+    public static final String NOTEBOOK_DELIMITER = "/n";
+    public static final String SECTION_DELIMITER = "/s";
+    public static final String PAGE_DELIMITER = "/p";
+    public static final String CONTENT_DELIMITER = ";";
     private final String title;
     private String content;
     private final NotebookShelf currentBookshelf;
