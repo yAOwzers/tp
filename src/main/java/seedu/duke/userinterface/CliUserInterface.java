@@ -2,7 +2,6 @@ package seedu.duke.userinterface;
 
 
 import seedu.duke.exceptions.ZeroNoteException;
-
 import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Exit;
@@ -55,11 +54,14 @@ public class CliUserInterface {
     }
 
     private void startUI() {
-        System.out.println("Welcome to Zer0Note!");
+        System.out.println("Welcome to");
+        System.out.println(" _ _ _                  _ _ _   _    _            _");
+        System.out.println("|_ _  |   _ _    _  _  |  _  | |  \\ | |   _ _   _| |_    _ _");
+        System.out.println("  /  /  /  _  \\ | |/_\\ | | | | |   \\| |  /   \\ |_   _| /   _ \\");
+        System.out.println(" /  /_  |  _ _/ | |    | |_| | |  |\\  | |  [] |  | |_  |  _ _/");
+        System.out.println("|_ _ _|  \\ _ _| |_|    |_ _ _| | _| \\_|  \\ _ /   |_ _|  \\ _ _|");
         System.out.println("You are now in timetable mode");
-        // TODO: Make this prettier
     }
-
 
 
     public String printExit() {
