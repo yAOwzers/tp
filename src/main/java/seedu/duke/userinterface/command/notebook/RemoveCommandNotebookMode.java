@@ -2,6 +2,7 @@ package seedu.duke.userinterface.command.notebook;
 
 import seedu.duke.exceptions.IncorrectAppModeException;
 import seedu.duke.exceptions.InvalidCommandException;
+import seedu.duke.exceptions.NotebookOutOfBoundsException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
@@ -14,6 +15,7 @@ import seedu.duke.userinterface.command.CliCommand;
 public class RemoveCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "delete";
 
+    private CliMessages cliMessages = new CliMessages();
     private NotebookShelf currentBookshelf;
     private Notebook currentNotebook;
     private String notebookTitleToRemove;

@@ -2,7 +2,6 @@ package seedu.duke.userinterface;
 
 
 import seedu.duke.exceptions.ZeroNoteException;
-
 import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Exit;
@@ -44,27 +43,25 @@ public class CliUserInterface {
                 executeCommand(userInput);
             } catch (ZeroNoteException e) {
                 e.printErrorMessage();
-            } catch (Exception e) {
-                // TODO: Make sure all Java exceptions are handled and converted to ZeroNoteExceptions
-                // TODO: Delete this block after the above is done
-                e.printStackTrace();
             }
         }
     }
 
-    private void executeCommand(String userInput) throws Exception {
+    private void executeCommand(String userInput) throws ZeroNoteException {
         InputParser parser = new InputParser();
         CliCommand command = parser.getCommandFromInput(userInput, appState);
         command.execute();
     }
 
     private void startUI() {
-        System.out.println("Welcome to Zer0Note!");
+        System.out.println("Welcome to");
+        System.out.println(" _ _ _                  _ _ _   _    _            _");
+        System.out.println("|_ _  |   _ _    _  _  |  _  | |  \\ | |   _ _   _| |_    _ _");
+        System.out.println("  /  /  /  _  \\ | |/_\\ | | | | |   \\| |  /   \\ |_   _| /   _ \\");
+        System.out.println(" /  /_  |  _ _/ | |    | |_| | |  |\\  | |  [] |  | |_  |  _ _/");
+        System.out.println("|_ _ _|  \\ _ _| |_|    |_ _ _| | _| \\_|  \\ _ /   |_ _|  \\ _ _|");
         System.out.println("You are now in timetable mode");
-        // TODO: Make this prettier
     }
-
-
 
     public String printExit() {
         return "GOODBYE HOPE TO SEE YOU AGAIN";

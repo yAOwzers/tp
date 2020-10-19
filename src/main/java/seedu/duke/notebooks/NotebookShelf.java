@@ -1,5 +1,7 @@
 package seedu.duke.notebooks;
 
+import seedu.duke.exceptions.NotebookOutOfBoundsException;
+
 import java.util.ArrayList;
 
 public class NotebookShelf {
@@ -38,8 +40,10 @@ public class NotebookShelf {
      *
      * @return The notebook at that index
      */
-    // TODO: Add NotebookIndexOutOfBoundsException and throw it
-    public Notebook getNotebookAtIndex(int index) {
+    public Notebook getNotebookAtIndex(int index) throws NotebookOutOfBoundsException {
+        if (index < 0 | index > notebooksArrayList.size()) {
+            throw new NotebookOutOfBoundsException(index);
+        }
         return notebooksArrayList.get(index);
     }
 

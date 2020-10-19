@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AddTaskTest {
     @Test
-    void addTask_dateFormat_expectException() throws IncorrectDeadlineFormatException {
+    void addTask_dateFormat_expectException() {
         InputParser parser = new InputParser();
         String inputString = "/by18 Oct";
         assertThrows(IncorrectDeadlineFormatException.class, () -> {

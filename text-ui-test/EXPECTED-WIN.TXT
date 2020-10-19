@@ -1,4 +1,9 @@
-Welcome to Zer0Note!
+Welcome to
+ _ _ _                  _ _ _   _    _            _
+|_ _  |   _ _    _  _  |  _  | |  \ | |   _ _   _| |_    _ _
+  /  /  /  _  \ | |/_\ | | | | |   \| |  /   \ |_   _| /   _ \
+ /  /_  |  _ _/ | |    | |_| | |  |\  | |  [] |  | |_  |  _ _/
+|_ _ _|  \ _ _| |_|    |_ _ _| | _| \_|  \ _ /   |_ _|  \ _ _|
 You are now in timetable mode
 Added: task
 1:[x] task (by: Oct 15 2020 11.59 PM)
