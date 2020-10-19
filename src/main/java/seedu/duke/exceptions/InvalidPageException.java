@@ -6,6 +6,8 @@ package seedu.duke.exceptions;
 public class InvalidPageException extends ZeroNoteException {
     @Override
     public void printErrorMessage() {
-        System.out.println("Entered invalid page name " + problematicInput);
+        System.out.println("Entered invalid page");
+        System.out.println("Format for adding page: add /pPAGE; CONTENT");
+        System.out.println("Format for selecting page: select /pNUMBER");
     }
 }
