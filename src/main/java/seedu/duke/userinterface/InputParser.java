@@ -272,11 +272,15 @@ public class InputParser {
         }
 
         if (input.startsWith(PAGE_DELIMITER)) {
-            String page = input.replace(PAGE_DELIMITER, "");
-            if (page.isBlank()) {
+            try {
+                String page = input.replace(PAGE_DELIMITER, "");
+                if (page.isBlank()) {
+                    throw new InvalidPageException();
+                }
+                return Integer.parseInt(page) - 1;
+            } catch (NumberFormatException e) {
                 throw new InvalidPageException();
             }
-            return Integer.parseInt(page) - 1;
         } else {
             throw new InvalidPageException();
         }
