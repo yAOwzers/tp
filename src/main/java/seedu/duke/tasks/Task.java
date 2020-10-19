@@ -15,11 +15,16 @@ public class Task {
     protected boolean isDone;
     private LocalDate dueDate;
     private LocalTime dueTime;
+    private Date dueDateTime;
 
     public Task(String title, String by) {
         this.title = title;
         this.by = by;
         this.isDone = false;
+    }
+
+    public Date getDueDateTime() {
+        return dueDateTime;
     }
 
     public LocalDate getDueDate() {
@@ -44,6 +49,7 @@ public class Task {
 
     public String reformatDate() throws ParseException {
         Date date = dateTime.parse(by);
+        this.dueDateTime = date;
         return outputFormat.format(date);
     }
 
