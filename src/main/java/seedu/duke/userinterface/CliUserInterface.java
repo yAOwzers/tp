@@ -60,11 +60,13 @@ public class CliUserInterface {
 
     private void startUI() {
         System.out.println("Welcome to Zer0Note!");
+        System.out.println(" _ _ _                  _ _ _   _    _            _");
+        System.out.println("|_ _  |   _ _    _  _  |  _  | |  \\ | |   _ _   _| |_    _ _");
+        System.out.println("  /  /  /  _  \\ | |/_\\ | | | | |   \\| |  /   \\ |_   _| /   _ \\");
+        System.out.println(" /  /_  |  _ _/ | |    | |_| | |  |\\  | |  [] |  | |_  |  _ _/");
+        System.out.println("|_ _ _|  \\ _ _| |_|    |_ _ _| | _| \\_|  \\ _ /   |_ _|  \\ _ _|");
         System.out.println("You are now in timetable mode");
-        // TODO: Make this prettier
     }
-
-
 
     public String printExit() {
         return "GOODBYE HOPE TO SEE YOU AGAIN";
