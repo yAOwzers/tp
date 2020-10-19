@@ -27,7 +27,7 @@ Example of usage:
 
 `todo n/Write the rest of the User Guide d/next week`
 
-`todo n/Refactor the User Guide to removeTimetableMode passive voice d/13/04/2020`
+`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
 
 ## FAQ
 
