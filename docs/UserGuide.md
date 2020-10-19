@@ -1,5 +1,14 @@
 # User Guide
 
+## Table of Contents
+* [Introduction](#introduction)
+* [Quick Start](#quick-start)
+* [Features](#features) <br>
+    * [Viewing help: `help`](#viewing-help-help)
+    * [Planner Mode](#planner-mode)
+    * [Notebook Mode](#notebook-mode)
+* [FAQ](#faq)
+* [Command Summary](#command-summary)
 ## Introduction
 
 {Give a product intro}
@@ -13,9 +22,14 @@
 
 ## Features 
 
+### Viewing help: `help`
+
+### Planner Mode
 {Give detailed description of each feature}
 
-### Adding a todo: `todo`
+### Notebook Mode
+
+#### Adding : `todo`
 Adds a new item to the list of todo items.
 
 Format: `todo n/TODO_NAME d/DEADLINE`
