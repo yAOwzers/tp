@@ -1,8 +1,22 @@
 # User Guide
 
+## Navigation Panel
+- [Quick Start](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#quick-start)
+- [Features](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#features)
+  - [Mode Switch](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#mode-switch)
+  - [Timetable Mode](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#timetable-mode)
+    - [Add a `task`](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#adding-a-task)
+  - [Notebook Mode](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#notebook-mode)
+    - [Add a `notebook`](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#adding-a-notebook)
+    - [Add a `section`](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#adding-a-section)
+    - [Add a `page`](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#adding-a-page)
+    - [`Select`](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#select)
+- [Command Summary](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#command-summary)
+
 ## Introduction
 
 Zer0Note is a note taking and organisation application that combines the ease of use and feature set of graphical tools with the interaction speed of command-line based tools like vim and emacs.
+<<<<<<< Updated upstream
 
 ## Navigation Panel
 - [Quick Start](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#quick-start)
@@ -15,6 +29,8 @@ Zer0Note is a note taking and organisation application that combines the ease of
     - [Add a `section`](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#adding-a-section)
     - [Add a `page`](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#adding-a-page)
     - [`Select`](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#select)
+=======
+>>>>>>> Stashed changes
 
 ## Quick Start
 
@@ -31,6 +47,7 @@ Zer0Note is a note taking and organisation application that combines the ease of
 {Give detailed description of each feature}
 >:exclamation: Words within `[square brackets]` are the expected user inputs.
 >> e.g. in `add /nNOTEBOOK`, `NOTEBOOK` is a parameter which can be used as `add /n`
+<<<<<<< Updated upstream
 
 ## Timetable Mode
 In `Timetable` mode, you can...
@@ -78,6 +95,55 @@ Example of usage:
 `add /sW1: Java `
 
 Expected output:
+=======
+
+## Timetable Mode
+In `Timetable` mode, you can...
+
+### Adding a task
+Adds a `task` with a `deadline` to the task list.
+
+Format: `add /t[task] /by[dd/MM/yyyy] [hhmm]`
+
+* `task`: name of the task.
+* `dd/MM/yyyy`: the due date of the task, in the format day/month/year.
+* `hhmm`: time the task is due, in 24h format.
+
+Example of usage:
+`add /tcoding /by19-10-2020 1900`
+
+Expected output:
+`Added: coding
+1:[x] coding (by: Oct 19 2020 07.00 PM)`
+
+## Notebook Mode
+In `Notebook mode`, you can...
+
+### Adding a notebook
+Adds a `notebook`  into the `notebook shelf`.
+
+Format: `add /nNOTEBOOK`
+
+* `NOTEBOOK`: the name of the notebook.
+
+Example of usage:
+`add /nCS2101`
+
+Expected output:
+`Added notebook with title: CS2101`
+
+### Adding a section
+Adds a `section`  into the [selected](https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html/#select) `notebook`.
+
+Format: `add /sSECTION`
+
+* `SECTION`: the name of the section in the selected `notebook`.
+
+Example of usage:
+`add /sW1: Java `
+
+Expected output:
+>>>>>>> Stashed changes
 `Added section with title: W1: Java`
 
 ### Adding a page
@@ -89,10 +155,41 @@ Format: `add /pPAGE; PAGE CONTENT`
 * `PAGE CONTENT`: the contents that you would like to store in the `page`.
 
 Example of usage:
+<<<<<<< Updated upstream
 `add /pHELLO WORLD`
 
 Expected output:
 `Added page with title: HELLO WORLD`
+=======
+`add /pHELLO WORLD; System.out.println("Hello World!");`
+
+Expected output:
+`Added page with title: HELLO WORLD`
+
+### Select
+Select a `notebook`, `section`, `page` or a combination of the three.
+
+Format: `select /nNOTEBOOK /sSECTION /pNUMBER`
+
+* `NOTEBOOK`: the title of the expected `notebook`.
+* `SECTION`: the title of the expected `section` in `notebook`.
+* `PAGE`: the page number in the expected `section`.
+
+Examples of usage:
+In *NOTEBOOK MODE*,
+* `select /nCS2101 /sW2 /p1` - selects page 1 in the notebook `CS2101`, under the section `W2`.
+* `select /nCS2101 /sW2` - selects section entitled `W2` in the notebook `CS2101`.
+* `select /nCS2101` - selects the notebook entitled `CS2101`.
+* `select /all` - navigates the user back into `NOTEBOOK MODE`, where he/she can list to see all available notebooks.
+> These commands can be run anywhere(i.e in a selected notebook or section) once you're in NOTEBOOK MODE.  
+
+In a selected *NOTEBOOK*,
+* `select /s1: What is OOP? /p1` - selects page 1 in the section `1: What is OOP?` in the selected `notebook`.
+* `select /s1: What is OOP?` - selects the section entitled `1: What is OOP?` in the selected `notebook`.
+
+In a selected *SECTION*,
+* `select /p1` - selects page 1 in the selected `section`.
+>>>>>>> Stashed changes
 
 ## FAQ
 
@@ -105,3 +202,9 @@ Expected output:
 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
+<<<<<<< Updated upstream
+=======
+*TIMETABLE MODE* `add` | add /tTASK /by[dd/MM/yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
+*NOTEBOOK MODE* `add` | 1) add /nNOTEBOOK 2) add /sSECTION 3) add /pPAGE; CONTENT | add /nCS2101
+*NOTEBOOK MODE* `select` | 1) select /nNOTEBOOK 2) select /sSECTION 3) select /pNUMBER 4) select /nNOTEBOOK /sSECTION /pNUMBER | select /nCS2101
+>>>>>>> Stashed changes
