@@ -39,7 +39,7 @@ public class Section {
             Page page = pageArrayList.get(pageIndex);
             page.printPage();
         } catch (IndexOutOfBoundsException | NullPointerException e) {
-            System.out.println("\tpage <" + (pageIndex + 1) + "> doesn't exist");
+            System.out.println("page <" + (pageIndex + 1) + "> doesn't exist");
         }
     }
 

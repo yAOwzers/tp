@@ -1,6 +1,6 @@
-# Duke
+# Zer0Note
 
-{Give product intro here}
+Zer0Note is a *note taking and organisation* app that combines the features of OneNote & Notion with the speed of vim & emacs​.
 
 Useful links:
 * [User Guide](UserGuide.md)
