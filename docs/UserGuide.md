@@ -33,6 +33,7 @@ Zer0Note is a note taking and organisation application that combines the ease of
 >:exclamation: Words within `[square brackets]` are the expected user inputs.
 >> e.g. in `add /n[NOTEBOOK]`, `NOTEBOOK` is a parameter which can be used as `add /n`
 
+
 ## Timetable Mode
 In `Timetable` mode, you can...
 
@@ -49,11 +50,14 @@ Example of usage:
 `add /tcoding /by19-10-2020 1900`
 
 Expected output:
-`Added: coding
-1:[x] coding (by: Oct 19 2020 07.00 PM)`
+```
+Added: coding
+1:[x] coding (by: Oct 19 2020 07.00 PM)
+```
+
 
 ## Notebook Mode
-In `Notebook mode`, you can...
+In `Notebook mode`, you can `add`/`select` a `notebook`, `section` or `page`.
 
 ### Adding a notebook
 Adds a `notebook`  into the `notebook shelf`.
@@ -134,4 +138,4 @@ In a selected *SECTION*,
 ----------- | ---------- | -----------
 *TIMETABLE MODE* `add` | add /tTASK /by[dd/MM/yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
 *NOTEBOOK MODE* `add` | 1) add /nNOTEBOOK 2) add /sSECTION 3) add /pPAGE; CONTENT | add /nCS2101
-*NOTEBOOK MODE* `select` | 1) select /nNOTEBOOK 2) select /sSECTION 3) select /pNUMBER 4) select /nNOTEBOOK /sSECTION /pNUMBER | select /nCS2101
+*NOTEBOOK MODE* `select` | 1) select /nNOTEBOOK 2) select /sSECTION 3) select /pNUMBER | select /nCS2101
