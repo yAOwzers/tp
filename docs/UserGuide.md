@@ -44,9 +44,9 @@ To view the user guide for the notebook mode, type in `help notebook`.
 
 ### Timetable Mode
 The Timetable Mode allows you to manage a list of tasks. 
-The following sections explains the various features you can use while you are in the Planner Mode.
+The following sections explains the various features you can use while you are in the Timetable Mode.
 
-### Adding a task
+#### Adding a task
 Adds a `task` with a `deadline` to the task list.
 
 Format: `add /t[TASK] /by[dd/MM/yyyy] [hhmm]`
@@ -64,7 +64,7 @@ Added: coding
 1:[x] coding (by: Oct 19 2020 07.00 PM)
 ```
 
-### Deleting a task: `delete`
+#### Deleting a task: `delete`
 Deletes an existing task from the task list.
 
 Format: `delete [INDEX]`
@@ -81,12 +81,12 @@ Noted. I've removed this task:
 	Now you have 0 tasks in the list.
 ```
 
-## Notebook Mode
+### Notebook Mode
 In `Notebook mode`, you can manage a shelf of notebooks. 
 Each notebook contains sections, and each section contains pages. Each page holds your type-written notes.
 
-### Add Feature: `add`
-#### Adding a notebook
+#### Add Feature: `add`
+##### Adding a notebook
 Adds a `notebook`  into the `notebook shelf`.
 
 Format: `add /n[NOTEBOOK]`
@@ -99,7 +99,7 @@ Example of usage:
 Expected output:
 `Added notebook with title: CS2101`
 
-#### Adding a section
+##### Adding a section
 Adds a `section`  into the [selected](#select-feature-select) `notebook`.
 >:exclamation: You must select a `notebook` before adding a section!
 
@@ -113,7 +113,7 @@ Example of usage:
 Expected output:
 `Added section with title: W1: Java`
 
-#### Adding a page
+##### Adding a page
 Adds a `page`  into the [selected](#select-feature-select) `section`.
 >:exclamation: You must select a `section` before adding a page!
 
@@ -128,7 +128,7 @@ Example of usage:
 Expected output:
 `Added page with title: HELLO WORLD`
 
-### Select Feature: `select`
+#### Select Feature: `select`
 Select a `notebook`, `section`, `page` or a combination of the three.
 
 Format: `select /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
@@ -152,7 +152,7 @@ In a selected *NOTEBOOK*,
 In a selected *SECTION*,
 * `select /p1` - selects page 1 in the selected `section`.
 
-### Delete Feature: `delete`
+#### Delete Feature: `delete`
 Deletes an existing notebook, section or page.
 >:exclamation: The current selection determines the range you can delete.
 >
