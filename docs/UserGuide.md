@@ -227,7 +227,7 @@ Format: `list (/s) (/a)`
 - `list /s` display the notebooks together with titles of sections in NOTEBOOK mode
 - `list /a` display all notebooks, sections and pages.
 
-####In the *notebook* mode:
+#### In the *notebook* mode:
 
 - `list` displays the titles of notebooks in the shelf.
 - `list /s` displays the titles of notebooks together with titles of sections.
@@ -266,7 +266,7 @@ Example of usage:
   |-- Chapter 3
 ```
 
-####In a selected notebook:
+#### In a selected notebook:
 
 - `list` displays the titles of all the sections in the selected notebook.
 - `list /a` displays all sections and pages in the selected notebook.
@@ -290,7 +290,7 @@ now in notebook book: CS2101
 * Chapter 3
 ```
 
-####In a selected section:
+#### In a selected section:
 
 - `list` displays all the pages in the selected section.
 
