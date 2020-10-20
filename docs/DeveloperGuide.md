@@ -24,6 +24,8 @@
     - [Glossary](#glossary)
 - [Appendix B: Instructions for manual testing](#appendix-b-instructions-for-manual-testing)
 
+## Introduction
+
 ## Setting up
 ### Prerequisites
 1. **JDK** 11
@@ -54,21 +56,17 @@ to set up IDEA’s coding style to match ours.
 >Optionally, you can follow the guide [[se-edu/guides] Using Checkstyle](https://se-education.org/guides/tutorials/checkstyle.html) 
 >to find how to use the CheckStyle within IDEA e.g., to report problems as you write code.
 
+## Design
+
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+### Architecture
 
+**How the architecture components interact with each other**
+The Sequence Diagram below shows how the components interact with each other for the scenario...
 
-## Product scope
-### Target user profile
+## Implementation
+This section describes some noteworthy details on how certain features are implemented.
 
-{Describe the target user profile}
-
-### Value proposition
-
-{Describe the value proposition: what problem does it solve?}
-
-## User Stories
-
-|Version| As a ... | I want to ... | So that I can ...|
 ## Documentation
 We use Markdown for writing our documents.
 
@@ -108,11 +106,6 @@ There are two ways to run tests.
 ### Types of tests
 {Describe the type of testing used in the code}
 
-|--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
-
-## Non-Functional Requirements
 ## Appendix A: Requirements
 ### Project Scope
 **Target user profile**
