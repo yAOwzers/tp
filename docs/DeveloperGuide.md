@@ -96,6 +96,18 @@ Here are the steps to convert the project documentation files to PDF format.
 For best results, use the settings indicated in the screenshot below.
 <img src=https://se-education.org/guides/tutorials/images/chrome_save_as_pdf.png>
 
+## Testing
+### Running tests
+There are two ways to run tests.
+- **Method 1: Using IntelliJ JUnit test runner**
+    - To run all tests, right-click on the `src/test/java` and choose `Run 'Tests in tp.test'`
+    - To run a subset of tests, you can right-click on a test package, test class, or a test and choose `Run 'ABC'`.
+- **Method 2: Using Gradle**
+    - Open a console and run the command `gradlew clean test` (Mac/Linux: `./gradlew clean test`)
+
+### Types of tests
+{Describe the type of testing used in the code}
+
 |--------|----------|---------------|------------------|
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
 |v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
