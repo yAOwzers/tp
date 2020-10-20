@@ -3,6 +3,7 @@
 ## Navigation Panel
 - [Quick Start](#quick-start)
 - [Features](#features)
+  - [Viewing the user guide: `help`](#)
   - [Mode Switch: `mode`](#mode-switch)
   - [Planner Mode](#planner-mode)
     - [Adding task: `add`](#adding-a-task)
@@ -33,7 +34,13 @@ Zer0Note is a note taking and organisation application that combines the ease of
 >:exclamation: Words within `[square brackets]` are the expected user inputs.
 >> e.g. in `add /n[NOTEBOOK]`, `NOTEBOOK` is a parameter which can be used as `add /n`
 
-### Viewing help: `help`
+### Viewing help : `help`
+
+To view the full user guide, type in `help`. 
+
+To view the user guide for the timetable mode, type in `help timetable`.
+
+To view the user guide for the notebook mode, type in `help notebook`.
 
 ### Planner Mode
 The Planner Mode allows you to manage a list of tasks. 
