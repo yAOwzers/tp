@@ -5,7 +5,7 @@
 - [Features](#features)
   - [Viewing the user guide: `help`](#)
   - [Mode Switch: `mode`](#mode-switch)
-  - [Planner Mode](#planner-mode)
+  - [Timetable Mode](#Timetable-mode)
     - [Adding task: `add`](#adding-a-task)
     - [Deleting task: `delete`]
   - [Notebook Mode](#notebook-mode)
@@ -42,8 +42,8 @@ To view the user guide for the timetable mode, type in `help timetable`.
 
 To view the user guide for the notebook mode, type in `help notebook`.
 
-### Planner Mode
-The Planner Mode allows you to manage a list of tasks. 
+### Timetable Mode
+The Timetable Mode allows you to manage a list of tasks. 
 The following sections explains the various features you can use while you are in the Planner Mode.
 
 ### Adding a task
@@ -200,7 +200,7 @@ Noted. I've removed this notebook:
 ## Command Summary
 {Give a 'cheat sheet' of commands here}
 
-###Planner Mode
+###Timetable Mode
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
 Add a task: `add` | add /tTASK /by[dd/MM/yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
