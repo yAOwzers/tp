@@ -24,6 +24,36 @@
     - [Glossary](#glossary)
 - [Appendix B: Instructions for manual testing](#appendix-b-instructions-for-manual-testing)
 
+## Setting up
+### Prerequisites
+1. **JDK** 11
+2. **IntelliJ** IDEA
+
+### Setting up the project in your computer
+>:exclamation **Caution:** Follow the steps in the following guide precisely.
+>Things will not work out if you deviate in some steps.
+1. Fork this repo, and clone the fork into your computer.
+2. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
+3. Set up the correct JDK version for Gradle
+    a. Click `Configure` > `Project Defaults` > `Project Structure`
+    b. Click `New...` and find the directory of the JDK.
+4. Click `Import Project`
+5. Locate the `build.gradle` file and select it. Click `OK`.
+6. Click `Open as Project`.
+7. Click `OK` to accept the default settings.
+
+### Verifying the setup
+1. Run the `seedu.duke.Duke`.
+2. Try a few commands.
+3. [Run the tests] to ensure they all pass.
+
+### Configure the coding style
+If using IDEA, follow the guide [[se-edu/guides] IDEA: Configuring the code style](https://se-education.org/guides/tutorials/intellijCodeStyle.html) 
+to set up IDEA’s coding style to match ours.
+
+>Optionally, you can follow the guide [[se-edu/guides] Using Checkstyle](https://se-education.org/guides/tutorials/checkstyle.html) 
+>to find how to use the CheckStyle within IDEA e.g., to report problems as you write code.
+
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
 
