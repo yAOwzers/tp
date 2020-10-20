@@ -7,12 +7,21 @@
   - [Planner Mode](#planner-mode)
     - [Adding task: `add`](#adding-a-task)
     - [Deleting task: `delete`]
+    - [Listing tasks: `list`](#listing-tasks-list)
+        - [Listing all tasks](#listing-all-tasks)
+        - [Listing done tasks](#listing-done-tasks)
+        - [Listing undone tasks](#listing-undone-tasks)
+        - [Listing urgent tasks](#listing-urgent-tasks)
   - [Notebook Mode](#notebook-mode)
     - [Add feature: `add`](#add-feature-add)
         - [Adding a notebook](#adding-a-notebook)
         - [Adding a section](#adding-a-section)
         - [Adding a page](#adding-a-page)
     - [Select feature: `select`](#select-feature-select)
+    - [List contents: `list`](#listing-contents-list)
+        - [In the notebook mode](#in-the-notebook-mode)
+        - [In a selected notebook ](#in-a-selected-notebook)
+        - [In a selected section](#in-a-selected-section)
 - [Command Summary](#command-summary)
 
 ## Introduction
@@ -42,10 +51,10 @@ The following sections explains the various features you can use while you are i
 ### Adding a task
 Adds a `task` with a `deadline` to the task list.
 
-Format: `add /t[TASK] /by[dd/MM/yyyy] [hhmm]`
+Format: `add /t[TASK] /by[dd-MM-yyyy] [hhmm]`
 
 * `TASK`: name of the task.
-* `dd/MM/yyyy`: the due date of the task, in the format day/month/year.
+* `dd-MM-yyyy`: the due date of the task, in the format day/month/year.
 * `hhmm`: time the task is due, in 24h format.
 
 Example of usage:
@@ -72,6 +81,65 @@ Expected output:
 Noted. I've removed this task:
 [x] coding (by: Oct 19 2020 07.00 PM)
 	Now you have 0 tasks in the list.
+```
+
+###Listing tasks: `list`
+
+####Listing all tasks
+Lists out all the existing tasks.
+
+Format: `list`
+
+Example of usage:
+
+```
+>>> list
+1:[o] Read book (by: Oct 19 2020 06.00 PM)
+2:[x] Return book (by: Oct 23 2020 12.00 PM)
+3:[x] Submit assignment (by: Oct 18 2020 04.00 PM)
+4:[x] CS2113T Quiz (by: Oct 23 2020 11.00 PM)
+5:[o] CS2101 OP2 (by: Oct 25 2020 11.00 AM)
+```
+
+####Listing done tasks
+Lists out all the tasks that are marked as done.
+
+Format: `list /d`
+
+Example of usage:
+
+```
+>>> list /d
+1:[o] Read book (by: Oct 19 2020 06.00 PM)
+2:[o] CS2101 OP2 (by: Oct 25 2020 11.00 AM)
+```
+
+####Listing undone tasks 
+Lists out all the tasks that are not marked as done.
+
+Format: `list /u`
+
+Example of usage:
+
+```
+>>> list /u
+1:[x] Return book (by: Oct 23 2020 12.00 PM)
+2:[x] Submit assignment (by: Oct 18 2020 04.00 PM)
+3:[x] CS2113T Quiz (by: Oct 23 2020 11.00 PM)
+```
+
+####Listing urgent tasks 
+Lists out top urgent tasks that has not been done, sorted by deadlines. If there are many undone tasks, top three urgent ones will be displayed.
+
+Format: `list /urgent`
+
+Example of usage:
+
+```
+>>> list /urgent
+1:[x] Submit assignment (by: Oct 18 2020 04.00 PM)
+2:[x] CS2113T Quiz (by: Oct 23 2020 11.00 PM)
+3:[x] Return book (by: Oct 23 2020 12.00 PM)
 ```
 
 ## Notebook Mode
@@ -183,6 +251,95 @@ Noted. I've removed this section:
 Noted. I've removed this notebook:
     CS2113T
 ```
+### Listing contents: `list`
+Lists out the content of the bookshelf, a selected book or a selected section.
+
+Format: `list (/s) (/a)`
+
+- `list` display contents in one level below the current selected object
+- `list /s` display the notebooks together with titles of sections in NOTEBOOK mode
+- `list /a` display all notebooks, sections and pages.
+
+
+
+####In the *notebook* mode:
+
+- `list` displays the titles of notebooks in the shelf.
+- `list /s` displays the titles of notebooks together with titles of sections.
+- `list /a` displays all notebooks, sections and pages.
+
+Example of usage:
+
+```
+>>>list
+* CS2113
+* CG2271
+* CS2101
+
+>>>list /s
+* CS2113
+  |-- Chapter 1
+  |-- Chapter 2
+* CG2271
+* CS2101
+  |-- Chapter 1
+  |-- Chapter 2
+  |-- Chapter 3
+
+>>>list /a
+* CS2113
+  |-- Chapter 1
+  |-- Chapter 2
+* CG2271
+* CS2101
+  |-- Chapter 1
+        |-- Writing email
+            Lorem ipsum
+        |-- Team meeting
+            Lorem ipsum
+  |-- Chapter 2
+  |-- Chapter 3
+```
+
+####In a selected notebook:
+
+- `list` displays the titles of all the sections in the selected notebook.
+- `list /a` displays all sections and pages in the selected notebook.
+
+Example of usage:
+```
+>>>select /nCS2101
+now in notebook book: CS2101
+>>>list
+* Chapter 1
+* Chapter 2
+* Chapter 3
+
+>>>list /a
+* Chapter 1
+  |-- Writing email
+        Lorem ipsum
+  |-- Team meeting
+        Lorem ipsum
+* Chapter 2
+* Chapter 3
+```
+
+####In a selected section:
+
+- `list` displays all the pages in the selected section.
+
+Example of usage:
+
+```
+>>>select /sChapter 1
+now in notebook section: Chapter 1
+>>>list
+* Writing email
+    Lorem ipsum
+* Team meeting
+    Lorem ipsum
+```
 
 ## FAQ
 
@@ -196,7 +353,8 @@ Noted. I've removed this notebook:
 ###Planner Mode
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
-Add a task: `add` | add /tTASK /by[dd/MM/yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
+Add a task: `add` | add /tTASK /by[dd-MM-yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
+List tasks: `list` | list (/u) (/d) (/urgent) | 
 
 ### Notebook Mode
 **Command** | **Format** | **Example**
@@ -204,3 +362,4 @@ Add a task: `add` | add /tTASK /by[dd/MM/yyyy] [hhmm] | add /tcoding /by19-10-20
 Add: `add` | 1) add /nNOTEBOOK 2) add /sSECTION 3) add /pPAGE; CONTENT | add /nCS2101
 Select: `select` | 1) select /nNOTEBOOK 2) select /sSECTION 3) select /pNUMBER | select /nCS2101
 Delete: `delete` | 1) select /nNOTEBOOK /sSECTION /pNUMBER | select /nCS2113T /sW10 /p1
+List contents: `list` | list (/s) (/a) |
