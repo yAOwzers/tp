@@ -69,6 +69,33 @@ to set up IDEA’s coding style to match ours.
 ## User Stories
 
 |Version| As a ... | I want to ... | So that I can ...|
+## Documentation
+We use Markdown for writing our documents.
+
+### Setting up and maintaining the project website.
+- We use **Jekyll** to manage documentation.
+- The `docs/` folder is used for documentation.
+- To learn how to set it up and maintain the project website, follow the guide
+[[se-edu/guides] Using Jekyll for project documentation](https://se-education.org/guides/tutorials/jekyll.html).
+
+### Style guidance
+- Follow the [Google developer documentation style guide](https://developers.google.com/style).
+- Also relevant is the [[se-edu/guides] Markdown coding standard](https://se-education.org/guides/conventions/markdown.html).
+
+### Diagrams
+{Recommend software we use to draw UML diagrams}
+
+### Converting a document to the PDF Format
+We use **Chrome** for converting documentation to PDF format.
+> Reason: CHrome's PDF engine preserves hyperlinks used in Web pages.
+
+Here are the steps to convert the project documentation files to PDF format.
+1. Go to your generated documentation site on GitHub using Chrome.
+2. Within Chrome, click on the `Print` option in Chrome’s menu.
+3. Set the destination to `Save as PDF`, then click `Save` to save a copy of the file in PDF format.
+For best results, use the settings indicated in the screenshot below.
+<img src=https://se-education.org/guides/tutorials/images/chrome_save_as_pdf.png>
+
 |--------|----------|---------------|------------------|
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
 |v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
