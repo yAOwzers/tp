@@ -3,7 +3,7 @@
 ## Navigation Panel
 - [Quick Start](#quick-start)
 - [Features](#features)
-  - [Viewing the user guide: `help`](#)
+  - [Viewing the user guide: `help`](#help)
   - [Mode Switch: `mode`](#mode-switch)
   - [Timetable Mode](#Timetable-mode)
     - [Adding task: `add`](#adding-a-task)
@@ -44,14 +44,14 @@ Zer0Note is a note taking and organisation application that combines the ease of
 
 ### Viewing help : `help`
 
-To view the full user guide, type in `help`. 
+To view the full user guide, type in `help`.
 
 To view the user guide for the timetable mode, type in `help timetable`.
 
 To view the user guide for the notebook mode, type in `help notebook`.
 
 ### Timetable Mode
-The Timetable Mode allows you to manage a list of tasks. 
+The Timetable Mode allows you to manage a list of tasks.
 The following sections explains the various features you can use while you are in the Timetable Mode.
 
 #### Adding a task
@@ -103,7 +103,7 @@ Example of usage:
 2:[o] CS2101 OP2 (by: Oct 25 2020 11.00 AM)
 ```
 
-#### Listing undone tasks 
+#### Listing undone tasks
 Lists out all the tasks that are not marked as done.
 
 Format: `list /u`
@@ -117,7 +117,7 @@ Example of usage:
 3:[x] CS2113T Quiz (by: Oct 23 2020 11.00 PM)
 ```
 
-#### Listing urgent tasks 
+#### Listing urgent tasks
 Lists out top urgent tasks that has not been done, sorted by deadlines. If there are many undone tasks, top three urgent ones will be displayed.
 
 Format: `list /urgent`
@@ -147,10 +147,8 @@ Noted. I've removed this task:
 	Now you have 4 tasks in the list.
 ```
 
-## Notebook Mode
-=======
 ### Notebook Mode
-In `Notebook mode`, you can manage a shelf of notebooks. 
+In `Notebook mode`, you can manage a shelf of notebooks.
 Each notebook contains sections, and each section contains pages. Each page holds your type-written notes.
 
 #### Add Feature: `add`
@@ -340,7 +338,7 @@ You are now in notebook mode
 Noted. I've removed this page: HELLO WORLD
 System.out.println("Hello World!")
 >>> delete /nCS2113T /sW10
-Noted. I've removed this section: 
+Noted. I've removed this section:
 	W10
 >>> delete /nCS2113T
 Noted. I've removed this notebook:
@@ -357,13 +355,15 @@ Noted. I've removed this notebook:
 {Give a 'cheat sheet' of commands here}
 
 ###Timetable Mode
+
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
 Add a task: `add` | add /tTASK /by[dd-MM-yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
-List tasks: `list` | list (/u) (/d) (/urgent) | 
+List tasks: `list` | list (/u) (/d) (/urgent) |
 Delete: `delete` | delete [INDEX] | delete 1
 
 ### Notebook Mode
+
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
 Add: `add` | 1) add /nNOTEBOOK 2) add /sSECTION 3) add /pPAGE; CONTENT | add /nCS2101
