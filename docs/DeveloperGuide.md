@@ -113,13 +113,36 @@ There are two ways to run tests.
 |v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
 
 ## Non-Functional Requirements
+## Appendix A: Requirements
+### Project Scope
+**Target user profile**
+- student with multiple courses
+- has a need to multiple notes
+- has a need to view upcoming tasks swiftly
+- prefer desktop apps over other forms
+- is reasonably comfortable using CLI apps
 
-{Give non-functional requirements}
+**Value proposition**:manage both tasks and notes faster and lighter than a typical mouse/GUI driven app
 
-## Glossary
+### User Stories
+Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikely to have) - `*`
 
-* *glossary item* - Definition
+|Priority| As a ... | I want to ... | So that I can ...|
+|--------|----------|---------------|------------------|
+|`***`|user|record and save my notes|review them later|
+|`***`|student|view all tasks and sections of my notebook|have a clear view of my progress|
+|`***`|new user|have usage instructions|refer to instructions when I forget how to use the App|
+|`**`|forgetful user|see the most urgent tasks|prioritise my tasks|
+|`*`|long-time user|have personalised messages|feel attached to my notes|
 
-## Instructions for manual testing
+### Non-Functional Requirements
+1. Should work on any *mainstream OS* as long as it has Java `11` or above installed.
+2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+
+### Glossary
+
+* **Mainstream OS**: Windows, Linux, OS-X
+* **Notebook shelf**: a list of all notebooks entered by the user
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
