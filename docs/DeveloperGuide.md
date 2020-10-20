@@ -1,6 +1,28 @@
 # Developer Guide
 
-## Design & implementation
+- [Introduction](#introduction)
+- [Setting up](#setting-up)
+    - [Prerequisites](#prerequisites)
+    - [Setting up the project in your computer](#setting-up-the-project-in-your-computer)
+    - [Verifying the setup](#verifying-the-setup)
+    - [Configure coding style](#configure-the-coding-style)
+- [Design](#design)
+    - [Architecture](#architecture)
+- [Implementation](#implementation)
+- [Documentation](#documentation)
+    - [Setting up and maintaining the project website](#setting-up-and-maintaining-the-project-website)
+    - [Style guidance](#style-guidance)
+    - [Diagrams](#diagrams)
+    - [Converting a document to the PDF Format](#converting-a-document-to-the-pdf-format)
+- [Testing](#testing)
+    - [Running tests](#running-tests)
+    - [Types of tests](#types-of-tests)
+- [Appendix A: Requirements](#appendix-a-requirements)
+    - [Project Scope](#project-scope)
+    - [User Stores](#user-stories)
+    - [Non-Functional Requirements](#non-functional-requirements)
+    - [Glossary](#glossary)
+- [Appendix B: Instructions for manual testing](#appendix-b-instructions-for-manual-testing)
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
