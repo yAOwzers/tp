@@ -4,6 +4,9 @@ import seedu.duke.tasks.Task;
 import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.command.CliCommand;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class ListCommandTimetableMode extends CliCommand {
     public static final String COMMAND_WORD = "list";
 
@@ -26,6 +29,9 @@ public class ListCommandTimetableMode extends CliCommand {
             case "/u":
                 printUndoneTasks();
                 break;
+            case "/urgent":
+                printUrgentTasks();
+                break;
             default:
                 printAllTasks();
                 break;
@@ -34,6 +40,25 @@ public class ListCommandTimetableMode extends CliCommand {
             System.out.println("The list of tasks is empty");
         }
 
+    }
+
+    private void printUrgentTasks() {
+        ArrayList<Task> urgentTaskLists = appState.getTaskList().getTaskArrayList();
+        Collections.sort(urgentTaskLists, new SortByDate());
+        int i = 1;
+        for (Task task : urgentTaskLists) {
+            if (task.isDone() == true) {
+                continue;
+            }
+            System.out.print(i++ + ":");
+            System.out.println(task);
+            if (i == 4) {
+                return;
+            }
+        }
+        if (i == 1) {
+            System.out.println("The list of urgent tasks is empty");
+        }
     }
 
     private void printAllTasks() {
@@ -52,6 +77,9 @@ public class ListCommandTimetableMode extends CliCommand {
                 System.out.println(task);
             }
         }
+        if (i == 1) {
+            System.out.println("The list of done tasks is empty");
+        }
     }
 
     private void printUndoneTasks() {
@@ -61,6 +89,9 @@ public class ListCommandTimetableMode extends CliCommand {
                 System.out.print(i++ + ":");
                 System.out.println(task);
             }
+        }
+        if (i == 1) {
+            System.out.println("The list of undone tasks is empty");
         }
     }
 
