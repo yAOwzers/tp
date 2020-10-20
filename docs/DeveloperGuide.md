@@ -145,4 +145,9 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 * **Mainstream OS**: Windows, Linux, OS-X
 * **Notebook shelf**: a list of all notebooks entered by the user
 
+## Appendix B: Instructions for manual testing
+Given below are instructions to test the app manually.
+>**Note**: These instructions only provide a starting point for testers to work on; 
+>testers are expected to do more *exploratory* testing.
+
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
