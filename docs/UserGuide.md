@@ -354,7 +354,7 @@ Noted. I've removed this notebook:
 ## Command Summary
 {Give a 'cheat sheet' of commands here}
 
-###Timetable Mode
+### Timetable Mode
 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
