@@ -50,6 +50,17 @@ To view the user guide for the timetable mode, type in `help timetable`.
 
 To view the user guide for the notebook mode, type in `help notebook`.
 
+### Switching between the two modes : `mode`
+Switches from any modes into the notebook mode (at the bookshelf level) or the timetable mode. 
+
+- Switch to the notebook mode
+
+Format: `mode /n` 
+
+- Switch to the timetable mode
+
+Format: `mode /t`
+
 ### Timetable Mode
 The Timetable Mode allows you to manage a list of tasks.
 The following sections explains the various features you can use while you are in the Timetable Mode.
@@ -361,6 +372,7 @@ Noted. I've removed this notebook:
 Add a task: `add` | add /tTASK /by[dd-MM-yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
 List tasks: `list` | list (/u) (/d) (/urgent) |
 Delete: `delete` | delete [INDEX] | delete 1
+Switch to notebook mode: `mode` | mode /n | 
 
 ### Notebook Mode
 
@@ -370,3 +382,4 @@ Add: `add` | 1) add /nNOTEBOOK 2) add /sSECTION 3) add /pPAGE; CONTENT | add /nC
 Select: `select` | 1) select /nNOTEBOOK 2) select /sSECTION 3) select /pNUMBER | select /nCS2101
 List contents: `list` | list (/s) (/a) |
 Delete: `delete` | 1) select /nNOTEBOOK /sSECTION /pNUMBER | select /nCS2113T /sW10 /p1
+Switch to timetable mode: `mode` | mode /t | 
