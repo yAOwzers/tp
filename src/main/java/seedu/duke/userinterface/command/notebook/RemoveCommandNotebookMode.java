@@ -15,6 +15,7 @@ import seedu.duke.userinterface.command.CliCommand;
 public class RemoveCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "delete";
 
+    private static CliMessages cliMessages = new CliMessages();
     private NotebookShelf currentBookshelf;
     private Notebook currentNotebook;
     private String notebookTitleToRemove;
@@ -57,7 +58,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
     private void removeFromSection() throws InvalidCommandException {
         if (pageNumberToRemove > -1) {
             Page pageRemoved = currentSection.removePage(pageNumberToRemove);
-            CliMessages.printRemovePageMessage(pageRemoved);
+            cliMessages.printRemovePageMessage(pageRemoved);
         } else {
             throw new InvalidCommandException("Please enter in the format:\n"
                     + "delete /pPAGE_NUMBER");
@@ -69,11 +70,11 @@ public class RemoveCommandNotebookMode extends CliCommand {
             int indexOfSectionToRemove = currentNotebook.findSection(sectionTitleToRemove);
             Section section = currentNotebook.getSectionAtIndex(indexOfSectionToRemove);
             Page pageRemoved = section.removePage(pageNumberToRemove);
-            CliMessages.printRemovePageMessage(pageRemoved);
+            cliMessages.printRemovePageMessage(pageRemoved);
         } else if (!sectionTitleToRemove.equals("") && pageNumberToRemove == -1) {
             int indexOfSectionToRemove = currentNotebook.findSection(sectionTitleToRemove);
             Section sectionRemoved = currentNotebook.removeSection(indexOfSectionToRemove);
-            CliMessages.printRemoveSectionMessage(sectionRemoved);
+            cliMessages.printRemoveSectionMessage(sectionRemoved);
         } else {
             throw new InvalidCommandException("Please enter in the format:\n"
                     + "delete /sSECTION /pPAGE_NUMBER");
@@ -81,7 +82,6 @@ public class RemoveCommandNotebookMode extends CliCommand {
     }
 
     private void removeFromNotebookShelf() throws InvalidCommandException, NotebookOutOfBoundsException {
-        CliMessages cliMessages = new CliMessages();
         int indexOfNotebookToRemove = currentBookshelf.findNotebook(notebookTitleToRemove);
 
         if (!notebookTitleToRemove.equals("") && !sectionTitleToRemove.equals("")
