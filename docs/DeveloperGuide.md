@@ -86,6 +86,12 @@ The Sequence Diagram below shows how the components interact with each other for
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### List feature
+
+The following sequence diagram shows how the list operation works:
+
+<img src="https://github.com/longngng/tp/blob/longngng-DG/docs/diagrams/class/jpeg/SequenceDiagram_List.jpg">
+
 ### [Proposed] Find duplicate feature
 
 #### Proposed implementation
