@@ -8,6 +8,7 @@ import seedu.duke.exceptions.InvalidSectionException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
 
+import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Done;
 import seedu.duke.userinterface.command.Exit;
@@ -25,6 +26,7 @@ import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
 
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
@@ -35,6 +37,15 @@ import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode
 import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.TASK_DELIMITER;
 
 public class InputParser {
+
+    private Storage storage;
+    private AppState appState;
+
+    public InputParser(Storage storage, AppState appState) {
+        this.storage = storage;
+        this.appState = appState;
+    }
+
     public static String parseTaskTitle(String input) throws TaskWrongFormatException, TaskTitleException {
         if (input.startsWith(TASK_DELIMITER)) {
             String taskTitle = input.replace(TASK_DELIMITER, "");
@@ -52,24 +63,25 @@ public class InputParser {
     /**
      * Parses user's input to extract deadline.
      *
-     * @param input input from user which contains the deadline.
+     * @param userInput input from user which contains the deadline.
      *
      * @return deadline
      *
      * @throws IncorrectDeadlineFormatException when the deadline input is in the wrong format.
      * @throws TaskWrongFormatException         when the deadline input is blank.
      */
-    public static String parseDeadline(String input) throws TaskWrongFormatException, IncorrectDeadlineFormatException {
-        int dividerPos = input.indexOf(DEADLINE_DELIMITER);
-        input = input.substring(dividerPos);
+    public static String parseDeadline(String userInput) throws TaskWrongFormatException, IncorrectDeadlineFormatException {
+        int dividerPos = userInput.indexOf(DEADLINE_DELIMITER);
+        String input = userInput.substring(dividerPos);
         if (input.startsWith(DEADLINE_DELIMITER)) {
             String deadline = input.replace(DEADLINE_DELIMITER, "").trim();
+            System.out.println(deadline);
             if (deadline.isBlank()) {
                 throw new TaskWrongFormatException();
             }
-            if (!correctTimeFormat(deadline)) {
-                throw new IncorrectDeadlineFormatException();
-            }
+//            if (!correctTimeFormat(deadline)) {
+//                throw new IncorrectDeadlineFormatException();
+//            }
             return deadline;
         } else {
             throw new IncorrectDeadlineFormatException();
@@ -84,11 +96,9 @@ public class InputParser {
      * @return true when the input is in the correct format, otherwise false.
      */
     private static boolean correctTimeFormat(String by) {
-        DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
-        LocalDate date = null;
+        DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("d MMMM yyyy HHmm");
         try {
-            System.out.println(by);
-            date = LocalDate.parse(by, dateTime);
+            LocalDate date = LocalDate.parse(by, dateTime);
             return true;
         } catch (DateTimeParseException d) {
             return false;
@@ -148,7 +158,8 @@ public class InputParser {
         }
     }
 
-    public CliCommand getCommandFromInput(String userInput, AppState appState) throws Exception {
+
+    public CliCommand getCommandFromInput(String userInput, AppState appState, Storage storage) throws Exception {
         String trimmedInput = userInput.trim();
         String[] input = trimmedInput.split(" ", 2); // split input into command and arguments
         String commandWord = input[0];
@@ -159,7 +170,7 @@ public class InputParser {
         switch (commandWord) {
         case AddCommandNotebookMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                return new AddCommandTimetableMode(argument, appState);
+                return new AddCommandTimetableMode(argument, appState, storage);
             } else {
                 String titleToAdd = "";
                 String contentToAdd = "";
@@ -176,7 +187,7 @@ public class InputParser {
             }
         case RemoveCommandTimetableMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
-                return new RemoveCommandTimetableMode(parseTaskIndex(argument), appState);
+                return new RemoveCommandTimetableMode(parseTaskIndex(argument), appState, storage);
             } else {
                 return new RemoveCommandNotebookMode(argument, appState);
             }

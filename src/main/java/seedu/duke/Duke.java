@@ -1,7 +1,12 @@
 package seedu.duke;
 
+import seedu.duke.storage.Storage;
 import seedu.duke.tasks.TaskList;
+import seedu.duke.userinterface.AppState;
+import seedu.duke.userinterface.CliMessages;
 import seedu.duke.userinterface.CliUserInterface;
+
+import javax.swing.text.html.parser.Parser;
 
 public class Duke {
 

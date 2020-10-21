@@ -18,7 +18,7 @@ public class ListCommandNotebookMode extends CliCommand {
     // TODO: Break into functions and avoid repeated code, arrowhead code
 
     public static void listBookshelf_nsp(NotebookShelf notebookShelf) {
-        for (Notebook notebook : notebookShelf.getNotebooksArrayList()) {
+        for (Notebook notebook : notebookShelf.getNotebookArrayList()) {
             System.out.println("* " + notebook.getTitle());
             for (Section section : notebook.getSectionArrayList()) {
                 System.out.println("  |-- " + section.getTitle());
@@ -32,7 +32,7 @@ public class ListCommandNotebookMode extends CliCommand {
 
     // TODO: Break into functions and avoid repeated code, arrowhead code
     public static void listBookshelf_ns(NotebookShelf notebookShelf) {
-        for (Notebook notebook : notebookShelf.getNotebooksArrayList()) {
+        for (Notebook notebook : notebookShelf.getNotebookArrayList()) {
             System.out.println("* " + notebook.getTitle());
             for (Section section : notebook.getSectionArrayList()) {
                 System.out.println("  |-- " + section.getTitle());
@@ -42,7 +42,7 @@ public class ListCommandNotebookMode extends CliCommand {
 
     // TODO: Break into functions and avoid repeated code, arrowhead code
     public static void listBookshelf_n(NotebookShelf notebookShelf) {
-        for (Notebook notebook : notebookShelf.getNotebooksArrayList()) {
+        for (Notebook notebook : notebookShelf.getNotebookArrayList()) {
             System.out.println("* " + notebook.getTitle());
         }
     }
@@ -79,13 +79,13 @@ public class ListCommandNotebookMode extends CliCommand {
         case NOTEBOOK_SHELF:
             switch (commandParams) {
             case ("/s"):
-                listBookshelf_ns(appState.getCurrentBookShelf());
+                listBookshelf_ns(appState.getCurrentNotebookShelf());
                 break;
             case ("/a"):
-                listBookshelf_nsp(appState.getCurrentBookShelf());
+                listBookshelf_nsp(appState.getCurrentNotebookShelf());
                 break;
             default:
-                listBookshelf_n(appState.getCurrentBookShelf());
+                listBookshelf_n(appState.getCurrentNotebookShelf());
                 break;
             }
             break;

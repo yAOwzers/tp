@@ -1,45 +1,54 @@
 package seedu.duke.userinterface;
 
+import seedu.duke.exceptions.InvalidUserInputException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Section;
+import seedu.duke.storage.Storage;
 import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 
 public class AppState {
     private AppMode appMode;
     private TaskList currentTaskList;
-    private NotebookShelf currentBookShelf;
+    private NotebookShelf currentNotebookShelf;
     private Notebook currentNotebook;
     private Section currentSection;
+    private Storage storage;
+
     private int indexOfCurrentNotebook;
     private int indexOfCurrentSection;
+    private String sectionTitle;
+    private String notebookTitle;
 
+    public AppState(Storage storage) {
+        this.currentTaskList = new TaskList();
+        this.currentSection = new Section(this.sectionTitle);
+        this.currentNotebook = new Notebook(this.notebookTitle);
+        this.currentNotebookShelf = new NotebookShelf();
+        this.appMode = AppMode.TIMETABLE;
+        this.storage = storage;
 
-    public AppState() {
-        currentTaskList = new TaskList();
-        appMode = AppMode.TIMETABLE;
-        currentBookShelf = new NotebookShelf();
     }
 
     public AppMode getAppMode() {
-        return appMode;
+        return this.appMode;
     }
 
     public void setAppMode(AppMode appMode) {
         this.appMode = appMode;
     }
 
-    public NotebookShelf getCurrentBookShelf() {
-        return currentBookShelf;
+    public NotebookShelf getCurrentNotebookShelf() {
+        return this.currentNotebookShelf;
     }
 
-    public void setCurrentBookShelf(NotebookShelf currentBookShelf) {
-        this.currentBookShelf = currentBookShelf;
+    public void setCurrentNotebookShelf(NotebookShelf currentNotebookShelf) {
+        this.currentNotebookShelf = currentNotebookShelf;
     }
 
     public Notebook getCurrentNotebook() {
-        return currentNotebook;
+        return this.currentNotebook;
     }
 
     public void setCurrentNotebook(Notebook currentNotebook) {
@@ -47,7 +56,7 @@ public class AppState {
     }
 
     public int getIndexOfCurrentNotebook() {
-        return indexOfCurrentNotebook;
+        return this.indexOfCurrentNotebook;
     }
 
     public void setIndexOfCurrentNotebook(int indexOfCurrentNotebook) {
@@ -55,7 +64,7 @@ public class AppState {
     }
 
     public Section getCurrentSection() {
-        return currentSection;
+        return this.currentSection;
     }
 
     public void setCurrentSection(Section currentSection) {
@@ -63,7 +72,7 @@ public class AppState {
     }
 
     public int getIndexOfCurrentSection() {
-        return indexOfCurrentSection;
+        return this.indexOfCurrentSection;
     }
 
     public void setIndexOfCurrentSection(int indexOfCurrentSection) {
@@ -71,7 +80,7 @@ public class AppState {
     }
 
     public TaskList getTaskList() {
-        return currentTaskList;
+        return this.currentTaskList;
     }
 
     public void setTaskList(TaskList taskList) {
@@ -83,7 +92,10 @@ public class AppState {
         return task;
     }
 
-
-
-
+    public void loadState() throws InvalidUserInputException {
+        this.storage.loadTaskList(this.currentTaskList);
+         this.storage.loadSection(this.currentSection);
+         this.storage.loadNotebook(this.currentNotebook);
+         this.storage.loadNotebookShelf(this.currentNotebookShelf);
+    }
 }

@@ -1,48 +1,57 @@
 package seedu.duke.userinterface;
 
 
+import seedu.duke.exceptions.InvalidUserInputException;
 import seedu.duke.exceptions.ZeroNoteException;
 
 import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Exit;
 
+import javax.swing.text.html.parser.Parser;
 import java.util.Scanner;
 
 public class CliUserInterface {
     private AppState appState;
+    private Storage storage;
+    private CliMessages messages;
+    private InputParser parser;
 
     private boolean toQuit = false;
 
-    // TODO change the filepath to an appropriate one
-    private static final String filepath = "data/data.txt";
-
+    // TODO find out whether to init class objects here or in Duke
     public CliUserInterface() {
-
+        this.messages = new CliMessages();
+        this.storage = new Storage();
+        this.appState = new AppState(this.storage);
+        this.parser = new InputParser(this.storage, this.appState);
     }
 
-    // TODO change
-    private void loadState() {
-        Storage storage = new Storage(this.filepath);
-        appState = storage.readFromFile();
+    /**
+     * Initialises Zer0Note.
+     *
+     * @return welcome message.
+     */
+    private void startUI() {
+        try {
+            this.appState.loadState();
+        } catch (InvalidUserInputException e) {
+            System.out.println(this.messages.printZer0NoteError(e));
+        }
+        System.out.println("Welcome to Zer0Note!");
+        System.out.println("You are now in timetable mode");
+        // TODO: Make this prettier
     }
-
-    // TODO change
-    private void saveState() {
-        Storage storage = new Storage(this.filepath);
-        storage.saveToFile(appState);
-    }
-
 
     public void run() {
         startUI();
-        loadState();
         String userInput;
         Scanner keyboard = new Scanner(System.in);
         while (!toQuit) {
             userInput = keyboard.nextLine();
             if (userInput.equals(Exit.COMMAND_WORD)) {
-                saveState(); // TODO change saveState at every command
+                // TODO change saveState at every command
+                System.out.println(printExit());
                 toQuit = true;
             }
             try {
@@ -58,18 +67,9 @@ public class CliUserInterface {
     }
 
     private void executeCommand(String userInput) throws Exception {
-        InputParser parser = new InputParser();
-        CliCommand command = parser.getCommandFromInput(userInput, appState);
+        CliCommand command = this.parser.getCommandFromInput(userInput, this.appState, this.storage);
         command.execute();
     }
-
-    private void startUI() {
-        System.out.println("Welcome to Zer0Note!");
-        System.out.println("You are now in timetable mode");
-        // TODO: Make this prettier
-    }
-
-
 
     public String printExit() {
         return "GOODBYE HOPE TO SEE YOU AGAIN";

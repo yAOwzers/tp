@@ -8,6 +8,7 @@ import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Page;
 import seedu.duke.notebooks.Section;
+import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.AppMode;
 import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.InputParser;
@@ -26,6 +27,7 @@ public class SelectCommandNotebookMode extends CliCommand {
     private int pageNum;
     private Notebook notebook;
     private Section section;
+    private Storage storage;
 
     public SelectCommandNotebookMode(String argument, AppState uiMode) {
         this.setAppState(uiMode);
@@ -34,7 +36,7 @@ public class SelectCommandNotebookMode extends CliCommand {
 
     // TODO: Refactor to InputParser
     private void extractParams(String argument) {
-        InputParser parser = new InputParser();
+        InputParser parser = new InputParser(this.storage, this.appState);
         try {
             if (argument.startsWith(NOTEBOOK_DELIMITER) && appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
                 extractNotebookParams(argument, parser);
@@ -72,7 +74,7 @@ public class SelectCommandNotebookMode extends CliCommand {
     private void extractNotebookParams(String argument, InputParser parser)
             throws InvalidNotebookException, InvalidSectionException, InvalidPageException {
         notebookTitle = InputParser.parseNotebookTitle(argument);
-        notebook = findNotebook(appState.getCurrentBookShelf(), notebookTitle);
+        notebook = findNotebook(appState.getCurrentNotebookShelf(), notebookTitle);
         if (argument.contains(SECTION_DELIMITER)) {
             sectionTitle = InputParser.parseSectionTitle(argument);
             section = findSection(notebook, sectionTitle);
@@ -106,7 +108,7 @@ public class SelectCommandNotebookMode extends CliCommand {
     // problem because currentBookshelf is null
     // TODO: Delete, replace with NotebookShelf.findNotebook(), NotebookShelf.getNotebookAtIndex()
     private Notebook findNotebook(NotebookShelf currentBookshelf, String notebookTitle) {
-        ArrayList<Notebook> notebookArrayList = currentBookshelf.getNotebooksArrayList();
+        ArrayList<Notebook> notebookArrayList = currentBookshelf.getNotebookArrayList();
         int i = 0;
         for (Notebook notebook : notebookArrayList) {
             if (notebook.getTitle().equals(notebookTitle)) {

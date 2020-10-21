@@ -2,6 +2,10 @@ package seedu.duke.notebooks;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a list of Pages.
+ *
+ */
 public class Section {
     private String title;
     private final ArrayList<Page> pageArrayList;
@@ -54,4 +58,23 @@ public class Section {
     public ArrayList<Page> getPageArrayList() {
         return pageArrayList;
     }
+
+    public int getNumberOfPages() {
+        return pageArrayList.size();
+    }
+
+    public String toTxtFormat() {
+        return this.title;
+    }
+
+    public void load(Page page) {
+        pageArrayList.add(page);
+    }
+
+    public static Section parse(String txtFormat) {
+        String title = txtFormat;
+        Section newSection = new Section(title);
+        return newSection;
+    }
 }
+

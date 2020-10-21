@@ -2,6 +2,10 @@ package seedu.duke.notebooks;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a list of Sections.
+ *
+ */
 public class Notebook {
     private String title;
     private final ArrayList<Section> sectionArrayList;
@@ -71,5 +75,23 @@ public class Notebook {
 
     public ArrayList<Section> getSectionArrayList() {
         return sectionArrayList;
+    }
+
+    public int getNumberOfSections() {
+        return this.sectionArrayList.size();
+    }
+
+    public String toTxtFormat() {
+        return this.title + System.lineSeparator();
+    }
+
+    public void load(Section section) {
+        sectionArrayList.add(section);
+    }
+
+    public static Notebook parse(String txtFormat) {
+        String title = txtFormat;
+        Notebook newNotebook = new Notebook(title);
+        return newNotebook;
     }
 }

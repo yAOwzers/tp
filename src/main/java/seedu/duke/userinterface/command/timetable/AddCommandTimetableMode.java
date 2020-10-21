@@ -1,8 +1,10 @@
 package seedu.duke.userinterface.command.timetable;
 
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
+import seedu.duke.exceptions.InvalidUserInputException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
+import seedu.duke.storage.Storage;
 import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.AppState;
@@ -18,22 +20,24 @@ public class AddCommandTimetableMode extends CliCommand {
     private static InputParser parser;
     private final String argument;
     private final CliMessages messages = new CliMessages();
+    private Storage storage;
 
-    public AddCommandTimetableMode(String argument, AppState appState) {
+    public AddCommandTimetableMode(String argument, AppState appState, Storage storage) {
         this.appState = appState;
         this.argument = argument;
+        this.storage = storage;
     }
 
     @Override
     public void execute() {
-        parser = new InputParser();
         TaskList currentTaskList = appState.getTaskList();
         try {
             if (argument.contains("/by")) {
                 String title = InputParser.parseTaskTitle(argument);
                 String deadline = InputParser.parseDeadline(argument);
-                currentTaskList.addTask(new Task(title, deadline));
-                messages.printAddedTaskMessage(currentTaskList, title);
+                Task newTask = new Task(title, deadline);
+
+                addTask(newTask, currentTaskList);
             } else {
                 throw new TaskWrongFormatException();
             }
@@ -47,7 +51,15 @@ public class AddCommandTimetableMode extends CliCommand {
         } catch (IncorrectDeadlineFormatException d) {
             System.out.println("\tOops! Your deadline should be in this format");
             System.out.println("\tdd-MM-yyyy HHmm where time is in 24h");
+        } catch (InvalidUserInputException e) {
+            e.printStackTrace();
         }
     }
 
+    public void addTask(Task newTask, TaskList currentTaskList) {
+        currentTaskList.addTask(newTask);
+        this.storage.saveTask(newTask);
+        System.out.println(this.messages.printAddTaskMessage(newTask) + "\n"
+                + this.messages.getNumberOfTaskMessage(currentTaskList.getNumberOfTasks()));
+    }
 }

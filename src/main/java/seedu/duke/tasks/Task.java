@@ -8,20 +8,22 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 
 public class Task {
     private final String title;
-    private final String by;
-    protected DateFormat dateTime = new SimpleDateFormat("dd-MM-yyyy HHmm"); // in 24h format
-    protected DateFormat outputFormat = new SimpleDateFormat("MMM dd yyyy hh.mm aa"); // in 12h format
+    private String by;
+//    protected DateFormat dateTime = new SimpleDateFormat("dd-MM-yyyy HHmm"); // in 24h format
+//    protected DateFormat outputFormat = new SimpleDateFormat("MMM dd yyyy hh.mm aa"); // in 12h format
     protected boolean isDone;
+
     private LocalDate dueDate;
     private LocalTime dueTime;
 
-    public Task(String title, String by) {
+    public Task(String title, String dateTime) throws InvalidUserInputException {
         this.title = title;
-        this.by = by;
+        convertDateTime(dateTime);
         this.isDone = false;
     }
 
@@ -45,10 +47,10 @@ public class Task {
         return this.title;
     }
 
-    public String reformatDate() throws ParseException {
-        Date date = dateTime.parse(by);
-        return outputFormat.format(date);
-    }
+//    public String reformatDate() throws ParseException {
+//        Date date = dateTime.parse(by);
+//        return outputFormat.format(date);
+//    }
 
     public String getStatusIcon() {
         return (isDone ? "o" : "x");
@@ -58,22 +60,12 @@ public class Task {
         return isDone;
     }
 
-    @Override
-    public String toString() {
-        try {
-            return "[" + this.getStatusIcon() + "] " + this.title + " (by: " + reformatDate() + ")";
-        } catch (ParseException e) {
-            System.out.println("\tAn error occurred while reading the given deadline.");
-        }
-        return null;
-    }
-
     public String getTaskInMessagesFormat() {
-        return "[" + this.getStatusIcon() + "] " + this.title;
+        return "[" + this.getStatusIcon() + "] " + this.title + " (by: " + this.by + " )";
     }
 
     public String toTxtFormat() {
-        return (isDone ? "1" : "0") + " | " + this.title;
+        return (isDone ? "1" : "0") + " | " + this.title + " | " + this.by;
     }
 
     public static Task parse(String txtFormat) throws InvalidUserInputException {
@@ -90,8 +82,26 @@ public class Task {
         return newTask;
     }
 
+    /**
+     * Converts the given string into a LocalDateTime to be stored in the given Deadline.
+     * @param dateAndTime to be converted into LocalDateTime.
+     * @throws InvalidUserInputException when an invalid a date time format is used as input.
+     */
+    private void convertDateTime(String dateAndTime) throws InvalidUserInputException {
+        try {
+            String[] dateTimeArray = dateAndTime.split(" ");
+            this.dueDate = LocalDate.parse(dateTimeArray[0]);
+            this.dueTime =
+                    LocalTime.parse(dateTimeArray[1].substring(0, 2) + ":" + dateTimeArray[1].substring(2, 4));
+            this.by = this.dueDate.format(DateTimeFormatter.ofPattern("d MMMM yyyy")) + " "
+                    + this.dueTime.format(DateTimeFormatter.ofPattern("hh:mm a"));
+        } catch (DateTimeParseException e) {
+            throw new InvalidUserInputException();
+        }
+    }
+
     private static String[] formatDateTime(String[] unformattedDateAndTime) {
-        String[] formattedDateAndTime = new String[3];
+        String[] formattedDateAndTime = new String[2];
 
         String unformattedDate =
                 unformattedDateAndTime[0] + " " + unformattedDateAndTime[1] + " " + unformattedDateAndTime[2];
@@ -111,4 +121,16 @@ public class Task {
         return formattedDateAndTime;
     }
 
+    @Override
+    public String toString() {
+
+        return getStatusIcon() + " | " + this.title + " | "
+                + this.by + System.lineSeparator();
+//        try {
+//                return "[" + this.getStatusIcon() + "] " + this.title + " (by: " + this.by + ")";
+//        } catch (ParseException e) {
+//            System.out.println("\tAn error occurred while reading the given deadline.");
+//        }
+//        return null;
+    }
 }
