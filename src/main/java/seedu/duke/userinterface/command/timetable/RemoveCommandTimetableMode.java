@@ -28,7 +28,7 @@ public class RemoveCommandTimetableMode extends CliCommand {
         try {
             Task deletedTask = currentTaskList.removeTask(indexToRemove);
             CliMessages.printRemoveTaskMessage(deletedTask, numberOfTasks);
-            this.storage.saveTaskList(currentTaskList);
+            this.storage.saveTaskList(currentTaskList); // saves the file by overwriting the data.txt file
         } catch (IndexOutOfBoundsException ioe) {
             if (numberOfTasks > 0) {
                 System.out.println("Please enter a valid index between 1 and " + numberOfTasks + ".");

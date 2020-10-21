@@ -16,7 +16,7 @@ public class CliMessages {
 
     public static void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
         System.out.println(REMOVE_TASK_SUCCESS_MESSAGE);
-        System.out.println(deletedTask.toString());
+        System.out.println(deletedTask.getTaskInMessagesFormat());
         if (numberOfTasks == 1) {
             System.out.println("\tNow you have " + numberOfTasks + " task in the list.");
         } else {

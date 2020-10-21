@@ -88,6 +88,7 @@ public class InputParser {
         }
     }
 
+    // TODO fix this method
     /**
      * Checks if [deadline] input by the user is in the correct format.
      *
