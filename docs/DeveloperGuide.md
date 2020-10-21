@@ -98,7 +98,7 @@ Step 1. The user launches the application for the first time. CliUserInterface#e
 
 Step 2. The user types `add /tTask /by19-10-2020 1900`. The `add` command is passed through `InputParser#getCommandFromInput`, which then calls `AddCommandTimetableMode#execute()`.
 
-Step 3. `execute()` is called, which then calls `InputParser`, which first extracts the `title` from the user's input.
+Step 3. `execute()` is called, which then calls `InputParser#parseTaskTitle`, which first extracts the `title` from the user's input.
 
 Step 4. The `title` is then passed to the `findDuplicate` method in `TaskList`.
 
@@ -106,7 +106,7 @@ Step 5. The `findDuplicate` method returns false, since it is the first task tit
 
 Step 6. `InputParser#parseDeadline` is then called, which returns the `deadline` to `AddCommandTimetableMode#execute()`.
 
-Step 7. `TaskList#addTask` is then called and a new `Task` is initialised.
+Step 7. `TaskList#addTask` is then called and a new `Task`, with `title` and `deadline`, is initialised.
 
 Step 8. To signal that the user has successfully added a task, a message is printed with `CliMessages#printAddedTaskMessage`.
 
@@ -114,6 +114,16 @@ Step 8. To signal that the user has successfully added a task, a message is prin
 The sequence diagram below shows how the find duplicate command works:
 
 ![Sequence diagram for finding duplicates](/diagrams/class/jpeg/duplicates_francene.jpg)
+
+#### Design consideration
+##### Aspect: Where findDuplicate should be placed
+
+* Alternative 1 (current choice): findDuplicate should be saved in the class that potentially creates duplicates.
+  * Pros: Easier to access previously saved tasks/notebooks/notebook sections.
+  * Cons: May have performance issues in terms of memory usage.
+* Alternative 2: findDuplicate should be saved in the command that creates it.
+  * Pros: Less time spent in passing variables to different classes.
+  * Cons: We must grant access to private objects that are not within the command class.
 
 
 ## Documentation
