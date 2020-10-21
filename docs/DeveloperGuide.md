@@ -122,6 +122,7 @@ The sequence diagram below shows how the find duplicate command works:
 ![Sequence diagram for finding duplicates](/diagrams/class/jpeg/duplicates_francene.jpg)
 
 #### Design consideration
+
 ##### Aspect: Where findDuplicate should be placed
 
 * Alternative 1 (current choice): findDuplicate should be saved in the class that potentially creates duplicates.
