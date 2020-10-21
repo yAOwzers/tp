@@ -86,6 +86,36 @@ The Sequence Diagram below shows how the components interact with each other for
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### [Proposed] Find duplicate feature
+
+#### Proposed implementation
+
+The proposed find duplicate function is facilitated by a method in the classes `Task List`, `Notebook Shelf`, `Notebook` and `Section`.
+
+Given below is an example usage scenario and how the find duplicates function behaves.
+
+Step 1. The user launches the application for the first time. CliUserInterface#executeCommand is called when the user adds a task into the task list.
+
+Step 2. The user types `add /tTask /by19-10-2020 1900`. The `add` command is passed through `InputParser#getCommandFromInput`, which then calls `AddCommandTimetableMode#execute()`.
+
+Step 3. `execute()` is called, which then calls `InputParser`, which first extracts the `title` from the user's input.
+
+Step 4. The `title` is then passed to the `findDuplicate` method in `TaskList`.
+
+Step 5. The `findDuplicate` method returns false, since it is the first task titled `Task` to be added into the `TaskList`. Conversely, the `findDuplicate` method returns true when a task with the same `title` already exists in the `TaskList`.
+
+Step 6. `InputParser#parseDeadline` is then called, which returns the `deadline` to `AddCommandTimetableMode#execute()`.
+
+Step 7. `TaskList#addTask` is then called and a new `Task` is initialised.
+
+Step 8. To signal that the user has successfully added a task, a message is printed with `CliMessages#printAddedTaskMessage`.
+
+
+The sequence diagram below shows how the find duplicate command works:
+
+![Sequence diagram for finding duplicates](/diagrams/class/jpeg/duplicates_francene.jpg)
+
+
 ## Documentation
 
 We use Markdown for writing our documents.
