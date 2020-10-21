@@ -19,12 +19,13 @@ public class RemoveCommandTimetableMode extends CliCommand {
 
     @Override
     public void execute() {
+        CliMessages cliMessages = new CliMessages();
         int numberOfTasks = 0;
         try {
             TaskList taskList = appState.getTaskList();
             Task deletedTask = taskList.removeTask(indexToRemove);
             numberOfTasks = taskList.getNumberOfTasks();
-            CliMessages.printRemoveTaskMessage(deletedTask, numberOfTasks);
+            cliMessages.printRemoveTaskMessage(deletedTask, numberOfTasks);
         } catch (IndexOutOfBoundsException ioe) {
             if (numberOfTasks > 0) {
                 System.out.println("Please enter a valid index between 1 and " + numberOfTasks + ".");
