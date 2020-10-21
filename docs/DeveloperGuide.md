@@ -32,9 +32,9 @@
 2. **IntelliJ** IDEA
 
 ### Setting up the project in your computer
->:exclamation **Caution:** Follow the steps in the following guide precisely.
+>:exclamation: **Caution:** Follow the steps in the following guide precisely.
 >Things will not work out if you deviate in some steps.
-1. Fork this repo, and clone the fork into your computer.
+1. **Fork** this repo, and **clone** the fork into your computer.
 2. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
 3. Set up the correct JDK version for Gradle
     a. Click `Configure` > `Project Defaults` > `Project Structure`
@@ -47,13 +47,13 @@
 ### Verifying the setup
 1. Run the `seedu.duke.Duke`.
 2. Try a few commands.
-3. [Run the tests] to ensure they all pass.
+3. [Run the tests](#running-tests) to ensure they all pass.
 
 ### Configure the coding style
-If using IDEA, follow the guide [[se-edu/guides] IDEA: Configuring the code style](https://se-education.org/guides/tutorials/intellijCodeStyle.html) 
+If using IDEA, follow the guide [[se-edu/guides] IDEA: Configuring the code style](https://se-education.org/guides/tutorials/intellijCodeStyle.html)
 to set up IDEA’s coding style to match ours.
 
->Optionally, you can follow the guide [[se-edu/guides] Using Checkstyle](https://se-education.org/guides/tutorials/checkstyle.html) 
+>Optionally, you can follow the guide [[se-edu/guides] Using Checkstyle](https://se-education.org/guides/tutorials/checkstyle.html)
 >to find how to use the CheckStyle within IDEA e.g., to report problems as you write code.
 
 ## Design
@@ -85,14 +85,14 @@ We use Markdown for writing our documents.
 
 ### Converting a document to the PDF Format
 We use **Chrome** for converting documentation to PDF format.
-> Reason: CHrome's PDF engine preserves hyperlinks used in Web pages.
+> Reason: Chrome's PDF engine preserves hyperlinks used in Web pages.
 
 Here are the steps to convert the project documentation files to PDF format.
 1. Go to your generated documentation site on GitHub using Chrome.
 2. Within Chrome, click on the `Print` option in Chrome’s menu.
 3. Set the destination to `Save as PDF`, then click `Save` to save a copy of the file in PDF format.
 For best results, use the settings indicated in the screenshot below.
-<img src=https://se-education.org/guides/tutorials/images/chrome_save_as_pdf.png>
+<img src= https://se-education.org/guides/tutorials/images/chrome_save_as_pdf.png>
 
 ## Testing
 ### Running tests
@@ -104,7 +104,9 @@ There are two ways to run tests.
     - Open a console and run the command `gradlew clean test` (Mac/Linux: `./gradlew clean test`)
 
 ### Types of tests
-{Describe the type of testing used in the code}
+This project has one type of test:
+Unit tests targeting the lowest level methods/classes.
+e.g. `seedu.duke.userinterface.command.AddNotebookTest`
 
 ## Appendix A: Requirements
 ### Project Scope
@@ -140,7 +142,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 
 ## Appendix B: Instructions for manual testing
 Given below are instructions to test the app manually.
->**Note**: These instructions only provide a starting point for testers to work on; 
+>**Note**: These instructions only provide a starting point for testers to work on;
 >testers are expected to do more *exploratory* testing.
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
