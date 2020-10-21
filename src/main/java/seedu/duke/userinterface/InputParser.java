@@ -15,7 +15,7 @@ import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.command.CliCommand;
-import seedu.duke.userinterface.command.Done;
+import seedu.duke.userinterface.command.timetable.DoneCommandTimetableMode;
 import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
 import seedu.duke.userinterface.command.ModeSwitch;
@@ -398,8 +398,8 @@ public class InputParser {
             return new Exit(argument, appState);
         case Help.COMMAND_WORD:
             return new Help(argument);
-        case Done.COMMAND_WORD:
-            return new Done(argument, appState);
+        case DoneCommandTimetableMode.COMMAND_WORD:
+            return new DoneCommandTimetableMode(argument, appState);
         case ModeSwitch.COMMAND_WORD:
             return new ModeSwitch(argument, appState);
         default:

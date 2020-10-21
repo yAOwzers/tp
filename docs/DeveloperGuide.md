@@ -27,12 +27,15 @@
 ## Introduction
 
 ## Setting up
+
 ### Prerequisites
+
 1. **JDK** 11
 2. **IntelliJ** IDEA
 
 ### Setting up the project in your computer
->:exclamation **Caution:** Follow the steps in the following guide precisely.
+
+>:exclamation: **Caution:** Follow the steps in the following guide precisely.
 >Things will not work out if you deviate in some steps.
 1. Fork this repo, and clone the fork into your computer.
 2. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
@@ -45,11 +48,13 @@
 7. Click `OK` to accept the default settings.
 
 ### Verifying the setup
+
 1. Run the `seedu.duke.Duke`.
 2. Try a few commands.
 3. [Run the tests] to ensure they all pass.
 
 ### Configure the coding style
+
 If using IDEA, follow the guide [[se-edu/guides] IDEA: Configuring the code style](https://se-education.org/guides/tutorials/intellijCodeStyle.html) 
 to set up IDEA’s coding style to match ours.
 
@@ -59,31 +64,56 @@ to set up IDEA’s coding style to match ours.
 ## Design
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+
 ### Architecture
+
+#### Commands
+
+<img src="https://github.com/NeilBaner/tp/blob/neilbaner-dg/docs/diagrams/class/jpeg/timetable_commands.jpg">
+
+<img src="https://github.com/NeilBaner/tp/blob/neilbaner-dg/docs/diagrams/class/jpeg/notebook_commands.jpg">
+
+#### Notebooks
+
+<img src="https://github.com/NeilBaner/tp/blob/neilbaner-dg/docs/diagrams/class/jpeg/notebooks.jpg">
+
+#### Tasks
 
 **How the architecture components interact with each other**
 The Sequence Diagram below shows how the components interact with each other for the scenario...
 
 ## Implementation
+
 This section describes some noteworthy details on how certain features are implemented.
 
+### List feature
+
+The following sequence diagram shows how the list operation works:
+
+<img src="https://github.com/longngng/tp/blob/longngng-DG/docs/diagrams/class/jpeg/SequenceDiagram_List.jpg">
+
 ## Documentation
+
 We use Markdown for writing our documents.
 
 ### Setting up and maintaining the project website.
+
 - We use **Jekyll** to manage documentation.
 - The `docs/` folder is used for documentation.
 - To learn how to set it up and maintain the project website, follow the guide
 [[se-edu/guides] Using Jekyll for project documentation](https://se-education.org/guides/tutorials/jekyll.html).
 
 ### Style guidance
+
 - Follow the [Google developer documentation style guide](https://developers.google.com/style).
 - Also relevant is the [[se-edu/guides] Markdown coding standard](https://se-education.org/guides/conventions/markdown.html).
 
 ### Diagrams
-{Recommend software we use to draw UML diagrams}
+
+We use Microsoft Visio Professional 2019 to draw our UML diagrams. 
 
 ### Converting a document to the PDF Format
+
 We use **Chrome** for converting documentation to PDF format.
 > Reason: CHrome's PDF engine preserves hyperlinks used in Web pages.
 
@@ -95,7 +125,9 @@ For best results, use the settings indicated in the screenshot below.
 <img src=https://se-education.org/guides/tutorials/images/chrome_save_as_pdf.png>
 
 ## Testing
+
 ### Running tests
+
 There are two ways to run tests.
 - **Method 1: Using IntelliJ JUnit test runner**
     - To run all tests, right-click on the `src/test/java` and choose `Run 'Tests in tp.test'`
@@ -104,9 +136,11 @@ There are two ways to run tests.
     - Open a console and run the command `gradlew clean test` (Mac/Linux: `./gradlew clean test`)
 
 ### Types of tests
+
 {Describe the type of testing used in the code}
 
 ## Appendix A: Requirements
+
 ### Project Scope
 **Target user profile**
 - student with multiple courses
@@ -118,6 +152,7 @@ There are two ways to run tests.
 **Value proposition**:manage both tasks and notes faster and lighter than a typical mouse/GUI driven app
 
 ### User Stories
+
 Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikely to have) - `*`
 
 |Priority| As a ... | I want to ... | So that I can ...|
@@ -129,6 +164,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 |`*`|long-time user|have personalised messages|feel attached to my notes|
 
 ### Non-Functional Requirements
+
 1. Should work on any *mainstream OS* as long as it has Java `11` or above installed.
 2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
@@ -139,6 +175,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 * **Notebook shelf**: a list of all notebooks entered by the user
 
 ## Appendix B: Instructions for manual testing
+
 Given below are instructions to test the app manually.
 >**Note**: These instructions only provide a starting point for testers to work on; 
 >testers are expected to do more *exploratory* testing.
