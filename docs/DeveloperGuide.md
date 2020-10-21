@@ -137,14 +137,17 @@ We use Markdown for writing our documents.
 - To learn how to set it up and maintain the project website, follow the guide
 [[se-edu/guides] Using Jekyll for project documentation](https://se-education.org/guides/tutorials/jekyll.html).
 
+
 ### Style guidance
 
 - Follow the [Google developer documentation style guide](https://developers.google.com/style).
 - Also relevant is the [[se-edu/guides] Markdown coding standard](https://se-education.org/guides/conventions/markdown.html).
 
+
 ### Diagrams
 
 We use Microsoft Visio Professional 2019 to draw our UML diagrams.
+
 
 ### Converting a document to the PDF Format
 
