@@ -67,6 +67,12 @@ The Sequence Diagram below shows how the components interact with each other for
 ## Implementation
 This section describes some noteworthy details on how certain features are implemented.
 
+### Mode Switch Feature
+### Timetable Mode
+#### Tasklist Management Feature
+
+
+### Notebook Mode
 ## Documentation
 We use Markdown for writing our documents.
 
