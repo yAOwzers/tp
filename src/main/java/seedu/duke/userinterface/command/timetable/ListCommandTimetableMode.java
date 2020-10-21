@@ -1,5 +1,6 @@
 package seedu.duke.userinterface.command.timetable;
 
+import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.tasks.Task;
 import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.command.CliCommand;
@@ -16,12 +17,8 @@ public class ListCommandTimetableMode extends CliCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws InvalidCommandException {
         try {
-            if (appState.getTaskList().getTaskArrayList().size() == 0) {
-                System.out.println("The list of tasks is empty");
-                return;
-            }
             switch (commandParams) {
             case "/d":
                 printDoneTasks();
@@ -32,9 +29,11 @@ public class ListCommandTimetableMode extends CliCommand {
             case "/urgent":
                 printUrgentTasks();
                 break;
-            default:
+            case "":
                 printAllTasks();
                 break;
+            default:
+                throw new InvalidCommandException("There not exists such options");
             }
         } catch (NullPointerException e) {
             System.out.println("The list of tasks is empty");
@@ -66,6 +65,9 @@ public class ListCommandTimetableMode extends CliCommand {
         for (Task task : appState.getTaskList().getTaskArrayList()) {
             System.out.print(i++ + ":");
             System.out.println(task);
+        }
+        if (i == 1) {
+            System.out.println("The list of tasks is empty");
         }
     }
 
