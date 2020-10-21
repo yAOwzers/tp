@@ -202,7 +202,7 @@ public class InputParser {
         case Help.COMMAND_WORD:
             return new Help(argument);
         case DoneCommandTimetableMode.COMMAND_WORD:
-            return new DoneCommandTimetableMode(argument, appState);
+            return new DoneCommandTimetableMode(argument, appState, storage);
         case ModeSwitch.COMMAND_WORD:
             return new ModeSwitch(argument, appState);
         case SelectCommandNotebookMode.COMMAND_WORD:
