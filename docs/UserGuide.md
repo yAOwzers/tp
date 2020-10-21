@@ -3,26 +3,27 @@
 ## Navigation Panel
 - [Quick Start](#quick-start)
 - [Features](#features)
-  - [Viewing the user guide: `help`](#)
+  - [Viewing the user guide: `help`](#help)
   - [Mode Switch: `mode`](#mode-switch)
   - [Timetable Mode](#Timetable-mode)
     - [Adding task: `add`](#adding-a-task)
-    - [Deleting task: `delete`]
     - [Listing tasks: `list`](#listing-tasks-list)
         - [Listing all tasks](#listing-all-tasks)
         - [Listing done tasks](#listing-done-tasks)
         - [Listing undone tasks](#listing-undone-tasks)
         - [Listing urgent tasks](#listing-urgent-tasks)
+    - [Deleting a task: `delete`](#deleting-a-task-delete)
   - [Notebook Mode](#notebook-mode)
-    - [Add feature: `add`](#add-feature-add)
+    - [Add contents: `add`](#add-feature-add)
         - [Adding a notebook](#adding-a-notebook)
         - [Adding a section](#adding-a-section)
         - [Adding a page](#adding-a-page)
-    - [Select feature: `select`](#select-feature-select)
+    - [Select contents: `select`](#select-feature-select)
     - [List contents: `list`](#listing-contents-list)
         - [In the notebook mode](#in-the-notebook-mode)
         - [In a selected notebook ](#in-a-selected-notebook)
         - [In a selected section](#in-a-selected-section)
+    - [Delete contents: `delete`](#delete-feature-delete)
 - [Command Summary](#command-summary)
 
 ## Introduction
@@ -31,10 +32,8 @@ Zer0Note is a note taking and organisation application that combines the ease of
 
 ## Quick Start
 
-{Give steps to get started quickly}
-
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Zer0Note` from [here](https://github.com/AY2021S1-CS2113T-T12-3/tp/releases).
+1. Download the latest version of `Zer0Note` from [here](https://github.com/AY2021S1-CS2113T-T12-3/tp/releases).
 3. Copy the file to the folder you want to use as the home folder for Zer0Note.
 4. Double click the file to start the app.
 5. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will open the help window.
@@ -45,14 +44,14 @@ Zer0Note is a note taking and organisation application that combines the ease of
 
 ### Viewing help : `help`
 
-To view the full user guide, type in `help`. 
+To view the full user guide, type in `help`.
 
 To view the user guide for the timetable mode, type in `help timetable`.
 
 To view the user guide for the notebook mode, type in `help notebook`.
 
 ### Timetable Mode
-The Timetable Mode allows you to manage a list of tasks. 
+The Timetable Mode allows you to manage a list of tasks.
 The following sections explains the various features you can use while you are in the Timetable Mode.
 
 #### Adding a task
@@ -65,31 +64,13 @@ Format: `add /t[TASK] /by[dd-MM-yyyy] [hhmm]`
 * `hhmm`: time the task is due, in 24h format.
 
 Example of usage:
-`add /tcoding /by19-10-2020 1900`
+`add /tRead book /by19-10-2020 1800`
 
 Expected output:
 ```
 Added: coding
-1:[x] coding (by: Oct 19 2020 07.00 PM)
+1:[x] Read book (by: Oct 19 2020 06.00 PM)
 ```
-
-#### Deleting a task: `delete`
-Deletes an existing task from the task list.
-
-Format: `delete [INDEX]`
-
-* `INDEX` refers to the index number of the intended task in the full task list
-
-Example of usage:
-`delete 1`
-
-Expected output:
-```
-Noted. I've removed this task:
-[x] coding (by: Oct 19 2020 07.00 PM)
-	Now you have 0 tasks in the list.
-```
-
 
 ### Listing tasks: `list`
 
@@ -122,7 +103,7 @@ Example of usage:
 2:[o] CS2101 OP2 (by: Oct 25 2020 11.00 AM)
 ```
 
-#### Listing undone tasks 
+#### Listing undone tasks
 Lists out all the tasks that are not marked as done.
 
 Format: `list /u`
@@ -136,7 +117,7 @@ Example of usage:
 3:[x] CS2113T Quiz (by: Oct 23 2020 11.00 PM)
 ```
 
-#### Listing urgent tasks 
+#### Listing urgent tasks
 Lists out top urgent tasks that has not been done, sorted by deadlines. If there are many undone tasks, top three urgent ones will be displayed.
 
 Format: `list /urgent`
@@ -149,11 +130,25 @@ Example of usage:
 2:[x] CS2113T Quiz (by: Oct 23 2020 11.00 PM)
 3:[x] Return book (by: Oct 23 2020 12.00 PM)
 ```
+#### Deleting a task: `delete`
+Deletes an existing task from the task list.
 
-## Notebook Mode
-=======
+Format: `delete [INDEX]`
+
+* `INDEX` refers to the index number of the intended task in the full task list
+
+Example of usage:
+`delete 1`
+
+Expected output:
+```
+Noted. I've removed this task:
+[x] Read book (by: Oct 19 2020 06.00 PM)
+	Now you have 4 tasks in the list.
+```
+
 ### Notebook Mode
-In `Notebook mode`, you can manage a shelf of notebooks. 
+In `Notebook mode`, you can manage a shelf of notebooks.
 Each notebook contains sections, and each section contains pages. Each page holds your type-written notes.
 
 #### Add Feature: `add`
@@ -223,44 +218,6 @@ In a selected *NOTEBOOK*,
 In a selected *SECTION*,
 * `select /p1` - selects page 1 in the selected `section`.
 
-#### Delete Feature: `delete`
-Deletes an existing notebook, section or page.
->:exclamation: The current selection determines the range you can delete.
->
-Format: `delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
-
-* `NOTEBOOK`: the title of the notebook to be deleted
-* `SECTION`: the title of the section to be deleted in the selected `NOTEBOOK`
-* `NUMBER`: the page number of the page to be deleted in the selected `SECTION`.
-
-In *NOTEBOOK MODE*,
-Examples of usages:
-* `delete /nCS2113T /sW10 /p1` deletes page `1` under the section `W10` of the notebook `CS2113T`.
-* `delete /nCS2113T /sW10` deletes the entire section titled `W10` in the notebook `CS2113T`.
-* `delete /nCS2113T` deletes the entire notebook titled `CS2113T`.
-
-In a selected *NOTEBOOK*,
-* `delete /s1: What is OOP? /p1` deletes page `1` of the section titled `1: What is OOP?` of the selected notebook.
-* `delete /s1: What is OOP?` deletes the section titled `1: What is OOP?` of the selected notebook.
-
-In a selected *SECTION*,
-* `delete /p1` deletes page `1` of the selected section.
-
-The following example shows the output when deleting from the *notebook mode*.
-Expected output:
-```
->>> mode /n
-You are now in notebook mode
->>> delete /nCS2113T /sW10 /p1
-Noted. I've removed this page: HELLO WORLD
-System.out.println("Hello World!")
->>> delete /nCS2113T /sW10
-Noted. I've removed this section: 
-	W10
->>> delete /nCS2113T
-Noted. I've removed this notebook:
-    CS2113T
-```
 ### Listing contents: `list`
 Lists out the content of the bookshelf, a selected book or a selected section.
 
@@ -270,9 +227,7 @@ Format: `list (/s) (/a)`
 - `list /s` display the notebooks together with titles of sections in NOTEBOOK mode
 - `list /a` display all notebooks, sections and pages.
 
-
-
-####In the *notebook* mode:
+#### In the *notebook* mode:
 
 - `list` displays the titles of notebooks in the shelf.
 - `list /s` displays the titles of notebooks together with titles of sections.
@@ -311,7 +266,7 @@ Example of usage:
   |-- Chapter 3
 ```
 
-####In a selected notebook:
+#### In a selected notebook:
 
 - `list` displays the titles of all the sections in the selected notebook.
 - `list /a` displays all sections and pages in the selected notebook.
@@ -335,7 +290,7 @@ now in notebook book: CS2101
 * Chapter 3
 ```
 
-####In a selected section:
+#### In a selected section:
 
 - `list` displays all the pages in the selected section.
 
@@ -351,6 +306,45 @@ now in notebook section: Chapter 1
     Lorem ipsum
 ```
 
+#### Delete Contents: `delete`
+Deletes an existing notebook, section or page.
+>:exclamation: The current selection determines the type you can delete.
+>
+Format: `delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
+
+* `NOTEBOOK`: the title of the notebook to be deleted
+* `SECTION`: the title of the section to be deleted in the selected `NOTEBOOK`
+* `NUMBER`: the page number of the page to be deleted in the selected `SECTION`.
+
+In *NOTEBOOK MODE*,
+Examples of usages:
+* `delete /nCS2113T /sW10 /p1` deletes page `1` under the section `W10` of the notebook `CS2113T`.
+* `delete /nCS2113T /sW10` deletes the entire section titled `W10` in the notebook `CS2113T`.
+* `delete /nCS2113T` deletes the entire notebook titled `CS2113T`.
+
+In a selected *NOTEBOOK*,
+* `delete /s1: What is OOP? /p1` deletes page `1` of the section titled `1: What is OOP?` of the selected notebook.
+* `delete /s1: What is OOP?` deletes the section titled `1: What is OOP?` of the selected notebook.
+
+In a selected *SECTION*,
+* `delete /p1` deletes page `1` of the selected section.
+
+The following example shows the output when deleting from the *notebook mode*.
+Expected output:
+```
+>>> mode /n
+You are now in notebook mode
+>>> delete /nCS2113T /sW10 /p1
+Noted. I've removed this page: HELLO WORLD
+System.out.println("Hello World!")
+>>> delete /nCS2113T /sW10
+Noted. I've removed this section:
+	W10
+>>> delete /nCS2113T
+Noted. I've removed this notebook:
+    CS2113T
+```
+
 ## FAQ
 
 **Q**: How do I transfer my data to another computer?
@@ -360,16 +354,19 @@ now in notebook section: Chapter 1
 ## Command Summary
 {Give a 'cheat sheet' of commands here}
 
-###Timetable Mode
+### Timetable Mode
+
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
 Add a task: `add` | add /tTASK /by[dd-MM-yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
-List tasks: `list` | list (/u) (/d) (/urgent) | 
+List tasks: `list` | list (/u) (/d) (/urgent) |
+Delete: `delete` | delete [INDEX] | delete 1
 
 ### Notebook Mode
+
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
 Add: `add` | 1) add /nNOTEBOOK 2) add /sSECTION 3) add /pPAGE; CONTENT | add /nCS2101
 Select: `select` | 1) select /nNOTEBOOK 2) select /sSECTION 3) select /pNUMBER | select /nCS2101
-Delete: `delete` | 1) select /nNOTEBOOK /sSECTION /pNUMBER | select /nCS2113T /sW10 /p1
 List contents: `list` | list (/s) (/a) |
+Delete: `delete` | 1) select /nNOTEBOOK /sSECTION /pNUMBER | select /nCS2113T /sW10 /p1
