@@ -69,13 +69,13 @@ to set up IDEA’s coding style to match ours.
 
 #### Commands
 
-![UML diagram for Timetable Commands](/docs/diagrams/class/jpeg/timetable_commands.jpg)
+![UML diagram for Timetable Commands](/diagrams/class/jpeg/timetable_commands.jpg)
 
-![UML diagrams for Notebook Commands](/docs/diagrams/class/jpeg/notebook_commands.jpg)
+![UML diagrams for Notebook Commands](/diagrams/class/jpeg/notebook_commands.jpg)
 
 #### Notebooks
 
-![UML diagram for Notebooks](/docs/diagrams/class/jpeg/notebooks.jpg)
+![UML diagram for Notebooks](/diagrams/class/jpeg/notebooks.jpg)
 
 #### Tasks
 
@@ -116,6 +116,7 @@ Here are the steps to convert the project documentation files to PDF format.
 2. Within Chrome, click on the `Print` option in Chrome’s menu.
 3. Set the destination to `Save as PDF`, then click `Save` to save a copy of the file in PDF format.
 For best results, use the settings indicated in the screenshot below.
+
 <img src= "https://se-education.org/guides/tutorials/images/chrome_save_as_pdf.png">
 
 ## Testing
