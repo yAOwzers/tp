@@ -58,7 +58,7 @@ To view the user guide for the timetable mode, type in `help timetable`.
 To view the user guide for the notebook mode, type in `help notebook`.
 
 ### Switching between the two modes : `mode`
-Switches from any modes into the notebook mode (at the bookshelf level) or the timetable mode.
+Switches from notebook mode (at the bookshelf level) to the timetable mode or vice versa.
 
 - Switch to the notebook mode
 
