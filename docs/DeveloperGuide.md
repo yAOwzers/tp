@@ -65,15 +65,19 @@ to set up IDEA’s coding style to match ours.
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
-### Commands
-
-
-
-### Notebooks
-
-### Tasks
-
 ### Architecture
+
+#### Commands
+
+<img src="https://github.com/NeilBaner/tp/blob/neilbaner-dg/docs/diagrams/class/jpeg/timetable_commands.jpg">
+
+<img src="https://github.com/NeilBaner/tp/blob/neilbaner-dg/docs/diagrams/class/jpeg/notebook_commands.jpg">
+
+#### Notebooks
+
+<img src="https://github.com/NeilBaner/tp/blob/neilbaner-dg/docs/diagrams/class/jpeg/notebooks.jpg">
+
+#### Tasks
 
 **How the architecture components interact with each other**
 The Sequence Diagram below shows how the components interact with each other for the scenario...
