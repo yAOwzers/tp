@@ -70,7 +70,7 @@ This section describes some noteworthy details on how certain features are imple
 ### Mode Switch Feature
 ### Timetable Mode
 #### Tasklist Management Feature
-
+<img_src=https://user-images.githubusercontent.com/60319628/96657942-02dc6900-1376-11eb-9284-38322e1a2b09.png>
 
 ### Notebook Mode
 ## Documentation
