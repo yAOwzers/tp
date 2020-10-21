@@ -118,7 +118,7 @@ the contents of other `Task` in the `TaskList`.
 {Introduce how the addition command works}
 
 The figure below shows how the delete task command works:
-<img src=https://user-images.githubusercontent.com/60319628/96657942-02dc6900-1376-11eb-9284-38322e1a2b09.png>
+<img src=https://user-images.githubusercontent.com/60319628/96802352-426d8880-143c-11eb-9a7d-6e2d9a28df45.png>
 
 1. The `CliUserInterface` receives the "delete 1" input by the user and passes it to the `InputParser` class.
 2. `InputParser` parses the input to determine the type of command and the index of the task that is required to delete. 
