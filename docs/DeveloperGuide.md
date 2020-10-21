@@ -69,13 +69,13 @@ to set up IDEA’s coding style to match ours.
 
 #### Commands
 
-![UML diagram for Timetable Commands](/diagrams/class/jpeg/timetable_commands.jpg)
+![UML diagram for Timetable Commands](/docs/diagrams/class/jpeg/timetable_commands.jpg)
 
-![UML diagrams for Notebook Commands](/diagrams/class/jpeg/notebook_commands.jpg)
+![UML diagrams for Notebook Commands](/docs/diagrams/class/jpeg/notebook_commands.jpg)
 
 #### Notebooks
 
-![UML diagram for Notebooks](/diagrams/class/jpeg/notebooks.jpg)
+![UML diagram for Notebooks](/docs/diagrams/class/jpeg/notebooks.jpg)
 
 #### Tasks
 
