@@ -34,7 +34,8 @@
 ### Setting up the project in your computer
 >:exclamation **Caution:** Follow the steps in the following guide precisely.
 >Things will not work out if you deviate in some steps.
-1. Fork this repo, and clone the fork into your computer.
+
+1. **Fork** this repo, and **clone** the fork into your computer.
 2. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
 3. Set up the correct JDK version for Gradle
     a. Click `Configure` > `Project Defaults` > `Project Structure`
