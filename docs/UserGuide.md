@@ -46,10 +46,10 @@ Zer0Note is a note taking and organisation application that combines the ease of
   e.g. in `add /n[NOTEBOOK]`, `NOTEBOOK` is a parameter which can be used as `add /nCS2101`
 * Within a code segment, `>>>` denotes the command typed by the user.
   e.g.  
-        ```
-        >>>select /sChapter 1
-        now in notebook section: Chapter 1
-        ```
+```
+>>>select /sChapter 1
+now in notebook section: Chapter 1
+```
   `select /sChapter 1` is the user's input, and `now in notebook section: Chapter 1` is the output message.      
 
 ### Viewing help : `help`
