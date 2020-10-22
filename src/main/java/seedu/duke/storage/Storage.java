@@ -135,20 +135,23 @@ public class Storage {
     }
 
     public void saveSection(Section section) {
+        File file = new File(this.sectionFilepath);
         try {
-            FileWriter overwriteFile = new FileWriter(this.sectionFilepath);
-            if (section.getNumberOfPages() > 0) {
-                overwriteFile.write(section.getPageAtIndex(0).toTxtFormat());
-                overwriteFile.close();
-                for (int i = 1; i < section.getPageArrayList().size(); i++) {
-                    savePage(section.getPageAtIndex(i));
-                }
+            file.getParentFile().mkdir(); // create a directory
+            file.createNewFile(); // create a .txt file
+
+            // checks whether the file exist
+            if (file.length() > 0) {
+                FileWriter saveFile = new FileWriter(file, true);
+                saveFile.write(System.lineSeparator() + section.toTxtFormat());
+                saveFile.close();
             } else {
-                overwriteFile.write("");
-                overwriteFile.close();
+                FileWriter saveFile = new FileWriter(this.notebookFilepath);
+                saveFile.write(section.toTxtFormat());
+                saveFile.close();
             }
         } catch (IOException e) {
-            System.out.println(CliMessages.printUnknownError());
+            System.out.println("Error in IO!");
         }
     }
 
@@ -166,20 +169,23 @@ public class Storage {
     }
 
     public void saveNotebook(Notebook notebook) {
+        File file = new File(this.notebookFilepath);
         try {
-            FileWriter overwriteFile = new FileWriter(this.notebookFilepath);
-            if (notebook.getNumberOfSections() > 0) {
-                overwriteFile.write(notebook.getSectionAtIndex(0).toTxtFormat());
-                overwriteFile.close();
-                for (int i = 1; i < notebook.getSectionArrayList().size(); i++) {
-                    saveSection(notebook.getSectionAtIndex(i));
-                }
+            file.getParentFile().mkdir(); // create a directory
+            file.createNewFile(); // create a .txt file
+
+            // checks whether the file exist
+            if (file.length() > 0) {
+                FileWriter saveFile = new FileWriter(file, true);
+                saveFile.write(System.lineSeparator() + notebook.toTxtFormat());
+                saveFile.close();
             } else {
-                overwriteFile.write("");
-                overwriteFile.close();
+                FileWriter saveFile = new FileWriter(this.notebookFilepath);
+                saveFile.write(notebook.toTxtFormat());
+                saveFile.close();
             }
         } catch (IOException e) {
-            System.out.println(CliMessages.printUnknownError());
+            System.out.println("Error in IO!");
         }
     }
 
@@ -196,6 +202,10 @@ public class Storage {
         }
     }
 
+    /**
+     * Overwrites and saves an entire notebookShelf into the txt file from the file path.
+     * @param notebookShelf to be saved into the txt file.
+     */
     public void saveNotebookShelf(NotebookShelf notebookShelf) {
         try {
             FileWriter overwriteFile = new FileWriter(this.notebookShelfFilepath);

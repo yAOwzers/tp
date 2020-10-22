@@ -177,14 +177,14 @@ public class InputParser {
                 String contentToAdd = "";
                 if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
                     titleToAdd = parseNotebookTitle(argument);
-                    return new AddCommandNotebookMode(titleToAdd, appState);
+                    return new AddCommandNotebookMode(titleToAdd, appState, storage);
                 }
                 if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
                     titleToAdd = parseSectionTitle(argument);
-                    return new AddCommandNotebookMode(titleToAdd, appState);
+                    return new AddCommandNotebookMode(titleToAdd, appState, storage);
                 }
                 // TODO: implement adding pages
-                return new AddCommandNotebookMode(titleToAdd, contentToAdd, appState);
+                return new AddCommandNotebookMode(titleToAdd, contentToAdd, appState, storage);
             }
         case RemoveCommandTimetableMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {

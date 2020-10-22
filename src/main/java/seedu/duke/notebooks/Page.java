@@ -49,4 +49,9 @@ public class Page {
         return newPage;
     }
 
+    public String getPageInMessageFormat() {
+        return "Page with title: " + this.title + "\n"
+                + "content: " + this.content;
+    }
+
 }

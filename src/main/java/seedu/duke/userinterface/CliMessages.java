@@ -1,6 +1,9 @@
 package seedu.duke.userinterface;
 
 import seedu.duke.exceptions.InvalidUserInputException;
+import seedu.duke.notebooks.Notebook;
+import seedu.duke.notebooks.Page;
+import seedu.duke.notebooks.Section;
 import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 
@@ -136,6 +139,75 @@ public class CliMessages {
         }
         else {
             return "Now you have " + i + " tasks in the list.";
+        }
+    }
+
+    /**
+     * Generates and prints the notebook that has been added to the notebookShelf.
+     * @param newNotebook that is added to the NotebookShelf.
+     */
+    public String printAddNotebookMessage(Notebook newNotebook) {
+        String addMessage = "Got it. I've added this notebook:\n  ";
+        return addMessage + newNotebook.getNotebookInMessageFormat();
+    }
+
+    /**
+     * Prints a message which displays the total number of notebooks in a notebookShelf.
+     * @param i the total number of notebooks in a notebookShelf.
+     */
+    public String getNumberOfNotebookMessage(int i) {
+        //If there is only one notebook, then notebook will be singular
+        if(i == 1) {
+            return "Now you have " + i + " notebook in the notebookShelf.";
+        }
+        else {
+            return "Now you have " + i + " notebooks in the notebookShelf.";
+        }
+    }
+
+    /**
+     * Generates and prints the section that has been added to the notebook.
+     * @param newSection that is added to the Notebook.
+     */
+    public String printAddSectionMessage(Section newSection) {
+        String addMessage = "Got it. I've added this section:\n  ";
+        return addMessage + newSection.getSectionInMessageFormat();
+    }
+
+    /**
+     * Prints a message which displays the total number of sections in a notebook.
+     * @param i the total number of sections in a notebook.
+     */
+    public String getNumberOfSectionMessage(int i) {
+        //If there is only one section, then section will be singular
+        if(i == 1) {
+            return "Now you have " + i + " section in the notebook.";
+        }
+        else {
+            return "Now you have " + i + " sections in the notebook.";
+        }
+    }
+
+    /**
+     * Generates and prints the page that has been added to the section.
+     * @param newPage that is added to the section.
+     */
+    public String printAddPageMessage(Page newPage) {
+        String addMessage = "Got it. I've added this page:\n  ";
+        return addMessage + newPage.getPageInMessageFormat();
+    }
+
+    /**
+     * Prints a message which displays the total number of pages in a section.
+     * @param i the total number of pages in a section.
+     */
+    public String getNumberOfPageMessage(int i) {
+        //If there is only one page, then page will be singular
+        if(i == 1) {
+            return "Now you have " + i + " page in the section.";
+        }
+        else {
+            return "Now you have " + i + " pages in the section.";
         }
     }
 }

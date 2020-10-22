@@ -76,5 +76,18 @@ public class Section {
         Section newSection = new Section(title);
         return newSection;
     }
+
+    /**
+     * Add a page with a given title to the section.
+     *
+     * @param newPage the page to be added
+     */
+    public void addPage(Page newPage) {
+        this.pageArrayList.add(newPage);
+    }
+
+    public String getSectionInMessageFormat() {
+        return "Section with title: " + this.title;
+    }
 }
 

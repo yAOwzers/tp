@@ -82,7 +82,7 @@ public class Notebook {
     }
 
     public String toTxtFormat() {
-        return this.title + System.lineSeparator();
+        return this.title;
     }
 
     public void load(Section section) {
@@ -93,5 +93,18 @@ public class Notebook {
         String title = txtFormat;
         Notebook newNotebook = new Notebook(title);
         return newNotebook;
+    }
+
+    public String getNotebookInMessageFormat() {
+        return "Notebook with title: " + this.title;
+    }
+
+    /**
+     * Add a section with a given title to the notebook.
+     *
+     * @param newSection the section to be added
+     */
+    public void addSection(Section newSection) {
+        this.sectionArrayList.add(newSection);
     }
 }

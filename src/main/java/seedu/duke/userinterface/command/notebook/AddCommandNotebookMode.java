@@ -2,45 +2,52 @@ package seedu.duke.userinterface.command.notebook;
 
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
+import seedu.duke.notebooks.Page;
 import seedu.duke.notebooks.Section;
+import seedu.duke.storage.Storage;
+import seedu.duke.tasks.Task;
+import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.AppState;
+import seedu.duke.userinterface.CliMessages;
+import seedu.duke.userinterface.InputParser;
 import seedu.duke.userinterface.command.CliCommand;
 
 public class AddCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "add";
     private String title;
     private String content;
-    private NotebookShelf currentBookshelf;
-    private Notebook currentNotebook;
-    private Section currentSection;
+    private CliMessages messages = new CliMessages();
+    private Storage storage;
 
-    public AddCommandNotebookMode(String title, AppState appState) {
+    public AddCommandNotebookMode(String titleToAdd, AppState appState, Storage storage) {
         this.appState = appState;
-        this.title = title;
-        this.currentBookshelf = appState.getCurrentNotebookShelf();
-        this.currentNotebook = appState.getCurrentNotebook();
-        this.currentSection = appState.getCurrentSection();
+        this.title = titleToAdd;
+        this.storage = storage;
     }
 
-    public AddCommandNotebookMode(String title, String content, AppState appState) {
-        this.title = title;
+    public AddCommandNotebookMode(String titleToAdd, String contentToAdd, AppState appState, Storage storage) {
         this.appState = appState;
-        this.content = content;
+        this.title = titleToAdd;
+        this.storage = storage;
+        this.content = contentToAdd;
     }
 
     public void execute() {
         switch (appState.getAppMode()) {
         case NOTEBOOK_SHELF:
-            currentBookshelf.addNotebook(title);
-            System.out.println("Added notebook with title: " + title);
+            NotebookShelf currentNotebookShelf = appState.getCurrentNotebookShelf();
+            Notebook newNotebook = new Notebook(this.title);
+            addNotebook(newNotebook, currentNotebookShelf);
             break;
         case NOTEBOOK_BOOK:
-            currentNotebook.addSection(title);
-            System.out.println("Added section with title : " + title);
+            Notebook currentNotebook = appState.getCurrentNotebook();
+            Section newSection = new Section(this.title);
+            addSection(newSection, currentNotebook);
             break;
         case NOTEBOOK_SECTION:
-            currentSection.addPage(title, content);
-            System.out.println("Added page with title: " + title);
+            Section currentSection = appState.getCurrentSection();
+            Page newPage = new Page(this.title, this.content);
+            addPage(newPage, currentSection);
             break;
         default:
             // TODO: Replace with ZeroNoteException of some form
@@ -48,4 +55,26 @@ public class AddCommandNotebookMode extends CliCommand {
             break;
         }
     }
+
+    public void addNotebook(Notebook newNotebook, NotebookShelf currentNotebookShelf) {
+        currentNotebookShelf.addNotebook(newNotebook);
+        this.storage.saveNotebook(newNotebook);
+        System.out.println(this.messages.printAddNotebookMessage(newNotebook) + "\n"
+                + this.messages.getNumberOfNotebookMessage(currentNotebookShelf.getNumberOfNotebooks()));
+    }
+
+    public void addSection(Section newSection, Notebook currentNotebook) {
+        currentNotebook.addSection(newSection);
+        this.storage.saveSection(newSection);
+        System.out.println(this.messages.printAddSectionMessage(newSection) + "\n"
+                + this.messages.getNumberOfSectionMessage(currentNotebook.getNumberOfSections()));
+    }
+
+    public void addPage(Page newPage, Section currentSection) {
+        currentSection.addPage(newPage);
+        this.storage.savePage(newPage);
+        System.out.println(this.messages.printAddPageMessage(newPage) + "\n"
+                + this.messages.getNumberOfPageMessage(currentSection.getNumberOfPages()));
+    }
+
 }

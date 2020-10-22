@@ -1,7 +1,9 @@
 package seedu.duke.notebooks;
 
+import seedu.duke.storage.Storage;
 import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
+import seedu.duke.userinterface.CliMessages;
 
 import java.util.ArrayList;
 
@@ -11,6 +13,7 @@ import java.util.ArrayList;
  */
 public class NotebookShelf {
     private final ArrayList<Notebook> notebookArrayList;
+    private CliMessages messages = new CliMessages();
 
     public NotebookShelf() {
         notebookArrayList = new ArrayList<>();
@@ -51,12 +54,12 @@ public class NotebookShelf {
     }
 
     /**
-     * Add a notebook with a given title to the shelf.
+     * Add a notebook with a given title to the notebookShelf.
      *
-     * @param title the title of the notebook to be added
+     * @param newNotebook the notebook to be added
      */
-    public void addNotebook(String title) {
-        notebookArrayList.add(new Notebook(title));
+    public void addNotebook(Notebook newNotebook) {
+        notebookArrayList.add(newNotebook);
     }
 
     public int getNumberOfNotebooks() {
@@ -67,11 +70,4 @@ public class NotebookShelf {
         notebookArrayList.add(notebook);
     }
 
-    // TODO fix addNotebook method
-//    public void addTask(Task newTask, TaskList currentTaskList) {
-//        currentTaskList.addTask(newTask);
-//        this.storage.saveTask(newTask);
-//        System.out.println(this.messages.printAddTaskMessage(newTask) + "\n"
-//                + this.messages.getNumberOfTaskMessage(currentTaskList.getNumberOfTasks()));
-//    }
 }
