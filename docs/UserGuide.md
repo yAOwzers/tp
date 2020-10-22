@@ -91,19 +91,17 @@ Added: coding
 1:[x] Read book (by: Oct 19 2020 06.00 PM)
 ```
 
-#### Marking a task as done: `done`
+#### Marking a task as done
 Marks an existing `task` as done in the current task list.
 
 Format: `done [INDEX]`
 
 * `INDEX`: Index of the existing task in the current task list.
 
-Example of usage: 
-`done 1`
-
 Expected output:
 ```
-Yay! I've marked these task as done:
+>>> done 1
+Yay! I've marked this task as done:
  [o] Read book
 ```
 
