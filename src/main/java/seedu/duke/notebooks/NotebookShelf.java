@@ -1,5 +1,8 @@
 package seedu.duke.notebooks;
 
+import seedu.duke.tasks.Task;
+import seedu.duke.tasks.TaskList;
+
 import java.util.ArrayList;
 
 /**
@@ -64,4 +67,10 @@ public class NotebookShelf {
         notebookArrayList.add(notebook);
     }
 
+    public void addTask(Task newTask, TaskList currentTaskList) {
+        currentTaskList.addTask(newTask);
+        this.storage.saveTask(newTask);
+        System.out.println(this.messages.printAddTaskMessage(newTask) + "\n"
+                + this.messages.getNumberOfTaskMessage(currentTaskList.getNumberOfTasks()));
+    }
 }
