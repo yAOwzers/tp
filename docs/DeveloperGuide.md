@@ -86,35 +86,68 @@ to set up IDEA’s coding style to match ours.
 
 ### 3.1 Architecture
 
-#### 3.2 Commands
+**How the architecture components interact with each other**
+The Sequence Diagram below shows how the components interact with each other for the scenario...
+
+/* work in progress */
+
+### 3.2 UserInterface Component
+
+The UserInterface Component is made up of `AppMode`, `AppState`, `CliMessages`, `CliUserInterface`, `InputParser`.
+
+The `UserInterface` component,
+
+* Executes user commands using the `Commands` component.
+* // how it interacts with the other components
+
+/* TODO explain the various variables and methods */
+
+### 3.3. Commands Component
 
 ![UML diagram for Timetable Commands](/diagrams/class/jpeg/timetable_commands.jpg)
 
 ![UML diagrams for Notebook Commands](/diagrams/class/jpeg/notebook_commands.jpg)
 
-#### 3.3 Notebooks
+/* to insert UML diagram */
+
+The `Commands` component, 
+
+// TODO add components
+
+### 3.4. Tasks Component
+
+/* to insert UML diagram */
+
+### 3.5 Notebooks Component
 
 ![UML diagram for Notebooks](/diagrams/class/jpeg/notebooks.jpg)
 
-#### 3.4. Tasks
+/* TODO explain the various variables and methods */
 
-**How the architecture components interact with each other**
-The Sequence Diagram below shows how the components interact with each other for the scenario...
+### 3.6. Storage Component
+
+/* to insert UML diagram */
 
 ## 4. Implementation
+
 This section describes some noteworthy details on how certain features are implemented.
 
 ### 4.1. Mode Switch Feature
 
 #### 4.1.1. Implementation
 
+/* work in progress */
+
 #### 4.1.2. Design Considerations
+
+/* work in progress */
 
 ### 4.2. Timetable Mode
 
 #### 4.2.1. Tasklist Management Feature
 
 ##### 4.2.1.1. Implementation
+
 `TaskList` is implemented to manage and store the tasks input by the user. It comprises of a list of `Task`s.
 
 This means that multiple operations such as addition and deletion can be done on a `Task`, without affecting
@@ -188,6 +221,7 @@ public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
 A switch-case block is used to determine the method to call based on the `appMode`.
 4. If the deletion is successful, `CliMessages` displays the message to the user.
 
+
 ### 4.4 [Proposed] Find duplicate feature
 
 #### 4.4.1 Proposed implementation
@@ -241,7 +275,7 @@ We use Markdown for writing our documents.
 - Follow the [Google developer documentation style guide](https://developers.google.com/style).
 - Also relevant is the [[se-edu/guides] Markdown coding standard](https://se-education.org/guides/conventions/markdown.html).
 
-### Diagrams
+### 5.3. Diagrams
 
 We use Microsoft Visio Professional 2019 to draw our UML diagrams.
 
@@ -301,6 +335,8 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 |`*`|long-time user|have personalised messages|feel attached to my notes|
 
 ## Appendix C: Use Cases
+
+/* work in progress */
 
 ## Appendix D: Non-Functional Requirements
 
