@@ -1,6 +1,5 @@
 package seedu.duke.userinterface;
 
-
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.command.CliCommand;
