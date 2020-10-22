@@ -67,10 +67,11 @@ public class NotebookShelf {
         notebookArrayList.add(notebook);
     }
 
-    public void addTask(Task newTask, TaskList currentTaskList) {
-        currentTaskList.addTask(newTask);
-        this.storage.saveTask(newTask);
-        System.out.println(this.messages.printAddTaskMessage(newTask) + "\n"
-                + this.messages.getNumberOfTaskMessage(currentTaskList.getNumberOfTasks()));
-    }
+    // TODO fix addNotebook method
+//    public void addTask(Task newTask, TaskList currentTaskList) {
+//        currentTaskList.addTask(newTask);
+//        this.storage.saveTask(newTask);
+//        System.out.println(this.messages.printAddTaskMessage(newTask) + "\n"
+//                + this.messages.getNumberOfTaskMessage(currentTaskList.getNumberOfTasks()));
+//    }
 }
