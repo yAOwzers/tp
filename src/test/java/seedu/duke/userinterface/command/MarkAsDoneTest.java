@@ -18,6 +18,8 @@ public class MarkAsDoneTest {
         AddCommandTimetableMode addTimetableMode = new AddCommandTimetableMode(input, appState);
         addTimetableMode.execute();
 
-        assertThrows(IndexOutOfBoundsException.class, () -> { appState.getTaskList().markAsDone(2); });
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            appState.getTaskList().markAsDone(2);
+        });
     }
 }
