@@ -23,6 +23,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.1. Implementation](#4211-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4212-design-considerations) <br>
 &nbsp;&nbsp;[4.3. Notebook Mode](#43-notebook-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.3.1. Notebook Management Feature](#431-notebook-management-feature) <br>
 [5. Documentation](#5-documentation) <br>
 &nbsp;&nbsp;[5.1. Setting up and maintaining the project website](#51-setting-up-and-maintaining-the-project-website) <br>
 &nbsp;&nbsp;[5.2. Style guidance](#52-style-guidance) <br>
@@ -118,9 +119,10 @@ the contents of other `Task` in the `TaskList`.
 {Introduce how the addition command works}
 
 The figure below shows how the delete task command works:
-<img src=https://user-images.githubusercontent.com/60319628/96802352-426d8880-143c-11eb-9a7d-6e2d9a28df45.png>
+<img src="https://user-images.githubusercontent.com/60319628/96802352-426d8880-143c-11eb-9a7d-6e2d9a28df45.png">
 
-1. The `CliUserInterface` receives the "delete 1" input by the user and passes it to the `InputParser` class.
+1. `CliUserInterface` receives the "delete 1" input by the user and calls method **executeCommand**.
+2. Method **executeCommand** constructs the `InputParser` class and passes the input to `InputParser`.
 2. `InputParser` parses the input to determine the type of command and the index of the task that is required to delete. 
 The Parser then constructs a `RemoveCommandTimetableMode` with constructor as shown below.
 ```
@@ -131,7 +133,7 @@ public RemoveCommandTimetableMode(int indexToRemove, AppState uiMode) {
 ```
 3. Method **execute()** then calls the `TaskList` stored in `AppState` to update the deletion of the task.
 It also constructs `CliMessages` to display messages to the user.
-4. If the deletion is successful, `CliMessages` is then called to display messages to the user.
+4. If the deletion is successful, `CliMessages` displays the message to the user.
 
 ##### 4.2.1.2. Design Considerations
 
@@ -154,6 +156,36 @@ The following sequence diagram shows how the list operation works:
 #### 4.2.2.2. Design Considerations
 
 ### 4.3. Notebook Mode
+
+#### 4.3.1. Notebook Management Feature
+
+As shown in Figure 1, the `NotebookShelf` class comprises instances of `Notebook` class. `Notebook` comprises `Section`
+and `Section` comprises `Page`. The navigability is not bidirectional. Multiple operations such as addition and deletion
+can be done without affecting other instances at all, while updating the `Notebook` it is in.
+
+The figure below shows how the delete task command works:
+<img src="https://user-images.githubusercontent.com/60319628/96821973-9176e600-145b-11eb-95b7-5bf885ea1867.png">
+
+After calling `InputParser#getCommandFromInput` from `CliUserInterface`:
+1. `InputParser` parses the input to return the `notebookTitleToRemove`, `sectionTitleToRemove` and `pageNumberToRemove`.
+Some of these members may be empty.
+2. `InputParser` constructs and returns the `RemoveCommandNotebookMode` class with constructor as shown below:
+```
+public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
+                                     int pageNumber, AppState appState) {
+    this.appState = appState;
+    notebookTitleToRemove = notebookTitle;
+    sectionTitleToRemove = sectionTitle;
+    pageNumberToRemove = pageNumber;
+
+    currentBookshelf = appState.getCurrentBookShelf();
+    currentNotebook = appState.getCurrentNotebook();
+    currentSection = appState.getCurrentSection();
+}
+```
+3. Method **execute()** called by `CliUserInterface` to delete a notebook, section, or page, depending on the input.
+A switch-case block is used to determine the method to call based on the `appMode`.
+4. If the deletion is successful, `CliMessages` displays the message to the user.
 
 ## 5. Documentation
 We use Markdown for writing our documents.
