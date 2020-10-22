@@ -188,7 +188,6 @@ public class CliMessages {
 
     public void printMarkDone(Task task) {
         String markDoneMessage = "Yay! I've marked these task as done:";
-        String taskDetails = task.getTask();
         System.out.println(markDoneMessage + "\n " + task.getTaskInMessagesFormat());
     }
 }
