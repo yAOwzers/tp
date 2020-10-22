@@ -1,5 +1,7 @@
 package seedu.duke.userinterface.command;
 
+import seedu.duke.exceptions.IncorrectAppModeException;
+import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.userinterface.AppState;
 
 public abstract class CliCommand {
@@ -11,7 +13,7 @@ public abstract class CliCommand {
         return COMMAND_WORD;
     }
 
-    public abstract void execute();
+    public abstract void execute() throws InvalidCommandException, IncorrectAppModeException;
 
     public AppState getAppState() {
         return appState;
