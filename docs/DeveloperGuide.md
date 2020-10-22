@@ -13,7 +13,7 @@
 &nbsp;&nbsp;[3.4. Tasks](#34-tasks) <br>
 [4. Implementation](#4-implementation) <br>
 &nbsp;&nbsp;[4.1. Mode Switch Feature](#41-mode-switch-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp[4.1.1. Implementation](#411-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.1.1. Implementation](#411-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.1.2. Design Considerations](#412-design-considerations) <br>
 &nbsp;&nbsp;[4.2. Timetable Mode](#42-timetable-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.1. Tasklist Management Feature](#421-tasklist-management-feature) <br>
@@ -117,7 +117,7 @@ This section describes some noteworthy details on how certain features are imple
 ##### 4.2.1.1. Implementation
 `TaskList` is implemented to manage and store the tasks input by the user. It comprises of a list of `Task`s.
 
-This means that multiple operations such as addition and deletion can be done on a `Task`, without affecting 
+This means that multiple operations such as addition and deletion can be done on a `Task`, without affecting
 the contents of other `Task` in the `TaskList`.
 {Introduce how the addition command works}
 
@@ -125,7 +125,7 @@ The figure below shows how the delete task command works:
 <img src=https://user-images.githubusercontent.com/60319628/96657942-02dc6900-1376-11eb-9284-38322e1a2b09.png>
 
 1. The `CliUserInterface` receives the "delete 1" input by the user and passes it to the `InputParser` class.
-2. `InputParser` parses the input to determine the type of command and the index of the task that is required to delete. 
+2. `InputParser` parses the input to determine the type of command and the index of the task that is required to delete.
 The Parser then constructs a `RemoveCommandTimetableMode` with constructor as shown below.
 ```
 public RemoveCommandTimetableMode(int indexToRemove, AppState uiMode) {
@@ -145,7 +145,7 @@ It also constructs `CliMessages` to display messages to the user.
     - Cons: It is unoptimized in terms of complexity, which requires more work for scaling of the application.
 - **Alternative 2:** Stores as a Hash Table with the key as the index and value as `Task`
     - Pros: It has a better time complexity and reduce the work in scaling stage since this data structure is more optimized (O(1) can be achieved).
-    - Cons: It takes more resources to implement. Furthermore, 
+    - Cons: It takes more resources to implement. Furthermore,
 
 ### 4.2.2. List feature
 
@@ -153,7 +153,7 @@ It also constructs `CliMessages` to display messages to the user.
 
 The following sequence diagram shows how the list operation works:
 
-<img src="https://github.com/longngng/tp/blob/longngng-DG/docs/diagrams/class/jpeg/SequenceDiagram_List.jpg">
+![Sequence Diagram for List command](/diagrams/class/jpeg/SequenceDiagram_List.jpg)
 
 
 ### 4.3. Notebook Mode
@@ -214,7 +214,7 @@ We use Markdown for writing our documents.
 
 ### Diagrams
 
-We use Microsoft Visio Professional 2019 to draw our UML diagrams. 
+We use Microsoft Visio Professional 2019 to draw our UML diagrams.
 
 ### 5.4. Converting a document to the PDF Format
 
@@ -242,6 +242,7 @@ There are two ways to run tests.
 
 ### 6.2. Types of tests
 {Describe the type of testing used in the code}
+
 This project has one type of test:
 Unit tests targeting the lowest level methods/classes.
 e.g. `seedu.duke.userinterface.command.AddNotebookTest`
