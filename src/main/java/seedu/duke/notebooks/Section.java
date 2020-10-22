@@ -34,8 +34,17 @@ public class Section {
         return -1;
     }
 
-    public void removePage(int indexToRemove) {
-        pageArrayList.remove(indexToRemove);
+    public void getPage(int pageIndex) {
+        try {
+            Page page = pageArrayList.get(pageIndex);
+            page.printPage();
+        } catch (IndexOutOfBoundsException | NullPointerException e) {
+            System.out.println("page <" + (pageIndex + 1) + "> doesn't exist");
+        }
+    }
+
+    public Page removePage(int indexToRemove) {
+        return pageArrayList.remove(indexToRemove);
     }
 
     public void removePage(String titleToRemove) {
