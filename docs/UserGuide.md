@@ -404,7 +404,7 @@ Noted. I've removed this notebook:
 
 ### Timetable Mode
 
-**Command** | **Format** | **Example** 
+**Command** | **Format** | **Example**
 ----------- | ---------- | -----------
 Add a task: `add` | add /tTASK /by[dd-MM-yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
 Mark a task as done: `done` | done [INDEX] | done 1
