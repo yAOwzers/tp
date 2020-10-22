@@ -1,6 +1,7 @@
 # User Guide
 
 ## Navigation Panel
+- [Introduction](#introduction)
 - [Quick Start](#quick-start)
 - [Features](#features)
   - [Viewing the user guide: `help`](#help)
@@ -39,8 +40,14 @@ Zer0Note is a note taking and organisation application that combines the ease of
 5. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will open the help window.
 
 ## Features
->:exclamation: Words within `[square brackets]` are the expected user inputs.
->> e.g. in `add /n[NOTEBOOK]`, `NOTEBOOK` is a parameter which can be used as `add /n`
+
+>:exclamation: Notes about the format:
+* Words within `[square brackets]` are the expected user inputs.
+  e.g. in `add /n[NOTEBOOK]`, `NOTEBOOK` is a parameter which can be used as `add /nCS2101`
+* Within a code segment, ">>>" denotes the command typed by the user.
+  e.g.  >>>select /sChapter 1
+        now in notebook section: Chapter 1
+  `select /sChapter 1` is the user's input, and `now in notebook section: Chapter 1` is the output message.      
 
 ### Viewing help : `help`
 
@@ -51,11 +58,11 @@ To view the user guide for the timetable mode, type in `help timetable`.
 To view the user guide for the notebook mode, type in `help notebook`.
 
 ### Switching between the two modes : `mode`
-Switches from any modes into the notebook mode (at the bookshelf level) or the timetable mode. 
+Switches from notebook mode (at the bookshelf level) to the timetable mode or vice versa.
 
 - Switch to the notebook mode
 
-Format: `mode /n` 
+Format: `mode /n`
 
 - Switch to the timetable mode
 
@@ -320,7 +327,7 @@ now in notebook section: Chapter 1
 #### Delete Contents: `delete`
 Deletes an existing notebook, section or page.
 >:exclamation: The current selection determines the type you can delete.
->
+
 Format: `delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
 
 * `NOTEBOOK`: the title of the notebook to be deleted
@@ -372,7 +379,7 @@ Noted. I've removed this notebook:
 Add a task: `add` | add /tTASK /by[dd-MM-yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
 List tasks: `list` | list (/u) (/d) (/urgent) |
 Delete: `delete` | delete [INDEX] | delete 1
-Switch to notebook mode: `mode` | mode /n | 
+Switch to notebook mode: `mode` | mode /n |
 
 ### Notebook Mode
 
@@ -382,4 +389,4 @@ Add: `add` | 1) add /nNOTEBOOK 2) add /sSECTION 3) add /pPAGE; CONTENT | add /nC
 Select: `select` | 1) select /nNOTEBOOK 2) select /sSECTION 3) select /pNUMBER | select /nCS2101
 List contents: `list` | list (/s) (/a) |
 Delete: `delete` | 1) select /nNOTEBOOK /sSECTION /pNUMBER | select /nCS2113T /sW10 /p1
-Switch to timetable mode: `mode` | mode /t | 
+Switch to timetable mode: `mode` | mode /t |
