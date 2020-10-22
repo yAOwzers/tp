@@ -14,8 +14,7 @@ public class TaskList {
     }
 
     public Task removeTask(int indexToRemove) throws IndexOutOfBoundsException {
-        Task removedTask = taskArrayList.get(indexToRemove);
-        taskArrayList.remove(indexToRemove);
+        Task removedTask = taskArrayList.remove(indexToRemove);
         return removedTask;
     }
 

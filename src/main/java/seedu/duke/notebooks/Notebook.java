@@ -43,8 +43,8 @@ public class Notebook {
      *
      * @param indexToRemove the index of the section to remove
      */
-    public void removeSection(int indexToRemove) {
-        sectionArrayList.remove(indexToRemove);
+    public Section removeSection(int indexToRemove) {
+        return sectionArrayList.remove(indexToRemove);
     }
 
     /**
