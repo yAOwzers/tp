@@ -31,7 +31,6 @@
 
 Zer0Note is a note taking and organisation application that combines the ease of use and feature set of graphical tools with the interaction speed of command-line based tools like vim and emacs.
 
-
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
