@@ -8,6 +8,7 @@
   - [Mode Switch: `mode`](#mode-switch)
   - [Timetable Mode](#Timetable-mode)
     - [Adding task: `add`](#adding-a-task)
+    - [Marking a task as done: `done`](#marking-a-task-as-done-done)
     - [Listing tasks: `list`](#listing-tasks-list)
         - [Listing all tasks](#listing-all-tasks)
         - [Listing done tasks](#listing-done-tasks)
@@ -29,11 +30,7 @@
 
 ## Introduction
 
-<<<<<<< HEAD
-Zer0Note is a notetaking and organisation application that combines the ease of use and feature set of graphical tools like OneNote, Evernote, Notion etc. with the interaction speed of command-line based tools like vim and emacs. The target audience is students with intermediate to advanced proficiency with computers. 
-=======
 Zer0Note is a note taking and organisation application that combines the ease of use and feature set of graphical tools with the interaction speed of command-line based tools like vim and emacs.
->>>>>>> fcfcc89dedc095bc9a33888364da92d04537b2a9
 
 ## Quick Start
 
@@ -92,6 +89,22 @@ Expected output:
 ```
 Added: coding
 1:[x] Read book (by: Oct 19 2020 06.00 PM)
+```
+
+#### Marking a task as done: `done`
+Marks an existing `task` as done in the current task list.
+
+Format: `done [INDEX]`
+
+* `INDEX`: Index of the existing task in the current task list.
+
+Example of usage: 
+`done 1`
+
+Expected output:
+```
+Yay! I've marked these task as done:
+ [o] Read book
 ```
 
 ### Listing tasks: `list`
