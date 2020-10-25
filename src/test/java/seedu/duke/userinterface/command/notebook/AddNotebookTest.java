@@ -1,4 +1,4 @@
-package seedu.duke.userinterface.command;
+package seedu.duke.userinterface.command.notebook;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.exceptions.InvalidCommandException;
