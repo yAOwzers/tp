@@ -15,7 +15,6 @@ import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.command.CliCommand;
-import seedu.duke.userinterface.command.timetable.DoneCommandTimetableMode;
 import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
 import seedu.duke.userinterface.command.ModeSwitch;
@@ -24,6 +23,7 @@ import seedu.duke.userinterface.command.notebook.ListCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.RemoveCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode;
 import seedu.duke.userinterface.command.timetable.AddCommandTimetableMode;
+import seedu.duke.userinterface.command.timetable.DoneCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.ListCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
 
@@ -152,7 +152,7 @@ public class InputParser {
         appState.setCurrentNotebook(notebook);
         System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentNotebook().getTitle());
         if (argument.contains(SECTION_DELIMITER)) {
-            String sectionTitle = InputParser.parseSectionTitle(argument);
+            String sectionTitle = parseSectionTitle(argument);
             int sectionIndex = notebook.findSection(sectionTitle);
             if (sectionIndex == -1) {
                 throw new InvalidSectionException(sectionTitle);
