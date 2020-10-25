@@ -1,10 +1,10 @@
+File was not found. A new save file will be created upon exit.
 Welcome to
  _ _ _                  _ _ _   _    _            _
 |_ _  |   _ _    _  _  |  _  | |  \ | |   _ _   _| |_    _ _
   /  /  /  _  \ | |/_\ | | | | |   \| |  /   \ |_   _| /   _ \
  /  /_  |  _ _/ | |    | |_| | |  |\  | |  [] |  | |_  |  _ _/
 |_ _ _|  \ _ _| |_|    |_ _ _| | _| \_|  \ _ /   |_ _|  \ _ _|
-File was not found. A new save file will be created upon exit. 
 You are now in timetable mode
 Added: task
 1:[x] task (by: Oct 15 2020 11.59 PM)
