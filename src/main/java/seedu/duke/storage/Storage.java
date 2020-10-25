@@ -30,13 +30,13 @@ public class Storage {
         NotebookShelf currentNotebookShelf = currentAppState.getCurrentBookShelf();
 
         String tasksToSave = currentTaskList.serialize();
-        // String notebooksToSave = currentNotebookShelf.serialize();
+        String notebooksToSave = currentNotebookShelf.serialize();
 
         try {
             FileWriter tasksFileWriter = new FileWriter(tasksFile);
             FileWriter notebooksFileWriter = new FileWriter(notebooksFile);
             tasksFileWriter.write(tasksToSave);
-            // notebooksFileWriter.write(notebooksToSave);
+            notebooksFileWriter.write(notebooksToSave);
             tasksFileWriter.close();
             notebooksFileWriter.close();
         } catch (IOException e) {

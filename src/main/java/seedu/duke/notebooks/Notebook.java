@@ -72,4 +72,17 @@ public class Notebook {
     public ArrayList<Section> getSectionArrayList() {
         return sectionArrayList;
     }
+
+    public String serialize() {
+        StringBuilder serialized = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        serialized.append(title);
+        serialized.append(lineSeparator);
+        serialized.append(sectionArrayList.size());
+        serialized.append(lineSeparator);
+        for (Section s: sectionArrayList) {
+            serialized.append(s.serialize());
+        }
+        return serialized.toString();
+    }
 }

@@ -63,4 +63,17 @@ public class Section {
     public ArrayList<Page> getPageArrayList() {
         return pageArrayList;
     }
+
+    public String serialize() {
+        StringBuilder serialized = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        serialized.append(title);
+        serialized.append(lineSeparator);
+        serialized.append(pageArrayList.size());
+        serialized.append(lineSeparator);
+        for (Page p: pageArrayList) {
+            serialized.append(p.serialize());
+        }
+        return serialized.toString();
+    }
 }

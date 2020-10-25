@@ -28,4 +28,16 @@ public class Page {
     public void printPage() {
         System.out.println(content);
     }
+
+    public String serialize() {
+        StringBuilder serialized = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        serialized.append(title);
+        serialized.append(lineSeparator);
+        serialized.append(content);
+        serialized.append(lineSeparator);
+        return serialized.toString();
+    }
+
+
 }
