@@ -22,7 +22,7 @@ public class Help extends CliCommand {
      *                    leading and trailing spaces stripped.
      */
     public Help(String commandArgs) {
-        this.commandArgs = commandArgs;
+        this.commandArgs = commandArgs.toLowerCase();
     }
 
     /**
