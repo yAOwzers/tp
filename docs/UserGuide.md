@@ -2,27 +2,28 @@
 
 ## Table of Contents
 [1. Introduction](#1-introduction) <br>
+&nbsp;&nbsp;[1.1. About](#11-about) <br>
 [2. Quick Start](#2-quick-start) <br>
 [3. Features](#3-features) <br>
-&nbsp;&nbsp;[3.1. Viewing the user guide: `help`](#31-viewing-the-user-guide-help) <br>
-&nbsp;&nbsp;[3.2. Switching between the two modes: `mode`](#32-switching-between-the-two-modes-mode) <br>
-&nbsp;&nbsp;[3.3. Timetable Mode](#33-timetable-mode) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1. Adding a task: `add`](#331-adding-a-task-add) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2. Marking a task as done: `done`](#332-marking-a-task-as-done-done) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3. Listing tasks: `list`](#333-listing-tasks-list) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3.1. Listing all tasks](#3331-listing-all-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3.2. Listing done tasks](#3332-listing-done-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3.3. Listing undone tasks](#3333-listing-undone-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3.4. Listing urgent tasks](#3334-listing-urgent-tasks) <br>
+&nbsp;&nbsp;[3.1 Viewing the user guide: `help`](#31-viewing-the-user-guide-help) <br>
+&nbsp;&nbsp;[3.2 Switching between the two modes: `mode`](#32-switching-between-the-two-modes-mode) <br>
+&nbsp;&nbsp;[3.3 Timetable Mode](#33-timetable-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1 Adding a task: `add`](#331-adding-a-task-add) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2 Marking a task as done: `done`](#332-marking-a-task-as-done-done) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3 Listing tasks: `list`](#333-listing-tasks-list) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3.1 Listing all tasks](#3331-listing-all-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3.2 Listing done tasks](#3332-listing-done-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3.3 Listing undone tasks](#3333-listing-undone-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3.4 Listing urgent tasks](#3334-listing-urgent-tasks) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3.4. Deleting a task: `delete`](#334-deleting-a-task-delete) <br>
-&nbsp;&nbsp;[3.4. Notebook Mode](#34-notebook-mode) <br>
+&nbsp;&nbsp;[3.4 Notebook Mode](#34-notebook-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.1 Add contents: `add`](#341-add-feature-add) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.1 Adding a notebook](#3411-adding-a-notebook) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.2 Adding a section](#3412-adding-a-section) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.3 Adding a page](#3413-adding-a-page) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2. Select contents: `select`](#342-select-feature-select) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3. List contents: `list`](#343-listing-contents-list) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4. Delete contents: `delete`](#344-delete-contents-delete) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2 Select contents: `select`](#342-select-feature-select) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3 List contents: `list`](#343-listing-contents-list) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4 Delete contents: `delete`](#344-delete-contents-delete) <br>
 [4. FAQ](#4-faq) <br>
 [5. Command Summary](#5-command-summary) <br>
 
@@ -33,6 +34,20 @@
 **Zer0Note** can operate in two different modes: 
 1. Timetable Mode
 2. Notebook Mode
+
+### 1.1 About
+This app is targeted towards students, especially those who enjoy typing! This user guide will give you a step-by-step tutorial on how to use each of the commands. By using these commands, you will be able to keep track of your deadlines and notes!
+
+> Here are some icons that will be used in this User Guide: 
+>> :exclamation: : Thing(s) to note
+>> :bulb: : Tip(s)
+> :exclamation: Notes about the format:
+* Words/sections that look like this: `example`, are code.
+* Words/phrases within `[square brackets]` are the expected user inputs.
+  e.g. in `add /n[NOTEBOOK]`, `NOTEBOOK` is a parameter which can be used as `add /nCS2101`
+* Words within `(parentheses)` are optional user inputs.
+  e.g. in `list (/urgent)`, `/urgent` is an optional parameter.
+* Within a code segment, `>>>` denotes the command typed by the user.
 
 ## 2. Quick Start
 
@@ -45,17 +60,6 @@
 ## 3. Features
 
 The following sections will explain more about the different commands that can be used in [Timetable Mode](#33-timetable-mode) and [Notebook Mode](#34-notebook-mode).
-
-> Here are some icons that will be used in this User Guide: 
->> :exclamation: : Thing(s) to note
->> :bulb: : Tip(s)
-> :exclamation: Notes about the format:
-* Words/sections that look like this: `example`, are code.
-* Words/phrases within `[square brackets]` are the expected user inputs.
-  e.g. in `add /n[NOTEBOOK]`, `NOTEBOOK` is a parameter which can be used as `add /nCS2101`
-* Words within `(parentheses)` are optional user inputs.
-  e.g. in `list (/urgent)`, `/urgent` is an optional parameter.
-* Within a code segment, `>>>` denotes the command typed by the user.
 
  Example:  
   ```
@@ -409,8 +413,19 @@ This section answers some frequently asked questions.
 
 ## 5. Command Summary
 
-This section lists the commands available in timetable and notebook mode respectively.
+This section lists all the commands available in timetable and notebook mode respectively.
 > :bulb: You can click on each of the commands to navigate to its section.
+
+### General Commands
+
+The following table shows you a list of commands that can be used anywhere, and in any mode.
+
+###### Table: Commands that can be used anywhere
+
+**Command** | **Format** | **Example**
+----------- | ---------- | -----------
+[Help](#31-viewing-the-user-guide-help): `help` | 1) help 2) help timetable 3) help notebook |
+
 
 ### Timetable Mode
 
