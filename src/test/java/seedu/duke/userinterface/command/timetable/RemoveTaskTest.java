@@ -1,4 +1,4 @@
-package seedu.duke.userinterface.command;
+package seedu.duke.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.tasks.TaskList;
@@ -8,6 +8,7 @@ import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//@@Lusi711
 class RemoveTaskTest {
     @Test
     void execute_DeleteTaskOne_NoTasksInTaskList() {

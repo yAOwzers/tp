@@ -246,7 +246,7 @@ There are two ways to run tests.
 
 This project has one type of test:
 Unit tests targeting the lowest level methods/classes.
-e.g. `seedu.duke.userinterface.command.AddNotebookTest`
+e.g. `seedu.duke.userinterface.command.notebook.AddNotebookTest`
 
 ## Appendix A: Project Scope
 
