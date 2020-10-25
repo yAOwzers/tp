@@ -1,6 +1,6 @@
 package seedu.duke.exceptions;
 
-public class FileSavingException extends ZeroNoteException{
+public class FileSavingException extends ZeroNoteException {
     public FileSavingException(String enteredCommand) {
         super(enteredCommand);
     }
