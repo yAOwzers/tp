@@ -1,39 +1,40 @@
 # User Guide
 
-## Navigation Panel
-- [Introduction](#introduction)
-- [Quick Start](#quick-start)
-- [Features](#features)
-  - [Viewing the user guide: `help`](#help)
-  - [Mode Switch: `mode`](#mode-switch)
-  - [Timetable Mode](#Timetable-mode)
-    - [Adding task: `add`](#adding-a-task)
-    - [Marking a task as done: `done`](#marking-a-task-as-done-done)
-    - [Listing tasks: `list`](#listing-tasks-list)
-        - [Listing all tasks](#listing-all-tasks)
-        - [Listing done tasks](#listing-done-tasks)
-        - [Listing undone tasks](#listing-undone-tasks)
-        - [Listing urgent tasks](#listing-urgent-tasks)
-    - [Deleting a task: `delete`](#deleting-a-task-delete)
-  - [Notebook Mode](#notebook-mode)
-    - [Add contents: `add`](#add-feature-add)
-        - [Adding a notebook](#adding-a-notebook)
-        - [Adding a section](#adding-a-section)
-        - [Adding a page](#adding-a-page)
-    - [Select contents: `select`](#select-feature-select)
-    - [List contents: `list`](#listing-contents-list)
-        - [In the notebook mode](#in-the-notebook-mode)
-        - [In a selected notebook ](#in-a-selected-notebook)
-        - [In a selected section](#in-a-selected-section)
-    - [Delete contents: `delete`](#delete-feature-delete)
-- [FAQ](#FAQ)
-- [Command Summary](#command-summary)
+## Table of Contents
+[1. Introduction](#1-introduction) <br>
+[2. Quick Start](#2-quick-start) <br>
+[3. Features](#3-features) <br>
+&nbsp;&nbsp;[3.1. Viewing the user guide: `help`](#31-viewing-the-user-guide-help) <br>
+&nbsp;&nbsp;[3.2. Switching between the two modes: `mode`](#32-switching-between-the-two-modes-mode) <br>
+&nbsp;&nbsp;[3.3. Timetable Mode](#33-timetable-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1. Adding a task: `add`](#331-adding-a-task-add) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2. Marking a task as done: `done`](#332-marking-a-task-as-done-done) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3. Listing tasks: `list`](#333-listing-tasks-list) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3.1. Listing all tasks](#3331-listing-all-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3.2. Listing done tasks](#3332-listing-done-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3.3. Listing undone tasks](#3333-listing-undone-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3.4. Listing urgent tasks](#3334-listing-urgent-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4. Deleting a task: `delete`](#334-deleting-a-task-delete) <br>
+&nbsp;&nbsp;[3.4. Notebook Mode](#34-notebook-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1 Add contents: `add`](#341-add-feature-add) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.1 Adding a notebook](#3411-adding-a-notebook) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.2 Adding a section](#3412-adding-a-section) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.3 Adding a page](#3413-adding-a-page) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2. Select contents: `select`](#342-select-feature-select) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3. List contents: `list`](#343-listing-contents-list) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4. Delete contents: `delete`](#344-delete-contents-delete) <br>
+[4. FAQ](#4-faq) <br>
+[5. Command Summary](#5-command-summary) <br>
 
-## Introduction
+## 1. Introduction
 
-Zer0Note is a note taking and organisation application that combines the ease of use and feature set of graphical tools with the interaction speed of command-line based tools like vim and emacs.
+**Zer0Note** is a note taking and organisation application meant for students(especially those who can type fast). It combines the features of note-taking apps (like OneNote) with the interaction speed of command-line based tools like vim and emacs. It helps students (like yourself!) to keep track of deadlines and take notes quickly. 
 
-## Quick Start
+**Zer0Note** can operate in two different modes: 
+1. Timetable Mode
+2. Notebook Mode
+
+## 2. Quick Start
 
 1. Ensure that you have Java 11 or above installed.
 1. Download the latest version of `Zer0Note` from [here](https://github.com/AY2021S1-CS2113T-T12-3/tp/releases).
@@ -41,12 +42,18 @@ Zer0Note is a note taking and organisation application that combines the ease of
 4. Double click the file to start the app.
 5. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will open the help window.
 
-## Features
+## 3. Features
 
->:exclamation: Notes about the format:
-* Words within `[square brackets]` are the expected user inputs.
+The following sections will explain more about the different commands that can be used in [Timetable Mode](#33-timetable-mode) and [Notebook Mode](#34-notebook-mode).
+
+> Here are some icons that will be used in this User Guide: 
+>> :exclamation: : Thing(s) to note
+>> :bulb: : Tip(s)
+> :exclamation: Notes about the format:
+* Words/sections that look like this: `example`, are code.
+* Words/phrases within `[square brackets]` are the expected user inputs.
   e.g. in `add /n[NOTEBOOK]`, `NOTEBOOK` is a parameter which can be used as `add /nCS2101`
-* Words within `(parentheses)` are optional user input.
+* Words within `(parentheses)` are optional user inputs.
   e.g. in `list (/urgent)`, `/urgent` is an optional parameter.
 * Within a code segment, `>>>` denotes the command typed by the user.
 
@@ -58,7 +65,7 @@ Zer0Note is a note taking and organisation application that combines the ease of
 
 > `select /sChapter 1` is the user's input, and `now in notebook section: Chapter 1` is the output message.      
 
-### Viewing help : `help`
+### 3.1 Viewing the user guide: `help`
 
 To view the full user guide, type in `help`.
 
@@ -66,7 +73,8 @@ To view the user guide for the timetable mode, type in `help timetable`.
 
 To view the user guide for the notebook mode, type in `help notebook`.
 
-### Switching between the two modes : `mode`
+### 3.2 Switching between the two modes: `mode`
+
 Switches from notebook mode (at the bookshelf level) to the timetable mode or vice versa.
 
 - Switch to the notebook mode
@@ -77,12 +85,12 @@ Format: `mode /n`
 
 Format: `mode /t`
 
-## Timetable Mode
+## 3.3 Timetable Mode
 
-The Timetable Mode allows you to manage a list of tasks.
+The Timetable Mode allows you to manage a list of tasks. 
 The following sections explains the various features you can use while you are in the Timetable Mode.
 
-### Adding a task: `add`
+### 3.3.1 Adding a task: `add`
 Adds a `task` with a `deadline` to the task list.
 
 Format: `add /t[TASK] /by[dd-MM-yyyy] [hhmm]`
@@ -99,7 +107,7 @@ Added: coding
 1:[x] Read book (by: Oct 19 2020 06.00 PM)
 ```
 
-### Marking a task as done: `done`
+### 3.3.2 Marking a task as done: `done`
 Marks an existing `task` as done in the current task list.
 
 Format: `done [INDEX]`
@@ -114,9 +122,9 @@ Yay! I've marked this task as done:
  [o] Read book
 ```
 
-### Listing tasks: `list`
+### 3.3.3 Listing tasks: `list`
 
-#### Listing all tasks
+#### 3.3.3.1 Listing all tasks
 Lists out all the existing tasks.
 
 Format: `list`
@@ -132,7 +140,7 @@ Example of usage:
 5:[o] CS2101 OP2 (by: Oct 25 2020 11.00 AM)
 ```
 
-#### Listing done tasks
+#### 3.3.3.2 Listing done tasks
 Lists out all the tasks that are marked as done.
 
 Format: `list /d`
@@ -145,7 +153,7 @@ Example of usage:
 2:[o] CS2101 OP2 (by: Oct 25 2020 11.00 AM)
 ```
 
-#### Listing undone tasks
+#### 3.3.3.3 Listing undone tasks
 Lists out all the tasks that are not marked as done.
 
 Format: `list /u`
@@ -159,7 +167,7 @@ Example of usage:
 3:[x] CS2113T Quiz (by: Oct 23 2020 11.00 PM)
 ```
 
-#### Listing urgent tasks
+#### 3.3.3.4 Listing urgent tasks
 Lists out top urgent tasks that has not been done, sorted by deadlines. If there are many undone tasks, top three urgent ones will be displayed.
 
 Format: `list /urgent`
@@ -172,7 +180,7 @@ Example of usage:
 2:[x] CS2113T Quiz (by: Oct 23 2020 11.00 PM)
 3:[x] Return book (by: Oct 23 2020 12.00 PM)
 ```
-### Deleting a task: `delete`
+### 3.3.4 Deleting a task: `delete`
 Deletes an existing task from the task list.
 
 Format: `delete [INDEX]`
@@ -188,12 +196,12 @@ Noted. I've removed this task:
 	Now you have 4 tasks in the list.
 ```
 
-## Notebook Mode
+## 3.4 Notebook Mode
 In `Notebook mode`, you can manage a shelf of notebooks.
 Each notebook contains sections, and each section contains pages. Each page holds your type-written notes.
 
-### Add Feature: `add`
-#### Adding a notebook
+### 3.4.1 Add Feature: `add`
+#### 3.4.1.1 Adding a notebook
 Adds a `notebook`  into the `notebook shelf`.
 
 Format: `add /n[NOTEBOOK]`
@@ -207,9 +215,9 @@ Example of usage:
 Added notebook with title: CS2101
 ```
 
-#### Adding a section
-Adds a `section`  into the [selected](#select-feature-select) `notebook`.
->:exclamation: You must select a `notebook` before adding a section!
+#### 3.4.1.2 Adding a section
+Adds a `section`  into the [selected](#342-select-feature-select) `notebook`.
+>:bulb: You must select a `notebook` before adding a section!
 
 Format: `add /s[SECTION]`
 
@@ -222,9 +230,9 @@ Example of usage:
 Added section with title: W1: Java
 ```
 
-#### Adding a page
-Adds a `page`  into the [selected](#select-feature-select) `section`.
->:exclamation: You must select a `section` before adding a page!
+#### 3.4.1.3 Adding a page
+Adds a `page`  into the [selected](#342-select-feature-select) `section`.
+>:bulb: You must select a `section` before adding a page!
 
 Format: `add /p[PAGE]; [PAGE CONTENT]`
 
@@ -238,7 +246,7 @@ Example of usage:
 Added page with title: HELLO WORLD
 ```
 
-### Select Feature: `select`
+### 3.4.2 Select Feature: `select`
 Select a `notebook`, `section`, `page` or a combination of the three.
 
 Format: `select /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
@@ -247,28 +255,28 @@ Format: `select /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
 * `SECTION`: the title of the expected `section` in `notebook`.
 * `NUMBER`: the page number in the expected `section`.
 
-In *NOTEBOOK MODE*,
+In *NOTEBOOK MODE*:
 * `select /nCS2101 /sW2 /p1` - selects page 1 in the notebook `CS2101`, under the section `W2`.
 * `select /nCS2101 /sW2` - selects section titled `W2` in the notebook `CS2101`.
 * `select /nCS2101` - selects the notebook titled `CS2101`.
 * `select /all` - navigates back into `NOTEBOOK MODE`, where you can list to see all available notebooks.
 > These commands can be run anywhere(i.e in a selected notebook or section) once you're in NOTEBOOK MODE.  
 
-In a selected *NOTEBOOK*,
+In a selected *NOTEBOOK*:
 * `select /s1: What is OOP? /p1` - selects page 1 in the section `1: What is OOP?`, in the selected `notebook`.
 * `select /s1: What is OOP?` - selects the section entitled `1: What is OOP?` in the selected `notebook`.
 
-In a selected *SECTION*,
+In a selected *SECTION*:
 * `select /p1` - selects page 1 in the selected `section`.
 
-Examples of usage:
+Example of usage:
 
 ```
 >>> select /nCS2101
 now in notebook book: CS2101
 ```
 
-### Listing contents: `list`
+### 3.4.3 Listing contents: `list`
 Lists out the content of the bookshelf, a selected book or a selected section.
 
 Format: `list (/s) (/a)`
@@ -277,8 +285,7 @@ Format: `list (/s) (/a)`
 - `list /s` display the notebooks together with titles of sections in NOTEBOOK mode
 - `list /a` display all notebooks, sections and pages.
 
-#### In the *notebook* mode:
-
+In *NOTEBOOK MODE*,
 - `list` displays the titles of notebooks in the shelf.
 - `list /s` displays the titles of notebooks together with titles of sections.
 - `list /a` displays all notebooks, sections and pages.
@@ -316,8 +323,7 @@ Example of usage:
   |-- Chapter 3
 ```
 
-#### In a selected notebook:
-
+In a selected *NOTEBOOK*:
 - `list` displays the titles of all the sections in the selected notebook.
 - `list /a` displays all sections and pages in the selected notebook.
 
@@ -340,8 +346,7 @@ now in notebook book: CS2101
 * Chapter 3
 ```
 
-#### In a selected section:
-
+In a selected *SECTION*:
 - `list` displays all the pages in the selected section.
 
 Example of usage:
@@ -356,9 +361,9 @@ now in notebook section: Chapter 1
     Lorem ipsum
 ```
 
-### Delete Contents: `delete`
+### 3.4.4 Delete Contents: `delete`
 Deletes an existing notebook, section or page.
->:exclamation: The current selection determines the type you can delete.
+> :exclamation: The current selection determines the type you can delete.
 
 Format: `delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
 
@@ -394,30 +399,43 @@ Noted. I've removed this notebook:
     CS2113T
 ```
 
-## FAQ
+## 4. FAQ
+
+This section answers some frequently asked questions. 
 
 **Q**: How do I transfer my data to another computer?
 
 **A**: {your answer here}
 
-## Command Summary
+## 5. Command Summary
+
+This section lists the commands available in timetable and notebook mode respectively.
+> :bulb: You can click on each of the commands to navigate to its section.
 
 ### Timetable Mode
 
+The following table is a cheatsheet of the commands available in Timetable Mode.
+
+###### Table: Cheatsheet of the commands available in Timetable Mode 
+
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
-Add a task: `add` | add /tTASK /by[dd-MM-yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
-Mark a task as done: `done` | done [INDEX] | done 1
-List tasks: `list` | list (/u) (/d) (/urgent) |
-Delete: `delete` | delete [INDEX] | delete 1
-Switch to notebook mode: `mode` | mode /n |
+[Add a task](#331-adding-a-task-add): `add` | add /tTASK /by[dd-MM-yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
+[Mark a task as done](#332-marking-a-task-as-done-done): `done` | done [INDEX] | done 1
+[List tasks](#333-listing-tasks-list): `list` | list (/u) (/d) (/urgent) |
+[Delete](#334-deleting-a-task-delete): `delete` | delete [INDEX] | delete 1
+[Switch to notebook mode](#32-switching-between-the-two-modes-mode): `mode` | mode /n |
 
 ### Notebook Mode
 
+The following table is a cheatsheet of the commands available in Notebook Mode.
+
+###### Table: Cheatsheet of the commands available in Notebook Mode
+
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
-Add: `add` | 1) add /nNOTEBOOK 2) add /sSECTION 3) add /pPAGE; CONTENT | add /nCS2101
-Select: `select` | 1) select /nNOTEBOOK 2) select /sSECTION 3) select /pNUMBER | select /nCS2101
-List contents: `list` | list (/s) (/a) |
-Delete: `delete` | 1) select /nNOTEBOOK /sSECTION /pNUMBER | select /nCS2113T /sW10 /p1
-Switch to timetable mode: `mode` | mode /t |
+[Add](#341-add-feature-add): `add` | 1) add /nNOTEBOOK 2) add /sSECTION 3) add /pPAGE; CONTENT | add /nCS2101
+[Select](#342-select-feature-select): `select` | 1) select /nNOTEBOOK 2) select /sSECTION 3) select /pNUMBER | select /nCS2101
+[List contents](#343-listing-contents-list): `list` | list (/s) (/a) |
+[Delete](#344-delete-contents-delete): `delete` | 1) select /nNOTEBOOK /sSECTION /pNUMBER | select /nCS2113T /sW10 /p1
+[Switch to timetable mode](#32-switching-between-the-two-modes-mode): `mode` | mode /t |
