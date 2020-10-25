@@ -18,11 +18,6 @@ import seedu.duke.tasks.TaskList;
 public class CliMessages {
     private static final String REMOVE_TASK_SUCCESS_MESSAGE = "Noted. I've removed this task:";
 
-    public void printAddedTaskMessage(TaskList tasksList, String title) {
-        System.out.println("Added: " + title);
-        System.out.println(tasksList.getNumberOfTasks() + ":" + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
-    }
-
     public static void printRemoveNotebookMessage(Notebook notebook) {
         System.out.println("Noted. I've removed this notebook: ");
         System.out.println("\t" + notebook.getTitle());
@@ -48,12 +43,17 @@ public class CliMessages {
         }
     }
 
+    public void printAddedTaskMessage(TaskList tasksList, String title) {
+        System.out.println("Added: " + title);
+        System.out.println(tasksList.getNumberOfTasks() + ":" + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
+    }
+
     public void printAddTaskHelp() {
         System.out.println("To add a task with a deadline to the task list: ");
         System.out.println("add /t[TASK] /by[dd/MM/yyyy] [hhmm]");
         System.out.println("Example of usage: ");
         System.out.println("add /tcoding /by19-10-2020 1900");
-        System.out.println("");
+        System.out.println();
     }
 
     public void printAddNotebookSectionPageHelp() {
@@ -67,7 +67,7 @@ public class CliMessages {
         System.out.println("add /p[PAGE]; [PAGE CONTENT]");
         System.out.println("Example of usage: ");
         System.out.println("add /pHELLO WORLD; System.out.println(\"Hello World!\");");
-        System.out.println("");
+        System.out.println();
     }
 
     private void printAddSectionHelp() {
@@ -75,7 +75,7 @@ public class CliMessages {
         System.out.println("add /s[SECTION]");
         System.out.println("Example of usage: ");
         System.out.println("add /sW1: Java");
-        System.out.println("");
+        System.out.println();
     }
 
     private void printAddNotebookHelp() {
@@ -83,7 +83,7 @@ public class CliMessages {
         System.out.println("add /n[NOTEBOOK]");
         System.out.println("Example of usage: ");
         System.out.println("add /nCS2101");
-        System.out.println("");
+        System.out.println();
     }
 
     public void printDoneTaskHelp() {
@@ -108,7 +108,7 @@ public class CliMessages {
         System.out.println("mode /t");
         System.out.println("To switch to notebook mode: ");
         System.out.println("mode /n");
-        System.out.println("");
+        System.out.println();
     }
 
     public void printRemoveTaskHelp() {
@@ -116,7 +116,7 @@ public class CliMessages {
         System.out.println("delete [INDEX]");
         System.out.println("Example of usage: ");
         System.out.println("delete 1");
-        System.out.println("");
+        System.out.println();
     }
 
     public void printRemoveNotebookSectionPageHelp() {
@@ -126,7 +126,7 @@ public class CliMessages {
         System.out.println("delete /nCS2113T /sW10 /p1");
         System.out.println("delete /nCS2113T /sW10");
         System.out.println("delete /nCS2113T");
-        System.out.println("");
+        System.out.println();
     }
 
     public void printSelectHelp() {
@@ -138,14 +138,14 @@ public class CliMessages {
         System.out.println("select /nCS2101 /sW2");
         System.out.println("select /nCS2101");
         System.out.println("select /all");
-        System.out.println("");
+        System.out.println();
         System.out.println("In a selected notebook");
         System.out.println("select /s1: What is OOP? /p1");
         System.out.println("select /s1: What is OOP?");
-        System.out.println("");
+        System.out.println();
         System.out.println("In a selected section");
         System.out.println("select /p1");
-        System.out.println("");
+        System.out.println();
     }
 
     public void printNotebookModeHelp() {
@@ -173,7 +173,7 @@ public class CliMessages {
     public void printOnlineGuideLink() {
         System.out.println("Access the full user guide for Zer0Note online, at: ");
         System.out.println("https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html");
-        System.out.println("");
+        System.out.println();
     }
 
     public void printAllHelp() {
@@ -207,7 +207,7 @@ public class CliMessages {
         int index = 1;
         System.out.println("Notebooks:");
         for (Notebook notebook : notebooks) {
-            System.out.println(index+". "+notebook.getTitle());
+            System.out.println(index + ". " + notebook.getTitle());
             index += 1;
         }
     }
@@ -216,7 +216,7 @@ public class CliMessages {
         int index = 1;
         System.out.println("Sections:");
         for (Section section : sections) {
-            System.out.println(index+". "+section.getTitle());
+            System.out.println(index + ". " + section.getTitle());
             index += 1;
         }
     }

@@ -29,6 +29,7 @@ public class FindCommandNotebookMode extends CliCommand {
         this.tag = tag.toLowerCase();
         this.appState = appState;
     }
+
     public void execute() {
         if (tag.equals("")) {
             getAllWithTitleContainingKeyword();
@@ -47,9 +48,9 @@ public class FindCommandNotebookMode extends CliCommand {
 
     private void getAllWithTitleContainingKeyword() {
         NotebookShelf currentNotebookShelf = appState.getCurrentBookShelf();
-        for (Notebook notebook: currentNotebookShelf.getNotebooksArrayList()) {
+        for (Notebook notebook : currentNotebookShelf.getNotebooksArrayList()) {
             String notebookTitle = notebook.getTitle();
-            if (isMatching(notebookTitle,keyword)) {
+            if (isMatching(notebookTitle, keyword)) {
                 notebooksFound.add(notebook);
             }
             getSectionsWithTitleContainingKeyword(notebook);
@@ -59,7 +60,7 @@ public class FindCommandNotebookMode extends CliCommand {
     private void getSectionsWithTitleContainingKeyword(Notebook notebook) {
         for (Section section : notebook.getSectionArrayList()) {
             String sectionTitle = section.getTitle();
-            if (isMatching(sectionTitle,keyword)) {
+            if (isMatching(sectionTitle, keyword)) {
                 sectionsFound.add(section);
             }
             getPagesWithTitleContainingKeyword(section);
@@ -69,7 +70,7 @@ public class FindCommandNotebookMode extends CliCommand {
     private void getPagesWithTitleContainingKeyword(Section section) {
         for (Page page : section.getPageArrayList()) {
             String pageTitle = page.getTitle();
-            if (isMatching(pageTitle,keyword)) {
+            if (isMatching(pageTitle, keyword)) {
                 pagesFound.add(page);
             }
         }
@@ -77,9 +78,9 @@ public class FindCommandNotebookMode extends CliCommand {
 
     private void getAllWithTagsContainingKeyword() {
         NotebookShelf currentNotebookShelf = appState.getCurrentBookShelf();
-        for (Notebook notebook: currentNotebookShelf.getNotebooksArrayList()) {
+        for (Notebook notebook : currentNotebookShelf.getNotebooksArrayList()) {
             String notebookTag = notebook.getTag();
-            if (!notebookTag.equals("") && isMatching(notebookTag,tag)) {
+            if (!notebookTag.equals("") && isMatching(notebookTag, tag)) {
                 notebooksFound.add(notebook);
             }
             getSectionsWithTagContainingKeyword(notebook);
@@ -89,7 +90,7 @@ public class FindCommandNotebookMode extends CliCommand {
     private void getSectionsWithTagContainingKeyword(Notebook notebook) {
         for (Section section : notebook.getSectionArrayList()) {
             String sectionTag = section.getTag();
-            if (!sectionTag.equals("") && isMatching(sectionTag,tag)) {
+            if (!sectionTag.equals("") && isMatching(sectionTag, tag)) {
                 sectionsFound.add(section);
             }
             getPagesWithTagContainingKeyword(section);
@@ -99,7 +100,7 @@ public class FindCommandNotebookMode extends CliCommand {
     private void getPagesWithTagContainingKeyword(Section section) {
         for (Page page : section.getPageArrayList()) {
             String pageTag = page.getTag();
-            if (!pageTag.equals("") && isMatching(pageTag,tag)) {
+            if (!pageTag.equals("") && isMatching(pageTag, tag)) {
                 pagesFound.add(page);
             }
         }
