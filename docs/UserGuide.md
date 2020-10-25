@@ -41,6 +41,7 @@ This app is targeted towards students, especially those who enjoy typing! This u
 > Here are some icons that will be used in this User Guide: 
 >> :exclamation: : Thing(s) to note
 >> :bulb: : Tip(s)
+
 > :exclamation: Notes about the format:
 * Words/sections that look like this: `example`, are code snippets.
 * Words/phrases within `[square brackets]` are the expected user inputs.
@@ -55,11 +56,13 @@ This app is targeted towards students, especially those who enjoy typing! This u
 1. Download the latest version of `Zer0Note` from [here](https://github.com/AY2021S1-CS2113T-T12-3/tp/releases).
 3. Copy the file to the folder you want to use as the home folder for Zer0Note.
 4. Open a terminal on your computer and navigate to the folder containing the jar file. In the following example, the file has been saved in the Downloads folder.
-![](/images/command-change-dir) Figure 1. Changing directory in Windows command prompt.
+
+![Change directory](/images/command-change-dir.png) 
+Figure 1. Changing directory in Windows command prompt.
 
 5. Type `java -jar Zer0Note.jar` and press Enter.
 6. If successful, you will see the following message.
-![](/images/welcome) Figure 2. Welcome message on successful run.
+![Welcome message](/images/welcome.png) Figure 2. Welcome message on successful run.
 
 Great! Now that you have successfully run Zer0Note, go ahead and try out the different commands available (shown in the next section, 3. Features).
 
