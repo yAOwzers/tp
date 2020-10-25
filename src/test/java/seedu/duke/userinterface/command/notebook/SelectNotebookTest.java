@@ -8,6 +8,7 @@ import seedu.duke.userinterface.InputParser;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+//@@chuckiex3
 public class SelectNotebookTest {
     @Test
     void selectNotebook_in_wrongMode() {
