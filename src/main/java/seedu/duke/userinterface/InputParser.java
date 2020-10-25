@@ -48,15 +48,21 @@ public class InputParser {
      * @throws TaskWrongFormatException when the user's input does not include the TASK_DELIMITER.
      * @throws TaskTitleException       when the user's input does not include a task title.
      */
-    public String parseTaskTitle(String input) throws TaskWrongFormatException, TaskTitleException {
+    public String parseTaskTitle(String input)
+            throws TaskWrongFormatException, TaskTitleException, IncorrectDeadlineFormatException {
         if (input.startsWith(TASK_DELIMITER)) {
             String taskTitle = input.replace(TASK_DELIMITER, "");
             if (taskTitle.isBlank()) {
                 throw new TaskTitleException();
             }
-            int indexPos = taskTitle.indexOf("/by");
-            taskTitle = taskTitle.substring(0, indexPos).trim();
-            return taskTitle;
+
+            if (taskTitle.contains(DEADLINE_DELIMITER)) {
+                int indexPos = taskTitle.indexOf("/by");
+                taskTitle = taskTitle.substring(0, indexPos).trim();
+                return taskTitle;
+            } else {
+                throw new IncorrectDeadlineFormatException();
+            }
         } else {
             throw new TaskWrongFormatException();
         }
@@ -71,12 +77,12 @@ public class InputParser {
      * @throws TaskWrongFormatException         when the deadline input is blank.
      */
     public String parseDeadline(String input) throws TaskWrongFormatException, IncorrectDeadlineFormatException {
-        int dividerPos = input.indexOf(DEADLINE_DELIMITER);
-        input = input.substring(dividerPos);
-        if (input.startsWith(DEADLINE_DELIMITER)) {
+        if (input.contains(DEADLINE_DELIMITER)) {
+            int dividerPos = input.indexOf(DEADLINE_DELIMITER);
+            input = input.substring(dividerPos);
             String deadline = input.replace(DEADLINE_DELIMITER, "").trim();
             if (deadline.isBlank()) {
-                throw new TaskWrongFormatException();
+                throw new IncorrectDeadlineFormatException();
             }
             if (!correctTimeFormat(deadline)) {
                 throw new IncorrectDeadlineFormatException();
