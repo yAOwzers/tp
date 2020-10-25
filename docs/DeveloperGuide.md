@@ -23,10 +23,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.1. Implementation](#4211-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4212-design-considerations) <br>
 &nbsp;&nbsp;[4.3. Notebook Mode](#43-notebook-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.3.1. Notebook Management Feature](#431-notebook-management-feature) <br>
 &nbsp;&nbsp;[4.4. [Proposed] Find duplicates](#44-find-duplicates) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.1 Proposed implementation](#441-proposed-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.2 Design considerations](#442-design-considerations) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.1. Aspect: Where findDuplicate should be placed](#4421-aspect) <br>
 [5. Documentation](#5-documentation) <br>
 &nbsp;&nbsp;[5.1. Setting up and maintaining the project website](#51-setting-up-and-maintaining-the-project-website) <br>
 &nbsp;&nbsp;[5.2. Style guidance](#52-style-guidance) <br>
@@ -87,35 +87,68 @@ to set up IDEA’s coding style to match ours.
 
 ### 3.1 Architecture
 
-#### 3.2 Commands
+**How the architecture components interact with each other**
+The Sequence Diagram below shows how the components interact with each other for the scenario...
+
+/* work in progress */
+
+### 3.2 UserInterface Component
+
+The UserInterface Component is made up of `AppMode`, `AppState`, `CliMessages`, `CliUserInterface`, `InputParser`.
+
+The `UserInterface` component,
+
+* Executes user commands using the `Commands` component.
+* // how it interacts with the other components
+
+/* TODO explain the various variables and methods */
+
+### 3.3. Commands Component
 
 ![UML diagram for Timetable Commands](/diagrams/class/jpeg/timetable_commands.jpg)
 
 ![UML diagrams for Notebook Commands](/diagrams/class/jpeg/notebook_commands.jpg)
 
-#### 3.3 Notebooks
+/* to insert UML diagram */
+
+The `Commands` component, 
+
+// TODO add components
+
+### 3.4. Tasks Component
+
+/* to insert UML diagram */
+
+### 3.5 Notebooks Component
 
 ![UML diagram for Notebooks](/diagrams/class/jpeg/notebooks.jpg)
 
-#### 3.4. Tasks
+/* TODO explain the various variables and methods */
 
-**How the architecture components interact with each other**
-The Sequence Diagram below shows how the components interact with each other for the scenario...
+### 3.6. Storage Component
+
+/* to insert UML diagram */
 
 ## 4. Implementation
+
 This section describes some noteworthy details on how certain features are implemented.
 
 ### 4.1. Mode Switch Feature
 
 #### 4.1.1. Implementation
 
+/* work in progress */
+
 #### 4.1.2. Design Considerations
+
+/* work in progress */
 
 ### 4.2. Timetable Mode
 
 #### 4.2.1. Tasklist Management Feature
 
 ##### 4.2.1.1. Implementation
+
 `TaskList` is implemented to manage and store the tasks input by the user. It comprises of a list of `Task`s.
 
 This means that multiple operations such as addition and deletion can be done on a `Task`, without affecting
@@ -136,7 +169,7 @@ public RemoveCommandTimetableMode(int indexToRemove, AppState uiMode) {
 ```
 3. Method **execute()** then calls the `TaskList` stored in `AppState` to update the deletion of the task.
 It also constructs `CliMessages` to display messages to the user.
-4. If the deletion is successful, `CliMessages` is then called to display messages to the user.
+4. If the deletion is successful, `CliMessages` displays the message to the user.
 
 ##### 4.2.1.2. Design Considerations
 
@@ -146,7 +179,7 @@ It also constructs `CliMessages` to display messages to the user.
     - Cons: It is unoptimized in terms of complexity, which requires more work for scaling of the application.
 - **Alternative 2:** Stores as a Hash Table with the key as the index and value as `Task`
     - Pros: It has a better time complexity and reduce the work in scaling stage since this data structure is more optimized (O(1) can be achieved).
-    - Cons: It takes more resources to implement. Furthermore,
+    - Cons: It takes more resources to implement. 
 
 ### 4.2.2. List feature
 
@@ -158,6 +191,36 @@ The following sequence diagram shows how the list operation works:
 
 
 ### 4.3. Notebook Mode
+
+#### 4.3.1. Notebook Management Feature
+
+As shown in Figure 1, the `NotebookShelf` class comprises instances of `Notebook` class. `Notebook` comprises `Section`
+and `Section` comprises `Page`. The navigability is not bidirectional. Multiple operations such as addition and deletion
+can be done without affecting other instances at all, while updating the `Notebook` it is in.
+
+The figure below shows how the delete task command works:
+<img src="https://user-images.githubusercontent.com/60319628/96821973-9176e600-145b-11eb-95b7-5bf885ea1867.png">
+
+After calling `InputParser#getCommandFromInput` from `CliUserInterface`:
+1. `InputParser` parses the input to return the `notebookTitleToRemove`, `sectionTitleToRemove` and `pageNumberToRemove`.
+Some of these members may be empty.
+2. `InputParser` constructs and returns the `RemoveCommandNotebookMode` class with constructor as shown below:
+```
+public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
+                                     int pageNumber, AppState appState) {
+    this.appState = appState;
+    notebookTitleToRemove = notebookTitle;
+    sectionTitleToRemove = sectionTitle;
+    pageNumberToRemove = pageNumber;
+
+    currentBookshelf = appState.getCurrentBookShelf();
+    currentNotebook = appState.getCurrentNotebook();
+    currentSection = appState.getCurrentSection();
+}
+```
+3. Method **execute()** called by `CliUserInterface` to delete a notebook, section, or page, depending on the input.
+A switch-case block is used to determine the method to call based on the `appMode`.
+4. If the deletion is successful, `CliMessages` displays the message to the user.
 
 
 ### 4.4 [Proposed] Find duplicate feature
@@ -191,9 +254,9 @@ The sequence diagram below shows how the find duplicate command works:
 
 #### 4.4.2 Design consideration
 
-##### 4.4.2.1 Aspect: Where findDuplicate should be placed
+##### Aspect: Where findDuplicate should be placed
 
-* Alternative 1 (current choice): findDuplicate should be saved in the class that potentially creates duplicates.
+* **Alternative 1 (current choice)**: findDuplicate should be saved in the class that potentially creates duplicates.
   * Pros: Easier to access previously saved tasks/notebooks/notebook sections.
   * Cons: May have performance issues in terms of memory usage.
 * Alternative 2: findDuplicate should be saved in the command that creates it.
@@ -213,7 +276,7 @@ We use Markdown for writing our documents.
 - Follow the [Google developer documentation style guide](https://developers.google.com/style).
 - Also relevant is the [[se-edu/guides] Markdown coding standard](https://se-education.org/guides/conventions/markdown.html).
 
-### Diagrams
+### 5.3. Diagrams
 
 We use Microsoft Visio Professional 2019 to draw our UML diagrams.
 
@@ -273,6 +336,8 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 |`*`|long-time user|have personalised messages|feel attached to my notes|
 
 ## Appendix C: Use Cases
+
+/* work in progress */
 
 ## Appendix D: Non-Functional Requirements
 
