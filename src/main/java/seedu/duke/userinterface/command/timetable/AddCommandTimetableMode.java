@@ -16,7 +16,6 @@ public class AddCommandTimetableMode extends CliCommand {
     public static final String COMMAND_WORD = "add";
     public static final String TASK_DELIMITER = "/t";
     public static final String DEADLINE_DELIMITER = "/by";
-    private static InputParser parser;
     private final String argument;
     private final CliMessages messages = new CliMessages();
 
@@ -27,12 +26,12 @@ public class AddCommandTimetableMode extends CliCommand {
 
     @Override
     public void execute() {
-        parser = new InputParser();
+        InputParser parser = new InputParser();
         TaskList currentTaskList = appState.getTaskList();
         try {
             if (argument.contains("/by")) {
-                String title = InputParser.parseTaskTitle(argument);
-                String deadline = InputParser.parseDeadline(argument);
+                String title = parser.parseTaskTitle(argument);
+                String deadline = parser.parseDeadline(argument);
                 currentTaskList.addTask(new Task(title, deadline));
                 messages.printAddedTaskMessage(currentTaskList, title);
             } else {
