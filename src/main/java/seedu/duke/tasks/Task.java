@@ -44,7 +44,7 @@ public class Task {
         this.isDone = true;
     }
 
-    public String getTask() {
+    public String getTitle() {
         return this.title;
     }
 
@@ -73,7 +73,7 @@ public class Task {
     @Override
     public String toString() {
         try {
-            return "[" + this.getStatusIcon() + "] " + this.title + " (by: " + reformatDate() + ")" + this.getTag();
+            return "[" + getStatusIcon() + "] " + getTitle() + " (by: " + reformatDate() + ")" + getTag();
         } catch (ParseException e) {
             System.out.println("\tAn error occurred while reading the given deadline.");
         }

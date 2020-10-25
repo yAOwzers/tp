@@ -34,6 +34,10 @@ public class Notebook {
         tag = description;
     }
 
+    public String getTag() {
+        return tag;
+    }
+
     /**
      * Add a new section with a given title to this notebook.
      *

@@ -30,15 +30,15 @@ public class TagCommandNotebookMode extends CliCommand {
             switch (appState.getAppMode()) {
             case NOTEBOOK_BOOK:
                 currentNotebook.setTag(commandParams);
-                cliMessages.printTagNotebookMessage(currentNotebook.getTitle(),commandParams);
+                cliMessages.printTagNotebookMessage(currentNotebook.getTitle(),currentNotebook.getTag());
                 break;
             case NOTEBOOK_SECTION:
                 currentSection.setTag(commandParams);
-                cliMessages.printTagNotebookMessage(currentSection.getTitle(),commandParams);
+                cliMessages.printTagNotebookMessage(currentSection.getTitle(),currentSection.getTag());
                 break;
             case NOTEBOOK_PAGE:
                 currentPage.setTag(commandParams);
-                cliMessages.printTagNotebookMessage(currentPage.getTitle(),commandParams);
+                cliMessages.printTagNotebookMessage(currentPage.getTitle(),currentPage.getTag());
                 break;
             default:
                 throw new IncorrectAppModeException();

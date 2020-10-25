@@ -1,5 +1,7 @@
 package seedu.duke.userinterface;
 
+import java.util.ArrayList;
+
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.Page;
 import seedu.duke.notebooks.Section;
@@ -199,5 +201,32 @@ public class CliMessages {
     public void printTagTaskMessage(Task task) {
         String createTagMessage = "Got it! I've tagged this as:\n";
         System.out.println(createTagMessage + task);
+    }
+
+    public void printFoundNotebooksMessage(ArrayList<Notebook> notebooks) {
+        int index = 1;
+        System.out.println("Notebooks:");
+        for (Notebook notebook : notebooks) {
+            System.out.println(index+". "+notebook.getTitle());
+            index += 1;
+        }
+    }
+
+    public void printFoundSectionsMessage(ArrayList<Section> sections) {
+        int index = 1;
+        System.out.println("Sections:");
+        for (Section section : sections) {
+            System.out.println(index+". "+section.getTitle());
+            index += 1;
+        }
+    }
+
+    public void printFoundPagesMessage(ArrayList<Page> pagesFound) {
+        int index = 1;
+        System.out.println("Pages:");
+        for (Page page : pagesFound) {
+            System.out.println(index + ". " + page.getTitle());
+            index += 1;
+        }
     }
 }

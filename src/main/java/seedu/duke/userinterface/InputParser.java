@@ -15,6 +15,7 @@ import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.command.CliCommand;
+import seedu.duke.userinterface.command.notebook.FindCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.TagCommandNotebookMode;
 import seedu.duke.userinterface.command.timetable.DoneCommandTimetableMode;
 import seedu.duke.userinterface.command.Exit;
@@ -25,6 +26,7 @@ import seedu.duke.userinterface.command.notebook.ListCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.RemoveCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode;
 import seedu.duke.userinterface.command.timetable.AddCommandTimetableMode;
+import seedu.duke.userinterface.command.timetable.FindCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.ListCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.TagCommandTimetableMode;
@@ -369,6 +371,17 @@ public class InputParser {
                     throw new InvalidCommandException(userInput);
                 }
             }
+        case FindCommandTimetableMode.COMMAND_WORD:
+            String[] splitParams = parseTagDescription(argument);
+            if (appState.getAppMode() == AppMode.TIMETABLE && argument.contains("/t")) {
+                return new FindCommandTimetableMode(splitParams[0].trim(),splitParams[1].trim(),appState);
+            } else if (appState.getAppMode() == AppMode.TIMETABLE && !argument.contains("/t")) {
+                return new FindCommandTimetableMode(splitParams[0].trim(), "", appState);
+            } else if (argument.contains("/t")) {
+                return new FindCommandNotebookMode(splitParams[0].trim(),splitParams[1].trim(),appState);
+            } else {
+                return new FindCommandNotebookMode(splitParams[0].trim(),"",appState);
+            }
         case ListCommandTimetableMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
                 return new ListCommandTimetableMode(argument, appState);
@@ -382,7 +395,7 @@ public class InputParser {
                 throw new IncorrectAppModeException();
             }
         case TagCommandTimetableMode.COMMAND_WORD:
-            String[] splitParams = parseTagDescription(argument);
+            splitParams = parseTagDescription(argument);
             if (appState.getAppMode() == AppMode.TIMETABLE) {
                 int index = parseTaskIndex(splitParams[0].trim());
                 return new TagCommandTimetableMode(index, splitParams[1].trim(), appState);

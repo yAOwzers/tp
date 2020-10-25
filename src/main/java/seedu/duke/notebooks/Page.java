@@ -33,4 +33,8 @@ public class Page {
     public void setTag(String description) {
         tag = description;
     }
+
+    public String getTag() {
+        return tag;
+    }
 }

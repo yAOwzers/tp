@@ -68,4 +68,8 @@ public class Section {
     public void setTag(String description) {
         tag = description;
     }
+
+    public String getTag() {
+        return tag;
+    }
 }
