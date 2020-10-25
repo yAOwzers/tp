@@ -41,7 +41,7 @@ public class TaskList {
         String lineSeparator = System.lineSeparator();
         serialized.append(getNumberOfTasks());
         serialized.append(lineSeparator);
-        for(Task t: taskArrayList) {
+        for (Task t : taskArrayList) {
             serialized.append(t.serialize());
         }
         return serialized.toString();
