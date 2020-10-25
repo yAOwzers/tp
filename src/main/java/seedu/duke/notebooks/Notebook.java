@@ -6,9 +6,10 @@ import java.util.ArrayList;
  * Represents a list of Sections.
  *
  */
-public class Notebook {
+public class Notebook extends NotebookData {
     private String title;
     private final ArrayList<Section> sectionArrayList;
+
 
     public Notebook(String title) {
         this.title = title;
@@ -82,21 +83,26 @@ public class Notebook {
     }
 
     public String toTxtFormat() {
-        return this.title;
+        return getType() + " | " + this.title;
     }
 
     public void load(Section section) {
         sectionArrayList.add(section);
     }
 
-    public static Notebook parse(String txtFormat) {
-        String title = txtFormat;
+    // TODO fix parsing for all types (notebook, section, pages) for Joel updated 25 October, 7:55pm
+    public static Notebook parse(String[] txtArray) {
+        String title = txtArray[1];
         Notebook newNotebook = new Notebook(title);
         return newNotebook;
     }
 
     public String getNotebookInMessageFormat() {
         return "Notebook with title: " + this.title;
+    }
+
+    public String getType() {
+        return "N";
     }
 
 }

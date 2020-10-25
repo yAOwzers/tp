@@ -2,10 +2,7 @@ package seedu.duke.storage;
 
 import seedu.duke.exceptions.InvalidUserInputException;
 import seedu.duke.exceptions.NotebookOutOfBoundsException;
-import seedu.duke.notebooks.Notebook;
-import seedu.duke.notebooks.NotebookShelf;
-import seedu.duke.notebooks.Page;
-import seedu.duke.notebooks.Section;
+import seedu.duke.notebooks.*;
 import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.AppState;
@@ -28,9 +25,6 @@ import java.util.Scanner;
 public class Storage {
 
     private static final String taskFilepath = "data/taskData.txt";
-    private static final String pageFilepath = "data/pageData.txt";
-    private static final String sectionFilepath = "data/sectionData.txt";
-    private static final String notebookFilepath = "data/notebookData.txt";
     private static final String notebookShelfFilepath = "data/notebookShelfData.txt";
 
     public Storage() {
@@ -100,8 +94,10 @@ public class Storage {
         }
     }
 
+
+    // TODO condense all methods into a single one, and do a switch
     public void savePage(Page page) {
-        File file = new File(this.pageFilepath);
+        File file = new File(this.notebookShelfFilepath);
         try {
             file.getParentFile().mkdir(); // create a directory
             file.createNewFile(); // create .txt file
@@ -112,7 +108,7 @@ public class Storage {
                 writeToFile.write(System.lineSeparator() + page.toTxtFormat());
                 writeToFile.close();
             } else {
-                FileWriter writeToFile = new FileWriter(this.pageFilepath);
+                FileWriter writeToFile = new FileWriter(this.notebookShelfFilepath);
                 writeToFile.write(page.toTxtFormat());
                 writeToFile.close();
             }
@@ -122,7 +118,7 @@ public class Storage {
     }
 
     public void saveSection(Section section) {
-        File file = new File(this.sectionFilepath);
+        File file = new File(this.notebookShelfFilepath);
         try {
             file.getParentFile().mkdir(); // create a directory
             file.createNewFile(); // create a .txt file
@@ -133,7 +129,7 @@ public class Storage {
                 saveFile.write(System.lineSeparator() + section.toTxtFormat());
                 saveFile.close();
             } else {
-                FileWriter saveFile = new FileWriter(this.notebookFilepath);
+                FileWriter saveFile = new FileWriter(this.notebookShelfFilepath);
                 saveFile.write(section.toTxtFormat());
                 saveFile.close();
             }
@@ -142,12 +138,13 @@ public class Storage {
         }
     }
 
+    // TODO change all load methods
     public void loadSection(Section section) throws InvalidUserInputException {
-        File file = new File(this.sectionFilepath); // create a File for the given file path
+        File file = new File(this.notebookShelfFilepath); // create a File for the given file path
         try {
             Scanner s = new Scanner(file); // create a Scanner using the File as the source
             while (s.hasNext()) {
-                Page loadPageList = Page.parse(s.nextLine());
+                Page loadPageList = (Page) Page.parse(s.nextLine());
                 section.load(loadPageList);
             }
         } catch (FileNotFoundException e) {
@@ -155,8 +152,21 @@ public class Storage {
         }
     }
 
+    public void loadNotebook(Notebook notebook) throws InvalidUserInputException {
+        File file = new File(this.notebookShelfFilepath); // create a File for the given file path
+        try {
+            Scanner s = new Scanner(file); // create a Scanner using the File as the source
+            while (s.hasNext()) {
+                Section loadSectionList = (Section) Section.parse(s.nextLine());
+                notebook.load(loadSectionList);
+            }
+        } catch (FileNotFoundException e) {
+            // If file is not found, a new file will be created
+        }
+    }
+
     public void saveNotebook(Notebook notebook) {
-        File file = new File(this.notebookFilepath);
+        File file = new File(this.notebookShelfFilepath);
         try {
             file.getParentFile().mkdir(); // create a directory
             file.createNewFile(); // create a .txt file
@@ -167,7 +177,7 @@ public class Storage {
                 saveFile.write(System.lineSeparator() + notebook.toTxtFormat());
                 saveFile.close();
             } else {
-                FileWriter saveFile = new FileWriter(this.notebookFilepath);
+                FileWriter saveFile = new FileWriter(this.notebookShelfFilepath);
                 saveFile.write(notebook.toTxtFormat());
                 saveFile.close();
             }
@@ -176,18 +186,6 @@ public class Storage {
         }
     }
 
-    public void loadNotebook(Notebook notebook) throws InvalidUserInputException {
-        File file = new File(this.notebookFilepath); // create a File for the given file path
-        try {
-            Scanner s = new Scanner(file); // create a Scanner using the File as the source
-            while (s.hasNext()) {
-                Section loadSectionList = Section.parse(s.nextLine());
-                notebook.load(loadSectionList);
-            }
-        } catch (FileNotFoundException e) {
-            // If file is not found, a new file will be created
-        }
-    }
 
     /**
      * Overwrites and saves an entire notebookShelf into the txt file from the file path.
@@ -212,11 +210,11 @@ public class Storage {
     }
 
     public void loadNotebookShelf(NotebookShelf notebookShelf) throws InvalidUserInputException {
-        File file = new File(this.notebookFilepath); // create a File for the given file path
+        File file = new File(this.notebookShelfFilepath); // create a File for the given file path
         try {
             Scanner s = new Scanner(file); // create a Scanner using the File as the source
             while (s.hasNext()) {
-                Notebook loadNotebookList = Notebook.parse(s.nextLine());
+                Notebook loadNotebookList = (Notebook) Notebook.parse(s.nextLine());
                 notebookShelf.load(loadNotebookList);
             }
         } catch (FileNotFoundException e) {

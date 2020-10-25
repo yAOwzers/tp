@@ -1,8 +1,5 @@
 package seedu.duke.notebooks;
 
-import seedu.duke.storage.Storage;
-import seedu.duke.tasks.Task;
-import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.CliMessages;
 import seedu.duke.exceptions.NotebookOutOfBoundsException;
 
@@ -34,7 +31,7 @@ public class NotebookShelf {
      */
     public int findNotebook(String title) {
         int index = 0;
-        for (Notebook n : notebookArrayList) {
+        for (NotebookData n : notebookArrayList) {
             if (n.getTitle().equals(title)) {
                 return index;
             }

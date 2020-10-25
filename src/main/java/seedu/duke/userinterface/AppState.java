@@ -24,8 +24,6 @@ public class AppState {
     public AppState(Storage storage) {
         this.currentTaskList = new TaskList();
         this.storage = storage;
-        this.currentSection = new Section(this.sectionTitle);
-        this.currentNotebook = new Notebook(this.notebookTitle);
         this.currentNotebookShelf = new NotebookShelf();
         this.appMode = AppMode.TIMETABLE;
 

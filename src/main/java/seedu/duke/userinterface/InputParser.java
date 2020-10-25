@@ -272,6 +272,30 @@ public class InputParser {
         }
     }
 
+    // TODO remove once edited, think of how to incorporate notebook title when selected in zer0Note app
+    public static String parseSectionNotebookTitle(String input) throws InvalidSectionException {
+        try {
+            int dividerPos = input.indexOf(SECTION_DELIMITER);
+            input = input.substring(dividerPos);
+        } catch (StringIndexOutOfBoundsException e) {
+            throw new InvalidSectionException(input);
+        }
+
+        if (input.startsWith(SECTION_DELIMITER)) {
+            String sectionTitle = input.replace(SECTION_DELIMITER, "");
+            if (sectionTitle.isBlank()) {
+                throw new InvalidSectionException(null);
+            }
+            if (sectionTitle.contains(PAGE_DELIMITER)) {
+                int indexPos = sectionTitle.indexOf(PAGE_DELIMITER);
+                sectionTitle = sectionTitle.substring(0, indexPos).trim();
+            }
+            return sectionTitle;
+        } else {
+            throw new InvalidSectionException(input);
+        }
+    }
+
     public int parseTaskIndex(String args) throws NumberFormatException {
         return Integer.parseInt(args) - 1;
     }
@@ -355,6 +379,40 @@ public class InputParser {
         }
     }
 
+    // TODO remove once edited (think of how to incorporate the title when the Notebook/Section is selected)
+    public String parsePageSectionTitle(String input) throws InvalidPageException, EmptyPageException {
+        int dividerPos = input.indexOf(CONTENT_DELIMITER);
+        input = input.substring(dividerPos);
+
+        if (input.startsWith(CONTENT_DELIMITER)) {
+            String content = input.replace(CONTENT_DELIMITER, "").trim();
+            if (content.isBlank()) {
+                throw new EmptyPageException();
+            }
+            return content;
+        } else {
+            throw new InvalidPageException();
+        }
+    }
+
+    // TODO remove once edited
+    public String parsePageNotebookTitle(String input) throws InvalidPageException, EmptyPageException {
+        int dividerPos = input.indexOf(CONTENT_DELIMITER);
+        input = input.substring(dividerPos);
+
+        if (input.startsWith(CONTENT_DELIMITER)) {
+            String content = input.replace(CONTENT_DELIMITER, "").trim();
+            if (content.isBlank()) {
+                throw new EmptyPageException();
+            }
+            return content;
+        } else {
+            throw new InvalidPageException();
+        }
+    }
+
+
+    // TODO improve the switch command
     public CliCommand getCommandFromInput(String userInput, AppState appState, Storage storage) throws ZeroNoteException {
         String trimmedInput = userInput.trim();
         String[] input = trimmedInput.split(" ", 2); // split input into command and arguments
@@ -370,16 +428,21 @@ public class InputParser {
             } else {
                 String titleToAdd;
                 String contentToAdd;
+                String notebookTitle;
+                String sectionTitle;
                 if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
                     titleToAdd = parseNotebookTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState, storage);
                 } else if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
                     titleToAdd = parseSectionTitle(argument);
-                    return new AddCommandNotebookMode(titleToAdd, appState, storage);
+                    notebookTitle = parseSectionNotebookTitle(argument);
+                    return new AddCommandNotebookMode(titleToAdd, notebookTitle, appState, storage);
                 } else if (appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
                     titleToAdd = parsePageTitle(argument);
                     contentToAdd = parsePageContent(argument);
-                    return new AddCommandNotebookMode(titleToAdd, contentToAdd, appState, storage);
+                    notebookTitle = parsePageNotebookTitle(argument);
+                    sectionTitle = parsePageSectionTitle(argument);
+                    return new AddCommandNotebookMode(titleToAdd, contentToAdd, sectionTitle, notebookTitle, appState, storage);
                 } else {
                     throw new InvalidCommandException(userInput);
                 }

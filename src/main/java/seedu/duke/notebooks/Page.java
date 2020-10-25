@@ -1,18 +1,22 @@
 package seedu.duke.notebooks;
 
-import seedu.duke.tasks.Task;
-
 /**
  * Represents a page class.
  *
  */
-public class Page {
+public class Page extends NotebookData {
     private String title;
     private String content;
 
-    public Page(String title, String content) {
+    // TODO add in title of Notebook and Section
+    private String notebookTitle;
+    private String sectionTitle;
+
+    public Page(String title, String content, String notebookTitle, String sectionTitle) {
         this.title = title;
         this.content = content;
+        this.sectionTitle = sectionTitle;
+        this.notebookTitle = notebookTitle;
     }
 
     public String getTitle() {
@@ -36,14 +40,16 @@ public class Page {
     }
 
     public String toTxtFormat() {
-        return this.title + " | " + this.content;
+        return getType() + " | " + this.notebookTitle + " | " + this.sectionTitle
+                + " | " + this.title + " | " + this.content;
     }
 
-    public static Page parse(String txtFormat) {
-        String[] txtArray = txtFormat.split("\\|");
-        String title = txtArray[0].trim();
-        String content = txtArray[1].trim();
-        Page newPage = new Page(title, content);
+    public static Page parse(String[] txtArray) {
+        String notebookTitle = txtArray[1].trim();
+        String sectionTitle = txtArray[2].trim();
+        String pageTitle = txtArray[3].trim();
+        String pageContent = txtArray[4].trim();
+        Page newPage = new Page(pageTitle, pageContent, notebookTitle, sectionTitle);
         return newPage;
     }
 
@@ -52,4 +58,7 @@ public class Page {
                 + "content: " + this.content;
     }
 
+    public String getType() {
+        return "P";
+    }
 }

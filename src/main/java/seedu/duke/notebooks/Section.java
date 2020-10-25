@@ -6,13 +6,15 @@ import java.util.ArrayList;
  * Represents a list of Pages.
  *
  */
-public class Section {
+public class Section extends NotebookData {
     private String title;
     private final ArrayList<Page> pageArrayList;
+    private String notebookTitle;
 
-    public Section(String title) {
+    public Section(String title, String notebookTitle) {
         this.title = title;
         pageArrayList = new ArrayList<>();
+        this.notebookTitle = notebookTitle;
     }
 
     public String getTitle() {
@@ -21,10 +23,6 @@ public class Section {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public void addPage(String title, String content) {
-        pageArrayList.add(new Page(title, content));
     }
 
     public int getPage(String searchKey) {
@@ -72,17 +70,25 @@ public class Section {
         return pageArrayList.size();
     }
 
+    /**
+     * Changes the string to txtFormat for the txt file.
+     *
+     * @return txtFormatted String for parsing when loading.
+     */
     public String toTxtFormat() {
-        return this.title;
+        return getType() + " | " + this.notebookTitle
+                + " | " + this.title;
     }
 
     public void load(Page page) {
         pageArrayList.add(page);
     }
 
-    public static Section parse(String txtFormat) {
-        String title = txtFormat;
-        Section newSection = new Section(title);
+    // TODO change parsing method
+    public static Section parse(String[] txtArray) {
+        String notebookTitle = txtArray[1].trim();
+        String sectionTitle = txtArray[2].trim();
+        Section newSection = new Section(sectionTitle, notebookTitle);
         return newSection;
     }
 
@@ -97,6 +103,10 @@ public class Section {
 
     public String getSectionInMessageFormat() {
         return "Section with title: " + this.title;
+    }
+
+    public String getType() {
+        return "S";
     }
 }
 

@@ -24,6 +24,8 @@ public class AddCommandNotebookMode extends CliCommand {
     private String content;
     private CliMessages messages = new CliMessages();
     private Storage storage;
+    private String notebookTitle;
+    private String sectionTitle;
 
     public AddCommandNotebookMode(String titleToAdd, AppState appState, Storage storage) {
         this.appState = appState;
@@ -31,11 +33,20 @@ public class AddCommandNotebookMode extends CliCommand {
         this.storage = storage;
     }
 
-    public AddCommandNotebookMode(String titleToAdd, String contentToAdd, AppState appState, Storage storage) {
+    public AddCommandNotebookMode(String titleToAdd, String notebookTitle, AppState appState, Storage storage) {
+        this.appState = appState;
+        this.title = titleToAdd;
+        this.storage = storage;
+        this.notebookTitle = notebookTitle;
+    }
+
+    public AddCommandNotebookMode(String titleToAdd, String contentToAdd, String sectionTitle, String notebookTitle, AppState appState, Storage storage) {
         this.appState = appState;
         this.title = titleToAdd;
         this.storage = storage;
         this.content = contentToAdd;
+        this.notebookTitle = notebookTitle;
+        this.sectionTitle = sectionTitle;
     }
 
     public void execute() {
@@ -48,12 +59,12 @@ public class AddCommandNotebookMode extends CliCommand {
                     break;
                 case NOTEBOOK_BOOK:
                     Notebook currentNotebook = appState.getCurrentNotebook();
-                    Section newSection = new Section(this.title);
+                    Section newSection = new Section(this.title, this.notebookTitle);
                     addSection(newSection, currentNotebook);
                     break;
                 case NOTEBOOK_SECTION:
                     Section currentSection = appState.getCurrentSection();
-                    Page newPage = new Page(this.title, this.content);
+                    Page newPage = new Page(this.title, this.content, this.notebookTitle, this.sectionTitle);
                     addPage(newPage, currentSection);
                     break;
                 default:
