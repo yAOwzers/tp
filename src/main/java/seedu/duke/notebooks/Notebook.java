@@ -38,6 +38,10 @@ public class Notebook {
         sectionArrayList.add(new Section(title));
     }
 
+    public void addSection(Section s) {
+        sectionArrayList.add(s);
+    }
+
     /**
      * Remove a section from the notebook.
      *

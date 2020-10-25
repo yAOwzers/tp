@@ -1,5 +1,6 @@
 package seedu.duke.userinterface;
 
+import seedu.duke.exceptions.CorruptFileException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.command.CliCommand;
@@ -16,7 +17,7 @@ public class CliUserInterface {
 
     }
 
-    private void loadState() {
+    private void loadState() throws CorruptFileException {
         Storage storage = new Storage();
         appState = storage.readFromFile();
     }
@@ -28,8 +29,12 @@ public class CliUserInterface {
 
 
     public void run() {
+        try {
+            loadState();
+        } catch (CorruptFileException e) {
+            e.printErrorMessage();
+        }
         startUI();
-        loadState();
         String userInput;
         Scanner keyboard = new Scanner(System.in);
         while (!toQuit) {
