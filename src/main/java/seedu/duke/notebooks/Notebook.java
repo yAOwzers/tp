@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Notebook {
     private String title;
+    private String tag = "";
     private final ArrayList<Section> sectionArrayList;
 
     public Notebook(String title) {
@@ -27,6 +28,14 @@ public class Notebook {
      */
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setTag(String description) {
+        tag = description;
+    }
+
+    public String getTag() {
+        return tag;
     }
 
     /**

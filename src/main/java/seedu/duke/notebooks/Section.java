@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Section {
     private String title;
+    private String tag = "";
     private final ArrayList<Page> pageArrayList;
 
     public Section(String title) {
@@ -62,5 +63,13 @@ public class Section {
 
     public ArrayList<Page> getPageArrayList() {
         return pageArrayList;
+    }
+
+    public void setTag(String description) {
+        tag = description;
+    }
+
+    public String getTag() {
+        return tag;
     }
 }
