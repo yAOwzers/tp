@@ -34,7 +34,7 @@ public class Page {
         String lineSeparator = System.lineSeparator();
         serialized.append(title);
         serialized.append(lineSeparator);
-        serialized.append(content);
+        serialized.append(content.replaceAll(System.lineSeparator(), "~~~"));
         serialized.append(lineSeparator);
         return serialized.toString();
     }
