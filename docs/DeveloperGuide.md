@@ -104,6 +104,9 @@ Example:
 
 ## 2. Setting up
 
+The following section describes how to set up the coding environment on your own computer, in order to start writing
+code to improve Zer0Note. 
+
 ### 2.1. Prerequisites
 
 1. **JDK** 11
@@ -140,7 +143,10 @@ to set up IDEA’s coding style to match ours.
 
 ## 3. Design
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+The following section describes the design and implementation of the product. UML diagrams and code snippets are used
+to explain some aspects of the code. If you are unfamiliar with UML, the diagrams should still be fairly
+understandable. However, you may wish to consult [[CS2113/T] Modeling](https://nus-cs2113-ay2021s1.github.io/website/se
+-book-adapted/chapters/modeling.html) for a quick introduction to UML. 
 
 ### 3.1 Architecture
 
@@ -188,7 +194,9 @@ The `Commands` component,
 
 ## 4. Implementation
 
-This section describes some noteworthy details on how certain features are implemented.
+The following section describes the implementation of certain key features in the current version of Zer0Note. It also
+provides some background into our (the original developers of Zer0Note) thinking and the rationale behind the
+decisions. 
 
 ### 4.1. Mode Switch Feature
 
@@ -321,7 +329,9 @@ The sequence diagram below shows how the find duplicate command works:
   * Cons: We must grant access to private objects that are not within the command class.
 
 ## 5. Documentation
-We use Markdown for writing our documents.
+
+The following section describes how documentation for the project should be written. Note: documentation is all
+ written in [GitHub-Flavoured Markdown](https://github.github.com/gfm/). 
 
 ### 5.1. Setting up and maintaining the project website.
 - We use **Jekyll** to manage documentation.
@@ -335,7 +345,12 @@ We use Markdown for writing our documents.
 
 ### 5.3. Diagrams
 
-We use Microsoft Visio Professional 2019 to draw our UML diagrams.
+We use Microsoft Visio Professional 2019 to draw our UML diagrams. If you do not have access to this software, free
+alternatives such as [Lucidchart](https://www.lucidchart.com/pages/), [Google Drawings](https://docs.google.com/drawings),
+[LibreOffice Draw](https://www.libreoffice.org/discover/draw/) and many others are also available. If you wish to 
+contribute diagrams (which we recommend you do if you contribute new features!), you may use any software of your
+choosing to draw the diagrams, as long as the finished product somewhat resembles those we already have and follows
+UML syntax strictly. 
 
 ### 5.4. Converting a document to the PDF Format
 
@@ -351,6 +366,9 @@ For best results, use the settings indicated in the screenshot below.
 <img src= "https://se-education.org/guides/tutorials/images/chrome_save_as_pdf.png">
 
 ## 6. Testing
+
+The following section describes the testing methodologies followed in this project to ensure high-quality, bug-free
+code as far as possible. 
 
 ### 6.1. Running tests
 
