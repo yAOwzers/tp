@@ -1,5 +1,10 @@
 package seedu.duke.exceptions;
 
+//@@chuckiex3
+
+/**
+ * Signals that the user is unable to add a notebook, section or page.
+ */
 public class AddCommandNotebookException extends ZeroNoteException {
     public AddCommandNotebookException(String problematicInput) {
         super(problematicInput);

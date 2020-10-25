@@ -15,7 +15,6 @@ import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.command.CliCommand;
-import seedu.duke.userinterface.command.timetable.DoneCommandTimetableMode;
 import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
 import seedu.duke.userinterface.command.ModeSwitch;
@@ -24,6 +23,7 @@ import seedu.duke.userinterface.command.notebook.ListCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.RemoveCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode;
 import seedu.duke.userinterface.command.timetable.AddCommandTimetableMode;
+import seedu.duke.userinterface.command.timetable.DoneCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.ListCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
 
@@ -48,15 +48,21 @@ public class InputParser {
      * @throws TaskWrongFormatException when the user's input does not include the TASK_DELIMITER.
      * @throws TaskTitleException       when the user's input does not include a task title.
      */
-    public static String parseTaskTitle(String input) throws TaskWrongFormatException, TaskTitleException {
+    public String parseTaskTitle(String input)
+            throws TaskWrongFormatException, TaskTitleException, IncorrectDeadlineFormatException {
         if (input.startsWith(TASK_DELIMITER)) {
             String taskTitle = input.replace(TASK_DELIMITER, "");
             if (taskTitle.isBlank()) {
                 throw new TaskTitleException();
             }
-            int indexPos = taskTitle.indexOf("/by");
-            taskTitle = taskTitle.substring(0, indexPos).trim();
-            return taskTitle;
+
+            if (taskTitle.contains(DEADLINE_DELIMITER)) {
+                int indexPos = taskTitle.indexOf("/by");
+                taskTitle = taskTitle.substring(0, indexPos).trim();
+                return taskTitle;
+            } else {
+                throw new IncorrectDeadlineFormatException();
+            }
         } else {
             throw new TaskWrongFormatException();
         }
@@ -70,13 +76,13 @@ public class InputParser {
      * @throws IncorrectDeadlineFormatException when the deadline input is in the wrong format.
      * @throws TaskWrongFormatException         when the deadline input is blank.
      */
-    public static String parseDeadline(String input) throws TaskWrongFormatException, IncorrectDeadlineFormatException {
-        int dividerPos = input.indexOf(DEADLINE_DELIMITER);
-        input = input.substring(dividerPos);
-        if (input.startsWith(DEADLINE_DELIMITER)) {
+    public String parseDeadline(String input) throws TaskWrongFormatException, IncorrectDeadlineFormatException {
+        if (input.contains(DEADLINE_DELIMITER)) {
+            int dividerPos = input.indexOf(DEADLINE_DELIMITER);
+            input = input.substring(dividerPos);
             String deadline = input.replace(DEADLINE_DELIMITER, "").trim();
             if (deadline.isBlank()) {
-                throw new TaskWrongFormatException();
+                throw new IncorrectDeadlineFormatException();
             }
             if (!correctTimeFormat(deadline)) {
                 throw new IncorrectDeadlineFormatException();
@@ -93,7 +99,7 @@ public class InputParser {
      * @param by is the string containing the deadline's due date and time.
      * @return true when the input is in the correct format, otherwise false.
      */
-    private static boolean correctTimeFormat(String by) {
+    private boolean correctTimeFormat(String by) {
         DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
         try {
             LocalDate date = LocalDate.parse(by, dateTime);
@@ -152,7 +158,7 @@ public class InputParser {
         appState.setCurrentNotebook(notebook);
         System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentNotebook().getTitle());
         if (argument.contains(SECTION_DELIMITER)) {
-            String sectionTitle = InputParser.parseSectionTitle(argument);
+            String sectionTitle = parseSectionTitle(argument);
             int sectionIndex = notebook.findSection(sectionTitle);
             if (sectionIndex == -1) {
                 throw new InvalidSectionException(sectionTitle);
@@ -204,7 +210,7 @@ public class InputParser {
      * @return the notebook title input by the user.
      * @throws InvalidNotebookException when user's input is in the wrong format.
      */
-    public static String parseNotebookTitle(String input) throws InvalidNotebookException {
+    public String parseNotebookTitle(String input) throws InvalidNotebookException {
         if (input.startsWith(NOTEBOOK_DELIMITER)) {
             String notebookTitle = input.replace(NOTEBOOK_DELIMITER, "").trim();
             if (notebookTitle.isBlank()) {
@@ -228,7 +234,7 @@ public class InputParser {
      * @throws InvalidSectionException when the user's input does not contain the section delimiter, or when the
      *                                 section title is blank.
      */
-    public static String parseSectionTitle(String input) throws InvalidSectionException {
+    public String parseSectionTitle(String input) throws InvalidSectionException {
         try {
             int dividerPos = input.indexOf(SECTION_DELIMITER);
             input = input.substring(dividerPos);
