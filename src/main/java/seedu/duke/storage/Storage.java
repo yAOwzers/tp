@@ -74,12 +74,9 @@ public class Storage {
                 loadedTaskList.addTask(currentTask);
             }
             int numNotebooks = Integer.parseInt(notebooksFileScanner.nextLine());
-            System.out.println("loading " + numNotebooks + " notebooks");
             for (int i = 0; i < numNotebooks; i++) {
                 String notebookTitle = notebooksFileScanner.nextLine();
-                System.out.println("loading notebook titled " + notebookTitle);
                 int numSections = Integer.parseInt(notebooksFileScanner.nextLine());
-                System.out.println("has " + numSections + " sections");
                 Notebook currentNotebook = new Notebook(notebookTitle);
                 for (int j = 0; j < numSections; j++) {
                     String sectionTitle = notebooksFileScanner.nextLine();
