@@ -42,7 +42,7 @@ This app is targeted towards students, especially those who enjoy typing! This u
 >> :exclamation: : Thing(s) to note
 >> :bulb: : Tip(s)
 > :exclamation: Notes about the format:
-* Words/sections that look like this: `example`, are code.
+* Words/sections that look like this: `example`, are code snippets.
 * Words/phrases within `[square brackets]` are the expected user inputs.
   e.g. in `add /n[NOTEBOOK]`, `NOTEBOOK` is a parameter which can be used as `add /nCS2101`
 * Words within `(parentheses)` are optional user inputs.
@@ -54,8 +54,14 @@ This app is targeted towards students, especially those who enjoy typing! This u
 1. Ensure that you have Java 11 or above installed.
 1. Download the latest version of `Zer0Note` from [here](https://github.com/AY2021S1-CS2113T-T12-3/tp/releases).
 3. Copy the file to the folder you want to use as the home folder for Zer0Note.
-4. Double click the file to start the app.
-5. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will open the help window.
+4. Open a terminal on your computer and navigate to the folder containing the jar file. In the following example, the file has been saved in the Downloads folder.
+![](/images/command-change-dir) Figure 1. Changing directory in Windows command prompt.
+
+5. Type `java -jar Zer0Note.jar` and press Enter.
+6. If successful, you will see the following message.
+![](/images/welcome) Figure 2. Welcome message on successful run.
+
+Great! Now that you have successfully run Zer0Note, go ahead and try out the different commands available (shown in the next section, 3. Features).
 
 ## 3. Features
 
@@ -413,7 +419,7 @@ This section answers some frequently asked questions.
 
 ## 5. Command Summary
 
-This section lists all the commands available in timetable and notebook mode respectively.
+This section lists all the commands available in **Zer0Note**! There are general commands that can be used anywhere, as well as commands that are specific to the mode you are in!
 > :bulb: You can click on each of the commands to navigate to its section.
 
 ### General Commands
