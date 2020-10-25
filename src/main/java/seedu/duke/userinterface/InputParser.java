@@ -27,6 +27,7 @@ import seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode;
 import seedu.duke.userinterface.command.timetable.AddCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.ListCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
+import seedu.duke.userinterface.command.timetable.TagCommandTimetableMode;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

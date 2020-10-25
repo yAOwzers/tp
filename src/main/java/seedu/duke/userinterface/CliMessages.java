@@ -195,5 +195,9 @@ public class CliMessages {
         String createTagMessage = "Got it! I've tagged this as:\n";
         System.out.println(createTagMessage + description + " (tag: " + tag + ")");
     }
+
+    public void printTagTaskMessage(Task task) {
+        String createTagMessage = "Got it! I've tagged this as:\n";
+        System.out.println(createTagMessage + task);
     }
 }
