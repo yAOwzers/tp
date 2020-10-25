@@ -214,7 +214,8 @@ decisions.
 
 ##### 4.2.1.1. Implementation
 
-`TaskList` is implemented to manage and store the tasks input by the user. It comprises of a list of `Task`s.
+`TaskList` is implemented to manage and store the tasks input by the user. It comprises of an `ArrayList` list of
+ `Task`s, and a few helper methods. 
 
 This means that multiple operations such as addition and deletion can be done on a `Task`, without affecting
 the contents of other `Task` in the `TaskList`.
@@ -239,12 +240,13 @@ It also constructs `CliMessages` to display messages to the user.
 ##### 4.2.1.2. Design Considerations
 
 ###### Aspect: How to store tasks in `TaskList`
-- **Alternative 1 (current choice):** Stores as an `ArrayList` of tasks
+- **Alternative 1 (current choice):** Store as an `ArrayList` of tasks
     - Pros: It is easier to implement because the code base are list based.
     - Cons: It is unoptimized in terms of complexity, which requires more work for scaling of the application.
-- **Alternative 2:** Stores as a Hash Table with the key as the index and value as `Task`
+- **Alternative 2:** Store as a Hash Table with the key as the index and value as `Task`
     - Pros: It has a better time complexity and reduce the work in scaling stage since this data structure is more optimized (O(1) can be achieved).
-    - Cons: It takes more resources to implement. 
+    - Cons: It takes more resources to implement. The constant factor for a hashing algorithm is significant and not
+     worth the tradeoff for smaller amounts of data, like a typical user would be likely to generate. 
 
 ### 4.2.2. List feature
 
@@ -283,7 +285,7 @@ public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
     currentSection = appState.getCurrentSection();
 }
 ```
-3. Method **execute()** called by `CliUserInterface` to delete a notebook, section, or page, depending on the input.
+3. Method **execute()** is called by `CliUserInterface` to delete a notebook, section, or page, depending on the input.
 A switch-case block is used to determine the method to call based on the `appMode`.
 4. If the deletion is successful, `CliMessages` displays the message to the user.
 
@@ -312,7 +314,6 @@ Step 7. `TaskList#addTask` is then called and a new `Task`, with `title` and `de
 
 Step 8. To signal that the user has successfully added a task, a message is printed with `CliMessages#printAddedTaskMessage`.
 
-
 The sequence diagram below shows how the find duplicate command works:
 
 ![Sequence diagram for finding duplicates](/diagrams/class/jpeg/duplicates_francene.jpg)
@@ -324,7 +325,7 @@ The sequence diagram below shows how the find duplicate command works:
 * **Alternative 1 (current choice)**: findDuplicate should be saved in the class that potentially creates duplicates.
   * Pros: Easier to access previously saved tasks/notebooks/notebook sections.
   * Cons: May have performance issues in terms of memory usage.
-* Alternative 2: findDuplicate should be saved in the command that creates it.
+* **Alternative 2**: findDuplicate should be saved in the command that creates it.
   * Pros: Less time spent in passing variables to different classes.
   * Cons: We must grant access to private objects that are not within the command class.
 
@@ -422,7 +423,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 
 ## Appendix E: Glossary
 
-* **Mainstream OS**: Windows, Linux, OS-X
+* **Mainstream OS**: Windows, Linux, macOS
 * **Notebook shelf**: a list of all notebooks entered by the user
 
 ## Appendix F: Instructions for manual testing
