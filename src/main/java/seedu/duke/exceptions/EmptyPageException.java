@@ -1,5 +1,10 @@
 package seedu.duke.exceptions;
 
+//@@chuckiex3
+
+/**
+ * Signals that the user has input an empty page.
+ */
 public class EmptyPageException extends ZeroNoteException {
     @Override
     public void printErrorMessage() {

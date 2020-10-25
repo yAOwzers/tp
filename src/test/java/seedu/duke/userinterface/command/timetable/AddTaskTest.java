@@ -1,4 +1,4 @@
-package seedu.duke.userinterface.command;
+package seedu.duke.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
@@ -8,6 +8,7 @@ import seedu.duke.userinterface.InputParser;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+//@@chuckiex3
 public class AddTaskTest {
     @Test
     void addTask_dateFormat_expectException() {
