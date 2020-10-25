@@ -1,6 +1,8 @@
-# Developer Guide
+# Developer Guide for Zer0Note
 
 [1. Introduction](#1-introduction) <br>
+&nbsp;&nbsp;[1.1. Welcome!](#11-welcome)<br>
+&nbsp;&nbsp;[1.2. How to use this document](#12-how-to-use-this-document)<br>
 [2. Setting up](#2-setting-up) <br>
 &nbsp;&nbsp;[2.1. Prerequisites](#21-prerequisites) <br>
 &nbsp;&nbsp;[2.2. Setting up the project in your computer](#22-setting-up-the-project-in-your-computer) <br>
@@ -43,7 +45,62 @@
 [Appendix F: Instructions for manual testing](#appendix-f-instructions-for-manual-testing) <br>
 
 ## 1. Introduction
-Zer0Note is a note taking and organisation application that combines the ease of use and feature set of graphical tools with the interaction speed of command-line based tools like vim and emacs.
+
+### 1.1. Welcome!
+Welcome, and thank you for choosing to help contribute to Zer0Note! Zer0Note is a command-line based note-taking and
+organisation application. It is designed to combine the features of graphical tools like OneNote and Notion, with
+the editing speed of applications like vim and emacs. 
+  
+This document is written for developers intending to improve Zer0Note, by fixing bugs, or perhaps adding entirely new
+features. It explains how the project is set up, the architecture used, and the code style you should adopt when
+contributing code to the project. 
+    
+### 1.2. How to use this document
+
+Text that looks like this is normal text. It should be read as-is; it has no special meaning beyond what it says. 
+
+Example: The sequence diagram below shows the operation of the delete command. 
+
+<br>
+
+`Text that looks like this denotes a keyword or small extract of code.`
+
+Example: The `CliUserInterface` is used to handle input and output to and from the console. 
+
+<br>
+
+```
+    Text that looks like this denotes a larger extract of code. 
+```
+
+Example:
+```java
+    System.out.println("This is a code block!");
+```
+
+<br>
+
+**`Text that looks like this denotes a button, or other UI element you may see on screen. `**
+
+Example: Click **`Configure` ** > **`Project Defaults`** > **`Project Structure`**
+
+<br> 
+
+> Text that looks like this indicates a tip, providing additional information that is useful but not critically
+> important
+
+Example: 
+
+> We use this method because Chrome's built-in PDF viewer preserves hyperlinks. 
+
+<br>
+
+> :exclamation: Text that looks like this, beginning with the :exclamation: sign indicates information that is very
+> important, such as warnings about potential mistakes or common problems
+
+Example:
+
+> :exclamation: **Caution** Follow the steps in the following guide precisely. 
 
 ## 2. Setting up
 
@@ -161,7 +218,7 @@ The figure below shows how the delete task command works:
 1. The `CliUserInterface` receives the "delete 1" input by the user and passes it to the `InputParser` class.
 2. `InputParser` parses the input to determine the type of command and the index of the task that is required to delete.
 The Parser then constructs a `RemoveCommandTimetableMode` with constructor as shown below.
-```
+```java
 public RemoveCommandTimetableMode(int indexToRemove, AppState uiMode) {
     this.setAppState(uiMode);
     this.indexToRemove = indexToRemove;
@@ -205,7 +262,7 @@ After calling `InputParser#getCommandFromInput` from `CliUserInterface`:
 1. `InputParser` parses the input to return the `notebookTitleToRemove`, `sectionTitleToRemove` and `pageNumberToRemove`.
 Some of these members may be empty.
 2. `InputParser` constructs and returns the `RemoveCommandNotebookMode` class with constructor as shown below:
-```
+```java
 public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
                                      int pageNumber, AppState appState) {
     this.appState = appState;
