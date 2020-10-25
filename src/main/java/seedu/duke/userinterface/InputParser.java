@@ -15,6 +15,7 @@ import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.command.CliCommand;
+import seedu.duke.userinterface.command.notebook.TagCommandNotebookMode;
 import seedu.duke.userinterface.command.timetable.DoneCommandTimetableMode;
 import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
@@ -334,6 +335,10 @@ public class InputParser {
         }
     }
 
+    public String[] parseTagDescription(String input) {
+        return input.split("/t",2);
+    }
+
     public CliCommand getCommandFromInput(String userInput, AppState appState) throws ZeroNoteException {
         String trimmedInput = userInput.trim();
         String[] input = trimmedInput.split(" ", 2); // split input into command and arguments
@@ -369,6 +374,20 @@ public class InputParser {
             } else {
                 return new ListCommandNotebookMode(argument, appState);
             }
+        case SelectCommandNotebookMode.COMMAND_WORD:
+            if (appState.getAppMode() != AppMode.TIMETABLE) {
+                return new SelectCommandNotebookMode(argument, appState);
+            } else {
+                throw new IncorrectAppModeException();
+            }
+        case TagCommandTimetableMode.COMMAND_WORD:
+            String[] splitParams = parseTagDescription(argument);
+            if (appState.getAppMode() == AppMode.TIMETABLE) {
+                int index = parseTaskIndex(splitParams[0].trim());
+                return new TagCommandTimetableMode(index, splitParams[1].trim(), appState);
+            } else {
+                return new TagCommandNotebookMode(splitParams[1], appState);
+            }
         case RemoveCommandTimetableMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
                 return new RemoveCommandTimetableMode(parseTaskIndex(argument), appState);
@@ -387,12 +406,6 @@ public class InputParser {
                 }
                 return new RemoveCommandNotebookMode(notebookTitleToRemove,
                         sectionTitleToRemove, pageNumberToRemove, appState);
-            }
-        case SelectCommandNotebookMode.COMMAND_WORD:
-            if (appState.getAppMode() != AppMode.TIMETABLE) {
-                return new SelectCommandNotebookMode(argument, appState);
-            } else {
-                throw new IncorrectAppModeException();
             }
         case Exit.COMMAND_WORD:
             return new Exit(argument, appState);

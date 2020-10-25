@@ -187,7 +187,13 @@ public class CliMessages {
     }
 
     public void printMarkDone(Task task) {
-        String markDoneMessage = "Yay! I've marked these task as done:";
-        System.out.println(markDoneMessage + "\n " + task.getTaskInMessagesFormat());
+        String markDoneMessage = "Yay! I've marked this task as done:";
+        System.out.println(markDoneMessage + "\n " + task);
+    }
+
+    public void printTagNotebookMessage(String description, String tag) {
+        String createTagMessage = "Got it! I've tagged this as:\n";
+        System.out.println(createTagMessage + description + " (tag: " + tag + ")");
+    }
     }
 }

@@ -3,6 +3,7 @@ package seedu.duke.notebooks;
 public class Page {
     private String title;
     private String content;
+    private String tag = "";
 
     public Page(String title, String content) {
         this.title = title;
@@ -27,5 +28,9 @@ public class Page {
 
     public void printPage() {
         System.out.println(content);
+    }
+
+    public void setTag(String description) {
+        tag = description;
     }
 }
