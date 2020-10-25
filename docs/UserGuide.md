@@ -40,6 +40,7 @@ This app is targeted towards students, especially those who enjoy typing! This u
 
 > Here are some icons that will be used in this User Guide: 
 >> :exclamation: : Thing(s) to note
+>>
 >> :bulb: : Tip(s)
 
 > :exclamation: Notes about the format:
@@ -49,6 +50,15 @@ This app is targeted towards students, especially those who enjoy typing! This u
 * Words within `(parentheses)` are optional user inputs.
   e.g. in `list (/urgent)`, `/urgent` is an optional parameter.
 * Within a code segment, `>>>` denotes the command typed by the user.
+
+ Example:  
+  ```
+  >>> select /sChapter 1
+        now in notebook section: Chapter 1
+  ```
+
+> `select /sChapter 1` is the user's input, and `now in notebook section: Chapter 1` is the output message.      
+
 
 ## 2. Quick Start
 
@@ -70,13 +80,6 @@ Great! Now that you have successfully run Zer0Note, go ahead and try out the dif
 
 The following sections will explain more about the different commands that can be used in [Timetable Mode](#33-timetable-mode) and [Notebook Mode](#34-notebook-mode).
 
- Example:  
-  ```
-  >>> select /sChapter 1
-        now in notebook section: Chapter 1
-  ```
-
-> `select /sChapter 1` is the user's input, and `now in notebook section: Chapter 1` is the output message.      
 
 ### 3.1 Viewing the user guide: `help`
 
