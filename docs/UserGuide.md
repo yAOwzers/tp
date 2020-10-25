@@ -98,7 +98,7 @@ Format: `mode /t`
 ## 3.3 Timetable Mode
 
 The Timetable Mode allows you to manage a list of tasks. 
-The following sections explains the various features you can use while you are in the Timetable Mode.
+The following sections explain the various features you can use while you are in the Timetable Mode.
 
 ### 3.3.1 Adding a task: `add`
 Adds a `task` with a `deadline` to the task list.
