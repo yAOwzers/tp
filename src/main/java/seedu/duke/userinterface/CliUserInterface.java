@@ -21,7 +21,7 @@ public class CliUserInterface {
         appState = storage.readFromFile();
     }
 
-    private void saveState() {
+    private void saveState() throws ZeroNoteException {
         Storage storage = new Storage();
         storage.saveToFile(appState);
     }
@@ -34,11 +34,11 @@ public class CliUserInterface {
         Scanner keyboard = new Scanner(System.in);
         while (!toQuit) {
             userInput = keyboard.nextLine();
-            if (userInput.equals(Exit.COMMAND_WORD)) {
-                saveState();
-                toQuit = true;
-            }
             try {
+                if (userInput.equals(Exit.COMMAND_WORD)) {
+                    saveState();
+                    toQuit = true;
+                }
                 executeCommand(userInput);
             } catch (ZeroNoteException e) {
                 e.printErrorMessage();
