@@ -21,9 +21,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.1 Adding a notebook](#3411-adding-a-notebook) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.2 Adding a section](#3412-adding-a-section) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.3 Adding a page](#3413-adding-a-page) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2 Select contents: `select`](#342-select-feature-select) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3 List contents: `list`](#343-listing-contents-list) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4 Delete contents: `delete`](#344-delete-contents-delete) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2 Selecting contents: `select`](#342-selecting-feature-select) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3 Listing contents: `list`](#343-listing-contents-list) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4 Deleting contents: `delete`](#344-deleting-contents-delete) <br>
+&nbsp;&nbsp;[3.5 Exiting the program: `exit`](#35-exiting-the-program-exit) <br>
 [4. FAQ](#4-faq) <br>
 [5. Command Summary](#5-command-summary) <br>
 
@@ -270,7 +271,7 @@ Example of usage:
 Added page with title: HELLO WORLD
 ```
 
-### 3.4.2 Select Feature: `select`
+### 3.4.2 Selecting Feature: `select`
 Select a `notebook`, `section`, `page` or a combination of the three.
 
 Format: `select /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
@@ -385,7 +386,7 @@ now in notebook section: Chapter 1
     Lorem ipsum
 ```
 
-### 3.4.4 Delete Contents: `delete`
+### 3.4.4 Deleting contents: `delete`
 Deletes an existing notebook, section or page.
 > :exclamation: The current selection determines the type you can delete.
 
@@ -423,6 +424,10 @@ Noted. I've removed this notebook:
     CS2113T
 ```
 
+### 3.5 Exiting the program: `exit`
+
+To terminate the program, type `exit`.
+
 ## 4. FAQ
 
 This section answers some frequently asked questions. 
@@ -445,6 +450,7 @@ The following table shows you a list of commands that can be used anywhere, and 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
 [Help](#31-viewing-the-user-guide-help): `help` | 1) help 2) help timetable 3) help notebook |
+[Exit](#35-exit-the-program-exit) `exit` | exit |
 
 
 ### Timetable Mode
