@@ -67,18 +67,23 @@ This app is targeted towards students, especially those who enjoy typing! This u
 3. Copy the file to the folder you want to use as the home folder for Zer0Note.
 4. Open a terminal on your computer and navigate to the folder containing the jar file. In the following example, the file has been saved in the Downloads folder.
 
-![Change directory](/images/command-change-dir.png) 
-Figure 1. Changing directory in Windows command prompt.
+    ![Change directory](/images/command-change-dir.png)
+ 
+    Figure 1. Changing directory in Windows command prompt
 
 5. Type `java -jar Zer0Note.jar` and press Enter.
 6. If successful, you will see the following message.
-![Welcome message](/images/welcome.png) Figure 2. Welcome message on successful run.
+
+    ![Welcome message](/images/welcome.png) 
+
+    Figure 2. Welcome message on successful run
 
 Great! Now that you have successfully run Zer0Note, go ahead and try out the different commands available (shown in the next section, 3. Features).
 
 ## 3. Features
 
-The following sections will explain more about the different commands that can be used in [Timetable Mode](#33-timetable-mode) and [Notebook Mode](#34-notebook-mode).
+The following sections will explain more about the different commands that can be used in anywhere, 
+and commands specific to [Timetable Mode](#33-timetable-mode) and [Notebook Mode](#34-notebook-mode).
 
 
 ### 3.1 Viewing the user guide: `help`
@@ -103,11 +108,13 @@ Format: `mode /t`
 
 ## 3.3 Timetable Mode
 
-The Timetable Mode allows you to manage a list of tasks. 
+Keeping up with deadlines may seem like a daunting task, especially when you're already busy with school. 
+With Zer0Note's Timetable Mode, you'll be able to manage a list of tasks. 
+You can `add`, `delete`, `list` and mark your deadlines as `done`!
 The following sections explain the various features you can use while you are in the Timetable Mode.
 
 ### 3.3.1 Adding a task: `add`
-Adds a `task` with a `deadline` to the task list.
+This command adds a task with a `deadline` to the task list. 
 
 Format: `add /t[TASK] /by[dd-MM-yyyy] [hhmm]`
 
@@ -116,6 +123,7 @@ Format: `add /t[TASK] /by[dd-MM-yyyy] [hhmm]`
 * `hhmm`: time the task is due, in 24h format.
 
 Example of usage:
+Let's say you have to read a book for one of your modules. 
 
 ```
 >>> add /tRead book /by19-10-2020 1800
