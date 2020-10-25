@@ -34,12 +34,12 @@ public class Notebook {
     }
 
     /**
-     * Add a new section with a given title to this notebook.
+     * Add a section with a given title to the notebook.
      *
-     * @param title the title of the section to be added
+     * @param newSection the section to be added
      */
-    public void addSection(String title) {
-        sectionArrayList.add(new Section(title));
+    public void addSection(Section newSection) {
+        this.sectionArrayList.add(newSection);
     }
 
     /**
@@ -47,8 +47,8 @@ public class Notebook {
      *
      * @param indexToRemove the index of the section to remove
      */
-    public void removeSection(int indexToRemove) {
-        sectionArrayList.remove(indexToRemove);
+    public Section removeSection(int indexToRemove) {
+        return sectionArrayList.remove(indexToRemove);
     }
 
     /**
@@ -99,12 +99,4 @@ public class Notebook {
         return "Notebook with title: " + this.title;
     }
 
-    /**
-     * Add a section with a given title to the notebook.
-     *
-     * @param newSection the section to be added
-     */
-    public void addSection(Section newSection) {
-        this.sectionArrayList.add(newSection);
-    }
 }

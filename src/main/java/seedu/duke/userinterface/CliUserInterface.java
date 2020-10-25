@@ -1,14 +1,11 @@
 package seedu.duke.userinterface;
 
-
 import seedu.duke.exceptions.InvalidUserInputException;
 import seedu.duke.exceptions.ZeroNoteException;
-
 import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Exit;
 
-import javax.swing.text.html.parser.Parser;
 import java.util.Scanner;
 
 public class CliUserInterface {
@@ -19,7 +16,6 @@ public class CliUserInterface {
 
     private boolean toQuit = false;
 
-    // TODO find out whether to init class objects here or in Duke
     public CliUserInterface() {
         this.messages = new CliMessages();
         this.storage = new Storage();
@@ -38,10 +34,15 @@ public class CliUserInterface {
         } catch (InvalidUserInputException e) {
             System.out.println(this.messages.printZer0NoteError(e));
         }
-        System.out.println("Welcome to Zer0Note!");
-        System.out.println("You are now in timetable mode");
-        // TODO: Make this prettier
-    }
+            System.out.println("Welcome to");
+            System.out.println(" _ _ _                  _ _ _   _    _            _");
+            System.out.println("|_ _  |   _ _    _  _  |  _  | |  \\ | |   _ _   _| |_    _ _");
+            System.out.println("  /  /  /  _  \\ | |/_\\ | | | | |   \\| |  /   \\ |_   _| /   _ \\");
+            System.out.println(" /  /_  |  _ _/ | |    | |_| | |  |\\  | |  [] |  | |_  |  _ _/");
+            System.out.println("|_ _ _|  \\ _ _| |_|    |_ _ _| | _| \\_|  \\ _ /   |_ _|  \\ _ _|");
+            System.out.println("You are now in timetable mode");
+        }
+
 
     public void run() {
         startUI();
@@ -50,7 +51,6 @@ public class CliUserInterface {
         while (!toQuit) {
             userInput = keyboard.nextLine();
             if (userInput.equals(Exit.COMMAND_WORD)) {
-                // TODO change saveState at every command
                 System.out.println(printExit());
                 toQuit = true;
             }
@@ -58,15 +58,11 @@ public class CliUserInterface {
                 executeCommand(userInput);
             } catch (ZeroNoteException e) {
                 e.printErrorMessage();
-            } catch (Exception e) {
-                // TODO: Make sure all Java exceptions are handled and converted to ZeroNoteExceptions
-                // TODO: Delete this block after the above is done
-                e.printStackTrace();
             }
         }
     }
 
-    private void executeCommand(String userInput) throws Exception {
+    private void executeCommand(String userInput) throws ZeroNoteException {
         CliCommand command = this.parser.getCommandFromInput(userInput, this.appState, this.storage);
         command.execute();
     }

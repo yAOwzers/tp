@@ -20,11 +20,16 @@ public class Task {
 
     private LocalDate dueDate;
     private LocalTime dueTime;
+    private Date dueDateTime;
 
     public Task(String title, String dateTime) throws InvalidUserInputException {
         this.title = title;
         convertDateTime(dateTime);
         this.isDone = false;
+    }
+
+    public Date getDueDateTime() {
+        return dueDateTime;
     }
 
     public LocalDate getDueDate() {
@@ -51,6 +56,7 @@ public class Task {
 //        Date date = dateTime.parse(by);
 //        return outputFormat.format(date);
 //    }
+
 
     public String getStatusIcon() {
         return (isDone ? "o" : "x");

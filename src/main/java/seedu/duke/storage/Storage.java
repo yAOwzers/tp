@@ -1,6 +1,7 @@
 package seedu.duke.storage;
 
 import seedu.duke.exceptions.InvalidUserInputException;
+import seedu.duke.exceptions.NotebookOutOfBoundsException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Page;
@@ -26,29 +27,15 @@ import java.util.Scanner;
  */
 public class Storage {
 
-    // TODO change the filepath to an appropriate one
     private static final String taskFilepath = "data/taskData.txt";
     private static final String pageFilepath = "data/pageData.txt";
     private static final String sectionFilepath = "data/sectionData.txt";
     private static final String notebookFilepath = "data/notebookData.txt";
     private static final String notebookShelfFilepath = "data/notebookShelfData.txt";
 
-    private AppState appState;
-    private CliMessages messages;
-
-    // To include String filepath
     public Storage() {
 
     }
-
-    public void saveToFile(AppState currentAppState) {
-        // TODO: Implement all save methods
-    }
-
-//    public AppState readFromFile() {
-//        // TODO: Implement all load methods
-//        return new AppState();
-//    }
 
     // Saves the given task to txt format
     public void saveTask(Task task) {
@@ -130,7 +117,7 @@ public class Storage {
                 writeToFile.close();
             }
         } catch (IOException e) {
-            System.out.println(messages.printUnknownError());
+            System.out.println("Error in IO");
         }
     }
 
@@ -219,7 +206,7 @@ public class Storage {
                 overwriteFile.write("");
                 overwriteFile.close();
             }
-        } catch (IOException e) {
+        } catch (IOException | NotebookOutOfBoundsException e) {
             System.out.println(CliMessages.printUnknownError());
         }
     }

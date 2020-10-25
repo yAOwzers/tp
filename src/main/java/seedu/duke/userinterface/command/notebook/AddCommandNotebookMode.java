@@ -1,5 +1,7 @@
 package seedu.duke.userinterface.command.notebook;
 
+import seedu.duke.exceptions.AddCommandNotebookException;
+import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Page;
@@ -14,7 +16,11 @@ import seedu.duke.userinterface.command.CliCommand;
 
 public class AddCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "add";
-    private String title;
+    public static final String NOTEBOOK_DELIMITER = "/n";
+    public static final String SECTION_DELIMITER = "/s";
+    public static final String PAGE_DELIMITER = "/p";
+    public static final String CONTENT_DELIMITER = ";";
+    private final String title;
     private String content;
     private CliMessages messages = new CliMessages();
     private Storage storage;
@@ -33,28 +39,31 @@ public class AddCommandNotebookMode extends CliCommand {
     }
 
     public void execute() {
-        switch (appState.getAppMode()) {
-        case NOTEBOOK_SHELF:
-            NotebookShelf currentNotebookShelf = appState.getCurrentNotebookShelf();
-            Notebook newNotebook = new Notebook(this.title);
-            addNotebook(newNotebook, currentNotebookShelf);
-            break;
-        case NOTEBOOK_BOOK:
-            Notebook currentNotebook = appState.getCurrentNotebook();
-            Section newSection = new Section(this.title);
-            addSection(newSection, currentNotebook);
-            break;
-        case NOTEBOOK_SECTION:
-            Section currentSection = appState.getCurrentSection();
-            Page newPage = new Page(this.title, this.content);
-            addPage(newPage, currentSection);
-            break;
-        default:
-            // TODO: Replace with ZeroNoteException of some form
-            System.out.println("\tunable to add notebook/section/page");
-            break;
+        try {
+            switch (appState.getAppMode()) {
+                case NOTEBOOK_SHELF:
+                    NotebookShelf currentNotebookShelf = appState.getCurrentNotebookShelf();
+                    Notebook newNotebook = new Notebook(this.title);
+                    addNotebook(newNotebook, currentNotebookShelf);
+                    break;
+                case NOTEBOOK_BOOK:
+                    Notebook currentNotebook = appState.getCurrentNotebook();
+                    Section newSection = new Section(this.title);
+                    addSection(newSection, currentNotebook);
+                    break;
+                case NOTEBOOK_SECTION:
+                    Section currentSection = appState.getCurrentSection();
+                    Page newPage = new Page(this.title, this.content);
+                    addPage(newPage, currentSection);
+                    break;
+                default:
+                    throw new AddCommandNotebookException(title);
+            }
+        } catch(ZeroNoteException e){
+            e.printErrorMessage();
         }
     }
+
 
     public void addNotebook(Notebook newNotebook, NotebookShelf currentNotebookShelf) {
         currentNotebookShelf.addNotebook(newNotebook);

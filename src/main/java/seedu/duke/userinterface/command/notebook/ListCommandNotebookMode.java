@@ -1,5 +1,7 @@
 package seedu.duke.userinterface.command.notebook;
 
+import seedu.duke.exceptions.IncorrectAppModeException;
+import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Page;
@@ -52,7 +54,7 @@ public class ListCommandNotebookMode extends CliCommand {
         for (Section section : notebook.getSectionArrayList()) {
             System.out.println("* " + section.getTitle());
             for (Page page : section.getPageArrayList()) {
-                System.out.println("  |-- " + page);
+                System.out.println("  |-- " + page.getTitle());
                 System.out.println("        " + page.getContent());
             }
         }
@@ -74,7 +76,7 @@ public class ListCommandNotebookMode extends CliCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws IncorrectAppModeException, InvalidCommandException {
         switch (appState.getAppMode()) {
         case NOTEBOOK_SHELF:
             switch (commandParams) {
@@ -84,28 +86,36 @@ public class ListCommandNotebookMode extends CliCommand {
             case ("/a"):
                 listBookshelf_nsp(appState.getCurrentNotebookShelf());
                 break;
-            default:
+            case(""):
                 listBookshelf_n(appState.getCurrentNotebookShelf());
                 break;
+            default:
+                throw new InvalidCommandException("There not exists such options");
             }
             break;
         case NOTEBOOK_BOOK:
             switch (commandParams) {
             case ("/a"):
+                listNotebook_sp(appState.getCurrentNotebook());
+                break;
+            case(""):
                 listNotebook_s(appState.getCurrentNotebook());
                 break;
             default:
-                listNotebook_sp(appState.getCurrentNotebook());
-                break;
+                throw new InvalidCommandException("There not exists such options");
             }
             break;
         case NOTEBOOK_SECTION:
-            listSection(appState.getCurrentSection());
+            switch (commandParams) {
+            case(""):
+                listSection(appState.getCurrentSection());
+                break;
+            default:
+                throw new InvalidCommandException("There not exists such options");
+            }
             break;
         default:
-            // TODO: Replace with an exception
-            System.out.println("Error in list class");
-            break;
+            throw new IncorrectAppModeException();
         }
     }
 }

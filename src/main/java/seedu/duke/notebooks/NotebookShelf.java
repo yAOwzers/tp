@@ -4,6 +4,8 @@ import seedu.duke.storage.Storage;
 import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.CliMessages;
+import seedu.duke.exceptions.NotebookOutOfBoundsException;
+
 
 import java.util.ArrayList;
 
@@ -48,8 +50,10 @@ public class NotebookShelf {
      *
      * @return The notebook at that index
      */
-    // TODO: Add NotebookIndexOutOfBoundsException and throw it
-    public Notebook getNotebookAtIndex(int index) {
+    public Notebook getNotebookAtIndex(int index) throws NotebookOutOfBoundsException {
+        if (index < 0 | index > notebookArrayList.size()) {
+            throw new NotebookOutOfBoundsException(index);
+        }
         return notebookArrayList.get(index);
     }
 
@@ -70,4 +74,7 @@ public class NotebookShelf {
         notebookArrayList.add(notebook);
     }
 
+    public Notebook removeNotebook(int indexToRemove) {
+        return notebookArrayList.remove(indexToRemove);
+    }
 }

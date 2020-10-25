@@ -36,12 +36,10 @@ public class Page {
     }
 
     public String toTxtFormat() {
-        // TODO Find out how to store data in the txt file.
         return this.title + " | " + this.content;
     }
 
     public static Page parse(String txtFormat) {
-        // TODO Find out how to store data in the txt file.
         String[] txtArray = txtFormat.split("\\|");
         String title = txtArray[0].trim();
         String content = txtArray[1].trim();
