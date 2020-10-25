@@ -9,7 +9,7 @@ import seedu.duke.userinterface.AppState;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-//@@Lusi711
+//@@longngng
 class ListCommandNotebookModeTest {
 
     @Test
