@@ -1,5 +1,6 @@
 package seedu.duke.userinterface;
 
+import seedu.duke.exceptions.CorruptFileException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.command.CliCommand;
@@ -17,29 +18,33 @@ public class CliUserInterface {
         msgGenerator = new PersonalMesssageGenerator();
     }
 
-    private void loadState() {
+    private void loadState() throws CorruptFileException {
         Storage storage = new Storage();
         appState = storage.readFromFile();
     }
 
-    private void saveState() {
+    private void saveState() throws ZeroNoteException {
         Storage storage = new Storage();
         storage.saveToFile(appState);
     }
 
 
     public void run() {
+        try {
+            loadState();
+        } catch (CorruptFileException e) {
+            e.printErrorMessage();
+        }
         startUI();
-        loadState();
         String userInput;
         Scanner keyboard = new Scanner(System.in);
         while (!toQuit) {
             userInput = keyboard.nextLine();
-            if (userInput.equals(Exit.COMMAND_WORD)) {
-                saveState();
-                toQuit = true;
-            }
             try {
+                if (userInput.equals(Exit.COMMAND_WORD)) {
+                    saveState();
+                    toQuit = true;
+                }
                 executeCommand(userInput);
             } catch (ZeroNoteException e) {
                 e.printErrorMessage();

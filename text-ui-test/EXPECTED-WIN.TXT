@@ -1,3 +1,4 @@
+File was not found. A new save file will be created upon exit. 
 Welcome to
  _ _ _                  _ _ _   _    _            _
 |_ _  |   _ _    _  _  |  _  | |  \ | |   _ _   _| |_    _ _
