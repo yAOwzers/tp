@@ -174,7 +174,7 @@ This command lets you `add` a `task` with a deadline to the task list.
 
 Format: `add /t[TASK] /by[dd-MM-yyyy] [hhmm]`
 
-These are the parameters required in the command.
+These are the parameters required in the command:
 
 * `TASK`: name of the task.
 * `dd-MM-yyyy`: the due date of the task, in the format day/month/year.
@@ -193,7 +193,8 @@ Added: Read Book
 
 With that, you've successfully added a task titled `Read book`, with the deadline `Oct 19 2020 06.00 PM` into your task list!
 
-:warning: Please remember to type in the deadline in the correct format, or else an error message will be shown.
+>:warning: Please remember to type the deadline in the correct format, or else an error message will be shown.
+> Both task titles and deadlines should not be blank!
 
 <br>
 
@@ -203,7 +204,7 @@ Marks an existing `task` as done in the current task list.
 
 Format: `done [INDEX]`
 
-This is the parameter required in the command.
+This is the parameter required in the command:
 
 * `INDEX`: Index of the existing task in the current task list.
 
@@ -310,7 +311,7 @@ Use the `delete` command to delete tasks you previously added to **Zer0Note**.
 
 Format: `delete [INDEX]`
 
-This is the parameter required in the command.
+This is the parameter required in the command:
 
 * `INDEX` refers to the index number of the intended task in the full task list
 
@@ -349,7 +350,7 @@ Use the `add /n` command to add a `notebook`  into the `notebook shelf`.
 
 Format: `add /n[NOTEBOOK]`
 
-This is the parameter required in the command.
+This is the parameter required in the command:
 
 * `NOTEBOOK`: the name of the notebook.
 
@@ -357,10 +358,17 @@ This is the parameter required in the command.
 
 Example of usage:
 
+Let's say you want to take notes for CS2113T, a module you're currently taking.
+
 ```
->>> add /nCS2101
-Added notebook with title: CS2101
+>>> add /nCS2113T
+Added notebook with title: CS2113T
 ```
+
+>:warning: Ensure that your notebook title is preceded by "/n", or an error message will be shown.
+
+Now that you have added a new notebook for `CS2113T`, you can add a `section`!
+
 
 <br>
 
@@ -372,7 +380,7 @@ Use the `add /s` command to add a `section`  into the [selected](#342-select-fea
 
 Format: `add /s[SECTION]`
 
-This is the parameter required in the command.
+This is the parameter required in the command:
 
 * `SECTION`: the name of the section in the selected `notebook`.
 
@@ -380,10 +388,18 @@ This is the parameter required in the command.
 
 Example of usage:
 
+Now that you have a notebook for `CS2113T`, you can make a `section` for each academic week.
+
+> :bulb: Remember to select the `CS2113T` notebook!
+
 ```
 >>> add /sW1: Java
 Added section with title: W1: Java
 ```
+
+>:warning: Ensure that your section title is preceded by "/s", or an error message will be shown.
+
+Great! You can now add a `page` (or as many pages as you like) into your new section titled `W1: Java`. 
 
 <br>
 
@@ -394,7 +410,7 @@ Use the `add /p` command to add a `page`  into the [selected](#342-select-featur
 
 Format: `add /p[PAGE]; [PAGE CONTENT]`
 
-These are the parameters required in the command.
+These are the parameters required in the command:
 
 * `PAGE`: the name of the page in the selected `section`.
 * `PAGE CONTENT`: the contents that you would like to store in the `page`.
@@ -403,10 +419,19 @@ These are the parameters required in the command.
 
 Example of usage:
 
+Let's say you want to add a page into a selected notebook `section`. 
+
+> :bulb: Remember to select the `W1: Java` section!
+
 ```
 >>> add /pHELLO WORLD; System.out.println("Hello World!");
 Added page with title: HELLO WORLD
 ```
+
+You've successfully added a new page into the section `W1: Java` of the notebook `CS2113T`. 
+
+>:warning: Ensure that your page title is preceded by "/p" and that there is a ";" to separate the contents from the page title.
+> Otherwise, an error message will be shown.
 
 <br>
 
@@ -414,11 +439,15 @@ Added page with title: HELLO WORLD
 
 After adding a `notebook`, `section` or `page`, you may want to view its contents.
 Use the `select` command to select a `notebook`, `section`, `page` or a combination of the three.
+
 > :bulb: When you want to `add` a `section`, you must select a `notebook` first.
+>
 > :bulb: When you want to `add` a `page`, you must select a `section` first.
 
 Format: `select /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
-These are the parameters required in the command.
+
+These are the parameters required in the command:
+
 * `NOTEBOOK`: the title of the expected `notebook`.
 * `SECTION`: the title of the expected `section` in `notebook`.
 * `NUMBER`: the page number in the expected `section`.
@@ -440,6 +469,7 @@ In a selected *SECTION*:
 <br>
 
 Example of usage:
+If you have a notebook entitled `CS2101`, you can select it by typing `select /nCS2101`.
 
 ```
 >>> select /nCS2101
