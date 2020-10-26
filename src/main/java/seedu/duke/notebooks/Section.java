@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Section {
     private String title;
+    private String tag = "";
     private final ArrayList<Page> pageArrayList;
 
     public Section(String title) {
@@ -21,6 +22,10 @@ public class Section {
 
     public void addPage(String title, String content) {
         pageArrayList.add(new Page(title, content));
+    }
+
+    public void addPage(Page p) {
+        pageArrayList.add(p);
     }
 
     public int getPage(String searchKey) {
@@ -62,5 +67,27 @@ public class Section {
 
     public ArrayList<Page> getPageArrayList() {
         return pageArrayList;
+    }
+
+
+    public String serialize() {
+        StringBuilder serialized = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        serialized.append(title);
+        serialized.append(lineSeparator);
+        serialized.append(pageArrayList.size());
+        serialized.append(lineSeparator);
+        for (Page p: pageArrayList) {
+            serialized.append(p.serialize());
+        }
+        return serialized.toString();
+    }
+    
+    public void setTag(String description) {
+        tag = description;
+    }
+
+    public String getTag() {
+        return tag;
     }
 }

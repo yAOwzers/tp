@@ -56,7 +56,22 @@ public class NotebookShelf {
         notebooksArrayList.add(new Notebook(title));
     }
 
+    public void addNotebook(Notebook n) {
+        notebooksArrayList.add(n);
+    }
+
     public Notebook removeNotebook(int indexToRemove) {
         return notebooksArrayList.remove(indexToRemove);
+    }
+
+    public String serialize() {
+        StringBuilder serialized = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        serialized.append(notebooksArrayList.size());
+        serialized.append(lineSeparator);
+        for (Notebook n: notebooksArrayList) {
+            serialized.append(n.serialize());
+        }
+        return serialized.toString();
     }
 }

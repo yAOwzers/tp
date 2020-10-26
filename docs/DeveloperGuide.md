@@ -1,6 +1,8 @@
-# Developer Guide
+# Developer Guide for Zer0Note
 
 [1. Introduction](#1-introduction) <br>
+&nbsp;&nbsp;[1.1. Welcome!](#11-welcome)<br>
+&nbsp;&nbsp;[1.2. How to use this document](#12-how-to-use-this-document)<br>
 [2. Setting up](#2-setting-up) <br>
 &nbsp;&nbsp;[2.1. Prerequisites](#21-prerequisites) <br>
 &nbsp;&nbsp;[2.2. Setting up the project in your computer](#22-setting-up-the-project-in-your-computer) <br>
@@ -43,9 +45,67 @@
 [Appendix F: Instructions for manual testing](#appendix-f-instructions-for-manual-testing) <br>
 
 ## 1. Introduction
-Zer0Note is a note taking and organisation application that combines the ease of use and feature set of graphical tools with the interaction speed of command-line based tools like vim and emacs.
+
+### 1.1. Welcome!
+Welcome, and thank you for choosing to help contribute to Zer0Note! Zer0Note is a command-line based note-taking and
+organisation application. It is designed to combine the features of graphical tools like OneNote and Notion, with
+the editing speed of applications like vim and emacs. 
+  
+This document is written for developers intending to improve Zer0Note, by fixing bugs, or perhaps adding entirely new
+features. It explains how the project is set up, the architecture used, and the code style you should adopt when
+contributing code to the project. 
+    
+### 1.2. How to use this document
+
+Text that looks like this is normal text. It should be read as-is; it has no special meaning beyond what it says. 
+
+Example: The sequence diagram below shows the operation of the delete command. 
+
+<br>
+
+`Text that looks like this denotes a keyword or small extract of code.`
+
+Example: The `CliUserInterface` is used to handle input and output to and from the console. 
+
+<br>
+
+```
+    Text that looks like this denotes a larger extract of code. 
+```
+
+Example:
+```java
+    System.out.println("This is a code block!");
+```
+
+<br>
+
+**`Text that looks like this denotes a button, or other UI element you may see on screen. `**
+
+Example: Click **`Configure` ** > **`Project Defaults`** > **`Project Structure`**
+
+<br> 
+
+> Text that looks like this indicates a tip, providing additional information that is useful but not critically
+> important
+
+Example: 
+
+> We use this method because Chrome's built-in PDF viewer preserves hyperlinks. 
+
+<br>
+
+> :exclamation: Text that looks like this, beginning with the :exclamation: sign indicates information that is very
+> important, such as warnings about potential mistakes or common problems
+
+Example:
+
+> :exclamation: **Caution** Follow the steps in the following guide precisely. 
 
 ## 2. Setting up
+
+The following section describes how to set up the coding environment on your own computer, in order to start writing
+code to improve Zer0Note. 
 
 ### 2.1. Prerequisites
 
@@ -59,9 +119,9 @@ Zer0Note is a note taking and organisation application that combines the ease of
 
 1. **Fork** this repo, and **clone** the fork into your computer.
 2. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
-3. Set up the correct JDK version for Gradle
-    a. Click `Configure` > `Project Defaults` > `Project Structure`
-    b. Click `New...` and find the directory of the JDK.
+3. Set up the correct JDK version for Gradle  
+   a. Click `Configure` > `Project Defaults` > `Project Structure`  
+   b. Click `New...` and find the directory of the JDK.
 4. Click `Import Project`
 5. Locate the `build.gradle` file and select it. Click `OK`.
 6. Click `Open as Project`.
@@ -83,7 +143,9 @@ to set up IDEA’s coding style to match ours.
 
 ## 3. Design
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+The following section describes the design and implementation of the product. UML diagrams and code snippets are used
+to explain some aspects of the code. If you are unfamiliar with UML, the diagrams should still be fairly
+understandable. However, you may wish to consult [[CS2113/T] Modeling](https://nus-cs2113-ay2021s1.github.io/website/se-book-adapted/chapters/modeling.html) for a quick introduction to UML. 
 
 ### 3.1 Architecture
 
@@ -131,7 +193,9 @@ The `Commands` component,
 
 ## 4. Implementation
 
-This section describes some noteworthy details on how certain features are implemented.
+The following section describes the implementation of certain key features in the current version of Zer0Note. It also
+provides some background into our (the original developers of Zer0Note) thinking and the rationale behind the
+decisions. 
 
 ### 4.1. Mode Switch Feature
 
@@ -149,7 +213,8 @@ This section describes some noteworthy details on how certain features are imple
 
 ##### 4.2.1.1. Implementation
 
-`TaskList` is implemented to manage and store the tasks input by the user. It comprises of a list of `Task`s.
+`TaskList` is implemented to manage and store the tasks input by the user. It comprises of an `ArrayList` list of
+ `Task`s, and a few helper methods. 
 
 This means that multiple operations such as addition and deletion can be done on a `Task`, without affecting
 the contents of other `Task` in the `TaskList`.
@@ -161,7 +226,7 @@ The figure below shows how the delete task command works:
 1. The `CliUserInterface` receives the "delete 1" input by the user and passes it to the `InputParser` class.
 2. `InputParser` parses the input to determine the type of command and the index of the task that is required to delete.
 The Parser then constructs a `RemoveCommandTimetableMode` with constructor as shown below.
-```
+```java
 public RemoveCommandTimetableMode(int indexToRemove, AppState uiMode) {
     this.setAppState(uiMode);
     this.indexToRemove = indexToRemove;
@@ -174,12 +239,13 @@ It also constructs `CliMessages` to display messages to the user.
 ##### 4.2.1.2. Design Considerations
 
 ###### Aspect: How to store tasks in `TaskList`
-- **Alternative 1 (current choice):** Stores as an `ArrayList` of tasks
+- **Alternative 1 (current choice):** Store as an `ArrayList` of tasks
     - Pros: It is easier to implement because the code base are list based.
     - Cons: It is unoptimized in terms of complexity, which requires more work for scaling of the application.
-- **Alternative 2:** Stores as a Hash Table with the key as the index and value as `Task`
+- **Alternative 2:** Store as a Hash Table with the key as the index and value as `Task`
     - Pros: It has a better time complexity and reduce the work in scaling stage since this data structure is more optimized (O(1) can be achieved).
-    - Cons: It takes more resources to implement. 
+    - Cons: It takes more resources to implement. The constant factor for a hashing algorithm is significant and not
+     worth the tradeoff for smaller amounts of data, like a typical user would be likely to generate. 
 
 ### 4.2.2. List feature
 
@@ -205,7 +271,7 @@ After calling `InputParser#getCommandFromInput` from `CliUserInterface`:
 1. `InputParser` parses the input to return the `notebookTitleToRemove`, `sectionTitleToRemove` and `pageNumberToRemove`.
 Some of these members may be empty.
 2. `InputParser` constructs and returns the `RemoveCommandNotebookMode` class with constructor as shown below:
-```
+```java
 public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
                                      int pageNumber, AppState appState) {
     this.appState = appState;
@@ -218,7 +284,7 @@ public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
     currentSection = appState.getCurrentSection();
 }
 ```
-3. Method **execute()** called by `CliUserInterface` to delete a notebook, section, or page, depending on the input.
+3. Method **execute()** is called by `CliUserInterface` to delete a notebook, section, or page, depending on the input.
 A switch-case block is used to determine the method to call based on the `appMode`.
 4. If the deletion is successful, `CliMessages` displays the message to the user.
 
@@ -247,7 +313,6 @@ Step 7. `TaskList#addTask` is then called and a new `Task`, with `title` and `de
 
 Step 8. To signal that the user has successfully added a task, a message is printed with `CliMessages#printAddedTaskMessage`.
 
-
 The sequence diagram below shows how the find duplicate command works:
 
 ![Sequence diagram for finding duplicates](/diagrams/class/jpeg/duplicates_francene.jpg)
@@ -259,12 +324,14 @@ The sequence diagram below shows how the find duplicate command works:
 * **Alternative 1 (current choice)**: findDuplicate should be saved in the class that potentially creates duplicates.
   * Pros: Easier to access previously saved tasks/notebooks/notebook sections.
   * Cons: May have performance issues in terms of memory usage.
-* Alternative 2: findDuplicate should be saved in the command that creates it.
+* **Alternative 2**: findDuplicate should be saved in the command that creates it.
   * Pros: Less time spent in passing variables to different classes.
   * Cons: We must grant access to private objects that are not within the command class.
 
 ## 5. Documentation
-We use Markdown for writing our documents.
+
+The following section describes how documentation for the project should be written. Note: documentation is all
+ written in [GitHub-Flavoured Markdown](https://github.github.com/gfm/). 
 
 ### 5.1. Setting up and maintaining the project website.
 - We use **Jekyll** to manage documentation.
@@ -278,7 +345,12 @@ We use Markdown for writing our documents.
 
 ### 5.3. Diagrams
 
-We use Microsoft Visio Professional 2019 to draw our UML diagrams.
+We use Microsoft Visio Professional 2019 to draw our UML diagrams. If you do not have access to this software, free
+alternatives such as [Lucidchart](https://www.lucidchart.com/pages/), [Google Drawings](https://docs.google.com/drawings),
+[LibreOffice Draw](https://www.libreoffice.org/discover/draw/) and many others are also available. If you wish to 
+contribute diagrams (which we recommend you do if you contribute new features!), you may use any software of your
+choosing to draw the diagrams, as long as the finished product somewhat resembles those we already have and follows
+UML syntax strictly. 
 
 ### 5.4. Converting a document to the PDF Format
 
@@ -294,6 +366,9 @@ For best results, use the settings indicated in the screenshot below.
 <img src= "https://se-education.org/guides/tutorials/images/chrome_save_as_pdf.png">
 
 ## 6. Testing
+
+The following section describes the testing methodologies followed in this project to ensure high-quality, bug-free
+code as far as possible. 
 
 ### 6.1. Running tests
 
@@ -337,6 +412,24 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 
 ## Appendix C: Use Cases
 
+(For all use cases below, the System is the `Zer0Note` and the Actor is the `user`, unless specified otherwise)
+
+### Use case: Delete task
+
+1. User requests to list tasks
+2. Zer0Note shows a list of tasks
+3. User requests to delete a specific task in the list 
+4. Zer0Note deletes the task  
+    Use case ends.
+
+#### Extensions
+
+* 2.1. The task list is empty.  
+  Use case ends.  
+* 3.1. The given index is invalid.  
+   * 3.1.1 Zer0Note shows an error message.  
+        Use case resumes at step 2.
+        
 /* work in progress */
 
 ## Appendix D: Non-Functional Requirements
@@ -347,7 +440,7 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 
 ## Appendix E: Glossary
 
-* **Mainstream OS**: Windows, Linux, OS-X
+* **Mainstream OS**: Windows, Linux, macOS
 * **Notebook shelf**: a list of all notebooks entered by the user
 
 ## Appendix F: Instructions for manual testing
@@ -357,3 +450,7 @@ Given below are instructions to test the app manually.
 >testers are expected to do more *exploratory* testing.
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+
+1. Launch and Shutdown
+2. {Test case eg. Deleting a task}
+3. Saving Data (dealing with missing/corrupted data files)

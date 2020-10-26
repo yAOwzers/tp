@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Notebook {
     private String title;
+    private String tag = "";
     private final ArrayList<Section> sectionArrayList;
 
     public Notebook(String title) {
@@ -29,6 +30,14 @@ public class Notebook {
         this.title = title;
     }
 
+    public void setTag(String description) {
+        tag = description;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
     /**
      * Add a new section with a given title to this notebook.
      *
@@ -36,6 +45,10 @@ public class Notebook {
      */
     public void addSection(String title) {
         sectionArrayList.add(new Section(title));
+    }
+
+    public void addSection(Section s) {
+        sectionArrayList.add(s);
     }
 
     /**
@@ -71,5 +84,18 @@ public class Notebook {
 
     public ArrayList<Section> getSectionArrayList() {
         return sectionArrayList;
+    }
+
+    public String serialize() {
+        StringBuilder serialized = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        serialized.append(title);
+        serialized.append(lineSeparator);
+        serialized.append(sectionArrayList.size());
+        serialized.append(lineSeparator);
+        for (Section s: sectionArrayList) {
+            serialized.append(s.serialize());
+        }
+        return serialized.toString();
     }
 }
