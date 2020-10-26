@@ -27,7 +27,7 @@ public class FindCommandTimetableMode extends CliCommand {
         TaskList tasks = appState.getTaskList();
         if (tag.equals("") && !keyword.equals("")) {
             tasksFound = getTasksWithTitleContainingKeyword(tasks);
-        } else if (!tag.equals("") && keyword.equals("")){
+        } else if (!tag.equals("") && keyword.equals("")) {
             tasksFound = getTasksWithTagsContainingKeyword(tasks);
         } else {
             System.out.println("Missing keyword/tag");

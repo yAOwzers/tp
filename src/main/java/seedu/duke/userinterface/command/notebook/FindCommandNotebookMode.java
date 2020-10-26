@@ -33,7 +33,7 @@ public class FindCommandNotebookMode extends CliCommand {
     public void execute() {
         if (tag.equals("") && !keyword.equals("")) {
             getAllWithTitleContainingKeyword();
-        } else if (!tag.equals("") && keyword.equals("")){
+        } else if (!tag.equals("") && keyword.equals("")) {
             getAllWithTagsContainingKeyword();
         } else {
             System.out.println("Missing keyword/tag");
