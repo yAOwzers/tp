@@ -6,6 +6,7 @@ import seedu.duke.userinterface.AppState;
 
 public abstract class CliCommand {
     public static final String COMMAND_WORD = "mode";
+    public boolean isPersonalised = true;
     protected AppState appState;
     protected String commandParams;
 
@@ -29,5 +30,9 @@ public abstract class CliCommand {
 
     public void setCommandParams(String params) {
         commandParams = params;
+    }
+
+    public boolean isPersonalised() {
+        return true;
     }
 }

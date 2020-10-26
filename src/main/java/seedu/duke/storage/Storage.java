@@ -24,8 +24,8 @@ public class Storage {
 
     private final String tasksFilePath = "tasks.txt";
     private final String notebooksFilePath = "notebooks.txt";
+    private String nameOfUserFilepath = "src/main/resources/txt/nameOfUser.txt";
 
-    // To include String filepath
     public Storage() {
 
     }
@@ -101,5 +101,22 @@ public class Storage {
             e.printStackTrace();
             return new AppState();
         }
+    }
+
+    public boolean isNameOfUserFilled() throws IOException {
+        File nameOfUserFile = new File(nameOfUserFilepath);
+        if(nameOfUserFile.length() == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public void saveNameOfUser(String userInput) throws IOException {
+        File nameOfUserFile = new File(nameOfUserFilepath);
+        nameOfUserFile.getParentFile().mkdir(); // create a directory
+        nameOfUserFile.createNewFile(); // create .txt file
+        FileWriter nameOfUserFileToSave = new FileWriter(nameOfUserFile);
+        nameOfUserFileToSave.write(userInput);
+        nameOfUserFileToSave.close();
     }
 }

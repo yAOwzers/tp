@@ -13,7 +13,7 @@ public class PersonalMesssageGenerator {
     private static final int NUMBER_OF_NAMES = 1;
 
     /**
-     * Generates a random personal encouragement message as taken from txt/personalMessages file along
+     * Generates a random personal encouragement message as taken from txt/personalMessages.txt file along
      * with a random user name from txt/nameOfUser file.
      *
      * @return the generated message.
@@ -23,8 +23,8 @@ public class PersonalMesssageGenerator {
      */
     public static String generatePersonalisedMessage() {
         ClassLoader classLoader = PersonalMesssageGenerator.class.getClassLoader();
-        InputStream personalMessageStream = classLoader.getResourceAsStream("txt/personalMessages");
-        InputStream namesOfUserInputStream = classLoader.getResourceAsStream("txt/nameOfUser");
+        InputStream personalMessageStream = classLoader.getResourceAsStream("txt/personalMessages.txt");
+        InputStream namesOfUserInputStream = classLoader.getResourceAsStream("txt/nameOfUser.txt");
         try {
 
             BufferedReader personalMessageReader = new BufferedReader(new InputStreamReader(personalMessageStream));

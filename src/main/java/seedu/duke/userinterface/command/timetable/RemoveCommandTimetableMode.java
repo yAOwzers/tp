@@ -12,6 +12,8 @@ public class RemoveCommandTimetableMode extends CliCommand {
 
     private final int indexToRemove;
 
+    private boolean isPersonalised = true;
+
     public RemoveCommandTimetableMode(int indexToRemove, AppState uiMode) {
         this.setAppState(uiMode);
         this.indexToRemove = indexToRemove;
@@ -35,5 +37,10 @@ public class RemoveCommandTimetableMode extends CliCommand {
         } catch (NumberFormatException nfe) {
             System.out.println("Please enter a valid number.");
         }
+    }
+
+    @Override
+    public boolean isPersonalised() {
+        return isPersonalised;
     }
 }

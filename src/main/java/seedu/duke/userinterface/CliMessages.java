@@ -20,10 +20,8 @@ public class CliMessages {
     private static PersonalMesssageGenerator msgGenerator;
 
     public static void printRemoveNotebookMessage(Notebook notebook) {
-        String personalMessage = msgGenerator.generatePersonalisedMessage();
         System.out.println("Noted. I've removed this notebook: ");
         System.out.println("\t" + notebook.getTitle());
-        System.out.println(personalMessage);
     }
 
     public static void printRemoveSectionMessage(Section section) {
@@ -231,5 +229,9 @@ public class CliMessages {
             System.out.println(index + ". " + page.getTitle());
             index += 1;
         }
+    }
+
+    public void printFillInNameOfUserMessage() {
+        System.out.println("Hi there! How may I address you?");
     }
 }

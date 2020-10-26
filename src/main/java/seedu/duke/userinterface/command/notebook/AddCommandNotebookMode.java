@@ -56,4 +56,9 @@ public class AddCommandNotebookMode extends CliCommand {
             e.printErrorMessage();
         }
     }
+
+    @Override
+    public boolean isPersonalised() {
+        return true;
+    }
 }

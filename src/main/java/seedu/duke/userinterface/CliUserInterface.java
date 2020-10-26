@@ -1,11 +1,13 @@
 package seedu.duke.userinterface;
 
 import seedu.duke.exceptions.CorruptFileException;
+import seedu.duke.exceptions.InvalidUserInputException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Exit;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class CliUserInterface {
@@ -13,9 +15,11 @@ public class CliUserInterface {
 
     private boolean toQuit = false;
     private PersonalMesssageGenerator msgGenerator;
+    private CliMessages messages;
 
     public CliUserInterface() {
         msgGenerator = new PersonalMesssageGenerator();
+        messages = new CliMessages();
     }
 
     private void loadState() throws CorruptFileException {
@@ -26,6 +30,16 @@ public class CliUserInterface {
     private void saveState() throws ZeroNoteException {
         Storage storage = new Storage();
         storage.saveToFile(appState);
+    }
+
+    private void checkNameOfUser(String userInput) throws IOException {
+        Storage storage = new Storage();
+        boolean isNameOfUserFilled;
+        isNameOfUserFilled = storage.isNameOfUserFilled();
+            if (isNameOfUserFilled) {
+                messages.printFillInNameOfUserMessage();
+                storage.saveNameOfUser(userInput);
+            }
     }
 
 
@@ -45,9 +59,12 @@ public class CliUserInterface {
                     saveState();
                     toQuit = true;
                 }
+                checkNameOfUser(userInput);
                 executeCommand(userInput);
             } catch (ZeroNoteException e) {
                 e.printErrorMessage();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -55,6 +72,10 @@ public class CliUserInterface {
     private void executeCommand(String userInput) throws ZeroNoteException {
         InputParser parser = new InputParser();
         CliCommand command = parser.getCommandFromInput(userInput, appState);
+        if(command.isPersonalised) {
+            String personalMessage = msgGenerator.generatePersonalisedMessage();
+            System.out.println(personalMessage);
+        }
         command.execute();
     }
 
