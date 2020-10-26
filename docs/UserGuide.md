@@ -102,7 +102,7 @@ and commands specific to [Timetable Mode](#33-timetable-mode) and [Notebook Mode
 
 ### 3.1 Viewing the user guide: `help`
 
-To view the full user guide, type in `help`.
+Whenever you need help, you can view the full user guide by typing in `help`.
 
 To view the user guide for the timetable mode, type in `help timetable`.
 
