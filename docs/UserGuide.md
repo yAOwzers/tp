@@ -110,7 +110,7 @@ To view the user guide for the notebook mode, type in `help notebook`.
 
 ### 3.2 Switching between the two modes: `mode`
 
-Switches from notebook mode (at the bookshelf level) to the timetable mode or vice versa.
+This command allows you to switch from notebook mode (at the bookshelf level) to the timetable mode, or vice versa.
 
 - Switch to the notebook mode
 
@@ -128,7 +128,8 @@ You can `add`, `delete`, `list` and mark your deadlines as `done`!
 The following sections explain the various features you can use while you are in the Timetable Mode.
 
 ### 3.3.1 Adding a task: `add`
-This command adds a task with a `deadline` to the task list. 
+
+This command `adds` a `task` with a deadline to the task list. 
 
 Format: `add /t[TASK] /by[dd-MM-yyyy] [hhmm]`
 
@@ -144,6 +145,8 @@ Let's say you have to read a book for one of your modules.
 Added: coding
 1:[x] Read book (by: Oct 19 2020 06.00 PM)
 ```
+
+With that, you've successfully added a task titled `Read book`, with the deadline `Oct 19 2020 06.00 PM` into your task list! 
 
 ### 3.3.2 Marking a task as done: `done`
 Marks an existing `task` as done in the current task list.
@@ -235,12 +238,18 @@ Noted. I've removed this task:
 ```
 
 ## 3.4 Notebook Mode
-In `Notebook mode`, you can manage a shelf of notebooks.
+
+In a semester, an average student takes about 4-5 modules.  
+In `Notebook Mode`, you can manage a shelf of notebooks.
+You can name it however you like and create as many notebooks you wish! 
 Each notebook contains sections, and each section contains pages. Each page holds your type-written notes.
 
 ### 3.4.1 Add Feature: `add`
+
+Within `Notebook Mode`, you can `add` a `notebook`, `section` or a `page`. This section will guide you through these commands.
+
 #### 3.4.1.1 Adding a notebook
-Adds a `notebook`  into the `notebook shelf`.
+This command adds a `notebook`  into the `notebook shelf`.
 
 Format: `add /n[NOTEBOOK]`
 
@@ -285,7 +294,11 @@ Added page with title: HELLO WORLD
 ```
 
 ### 3.4.2 Selecting Feature: `select`
-Select a `notebook`, `section`, `page` or a combination of the three.
+
+After adding a `notebook`, `section` or `page`, you may want to view its contents. 
+This command allows you to select a `notebook`, `section`, `page` or a combination of the three.
+> :bulb: When you want to `add` a `section`, you must select a `notebook` first.
+>
 
 Format: `select /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
 
