@@ -116,7 +116,7 @@ public class InputParser {
      * @throws InvalidNotebookException      when the notebook the user wants to select does not exist.
      * @throws InvalidSectionException       when the section the user wants to select does not exist.
      * @throws InvalidPageException          when the page number the user wants to select does not exist.
-     * @throws InvalidSelectCommandException
+     * @throws InvalidSelectCommandException when the select command types by the user is wrong.
      */
     public void extractParams(String argument, AppState appState)
             throws InvalidNotebookException, InvalidSectionException, InvalidPageException,
