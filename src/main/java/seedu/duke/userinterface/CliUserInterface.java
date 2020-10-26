@@ -11,9 +11,10 @@ public class CliUserInterface {
     private AppState appState;
 
     private boolean toQuit = false;
+    private PersonalMesssageGenerator msgGenerator;
 
     public CliUserInterface() {
-
+        msgGenerator = new PersonalMesssageGenerator();
     }
 
     private void loadState() {
