@@ -12,6 +12,7 @@ import seedu.duke.userinterface.command.CliCommand;
 public class DoneCommandTimetableMode extends CliCommand {
 
     public static final String COMMAND_WORD = "done";
+    public static final boolean isAutoSave = true;
 
     private AppState appState;
     private String argument;
@@ -33,5 +34,8 @@ public class DoneCommandTimetableMode extends CliCommand {
         }
     }
 
-
+    @Override
+    public boolean isTriggerAutoSave() {
+        return isAutoSave;
+    }
 }
