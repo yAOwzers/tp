@@ -39,20 +39,20 @@
 
 ## 1. Introduction
 
-**Zer0Note** is a note taking and organisation application meant for students(especially those who can type fast). 
-It combines the features of note-taking apps (like OneNote) with the interaction speed of command-line based tools like vim and emacs. 
-It helps students (like yourself!) to keep track of deadlines and take notes quickly. 
+**Zer0Note** is a note taking and organisation application meant for students(especially those who can type fast).
+It combines the features of note-taking apps (like OneNote) with the interaction speed of command-line based tools like vim and emacs.
+It helps students (like yourself!) to keep track of deadlines and take notes quickly.
 
-**Zer0Note** can operate in two different modes: 
+**Zer0Note** can operate in two different modes:
 1. Timetable Mode
 2. Notebook Mode
 
 ### 1.1 About
-This app is targeted towards students, especially those who enjoy typing! 
-This user guide will give you a step-by-step tutorial on how to use each of the commands. 
+This app is targeted towards students, especially those who enjoy typing!
+This user guide will give you a step-by-step tutorial on how to use each of the commands.
 By using these commands, you will be able to keep track of your deadlines and organise your notes!
 
-> Here are some icons that will be used in this User Guide: 
+> Here are some icons that will be used in this User Guide:
 >> :exclamation: : Thing(s) to note
 >>
 >> :bulb: : Tip(s)
@@ -82,13 +82,13 @@ By using these commands, you will be able to keep track of your deadlines and or
 4. Open a terminal on your computer and navigate to the folder containing the jar file. In the following example, the file has been saved in the Downloads folder.
 
     ![Change directory](/images/command-change-dir.png)
- 
+
     Figure 1. Changing directory in Windows command prompt
 
 5. Type `java -jar Zer0Note.jar` and press Enter.
 6. If successful, you will see the following message.
 
-    ![Welcome message](/images/welcome.png) 
+    ![Welcome message](/images/welcome.png)
 
     Figure 2. Welcome message on successful run
 
@@ -96,7 +96,7 @@ Great! Now that you have successfully run Zer0Note, go ahead and try out the dif
 
 ## 3. Features
 
-The following sections will explain more about the different commands that can be used in anywhere, 
+The following sections will explain more about the different commands that can be used in anywhere,
 and commands specific to [Timetable Mode](#33-timetable-mode) and [Notebook Mode](#34-notebook-mode).
 
 
@@ -122,14 +122,14 @@ Format: `mode /t`
 
 ## 3.3 Timetable Mode
 
-Keeping up with deadlines may seem like a daunting task, especially when you're already busy with school. 
-With Zer0Note's Timetable Mode, you'll be able to manage a list of tasks. 
+Keeping up with deadlines may seem like a daunting task, especially when you're already busy with school.
+With Zer0Note's Timetable Mode, you'll be able to manage a list of tasks.
 You can `add`, `delete`, `list` and mark your deadlines as `done`!
 The following sections explain the various features you can use while you are in the Timetable Mode.
 
 ### 3.3.1 Adding a task: `add`
 
-This command `adds` a `task` with a deadline to the task list. 
+This command `adds` a `task` with a deadline to the task list.
 
 Format: `add /t[TASK] /by[dd-MM-yyyy] [hhmm]`
 
@@ -138,7 +138,7 @@ Format: `add /t[TASK] /by[dd-MM-yyyy] [hhmm]`
 * `hhmm`: time the task is due, in 24h format.
 
 Example of usage:
-Let's say you have to read a book for one of your modules. 
+Let's say you have to read a book for one of your modules.
 
 ```
 >>> add /tRead book /by19-10-2020 1800
@@ -146,7 +146,7 @@ Added: coding
 1:[x] Read book (by: Oct 19 2020 06.00 PM)
 ```
 
-With that, you've successfully added a task titled `Read book`, with the deadline `Oct 19 2020 06.00 PM` into your task list! 
+With that, you've successfully added a task titled `Read book`, with the deadline `Oct 19 2020 06.00 PM` into your task list!
 
 ### 3.3.2 Marking a task as done: `done`
 Marks an existing `task` as done in the current task list.
@@ -164,9 +164,10 @@ Yay! I've marked this task as done:
 ```
 
 ### 3.3.3 Listing tasks: `list`
+This command lists the tasks that you have added into the task list.
 
 #### 3.3.3.1 Listing all tasks
-Lists out all the existing tasks.
+When you want to have a look at your task list, you can list out all the existing tasks.
 
 Format: `list`
 
@@ -182,7 +183,7 @@ Example of usage:
 ```
 
 #### 3.3.3.2 Listing done tasks
-Lists out all the tasks that are marked as done.
+When you want to keep track of your progress, you can lists out all the tasks that are marked as done.
 
 Format: `list /d`
 
@@ -195,7 +196,7 @@ Example of usage:
 ```
 
 #### 3.3.3.3 Listing undone tasks
-Lists out all the tasks that are not marked as done.
+If you want to have a look at what you need to do, you can list out all the tasks that are not marked as done.
 
 Format: `list /u`
 
@@ -209,7 +210,7 @@ Example of usage:
 ```
 
 #### 3.3.3.4 Listing urgent tasks
-Lists out top urgent tasks that has not been done, sorted by deadlines. If there are many undone tasks, top three urgent ones will be displayed.
+If you're in a time crunch, you can list out top urgent tasks that have not been done, sorted by deadlines. If there are many undone tasks, only the top three urgent ones will be displayed.
 
 Format: `list /urgent`
 
@@ -222,7 +223,7 @@ Example of usage:
 3:[x] Return book (by: Oct 23 2020 12.00 PM)
 ```
 ### 3.3.4 Deleting a task: `delete`
-Deletes an existing task from the task list.
+This command deletes an existing task from the task list.
 
 Format: `delete [INDEX]`
 
@@ -239,9 +240,10 @@ Noted. I've removed this task:
 
 ## 3.4 Notebook Mode
 
-In a semester, an average student takes about 4-5 modules.  
+In a semester, an average student takes about 4-5 modules.
+Having all your  notebooks in one place can help organise your notes and thoughts better!  
 In `Notebook Mode`, you can manage a shelf of notebooks.
-You can name it however you like and create as many notebooks you wish! 
+You can name it however you like and create as many notebooks you wish!
 Each notebook contains sections, and each section contains pages. Each page holds your type-written notes.
 
 ### 3.4.1 Add Feature: `add`
@@ -263,7 +265,7 @@ Added notebook with title: CS2101
 ```
 
 #### 3.4.1.2 Adding a section
-Adds a `section`  into the [selected](#342-select-feature-select) `notebook`.
+This command adds a `section`  into the [selected](#342-select-feature-select) `notebook`.
 >:bulb: You must select a `notebook` before adding a section!
 
 Format: `add /s[SECTION]`
@@ -278,7 +280,7 @@ Added section with title: W1: Java
 ```
 
 #### 3.4.1.3 Adding a page
-Adds a `page`  into the [selected](#342-select-feature-select) `section`.
+This command adds a `page`  into the [selected](#342-select-feature-select) `section`.
 >:bulb: You must select a `section` before adding a page!
 
 Format: `add /p[PAGE]; [PAGE CONTENT]`
@@ -295,10 +297,10 @@ Added page with title: HELLO WORLD
 
 ### 3.4.2 Selecting Feature: `select`
 
-After adding a `notebook`, `section` or `page`, you may want to view its contents. 
+After adding a `notebook`, `section` or `page`, you may want to view its contents.
 This command allows you to select a `notebook`, `section`, `page` or a combination of the three.
 > :bulb: When you want to `add` a `section`, you must select a `notebook` first.
->
+> :bulb: When you want to `add` a `page`, you must select a `section` first.
 
 Format: `select /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
 
@@ -456,7 +458,7 @@ To terminate the program, type `exit`.
 
 ## 4. FAQ
 
-This section answers some frequently asked questions. 
+This section answers some frequently asked questions.
 
 **Q**: How do I transfer my data to another computer?
 
@@ -483,7 +485,7 @@ The following table shows you a list of commands that can be used anywhere, and 
 
 The following table is a cheatsheet of the commands available in Timetable Mode.
 
-###### Table: Cheatsheet of the commands available in Timetable Mode 
+###### Table: Cheatsheet of the commands available in Timetable Mode
 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
