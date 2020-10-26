@@ -541,3 +541,112 @@ The following table is a cheatsheet of the commands available in Notebook Mode.
 [List contents](#343-listing-contents-list): `list` | list (/s) (/a) |
 [Delete](#344-delete-contents-delete): `delete` | 1) select /nNOTEBOOK /sSECTION /pNUMBER | select /nCS2113T /sW10 /p1
 [Switch to timetable mode](#32-switching-between-the-two-modes-mode): `mode` | mode /t |
+
+## 6. For advanced users: Editing your save file
+
+**Zer0Note** saves your tasks as a plain text file, in a format designed to be easy to read, understand and modify if
+you so desire. We realise that power users may wish to use a different text editor such as vim or Visual Studio Code
+to edit their notes, while also taking advantage of the organisation features of Zer0Note. If you wish to edit the
+save file by yourself, here's a detailed guide on the contents of the save file and how to edit it. 
+
+> :exclamation: **Zer0Note** is very sensitive to the format of the saved file! If there are any errors in the save
+> file, **Zer0Note** will not load it at all, since it cannot be sure if any of the file is uncorrupted. Proceed with
+> caution!
+
+### 6.1. The tasks save file
+
+The tasks save file is formatted as follows. 
+
+First, one line containing only an integer number `n` indicating the number of tasks in the list. 
+
+This is followed by `n` sets of 3 lines each. The first line contains the name of the task. The second line contains
+the deadline of the task, in the format `dd-MM-YYYY hhmm`. The third line contains a value `true` or `false`, 
+indicating whether the task is done. `true` means it is done, `false` means it is not done. 
+
+Here is an example of the contents of a tasks save file:
+
+```
+3
+Code for CS2113T Team Project
+10-11-2020 1200
+false
+Read about hydrogen fuel cells
+22-11-2020 1234
+true
+Read Book
+19-10-2020 1800
+false
+```
+
+### 6.2. The notebooks save file
+
+The notebooks save file is formatted as follows. 
+
+First, one line containing only an integer number `n` indicating the number of notebooks on the shelf. 
+
+This is followed by `n` sets of lines, describing each of the `n` notebooks. The `i`th set describes the `i`th
+notebook. 
+
+The first line in the set contains the title of the `i`th notebook. 
+
+The next line in the set contains only an integer number `s` indicating the number of sections in the `i`th notebook. 
+
+This is followed by `s` sets of lines, describing each of the `s` sections in notebook `i`. The `j`th set describes
+the `j`th section in the `i`th notebook.
+
+The first line in the `j`th set contains the title of the `j`th section of the `i`th notebook. 
+
+The next line in the set contains only an integer number `p` indicating the number of pages in the `j`th section of
+ the `i`th notebook. 
+ 
+This is followed by `p` sets of 2 lines each. The `k`th set describes the `k`th page, of the `j`th section, of the `i
+`th notebook. 
+
+The first line of the `k`th set contains the title of the page. 
+
+The second line of the `k`th set contains the content of the page. The newline characters in the content of the
+page are replaced by `~~~`.  
+
+Here is an example of a notebooks save file:
+
+```
+2
+CS2113T
+4
+Java
+2
+What is Java?
+Java is a programming language used by 3 billion devices. 
+Why Java?
+It's highly portable and relatively fast. 
+OOP
+1
+What is OOP?
+OOP is Object Oriented Programming. 
+UML
+2
+What is UML?
+UML is Unified Modeling Language. 
+Why UML?
+UML is used to draw diagrams to explain your code to noobs.
+Assertions
+1
+Why assertions?
+Honestly I don't know. 
+CS2101
+2
+User Guides
+2
+What are UGs?
+UGs are documents for the user to read to understand how to use the product
+How to write UGs?
+Be user focused. That's all. 
+Developer Guides
+3
+What are DGs?
+DGs are documents for the developer to understand how the program is written.
+How to write DGs?
+Make sure the level of technicality is appropriate. 
+Diagrams
+Make sure diagrams use UML. 
+```
