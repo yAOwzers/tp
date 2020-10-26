@@ -1,6 +1,10 @@
 package seedu.duke.userinterface;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class PersonalMesssageGenerator {
 
@@ -9,7 +13,8 @@ public class PersonalMesssageGenerator {
     private static final int NUMBER_OF_NAMES = 1;
 
     /**
-     * Generates a random personal encouragement message as taken from txt/personalMessages file along with a random user name from txt/nameOfUser file.
+     * Generates a random personal encouragement message as taken from txt/personalMessages file along
+     * with a random user name from txt/nameOfUser file.
      *
      * @return the generated message.
      *
