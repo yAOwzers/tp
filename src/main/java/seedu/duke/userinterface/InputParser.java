@@ -7,24 +7,24 @@ import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidNotebookException;
 import seedu.duke.exceptions.InvalidPageException;
 import seedu.duke.exceptions.InvalidSectionException;
-import seedu.duke.exceptions.NotebookOutOfBoundsException;
+import seedu.duke.exceptions.InvalidSelectCommandException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.command.CliCommand;
-import seedu.duke.userinterface.command.notebook.FindCommandNotebookMode;
-import seedu.duke.userinterface.command.notebook.TagCommandNotebookMode;
-import seedu.duke.userinterface.command.timetable.DoneCommandTimetableMode;
 import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
 import seedu.duke.userinterface.command.ModeSwitch;
 import seedu.duke.userinterface.command.notebook.AddCommandNotebookMode;
+import seedu.duke.userinterface.command.notebook.FindCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.ListCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.RemoveCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode;
+import seedu.duke.userinterface.command.notebook.TagCommandNotebookMode;
 import seedu.duke.userinterface.command.timetable.AddCommandTimetableMode;
+import seedu.duke.userinterface.command.timetable.DoneCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.FindCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.ListCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
@@ -113,22 +113,26 @@ public class InputParser {
      *
      * @param argument contains notebook title, section title or/and page number.
      * @param appState is the state of the application.
+     * @throws InvalidNotebookException      when the notebook the user wants to select does not exist.
+     * @throws InvalidSectionException       when the section the user wants to select does not exist.
+     * @throws InvalidPageException          when the page number the user wants to select does not exist.
+     * @throws InvalidSelectCommandException
      */
     public void extractParams(String argument, AppState appState)
-            throws InvalidNotebookException, InvalidSectionException, InvalidPageException, InvalidCommandException,
-            NotebookOutOfBoundsException {
+            throws InvalidNotebookException, InvalidSectionException, InvalidPageException,
+            InvalidSelectCommandException {
         if (argument.startsWith(NOTEBOOK_DELIMITER)) {
             extractNotebookParams(argument, appState);
-        } else if (argument.startsWith(SECTION_DELIMITER)) {
+        } else if ((argument.startsWith(SECTION_DELIMITER)) && (appState.getAppMode() == AppMode.NOTEBOOK_BOOK)) {
             extractSectionParams(argument, appState);
-        } else if (argument.startsWith(PAGE_DELIMITER)) {
+        } else if ((argument.startsWith(PAGE_DELIMITER)) && (appState.getAppMode() == AppMode.NOTEBOOK_SECTION)) {
             Section section = appState.getCurrentSection();
             int pageNum = parsePageNumber(argument);
             section.getPage(pageNum);
         } else if (argument.startsWith(SHOW_ALL)) {
             appState.setAppMode(AppMode.NOTEBOOK_SHELF);
         } else {
-            throw new InvalidCommandException(argument);
+            throw new InvalidSelectCommandException(argument);
         }
     }
 
@@ -142,8 +146,7 @@ public class InputParser {
      * @throws InvalidPageException     when the page number input by the user does not exist.
      */
     public void extractNotebookParams(String argument, AppState appState)
-            throws InvalidNotebookException, InvalidSectionException, InvalidPageException,
-            NotebookOutOfBoundsException {
+            throws InvalidNotebookException, InvalidSectionException, InvalidPageException {
         Notebook notebook;
         Section section = null;
         String notebookTitle = parseNotebookTitle(argument);
@@ -340,7 +343,7 @@ public class InputParser {
     }
 
     public String[] parseTagDescription(String input) {
-        return input.split(TASK_DELIMITER,2);
+        return input.split(TASK_DELIMITER, 2);
     }
 
     public CliCommand getCommandFromInput(String userInput, AppState appState) throws ZeroNoteException {
@@ -375,13 +378,13 @@ public class InputParser {
         case FindCommandTimetableMode.COMMAND_WORD:
             String[] splitParams = parseTagDescription(argument);
             if (appState.getAppMode() == AppMode.TIMETABLE && argument.contains("/t")) {
-                return new FindCommandTimetableMode(splitParams[0].trim(),splitParams[1].trim(),appState);
+                return new FindCommandTimetableMode(splitParams[0].trim(), splitParams[1].trim(), appState);
             } else if (appState.getAppMode() == AppMode.TIMETABLE && !argument.contains("/t")) {
                 return new FindCommandTimetableMode(splitParams[0].trim(), "", appState);
             } else if (argument.contains("/t")) {
-                return new FindCommandNotebookMode(splitParams[0].trim(),splitParams[1].trim(),appState);
+                return new FindCommandNotebookMode(splitParams[0].trim(), splitParams[1].trim(), appState);
             } else {
-                return new FindCommandNotebookMode(splitParams[0].trim(),"",appState);
+                return new FindCommandNotebookMode(splitParams[0].trim(), "", appState);
             }
         case ListCommandTimetableMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
