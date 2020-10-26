@@ -451,6 +451,56 @@ Given below are instructions to test the app manually.
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
 
-1. Launch and Shutdown
-2. {Test case eg. Deleting a task}
-3. Saving Data (dealing with missing/corrupted data files)
+### 1. Launch and Shutdown
+1. Initial launch  
+i. Download the jar file and copy into an empty folder.
+ii. Double-click the jar file  
+
+### 2. Test Cases
+
+#### 2.1 Deleting a task
+1. Deleting a task while all tasks in the existing tasklist is listed.
+i. Prerequisites: List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
+ii. Test case: `delete 1`    
+Expected: First task should be deleted from the tasklist.  
+iii. Test case: `delete 0`  
+Expected: No task is deleted. Error message will be printed in the command line interface.  
+iv. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the number of tasks in the tasklist)  
+Expected: Similar to previous.
+
+#### 2.2 Adding a task
+
+1. Adding 
+
+#### 2.3 Marking a task as done
+
+1. Marking a task as done while there are existing task in the tasklist.  
+i. Prerequistes: List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
+ii. Test case: `done 1` 
+Expected: First task should be marked as done in the tasklist.  
+iii. Test case: `done 0`  
+Expected: An error messsage will be printed in the command line interface.  
+iv. Other incorrect done commands to try: `done`, `done x` (where x is larger than the number of tasks in the tasklist)  
+Expected: Similar to previous.
+
+#### 2.4 Tagging a Task
+
+#### 2.5 Listing a Task
+
+#### 2.6 Executing a mode switch
+
+#### 2.7 Finding a Task using a keyword
+
+#### 2.8 Adding a Notebook/Section/Page
+
+#### 2.9 Selecting a Notebook/Section
+
+#### 2.10 Deleting a Notebook/Section/Page
+
+#### 2.11 Listing a Notebook/Section/Page 
+
+#### 2.12 Tagging a Notebook/Section/Page
+
+### 3. Saving Data 
+1. dealing with missing/corrupted data files  
+i. 
