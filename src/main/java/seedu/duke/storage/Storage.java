@@ -105,16 +105,19 @@ public class Storage {
 
     public boolean isNameOfUserFilled() throws IOException {
         File nameOfUserFile = new File(nameOfUserFilepath);
-        if(nameOfUserFile.length() == 0) {
+        if (nameOfUserFile.length() == 0) {
             return false;
         }
         return true;
     }
 
-    public void saveNameOfUser(String userInput) throws IOException {
+    public void saveNameOfUser() throws IOException {
         File nameOfUserFile = new File(nameOfUserFilepath);
         nameOfUserFile.getParentFile().mkdir(); // create a directory
         nameOfUserFile.createNewFile(); // create .txt file
+
+        Scanner keyboard = new Scanner(System.in);
+        String userInput = keyboard.nextLine();
         FileWriter nameOfUserFileToSave = new FileWriter(nameOfUserFile);
         nameOfUserFileToSave.write(userInput);
         nameOfUserFileToSave.close();

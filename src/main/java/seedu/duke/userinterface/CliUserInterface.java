@@ -31,25 +31,27 @@ public class CliUserInterface {
         Storage storage = new Storage();
         storage.saveToFile(appState);
     }
-
-    private void checkNameOfUser(String userInput) throws IOException {
+    
+    private void checkNameOfUser() throws IOException {
         Storage storage = new Storage();
         boolean isNameOfUserFilled;
         isNameOfUserFilled = storage.isNameOfUserFilled();
-            if (isNameOfUserFilled) {
-                messages.printFillInNameOfUserMessage();
-                storage.saveNameOfUser(userInput);
-            }
+        if (!isNameOfUserFilled) {
+            messages.printFillInNameOfUserMessage();
+            storage.saveNameOfUser();
+            msgGenerator.printGreetUser();
+        }
     }
 
 
-    public void run() {
+    public void run() throws IOException {
         try {
             loadState();
         } catch (CorruptFileException e) {
             e.printErrorMessage();
         }
         startUI();
+        checkNameOfUser();
         String userInput;
         Scanner keyboard = new Scanner(System.in);
         while (!toQuit) {
@@ -59,12 +61,9 @@ public class CliUserInterface {
                     saveState();
                     toQuit = true;
                 }
-                checkNameOfUser(userInput);
                 executeCommand(userInput);
             } catch (ZeroNoteException e) {
                 e.printErrorMessage();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
         }
     }
@@ -72,7 +71,7 @@ public class CliUserInterface {
     private void executeCommand(String userInput) throws ZeroNoteException {
         InputParser parser = new InputParser();
         CliCommand command = parser.getCommandFromInput(userInput, appState);
-        if(command.isPersonalised) {
+        if (command.isPersonalised) {
             String personalMessage = msgGenerator.generatePersonalisedMessage();
             System.out.println(personalMessage);
         }
