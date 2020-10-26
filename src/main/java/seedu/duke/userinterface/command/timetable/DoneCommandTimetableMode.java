@@ -33,7 +33,7 @@ public class DoneCommandTimetableMode extends CliCommand {
             Task taskDone = this.appState.markTaskAsDone(indexOfNumberAfterDone);
             messages.printMarkDone(taskDone);
         } catch (IndexOutOfBoundsException e) {
-            if ( numberOfTasks > 0) {
+            if (numberOfTasks > 0) {
                 System.out.println("Please enter a valid index between 1 and " + numberOfTasks + ".");
             } else {
                 System.out.println("There are no tasks in the list.");
