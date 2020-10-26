@@ -1,10 +1,19 @@
-# User Guide
+# Zer0Note User Guide
+
+```
+          Welcome to
+ ______    _ _ _                  _ _ _   _    _            _
+|      |  |_ _  |   _ _    _  _  |  _  | |  \ | |   _ _   _| |_    _ _
+| 0 u 0|    /  /  /  _  \ | |/_\ | | | | |   \| |  /   \ |_   _| /   _ \
+|      |   /  /_  |  _ _/ | |    | |_| | |  |\  | |  [] |  | |_  |  _ _/
+|______|  |_ _ _|  \ _ _| |_|    |_ _ _| | _| \_|  \ _ /   |_ _|  \ _ _|
+```
 
 ## Table of Contents
-[1. Introduction](#1-introduction) <br>
+[**1. Introduction**](#1-introduction) <br>
 &nbsp;&nbsp;[1.1. About](#11-about) <br>
-[2. Quick Start](#2-quick-start) <br>
-[3. Features](#3-features) <br>
+[**2. Quick Start**](#2-quick-start) <br>
+[**3. Features**](#3-features) <br>
 &nbsp;&nbsp;[3.1 Viewing the user guide: `help`](#31-viewing-the-user-guide-help) <br>
 &nbsp;&nbsp;[3.2 Switching between the two modes: `mode`](#32-switching-between-the-two-modes-mode) <br>
 &nbsp;&nbsp;[3.3 Timetable Mode](#33-timetable-mode) <br>
@@ -25,19 +34,23 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.3 Listing contents: `list`](#343-listing-contents-list) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.4 Deleting contents: `delete`](#344-deleting-contents-delete) <br>
 &nbsp;&nbsp;[3.5 Exiting the program: `exit`](#35-exiting-the-program-exit) <br>
-[4. FAQ](#4-faq) <br>
-[5. Command Summary](#5-command-summary) <br>
+[**4. FAQ**](#4-faq) <br>
+[**5. Command Summary**](#5-command-summary) <br>
 
 ## 1. Introduction
 
-**Zer0Note** is a note taking and organisation application meant for students(especially those who can type fast). It combines the features of note-taking apps (like OneNote) with the interaction speed of command-line based tools like vim and emacs. It helps students (like yourself!) to keep track of deadlines and take notes quickly. 
+**Zer0Note** is a note taking and organisation application meant for students(especially those who can type fast). 
+It combines the features of note-taking apps (like OneNote) with the interaction speed of command-line based tools like vim and emacs. 
+It helps students (like yourself!) to keep track of deadlines and take notes quickly. 
 
 **Zer0Note** can operate in two different modes: 
 1. Timetable Mode
 2. Notebook Mode
 
 ### 1.1 About
-This app is targeted towards students, especially those who enjoy typing! This user guide will give you a step-by-step tutorial on how to use each of the commands. By using these commands, you will be able to keep track of your deadlines and notes!
+This app is targeted towards students, especially those who enjoy typing! 
+This user guide will give you a step-by-step tutorial on how to use each of the commands. 
+By using these commands, you will be able to keep track of your deadlines and organise your notes!
 
 > Here are some icons that will be used in this User Guide: 
 >> :exclamation: : Thing(s) to note
@@ -59,7 +72,7 @@ This app is targeted towards students, especially those who enjoy typing! This u
   ```
 
 > `select /sChapter 1` is the user's input, and `now in notebook section: Chapter 1` is the output message.      
-
+* Words in [blue]() are clickable links.
 
 ## 2. Quick Start
 
