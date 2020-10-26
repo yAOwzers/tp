@@ -9,7 +9,6 @@ import seedu.duke.exceptions.InvalidPageException;
 import seedu.duke.exceptions.InvalidSectionException;
 import seedu.duke.exceptions.NotebookOutOfBoundsException;
 import seedu.duke.exceptions.TaskTitleException;
-import seedu.duke.exceptions.TaskWrongFormatException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
@@ -45,26 +44,23 @@ public class InputParser {
      *
      * @param input is the user's input.
      * @return the task title.
-     * @throws TaskWrongFormatException when the user's input does not include the TASK_DELIMITER.
-     * @throws TaskTitleException       when the user's input does not include a task title.
+     * @throws TaskTitleException               when the user's input does not include a task title.
+     * @throws IncorrectDeadlineFormatException when the user's input does not include the DEADLINE_DELIMITER.
      */
     public String parseTaskTitle(String input)
-            throws TaskWrongFormatException, TaskTitleException, IncorrectDeadlineFormatException {
-        if (input.startsWith(TASK_DELIMITER)) {
+            throws TaskTitleException, IncorrectDeadlineFormatException {
+        if (input.startsWith(TASK_DELIMITER) && input.contains(DEADLINE_DELIMITER)) {
             String taskTitle = input.replace(TASK_DELIMITER, "");
+            int indexPos = taskTitle.indexOf("/by");
+            taskTitle = taskTitle.substring(0, indexPos).trim();
+
             if (taskTitle.isBlank()) {
                 throw new TaskTitleException();
             }
 
-            if (taskTitle.contains(DEADLINE_DELIMITER)) {
-                int indexPos = taskTitle.indexOf("/by");
-                taskTitle = taskTitle.substring(0, indexPos).trim();
-                return taskTitle;
-            } else {
-                throw new IncorrectDeadlineFormatException();
-            }
+            return taskTitle;
         } else {
-            throw new TaskWrongFormatException();
+            throw new IncorrectDeadlineFormatException();
         }
     }
 
@@ -74,9 +70,8 @@ public class InputParser {
      * @param input is the user's input.
      * @return deadline in the format dd-MM-yyyy hhMM, where time is in 24h format.
      * @throws IncorrectDeadlineFormatException when the deadline input is in the wrong format.
-     * @throws TaskWrongFormatException         when the deadline input is blank.
      */
-    public String parseDeadline(String input) throws TaskWrongFormatException, IncorrectDeadlineFormatException {
+    public String parseDeadline(String input) throws IncorrectDeadlineFormatException {
         if (input.contains(DEADLINE_DELIMITER)) {
             int dividerPos = input.indexOf(DEADLINE_DELIMITER);
             input = input.substring(dividerPos);
