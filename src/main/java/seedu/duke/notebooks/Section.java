@@ -24,6 +24,10 @@ public class Section {
         pageArrayList.add(new Page(title, content));
     }
 
+    public void addPage(Page p) {
+        pageArrayList.add(p);
+    }
+
     public int getPage(String searchKey) {
         int index = 0;
         for (Page p : pageArrayList) {
@@ -65,6 +69,20 @@ public class Section {
         return pageArrayList;
     }
 
+
+    public String serialize() {
+        StringBuilder serialized = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        serialized.append(title);
+        serialized.append(lineSeparator);
+        serialized.append(pageArrayList.size());
+        serialized.append(lineSeparator);
+        for (Page p: pageArrayList) {
+            serialized.append(p.serialize());
+        }
+        return serialized.toString();
+    }
+    
     public void setTag(String description) {
         tag = description;
     }

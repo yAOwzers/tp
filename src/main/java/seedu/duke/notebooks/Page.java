@@ -30,6 +30,16 @@ public class Page {
         System.out.println(content);
     }
 
+    public String serialize() {
+        StringBuilder serialized = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        serialized.append(title);
+        serialized.append(lineSeparator);
+        serialized.append(content.replaceAll(System.lineSeparator(), "~~~"));
+        serialized.append(lineSeparator);
+        return serialized.toString();
+    }
+  
     public void setTag(String description) {
         tag = description;
     }
