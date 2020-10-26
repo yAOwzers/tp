@@ -2,6 +2,8 @@ package seedu.duke.notebooks;
 
 import java.util.ArrayList;
 
+import seedu.duke.exceptions.InvalidTagException;
+
 public class Notebook {
     private String title;
     private String tag = "";
@@ -30,8 +32,12 @@ public class Notebook {
         this.title = title;
     }
 
-    public void setTag(String description) {
-        tag = description;
+    public void setTag(String tag) throws InvalidTagException{
+        if (!tag.equals("")) {
+            this.tag = tag;
+        } else {
+            throw new InvalidTagException("tag /t" + tag);
+        }
     }
 
     public String getTag() {

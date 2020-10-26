@@ -4,9 +4,11 @@ import seedu.duke.exceptions.EmptyPageException;
 import seedu.duke.exceptions.IncorrectAppModeException;
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
 import seedu.duke.exceptions.InvalidCommandException;
+import seedu.duke.exceptions.InvalidIndexException;
 import seedu.duke.exceptions.InvalidNotebookException;
 import seedu.duke.exceptions.InvalidPageException;
 import seedu.duke.exceptions.InvalidSectionException;
+import seedu.duke.exceptions.InvalidTagException;
 import seedu.duke.exceptions.NotebookOutOfBoundsException;
 import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
@@ -78,9 +80,8 @@ public class InputParser {
      * @param input is the user's input.
      * @return deadline in the format dd-MM-yyyy hhMM, where time is in 24h format.
      * @throws IncorrectDeadlineFormatException when the deadline input is in the wrong format.
-     * @throws TaskWrongFormatException         when the deadline input is blank.
      */
-    public String parseDeadline(String input) throws TaskWrongFormatException, IncorrectDeadlineFormatException {
+    public String parseDeadline(String input) throws IncorrectDeadlineFormatException {
         if (input.contains(DEADLINE_DELIMITER)) {
             int dividerPos = input.indexOf(DEADLINE_DELIMITER);
             input = input.substring(dividerPos);
@@ -130,6 +131,8 @@ public class InputParser {
             Section section = appState.getCurrentSection();
             int pageNum = parsePageNumber(argument);
             section.getPage(pageNum);
+            appState.setCurrentPage(pageNum);
+            appState.setAppMode(AppMode.NOTEBOOK_PAGE);
         } else if (argument.startsWith(SHOW_ALL)) {
             appState.setAppMode(AppMode.NOTEBOOK_SHELF);
         } else {
@@ -261,8 +264,12 @@ public class InputParser {
         }
     }
 
-    public int parseTaskIndex(String args) throws NumberFormatException {
-        return Integer.parseInt(args) - 1;
+    public int parseTaskIndex(String args) throws InvalidIndexException {
+        try {
+            return Integer.parseInt(args) - 1;
+        } catch (NumberFormatException nfe) {
+            throw new InvalidIndexException(args);
+        }
     }
 
     /**
@@ -404,9 +411,17 @@ public class InputParser {
             splitParams = parseTagDescription(argument);
             if (appState.getAppMode() == AppMode.TIMETABLE) {
                 int index = parseTaskIndex(splitParams[0].trim());
-                return new TagCommandTimetableMode(index, splitParams[1].trim(), appState);
+                try {
+                    return new TagCommandTimetableMode(index, splitParams[1].trim(), appState);
+                } catch (IndexOutOfBoundsException e) {
+                    throw new InvalidTagException(argument);
+                }
             } else {
-                return new TagCommandNotebookMode(splitParams[1], appState);
+                try {
+                    return new TagCommandNotebookMode(splitParams[1].trim(), appState);
+                } catch (IndexOutOfBoundsException e) {
+                    throw new InvalidTagException(argument);
+                }
             }
         case RemoveCommandTimetableMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {

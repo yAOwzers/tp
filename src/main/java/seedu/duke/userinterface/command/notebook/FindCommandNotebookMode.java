@@ -25,16 +25,20 @@ public class FindCommandNotebookMode extends CliCommand {
     private CliMessages cliMessages = new CliMessages();
 
     public FindCommandNotebookMode(String keyword, String tag, AppState appState) {
-        this.keyword = keyword;
+        this.keyword = keyword.toLowerCase();
         this.tag = tag.toLowerCase();
         this.appState = appState;
     }
 
     public void execute() {
-        if (tag.equals("")) {
+        if (tag.equals("") && !keyword.equals("")) {
             getAllWithTitleContainingKeyword();
-        } else {
+        } else if (!tag.equals("") && keyword.equals("")){
             getAllWithTagsContainingKeyword();
+        } else {
+            System.out.println("Missing keyword/tag");
+            System.out.println("Format: find [KEYWORD] or find /t[TAG]");
+            return;
         }
         printFoundListsMessage();
     }
@@ -80,7 +84,7 @@ public class FindCommandNotebookMode extends CliCommand {
         NotebookShelf currentNotebookShelf = appState.getCurrentBookShelf();
         for (Notebook notebook : currentNotebookShelf.getNotebooksArrayList()) {
             String notebookTag = notebook.getTag();
-            if (!notebookTag.equals("") && isMatching(notebookTag, tag)) {
+            if (!notebookTag.equals("") && notebookTag.equals(tag)) {
                 notebooksFound.add(notebook);
             }
             getSectionsWithTagContainingKeyword(notebook);
@@ -90,7 +94,7 @@ public class FindCommandNotebookMode extends CliCommand {
     private void getSectionsWithTagContainingKeyword(Notebook notebook) {
         for (Section section : notebook.getSectionArrayList()) {
             String sectionTag = section.getTag();
-            if (!sectionTag.equals("") && isMatching(sectionTag, tag)) {
+            if (!sectionTag.equals("") && sectionTag.equals(tag)) {
                 sectionsFound.add(section);
             }
             getPagesWithTagContainingKeyword(section);
@@ -100,15 +104,20 @@ public class FindCommandNotebookMode extends CliCommand {
     private void getPagesWithTagContainingKeyword(Section section) {
         for (Page page : section.getPageArrayList()) {
             String pageTag = page.getTag();
-            if (!pageTag.equals("") && isMatching(pageTag, tag)) {
+            if (!pageTag.equals("") && pageTag.equals(tag)) {
                 pagesFound.add(page);
             }
         }
     }
 
     private boolean isMatching(String title, String keyword) {
-        Set<String> wordsInDescription = new HashSet<>(getWordsInTitle(title));
-        return wordsInDescription.contains(keyword);
+        Set<String> wordsInTitle = new HashSet<>(getWordsInTitle(title));
+        for (String word : wordsInTitle) {
+            if (word.contains(keyword)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private List<String> getWordsInTitle(String title) {

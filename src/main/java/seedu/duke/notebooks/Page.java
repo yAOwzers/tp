@@ -1,5 +1,7 @@
 package seedu.duke.notebooks;
 
+import seedu.duke.exceptions.InvalidTagException;
+
 public class Page {
     private String title;
     private String content;
@@ -30,8 +32,12 @@ public class Page {
         System.out.println(content);
     }
 
-    public void setTag(String description) {
-        tag = description;
+    public void setTag(String tag) throws InvalidTagException {
+        if (!tag.equals("")) {
+            this.tag = tag;
+        } else {
+            throw new InvalidTagException("tag /t" + tag);
+        }
     }
 
     public String getTag() {
