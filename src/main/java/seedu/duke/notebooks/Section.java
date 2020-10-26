@@ -81,7 +81,8 @@ public class Section {
             serialized.append(p.serialize());
         }
         return serialized.toString();
-      
+    }
+    
     public void setTag(String description) {
         tag = description;
     }
