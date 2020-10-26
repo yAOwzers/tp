@@ -5,8 +5,8 @@ import java.io.*;
 public class PersonalMesssageGenerator {
 
     private static String personalMessage;
-    private static final int NUMBER_OF_MESSAGES = 52;
-    private static final int NUMBER_OF_NAMES = 5;
+    private static final int NUMBER_OF_MESSAGES = 12;
+    private static final int NUMBER_OF_NAMES = 1;
 
     /**
      * Generates a random personal encouragement message as taken from txt/personalMessages file along with a random user name from txt/nameOfUser file.
