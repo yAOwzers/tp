@@ -15,6 +15,7 @@ public class TagCommandTimetableMode extends CliCommand {
     private int indexOfTask;
     private String tag;
     private CliMessages cliMessages = new CliMessages();
+    private static final boolean isAutoSave = true;
 
     public TagCommandTimetableMode(int index, String tag, AppState appState) {
         indexOfTask = index;
@@ -27,5 +28,10 @@ public class TagCommandTimetableMode extends CliCommand {
         Task targetTask = appState.getTaskList().getTask(indexOfTask);
         targetTask.setTag(tag);
         cliMessages.printTagTaskMessage(targetTask);
+    }
+
+    @Override
+    public boolean isTriggerAutoSave() {
+        return isAutoSave;
     }
 }
