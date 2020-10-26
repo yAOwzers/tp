@@ -2,7 +2,6 @@ package seedu.duke.userinterface.command.notebook;
 
 import seedu.duke.exceptions.IncorrectAppModeException;
 import seedu.duke.exceptions.InvalidCommandException;
-import seedu.duke.exceptions.NotebookOutOfBoundsException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
@@ -82,7 +81,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
         }
     }
 
-    private void removeFromNotebookShelf() throws InvalidCommandException, NotebookOutOfBoundsException {
+    private void removeFromNotebookShelf() throws InvalidCommandException {
         int indexOfNotebookToRemove = currentBookshelf.findNotebook(notebookTitleToRemove);
 
         if (!notebookTitleToRemove.equals("") && !sectionTitleToRemove.equals("")
