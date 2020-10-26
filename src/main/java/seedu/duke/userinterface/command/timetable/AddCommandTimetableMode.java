@@ -18,6 +18,7 @@ public class AddCommandTimetableMode extends CliCommand {
     public static final String DEADLINE_DELIMITER = "/by";
     private final String argument;
     private final CliMessages messages = new CliMessages();
+    private static final boolean isAutoSave = true;
 
     public AddCommandTimetableMode(String argument, AppState appState) {
         this.appState = appState;
@@ -45,5 +46,10 @@ public class AddCommandTimetableMode extends CliCommand {
             System.out.println("\tOops! Your deadline should be in this format");
             System.out.println("\tdd-MM-yyyy HHmm where time is in 24h");
         }
+    }
+
+    @Override
+    public boolean isTriggerAutoSave() {
+        return isAutoSave;
     }
 }

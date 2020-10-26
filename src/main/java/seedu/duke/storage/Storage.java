@@ -1,52 +1,105 @@
 package seedu.duke.storage;
 
+import seedu.duke.exceptions.CorruptFileException;
+import seedu.duke.exceptions.FileSavingException;
+import seedu.duke.notebooks.Notebook;
+import seedu.duke.notebooks.NotebookShelf;
+import seedu.duke.notebooks.Page;
+import seedu.duke.notebooks.Section;
 import seedu.duke.tasks.Task;
+import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.AppState;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  * Represents the storage of where Zer0Note is loading from and saving information to.
  */
 public class Storage {
 
-    private String filepath;
+    private final String tasksFilePath = "tasks.txt";
+    private final String notebooksFilePath = "notebooks.txt";
 
     // To include String filepath
     public Storage() {
 
     }
 
-    // Saves the given task to txt format
-    public void saveTask(Task task) {
-        File file = new File(this.filepath);
-        try {
-            file.getParentFile().mkdir(); // create a directory
-            file.createNewFile(); // create a .txt file
+    public void saveToFile(AppState currentAppState) throws FileSavingException {
+        File tasksFile = new File(tasksFilePath);
+        File notebooksFile = new File(notebooksFilePath);
 
-            // checks whether the file exist
-            if (file.length() > 0) {
-                FileWriter saveFile = new FileWriter(file, true);
-                saveFile.write(System.lineSeparator() + task.toTxtFormat());
-                saveFile.close();
-            } else {
-                FileWriter saveFile = new FileWriter(this.filepath);
-                saveFile.write(task.toTxtFormat());
-                saveFile.close();
-            }
+        TaskList currentTaskList = currentAppState.getTaskList();
+        NotebookShelf currentNotebookShelf = currentAppState.getCurrentBookShelf();
+
+        String tasksToSave = currentTaskList.serialize();
+        String notebooksToSave = currentNotebookShelf.serialize();
+
+        try {
+            FileWriter tasksFileWriter = new FileWriter(tasksFile);
+            FileWriter notebooksFileWriter = new FileWriter(notebooksFile);
+            tasksFileWriter.write(tasksToSave);
+            notebooksFileWriter.write(notebooksToSave);
+            tasksFileWriter.close();
+            notebooksFileWriter.close();
         } catch (IOException e) {
-            System.out.println("Error in IO!");
+            throw new FileSavingException(e.getMessage());
         }
     }
 
-    public void saveToFile(AppState currentAppState) {
-        // TODO: Implement
-    }
+    public AppState readFromFile() throws CorruptFileException {
+        AppState loadedAppState = new AppState();
+        TaskList loadedTaskList = loadedAppState.getTaskList();
+        NotebookShelf loadedNotebookShelf = loadedAppState.getCurrentBookShelf();
 
-    public AppState readFromFile() {
-        // TODO: Implement
-        return new AppState();
+        File tasksFile = new File(tasksFilePath);
+        File notebooksFile = new File(notebooksFilePath);
+        try {
+            Scanner tasksFileScanner = new Scanner(tasksFile);
+            Scanner notebooksFileScanner = new Scanner(notebooksFile);
+            int numTasks = Integer.parseInt(tasksFileScanner.nextLine());
+            for (int i = 0; i < numTasks; i++) {
+                String taskTitle = tasksFileScanner.nextLine();
+                String taskDate = tasksFileScanner.nextLine();
+                String done = tasksFileScanner.nextLine();
+                Task currentTask = new Task(taskTitle, taskDate);
+                if (done.equals("true")) {
+                    currentTask.markAsDone();
+                }
+                loadedTaskList.addTask(currentTask);
+            }
+            int numNotebooks = Integer.parseInt(notebooksFileScanner.nextLine());
+            for (int i = 0; i < numNotebooks; i++) {
+                String notebookTitle = notebooksFileScanner.nextLine();
+                int numSections = Integer.parseInt(notebooksFileScanner.nextLine());
+                Notebook currentNotebook = new Notebook(notebookTitle);
+                for (int j = 0; j < numSections; j++) {
+                    String sectionTitle = notebooksFileScanner.nextLine();
+                    int numPages = Integer.parseInt(notebooksFileScanner.nextLine());
+                    Section currentSection = new Section(sectionTitle);
+                    for (int k = 0; k < numPages; k++) {
+                        String pageTitle = notebooksFileScanner.nextLine();
+                        String pageContent = notebooksFileScanner.nextLine();
+                        pageContent = pageContent.replaceAll("~~~", System.lineSeparator());
+                        Page currentPage = new Page(pageTitle, pageContent);
+                        currentSection.addPage(currentPage);
+                    }
+                    currentNotebook.addSection(currentSection);
+                }
+                loadedNotebookShelf.addNotebook(currentNotebook);
+            }
+            return loadedAppState;
+        } catch (FileNotFoundException e) {
+            System.out.println("File was not found. A new save file will be created upon exit. ");
+            return new AppState();
+        } catch (InputMismatchException | NumberFormatException e) {
+            e.printStackTrace();
+            return new AppState();
+        }
     }
 }

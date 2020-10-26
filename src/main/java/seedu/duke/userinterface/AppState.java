@@ -2,6 +2,7 @@ package seedu.duke.userinterface;
 
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
+import seedu.duke.notebooks.Page;
 import seedu.duke.notebooks.Section;
 import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
@@ -12,8 +13,10 @@ public class AppState {
     private NotebookShelf currentBookShelf;
     private Notebook currentNotebook;
     private Section currentSection;
+    private Page currentPage;
     private int indexOfCurrentNotebook;
     private int indexOfCurrentSection;
+    private int indexOfCurrentPage;
 
     public AppState() {
         taskList = new TaskList();
@@ -53,6 +56,14 @@ public class AppState {
         this.currentSection = currentSection;
     }
 
+    public Page getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(Page currentPage) {
+        this.currentPage = currentPage;
+    }
+
     public TaskList getTaskList() {
         return taskList;
     }
@@ -80,5 +91,13 @@ public class AppState {
 
     public void setIndexOfCurrentSection(int indexOfCurrentSection) {
         this.indexOfCurrentSection = indexOfCurrentSection;
+    }
+
+    public int getIndexOfCurrentPage() {
+        return indexOfCurrentPage;
+    }
+
+    public void setIndexOfCurrentPage(int indexOfCurrentPage) {
+        this.indexOfCurrentPage = indexOfCurrentPage;
     }
 }
