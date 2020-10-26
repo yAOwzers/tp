@@ -1,6 +1,7 @@
 package seedu.duke.userinterface.command.timetable;
 
 import seedu.duke.tasks.Task;
+import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.CliMessages;
 import seedu.duke.userinterface.command.CliCommand;
