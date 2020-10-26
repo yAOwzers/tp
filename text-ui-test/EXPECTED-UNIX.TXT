@@ -8,8 +8,8 @@ Welcome to
 You are now in timetable mode
 Added: task
 1:[x] task (by: Oct 15 2020 11.59 PM)
-Yay! I've marked these task as done:
- [o] task
+Yay! I've marked this task as done:
+ [o] task (by: Oct 15 2020 11.59 PM)
 1:[o] task (by: Oct 15 2020 11.59 PM)
 Noted. I've removed this task:
 [o] task (by: Oct 15 2020 11.59 PM)

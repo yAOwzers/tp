@@ -3,6 +3,7 @@ package seedu.duke.notebooks;
 public class Page {
     private String title;
     private String content;
+    private String tag = "";
 
     public Page(String title, String content) {
         this.title = title;
@@ -38,6 +39,12 @@ public class Page {
         serialized.append(lineSeparator);
         return serialized.toString();
     }
+  
+    public void setTag(String description) {
+        tag = description;
+    }
 
-
+    public String getTag() {
+        return tag;
+    }
 }
