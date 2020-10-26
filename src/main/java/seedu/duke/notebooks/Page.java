@@ -28,10 +28,6 @@ public class Page {
         this.content = content;
     }
 
-    public void printPage() {
-        System.out.println(content);
-    }
-
     public void setTag(String tag) throws InvalidTagException {
         if (!tag.equals("")) {
             this.tag = tag;
@@ -42,5 +38,19 @@ public class Page {
 
     public String getTag() {
         return tag;
+    }
+
+    public void printPage() {
+        System.out.println(content);
+    }
+
+    public String serialize() {
+        StringBuilder serialized = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        serialized.append(title);
+        serialized.append(lineSeparator);
+        serialized.append(content.replaceAll(System.lineSeparator(), "~~~"));
+        serialized.append(lineSeparator);
+        return serialized.toString();
     }
 }

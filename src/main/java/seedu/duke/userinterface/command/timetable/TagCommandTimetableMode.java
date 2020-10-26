@@ -11,6 +11,7 @@ public class TagCommandTimetableMode extends CliCommand {
     private int index;
     private String tag;
     private CliMessages cliMessages = new CliMessages();
+    private static final boolean isAutoSave = true;
 
     public TagCommandTimetableMode(int index, String tag, AppState appState) {
         this.index = index;
@@ -37,5 +38,10 @@ public class TagCommandTimetableMode extends CliCommand {
             ite.setProblematicInput("tag " + index + " /t");
             ite.printErrorMessage();
         }
+    }
+
+    @Override
+    public boolean isTriggerAutoSave() {
+        return isAutoSave;
     }
 }

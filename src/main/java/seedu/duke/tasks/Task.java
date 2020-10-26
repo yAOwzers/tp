@@ -95,4 +95,16 @@ public class Task {
         // ...
         return null;
     }
+
+    public String serialize() {
+        StringBuilder serialized = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        serialized.append(title);
+        serialized.append(lineSeparator);
+        serialized.append(by);
+        serialized.append(lineSeparator);
+        serialized.append(isDone);
+        serialized.append(lineSeparator);
+        return serialized.toString();
+    }
 }
