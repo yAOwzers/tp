@@ -220,14 +220,44 @@ Yay! I've marked this task as done:
 
 <br>
 
-### 3.3.3 Listing tasks: `list`
+### 3.3.3 Tagging tasks: `tag`
+
+You have added a few tasks, and completed some of them. Congratulations! After reviewing, you realise that some of the 
+tasks come from the same module, or that some or non-academic-related. Is there any way you can categorise them together?
+
+This command lets you add a single `tag` to an existing `task` to remind you of the category it belongs to. You can
+learn how to search for all tasks with the same `tag` in [Finding tasks](#335-finding-tasks-find).
+
+>:exclamation: Each task can only have one tag. The previous tag will be automatically overwritten by the new tag and no
+>reminder will be given.
+>
+Format: `tag [INDEX] /t[TAG]`
+
+These are the parameters required in the command:
+
+* `INDEX`: index number of the intended task in the full task list
+* `TAG`: text description of the tag
+
+<br>
+
+Example of usage:
+
+```
+>>> tag 1 /tTodo
+Got it! I've tagged this as:
+ [o] Read book (by: Oct 19 2020 06.00PM)(tag: Todo)
+```
+
+<br>
+
+### 3.3.4 Listing tasks: `list`
 
 Use the `list` command to list the tasks you have added to **Zer0Note**. There are 4 ways you can use this
 command, described below: 
 
 <br>
 
-#### 3.3.3.1 Listing all tasks
+#### 3.3.4.1 Listing all tasks
 
 When you want to have a look at your task list, you can list out all the existing tasks.
 
@@ -248,7 +278,7 @@ Example of usage:
 
 <br>
 
-#### 3.3.3.2 Listing done tasks
+#### 3.3.4.2 Listing done tasks
 
 When you want to keep track of your progress, you can list out all the tasks that are marked as done.
 
@@ -266,7 +296,7 @@ Example of usage:
 
 <br>
 
-#### 3.3.3.3 Listing undone tasks
+#### 3.3.4.3 Listing undone tasks
 
 If you want to have a look at what you need to do, you can list out all the tasks that are not marked as done.
 
@@ -285,7 +315,7 @@ Example of usage:
 
 <br>
 
-#### 3.3.3.4 Listing urgent tasks
+#### 3.3.4.4 Listing urgent tasks
 
 If you're in a time crunch, you can list out top urgent tasks that have not been done, sorted by deadlines. If there
 are many undone tasks, only the top three urgent ones will be displayed.
@@ -305,7 +335,7 @@ Example of usage:
 
 <br>
 
-### 3.3.4 Deleting a task: `delete`
+### 3.3.6 Deleting a task: `delete`
 
 Use the `delete` command to delete tasks you previously added to **Zer0Note**. 
 
@@ -313,7 +343,7 @@ Format: `delete [INDEX]`
 
 This is the parameter required in the command:
 
-* `INDEX` refers to the index number of the intended task in the full task list
+* `INDEX`: index number of the intended task in the full task list
 
 <br>
 
