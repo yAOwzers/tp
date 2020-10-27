@@ -179,13 +179,51 @@ The `Commands` component,
 
 ### 3.4. Tasks Component
 
-/* to insert UML diagram */
+<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/taskComponent.jpg">
 
-### 3.5 Notebooks Component
+Figure []. Structure of Tasks Component
 
-![UML diagram for Notebooks](/diagrams/class/jpeg/notebooks.jpg)
+The `Tasks` component,
 
-/* TODO explain the various variables and methods */
+- stores an array of `Task` objects that represents the deadline of the user.
+- together with the `Notebooks` component form the `AppState` component.   
+
+The `TaskList` class,
+
+- has methods to add a new `Task` object and remove existing one at an index.
+
+### 3.5. Notebooks Component
+
+<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/notebooks_simplified.jpg">
+
+Figure []. Structure of Notebooks Component
+
+The `Notebooks` class,
+
+- stores a `NotebookShelf` object that contains a list of `Notebook` objects.
+- together with the `Tasks` component form the `AppState` component.
+
+The `NotebookShelf` class,
+
+- has methods to add new `Notebook` object and remove existing one.
+- has methods to search through to find a `Notebook` object with matching titles.
+
+The `Notebook` class,
+
+- contains a title and a list of `Section` objects.
+- has methods to add new `Section` object or remove existing one.
+- has a `tag` field that user can be set and get.
+
+The `Section` object,
+
+- contains a title and list of `Page` objects.
+- has methods to add new `Page` object or remove existing one.
+- has a `tag` field that user can be set and get.
+
+The `Page` object,
+
+- contains a title, and the content of the page as a String object.
+- has a `tag` field that user can be set and get.
 
 ### 3.6. Storage Component
 
@@ -201,7 +239,9 @@ decisions.
 
 #### 4.1.1. Implementation
 
-/* work in progress */
+The following sequence diagram shows how the mode switch operation works:
+
+<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/SequenceDiagram_ModeSwitch.jpg">
 
 #### 4.1.2. Design Considerations
 
@@ -253,8 +293,7 @@ It also constructs `CliMessages` to display messages to the user.
 
 The following sequence diagram shows how the list operation works:
 
-![Sequence Diagram for List command](/diagrams/class/jpeg/SequenceDiagram_List.jpg)
-
+<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/SequenceDiagram_List.jpg">
 
 ### 4.3. Notebook Mode
 
