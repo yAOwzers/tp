@@ -1,7 +1,5 @@
 package seedu.duke.notebooks;
 
-import seedu.duke.exceptions.NotebookOutOfBoundsException;
-
 import java.util.ArrayList;
 
 public class NotebookShelf {
@@ -19,7 +17,6 @@ public class NotebookShelf {
      * Find the notebook on the shelf with the given title.
      *
      * @param title the title of the notebook we want to find
-     *
      * @return the index of the notebook we want to find
      */
     public int findNotebook(String title) {
@@ -37,13 +34,8 @@ public class NotebookShelf {
      * Get the notebook at a particular index in the ArrayList. Use findNotebook() to get an index from a given title.
      *
      * @param index the index of the notebook to be found
-     *
-     * @return The notebook at that index
      */
-    public Notebook getNotebookAtIndex(int index) throws NotebookOutOfBoundsException {
-        if (index < 0 | index > notebooksArrayList.size()) {
-            throw new NotebookOutOfBoundsException(index);
-        }
+    public Notebook getNotebookAtIndex(int index) {
         return notebooksArrayList.get(index);
     }
 
@@ -56,7 +48,22 @@ public class NotebookShelf {
         notebooksArrayList.add(new Notebook(title));
     }
 
+    public void addNotebook(Notebook n) {
+        notebooksArrayList.add(n);
+    }
+
     public Notebook removeNotebook(int indexToRemove) {
         return notebooksArrayList.remove(indexToRemove);
+    }
+
+    public String serialize() {
+        StringBuilder serialized = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        serialized.append(notebooksArrayList.size());
+        serialized.append(lineSeparator);
+        for (Notebook n : notebooksArrayList) {
+            serialized.append(n.serialize());
+        }
+        return serialized.toString();
     }
 }

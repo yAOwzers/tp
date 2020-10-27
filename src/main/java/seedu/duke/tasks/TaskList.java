@@ -35,4 +35,15 @@ public class TaskList {
     public ArrayList<Task> getTaskArrayList() {
         return taskArrayList;
     }
+
+    public String serialize() {
+        StringBuilder serialized = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        serialized.append(getNumberOfTasks());
+        serialized.append(lineSeparator);
+        for (Task t : taskArrayList) {
+            serialized.append(t.serialize());
+        }
+        return serialized.toString();
+    }
 }
