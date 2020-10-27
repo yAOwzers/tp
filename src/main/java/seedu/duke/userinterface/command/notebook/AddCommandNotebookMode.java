@@ -19,7 +19,10 @@ public class AddCommandNotebookMode extends CliCommand {
     private final NotebookShelf currentBookshelf;
     private final Notebook currentNotebook;
     private final Section currentSection;
+
     private boolean isPersonalised = true;
+    private static final boolean isAutoSave = true;
+
 
     public AddCommandNotebookMode(String title, AppState appState) {
         this.appState = appState;
@@ -61,5 +64,10 @@ public class AddCommandNotebookMode extends CliCommand {
     @Override
     public boolean isPersonalised() {
         return isPersonalised;
+    }
+
+    @Override
+    public boolean isTriggerAutoSave() {
+        return isAutoSave;
     }
 }

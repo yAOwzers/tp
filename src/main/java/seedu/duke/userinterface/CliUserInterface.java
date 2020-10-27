@@ -61,7 +61,6 @@ public class CliUserInterface {
             userInput = keyboard.nextLine();
             try {
                 if (userInput.equals(Exit.COMMAND_WORD)) {
-                    saveState();
                     toQuit = true;
                 }
                 executeCommand(userInput);
@@ -79,6 +78,9 @@ public class CliUserInterface {
             System.out.println(personalMessage);
         }
         command.execute();
+        if (command.isTriggerAutoSave()) {
+            saveState();
+        }
     }
 
     private void startUI() {

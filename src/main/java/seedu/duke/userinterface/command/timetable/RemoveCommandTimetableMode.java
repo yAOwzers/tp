@@ -13,6 +13,8 @@ public class RemoveCommandTimetableMode extends CliCommand {
     private final int indexToRemove;
 
     private boolean isPersonalised = true;
+    private static final boolean isAutoSave = true;
+
 
     public RemoveCommandTimetableMode(int indexToRemove, AppState uiMode) {
         this.setAppState(uiMode);
@@ -42,5 +44,10 @@ public class RemoveCommandTimetableMode extends CliCommand {
     @Override
     public boolean isPersonalised() {
         return isPersonalised;
+    }
+
+    @Override
+    public boolean isTriggerAutoSave() {
+        return isAutoSave;
     }
 }

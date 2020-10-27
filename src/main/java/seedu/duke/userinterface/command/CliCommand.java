@@ -9,6 +9,7 @@ public abstract class CliCommand {
     public boolean isPersonalised = false;
     protected AppState appState;
     protected String commandParams;
+    private static final boolean isAutoSave = false;
 
     public static String getCommandWord() {
         return COMMAND_WORD;
@@ -32,7 +33,12 @@ public abstract class CliCommand {
         commandParams = params;
     }
 
+
     public boolean isPersonalised() {
         return isPersonalised;
+    }
+
+    public boolean isTriggerAutoSave() {
+        return isAutoSave;
     }
 }

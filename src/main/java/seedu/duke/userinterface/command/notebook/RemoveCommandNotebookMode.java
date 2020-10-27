@@ -2,7 +2,6 @@ package seedu.duke.userinterface.command.notebook;
 
 import seedu.duke.exceptions.IncorrectAppModeException;
 import seedu.duke.exceptions.InvalidCommandException;
-import seedu.duke.exceptions.NotebookOutOfBoundsException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
@@ -22,7 +21,9 @@ public class RemoveCommandNotebookMode extends CliCommand {
     private Section currentSection;
     private String sectionTitleToRemove;
     private int pageNumberToRemove;
+
     private boolean isPersonalised = true;
+    private static final boolean isAutoSave = true;
 
     public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
                                      int pageNumber, AppState appState) {
@@ -82,7 +83,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
         }
     }
 
-    private void removeFromNotebookShelf() throws InvalidCommandException, NotebookOutOfBoundsException {
+    private void removeFromNotebookShelf() throws InvalidCommandException {
         int indexOfNotebookToRemove = currentBookshelf.findNotebook(notebookTitleToRemove);
 
         if (!notebookTitleToRemove.equals("") && !sectionTitleToRemove.equals("")
@@ -111,5 +112,10 @@ public class RemoveCommandNotebookMode extends CliCommand {
     @Override
     public boolean isPersonalised() {
         return isPersonalised;
+    }
+
+    @Override
+    public boolean isTriggerAutoSave() {
+        return isAutoSave;
     }
 }
