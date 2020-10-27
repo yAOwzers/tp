@@ -25,7 +25,6 @@ public class Storage {
     private final String tasksFilePath = "tasks.txt";
     private final String notebooksFilePath = "notebooks.txt";
 
-    // To include String filepath
     public Storage() {
 
     }

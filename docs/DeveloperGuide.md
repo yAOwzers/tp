@@ -458,17 +458,28 @@ Given below are instructions to test the app manually.
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
 
 ### 1. Launch and Shutdown
-1. Initial launch  
-i. Download the jar file and copy into an empty folder.
+1.1 Initial launch  
+i. Download the jar file and copy into an empty folder.  
 ii. Double-click the jar file  
+Expected: Command Line Interface should launch with a welcome message from Zer0Note as shown below:  
+```
+Welcome to
+ _ _ _                  _ _ _   _    _            _
+|_ _  |   _ _    _  _  |  _  | |  \ | |   _ _   _| |_    _ _
+  /  /  /  _  \ | |/_\ | | | | |   \| |  /   \ |_   _| /   _ \
+ /  /_  |  _ _/ | |    | |_| | |  |\  | |  [] |  | |_  |  _ _/
+|_ _ _|  \ _ _| |_|    |_ _ _| | _| \_|  \ _ /   |_ _|  \ _ _|
+You are now in timetable mode
+```
+
 
 ### 2. Test Cases
 
 #### 2.1 Deleting a task
-2.1.1. Deleting a task while all tasks in the existing tasklist is listed.
+2.1.1. Deleting a task while all tasks in the existing tasklist is listed.  
 i. Prerequisites: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
 ii. Test case: `delete 1`    
-Expected: First task should be deleted from the tasklist.  
+Expected: First task is deleted from the tasklist.  
 iii. Test case: `delete 0`  
 Expected: No task is deleted. Error message will be printed in the command line interface.  
 iv. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the number of tasks in the tasklist)  
@@ -477,7 +488,7 @@ Expected: No task is deleted. Error message will be printed in the command line 
 #### 2.2 Adding a task
 
 2.2.1 Adding a task to the tasklist.  
-i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. 
+i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode.  
 ii. Test case: `add /t test task /by 10-10-2020 2000`  
 Expected: Task is added into the tasklist with a success message printed.  
 iii. Test case: `add /t test task`  
@@ -485,7 +496,7 @@ Expected: An error messsage will be printed in the command line interface.
 iv. Test case: `add`  
 Expected: An error message along with a formatting guideline message will be printed.  
 v. Test case: `add /t test task /by 2020-10-10 2000`  
-Expected: An error message along with a formatting guideline message will be printed in the command line interface.
+Expected: An error message along with a formatting guideline message (date format should be dd-MM-yyyy HHmm) will be printed in the command line interface.
 
 #### 2.3 Marking a task as done
 
@@ -494,15 +505,15 @@ i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to 
 ii. Test case: `done 1`  
 Expected: First task should be marked as done in the tasklist.  
 iii. Test case: `done 0`  
-Expected: An error messsage will be printed in the command line interface.  
+Expected: An error messsage along with a formatting guideline message will be printed in the command line interface.  
 iv. Other incorrect done commands to try: `done`, `done x` (where x is larger than the number of tasks in the tasklist)  
-Expected: An error messsage will be printed in the command line interface.  
+Expected: An error messsage along with a formatting guideline message will be printed in the command line interface.  
 
 #### 2.4 Tagging a Task
 
 2.4.1. Tagging an existing task in the tasklist.  
 i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
-ii. Test case: `tag 1 schoolWork`  
+ii. Test case: `tag 1 /tschoolWork`  
 Expected: Task in index 1 of the tasklist is tagged with a tag 'schoolWork'.  
 iii. Test case: `tag 1`  
 Expected: An error message along with a formatting guideline message will be printed in the command line interface.  
@@ -541,7 +552,7 @@ Expected: Mode is switched to Notebook mode.
 iii. Test case: `mode /t`  
 Expected: Mode is switched to Timetable mode.  
 iv. Test case: `mode`  
-Expected: An error message along with a formatting guideline message will be printed in the command line interface..  
+Expected: An error message along with a formatting guideline message (missing follow up command '/n' or '/t') will be printed in the command line interface..  
 
 #### 2.7 Finding a Task using a keyword
 
@@ -563,13 +574,13 @@ ii. Test case: `add /nCS2113T`
 Expected: Notebook 'CS2113T' is added to the notebookShelf with a success message printed.  
 
 2.8.1.2. Adding a Section.  
-i. Prerequistes: User must select a notebook. Enter `select /s[NOTEBOOK]` to enter a specified notebook.    
-ii. Test case: `add /nChapter 1`  
+i. Prerequistes: User must select a notebook. Enter `select /n[NOTEBOOK]` to enter a specified notebook.    
+ii. Test case: `add /sChapter 1`  
 Expected: Section 'Chapter 1' is added to the specified notebook with a success message printed.  
 
 2.8.1.3. Adding a Page.  
 i. Prerequistes: User must select a Section. Enter `select /s[SECTION]` to enter a specified section.    
-ii. Test case: `add /p Page 1 ; a test page`  
+ii. Test case: `add /pPage 1 ; a test page`  
 Expected: Page 'Page 1' along with content 'a test page' is added to the specified section with a success message printed.  
 
 #### 2.9 Selecting a Notebook/Section/Page
@@ -577,20 +588,19 @@ Expected: Page 'Page 1' along with content 'a test page' is added to the specifi
 2.9.1. Selecting a respective notebook/section/page in their respective list.  
 i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode.  
 
-2.9.1.1. Selecting a Notebook.  
-i. Prerequistes: User must not be in a section. User should type `mode /n` before executing this test case.   
-ii. Test case: `select /nCS2113T`  
+2.9.1.1. Selecting a Notebook.    
+i. Test case: `select /nCS2113T`  
 Expected: The user will enter the selected notebook 'CS2113T' with a success message printed. 
 
 2.9.1.2. Selecting a Section.  
-i. Prerequistes: User must be in a selected notebook. Enter `select /s[NOTEBOOK]` to enter a specified notebook.   
-ii. Test case: `select /sChapter 1`  
+i. Test case: `select /sChapter 1`  
 Expected: The user will enter the selected Section 'Chapter 1' with a success message printed. 
 
 2.9.1.3. Selecting a Page.  
-i. Prerequistes: User must be in a selected section. Enter `select /s[SECTION]` to enter a specified section.   
-ii. Test case: `select /sPage 1`  
-Expected: The user will enter the selected Page 'Page 1' with a success message printed. 
+i. Test case: `select /pPage 1`  
+Expected: The user will enter the selected Page 'Page 1' with a success message printed.  
+ii. Test case: `select /nCS2113T /sChapter 1 /pPage 1`  
+Expected: The user will enter the selected Page 'Page 1' with a success message printed.  
 
 #### 2.10 Deleting a Notebook/Section/Page
 
@@ -624,7 +634,7 @@ Expected: All notebooks, sections and pages will be printed out.
 
 2.12.1. Tagging an existing notebooks/sections/pages in the list.  
 i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
-ii. Test case: `tag schoolWork` 
+ii. Test case: `tag /tschoolWork`  
 Expected: Specified name of notebook/section/page in the list is tagged with a tag 'schoolWork'.  
 iii. Test case: `tag`  
 Expected: An error message along with a formatting guideline message will be printed in the command line interface.   
@@ -643,7 +653,8 @@ Expected: An error message along with a formatting guideline message will be pri
 3.1. Dealing with corrupted data files  
 i. Click on the folder that the jar file had been saved in.  
 ii. Select both the 'tasks.txt' and 'notebooks.txt'.
-iii. Delete both files.
-iv. Restart the application by double-clicking the jar file and running Zer0Note.
+iii. Delete both files.  
+iv. Restart the application by double-clicking the jar file and running Zer0Note.  
+Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1.  
 
 
