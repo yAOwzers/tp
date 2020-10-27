@@ -33,6 +33,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.2. Tag Feature](#432-tag-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.1. Implementation](#4321-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.2. Design Considerations](#4322-design-considerations) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3. Select Feature](#432-tag-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.1. Implementation](#4321-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.2. Design Considerations](#4322-design-considerations) <br>
 &nbsp;&nbsp;[4.4. Notebook Mode](#44-storage-neil) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.1. Storage Format](#441-storage-format) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.1. TaskList](#4411-tasklist) <br>
@@ -357,7 +360,7 @@ There are two main functions in notebook management: add and remove.
 
 Given below is an example usage scenario and how the add notebook function behaves.
 
-Step 1. The user launches the application for the first time. CliUserInterface#executeCommand is called when the user adds new `Notebook` into the `NotebookShelf`.
+Step 1. The user launches the application for the first time. `CliUserInterface#executeCommand` is called when the user adds new `Notebook` into the `NotebookShelf`.
 
 Step 2. The user types `add /nCS2113T`. The `add` command is passed through `InputParser#getCommandFromInput`.
 
@@ -370,7 +373,7 @@ Step 5. `AddCommandNotebookMode#execute()` runs, which then calls `NotebookShelf
 Step 6. A new `Notebook`, entitled `CS2113T` is initialised.
 
 The UML sequence diagram below shows how the add task command works.
-![Sequence Diagram for Add Task Command](/diagrams/class/jpeg/add_task.jpg)
+![Sequence Diagram for Add Task Command](/diagrams/class/jpeg/add_notebook.jpg)
 
 <hr>
 
@@ -449,6 +452,41 @@ This section describes some of the considerations involved when designing the ta
     - Pros: It has a better time complexity for search operations since this data structure is more optimized (O(1) can
     be achieved).
     - Cons: It is hard to retrieve the tag for a specific `Task` due to the structure of the key-value pair.
+
+#### 4.3.3. Select Feature
+
+The user can `select` a `Notebook`, `Section` or `Page` to view its contents. This section describes the implementation and design considerations for this feature.
+
+##### 4.3.3.1. Implementation
+
+Given below is an example usage scenario and how the select notebook function behaves.
+
+Step 1. `CliUserInterface#executeCommand` is called when the user selects a `Notebook` from the `NotebookShelf`.
+
+Step 2. The user types `select /nCS2113T`. The `select` command is passed through `InputParser#getCommandFromInput`.
+
+Step 3. `InputParser#getCommandFromInput` returns the command `SelectCommandNotebookMode`.
+
+Step 4. A constructor for `SelectCommandNotebookMode` is created.
+
+Step 5. `SelectCommandNotebookMode#execute()` runs, which then calls `InputParser#extractParams`.
+
+Step 6. If the argument typed by the user contains `/n`, which is the Notebook delimitter, `InputParser#extractNotebookParams` is called.
+
+Step 7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
+
+The UML sequence diagram below shows how the select noteboook command works.
+![Sequence Diagram for Add Task Command](/diagrams/class/jpeg/select_notebook.jpg)
+
+##### 4.3.3.2. Design Considerations
+
+###### Aspect: How much navigability the Select function should have
+- **Alternative 1 (current choice):** The user must always select the notebook title if he wants to choose a section or page within it.
+    - Pros: It is easy to catch exceptions when the notebook/section does not exist. This also ensures that even if there are 2 sections in 2 different notebooks with the same name, the user can select the correct section.
+    - Cons: The format for the command is longer.
+- **Alternative 2**: The user can select a notebook/section/page wherever he wants.
+    - Pros: The command the user has to type is much shorter.
+    - Cons: If the user has notebooks/sections with the same name, he cannot be sure that the item he wants will be selected correctly.
 
 ### 4.4. Storage (Neil)
 
