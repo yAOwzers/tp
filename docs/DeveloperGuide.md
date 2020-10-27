@@ -496,8 +496,6 @@ The `Storage.saveToFile()` method saves the current application state to a file.
 The proposed find duplicate function is facilitated by a method in the classes `Task List`, `Notebook Shelf`, `Notebook` 
 and `Section`. 
 
-<br>
-
 Given below is an example usage scenario and how the find duplicates function behaves.
 
 Step 1. The user launches the application for the first time. `CliUserInterface#executeCommand` is called when the user 
