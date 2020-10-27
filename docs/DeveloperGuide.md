@@ -466,7 +466,7 @@ Expected: First task should be deleted from the tasklist.
 iii. Test case: `delete 0`  
 Expected: No task is deleted. Error message will be printed in the command line interface.  
 iv. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the number of tasks in the tasklist)  
-Expected: Similar to previous.
+Expected: No task is deleted. Error message will be printed in the command line interface. 
 
 #### 2.2 Adding a task
 
@@ -477,7 +477,7 @@ Expected: Task is added into the tasklist with a success message printed.
 iii. Test case: `add /t test task`  
 Expected: An error messsage will be printed in the command line interface.  
 iv. Test case: `add`  
-Expected: An error message along with a formatting guideline message will be printed.
+Expected: An error message along with a formatting guideline message will be printed.  
 v. Test case: `add /t test task /by 2020-10-10 2000`  
 Expected: An error message along with a formatting guideline message will be printed in the command line interface.
 
@@ -490,9 +490,11 @@ Expected: First task should be marked as done in the tasklist.
 iii. Test case: `done 0`  
 Expected: An error messsage will be printed in the command line interface.  
 iv. Other incorrect done commands to try: `done`, `done x` (where x is larger than the number of tasks in the tasklist)  
-Expected: Similar to previous.
+Expected: An error messsage will be printed in the command line interface.  
 
 #### 2.4 Tagging a Task
+
+/* work in progress */  
 
 #### 2.5 Listing a Task
 
@@ -500,7 +502,7 @@ Expected: Similar to previous.
 i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. There must be existing tasks in the list.
 
 1.1 Listing all existing task in the tasklist.  
-i. Test case: `list` 
+i. Test case: `list`  
 Expected: All existing tasks in the tasklist will be printed out. 
 
 1.2 Listing all marked as done existing tasks in the tasklist.  
@@ -519,7 +521,7 @@ Expected: All existing urgent tasks in the tasklist will be printed out.
 
 1. Switching between Timetable mode and Notebook mode.  
 i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode.  
-ii. Test case: `mode /n` 
+ii. Test case: `mode /n`   
 Expected: Mode is switched to Notebook mode.  
 iii. Test case: `mode /t`  
 Expected: Mode is switched to Timetable mode.  
@@ -528,6 +530,8 @@ Expected: An error message along with a formatting guideline message will be pri
 
 #### 2.7 Finding a Task using a keyword
 
+/* work in progress */  
+
 #### 2.8 Adding a Notebook/Section/Page
 
 1. Adding a respective notebook/section/page in their respective list.  
@@ -535,17 +539,17 @@ i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to e
 
 1.1 Adding a Notebook.  
 i. Prerequistes: User must not be in a selected notebook or section. User should type `mode /n` before executing this test case.   
-ii. Test case: `add /nCS2113T` 
+ii. Test case: `add /nCS2113T`  
 Expected: Notebook 'CS2113T' is added to the notebookShelf with a success message printed.  
 
 1.2 Adding a Section.  
 i. Prerequistes: User must select a notebook. Enter `select /s[NOTEBOOK]` to enter a specified notebook.    
-ii. Test case: `add /nChapter 1` 
+ii. Test case: `add /nChapter 1`  
 Expected: Section 'Chapter 1' is added to the specified notebook with a success message printed.  
 
 1.3 Adding a Page.  
 i. Prerequistes: User must select a Section. Enter `select /s[SECTION]` to enter a specified section.    
-ii. Test case: `add /p Page 1 ; a test page` 
+ii. Test case: `add /p Page 1 ; a test page`  
 Expected: Page 'Page 1' along with content 'a test page' is added to the specified section with a success message printed.  
 
 #### 2.9 Selecting a Notebook/Section/Page
@@ -555,49 +559,50 @@ i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to e
 
 1.1 Selecting a Notebook.  
 i. Prerequistes: User must not be in a section. User should type `mode /n` before executing this test case.   
-ii. Test case: `select /nCS2113T` 
+ii. Test case: `select /nCS2113T`  
 Expected: The user will enter the selected notebook 'CS2113T' with a success message printed. 
 
 1.2 Selecting a Section.  
 i. Prerequistes: User must be in a selected notebook. Enter `select /s[NOTEBOOK]` to enter a specified notebook.   
-ii. Test case: `select /sChapter 1` 
+ii. Test case: `select /sChapter 1`  
 Expected: The user will enter the selected Section 'Chapter 1' with a success message printed. 
 
 1.3 Selecting a Page.  
 i. Prerequistes: User must be in a selected section. Enter `select /s[SECTION]` to enter a specified section.   
-ii. Test case: `select /sPage 1` 
+ii. Test case: `select /sPage 1`  
 Expected: The user will enter the selected Page 'Page 1' with a success message printed. 
 
 #### 2.10 Deleting a Notebook/Section/Page
 
-1. Deleting a respective notebook/section/page in their respective list.
+1. Deleting a respective notebook/section/page in their respective list.  
 i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. There must be existing notebooks/sections/pages in the respective list when command `list` is entered.  
 
-1.1 Deleting a notebook.
+1.1 Deleting a notebook.  
 i. Test case: `delete /nCS2113T`    
 Expected: The selected notebook 'CS2113T' will be deleted, along with the sections and pages under it, with a success message printed. 
 
-1.2 Deleting a section.
+1.2 Deleting a section.  
 i. Test case: `delete /sChapter 1`    
 Expected: The selected section 'Chapter 1' will be deleted, along with the pages under it, with a success message printed. 
 
-1.3 Deleting a notebook.
+1.3 Deleting a notebook.  
 i. Test case: `delete /pPage 1`    
 Expected: The selected page 'Page 1' will be deleted with a success message printed. 
-
 
 #### 2.11 Listing a Notebook/Section/Page 
 
 1. Listing existing notebook/section/page in the NotebookShelf.  
 i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. There must be existing notebooks/sections/pages in the respective list when command `list` is entered.  
-ii. Test case: `list`  
+ii. Test case: `list`   
 Expected: All existing Notebooks/Sections/Pages will be listed in the given NotebookShelf/Notebook/Section respectively.  
 
 1.1 Listing all n task in the tasklist.  
-i. Test case: `list /a` 
+i. Test case: `list /a`  
 Expected: All notebooks, sections and pages will be printed out.  
 
 #### 2.12 Tagging a Notebook/Section/Page
+
+/* work in progress */  
 
 ### 3. Saving Data 
 
