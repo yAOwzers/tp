@@ -30,7 +30,7 @@ public class AddCommandTimetableMode extends CliCommand {
         InputParser parser = new InputParser();
         TaskList currentTaskList = appState.getTaskList();
         try {
-            if (argument.contains("/by")) {
+            if (argument.contains(DEADLINE_DELIMITER)) {
                 String title = parser.parseTaskTitle(argument);
                 String deadline = parser.parseDeadline(argument);
                 currentTaskList.addTask(new Task(title, deadline));
@@ -39,8 +39,7 @@ public class AddCommandTimetableMode extends CliCommand {
                 throw new TaskWrongFormatException();
             }
         } catch (TaskTitleException t) {
-            System.out.println("\tYour task is missing a title!");
-            System.out.println("\tPlease type in the format: add /tTITLE /byDEADLINE");
+            t.printErrorMessage();
         } catch (ArrayIndexOutOfBoundsException | TaskWrongFormatException w) {
             System.out.println("\tPlease type in the format: add /tTITLE /byDEADLINE");
         } catch (IncorrectDeadlineFormatException d) {

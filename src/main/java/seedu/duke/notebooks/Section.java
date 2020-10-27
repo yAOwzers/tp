@@ -2,6 +2,8 @@ package seedu.duke.notebooks;
 
 import java.util.ArrayList;
 
+import seedu.duke.exceptions.InvalidTagException;
+
 public class Section {
     private String title;
     private String tag = "";
@@ -69,6 +71,17 @@ public class Section {
         return pageArrayList;
     }
 
+    public void setTag(String tag) throws InvalidTagException {
+        if (!tag.equals("")) {
+            this.tag = tag;
+        } else {
+            throw new InvalidTagException("tag /t" + tag);
+        }
+    }
+
+    public String getTag() {
+        return tag;
+    }
 
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
@@ -81,13 +94,5 @@ public class Section {
             serialized.append(p.serialize());
         }
         return serialized.toString();
-    }
-    
-    public void setTag(String description) {
-        tag = description;
-    }
-
-    public String getTag() {
-        return tag;
     }
 }

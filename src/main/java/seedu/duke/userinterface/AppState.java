@@ -60,8 +60,9 @@ public class AppState {
         return currentPage;
     }
 
-    public void setCurrentPage(Page currentPage) {
-        this.currentPage = currentPage;
+    public void setCurrentPage(int indexOfCurrentPage) {
+        setIndexOfCurrentPage(indexOfCurrentPage);
+        currentPage = currentSection.getPageAtIndex(indexOfCurrentPage);
     }
 
     public TaskList getTaskList() {
