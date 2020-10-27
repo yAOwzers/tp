@@ -21,6 +21,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.1. Tasklist Management Feature](#421-tasklist-management-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.1.1. Implementation](#4211-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.1.2. Design Considerations](#4212-design-considerations) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2. Tag Feature](#422-tag-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.1. Implementation](#4211-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4212-design-considerations) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.2. List Feature](#421-tasklist-management-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.1. Implementation](#4211-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4212-design-considerations) <br>
@@ -247,9 +250,58 @@ It also constructs `CliMessages` to display messages to the user.
     - Cons: It takes more resources to implement. The constant factor for a hashing algorithm is significant and not
      worth the tradeoff for smaller amounts of data, like a typical user would be likely to generate. 
 
-### 4.2.2. List feature
+#### 4.2.2. Tag Feature
+The user can tag `Task`s in the `TaskList`. This section describes the implementation and design considerations for this
+feature.
 
-#### 4.2.2.1. Implementation
+##### 4.2.2.1. Implementation
+The `Task` class contains a `tag` member of String type. 
+
+The figure below shows how the tag operation works:
+
+![Sequence Diagram for Tag Timetable command](/diagrams/class/jpeg/SequenceDiagram_TagTimetable.jpg)
+
+There are 3 crucial processes during the tag operation. When the user enters `tag 1 /tCS2113T` into the command window while using the application:
+
+**Input Parsing**
+1. `CliUserInterface` receives the "delete 1 /tCS2113T" input by the user and calls the `executeCommand` method.
+2. Method `executeCommand` constructs the `InputParser` class and calls `InputParser#getCommandFromInput` to pass the 
+input to `InputParser`.
+3. `InputParser#getCommandFromInput`calls `InputParser#parseTagDescription` to separate the index from the tag.
+4. If the application is in the timetable mode, `InputParser#getCommandFromInput` then parses the index to type `int` 
+and constructs the `TagCommandTimetableMode` class.
+5. `InputParser#getCommandFromInput` returns `TagCommandTimetableMode` back to `CliUserInterface`
+
+** Command Execution **
+1. `CliUserInterface#executeCommand` calls `TagCommandTimetableMode#execute` to execute the command.
+2. `TagCommandTimetableMode#execute()` first constructs the `CliMessages` class, which prints any outputs to the user. 
+`Tasklist#getTask` returns the `Task` that is specified by the index.
+3. `Task#setTag` changes the `tag` member of `Task` to the tag input by the user.
+4. If the deletion is successful, `CliMessages#printTagTaskMessage` displays the message to the user.
+
+** Storage **
+1. `CliUserInterface#executeCommand` finally calls `TagCommandTimetableMode#isTriggerAutoSave` method to check whether a change 
+has been made. 
+2. If the method returns `True`, `CliUserInterface#executeCommand`calls `saveState` method to save the 
+current list.
+3. The tag operation ends.
+
+##### 4.2.2.2. Design Considerations
+This section describes some of the considerations involved when designing the tag feature.
+
+###### Aspect: How to store the tags
+- **Alternative 1 (current choice):** Store as a private `String` member in every task
+    - Pros: It is easy to access for print operations.
+    - Cons: It is unoptimized in terms of complexity for search operations, which requires more work for scaling of the 
+    application.
+- **Alternative 2:** Store as a Hash Table with the key as the tag and value as `Task`
+    - Pros: It has a better time complexity for search operations since this data structure is more optimized (O(1) can 
+    be achieved).
+    - Cons: It is hard to retrieve the tag for a specific `Task` due to the structure of the key-value pair.
+
+#### 4.2.3. List Feature
+
+##### 4.2.3.1. Implementation
 
 The following sequence diagram shows how the list operation works:
 
