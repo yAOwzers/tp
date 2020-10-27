@@ -17,9 +17,7 @@ public class ListCommandNotebookMode extends CliCommand {
         this.setCommandParams(argument);
     }
 
-    // TODO: Break into functions and avoid repeated code, arrowhead code
-
-    public static void listBookshelf_nsp(NotebookShelf notebookShelf) {
+    private static void listBookshelf_nsp(NotebookShelf notebookShelf) {
         for (Notebook notebook : notebookShelf.getNotebooksArrayList()) {
             System.out.println("* " + notebook.getTitle());
             for (Section section : notebook.getSectionArrayList()) {
@@ -32,8 +30,7 @@ public class ListCommandNotebookMode extends CliCommand {
         }
     }
 
-    // TODO: Break into functions and avoid repeated code, arrowhead code
-    public static void listBookshelf_ns(NotebookShelf notebookShelf) {
+    private static void listBookshelf_ns(NotebookShelf notebookShelf) {
         for (Notebook notebook : notebookShelf.getNotebooksArrayList()) {
             System.out.println("* " + notebook.getTitle());
             for (Section section : notebook.getSectionArrayList()) {
@@ -42,15 +39,13 @@ public class ListCommandNotebookMode extends CliCommand {
         }
     }
 
-    // TODO: Break into functions and avoid repeated code, arrowhead code
-    public static void listBookshelf_n(NotebookShelf notebookShelf) {
+    private static void listBookshelf_n(NotebookShelf notebookShelf) {
         for (Notebook notebook : notebookShelf.getNotebooksArrayList()) {
             System.out.println("* " + notebook.getTitle());
         }
     }
 
-    // TODO: Break into functions and avoid repeated code, arrowhead code
-    public static void listNotebook_sp(Notebook notebook) {
+    private static void listNotebook_sp(Notebook notebook) {
         for (Section section : notebook.getSectionArrayList()) {
             System.out.println("* " + section.getTitle());
             for (Page page : section.getPageArrayList()) {
@@ -60,15 +55,13 @@ public class ListCommandNotebookMode extends CliCommand {
         }
     }
 
-    // TODO: Break into functions and avoid repeated code, arrowhead code
-    public static void listNotebook_s(Notebook notebook) {
+    private static void listNotebook_s(Notebook notebook) {
         for (Section section : notebook.getSectionArrayList()) {
             System.out.println("* " + section.getTitle());
         }
     }
 
-    // TODO: Break into functions and avoid repeated code, arrowhead code
-    public static void listSection(Section section) {
+    private static void listSection(Section section) {
         for (Page page : section.getPageArrayList()) {
             System.out.println("* " + page.getTitle());
             System.out.println("    " + page.getContent());
