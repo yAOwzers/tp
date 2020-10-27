@@ -29,6 +29,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4212-design-considerations) <br>
 &nbsp;&nbsp;[4.3. Notebook Mode](#43-notebook-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.1. Notebook Management Feature](#431-notebook-management-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.1.1. Implementation](#4311-implementation)
+&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2. Tag Feature](#432-tag-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.1. Implementation](#4321-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.2. Design Considerations](#4322-design-considerations) <br>
 &nbsp;&nbsp;[4.4. [Proposed] Find duplicates](#44-find-duplicates) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.1 Proposed implementation](#441-proposed-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.2 Design considerations](#442-design-considerations) <br>
@@ -255,7 +259,7 @@ The user can tag `Task`s in the `TaskList`. This section describes the implement
 feature.
 
 ##### 4.2.2.1. Implementation
-The `Task` class contains a `tag` member of String type. 
+The `Task` class contains a member `tag` of String type. 
 
 The figure below shows how the tag operation works:
 
@@ -264,20 +268,20 @@ The figure below shows how the tag operation works:
 There are 3 crucial processes during the tag operation. When the user enters `tag 1 /tCS2113T` into the command window while using the application:
 
 **Input Parsing**
-1. `CliUserInterface` receives the "delete 1 /tCS2113T" input by the user and calls the `executeCommand` method.
+1. `CliUserInterface` receives the "tag 1 /tCS2113T" input by the user and calls the `executeCommand` method.
 2. Method `executeCommand` constructs the `InputParser` class and calls `InputParser#getCommandFromInput` to pass the 
 input to `InputParser`.
 3. `InputParser#getCommandFromInput`calls `InputParser#parseTagDescription` to separate the index from the tag.
-4. If the application is in the timetable mode, `InputParser#getCommandFromInput` then parses the index to type `int` 
-and constructs the `TagCommandTimetableMode` class.
+4. If the application is in the timetable mode, `InputParser#getCommandFromInput` then parses the index and constructs 
+the `TagCommandTimetableMode` class.
 5. `InputParser#getCommandFromInput` returns `TagCommandTimetableMode` back to `CliUserInterface`
 
 ** Command Execution **
 1. `CliUserInterface#executeCommand` calls `TagCommandTimetableMode#execute` to execute the command.
-2. `TagCommandTimetableMode#execute()` first constructs the `CliMessages` class, which prints any outputs to the user. 
-`Tasklist#getTask` returns the `Task` that is specified by the index.
-3. `Task#setTag` changes the `tag` member of `Task` to the tag input by the user.
-4. If the deletion is successful, `CliMessages#printTagTaskMessage` displays the message to the user.
+2. In `TagCommandTimetableMode#execute()`, the `CliMessages` class, which prints any outputs to the user, is constructed. 
+3. `Tasklist#getTask` returns the `Task` that is specified by the index.
+4. `Task#setTag` changes the `tag` member of `Task` to the tag input by the user.
+5. If the tag is successful, `CliMessages#printTagTaskMessage` displays the message to the user.
 
 ** Storage **
 1. `CliUserInterface#executeCommand` finally calls `TagCommandTimetableMode#isTriggerAutoSave` method to check whether a change 
@@ -307,7 +311,6 @@ The following sequence diagram shows how the list operation works:
 
 ![Sequence Diagram for List command](/diagrams/class/jpeg/SequenceDiagram_List.jpg)
 
-
 ### 4.3. Notebook Mode
 
 #### 4.3.1. Notebook Management Feature
@@ -316,7 +319,13 @@ As shown in Figure 1, the `NotebookShelf` class comprises instances of `Notebook
 and `Section` comprises `Page`. The navigability is not bidirectional. Multiple operations such as addition and deletion
 can be done without affecting other instances at all, while updating the `Notebook` it is in.
 
-The figure below shows how the delete task command works:
+This section explains the implementation and design considerations for managing `Notebook`s.
+
+##### 4.3.1.1 Implementation
+There are two main functions in notebook management: add and remove.
+<!--TODO: Explain implementation of add notebook/section/page-->
+
+The figure below shows how the "remove task" command works:
 <img src="https://user-images.githubusercontent.com/60319628/96821973-9176e600-145b-11eb-95b7-5bf885ea1867.png">
 
 After calling `InputParser#getCommandFromInput` from `CliUserInterface`:
@@ -340,6 +349,57 @@ public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
 A switch-case block is used to determine the method to call based on the `appMode`.
 4. If the deletion is successful, `CliMessages` displays the message to the user.
 
+#### 4.3.2. Tag Feature
+
+The user can add a `tag` to a `Notebook`, `Section` or `Page`. This section describes the implementation and design 
+considerations for this feature.
+
+##### 4.3.2.1. Implementation
+The `Notebook`, `Section` and `Page` classes each contain a member `tag` of type String.
+
+The figure below shows how the tag operation works:
+
+![Sequence Diagram for Tag Notebook command](/diagrams/class/jpeg/SequenceDiagram_TagNotebook.jpg)
+
+There are 3 crucial processes during the tag operation. When the user enters `tag /tCS2113T` into the command window while using the application:
+
+**Input Parsing**
+1. `CliUserInterface` receives the "tag /tCS2113T" input by the user and calls the `executeCommand` method.
+2. Method `executeCommand` constructs the `InputParser` class and calls `InputParser#getCommandFromInput` to pass the 
+input to `InputParser`.
+3. `InputParser#getCommandFromInput`calls `InputParser#parseTagDescription` to separate the index from the tag.
+4. If the application is in the notebook mode, `InputParser#getCommandFromInput` constructs the 
+`TagCommandTimetableMode` class. Note that `AppState#getCurrentNotebook`, `AppState#getCurrentSection` and 
+`AppState#getCurrentPage` are called to determine the state of the application.
+5. `InputParser#getCommandFromInput` returns `TagCommandNotebookMode` back to `CliUserInterface`
+
+** Command Execution **
+1. `CliUserInterface#executeCommand` calls `TagCommandNotebookMode#execute` to execute the command.
+2. `TagCommandNotebookMode#execute()` first constructs the `CliMessages` class, which prints any outputs to the user. 
+3. `AppState#getAppMode` returns where the user is.
+3. If the user is in a `Notebook`, `Section` or `Page`, `Notebook#setTag`, `Section#setTag` or `Page#setTag` is called 
+respectively to change the tag of the current notebook.
+4. If the tag is successful, `CliMessages#printTagNotebookMessage` displays the message to the user.
+
+** Storage **
+1. `CliUserInterface#executeCommand` finally calls `TagCommandNotebookMode#isTriggerAutoSave` method to check whether a 
+change has been made. 
+2. If the method returns `True`, `CliUserInterface#executeCommand`calls `saveState` method to save the 
+current list.
+3. The tag operation ends.
+
+##### 4.3.2.2. Design Considerations
+This section describes some of the considerations involved when designing the tag feature.
+
+###### Aspect: How to store the tags
+- **Alternative 1 (current choice):** Store as a private `String` member in every task
+    - Pros: It is easy to access for print operations.
+    - Cons: It is unoptimized in terms of complexity for search operations, which requires more work for scaling of the 
+    application.
+- **Alternative 2:** Store as a Hash Table with the key as the tag and value as `Task`
+    - Pros: It has a better time complexity for search operations since this data structure is more optimized (O(1) can 
+    be achieved).
+    - Cons: It is hard to retrieve the tag for a specific `Task` due to the structure of the key-value pair.
 
 ### 4.4 [Proposed] Find duplicate feature
 
