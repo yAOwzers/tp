@@ -205,6 +205,7 @@ Example of usage:
 2:[x] CS2113T Quiz (by: Oct 23 2020 11.00 PM)
 3:[x] Return book (by: Oct 23 2020 12.00 PM)
 ```
+
 ### 3.3.4 Deleting a task: `delete`
 Deletes an existing task from the task list.
 

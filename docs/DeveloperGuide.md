@@ -460,7 +460,7 @@ ii. Double-click the jar file
 
 #### 2.1 Deleting a task
 1. Deleting a task while all tasks in the existing tasklist is listed.
-i. Prerequisites: List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
+i. Prerequisites: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
 ii. Test case: `delete 1`    
 Expected: First task should be deleted from the tasklist.  
 iii. Test case: `delete 0`  
@@ -470,12 +470,21 @@ Expected: Similar to previous.
 
 #### 2.2 Adding a task
 
-1. Adding 
+1. Adding a task to the tasklist.  
+i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. 
+ii. Test case: `add /t test task /by 10-10-2020 2000` 
+Expected: Task is added into the tasklist with a success message printed.  
+iii. Test case: `add /t test task`  
+Expected: An error messsage will be printed in the command line interface.  
+iv. Test case: `add`  
+Expected: An error message along with a formatting guideline message will be printed.
+v. Test case: `add /t test task /by 2020-10-10 2000`  
+Expected: An error message along with a formatting guideline message will be printed in the command line interface.
 
 #### 2.3 Marking a task as done
 
 1. Marking a task as done while there are existing task in the tasklist.  
-i. Prerequistes: List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
+i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
 ii. Test case: `done 1` 
 Expected: First task should be marked as done in the tasklist.  
 iii. Test case: `done 0`  
@@ -487,20 +496,115 @@ Expected: Similar to previous.
 
 #### 2.5 Listing a Task
 
+1. Listing existing task in the tasklist.  
+i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. There must be existing tasks in the list.
+
+1.1 Listing all existing task in the tasklist.  
+i. Test case: `list` 
+Expected: All existing tasks in the tasklist will be printed out. 
+
+1.2 Listing all marked as done existing tasks in the tasklist.  
+i. Test case: `list /d`  
+Expected: All existing marked as done tasks in the tasklist will be printed out.  
+
+1.3 Listing all undone existing tasks in the tasklist.  
+i. Test case: `list /u`  
+Expected: All existing undone tasks in the tasklist will be printed out.  
+
+1.4 Listing all urgent existing tasks in the tasklist.  
+i. Test case: `list /urgent`  
+Expected: All existing urgent tasks in the tasklist will be printed out.  
+
 #### 2.6 Executing a mode switch
+
+1. Switching between Timetable mode and Notebook mode.  
+i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode.  
+ii. Test case: `mode /n` 
+Expected: Mode is switched to Notebook mode.  
+iii. Test case: `mode /t`  
+Expected: Mode is switched to Timetable mode.  
+iv. Test case: `mode`  
+Expected: An error message along with a formatting guideline message will be printed in the command line interface..  
 
 #### 2.7 Finding a Task using a keyword
 
 #### 2.8 Adding a Notebook/Section/Page
 
-#### 2.9 Selecting a Notebook/Section
+1. Adding a respective notebook/section/page in their respective list.  
+i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode.    
+
+1.1 Adding a Notebook.  
+i. Prerequistes: User must not be in a selected notebook or section. User should type `mode /n` before executing this test case.   
+ii. Test case: `add /nCS2113T` 
+Expected: Notebook 'CS2113T' is added to the notebookShelf with a success message printed.  
+
+1.2 Adding a Section.  
+i. Prerequistes: User must select a notebook. Enter `select /s[NOTEBOOK]` to enter a specified notebook.    
+ii. Test case: `add /nChapter 1` 
+Expected: Section 'Chapter 1' is added to the specified notebook with a success message printed.  
+
+1.3 Adding a Page.  
+i. Prerequistes: User must select a Section. Enter `select /s[SECTION]` to enter a specified section.    
+ii. Test case: `add /p Page 1 ; a test page` 
+Expected: Page 'Page 1' along with content 'a test page' is added to the specified section with a success message printed.  
+
+#### 2.9 Selecting a Notebook/Section/Page
+
+1. Selecting a respective notebook/section/page in their respective list.  
+i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode.  
+
+1.1 Selecting a Notebook.  
+i. Prerequistes: User must not be in a section. User should type `mode /n` before executing this test case.   
+ii. Test case: `select /nCS2113T` 
+Expected: The user will enter the selected notebook 'CS2113T' with a success message printed. 
+
+1.2 Selecting a Section.  
+i. Prerequistes: User must be in a selected notebook. Enter `select /s[NOTEBOOK]` to enter a specified notebook.   
+ii. Test case: `select /sChapter 1` 
+Expected: The user will enter the selected Section 'Chapter 1' with a success message printed. 
+
+1.3 Selecting a Page.  
+i. Prerequistes: User must be in a selected section. Enter `select /s[SECTION]` to enter a specified section.   
+ii. Test case: `select /sPage 1` 
+Expected: The user will enter the selected Page 'Page 1' with a success message printed. 
 
 #### 2.10 Deleting a Notebook/Section/Page
 
+1. Deleting a respective notebook/section/page in their respective list.
+i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. There must be existing notebooks/sections/pages in the respective list when command `list` is entered.  
+
+1.1 Deleting a notebook.
+i. Test case: `delete /nCS2113T`    
+Expected: The selected notebook 'CS2113T' will be deleted, along with the sections and pages under it, with a success message printed. 
+
+1.2 Deleting a section.
+i. Test case: `delete /sChapter 1`    
+Expected: The selected section 'Chapter 1' will be deleted, along with the pages under it, with a success message printed. 
+
+1.3 Deleting a notebook.
+i. Test case: `delete /pPage 1`    
+Expected: The selected page 'Page 1' will be deleted with a success message printed. 
+
+
 #### 2.11 Listing a Notebook/Section/Page 
+
+1. Listing existing notebook/section/page in the NotebookShelf.  
+i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. There must be existing notebooks/sections/pages in the respective list when command `list` is entered.  
+ii. Test case: `list`  
+Expected: All existing Notebooks/Sections/Pages will be listed in the given NotebookShelf/Notebook/Section respectively.  
+
+1.1 Listing all n task in the tasklist.  
+i. Test case: `list /a` 
+Expected: All notebooks, sections and pages will be printed out.  
 
 #### 2.12 Tagging a Notebook/Section/Page
 
 ### 3. Saving Data 
-1. dealing with missing/corrupted data files  
-i. 
+
+1. Dealing with corrupted data files  
+i. Click on the folder that the jar file had been saved in.  
+ii. Select both the 'tasks.txt' and 'notebooks.txt'.
+iii. Delete both files.
+iv. Restart the application by double-clicking the jar file and running Zer0Note.
+
+
