@@ -33,9 +33,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.2. Tag Feature](#432-tag-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.1. Implementation](#4321-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.2. Design Considerations](#4322-design-considerations) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3. Select Feature](#432-tag-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.1. Implementation](#4321-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.2. Design Considerations](#4322-design-considerations) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3. Select Feature](#433-select-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.1. Implementation](#4331-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.2. Design Considerations](#4332-design-considerations) <br>
 &nbsp;&nbsp;[4.4. Notebook Mode](#44-storage-neil) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.1. Storage Format](#441-storage-format) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.1. TaskList](#4411-tasklist) <br>
@@ -238,7 +238,6 @@ decisions.
 
 This means that multiple operations such as addition and deletion can be done on a `Task`, without affecting
 the contents of other `Task` in the `TaskList`.
-
 <br>
 
 Given below is an example usage scenario and how the add task function behaves.
