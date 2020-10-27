@@ -18,18 +18,22 @@ public class FindCommandTimetableMode extends CliCommand {
     private boolean isPersonalised = true;
 
     public FindCommandTimetableMode(String keyword, String tag, AppState appState) {
-        this.keyword = keyword;
+        this.keyword = keyword.toLowerCase();
         this.tag = tag.toLowerCase();
         this.appState = appState;
     }
 
     public void execute() {
-        ArrayList<Task> tasksFound = new ArrayList<Task>();
+        ArrayList<Task> tasksFound;
         TaskList tasks = appState.getTaskList();
-        if (tag.equals("")) {
+        if (tag.equals("") && !keyword.equals("")) {
             tasksFound = getTasksWithTitleContainingKeyword(tasks);
-        } else {
+        } else if (!tag.equals("") && keyword.equals("")) {
             tasksFound = getTasksWithTagsContainingKeyword(tasks);
+        } else {
+            System.out.println("Missing keyword/tag");
+            System.out.println("Format: find [KEYWORD] or find /t[TAG]");
+            return;
         }
         System.out.println("Here are the tasks I found:");
         for (Task task : tasksFound) {
@@ -39,23 +43,10 @@ public class FindCommandTimetableMode extends CliCommand {
 
     private ArrayList<Task> getTasksWithTitleContainingKeyword(TaskList tasks) {
         ArrayList<Task> matchedTasks = new ArrayList<>();
-        for (int i = 0; i < tasks.getNumberOfTasks(); i++) {
-            Task task = tasks.getTask(i);
-            Set<String> wordsInTitle = new HashSet<>(getWordsInTag(task.getTitle()));
-            if (wordsInTitle.contains(keyword)) {
-                matchedTasks.add(task);
-            }
-        }
-        return matchedTasks;
-    }
-
-    private ArrayList<Task> getTasksWithTagsContainingKeyword(TaskList tasks) {
-        ArrayList<Task> matchedTasks = new ArrayList<>();
-        for (int i = 0; i < tasks.getNumberOfTasks(); i++) {
-            Task task = tasks.getTask(i);
-            Set<String> wordsInTag = new HashSet<>(getWordsInTag(task.getTag()));
-            for (String word : wordsInTag) {
-                if (!tag.equals("") && word.contains(tag)) {
+        for (Task task : tasks.getTaskArrayList()) {
+            Set<String> wordsInTitle = new HashSet<>(getWordsInTitle(task.getTitle()));
+            for (String word : wordsInTitle) {
+                if (word.contains(keyword)) {
                     matchedTasks.add(task);
                 }
             }
@@ -63,7 +54,18 @@ public class FindCommandTimetableMode extends CliCommand {
         return matchedTasks;
     }
 
-    private List<String> getWordsInTag(String description) {
+    private ArrayList<Task> getTasksWithTagsContainingKeyword(TaskList tasks) {
+        ArrayList<Task> matchedTasks = new ArrayList<>();
+        for (Task task : tasks.getTaskArrayList()) {
+            String taskTag = task.getTag().toLowerCase();
+            if (!taskTag.equals("") && taskTag.contains(tag)) {
+                matchedTasks.add(task);
+            }
+        }
+        return matchedTasks;
+    }
+
+    private List<String> getWordsInTitle(String description) {
         return Arrays.asList(description.toLowerCase().split(" "));
     }
 

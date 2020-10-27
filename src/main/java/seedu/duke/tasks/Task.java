@@ -7,14 +7,14 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 
+import seedu.duke.exceptions.InvalidTagException;
+
 public class Task {
     private final String title;
     private final String by;
     protected DateFormat dateTime = new SimpleDateFormat("dd-MM-yyyy HHmm"); // in 24h format
     protected DateFormat outputFormat = new SimpleDateFormat("MMM dd yyyy hh.mm aa"); // in 12h format
     protected boolean isDone;
-    private LocalDate dueDate;
-    private LocalTime dueTime;
     private Date dueDateTime;
     private String tag = "";
 
@@ -30,14 +30,12 @@ public class Task {
 
     public LocalDate getDueDate() {
         String[] dayTime = by.split(" ", 2);
-        dueDate = LocalDate.parse(dayTime[0].trim());
-        return dueDate;
+        return LocalDate.parse(dayTime[0].trim());
     }
 
     public LocalTime getTime() {
         String[] dayTime = by.split(" ", 2);
-        dueTime = LocalTime.parse(dayTime[1].trim());
-        return dueTime;
+        return LocalTime.parse(dayTime[1].trim());
     }
 
     public void markAsDone() {
@@ -58,12 +56,16 @@ public class Task {
         return (isDone ? "o" : "x");
     }
 
-    public void setTag(String description) {
-        tag = description;
+    public void setTag(String tag) throws InvalidTagException {
+        if (!tag.equals("")) {
+            this.tag = tag;
+        } else {
+            throw new InvalidTagException(tag);
+        }
     }
 
     public String getTag() {
-        return (tag.equals("") ? tag : "(tag: " + tag + ")");
+        return tag;
     }
 
     public boolean isDone() {
@@ -73,19 +75,11 @@ public class Task {
     @Override
     public String toString() {
         try {
-            return "[" + getStatusIcon() + "] " + getTitle() + " (by: " + reformatDate() + ")" + getTag();
+            return ("[" + getStatusIcon() + "] " + getTitle() + " (by: " + reformatDate() + ")"
+                    + (tag.equals("") ? "" : "(tag: " + getTag() + ")"));
         } catch (ParseException e) {
             System.out.println("\tAn error occurred while reading the given deadline.");
         }
-        return null;
-    }
-
-    public String getTaskInMessagesFormat() {
-        return "[" + this.getStatusIcon() + "] " + this.title;
-    }
-
-    public String toTxtFormat() {
-        // ...
         return null;
     }
 
