@@ -1,12 +1,9 @@
 package seedu.duke.userinterface.command.timetable;
 
-import seedu.duke.exceptions.InvalidUserInputException;
-import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.CliMessages;
-import seedu.duke.userinterface.CliUserInterface;
 import seedu.duke.userinterface.command.CliCommand;
 
 public class DoneCommandTimetableMode extends CliCommand {
