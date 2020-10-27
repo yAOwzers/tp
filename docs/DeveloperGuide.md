@@ -364,7 +364,7 @@ combines their outputs with a `StringBuilder`.
 
 The following sequence diagram describes the operation of the `saveToFile()` operation
 
-![Sequence Diagram for saveToFile command](/diagrams/class/jpeg/storage_neil.jpg)
+![Sequence Diagram for saveToFile command](diagrams/class/jpeg/storage_neil.jpg)
 
 The `Storage.saveToFile()` method saves the current application state to a file. 
 
