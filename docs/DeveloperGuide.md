@@ -119,9 +119,9 @@ code to improve Zer0Note.
 
 1. **Fork** this repo, and **clone** the fork into your computer.
 2. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
-3. Set up the correct JDK version for Gradle
-    a. Click `Configure` > `Project Defaults` > `Project Structure`
-    b. Click `New...` and find the directory of the JDK.
+3. Set up the correct JDK version for Gradle  
+   a. Click `Configure` > `Project Defaults` > `Project Structure`  
+   b. Click `New...` and find the directory of the JDK.
 4. Click `Import Project`
 5. Locate the `build.gradle` file and select it. Click `OK`.
 6. Click `Open as Project`.
@@ -145,8 +145,7 @@ to set up IDEA’s coding style to match ours.
 
 The following section describes the design and implementation of the product. UML diagrams and code snippets are used
 to explain some aspects of the code. If you are unfamiliar with UML, the diagrams should still be fairly
-understandable. However, you may wish to consult [[CS2113/T] Modeling](https://nus-cs2113-ay2021s1.github.io/website/se
--book-adapted/chapters/modeling.html) for a quick introduction to UML. 
+understandable. However, you may wish to consult [[CS2113/T] Modeling](https://nus-cs2113-ay2021s1.github.io/website/se-book-adapted/chapters/modeling.html) for a quick introduction to UML. 
 
 ### 3.1 Architecture
 
@@ -413,6 +412,24 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 
 ## Appendix C: Use Cases
 
+(For all use cases below, the System is the `Zer0Note` and the Actor is the `user`, unless specified otherwise)
+
+### Use case: Delete task
+
+1. User requests to list tasks
+2. Zer0Note shows a list of tasks
+3. User requests to delete a specific task in the list 
+4. Zer0Note deletes the task  
+    Use case ends.
+
+#### Extensions
+
+* 2.1. The task list is empty.  
+  Use case ends.  
+* 3.1. The given index is invalid.  
+   * 3.1.1 Zer0Note shows an error message.  
+        Use case resumes at step 2.
+        
 /* work in progress */
 
 ## Appendix D: Non-Functional Requirements
@@ -433,3 +450,7 @@ Given below are instructions to test the app manually.
 >testers are expected to do more *exploratory* testing.
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+
+1. Launch and Shutdown
+2. {Test case eg. Deleting a task}
+3. Saving Data (dealing with missing/corrupted data files)

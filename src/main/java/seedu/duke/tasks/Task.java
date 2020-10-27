@@ -16,6 +16,7 @@ public class Task {
     private LocalDate dueDate;
     private LocalTime dueTime;
     private Date dueDateTime;
+    private String tag = "";
 
     public Task(String title, String by) {
         this.title = title;
@@ -43,7 +44,7 @@ public class Task {
         this.isDone = true;
     }
 
-    public String getTask() {
+    public String getTitle() {
         return this.title;
     }
 
@@ -57,6 +58,14 @@ public class Task {
         return (isDone ? "o" : "x");
     }
 
+    public void setTag(String description) {
+        tag = description;
+    }
+
+    public String getTag() {
+        return (tag.equals("") ? tag : "(tag: " + tag + ")");
+    }
+
     public boolean isDone() {
         return isDone;
     }
@@ -64,7 +73,7 @@ public class Task {
     @Override
     public String toString() {
         try {
-            return "[" + this.getStatusIcon() + "] " + this.title + " (by: " + reformatDate() + ")";
+            return "[" + getStatusIcon() + "] " + getTitle() + " (by: " + reformatDate() + ")" + getTag();
         } catch (ParseException e) {
             System.out.println("\tAn error occurred while reading the given deadline.");
         }
@@ -78,5 +87,17 @@ public class Task {
     public String toTxtFormat() {
         // ...
         return null;
+    }
+
+    public String serialize() {
+        StringBuilder serialized = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        serialized.append(title);
+        serialized.append(lineSeparator);
+        serialized.append(by);
+        serialized.append(lineSeparator);
+        serialized.append(isDone);
+        serialized.append(lineSeparator);
+        return serialized.toString();
     }
 }
