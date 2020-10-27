@@ -3,19 +3,15 @@ package seedu.duke.userinterface;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
-import seedu.duke.exceptions.TaskWrongFormatException;
+import seedu.duke.exceptions.InvalidIndexException;
 import seedu.duke.exceptions.ZeroNoteException;
 
-import java.util.concurrent.atomic.AtomicReference;
-
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
 
 class InputParserTest {
     @Test
-    void parseTaskIndex_validNumber_success() {
+    void parseTaskIndex_validNumber_success() throws InvalidIndexException {
         InputParser parser = new InputParser();
         String num = "2";
         assertEquals(1,parser.parseTaskIndex(num));
@@ -25,7 +21,7 @@ class InputParserTest {
     void parseTaskIndex_InvalidString_numberFormatExceptionThrown() {
         InputParser parser = new InputParser();
         String num = "num";
-        Assertions.assertThrows(NumberFormatException.class, () -> {
+        Assertions.assertThrows(InvalidIndexException.class, () -> {
             parser.parseTaskIndex(num);
         });
     }
