@@ -9,6 +9,7 @@ import seedu.duke.notebooks.Section;
 import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.AppState;
+import seedu.duke.userinterface.PersonalMesssageGenerator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,9 +26,10 @@ public class Storage {
     private final String tasksFilePath = "tasks.txt";
     private final String notebooksFilePath = "notebooks.txt";
     private String nameOfUserFilepath = "src/main/resources/txt/nameOfUser.txt";
+    private PersonalMesssageGenerator msgGenerator;
 
     public Storage() {
-
+        msgGenerator = new PersonalMesssageGenerator();
     }
 
     public void saveToFile(AppState currentAppState) throws FileSavingException {
@@ -120,6 +122,8 @@ public class Storage {
         String userInput = keyboard.nextLine();
         FileWriter nameOfUserFileToSave = new FileWriter(nameOfUserFile);
         nameOfUserFileToSave.write(userInput);
+        msgGenerator.setChosenName(userInput);
+        msgGenerator.greetFirstTimeUser();
         nameOfUserFileToSave.close();
     }
 }

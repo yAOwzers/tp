@@ -19,6 +19,7 @@ public class AddCommandNotebookMode extends CliCommand {
     private final NotebookShelf currentBookshelf;
     private final Notebook currentNotebook;
     private final Section currentSection;
+    private boolean isPersonalised = true;
 
     public AddCommandNotebookMode(String title, AppState appState) {
         this.appState = appState;
@@ -59,6 +60,6 @@ public class AddCommandNotebookMode extends CliCommand {
 
     @Override
     public boolean isPersonalised() {
-        return true;
+        return isPersonalised;
     }
 }

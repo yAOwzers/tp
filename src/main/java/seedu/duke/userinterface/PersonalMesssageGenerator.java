@@ -9,8 +9,9 @@ import java.io.InputStreamReader;
 public class PersonalMesssageGenerator {
 
     private static String personalMessage;
-    private static final int NUMBER_OF_MESSAGES = 12;
-    public static String chosenName;
+    private static final int NUMBER_OF_MESSAGES = 14;
+    private static String chosenName;
+    private static String firstTimeUserName;
 
     /**
      * Generates a random personal encouragement message as taken from txt/personalMessages.txt file along
@@ -28,18 +29,22 @@ public class PersonalMesssageGenerator {
         try {
 
             BufferedReader personalMessageReader = new BufferedReader(new InputStreamReader(personalMessageStream));
-            BufferedReader namesReader = new BufferedReader(new InputStreamReader(namesOfUserInputStream));
 
             int messageToDisplay = (int) (Math.random() * (NUMBER_OF_MESSAGES));
 
             String chosenMessage = personalMessageReader.readLine();
-            chosenName = namesReader.readLine();
 
             for (int i = 0; i < messageToDisplay; i++) {
                 chosenMessage = personalMessageReader.readLine();
             }
 
-            personalMessage = chosenMessage + ", " + chosenName + ". ";
+            if (chosenName == null) {
+                personalMessage = chosenMessage + ", " + firstTimeUserName + ". ";
+            } else {
+                BufferedReader namesReader = new BufferedReader(new InputStreamReader(namesOfUserInputStream));
+                chosenName = namesReader.readLine();
+                personalMessage = chosenMessage + ", " + chosenName + ". ";
+            }
         } catch (FileNotFoundException e) {
             System.out.println("no file detected!");
         } catch (IOException e) {
@@ -49,7 +54,22 @@ public class PersonalMesssageGenerator {
         }
     }
 
-    public static void printGreetUser() {
-        System.out.println(chosenName);
+    public static void greetFirstTimeUser() {
+        System.out.println("It's nice to meet you " + firstTimeUserName + "!"
+                + " How may I be of service?");
     }
+
+    public void setChosenName(String chosenName) {
+        this.firstTimeUserName = chosenName;
+    }
+
+    public void greetUser() throws IOException {
+        ClassLoader classLoader = PersonalMesssageGenerator.class.getClassLoader();
+        InputStream namesOfUserInputStream = classLoader.getResourceAsStream("txt/nameOfUser.txt");
+        BufferedReader namesReader = new BufferedReader(new InputStreamReader(namesOfUserInputStream));
+        chosenName = namesReader.readLine();
+        System.out.println("Welcome back " + chosenName + "!"
+                + " Great to have you again.");
+    }
+
 }

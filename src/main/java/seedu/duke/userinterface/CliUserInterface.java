@@ -17,6 +17,7 @@ public class CliUserInterface {
     private PersonalMesssageGenerator msgGenerator;
     private CliMessages messages;
 
+
     public CliUserInterface() {
         msgGenerator = new PersonalMesssageGenerator();
         messages = new CliMessages();
@@ -40,7 +41,8 @@ public class CliUserInterface {
         if (!isNameOfUserFilled) {
             messages.printFillInNameOfUserMessage();
             storage.saveNameOfUser();
-            msgGenerator.printGreetUser();
+        } else {
+            msgGenerator.greetUser();
         }
     }
 
@@ -72,7 +74,7 @@ public class CliUserInterface {
     private void executeCommand(String userInput) throws ZeroNoteException {
         InputParser parser = new InputParser();
         CliCommand command = parser.getCommandFromInput(userInput, appState);
-        if (command.isPersonalised) {
+        if (command.isPersonalised()) {
             String personalMessage = msgGenerator.generatePersonalisedMessage();
             System.out.println(personalMessage);
         }

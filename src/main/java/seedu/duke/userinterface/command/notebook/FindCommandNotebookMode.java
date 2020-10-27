@@ -18,6 +18,7 @@ public class FindCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "find";
     private String keyword;
     private String tag;
+    private boolean isPersonalised = true;
 
     private ArrayList<Notebook> notebooksFound = new ArrayList<>();
     private ArrayList<Section> sectionsFound = new ArrayList<>();
@@ -113,5 +114,10 @@ public class FindCommandNotebookMode extends CliCommand {
 
     private List<String> getWordsInTitle(String title) {
         return Arrays.asList(title.toLowerCase().split(" "));
+    }
+
+    @Override
+    public boolean isPersonalised() {
+        return isPersonalised;
     }
 }

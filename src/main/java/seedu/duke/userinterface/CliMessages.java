@@ -232,6 +232,6 @@ public class CliMessages {
     }
 
     public void printFillInNameOfUserMessage() {
-        System.out.println("Hi there! How may I address you?");
+        System.out.println("Hi there! Sorry I don't think we have met, how may I address you?");
     }
 }
