@@ -21,11 +21,28 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.1. Tasklist Management Feature](#421-tasklist-management-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.1.1. Implementation](#4211-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.1.2. Design Considerations](#4212-design-considerations) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2. Tag Feature](#422-tag-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.1. Implementation](#4211-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4212-design-considerations) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.2. List Feature](#421-tasklist-management-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.1. Implementation](#4211-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4212-design-considerations) <br>
 &nbsp;&nbsp;[4.3. Notebook Mode](#43-notebook-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.1. Notebook Management Feature](#431-notebook-management-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.1.1. Implementation](#4311-implementation)
+&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2. Tag Feature](#432-tag-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.1. Implementation](#4321-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.2. Design Considerations](#4322-design-considerations) <br>
+&nbsp;&nbsp;[4.4. Notebook Mode](#44-storage-neil) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1. Storage Format](#441-storage-format) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.1. TaskList](#4411-tasklist) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.2. Page](#4412-page) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.3. Section](#4413-section) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.4. Notebook](#4414-notebook) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.5. NotebookShelf](#4415-notebookshelf) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2. Implementation](#442-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.1. Saving the application state](#4421-saving-the-application-state) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.2. Reading the application state](#4422-reading-the-application-state) <br>
 &nbsp;&nbsp;[4.4. [Proposed] Find duplicates](#44-find-duplicates) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.1 Proposed implementation](#441-proposed-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.2 Design considerations](#442-design-considerations) <br>
@@ -267,14 +284,62 @@ It also constructs `CliMessages` to display messages to the user.
     - Cons: It takes more resources to implement. The constant factor for a hashing algorithm is significant and not
      worth the tradeoff for smaller amounts of data, like a typical user would be likely to generate.
 
-### 4.2.2. List feature
+#### 4.2.2. Tag Feature
+The user can tag `Task`s in the `TaskList`. This section describes the implementation and design considerations for this
+feature.
 
-#### 4.2.2.1. Implementation
+##### 4.2.2.1. Implementation
+The `Task` class contains a member `tag` of String type.
+
+The figure below shows how the tag operation works:
+
+![Sequence Diagram for Tag Timetable command](/diagrams/class/jpeg/SequenceDiagram_TagTimetable.jpg)
+
+There are 3 crucial processes during the tag operation. When the user enters `tag 1 /tCS2113T` into the command window while using the application:
+
+**Input Parsing**
+1. `CliUserInterface` receives the "tag 1 /tCS2113T" input by the user and calls the `executeCommand` method.
+2. Method `executeCommand` constructs the `InputParser` class and calls `InputParser#getCommandFromInput` to pass the
+input to `InputParser`.
+3. `InputParser#getCommandFromInput`calls `InputParser#parseTagDescription` to separate the index from the tag.
+4. If the application is in the timetable mode, `InputParser#getCommandFromInput` then parses the index and constructs
+the `TagCommandTimetableMode` class.
+5. `InputParser#getCommandFromInput` returns `TagCommandTimetableMode` back to `CliUserInterface`
+
+**Command Execution**
+1. `CliUserInterface#executeCommand` calls `TagCommandTimetableMode#execute` to execute the command.
+2. In `TagCommandTimetableMode#execute()`, the `CliMessages` class, which prints any outputs to the user, is constructed.
+3. `Tasklist#getTask` returns the `Task` that is specified by the index.
+4. `Task#setTag` changes the `tag` member of `Task` to the tag input by the user.
+5. If the tag is successful, `CliMessages#printTagTaskMessage` displays the message to the user.
+
+**Storage**
+1. `CliUserInterface#executeCommand` finally calls `TagCommandTimetableMode#isTriggerAutoSave` method to check whether a change
+has been made.
+2. If the method returns `True`, `CliUserInterface#executeCommand`calls `saveState` method to save the
+current list.
+3. The tag operation ends.
+
+##### 4.2.2.2. Design Considerations
+This section describes some of the considerations involved when designing the tag feature.
+
+###### Aspect: How to store the tags
+- **Alternative 1 (current choice):** Store as a private `String` member in every task
+    - Pros: It is easy to access for print operations.
+    - Cons: It is unoptimized in terms of complexity for search operations, which requires more work for scaling of the
+    application.
+- **Alternative 2:** Store as a Hash Table with the key as the tag and value as `Task`
+    - Pros: It has a better time complexity for search operations since this data structure is more optimized (O(1) can
+    be achieved).
+    - Cons: It is hard to retrieve the tag for a specific `Task` due to the structure of the key-value pair.
+
+#### 4.2.3. List Feature
+
+##### 4.2.3.1. Implementation
 
 The following sequence diagram shows how the list operation works:
 
 ![Sequence Diagram for List command](/diagrams/class/jpeg/SequenceDiagram_List.jpg)
-
 
 ### 4.3. Notebook Mode
 
@@ -284,6 +349,10 @@ As shown in Figure 1, the `NotebookShelf` class comprises instances of `Notebook
 and `Section` comprises `Page`. The navigability is not bidirectional. Multiple operations such as addition and deletion
 can be done without affecting other instances at all, while updating the `Notebook` it is in.
 
+This section explains the implementation and design considerations for managing `Notebook`s.
+
+##### 4.3.1.1 Implementation
+There are two main functions in notebook management: add and remove.
 <br>
 
 Given below is an example usage scenario and how the add notebook function behaves.
@@ -292,7 +361,7 @@ Step 1. The user launches the application for the first time. CliUserInterface#e
 
 Step 2. The user types `add /nCS2113T`. The `add` command is passed through `InputParser#getCommandFromInput`.
 
-Step 3. `InputParser#parseNotebookTitle` is then called, and it returns the `titleToAdd`, which is `CS2113T`. 
+Step 3. `InputParser#parseNotebookTitle` is then called, and it returns the `titleToAdd`, which is `CS2113T`.
 
 Step 4. A constructor for `AddCommandNotebookMode` is created.
 
@@ -305,7 +374,7 @@ The UML sequence diagram below shows how the add task command works.
 
 <hr>
 
-The figure below shows how the delete task command works:
+The figure below shows how the "remove task" command works:
 <img src="https://user-images.githubusercontent.com/60319628/96821973-9176e600-145b-11eb-95b7-5bf885ea1867.png">
 
 After calling `InputParser#getCommandFromInput` from `CliUserInterface`:
@@ -329,6 +398,58 @@ public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
 A switch-case block is used to determine the method to call based on the `appMode`.
 4. If the deletion is successful, `CliMessages` displays the message to the user.
 
+#### 4.3.2. Tag Feature
+
+The user can add a `tag` to a `Notebook`, `Section` or `Page`. This section describes the implementation and design
+considerations for this feature.
+
+##### 4.3.2.1. Implementation
+The `Notebook`, `Section` and `Page` classes each contain a member `tag` of type String.
+
+The figure below shows how the tag operation works:
+
+![Sequence Diagram for Tag Notebook command](/diagrams/class/jpeg/SequenceDiagram_TagNotebook.jpg)
+
+There are 3 crucial processes during the tag operation. When the user enters `tag /tCS2113T` into the command window while using the application:
+
+**Input Parsing**
+1. `CliUserInterface` receives the "tag /tCS2113T" input by the user and calls the `executeCommand` method.
+2. Method `executeCommand` constructs the `InputParser` class and calls `InputParser#getCommandFromInput` to pass the
+input to `InputParser`.
+3. `InputParser#getCommandFromInput`calls `InputParser#parseTagDescription` to separate the index from the tag.
+4. If the application is in the notebook mode, `InputParser#getCommandFromInput` constructs the
+`TagCommandTimetableMode` class. Note that `AppState#getCurrentNotebook`, `AppState#getCurrentSection` and
+`AppState#getCurrentPage` are called to determine the state of the application.
+5. `InputParser#getCommandFromInput` returns `TagCommandNotebookMode` back to `CliUserInterface`.
+
+**Command Execution**
+1. `CliUserInterface#executeCommand` calls `TagCommandNotebookMode#execute` to execute the command.
+2. `TagCommandNotebookMode#execute()` first constructs the `CliMessages` class, which prints any outputs to the user.
+3. `AppState#getAppMode` returns where the user is.
+3. If the user is in a `Notebook`, `Section` or `Page`, `Notebook#setTag`, `Section#setTag` or `Page#setTag` is called
+respectively to change the tag of the current notebook.
+4. If the tag is successful, `CliMessages#printTagNotebookMessage` displays the message to the user.
+
+**Storage**
+1. `CliUserInterface#executeCommand` finally calls `TagCommandNotebookMode#isTriggerAutoSave` method to check whether a
+change has been made.
+2. If the method returns `True`, `CliUserInterface#executeCommand`calls `saveState` method to save the
+current list.
+3. The tag operation ends.
+
+##### 4.3.2.2. Design Considerations
+This section describes some of the considerations involved when designing the tag feature.
+
+###### Aspect: How to store the tags
+- **Alternative 1 (current choice):** Store as a private `String` member in every task
+    - Pros: It is easy to access for print operations.
+    - Cons: It is unoptimized in terms of complexity for search operations, which requires more work for scaling of the
+    application.
+- **Alternative 2:** Store as a Hash Table with the key as the tag and value as `Task`
+    - Pros: It has a better time complexity for search operations since this data structure is more optimized (O(1) can
+    be achieved).
+    - Cons: It is hard to retrieve the tag for a specific `Task` due to the structure of the key-value pair.
+
 ### 4.4. Storage (Neil)
 
 The `Storage` class is used to read and write the application state to and from a text file.
@@ -346,13 +467,9 @@ text file.
 For `TaskList`, the format is as follows:
 
 * One line containing an integer `n`, the number of tasks.
-
 * `3n` lines follow, every 3 lines describing one task.
-
 * The first line contains the task title as a String.
-
 * The second line contains the task due date, in the format `dd-MM-yyyy hhmm`.
-
 * The third line contains a value `true` or `false`, indicating whether the task is done. (`true` means done,
 `false` means not done.)
 
@@ -384,7 +501,7 @@ For `NotebookShelf`, the format is as follows:
 * One line containing an integer `n`, the number of notebooks.
 * `n` notebooks are then described, as specified [here](#4414-notebook).
 
-##### 4.4.2 Implementation
+#### 4.4.2 Implementation
 
 `TaskList`, `Task`,`NotebookShelf`, `Notebook`, `Section`, and `page` contain methods called `serialize()`.
 These methods return`String` representations of themselves, as specified [here](#441-storage-format).  
@@ -401,7 +518,7 @@ it and combines their outputs with a `StringBuilder`.
 The `serialize()` method in `Section` calls the `serialize()` methods for every `Page` object within it and
 combines their outputs with a `StringBuilder`.
 
-#### 4.4.2.1. Saving the application state
+##### 4.4.2.1. Saving the application state
 
 The following sequence diagram describes the operation of the `saveToFile()` operation
 
@@ -409,31 +526,38 @@ The following sequence diagram describes the operation of the `saveToFile()` ope
 
 The `Storage.saveToFile()` method saves the current application state to a file.
 
-#### 4.4.2.2. Reading the application state
+##### 4.4.2.2. Reading the application state
 
 ### 4.5 [Proposed] Find duplicate feature
 
 #### 4.5.1 Proposed implementation
 
-The proposed find duplicate function is facilitated by a method in the classes `Task List`, `Notebook Shelf`, `Notebook` and `Section`.
+The proposed find duplicate function is facilitated by a method in the classes `Task List`, `Notebook Shelf`, `Notebook`
+and `Section`.
 
 Given below is an example usage scenario and how the find duplicates function behaves.
 
-Step 1. The user launches the application for the first time. CliUserInterface#executeCommand is called when the user adds a task into the task list.
+Step 1. The user launches the application for the first time. `CliUserInterface#executeCommand` is called when the user
+adds a task into the task list.
 
-Step 2. The user types `add /tTask /by19-10-2020 1900`. The `add` command is passed through `InputParser#getCommandFromInput`, which then calls `AddCommandTimetableMode#execute()`.
+Step 2. The user types `add /tTask /by19-10-2020 1900`. The `add` command is passed through
+`InputParser#getCommandFromInput`, which then calls `AddCommandTimetableMode#execute()`.
 
-Step 3. `execute()` is called, which then calls `InputParser#parseTaskTitle`, which first extracts the `title` from the user's input.
+Step 3. `execute()` is called, which then calls `InputParser#parseTaskTitle`, which first extracts the `title` from the
+user's input.
 
 Step 4. The `title` is then passed to the `findDuplicate` method in `TaskList`.
 
-Step 5. The `findDuplicate` method returns false, since it is the first task titled `Task` to be added into the `TaskList`. Conversely, the `findDuplicate` method returns true when a task with the same `title` already exists in the `TaskList`.
+Step 5. The `findDuplicate` method returns false, since it is the first task titled `Task` to be added into the
+`TaskList`. Conversely, the `findDuplicate` method returns true when a task with the same `title` already exists in the
+`TaskList`.
 
 Step 6. `InputParser#parseDeadline` is then called, which returns the `deadline` to `AddCommandTimetableMode#execute()`.
 
 Step 7. `TaskList#addTask` is then called and a new `Task`, with `title` and `deadline`, is initialised.
 
-Step 8. To signal that the user has successfully added a task, a message is printed with `CliMessages#printAddedTaskMessage`.
+Step 8. To signal that the user has successfully added a task, a message is printed with
+`CliMessages#printAddedTaskMessage`.
 
 The sequence diagram below shows how the find duplicate command works:
 
