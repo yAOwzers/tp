@@ -44,7 +44,7 @@
 [Appendix E: Glossary](#appendix-e-glossary) <br>
 [Appendix F: Instructions for manual testing](#appendix-f-instructions-for-manual-testing) <br>
 
-## 1. Introduction
+## 1. Introduction (Neil)
 
 ### 1.1. Welcome!
 Welcome, and thank you for choosing to help contribute to Zer0Note! Zer0Note is a command-line based note-taking and
@@ -147,14 +147,14 @@ The following section describes the design and implementation of the product. UM
 to explain some aspects of the code. If you are unfamiliar with UML, the diagrams should still be fairly
 understandable. However, you may wish to consult [[CS2113/T] Modeling](https://nus-cs2113-ay2021s1.github.io/website/se-book-adapted/chapters/modeling.html) for a quick introduction to UML. 
 
-### 3.1 Architecture
+### 3.1 Architecture (Neil)
 
 **How the architecture components interact with each other**
 The Sequence Diagram below shows how the components interact with each other for the scenario...
 
 /* work in progress */
 
-### 3.2 UserInterface Component
+### 3.2 UserInterface Component (Neil)
 
 The UserInterface Component is made up of `AppMode`, `AppState`, `CliMessages`, `CliUserInterface`, `InputParser`.
 
@@ -165,7 +165,7 @@ The `UserInterface` component,
 
 /* TODO explain the various variables and methods */
 
-### 3.3. Commands Component
+### 3.3. Commands Component (Neil)
 
 ![UML diagram for Timetable Commands](/diagrams/class/jpeg/timetable_commands.jpg)
 
@@ -288,10 +288,91 @@ public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
 A switch-case block is used to determine the method to call based on the `appMode`.
 4. If the deletion is successful, `CliMessages` displays the message to the user.
 
+### 4.4. Storage (Neil)
 
-### 4.4 [Proposed] Find duplicate feature
+The `Storage` class is used to read and write the application state to and from a text file. 
 
-#### 4.4.1 Proposed implementation
+#### 4.4.1. Storage format
+
+This section describes the format used to store the TaskList and NotebookShelf from the application state in a plain
+text file. 
+
+:exclamation: The operating system newline character is used to terminate lines; that is, `\r\n` on Windows and 
+`\n` on UNIX-based systems. 
+
+##### 4.4.1.1. TaskList
+
+For `TaskList`, the format is as follows:
+
+* One line containing an integer `n`, the number of tasks.
+
+* `3n` lines follow, every 3 lines describing one task. 
+
+* The first line contains the task title as a String.
+
+* The second line contains the task due date, in the format `dd-MM-yyyy hhmm`.
+
+* The third line contains a value `true` or `false`, indicating whether the task is done. (`true` means done, 
+`false` means not done.) 
+
+##### 4.4.1.2. Page
+
+For a single page, the format is as follows: 
+
+* One line containing the title of the page. 
+* One line containing the content of the page. Newline characters in the content are replaced with the string `"~~~"`.
+
+##### 4.4.1.3. Section
+
+For a single section, the format is as follows:
+
+* One line containing an integer `p`, the number of pages in the section. 
+* `p` pages are then described, as specified [here](#4412-page). 
+
+##### 4.4.1.4. Notebook
+
+For a single notebook, the format is as follows: 
+
+* One line containing an integer `s`, the number of sections. 
+* `s` sections are then described, as specified [here](#4413-section)
+
+##### 4.4.1.5. NotebookShelf
+
+For `NotebookShelf`, the format is as follows:
+
+* One line containing an integer `n`, the number of notebooks. 
+* `n` notebooks are then described, as specified [here](#4414-notebook). 
+
+##### 4.4.2 Implementation
+
+`TaskList`, `Task`,`NotebookShelf`, `Notebook`, `Section`, and `page` contain methods called `serialize()`. 
+These methods return`String` representations of themselves, as specified [here](#441-storage-format).  
+
+The `serialize()` method in `TaskList` calls the `serialize()` methods for every `Task` object within 
+it and combines their outputs with a `StringBuilder`. 
+
+The `serialize()` method in `NotebookShelf` calls the `serialize()` methods for every `Notebook` object within it and
+combines their outputs with a `StringBuilder`. 
+
+The `serialize()` method in `Notebook` calls the `serialize()` methods for every `Section` object within 
+it and combines their outputs with a `StringBuilder`. 
+
+The `serialize()` method in `Section` calls the `serialize()` methods for every `Page` object within it and
+combines their outputs with a `StringBuilder`. 
+
+#### 4.4.2.1. Saving the application state
+
+The following sequence diagram describes the operation of the `saveToFile()` operation
+
+![Sequence Diagram for saveToFile command](diagrams/class/jpeg/storage_neil.jpg)
+
+The `Storage.saveToFile()` method saves the current application state to a file. 
+
+#### 4.4.2.2. Reading the application state
+
+### 4.5 [Proposed] Find duplicate feature
+
+#### 4.5.1 Proposed implementation
 
 The proposed find duplicate function is facilitated by a method in the classes `Task List`, `Notebook Shelf`, `Notebook` and `Section`.
 
@@ -317,13 +398,13 @@ The sequence diagram below shows how the find duplicate command works:
 
 ![Sequence diagram for finding duplicates](/diagrams/class/jpeg/duplicates_francene.jpg)
 
-#### 4.4.2 Design consideration
+#### 4.5.2 Design consideration
 
 ##### Aspect: Where findDuplicate should be placed
 
 * **Alternative 1 (current choice)**: findDuplicate should be saved in the class that potentially creates duplicates.
   * Pros: Easier to access previously saved tasks/notebooks/notebook sections.
-  * Cons: May have performance issues in terms of memory usage.
+  * Cons: May have performance issues in terms of memory usage. 
 * **Alternative 2**: findDuplicate should be saved in the command that creates it.
   * Pros: Less time spent in passing variables to different classes.
   * Cons: We must grant access to private objects that are not within the command class.
