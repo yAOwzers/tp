@@ -261,6 +261,15 @@ The following sequence diagram shows how the list operation works:
 
 ![Sequence Diagram for List command](/diagrams/class/jpeg/SequenceDiagram_List.jpg)
 
+### 4.2.3. Mark as done feature  
+
+#### 4.2.2.1. Implementation  
+
+The following sequence diagram hows how the mark as done operation works:  
+
+
+
+#### 4.2.2.2. Design Considerations  
 
 ### 4.3. Notebook Mode
 
@@ -629,6 +638,11 @@ Expected: All existing Notebooks/Sections/Pages will be listed in the given Note
 2.11.1.1. Listing all n task in the tasklist.  
 i. Test case: `list /a`  
 Expected: All notebooks, sections and pages will be printed out.  
+
+2.11.1.2. Listing the list of notebooks and their sections   
+i. Prerequistes: User must be in a notebook and not in a section.  
+ii. Test case: `list /s`  
+Expected: All notebooks and their respective sections will be printed out.  
 
 #### 2.12 Tagging a Notebook/Section/Page
 
