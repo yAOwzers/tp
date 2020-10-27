@@ -677,6 +677,7 @@ Given below are instructions to test the app manually.
 i. Download the jar file and copy into an empty folder.  
 ii. Double-click the jar file  
 Expected: Command Line Interface should launch with a welcome message from Zer0Note as shown below:  
+
 ```
 Welcome to
  _ _ _                  _ _ _   _    _            _
@@ -703,7 +704,7 @@ Expected: No task is deleted. Error message will be printed in the command line 
 #### 2.2 Adding a task
 
 2.2.1 Adding a task to the tasklist.  
-i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode.  
+i. Prerequisites: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode.  
 ii. Test case: `add /t test task /by 10-10-2020 2000`  
 Expected: Task is added into the tasklist with a success message printed.  
 iii. Test case: `add /t test task`  
@@ -716,7 +717,7 @@ Expected: An error message along with a formatting guideline message (date forma
 #### 2.3 Marking a task as done
 
 2.3.1 Marking a task as done while there are existing task in the tasklist.  
-i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
+i. Prerequisites: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
 ii. Test case: `done 1`  
 Expected: First task should be marked as done in the tasklist.  
 iii. Test case: `done 0`  
@@ -727,7 +728,7 @@ Expected: An error messsage along with a formatting guideline message will be pr
 #### 2.4 Tagging a Task
 
 2.4.1. Tagging an existing task in the tasklist.  
-i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
+i. Prerequisites: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
 ii. Test case: `tag 1 /tschoolWork`  
 Expected: Task in index 1 of the tasklist is tagged with a tag 'schoolWork'.  
 iii. Test case: `tag 1`  
@@ -740,7 +741,7 @@ Expected: An error message along with a formatting guideline message will be pri
 #### 2.5 Listing a Task
 
 2.5.1. Listing existing task in the tasklist.  
-i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. There must be existing tasks in the list.
+i. Prerequisites: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. There must be existing tasks in the list.
 
 2.5.1.1. Listing all existing task in the tasklist.  
 i. Test case: `list`  
@@ -761,7 +762,7 @@ Expected: All existing urgent tasks in the tasklist will be printed out.
 #### 2.6 Executing a mode switch
 
 2.6.1. Switching between Timetable mode and Notebook mode.  
-i. Prerequistes: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode.  
+i. Prerequisites: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode.  
 ii. Test case: `mode /n`   
 Expected: Mode is switched to Notebook mode.  
 iii. Test case: `mode /t`  
@@ -781,27 +782,27 @@ Expected: An error message along with a formatting guideline message will be pri
 #### 2.8 Adding a Notebook/Section/Page
 
 2.8.1. Adding a respective notebook/section/page in their respective list.  
-i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode.    
+i. Prerequisites: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode.    
 
 2.8.1.1. Adding a Notebook.  
-i. Prerequistes: User must not be in a selected notebook or section. User should type `mode /n` before executing this test case.   
+i. Prerequisites: User must not be in a selected notebook or section. User should type `mode /n` before executing this test case.   
 ii. Test case: `add /nCS2113T`  
 Expected: Notebook 'CS2113T' is added to the notebookShelf with a success message printed.  
 
 2.8.1.2. Adding a Section.  
-i. Prerequistes: User must select a notebook. Enter `select /n[NOTEBOOK]` to enter a specified notebook.    
+i. Prerequisites: User must select a notebook. Enter `select /n[NOTEBOOK]` to enter a specified notebook.    
 ii. Test case: `add /sChapter 1`  
 Expected: Section 'Chapter 1' is added to the specified notebook with a success message printed.  
 
 2.8.1.3. Adding a Page.  
-i. Prerequistes: User must select a Section. Enter `select /s[SECTION]` to enter a specified section.    
+i. Prerequisites: User must select a Section. Enter `select /s[SECTION]` to enter a specified section.    
 ii. Test case: `add /pPage 1 ; a test page`  
 Expected: Page 'Page 1' along with content 'a test page' is added to the specified section with a success message printed.  
 
 #### 2.9 Selecting a Notebook/Section/Page
 
 2.9.1. Selecting a respective notebook/section/page in their respective list.  
-i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode.  
+i. Prerequisites: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode.  
 
 2.9.1.1. Selecting a Notebook.    
 i. Test case: `select /nCS2113T`  
@@ -820,7 +821,7 @@ Expected: The user will enter the selected Page 'Page 1' with a success message 
 #### 2.10 Deleting a Notebook/Section/Page
 
 2.10.1. Deleting a respective notebook/section/page in their respective list.  
-i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. There must be existing notebooks/sections/pages in the respective list when command `list` is entered.  
+i. Prerequisites: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. There must be existing notebooks/sections/pages in the respective list when command `list` is entered.  
 
 2.10.1.1. Deleting a notebook.  
 i. Test case: `delete /nCS2113T`    
@@ -837,7 +838,7 @@ Expected: The selected page 'Page 1' will be deleted with a success message prin
 #### 2.11 Listing a Notebook/Section/Page 
 
 2.11.1 Listing existing notebook/section/page in the NotebookShelf.  
-i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. There must be existing notebooks/sections/pages in the respective list when command `list` is entered.  
+i. Prerequisites: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. There must be existing notebooks/sections/pages in the respective list when command `list` is entered.  
 ii. Test case: `list`   
 Expected: All existing Notebooks/Sections/Pages will be listed in the given NotebookShelf/Notebook/Section respectively.  
 
@@ -846,14 +847,14 @@ i. Test case: `list /a`
 Expected: All notebooks, sections and pages will be printed out.  
 
 2.11.1.2. Listing the list of notebooks and their sections   
-i. Prerequistes: User must be in a notebook and not in a section.  
+i. Prerequisites: User must be in a notebook and not in a section.  
 ii. Test case: `list /s`  
 Expected: All notebooks and their respective sections will be printed out.  
 
 #### 2.12 Tagging a Notebook/Section/Page
 
 2.12.1. Tagging an existing notebooks/sections/pages in the list.  
-i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
+i. Prerequisites: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
 ii. Test case: `tag /tschoolWork`  
 Expected: Specified name of notebook/section/page in the list is tagged with a tag 'schoolWork'.  
 iii. Test case: `tag`  
@@ -862,7 +863,7 @@ Expected: An error message along with a formatting guideline message will be pri
 #### 2.13 Finding a Notebook/Section/Page using a keyword
 
 2.13.1. Finding all notebooks/sections/pages that contains a specified keyword.  
-i. Prerequistes: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. List all notebooks/sections/pages in the notebookShelf using the `list /a` command. There must be existing notebooks/sections/pages in the list.  
+i. Prerequisites: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. List all notebooks/sections/pages in the notebookShelf using the `list /a` command. There must be existing notebooks/sections/pages in the list.  
 ii. Test case: `Find Project`  
 Expected: All notebooks/sections/pages with tags that contains the word 'Project' will be printed. If the notebooks/sections/pages do not have tags, it will list the notebooks/sections/pages with titles that contain the keyword 'Project'.  
 iii. Test case: `Find`   
