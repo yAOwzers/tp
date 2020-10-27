@@ -286,14 +286,14 @@ input to `InputParser`.
 the `TagCommandTimetableMode` class.
 5. `InputParser#getCommandFromInput` returns `TagCommandTimetableMode` back to `CliUserInterface`
 
-** Command Execution **
+**Command Execution**
 1. `CliUserInterface#executeCommand` calls `TagCommandTimetableMode#execute` to execute the command.
 2. In `TagCommandTimetableMode#execute()`, the `CliMessages` class, which prints any outputs to the user, is constructed. 
 3. `Tasklist#getTask` returns the `Task` that is specified by the index.
 4. `Task#setTag` changes the `tag` member of `Task` to the tag input by the user.
 5. If the tag is successful, `CliMessages#printTagTaskMessage` displays the message to the user.
 
-** Storage **
+**Storage**
 1. `CliUserInterface#executeCommand` finally calls `TagCommandTimetableMode#isTriggerAutoSave` method to check whether a change 
 has been made. 
 2. If the method returns `True`, `CliUserInterface#executeCommand`calls `saveState` method to save the 
@@ -381,9 +381,9 @@ input to `InputParser`.
 4. If the application is in the notebook mode, `InputParser#getCommandFromInput` constructs the 
 `TagCommandTimetableMode` class. Note that `AppState#getCurrentNotebook`, `AppState#getCurrentSection` and 
 `AppState#getCurrentPage` are called to determine the state of the application.
-5. `InputParser#getCommandFromInput` returns `TagCommandNotebookMode` back to `CliUserInterface`
+5. `InputParser#getCommandFromInput` returns `TagCommandNotebookMode` back to `CliUserInterface`.
 
-** Command Execution **
+**Command Execution**
 1. `CliUserInterface#executeCommand` calls `TagCommandNotebookMode#execute` to execute the command.
 2. `TagCommandNotebookMode#execute()` first constructs the `CliMessages` class, which prints any outputs to the user. 
 3. `AppState#getAppMode` returns where the user is.
@@ -391,7 +391,7 @@ input to `InputParser`.
 respectively to change the tag of the current notebook.
 4. If the tag is successful, `CliMessages#printTagNotebookMessage` displays the message to the user.
 
-** Storage **
+**Storage**
 1. `CliUserInterface#executeCommand` finally calls `TagCommandNotebookMode#isTriggerAutoSave` method to check whether a 
 change has been made. 
 2. If the method returns `True`, `CliUserInterface#executeCommand`calls `saveState` method to save the 
@@ -493,21 +493,32 @@ The `Storage.saveToFile()` method saves the current application state to a file.
 
 #### 4.5.1 Proposed implementation
 
-The proposed find duplicate function is facilitated by a method in the classes `Task List`, `Notebook Shelf`, `Notebook` and `Section`.
+The proposed find duplicate function is facilitated by a method in the classes `Task List`, `Notebook Shelf`, `Notebook` 
+and `Section`. 
+
+<br>
+
 Given below is an example usage scenario and how the find duplicates function behaves.
 
-Step 1. The user launches the application for the first time. CliUserInterface#executeCommand is called when the user 
+Step 1. The user launches the application for the first time. `CliUserInterface#executeCommand` is called when the user 
 adds a task into the task list.
+
 Step 2. The user types `add /tTask /by19-10-2020 1900`. The `add` command is passed through 
 `InputParser#getCommandFromInput`, which then calls `AddCommandTimetableMode#execute()`.
+
 Step 3. `execute()` is called, which then calls `InputParser#parseTaskTitle`, which first extracts the `title` from the 
 user's input.
+
 Step 4. The `title` is then passed to the `findDuplicate` method in `TaskList`.
+
 Step 5. The `findDuplicate` method returns false, since it is the first task titled `Task` to be added into the 
 `TaskList`. Conversely, the `findDuplicate` method returns true when a task with the same `title` already exists in the 
 `TaskList`.
+
 Step 6. `InputParser#parseDeadline` is then called, which returns the `deadline` to `AddCommandTimetableMode#execute()`.
+
 Step 7. `TaskList#addTask` is then called and a new `Task`, with `title` and `deadline`, is initialised.
+
 Step 8. To signal that the user has successfully added a task, a message is printed with 
 `CliMessages#printAddedTaskMessage`.
 
