@@ -1,5 +1,7 @@
 package seedu.duke.notebooks;
 
+import seedu.duke.exceptions.InvalidTagException;
+
 public class Page {
     private String title;
     private String content;
@@ -26,6 +28,18 @@ public class Page {
         this.content = content;
     }
 
+    public void setTag(String tag) throws InvalidTagException {
+        if (!tag.equals("")) {
+            this.tag = tag;
+        } else {
+            throw new InvalidTagException("tag /t" + tag);
+        }
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
     public void printPage() {
         System.out.println(content);
     }
@@ -38,13 +52,5 @@ public class Page {
         serialized.append(content.replaceAll(System.lineSeparator(), "~~~"));
         serialized.append(lineSeparator);
         return serialized.toString();
-    }
-  
-    public void setTag(String description) {
-        tag = description;
-    }
-
-    public String getTag() {
-        return tag;
     }
 }
