@@ -21,6 +21,8 @@ public class RemoveCommandNotebookMode extends CliCommand {
     private Section currentSection;
     private String sectionTitleToRemove;
     private int pageNumberToRemove;
+
+    private boolean isPersonalised = true;
     private static final boolean isAutoSave = true;
 
     public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
@@ -105,6 +107,11 @@ public class RemoveCommandNotebookMode extends CliCommand {
             throw new InvalidCommandException("Please enter in the format:\n"
                     + "delete /nNOTEBOOK /sSECTION /pPAGE_NUMBER");
         }
+    }
+
+    @Override
+    public boolean isPersonalised() {
+        return isPersonalised;
     }
 
     @Override

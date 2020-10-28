@@ -1,5 +1,6 @@
 package seedu.duke.userinterface.command;
 
+import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.userinterface.AppMode;
 import seedu.duke.userinterface.AppState;
 
@@ -12,7 +13,7 @@ public class ModeSwitch extends CliCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws InvalidCommandException {
         switch (commandParams) {
         case ("/t"):
             appState.setAppMode(AppMode.TIMETABLE);
@@ -23,7 +24,7 @@ public class ModeSwitch extends CliCommand {
             System.out.println("You are now in " + appState.getAppMode() + " mode");
             break;
         default:
-            System.out.println("Error");
+            throw new InvalidCommandException("Invalid option after mode");
         }
 
     }
