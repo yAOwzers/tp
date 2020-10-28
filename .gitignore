@@ -21,3 +21,5 @@ bin/
 notebooks.txt
 
 tasks.txt
+
+*.~vsdx

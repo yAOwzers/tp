@@ -1,5 +1,6 @@
 package seedu.duke.userinterface.command.notebook;
 
+import seedu.duke.exceptions.InvalidSelectCommandException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.InputParser;
@@ -26,8 +27,7 @@ public class SelectCommandNotebookMode extends CliCommand {
                 parser.extractParams(argument, appState);
                 break;
             default:
-                System.out.println("\tError occurred when selecting");
-                break;
+                throw new InvalidSelectCommandException(argument);
             }
         } catch (ZeroNoteException e) {
             e.printErrorMessage();
