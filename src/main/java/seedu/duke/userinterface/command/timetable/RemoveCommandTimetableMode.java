@@ -29,13 +29,13 @@ public class RemoveCommandTimetableMode extends CliCommand {
             numberOfTasks--;
             cliMessages.printRemoveTaskMessage(deletedTask, numberOfTasks);
         } catch (IndexOutOfBoundsException ioe) {
-            if (numberOfTasks > 0) {
+            if (numberOfTasks > 1) {
                 System.out.println("Please enter a valid index between 1 and " + numberOfTasks + ".");
+            } else if (numberOfTasks == 1) {
+                System.out.println("Index can only be 1.");
             } else {
                 System.out.println("There are no tasks in the list.");
             }
-        } catch (NumberFormatException nfe) {
-            System.out.println("Please enter a valid number.");
         }
     }
 

@@ -466,6 +466,9 @@ In a selected *NOTEBOOK*:
 In a selected *SECTION*:
 * `select /p1` - selects page 1 in the selected `section`.
 
+> :bulb: Whenever you want to select something, you may want to use the list all function, `list /a` 
+> to ensure that you're typing in the correct parameters.
+
 <br>
 
 Example of usage:

@@ -15,7 +15,6 @@ public class TagCommandNotebookMode extends CliCommand {
     private final Notebook currentNotebook;
     private final Section currentSection;
     private final Page currentPage;
-    private CliMessages cliMessages = new CliMessages();
     private static final boolean isAutoSave = true;
 
     public TagCommandNotebookMode(String params, AppState appState) {
@@ -28,6 +27,7 @@ public class TagCommandNotebookMode extends CliCommand {
     }
 
     public void execute() {
+        CliMessages cliMessages = new CliMessages();
         try {
             switch (appState.getAppMode()) {
             case NOTEBOOK_BOOK:
