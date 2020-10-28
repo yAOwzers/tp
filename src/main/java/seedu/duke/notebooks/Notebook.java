@@ -2,6 +2,9 @@ package seedu.duke.notebooks;
 
 import java.util.ArrayList;
 
+import seedu.duke.exceptions.InvalidSectionException;
+import seedu.duke.exceptions.InvalidTagException;
+
 public class Notebook {
     private String title;
     private final ArrayList<Section> sectionArrayList;

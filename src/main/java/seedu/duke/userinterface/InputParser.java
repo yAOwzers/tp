@@ -92,7 +92,113 @@ public class InputParser {
         }
     }
 
-    public static String parseNotebookTitle(String input) throws InvalidNotebookException {
+    /**
+     * Parses user's input to extract notebook title, section title or page number whenever applicable.
+     *
+     * @param argument contains notebook title, section title or/and page number.
+     * @param appState is the state of the application.
+     * @throws InvalidNotebookException      when the notebook the user wants to select does not exist.
+     * @throws InvalidSectionException       when the section the user wants to select does not exist.
+     * @throws InvalidPageException          when the page number the user wants to select does not exist.
+     * @throws InvalidSelectCommandException when the select command types by the user is wrong.
+     */
+    public void extractParams(String argument, AppState appState)
+            throws InvalidNotebookException, InvalidSectionException, InvalidPageException,
+            InvalidSelectCommandException {
+        if (argument.startsWith(NOTEBOOK_DELIMITER)) {
+            extractNotebookParams(argument, appState);
+        } else if ((argument.startsWith(SECTION_DELIMITER)) && (appState.getAppMode() == AppMode.NOTEBOOK_BOOK)) {
+            extractSectionParams(argument, appState);
+        } else if ((argument.startsWith(PAGE_DELIMITER)) && (appState.getAppMode() == AppMode.NOTEBOOK_SECTION)) {
+            Section section = appState.getCurrentSection();
+            int pageNum = parsePageNumber(argument);
+            section.getPage(pageNum);
+            appState.setCurrentPage(pageNum);
+            appState.setAppMode(AppMode.NOTEBOOK_PAGE);
+        } else if (argument.startsWith(SHOW_ALL)) {
+            appState.setAppMode(AppMode.NOTEBOOK_SHELF);
+        } else {
+            throw new InvalidSelectCommandException(argument);
+        }
+    }
+
+    /**
+     * Extracts the notebook title, as well as the section title and page number, if provided.
+     *
+     * @param argument is the user's input.
+     * @param appState is the current mode the user is in.
+     * @throws InvalidNotebookException when the notebook title input by the user does not exist.
+     * @throws InvalidSectionException  when the section title input by the user does not exist.
+     * @throws InvalidPageException     when the page number input by the user does not exist.
+     */
+    public void extractNotebookParams(String argument, AppState appState)
+            throws InvalidNotebookException, InvalidSectionException, InvalidPageException {
+        Notebook notebook;
+        Section section = null;
+        String notebookTitle = parseNotebookTitle(argument);
+        NotebookShelf notebookShelf = appState.getCurrentBookShelf();
+        int notebookIndex = notebookShelf.findNotebook(notebookTitle);
+        if (notebookIndex == -1) {
+            throw new InvalidNotebookException(notebookTitle);
+        }
+        notebook = notebookShelf.getNotebookAtIndex(notebookIndex);
+        appState.setAppMode(AppMode.NOTEBOOK_BOOK);
+        appState.setCurrentNotebook(notebook);
+        System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentNotebook().getTitle());
+        if (argument.contains(SECTION_DELIMITER)) {
+            String sectionTitle = parseSectionTitle(argument);
+            int sectionIndex = notebook.findSection(sectionTitle);
+            if (sectionIndex == -1) {
+                throw new InvalidSectionException(sectionTitle);
+            }
+            section = notebook.getSectionAtIndex(sectionIndex);
+            appState.setAppMode(AppMode.NOTEBOOK_SECTION);
+            appState.setCurrentSection(section);
+            System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentSection().getTitle());
+        }
+        if (argument.contains(PAGE_DELIMITER) && section != null) {
+            int pageNum = parsePageNumber(argument);
+            section.getPage(pageNum);
+        }
+    }
+
+    /**
+     * Parses the user's input to extract the section title, and the page number if provided by the user.
+     *
+     * @param argument is the user's input.
+     * @param appState is the current mode the user is in.
+     * @throws InvalidSectionException when the section title input by the user does not exist.
+     * @throws InvalidPageException    when the page number input by the user does not exist.
+     */
+    public void extractSectionParams(String argument, AppState appState) throws InvalidSectionException,
+            InvalidPageException {
+        Notebook notebook = appState.getCurrentNotebook();
+        String sectionTitle = parseSectionTitle(argument);
+        int sectionIndex = notebook.findSection(sectionTitle);
+        if (sectionIndex == -1) {
+            throw new InvalidSectionException(sectionTitle);
+        }
+        Section section = notebook.getSectionAtIndex(sectionIndex);
+        appState.setAppMode(AppMode.NOTEBOOK_SECTION);
+        appState.setCurrentSection(section);
+        System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentSection().getTitle());
+        if (argument.contains(PAGE_DELIMITER)) {
+            int pageNum = parsePageNumber(argument);
+            if (pageNum > section.getPageArrayList().size()) {
+                throw new InvalidPageException(Integer.toString(pageNum + 1));
+            }
+            section.getPage(pageNum);
+        }
+    }
+
+    /**
+     * Parses notebook title from the user's input.
+     *
+     * @param input is the input from the user.
+     * @return the notebook title input by the user.
+     * @throws InvalidNotebookException when user's input is in the wrong format.
+     */
+    public String parseNotebookTitle(String input) throws InvalidNotebookException {
         if (input.startsWith(NOTEBOOK_DELIMITER)) {
             String notebookTitle = input.replace(NOTEBOOK_DELIMITER, "").trim();
             if (notebookTitle.isBlank()) {
@@ -131,21 +237,81 @@ public class InputParser {
     }
 
     public int parsePageNumber(String input) throws InvalidPageException {
-        int dividerPos = input.indexOf(PAGE_DELIMITER);
-        input = input.substring(dividerPos);
+        try {
+            int dividerPos = input.indexOf(PAGE_DELIMITER);
+            input = input.substring(dividerPos);
+        } catch (StringIndexOutOfBoundsException e) {
+            throw new InvalidPageException(input);
+        }
+
         if (input.startsWith(PAGE_DELIMITER)) {
             String page = input.replace(PAGE_DELIMITER, "");
-            if (page.isBlank()) {
-                throw new InvalidPageException();
+            try {
+                if (page.isBlank()) {
+                    throw new InvalidPageException(page);
+                }
+                return Integer.parseInt(page) - 1;
+            } catch (NumberFormatException e) {
+                throw new InvalidPageException(page);
             }
-            int pageNum = Integer.parseInt(page) - 1;
-            return pageNum;
         } else {
-            throw new InvalidPageException();
+            throw new InvalidPageException(input);
         }
     }
 
-    public CliCommand getCommandFromInput(String userInput, AppState appState) throws Exception {
+    /**
+     * Parses the page title input by the user.
+     *
+     * @param input is the user's input.
+     * @return the page title input by the user.
+     * @throws InvalidPageException when the user's input is in the wrong format, or when the page title is blank.
+     * @throws EmptyPageException   when the user's page input does not contain the content delimiter.
+     */
+    public String parsePageTitle(String input) throws InvalidPageException, EmptyPageException {
+        if (input.startsWith(PAGE_DELIMITER)) {
+            String pageTitle = input.replace(PAGE_DELIMITER, "").trim();
+            if (pageTitle.isBlank()) {
+                throw new InvalidPageException(pageTitle);
+            }
+            if (!pageTitle.contains(CONTENT_DELIMITER)) {
+                throw new EmptyPageException();
+            }
+            int indexPos = pageTitle.indexOf(CONTENT_DELIMITER);
+            pageTitle = pageTitle.substring(0, indexPos).trim();
+            return pageTitle;
+        } else {
+            throw new InvalidPageException(input);
+        }
+    }
+
+    /**
+     * Parses the page contents of the user's input.
+     *
+     * @param input is the user's input.
+     * @return contents in the page input by the user.
+     * @throws InvalidPageException when the user's input does not contain the page content delimiter, or when there
+     *                              is no content.
+     */
+    public String parsePageContent(String input) throws InvalidPageException, EmptyPageException {
+        int dividerPos = input.indexOf(CONTENT_DELIMITER);
+        input = input.substring(dividerPos);
+
+        if (input.startsWith(CONTENT_DELIMITER)) {
+            String content = input.replace(CONTENT_DELIMITER, "").trim();
+            if (content.isBlank()) {
+                throw new EmptyPageException();
+            }
+            return content;
+        } else {
+            throw new InvalidPageException(input);
+        }
+    }
+
+    public String[] parseTagDescription(String input) {
+        return input.split(TASK_DELIMITER, 2);
+    }
+
+    public CliCommand getCommandFromInput(String userInput, AppState appState) throws ZeroNoteException {
         String trimmedInput = userInput.trim();
         String[] input = trimmedInput.split(" ", 2); // split input into command and arguments
         String commandWord = input[0];
@@ -192,6 +358,9 @@ public class InputParser {
                 }
                 if (argument.contains(PAGE_DELIMITER)) {
                     pageNumberToRemove = parsePageNumber(argument);
+                    if (pageNumberToRemove < 0) {
+                        throw new InvalidPageException(Integer.toString(pageNumberToRemove + 1));
+                    }
                 }
                 return new RemoveCommandNotebookMode(notebookTitleToRemove,
                         sectionTitleToRemove, pageNumberToRemove, appState);
