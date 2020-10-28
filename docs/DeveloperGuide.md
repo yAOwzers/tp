@@ -209,7 +209,7 @@ The `Commands` component,
 
 ### 3.6. Storage Component
 
-/* to insert UML diagram */
+![UML diagram for Storage](/diagrams/class/jpeg/Storage_UML_class.jpg)
 
 The `Storage` component,
 
