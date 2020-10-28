@@ -229,4 +229,9 @@ public class CliMessages {
             index += 1;
         }
     }
+
+    public static String lineSeparator() {
+        return "\n-------------------------------------------------------------\n";
+    }
+
 }
