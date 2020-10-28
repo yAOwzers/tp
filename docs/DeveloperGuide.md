@@ -187,9 +187,9 @@ The `UserInterface` component,
 
 ### 3.3. Commands Component (Neil)
 
-![UML diagram for Timetable Commands](/diagrams/class/jpeg/timetable_commands.jpg)
+![UML diagram for Timetable Commands](diagrams/class/jpeg/timetable_commands.jpg)
 
-![UML diagrams for Notebook Commands](/diagrams/class/jpeg/notebook_commands.jpg)
+![UML diagrams for Notebook Commands](diagrams/class/jpeg/notebook_commands.jpg)
 
 /* to insert UML diagram */
 
@@ -203,7 +203,7 @@ The `Commands` component,
 
 ### 3.5 Notebooks Component
 
-![UML diagram for Notebooks](/diagrams/class/jpeg/notebooks.jpg)
+![UML diagram for Notebooks](diagrams/class/jpeg/notebooks.jpg)
 
 /* TODO explain the various variables and methods */
 
@@ -261,7 +261,7 @@ Step 5. `TaskList#addTask` is then called and a new `Task`, with `title` and `de
 Step 6. To signal that the user has successfully added a task, a message is printed with `CliMessages#printAddedTaskMessage`.
 
 The UML sequence diagram below shows how the add task command works.
-![Sequence Diagram for Add Task Command](/diagrams/class/jpeg/add_task.jpg)
+![Sequence Diagram for Add Task Command](diagrams/class/jpeg/add_task.jpg)
 
 <hr>
 
@@ -301,7 +301,7 @@ The `Task` class contains a member `tag` of String type.
 
 The figure below shows how the tag operation works:
 
-![Sequence Diagram for Tag Timetable command](/diagrams/class/jpeg/SequenceDiagram_TagTimetable.jpg)
+![Sequence Diagram for Tag Timetable command](diagrams/class/jpeg/SequenceDiagram_TagTimetable.jpg)
 
 There are 3 crucial processes during the tag operation. When the user enters `tag 1 /tCS2113T` into the command window while using the application:
 
@@ -347,7 +347,7 @@ This section describes some of the considerations involved when designing the ta
 
 The following sequence diagram shows how the list operation works:
 
-![Sequence Diagram for List command](/diagrams/class/jpeg/SequenceDiagram_List.jpg)
+![Sequence Diagram for List command](diagrams/class/jpeg/SequenceDiagram_List.jpg)
 
 ### 4.2.3. Mark as done feature  
 
@@ -386,7 +386,7 @@ Step 5. `AddCommandNotebookMode#execute()` runs, which then calls `NotebookShelf
 Step 6. A new `Notebook`, entitled `CS2113T` is initialised.
 
 The UML sequence diagram below shows how the add task command works.
-![Sequence Diagram for Add Task Command](/diagrams/class/jpeg/add_notebook.jpg)
+![Sequence Diagram for Add Task Command](diagrams/class/jpeg/add_notebook.jpg)
 
 <hr>
 
@@ -424,7 +424,7 @@ The `Notebook`, `Section` and `Page` classes each contain a member `tag` of type
 
 The figure below shows how the tag operation works:
 
-![Sequence Diagram for Tag Notebook command](/diagrams/class/jpeg/SequenceDiagram_TagNotebook.jpg)
+![Sequence Diagram for Tag Notebook command](diagrams/class/jpeg/SequenceDiagram_TagNotebook.jpg)
 
 There are 3 crucial processes during the tag operation. When the user enters `tag /tCS2113T` into the command window while using the application:
 
@@ -489,7 +489,7 @@ Step 6. If the argument typed by the user contains `/n`, which is the Notebook d
 Step 7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
 
 The UML sequence diagram below shows how the select noteboook command works.
-![Sequence Diagram for Add Task Command](/diagrams/class/jpeg/select_notebook.jpg)
+![Sequence Diagram for Add Task Command](diagrams/class/jpeg/select_notebook.jpg)
 
 ##### 4.3.3.2. Design Considerations
 
@@ -612,7 +612,7 @@ Step 8. To signal that the user has successfully added a task, a message is prin
 
 The sequence diagram below shows how the find duplicate command works:
 
-![Sequence diagram for finding duplicates](/diagrams/class/jpeg/duplicates_francene.jpg)
+![Sequence diagram for finding duplicates](diagrams/class/jpeg/duplicates_francene.jpg)
 
 #### 4.5.2 Design consideration
 
@@ -952,5 +952,3 @@ ii. Select both the 'tasks.txt' and 'notebooks.txt'.
 iii. Delete both files.  
 iv. Restart the application by double-clicking the jar file and running Zer0Note.  
 Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1.  
-
-
