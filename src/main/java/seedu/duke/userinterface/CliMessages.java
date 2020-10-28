@@ -17,6 +17,7 @@ import seedu.duke.tasks.TaskList;
 
 public class CliMessages {
     private static final String REMOVE_TASK_SUCCESS_MESSAGE = "Noted. I've removed this task:";
+    private static PersonalMesssageGenerator msgGenerator;
 
     public static void printRemoveNotebookMessage(Notebook notebook) {
         System.out.println("Noted. I've removed this notebook: ");
@@ -203,22 +204,16 @@ public class CliMessages {
         System.out.println(createTagMessage + task);
     }
 
-    public void printFoundNotebooksMessage(ArrayList<Notebook> notebooks) {
+    public void printFoundNotebooksMessages(ArrayList<String> messages) {
         int index = 1;
-        System.out.println("Notebooks:");
-        for (Notebook notebook : notebooks) {
-            System.out.println(index + ". " + notebook.getTitle());
-            index += 1;
+        for (String message : messages) {
+            System.out.println(index + ". " + message + "\n");
+            index++;
         }
     }
 
-    public void printFoundSectionsMessage(ArrayList<Section> sections) {
-        int index = 1;
-        System.out.println("Sections:");
-        for (Section section : sections) {
-            System.out.println(index + ". " + section.getTitle());
-            index += 1;
-        }
+    public static String lineSeparator() {
+        return "\n-------------------------------------------------------------\n";
     }
 
     public void printFoundPagesMessage(ArrayList<Page> pagesFound) {
@@ -229,4 +224,9 @@ public class CliMessages {
             index += 1;
         }
     }
+
+    public void printFillInNameOfUserMessage() {
+        System.out.println("Hi there! Sorry I don't think we have met, how may I address you?");
+    }
+
 }
