@@ -19,15 +19,9 @@ public class FindCommandNotebookMode extends CliCommand {
     private String keyword;
     private String tag;
 
-<<<<<<< HEAD
-    private ArrayList<Notebook> notebooksFound = new ArrayList<>();
-    private ArrayList<Section> sectionsFound = new ArrayList<>();
-    private ArrayList<Page> pagesFound = new ArrayList<>();
-=======
     private ArrayList<String> notebookMessages = new ArrayList<>();
     private ArrayList<String> sectionMessages = new ArrayList<>();
     private ArrayList<String> pageMessages = new ArrayList<>();
->>>>>>> master
 
     public FindCommandNotebookMode(String keyword, String tag, AppState appState) {
         this.keyword = keyword.toLowerCase();
@@ -49,14 +43,6 @@ public class FindCommandNotebookMode extends CliCommand {
             return;
         }
 
-<<<<<<< HEAD
-    private void printFoundListsMessage() {
-        CliMessages cliMessages = new CliMessages();
-        System.out.println("Here are what I found:");
-        cliMessages.printFoundNotebooksMessage(notebooksFound);
-        cliMessages.printFoundSectionsMessage(sectionsFound);
-        cliMessages.printFoundPagesMessage(pagesFound);
-=======
         if (!notebookMessages.isEmpty()) {
             System.out.println("Notebooks:");
             cliMessages.printFoundNotebooksMessages(notebookMessages);
@@ -69,7 +55,6 @@ public class FindCommandNotebookMode extends CliCommand {
             System.out.println("Pages:");
             cliMessages.printFoundNotebooksMessages(pageMessages);
         }
->>>>>>> master
     }
 
     private void getAllWithTitleContainingKeyword() {
