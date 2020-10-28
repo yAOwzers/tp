@@ -15,6 +15,7 @@ import seedu.duke.userinterface.command.CliCommand;
 
 public class RemoveCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "delete";
+
     private CliMessages cliMessages = new CliMessages();
     private NotebookShelf currentBookshelf;
     private Notebook currentNotebook;
@@ -22,6 +23,9 @@ public class RemoveCommandNotebookMode extends CliCommand {
     private Section currentSection;
     private String sectionTitleToRemove;
     private int pageNumberToRemove;
+
+    private boolean isPersonalised = true;
+    private static final boolean isAutoSave = true;
 
     public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
                                      int pageNumber, AppState appState) {
@@ -79,7 +83,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
                 throw new InvalidSectionException(sectionTitleToRemove);
             }
             Page pageRemoved = section.removePage(pageNumberToRemove);
-            CliMessages.printRemovePageMessage(pageRemoved);
+            cliMessages.printRemovePageMessage(pageRemoved);
         } else if (!sectionTitleToRemove.equals("") && pageNumberToRemove == -1) {
             int indexOfSectionToRemove = currentNotebook.findSection(sectionTitleToRemove);
             try {
@@ -138,5 +142,15 @@ public class RemoveCommandNotebookMode extends CliCommand {
         if (pageNumberToRemove == -1) {
             throw new InvalidPageException(Integer.toString(pageNumberToRemove + 1));
         }
+    }
+
+    @Override
+    public boolean isPersonalised() {
+        return isPersonalised;
+    }
+
+    @Override
+    public boolean isTriggerAutoSave() {
+        return isAutoSave;
     }
 }

@@ -1,19 +1,21 @@
 package seedu.duke.userinterface.command;
 
-import seedu.duke.exceptions.InvalidUserInputException;
-import seedu.duke.userinterface.AppMode;
+import seedu.duke.exceptions.IncorrectAppModeException;
+import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.userinterface.AppState;
 
 public abstract class CliCommand {
     public static final String COMMAND_WORD = "mode";
+    public boolean isPersonalised = false;
     protected AppState appState;
     protected String commandParams;
+    private static final boolean isAutoSave = false;
 
     public static String getCommandWord() {
         return COMMAND_WORD;
     }
 
-    public abstract void execute();
+    public abstract void execute() throws InvalidCommandException, IncorrectAppModeException;
 
     public AppState getAppState() {
         return appState;
@@ -29,5 +31,14 @@ public abstract class CliCommand {
 
     public void setCommandParams(String params) {
         commandParams = params;
+    }
+
+
+    public boolean isPersonalised() {
+        return isPersonalised;
+    }
+
+    public boolean isTriggerAutoSave() {
+        return isAutoSave;
     }
 }

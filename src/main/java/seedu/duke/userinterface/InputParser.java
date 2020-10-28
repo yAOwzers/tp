@@ -1,69 +1,89 @@
 package seedu.duke.userinterface;
 
+import seedu.duke.exceptions.EmptyPageException;
+import seedu.duke.exceptions.IncorrectAppModeException;
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
 import seedu.duke.exceptions.InvalidCommandException;
+import seedu.duke.exceptions.InvalidIndexException;
 import seedu.duke.exceptions.InvalidNotebookException;
 import seedu.duke.exceptions.InvalidPageException;
 import seedu.duke.exceptions.InvalidSectionException;
+import seedu.duke.exceptions.InvalidSelectCommandException;
+import seedu.duke.exceptions.InvalidTagException;
 import seedu.duke.exceptions.TaskTitleException;
-import seedu.duke.exceptions.TaskWrongFormatException;
-
+import seedu.duke.exceptions.ZeroNoteException;
+import seedu.duke.notebooks.Notebook;
+import seedu.duke.notebooks.NotebookShelf;
+import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.command.CliCommand;
-import seedu.duke.userinterface.command.Done;
 import seedu.duke.userinterface.command.Exit;
 import seedu.duke.userinterface.command.Help;
 import seedu.duke.userinterface.command.ModeSwitch;
 import seedu.duke.userinterface.command.notebook.AddCommandNotebookMode;
+import seedu.duke.userinterface.command.notebook.FindCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.ListCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.RemoveCommandNotebookMode;
 import seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode;
+import seedu.duke.userinterface.command.notebook.TagCommandNotebookMode;
 import seedu.duke.userinterface.command.timetable.AddCommandTimetableMode;
+import seedu.duke.userinterface.command.timetable.DoneCommandTimetableMode;
+import seedu.duke.userinterface.command.timetable.FindCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.ListCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
-
+import seedu.duke.userinterface.command.timetable.TagCommandTimetableMode;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-import static seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode.NOTEBOOK_DELIMITER;
-import static seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode.PAGE_DELIMITER;
-import static seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode.SECTION_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.CONTENT_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.NOTEBOOK_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.PAGE_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.SECTION_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode.SHOW_ALL;
 import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.DEADLINE_DELIMITER;
 import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.TASK_DELIMITER;
 
 public class InputParser {
-    public static String parseTaskTitle(String input) throws TaskWrongFormatException, TaskTitleException {
-        if (input.startsWith(TASK_DELIMITER)) {
+    /**
+     * Parses the user's input to extract the task title in TIMETABLE mode.
+     *
+     * @param input is the user's input.
+     * @return the task title.
+     * @throws TaskTitleException               when the user's input does not include a task title.
+     * @throws IncorrectDeadlineFormatException when the user's input does not include the DEADLINE_DELIMITER.
+     */
+    public String parseTaskTitle(String input)
+            throws TaskTitleException, IncorrectDeadlineFormatException {
+        if (input.startsWith(TASK_DELIMITER) && input.contains(DEADLINE_DELIMITER)) {
             String taskTitle = input.replace(TASK_DELIMITER, "");
+            int indexPos = taskTitle.indexOf("/by");
+            taskTitle = taskTitle.substring(0, indexPos).trim();
+
             if (taskTitle.isBlank()) {
                 throw new TaskTitleException();
             }
-            int indexPos = taskTitle.indexOf("/by");
-            taskTitle = taskTitle.substring(0, indexPos).trim();
+
             return taskTitle;
         } else {
-            throw new TaskWrongFormatException();
+            throw new IncorrectDeadlineFormatException();
         }
     }
 
     /**
-     * Parses user's input to extract deadline.
+     * Parses user's input to extract deadline in TIMETABLE mode.
      *
-     * @param input input from user which contains the deadline.
-     *
-     * @return deadline
-     *
+     * @param input is the user's input.
+     * @return deadline in the format dd-MM-yyyy hhMM, where time is in 24h format.
      * @throws IncorrectDeadlineFormatException when the deadline input is in the wrong format.
-     * @throws TaskWrongFormatException         when the deadline input is blank.
      */
-    public static String parseDeadline(String input) throws TaskWrongFormatException, IncorrectDeadlineFormatException {
-        int dividerPos = input.indexOf(DEADLINE_DELIMITER);
-        input = input.substring(dividerPos);
-        if (input.startsWith(DEADLINE_DELIMITER)) {
+    public String parseDeadline(String input) throws IncorrectDeadlineFormatException {
+        if (input.contains(DEADLINE_DELIMITER)) {
+            int dividerPos = input.indexOf(DEADLINE_DELIMITER);
+            input = input.substring(dividerPos);
             String deadline = input.replace(DEADLINE_DELIMITER, "").trim();
             if (deadline.isBlank()) {
-                throw new TaskWrongFormatException();
+                throw new IncorrectDeadlineFormatException();
             }
             if (!correctTimeFormat(deadline)) {
                 throw new IncorrectDeadlineFormatException();
@@ -78,14 +98,12 @@ public class InputParser {
      * Checks if [deadline] input by the user is in the correct format.
      *
      * @param by is the string containing the deadline's due date and time.
-     *
      * @return true when the input is in the correct format, otherwise false.
      */
-    private static boolean correctTimeFormat(String by) {
+    private boolean correctTimeFormat(String by) {
         DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm");
-        LocalDate date = null;
         try {
-            date = LocalDate.parse(by, dateTime);
+            LocalDate date = LocalDate.parse(by, dateTime);
             return true;
         } catch (DateTimeParseException d) {
             return false;
@@ -202,7 +220,7 @@ public class InputParser {
         if (input.startsWith(NOTEBOOK_DELIMITER)) {
             String notebookTitle = input.replace(NOTEBOOK_DELIMITER, "").trim();
             if (notebookTitle.isBlank()) {
-                throw new InvalidNotebookException();
+                throw new InvalidNotebookException(notebookTitle);
             }
             if (notebookTitle.contains(SECTION_DELIMITER)) {
                 int indexPos = notebookTitle.indexOf(SECTION_DELIMITER);
@@ -210,17 +228,30 @@ public class InputParser {
             }
             return notebookTitle;
         } else {
-            throw new InvalidNotebookException();
+            throw new InvalidNotebookException(input);
         }
     }
 
-    public static String parseSectionTitle(String input) throws InvalidSectionException {
-        int dividerPos = input.indexOf(SECTION_DELIMITER);
-        input = input.substring(dividerPos);
+    /**
+     * Parses section title from the user's input.
+     *
+     * @param input is the user's input.
+     * @return the section title input by the user.
+     * @throws InvalidSectionException when the user's input does not contain the section delimiter, or when the
+     *                                 section title is blank.
+     */
+    public String parseSectionTitle(String input) throws InvalidSectionException {
+        try {
+            int dividerPos = input.indexOf(SECTION_DELIMITER);
+            input = input.substring(dividerPos);
+        } catch (StringIndexOutOfBoundsException e) {
+            throw new InvalidSectionException(input);
+        }
+
         if (input.startsWith(SECTION_DELIMITER)) {
             String sectionTitle = input.replace(SECTION_DELIMITER, "");
             if (sectionTitle.isBlank()) {
-                throw new InvalidSectionException();
+                throw new InvalidSectionException(sectionTitle);
             }
             if (sectionTitle.contains(PAGE_DELIMITER)) {
                 int indexPos = sectionTitle.indexOf(PAGE_DELIMITER);
@@ -228,14 +259,26 @@ public class InputParser {
             }
             return sectionTitle;
         } else {
-            throw new InvalidSectionException();
+            throw new InvalidSectionException(input);
         }
     }
 
-    public int parseTaskIndex(String args) throws NumberFormatException {
-        return Integer.parseInt(args) - 1;
+    public int parseTaskIndex(String args) throws InvalidIndexException {
+        try {
+            return Integer.parseInt(args) - 1;
+        } catch (NumberFormatException nfe) {
+            throw new InvalidIndexException(args);
+        }
     }
 
+    /**
+     * Parses the page number input by the user.
+     *
+     * @param input is the user's input.
+     * @return the page number input by the user.
+     * @throws InvalidPageException when the page input by the user is blank, or when the user's input is in the
+     *                              wrong format.
+     */
     public int parsePageNumber(String input) throws InvalidPageException {
         try {
             int dividerPos = input.indexOf(PAGE_DELIMITER);
@@ -324,24 +367,60 @@ public class InputParser {
             if (appState.getAppMode() == AppMode.TIMETABLE) {
                 return new AddCommandTimetableMode(argument, appState);
             } else {
-                String titleToAdd = "";
-                String contentToAdd = "";
+                String titleToAdd;
+                String contentToAdd;
                 if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
                     titleToAdd = parseNotebookTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
-                }
-                if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
+                } else if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
                     titleToAdd = parseSectionTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
+                } else if (appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
+                    titleToAdd = parsePageTitle(argument);
+                    contentToAdd = parsePageContent(argument);
+                    return new AddCommandNotebookMode(titleToAdd, contentToAdd, appState);
+                } else {
+                    throw new InvalidCommandException(userInput);
                 }
-                // TODO: implement adding pages
-                return new AddCommandNotebookMode(titleToAdd, contentToAdd, appState);
+            }
+        case FindCommandTimetableMode.COMMAND_WORD:
+            String[] splitParams = parseTagDescription(argument);
+            if (appState.getAppMode() == AppMode.TIMETABLE && argument.contains("/t")) {
+                return new FindCommandTimetableMode(splitParams[0].trim(), splitParams[1].trim(), appState);
+            } else if (appState.getAppMode() == AppMode.TIMETABLE && !argument.contains("/t")) {
+                return new FindCommandTimetableMode(splitParams[0].trim(), "", appState);
+            } else if (argument.contains("/t")) {
+                return new FindCommandNotebookMode(splitParams[0].trim(), splitParams[1].trim(), appState);
+            } else {
+                return new FindCommandNotebookMode(splitParams[0].trim(), "", appState);
             }
         case ListCommandTimetableMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
                 return new ListCommandTimetableMode(argument, appState);
             } else {
                 return new ListCommandNotebookMode(argument, appState);
+            }
+        case SelectCommandNotebookMode.COMMAND_WORD:
+            if (appState.getAppMode() != AppMode.TIMETABLE) {
+                return new SelectCommandNotebookMode(argument, appState);
+            } else {
+                throw new IncorrectAppModeException();
+            }
+        case TagCommandTimetableMode.COMMAND_WORD:
+            splitParams = parseTagDescription(argument);
+            if (appState.getAppMode() == AppMode.TIMETABLE) {
+                int index = parseTaskIndex(splitParams[0].trim());
+                try {
+                    return new TagCommandTimetableMode(index, splitParams[1].trim(), appState);
+                } catch (IndexOutOfBoundsException e) {
+                    throw new InvalidTagException(argument);
+                }
+            } else {
+                try {
+                    return new TagCommandNotebookMode(splitParams[1].trim(), appState);
+                } catch (IndexOutOfBoundsException e) {
+                    throw new InvalidTagException(argument);
+                }
             }
         case RemoveCommandTimetableMode.COMMAND_WORD:
             if (appState.getAppMode() == AppMode.TIMETABLE) {
@@ -365,22 +444,16 @@ public class InputParser {
                 return new RemoveCommandNotebookMode(notebookTitleToRemove,
                         sectionTitleToRemove, pageNumberToRemove, appState);
             }
-        case SelectCommandNotebookMode.COMMAND_WORD:
-            if (appState.getAppMode() != AppMode.TIMETABLE) {
-                return new SelectCommandNotebookMode(argument, appState);
-            } else {
-                throw new InvalidCommandException("Please key in the format:");
-            }
         case Exit.COMMAND_WORD:
             return new Exit(argument, appState);
         case Help.COMMAND_WORD:
             return new Help(argument);
-        case Done.COMMAND_WORD:
-            return new Done(argument, appState);
+        case DoneCommandTimetableMode.COMMAND_WORD:
+            return new DoneCommandTimetableMode(argument, appState);
         case ModeSwitch.COMMAND_WORD:
             return new ModeSwitch(argument, appState);
         default:
-            throw new InvalidCommandException("Please key in a valid command.");
+            throw new InvalidCommandException(userInput);
         }
     }
 }

@@ -1,5 +1,6 @@
 package seedu.duke.exceptions;
 
+//@@Lusi711
 public class IncorrectAppModeException extends ZeroNoteException {
     @Override
     public void printErrorMessage() {

@@ -7,6 +7,7 @@ import seedu.duke.exceptions.InvalidTagException;
 
 public class Section {
     private String title;
+    private String tag = "";
     private final ArrayList<Page> pageArrayList;
 
     public Section(String title) {
@@ -26,6 +27,10 @@ public class Section {
         pageArrayList.add(new Page(title, content));
     }
 
+    public void addPage(Page p) {
+        pageArrayList.add(p);
+    }
+
     public int getPage(String searchKey) {
         int index = 0;
         for (Page p : pageArrayList) {
@@ -37,12 +42,12 @@ public class Section {
         return -1;
     }
 
-    public void getPage(int pageNum) {
+    public void getPage(int pageIndex) {
         try {
-            Page page = pageArrayList.get(pageNum);
+            Page page = pageArrayList.get(pageIndex);
             page.printPage();
-        } catch (ArrayIndexOutOfBoundsException | NullPointerException e) {
-            System.out.println("\tpage doesn't exist");
+        } catch (IndexOutOfBoundsException | NullPointerException e) {
+            System.out.println("page <" + (pageIndex + 1) + "> doesn't exist");
         }
     }
 
@@ -60,5 +65,30 @@ public class Section {
 
     public ArrayList<Page> getPageArrayList() {
         return pageArrayList;
+    }
+
+    public void setTag(String tag) throws InvalidTagException {
+        if (!tag.equals("")) {
+            this.tag = tag;
+        } else {
+            throw new InvalidTagException("tag /t" + tag);
+        }
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public String serialize() {
+        StringBuilder serialized = new StringBuilder();
+        String lineSeparator = System.lineSeparator();
+        serialized.append(title);
+        serialized.append(lineSeparator);
+        serialized.append(pageArrayList.size());
+        serialized.append(lineSeparator);
+        for (Page p: pageArrayList) {
+            serialized.append(p.serialize());
+        }
+        return serialized.toString();
     }
 }
