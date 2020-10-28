@@ -1,6 +1,7 @@
 package seedu.duke.userinterface.command.notebook;
 
 import seedu.duke.exceptions.IncorrectAppModeException;
+import seedu.duke.exceptions.InvalidTagException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.Page;
@@ -30,26 +31,26 @@ public class TagCommandNotebookMode extends CliCommand {
     }
 
     public void execute() {
+        CliMessages cliMessages = new CliMessages();
         try {
             switch (appState.getAppMode()) {
             case NOTEBOOK_BOOK:
                 currentNotebook.setTag(commandParams);
-                cliMessages.printTagNotebookMessage(currentNotebook.getTitle(),currentNotebook.getTag());
+                cliMessages.printTagNotebookMessage(currentNotebook.getTitle(), currentNotebook.getTag());
                 break;
             case NOTEBOOK_SECTION:
                 currentSection.setTag(commandParams);
-                cliMessages.printTagNotebookMessage(currentSection.getTitle(),currentSection.getTag());
+                cliMessages.printTagNotebookMessage(currentSection.getTitle(), currentSection.getTag());
                 break;
             case NOTEBOOK_PAGE:
                 currentPage.setTag(commandParams);
-                cliMessages.printTagNotebookMessage(currentPage.getTitle(),currentPage.getTag());
+                cliMessages.printTagNotebookMessage(currentPage.getTitle(), currentPage.getTag());
                 break;
             default:
                 throw new IncorrectAppModeException();
             }
         } catch (ZeroNoteException zne) {
             zne.printErrorMessage();
-            return;
         }
     }
 

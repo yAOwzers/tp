@@ -1,7 +1,6 @@
 package seedu.duke.userinterface;
 
 import seedu.duke.exceptions.CorruptFileException;
-import seedu.duke.exceptions.InvalidUserInputException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.command.CliCommand;
@@ -63,9 +62,12 @@ public class CliUserInterface {
                 if (userInput.equals(Exit.COMMAND_WORD)) {
                     toQuit = true;
                 }
+                System.out.println(messages.lineSeparator());
                 executeCommand(userInput);
+                System.out.println(messages.lineSeparator());
             } catch (ZeroNoteException e) {
                 e.printErrorMessage();
+                System.out.println(messages.lineSeparator());
             }
         }
     }

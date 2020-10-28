@@ -20,31 +20,42 @@ public class FindCommandNotebookMode extends CliCommand {
     private String tag;
     private boolean isPersonalised = true;
 
-    private ArrayList<Notebook> notebooksFound = new ArrayList<>();
-    private ArrayList<Section> sectionsFound = new ArrayList<>();
-    private ArrayList<Page> pagesFound = new ArrayList<>();
-    private CliMessages cliMessages = new CliMessages();
+    private ArrayList<String> notebookMessages = new ArrayList<>();
+    private ArrayList<String> sectionMessages = new ArrayList<>();
+    private ArrayList<String> pageMessages = new ArrayList<>();
 
     public FindCommandNotebookMode(String keyword, String tag, AppState appState) {
-        this.keyword = keyword;
+        this.keyword = keyword.toLowerCase();
         this.tag = tag.toLowerCase();
         this.appState = appState;
     }
 
     public void execute() {
-        if (tag.equals("")) {
+        CliMessages cliMessages = new CliMessages();
+        if (tag.equals("") && !keyword.equals("")) {
             getAllWithTitleContainingKeyword();
-        } else {
+            System.out.println("I've found these for keyword: " + keyword);
+        } else if (!tag.equals("") && keyword.equals("")) {
             getAllWithTagsContainingKeyword();
+            System.out.println("I've found these for tag: " + tag);
+        } else {
+            System.out.println("Missing keyword/tag");
+            System.out.println("Format: find [KEYWORD] or find /t[TAG]");
+            return;
         }
-        printFoundListsMessage();
-    }
 
-    private void printFoundListsMessage() {
-        System.out.println("Here are what I found:");
-        cliMessages.printFoundNotebooksMessage(notebooksFound);
-        cliMessages.printFoundSectionsMessage(sectionsFound);
-        cliMessages.printFoundPagesMessage(pagesFound);
+        if (!notebookMessages.isEmpty()) {
+            System.out.println("Notebooks:");
+            cliMessages.printFoundNotebooksMessages(notebookMessages);
+        }
+        if (!sectionMessages.isEmpty()) {
+            System.out.println("Sections:");
+            cliMessages.printFoundNotebooksMessages(sectionMessages);
+        }
+        if (!pageMessages.isEmpty()) {
+            System.out.println("Pages:");
+            cliMessages.printFoundNotebooksMessages(pageMessages);
+        }
     }
 
     private void getAllWithTitleContainingKeyword() {
@@ -52,7 +63,7 @@ public class FindCommandNotebookMode extends CliCommand {
         for (Notebook notebook : currentNotebookShelf.getNotebooksArrayList()) {
             String notebookTitle = notebook.getTitle();
             if (isMatching(notebookTitle, keyword)) {
-                notebooksFound.add(notebook);
+                notebookMessages.add(notebookTitle);
             }
             getSectionsWithTitleContainingKeyword(notebook);
         }
@@ -62,17 +73,17 @@ public class FindCommandNotebookMode extends CliCommand {
         for (Section section : notebook.getSectionArrayList()) {
             String sectionTitle = section.getTitle();
             if (isMatching(sectionTitle, keyword)) {
-                sectionsFound.add(section);
+                sectionMessages.add(notebook.getTitle() + " |-- " + sectionTitle);
             }
-            getPagesWithTitleContainingKeyword(section);
+            getPagesWithTitleContainingKeyword(notebook, section);
         }
     }
 
-    private void getPagesWithTitleContainingKeyword(Section section) {
+    private void getPagesWithTitleContainingKeyword(Notebook notebook, Section section) {
         for (Page page : section.getPageArrayList()) {
             String pageTitle = page.getTitle();
             if (isMatching(pageTitle, keyword)) {
-                pagesFound.add(page);
+                pageMessages.add(notebook.getTitle() +  " |-- " + section.getTitle() + " |-- " + page.getTitle());
             }
         }
     }
@@ -81,8 +92,8 @@ public class FindCommandNotebookMode extends CliCommand {
         NotebookShelf currentNotebookShelf = appState.getCurrentBookShelf();
         for (Notebook notebook : currentNotebookShelf.getNotebooksArrayList()) {
             String notebookTag = notebook.getTag();
-            if (!notebookTag.equals("") && isMatching(notebookTag, tag)) {
-                notebooksFound.add(notebook);
+            if (!notebookTag.equals("") && notebookTag.equals(tag)) {
+                notebookMessages.add(notebook.getTitle());
             }
             getSectionsWithTagContainingKeyword(notebook);
         }
@@ -91,25 +102,30 @@ public class FindCommandNotebookMode extends CliCommand {
     private void getSectionsWithTagContainingKeyword(Notebook notebook) {
         for (Section section : notebook.getSectionArrayList()) {
             String sectionTag = section.getTag();
-            if (!sectionTag.equals("") && isMatching(sectionTag, tag)) {
-                sectionsFound.add(section);
+            if (!sectionTag.equals("") && sectionTag.equals(tag)) {
+                sectionMessages.add(notebook.getTitle() + " |-- " + section.getTitle());
             }
-            getPagesWithTagContainingKeyword(section);
+            getPagesWithTagContainingKeyword(notebook, section);
         }
     }
 
-    private void getPagesWithTagContainingKeyword(Section section) {
+    private void getPagesWithTagContainingKeyword(Notebook notebook, Section section) {
         for (Page page : section.getPageArrayList()) {
             String pageTag = page.getTag();
-            if (!pageTag.equals("") && isMatching(pageTag, tag)) {
-                pagesFound.add(page);
+            if (!pageTag.equals("") && pageTag.equals(tag)) {
+                pageMessages.add(notebook.getTitle() +  " |-- " + section.getTitle() + " |-- " + page.getTitle());
             }
         }
     }
 
     private boolean isMatching(String title, String keyword) {
-        Set<String> wordsInDescription = new HashSet<>(getWordsInTitle(title));
-        return wordsInDescription.contains(keyword);
+        Set<String> wordsInTitle = new HashSet<>(getWordsInTitle(title));
+        for (String word : wordsInTitle) {
+            if (word.contains(keyword)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private List<String> getWordsInTitle(String title) {
