@@ -526,19 +526,19 @@ The user can `select` a `Notebook`, `Section` or `Page` to view its contents. Th
 
 Given below is an example usage scenario and how the select notebook function behaves.
 
-Step 1. `CliUserInterface#executeCommand` is called when the user selects a `Notebook` from the `NotebookShelf`.
+1. `CliUserInterface#executeCommand` is called when the user selects a `Notebook` from the `NotebookShelf`.
 
-Step 2. The user types `select /nCS2113T`. The `select` command is passed through `InputParser#getCommandFromInput`.
+2. The user types `select /nCS2113T`. The `select` command is passed through `InputParser#getCommandFromInput`.
 
-Step 3. `InputParser#getCommandFromInput` returns the command `SelectCommandNotebookMode`.
+3. `InputParser#getCommandFromInput` returns the command `SelectCommandNotebookMode`.
 
-Step 4. A constructor for `SelectCommandNotebookMode` is created.
+4. A constructor for `SelectCommandNotebookMode` is created.
 
-Step 5. `SelectCommandNotebookMode#execute()` runs, which then calls `InputParser#extractParams`.
+5. `SelectCommandNotebookMode#execute()` runs, which then calls `InputParser#extractParams`.
 
-Step 6. If the argument typed by the user contains `/n`, which is the Notebook delimitter, `InputParser#extractNotebookParams` is called.
+6. If the argument typed by the user contains `/n`, which is the Notebook delimitter, `InputParser#extractNotebookParams` is called.
 
-Step 7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
+7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
 
 The UML sequence diagram below shows how the select noteboook command works.
 ![Sequence Diagram for Add Task Command](diagrams/class/jpeg/select_notebook.jpg)
