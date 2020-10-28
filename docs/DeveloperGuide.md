@@ -58,7 +58,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.1. Saving the application state](#4421-saving-the-application-state) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.2. Reading the application state](#4422-reading-the-application-state) <br>
 &nbsp;&nbsp;[4.5. Error handling](#45-error-handling) <br>
-&nbsp;&nbsp;[4.6. [Proposed] Find duplicates](#46-find-duplicates) <br>
+&nbsp;&nbsp;[4.6. [Proposed] Find duplicates](#46-proposed-find-duplicates-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.6.1 Proposed implementation](#461-proposed-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.6.2 Design considerations](#462-design-considerations) <br>
 [5. Documentation](#5-documentation) <br>
@@ -311,6 +311,7 @@ The UML sequence diagram below shows how the add task command works.
 ![Sequence Diagram for Add Task Command](diagrams/class/jpeg/add_task.jpg)
 
 <hr>
+TaskList also allows the deletion of tasks by the user.
 
 The figure below shows how the delete task command works:
 <img src= "https://user-images.githubusercontent.com/60319628/96657942-02dc6900-1376-11eb-9284-38322e1a2b09.png">
@@ -491,6 +492,7 @@ The UML sequence diagram below shows how the add notebook command works.
 ![Sequence Diagram for Add Notebook Command](/diagrams/class/jpeg/add_notebook.jpg)
 
 <hr>
+Notebook Mode also allows the user to remove a notebook/section/page.
 
 The figure below shows how the "remove notebook" command works:
 <img src="https://user-images.githubusercontent.com/60319628/96821973-9176e600-145b-11eb-95b7-5bf885ea1867.png">
