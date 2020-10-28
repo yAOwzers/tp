@@ -1,6 +1,7 @@
 # Developer Guide for Zer0Note
 
-[1. Introduction](#1-introduction) <br>
+## Table Of Contents
+[1. Introduction](#1-introduction-neil) <br>
 &nbsp;&nbsp;[1.1. Welcome!](#11-welcome)<br>
 &nbsp;&nbsp;[1.2. How to use this document](#12-how-to-use-this-document)<br>
 [2. Setting up](#2-setting-up) <br>
@@ -9,10 +10,12 @@
 &nbsp;&nbsp;[2.3. Verifying the setup](#23-verifying-the-setup) <br>
 &nbsp;&nbsp;[2.4. Configure coding style](#24-configure-the-coding-style) <br>
 [3. Design](#3-design) <br>
-&nbsp;&nbsp;[3.1. Architecture](#31-architecture) <br>
-&nbsp;&nbsp;[3.2. Commands](#32-commands) <br>
-&nbsp;&nbsp;[3.3. Notebooks](#33-notebooks) <br>
-&nbsp;&nbsp;[3.4. Tasks](#34-tasks) <br>
+&nbsp;&nbsp;[3.1. Architecture](#31-architecture-neil) <br>
+&nbsp;&nbsp;[3.2. UI Component](#32-ui-component-neil) <br>
+&nbsp;&nbsp;[3.3. Commands Component](#33-commands-component-neil) <br>
+&nbsp;&nbsp;[3.4. Tasks Component](#34-tasks-component) <br>
+&nbsp;&nbsp;[3.5. Notebooks Component](#35-notebooks-component)<br>
+&nbsp;&nbsp;[3.6. Storage Component](#36-storage-component)<br>
 [4. Implementation](#4-implementation) <br>
 &nbsp;&nbsp;[4.1. Mode Switch Feature](#41-mode-switch-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.1.1. Implementation](#411-implementation) <br>
@@ -21,21 +24,29 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.1. Tasklist Management Feature](#421-tasklist-management-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.1.1. Implementation](#4211-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.1.2. Design Considerations](#4212-design-considerations) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2. Tag Feature](#422-tag-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.1. Implementation](#4211-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4212-design-considerations) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2. List Feature](#421-tasklist-management-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.1. Implementation](#4211-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4212-design-considerations) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2. Mark as done Feature](#422-mark-as-done-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.1. Implementation](#4221-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4222-design-considerations) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.2.3. Tag Feature](#423-tag-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.3.1. Implementation](#4231-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.3.2. Design Considerations](#4232-design-considerations) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.2.4. List Feature](#424-list-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.4.1. Implementation](#4241-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.2.5. Search Feature](#425-search-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.5.1. Implementation](#4251-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.5.2. Design Considerations](#4252-design-considerations) <br>
 &nbsp;&nbsp;[4.3. Notebook Mode](#43-notebook-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.1. Notebook Management Feature](#431-notebook-management-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.1.1. Implementation](#4311-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2. Tag Feature](#432-tag-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2. Select Feature](#432-select-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.1. Implementation](#4321-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.2. Design Considerations](#4322-design-considerations) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3. Select Feature](#433-select-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3. Tag Feature](#433-tag-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.1. Implementation](#4331-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.2. Design Considerations](#4332-design-considerations) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.3.4. Search Feature](#434-search-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.4.1. Implementation](#4341-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.4.2. Design Considerations](#4342-design-considerations) <br>
 &nbsp;&nbsp;[4.4. Storage](#44-storage-neil) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.1. Storage Format](#441-storage-format) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.1. TaskList](#4411-tasklist) <br>
@@ -172,13 +183,13 @@ The following diagram provides a rough overview of how **Zer0Note** is built.
 
 ![Architecture Diagram](diagrams/class/jpeg/architecture_neil.jpg)
 
-The `CliUserInteface` (see [here](#32-userinterface-component-neil)) is the "highest" layer of the application, in
+The `CliUserInteface` (see [here](#32-ui-component-neil)) is the "highest" layer of the application, in
 the sense that it interacts directly with the user, and it passes along the input to other classes. The
 `CliUserInterface` contains the state of the application, stored in an instance of `AppState`. It then uses the other
 classes such as `InputParser` and the various `CliCommand` classes to execute the instructions provided by the user
 . This is explained in more detail in the following sections.
 
-### 3.2 UserInterface Component (Neil)
+### 3.2 UI Component (Neil)
 
 The user interface of **Zer0Note** is provided by the class `CliUserInterface`. It is instantiated once in the main
 method, and its `run()` method is called to start the UI for the application.
@@ -328,11 +339,19 @@ It also constructs `CliMessages` to display messages to the user.
     - Cons: It takes more resources to implement. The constant factor for a hashing algorithm is significant and not
      worth the tradeoff for smaller amounts of data, like a typical user would be likely to generate.
 
-#### 4.2.2. Tag Feature
+#### 4.2.2. Mark as done feature  
+
+##### 4.2.2.1. Implementation  
+
+The following sequence diagram hows how the mark as done operation works:  
+
+##### 4.2.2.2. Design Considerations  
+
+#### 4.2.3. Tag Feature
 The user can tag `Task`s in the `TaskList`. This section describes the implementation and design considerations for this
 feature.
 
-##### 4.2.2.1. Implementation
+##### 4.2.3.1. Implementation
 The `Task` class contains a member `tag` of String type.
 
 The figure below shows how the tag operation works:
@@ -364,7 +383,7 @@ has been made.
 current list.
 3. The tag operation ends.
 
-##### 4.2.2.2. Design Considerations
+##### 4.2.3.2. Design Considerations
 This section describes some of the considerations involved when designing the tag feature.
 
 ###### Aspect: How to store the tags
@@ -377,21 +396,68 @@ This section describes some of the considerations involved when designing the ta
     be achieved).
     - Cons: It is hard to retrieve the tag for a specific `Task` due to the structure of the key-value pair.
 
-#### 4.2.3. List Feature
+#### 4.2.4. List Feature
 
-##### 4.2.3.1. Implementation
+##### 4.2.4.1. Implementation
 
 The following sequence diagram shows how the list operation works:
 
 ![Sequence Diagram for List command](diagrams/class/jpeg/SequenceDiagram_List.jpg)
 
-### 4.2.3. Mark as done feature  
+#### 4.2.5. Search Feature
+This feature allows the user to search for tasks by keyword or by tag. Refer to
+[Tag Feature](#423-tag-feature) for more information on the implementation of tags.
 
-#### 4.2.2.1. Implementation  
+This section explains the implementation and design considerations for the search feature.
 
-The following sequence diagram hows how the mark as done operation works:  
+##### 4.2.5.1. Implementation
 
-#### 4.2.2.2. Design Considerations  
+The search feature is mainly executed by a `FindCommandTimetableMode` class. The following sequence diagram shows an
+example of how the complete command works:
+
+![Sequence Diagram for Find command](diagrams/class/jpeg/SequenceDiagram_FindTimetable.jpg)
+
+There are 3 crucial processes during the search operation. For example, when the user enters `find ` into the command
+window while using the application:
+
+**Input Parsing**
+1. `CliUserInterface` receives the "find " input by the user and calls the `executeCommand` method.
+2. Method `executeCommand` constructs the `InputParser` class and calls `InputParser#getCommandFromInput` to pass the
+input to `InputParser`.
+3. Method `InputParser#getCommandFromInput` does the following:<br>
+    a. Calls `InputParser#parseTagDescription` to identify the keyword or tag. The `keyword` and `tag` are set as empty
+    if they are not specified.<br>
+    b. Constructs the `FindCommandTimetableMode` class. <br>
+    c. Returns `FindCommandTimetableMode` back to `CliUserInterface`. <br>
+
+**Command Execution**
+1. `CliUserInterface#executeCommand` calls `FindCommandTimetableMode#execute` to execute the command.
+2. Method `FindCommandTimetableMode#execute()` does the following:<br>
+    a. Constructs `CliMessages` class, which prints any outputs to the user<br>
+    b. Obtains the full tasklist `tasks` from `AppState#getTaskList`<br>
+    c. If `keyword` is specified (not empty), `getTasksWithTitleContainingKeyword(tasks)` is calle, which returns a
+    list of tasks with their titles containing `keyword`.<br>
+    d. Else, if the `tag` is specified (not empty), `getTasksWithTagsContainingKeyword(tasks)` is called, which returns
+    a list of tasks with their tags matching `tag`. This is the method called in this example.<br>
+    e. Calls `CliMessages#printFoundTasksMessage` to display the message to the user.
+
+**Storage**
+1. `CliUserInterface#executeCommand` calls `FindCommandTimetableMode#isTriggerAutoSave` method to check whether a change
+has been made.
+2. If the method returns `True`, `CliUserInterface#executeCommand` calls `saveState` method to save the
+current list.
+3. The find operation ends.
+
+##### 4.2.5.2. Design Considerations
+
+This section describes some considerations involved when designing the find feature.
+
+**Aspect: Distinction between finding by keyword and finding by tag**
+- **Alternative 1 (current choice):** Handle as a if-else statement in a single class
+- **Alternative 2:** Two different classes that are subclasses to a class `FindCommandTimetableMode`
+    - Pros: Higher level of abstraction
+    - Cons: Unable to be returned directly by `InputParser#getCommandFromInput` as they are not subclasses of the
+    `CliCommand` class. An if-else statement is still required inside the`FindCommandTimetableMode#execute` method.
 
 ### 4.3. Notebook Mode
 
@@ -450,12 +516,47 @@ public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
 A switch-case block is used to determine the method to call based on the `appMode`.
 4. If the deletion is successful, `CliMessages` displays the message to the user.
 
-#### 4.3.2. Tag Feature
+#### 4.3.2. Select Feature
+
+The user can `select` a `Notebook`, `Section` or `Page` to view its contents. This section describes the implementation and design considerations for this feature.
+
+##### 4.3.2.1. Implementation
+
+Given below is an example usage scenario and how the select notebook function behaves.
+
+Step 1. `CliUserInterface#executeCommand` is called when the user selects a `Notebook` from the `NotebookShelf`.
+
+Step 2. The user types `select /nCS2113T`. The `select` command is passed through `InputParser#getCommandFromInput`.
+
+Step 3. `InputParser#getCommandFromInput` returns the command `SelectCommandNotebookMode`.
+
+Step 4. A constructor for `SelectCommandNotebookMode` is created.
+
+Step 5. `SelectCommandNotebookMode#execute()` runs, which then calls `InputParser#extractParams`.
+
+Step 6. If the argument typed by the user contains `/n`, which is the Notebook delimitter, `InputParser#extractNotebookParams` is called.
+
+Step 7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
+
+The UML sequence diagram below shows how the select noteboook command works.
+![Sequence Diagram for Add Task Command](diagrams/class/jpeg/select_notebook.jpg)
+
+##### 4.3.2.2. Design Considerations
+
+###### Aspect: How much navigability the Select function should have
+- **Alternative 1 (current choice):** The user must always select the notebook title if he wants to choose a section or page within it.
+    - Pros: It is easy to catch exceptions when the notebook/section does not exist. This also ensures that even if there are 2 sections in 2 different notebooks with the same name, the user can select the correct section.
+    - Cons: The format for the command is longer.
+- **Alternative 2**: The user can select a notebook/section/page wherever he wants.
+    - Pros: The command the user has to type is much shorter.
+    - Cons: If the user has notebooks/sections with the same name, he cannot be sure that the item he wants will be selected correctly.
+
+#### 4.3.3. Tag Feature
 
 The user can add a `tag` to a `Notebook`, `Section` or `Page`. This section describes the implementation and design
 considerations for this feature.
 
-##### 4.3.2.1. Implementation
+##### 4.3.3.1. Implementation
 The `Notebook`, `Section` and `Page` classes each contain a member `tag` of type String.
 
 The figure below shows how the tag operation works:
@@ -489,7 +590,7 @@ change has been made.
 current list.
 3. The tag operation ends.
 
-##### 4.3.2.2. Design Considerations
+##### 4.3.3.2. Design Considerations
 This section describes some of the considerations involved when designing the tag feature.
 
 ###### Aspect: How to store the tags
@@ -502,40 +603,47 @@ This section describes some of the considerations involved when designing the ta
     be achieved).
     - Cons: It is hard to retrieve the tag for a specific `Task` due to the structure of the key-value pair.
 
-#### 4.3.3. Select Feature
+#### 4.3.4. Search Feature
 
-The user can `select` a `Notebook`, `Section` or `Page` to view its contents. This section describes the implementation and design considerations for this feature.
+This feature works similarly to the [search feature](#425-search-feature) in the Timetable mode. Refer to
+[Tag Feature](#433-tag-feature) for more information on the implementation of tags in the Notebook mode.
 
-##### 4.3.3.1. Implementation
+##### 4.3.4.1. Implementation
 
-Given below is an example usage scenario and how the select notebook function behaves.
+The following sequence diagram shows how the search feature works in the notebook mode:
 
-1. `CliUserInterface#executeCommand` is called when the user selects a `Notebook` from the `NotebookShelf`.
+![Sequence Diagram for Find Notebook Command](diagrams/class/jpeg/SequenceDiagram_FindNotebook.jpg)
 
-2. The user types `select /nCS2113T`. The `select` command is passed through `InputParser#getCommandFromInput`.
+As the implementation of the search feature in the Notebook mode is similar to that in the Timetable mode, this section
+only covers the main differences in the two.
 
-3. `InputParser#getCommandFromInput` returns the command `SelectCommandNotebookMode`.
+**Input Parsing**
+- If the application is in the Notebook mode, `InputParser#getCommandFromInput` constructs the `FindCommandNotebookMode`
+class.
 
-4. A constructor for `SelectCommandNotebookMode` is created.
+**Command Execution**
+Method `FindCommandNotebookMode#execute()` does the following:<br>
+a. Constructs `CliMessages` class, which prints any outputs to the user<br>
+b. If `keyword` is specified (not empty), `getAllWithTitleContainingKeyword()` is called.
+`getAllWithTitleContainingKeyword()`searches for all notebooks, sections and pages that have titles that contain the
+keyword. <br>
+c. Else, if the `tag` is specified (not empty), `getAllWithTagsContainingKeyword` is called. This method finds
+all notebooks, sections and pages that have tags that fit `tag`.<br>
+d. The messages to output to the user are added to `ArrayList`s.
+e. Calls `CliMessages#printFoundNotebooksMessages`, `CliMessages#printFoundSectionsMessages` and
+`CliMessages#printFoundPagesMessages` are called if `Notebook`s, `Section`s and `Page`s are found respectively. These
+methods output the titles of the found notebooks, sections and pages to the user.
 
-5. `SelectCommandNotebookMode#execute()` runs, which then calls `InputParser#extractParams`.
+##### 4.3.4.2. Design Considerations
 
-6. If the argument typed by the user contains `/n`, which is the Notebook delimitter, `InputParser#extractNotebookParams` is called.
-
-7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
-
-The UML sequence diagram below shows how the select notebook command works.
-![Sequence Diagram for Add Task Command](/diagrams/class/jpeg/select_notebook.jpg)
-
-##### 4.3.3.2. Design Considerations
-
-###### Aspect: How much navigability the Select function should have
-- **Alternative 1 (current choice):** The user must always select the notebook title if he wants to choose a section or page within it.
-    - Pros: It is easy to catch exceptions when the notebook/section does not exist. This also ensures that even if there are 2 sections in 2 different notebooks with the same name, the user can select the correct section.
-    - Cons: The format for the command is longer.
-- **Alternative 2**: The user can select a notebook/section/page wherever he wants.
-    - Pros: The command the user has to type is much shorter.
-    - Cons: If the user has notebooks/sections with the same name, he cannot be sure that the item he wants will be selected correctly.
+Aspect: Way to search through the notebook shelf
+- **Alternative 1 (current choice):** Loop through every page, section and notebook
+    - Pros: Able to trace the notebook and section that a found page belongs to. This makes it more convenient to show
+    to the user.
+    - Cons: It is unoptimized in terms of complexity, with a complexity of O(n<sup>3</sup>).
+- **Alternative 2:** Store all notebooks, sections and pages into respective lists
+    - Pros: Has better time complexity of O(n) as it only needs to iterate through each list.
+    - Cons: Unable to output the notebook and section a page belongs to to the user
 
 ### 4.4. Storage (Neil)
 
@@ -662,7 +770,7 @@ The following example is a scenario that demonstrates how exceptions are handled
 
 <br>
 
-### 4.6 [Proposed] Find duplicate feature
+### 4.6 [Proposed] Find duplicates feature
 
 #### 4.6.1 Proposed implementation
 
