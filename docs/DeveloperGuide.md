@@ -37,6 +37,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.2. Tag Feature](#432-tag-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.1. Implementation](#4321-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.2. Design Considerations](#4322-design-considerations) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3. Search Feature](#433-search-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.1. Implementation](#4331-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.2. Design Considerations](#4322-design-considerations) <br>
 &nbsp;&nbsp;[4.4. Storage](#44-storage-neil) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.1. Storage Format](#441-storage-format) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.1. TaskList](#4411-tasklist) <br>
@@ -428,7 +431,7 @@ The `Notebook`, `Section` and `Page` classes each contain a member `tag` of type
 
 The figure below shows how the tag operation works:
 
-![Sequence Diagram for Tag Notebook command](/diagrams/class/jpeg/SequenceDiagram_TagNotebook.jpg)
+![Sequence Diagram for Tag Notebook command](diagrams/class/jpeg/SequenceDiagram_TagNotebook.jpg)
 
 There are 3 crucial processes during the tag operation. When the user enters `tag /tCS2113T` into the command window while using the application:
 
@@ -469,6 +472,48 @@ This section describes some of the considerations involved when designing the ta
     - Pros: It has a better time complexity for search operations since this data structure is more optimized (O(1) can 
     be achieved).
     - Cons: It is hard to retrieve the tag for a specific `Task` due to the structure of the key-value pair.
+
+#### 4.3.3. Search Feature
+
+This feature works similarly to the [search feature](#424-search-feature) in the Timetable mode. Refer to 
+[Tag Feature](#432-tag-feature) for more information on the implementation of tags in the Notebook mode.
+
+##### 4.3.3.1. Implementation
+
+The following sequence diagram shows how the search feature works in the notebook mode:
+
+![Sequence Diagram for Find Notebook Command](diagrams/class/jpeg/SequenceDiagram_FindNotebook.jpg)
+
+As the implementation of the search feature in the Notebook mode is similar to that in the Timetable mode, this section 
+only covers the main differences in the two.
+
+**Input Parsing**
+- If the application is in the Notebook mode, `InputParser#getCommandFromInput` constructs the `FindCommandNotebookMode` 
+class.
+
+**Command Execution**
+Method `FindCommandNotebookMode#execute()` does the following:<br>
+a. Constructs `CliMessages` class, which prints any outputs to the user<br>
+b. If `keyword` is specified (not empty), `getAllWithTitleContainingKeyword()` is called. 
+`getAllWithTitleContainingKeyword()`searches for all notebooks, sections and pages that have titles that contain the 
+keyword. <br>
+c. Else, if the `tag` is specified (not empty), `getAllWithTagsContainingKeyword` is called. This method finds
+all notebooks, sections and pages that have tags that fit `tag`.<br>
+d. The messages to output to the user are added to `ArrayList`s.
+e. Calls `CliMessages#printFoundNotebooksMessages`, `CliMessages#printFoundSectionsMessages` and 
+`CliMessages#printFoundPagesMessages` are called if `Notebook`s, `Section`s and `Page`s are found respectively. These 
+methods output the titles of the found notebooks, sections and pages to the user.
+
+##### 4.3.3.2. Design Considerations
+
+Aspect: Way to search through the notebook shelf
+- **Alternative 1 (current choice):** Loop through every page, section and notebook
+    - Pros: Able to trace the notebook and section that a found page belongs to. This makes it more convenient to show
+    to the user.
+    - Cons: It is unoptimized in terms of complexity, with a complexity of O(n<sup>3</sup>).
+- **Alternative 2:** Store all notebooks, sections and pages into respective lists
+    - Pros: Has better time complexity of O(n) as it only needs to iterate through each list.
+    - Cons: Unable to output the notebook and section a page belongs to to the user
 
 ### 4.4. Storage (Neil)
 
