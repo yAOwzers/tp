@@ -729,7 +729,7 @@ Aspect: Way to search through the notebook shelf
 
 The following sequence diagram shows how the list operation in the notebook mode works:
 
-<img src= https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/SequenceDiagram_ListSection.jpg">
+<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/SequenceDiagram_ListSection.jpg">
 
 Given below is an example usage scenario and how the list function behaves.
 
