@@ -25,7 +25,7 @@ public class Storage {
 
     private final String tasksFilePath = "tasks.txt";
     private final String notebooksFilePath = "notebooks.txt";
-    private String nameOfUserFilepath = "src/main/resources/txt/nameOfUser.txt";
+    private String nameFilepath = "data/nameFilepath.txt";
     private PersonalMesssageGenerator msgGenerator;
 
     public Storage() {
@@ -106,7 +106,7 @@ public class Storage {
     }
 
     public boolean isNameOfUserFilled() throws IOException {
-        File nameOfUserFile = new File(nameOfUserFilepath);
+        File nameOfUserFile = new File(nameFilepath);
         if (nameOfUserFile.length() == 0) {
             return false;
         }
@@ -114,13 +114,29 @@ public class Storage {
     }
 
     public void saveNameOfUser() throws IOException {
-        File nameOfUserFile = new File(nameOfUserFilepath);
-        nameOfUserFile.getParentFile().mkdir(); // create a directory
-        nameOfUserFile.createNewFile(); // create .txt file
+
+        //If the folder doesn't exists, create it
+        File folder = new File("data");
+        boolean bool = folder.mkdirs();
+
+        //If the file doesn't exist, create it
+        File f = new File(this.nameFilepath);
+        Scanner s = null; // create a Scanner using the File as the source
+        try {
+            s = new Scanner(f);
+        } catch (FileNotFoundException e) {
+            //System.out.println("File Not Found");
+            try {
+                f.createNewFile();
+                //System.out.println("New File");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        }
 
         Scanner keyboard = new Scanner(System.in);
         String userInput = keyboard.nextLine();
-        FileWriter nameOfUserFileToSave = new FileWriter(nameOfUserFile);
+        FileWriter nameOfUserFileToSave = new FileWriter(f);
         nameOfUserFileToSave.write(userInput);
         msgGenerator.setChosenName(userInput);
         msgGenerator.greetFirstTimeUser();
