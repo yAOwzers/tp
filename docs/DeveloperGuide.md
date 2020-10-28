@@ -246,7 +246,7 @@ And this diagram describes the `CliCommand`s related to the Notebook mode.
 
 ### 3.4. Tasks Component
 
-<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/taskComponent.jpg">
+![UML Diagram from Task Component](diagrams/class/jpeg/taskComponent.jpg)
 
 Figure []. Structure of Tasks Component
 
@@ -261,7 +261,7 @@ The `TaskList` class,
 
 ### 3.5. Notebooks Component
 
-<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/notebooks_simplified.jpg">
+![UML diagram for Notebooks Component](diagrams/class/jpeg/notebooks_simplified.jpg)
 
 Figure []. Structure of Notebooks Component
 
@@ -460,7 +460,7 @@ This section describes some of the considerations involved when designing the ta
 
 The following sequence diagram shows how the list operation works:
 
-<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/SequenceDiagram_ListUrgent.jpg">
+![Sequence Diagram for List Urgent](diagrams/class/jpeg/SequenceDiagram_ListUrgent.jpg)
 
 Given below is an example usage scenario and how the list function behaves.
 
@@ -557,7 +557,7 @@ Given below is an example usage scenario and how the add notebook function behav
 6. A new `Notebook`, entitled `CS2113T` is initialised.
 
 The UML sequence diagram below shows how the add notebook command works.
-![Sequence Diagram for Add Notebook Command](/diagrams/class/jpeg/add_notebook.jpg)
+![Sequence Diagram for Add Notebook Command](diagrams/class/jpeg/add_notebook.jpg)
 
 <hr>
 Notebook Mode also allows the user to remove a notebook/section/page.
