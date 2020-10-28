@@ -22,7 +22,6 @@ public class FindCommandNotebookMode extends CliCommand {
     private ArrayList<Notebook> notebooksFound = new ArrayList<>();
     private ArrayList<Section> sectionsFound = new ArrayList<>();
     private ArrayList<Page> pagesFound = new ArrayList<>();
-    private CliMessages cliMessages = new CliMessages();
 
     public FindCommandNotebookMode(String keyword, String tag, AppState appState) {
         this.keyword = keyword.toLowerCase();
@@ -44,6 +43,7 @@ public class FindCommandNotebookMode extends CliCommand {
     }
 
     private void printFoundListsMessage() {
+        CliMessages cliMessages = new CliMessages();
         System.out.println("Here are what I found:");
         cliMessages.printFoundNotebooksMessage(notebooksFound);
         cliMessages.printFoundSectionsMessage(sectionsFound);

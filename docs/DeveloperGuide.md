@@ -321,6 +321,61 @@ The following sequence diagram shows how the list operation works:
 
 ![Sequence Diagram for List command](/diagrams/class/jpeg/SequenceDiagram_List.jpg)
 
+#### 4.2.4. Search Feature
+This feature allows the user to search for tasks by keyword or by tag. Refer to 
+[4.2.2. Tag Feature](#422-tag-feature) for more information on the implementation of tags.
+
+This section explains the implementation and design considerations for the search feature.
+
+##### 4.2.4.1. Implementation
+
+The search feature is mainly executed by a `FindCommandTimetableMode` class. The following sequence diagram shows an 
+example of how the complete command works:
+
+![Sequence Diagram for Find command](/diagrams/class/jpeg/SequenceDiagram_FindTimetable.jpg)
+
+There are 3 crucial processes during the search operation. For example, when the user enters `find ` into the command 
+window while using the application:
+
+**Input Parsing**
+1. `CliUserInterface` receives the "find " input by the user and calls the `executeCommand` method.
+2. Method `executeCommand` constructs the `InputParser` class and calls `InputParser#getCommandFromInput` to pass the 
+input to `InputParser`.
+3. Method `InputParser#getCommandFromInput` does the following:<br>
+    a. Calls `InputParser#parseTagDescription` to identify the keyword or tag. The `keyword` and `tag` are set as empty
+    if they are not specified.<br>
+    b. Constructs the `FindCommandTimetableMode` class. <br>
+    c. Returns `FindCommandTimetableMode` back to `CliUserInterface`. <br>
+
+**Command Execution**
+1. `CliUserInterface#executeCommand` calls `FindCommandTimetableMode#execute` to execute the command.
+2. Method `FindCommandTimetableMode#execute()` does the following:<br>
+    a. Constructs `CliMessages` class, which prints any outputs to the user<br>
+    b. Obtains the full tasklist `tasks` from `AppState#getTaskList`<br>
+    c. If `keyword` is specified (not empty), `getTasksWithTitleContainingKeyword(tasks)` is calle, which returns a 
+    list of tasks with their titles containing `keyword`.<br>
+    d. Else, if the `tag` is specified (not empty), `getTasksWithTagsContainingKeyword(tasks)` is called, which returns
+    a list of tasks with their tags matching `tag`. This is the method called in this example.<br>
+    e. Calls `CliMessages#printFoundTasksMessage` to display the message to the user.
+
+**Storage**
+1. `CliUserInterface#executeCommand` calls `FindCommandTimetableMode#isTriggerAutoSave` method to check whether a change 
+has been made. 
+2. If the method returns `True`, `CliUserInterface#executeCommand` calls `saveState` method to save the 
+current list.
+3. The find operation ends.
+
+##### 4.2.4.2. Design Considerations
+
+This section describes some considerations involved when designing the find feature.
+
+**Aspect: Distinction between finding by keyword and finding by tag**
+- **Alternative 1 (current choice):** Handle as a if-else statement in a single class
+- **Alternative 2:** Two different classes that are subclasses to a class `FindCommandTimetableMode`
+    - Pros: Higher level of abstraction
+    - Cons: Unable to be returned directly by `InputParser#getCommandFromInput` as they are not subclasses of the 
+    `CliCommand` class. An if-else statement is still required inside the`FindCommandTimetableMode#execute` method.
+
 ### 4.3. Notebook Mode
 
 #### 4.3.1. Notebook Management Feature
