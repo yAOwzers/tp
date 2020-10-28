@@ -371,8 +371,9 @@ The UML sequence diagram below shows how the add task command works.
 TaskList also allows the deletion of tasks by the user.
 
 The figure below shows how the delete task command works:
-<img src= "https://user-images.githubusercontent.com/60319628/96657942-02dc6900-1376-11eb-9284-38322e1a2b09.png">
+![Sequence Diagram for Delete Task Command](diagrams/class/jpeg/SequenceDiagram_RemoveTimetable.jpg)
 
+Here are the general steps that the command goes through when the user inputs "delete 1":
 1. The `CliUserInterface` receives the "delete 1" input by the user and passes it to the `InputParser` class.
 2. `InputParser` parses the input to determine the type of command and the index of the task that is required to delete.
 The Parser then constructs a `RemoveCommandTimetableMode` with constructor as shown below.
@@ -401,7 +402,7 @@ It also constructs `CliMessages` to display messages to the user.
 
 ##### 4.2.2.1. Implementation  
 
-The following sequence diagram hows how the mark as done operation works:  
+The following sequence diagram shows how the mark as done operation works:  
 
 ##### 4.2.2.2. Design Considerations  
 
@@ -562,8 +563,8 @@ The UML sequence diagram below shows how the add notebook command works.
 <hr>
 Notebook Mode also allows the user to remove a notebook/section/page.
 
-The figure below shows how the "remove notebook" command works:
-<img src="https://user-images.githubusercontent.com/60319628/96821973-9176e600-145b-11eb-95b7-5bf885ea1867.png">
+The figure below shows how the "remove task" command works:
+![Sequence Diagram for Delete Task Command](diagrams/class/jpeg/SequenceDiagram_RemoveNotebook.jpg)
 
 After calling `InputParser#getCommandFromInput` from `CliUserInterface`:
 1. `InputParser` parses the input to return the `notebookTitleToRemove`, `sectionTitleToRemove` and `pageNumberToRemove`.
@@ -729,7 +730,7 @@ Aspect: Way to search through the notebook shelf
 
 The following sequence diagram shows how the list operation in the notebook mode works:
 
-<img src= https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/SequenceDiagram_ListSection.jpg">
+![Sequence Diagram for List](diagrams/class/jpeg/SequenceDiagram_ListUrgent.jpg)
 
 Given below is an example usage scenario and how the list function behaves.
 
