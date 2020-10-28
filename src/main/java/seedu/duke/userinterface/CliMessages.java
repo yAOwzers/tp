@@ -203,30 +203,16 @@ public class CliMessages {
         System.out.println(createTagMessage + task);
     }
 
-    public void printFoundNotebooksMessage(ArrayList<Notebook> notebooks) {
+    public void printFoundNotebooksMessages(ArrayList<String> messages) {
         int index = 1;
-        System.out.println("Notebooks:");
-        for (Notebook notebook : notebooks) {
-            System.out.println(index + ". " + notebook.getTitle());
-            index += 1;
+        for (String message : messages) {
+            System.out.println(index + ". " + message + "/n");
+            index++;
         }
     }
 
-    public void printFoundSectionsMessage(ArrayList<Section> sections) {
-        int index = 1;
-        System.out.println("Sections:");
-        for (Section section : sections) {
-            System.out.println(index + ". " + section.getTitle());
-            index += 1;
-        }
+    public static String lineSeparator() {
+        return "\n-------------------------------------------------------------\n";
     }
 
-    public void printFoundPagesMessage(ArrayList<Page> pagesFound) {
-        int index = 1;
-        System.out.println("Pages:");
-        for (Page page : pagesFound) {
-            System.out.println(index + ". " + page.getTitle());
-            index += 1;
-        }
-    }
 }

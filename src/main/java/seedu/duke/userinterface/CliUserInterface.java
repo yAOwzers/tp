@@ -12,9 +12,10 @@ public class CliUserInterface {
     private AppState appState;
 
     private boolean toQuit = false;
+    private CliMessages messages;
 
     public CliUserInterface() {
-
+        CliMessages messages = new CliMessages();
     }
 
     private void loadState() throws CorruptFileException {
@@ -43,9 +44,12 @@ public class CliUserInterface {
                 if (userInput.equals(Exit.COMMAND_WORD)) {
                     toQuit = true;
                 }
+                System.out.println(messages.lineSeparator());
                 executeCommand(userInput);
+                System.out.println(messages.lineSeparator());
             } catch (ZeroNoteException e) {
                 e.printErrorMessage();
+                System.out.println(messages.lineSeparator());
             }
         }
     }
