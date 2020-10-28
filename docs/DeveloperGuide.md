@@ -29,7 +29,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4212-design-considerations) <br>
 &nbsp;&nbsp;[4.3. Notebook Mode](#43-notebook-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.1. Notebook Management Feature](#431-notebook-management-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.1.1. Implementation](#4311-implementation)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.1.1. Implementation](#4311-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.2. Tag Feature](#432-tag-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.1. Implementation](#4321-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.2. Design Considerations](#4322-design-considerations) <br>
