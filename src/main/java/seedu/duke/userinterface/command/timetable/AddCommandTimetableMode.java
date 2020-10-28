@@ -18,7 +18,9 @@ public class AddCommandTimetableMode extends CliCommand {
     public static final String DEADLINE_DELIMITER = "/by";
     private final String argument;
     private final CliMessages messages = new CliMessages();
+    private boolean isPersonalised = true;
     private static final boolean isAutoSave = true;
+
 
     public AddCommandTimetableMode(String argument, AppState appState) {
         this.appState = appState;
@@ -49,6 +51,10 @@ public class AddCommandTimetableMode extends CliCommand {
     }
 
     @Override
+    public boolean isPersonalised() {
+        return isPersonalised;
+    }
+
     public boolean isTriggerAutoSave() {
         return isAutoSave;
     }

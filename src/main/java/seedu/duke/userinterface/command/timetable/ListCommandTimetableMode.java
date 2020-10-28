@@ -10,6 +10,7 @@ import java.util.Collections;
 
 public class ListCommandTimetableMode extends CliCommand {
     public static final String COMMAND_WORD = "list";
+    private boolean isPersonalised = true;
 
     public ListCommandTimetableMode(String argument, AppState appState) {
         this.setAppState(appState);
@@ -97,4 +98,8 @@ public class ListCommandTimetableMode extends CliCommand {
         }
     }
 
+    @Override
+    public boolean isPersonalised() {
+        return isPersonalised;
+    }
 }
