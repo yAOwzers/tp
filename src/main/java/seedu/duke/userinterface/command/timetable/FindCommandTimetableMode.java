@@ -57,7 +57,7 @@ public class FindCommandTimetableMode extends CliCommand {
         ArrayList<Task> matchedTasks = new ArrayList<>();
         for (Task task : tasks.getTaskArrayList()) {
             String taskTag = task.getTag().toLowerCase();
-            if (!taskTag.equals("") && taskTag.contains(tag)) {
+            if (!taskTag.equals("") && taskTag.equals(tag)) {
                 matchedTasks.add(task);
             }
         }
