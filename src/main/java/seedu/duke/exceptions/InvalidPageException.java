@@ -1,6 +1,7 @@
 package seedu.duke.exceptions;
 
 //@@chuckiex3
+
 /**
  * Signals that the user has input an invalid page name.
  */
@@ -8,6 +9,7 @@ public class InvalidPageException extends ZeroNoteException {
     public InvalidPageException(String problematicInput) {
         super(problematicInput);
     }
+
     @Override
     public void printErrorMessage() {
         System.out.println("Entered invalid page: " + problematicInput);
