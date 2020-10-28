@@ -36,7 +36,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.3. Select Feature](#433-select-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.1. Implementation](#4331-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.2. Design Considerations](#4332-design-considerations) <br>
-&nbsp;&nbsp;[4.4. Notebook Mode](#44-storage-neil) <br>
+&nbsp;&nbsp;[4.4. Storage](#44-storage-neil) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.1. Storage Format](#441-storage-format) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.1. TaskList](#4411-tasklist) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.2. Page](#4412-page) <br>
@@ -46,9 +46,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.2. Implementation](#442-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.1. Saving the application state](#4421-saving-the-application-state) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.2. Reading the application state](#4422-reading-the-application-state) <br>
-&nbsp;&nbsp;[4.4. [Proposed] Find duplicates](#44-find-duplicates) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1 Proposed implementation](#441-proposed-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2 Design considerations](#442-design-considerations) <br>
+&nbsp;&nbsp;[4.5. Error handling](#45-error-handling) <br>
+&nbsp;&nbsp;[4.6. [Proposed] Find duplicates](#46-find-duplicates) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.6.1 Proposed implementation](#461-proposed-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.6.2 Design considerations](#462-design-considerations) <br>
 [5. Documentation](#5-documentation) <br>
 &nbsp;&nbsp;[5.1. Setting up and maintaining the project website](#51-setting-up-and-maintaining-the-project-website) <br>
 &nbsp;&nbsp;[5.2. Style guidance](#52-style-guidance) <br>
@@ -248,17 +249,17 @@ the contents of other `Task` in the `TaskList`.
 
 Given below is an example usage scenario and how the add task function behaves.
 
-Step 1. The user launches the application for the first time. CliUserInterface#executeCommand is called when the user adds a `Task` into the `TaskList`.
+1. The user launches the application for the first time. CliUserInterface#executeCommand is called when the user adds a `Task` into the `TaskList`.
 
-Step 2. The user types `add /tTask /by19-10-2020 1900`. The `add` command is passed through `InputParser#getCommandFromInput`, which then creates a constructor for `AddCommandTimetableMode`.
+2. The user types `add /tTask /by19-10-2020 1900`. The `add` command is passed through `InputParser#getCommandFromInput`, which then creates a constructor for `AddCommandTimetableMode`.
 
-Step 3. `AddCommandTimetableMode#execute()` is called, which then calls `InputParser#parseTaskTitle`, which first extracts the `title` from the user's input.
+3. `AddCommandTimetableMode#execute()` is called, which then calls `InputParser#parseTaskTitle`, which first extracts the `title` from the user's input.
 
-Step 4. `InputParser#parseDeadline` is then called, which returns the `deadline` to `AddCommandTimetableMode#execute()`.
+4. `InputParser#parseDeadline` is then called, which returns the `deadline` to `AddCommandTimetableMode#execute()`.
 
-Step 5. `TaskList#addTask` is then called and a new `Task`, with `title` and `deadline`, is initialised.
+5. `TaskList#addTask` is then called and a new `Task`, with `title` and `deadline`, is initialised.
 
-Step 6. To signal that the user has successfully added a task, a message is printed with `CliMessages#printAddedTaskMessage`.
+6. To signal that the user has successfully added a task, a message is printed with `CliMessages#printAddedTaskMessage`.
 
 The UML sequence diagram below shows how the add task command works.
 ![Sequence Diagram for Add Task Command](/diagrams/class/jpeg/add_task.jpg)
@@ -373,24 +374,24 @@ There are two main functions in notebook management: add and remove.
 
 Given below is an example usage scenario and how the add notebook function behaves.
 
-Step 1. The user launches the application for the first time. `CliUserInterface#executeCommand` is called when the user adds new `Notebook` into the `NotebookShelf`.
+1. The user launches the application for the first time. `CliUserInterface#executeCommand` is called when the user adds new `Notebook` into the `NotebookShelf`.
 
-Step 2. The user types `add /nCS2113T`. The `add` command is passed through `InputParser#getCommandFromInput`.
+2. The user types `add /nCS2113T`. The `add` command is passed through `InputParser#getCommandFromInput`.
 
-Step 3. `InputParser#parseNotebookTitle` is then called, and it returns the `titleToAdd`, which is `CS2113T`.
+3. `InputParser#parseNotebookTitle` is then called, and it returns the `titleToAdd`, which is `CS2113T`.
 
-Step 4. A constructor for `AddCommandNotebookMode` is created.
+4. A constructor for `AddCommandNotebookMode` is created.
 
-Step 5. `AddCommandNotebookMode#execute()` runs, which then calls `NotebookShelf#addNotebook`.
+5. `AddCommandNotebookMode#execute()` runs, which then calls `NotebookShelf#addNotebook`.
 
-Step 6. A new `Notebook`, entitled `CS2113T` is initialised.
+6. A new `Notebook`, entitled `CS2113T` is initialised.
 
-The UML sequence diagram below shows how the add task command works.
-![Sequence Diagram for Add Task Command](/diagrams/class/jpeg/add_notebook.jpg)
+The UML sequence diagram below shows how the add notebook command works.
+![Sequence Diagram for Add Notebook Command](/diagrams/class/jpeg/add_notebook.jpg)
 
 <hr>
 
-The figure below shows how the "remove task" command works:
+The figure below shows how the "remove notebook" command works:
 <img src="https://user-images.githubusercontent.com/60319628/96821973-9176e600-145b-11eb-95b7-5bf885ea1867.png">
 
 After calling `InputParser#getCommandFromInput` from `CliUserInterface`:
@@ -474,21 +475,21 @@ The user can `select` a `Notebook`, `Section` or `Page` to view its contents. Th
 
 Given below is an example usage scenario and how the select notebook function behaves.
 
-Step 1. `CliUserInterface#executeCommand` is called when the user selects a `Notebook` from the `NotebookShelf`.
+1. `CliUserInterface#executeCommand` is called when the user selects a `Notebook` from the `NotebookShelf`.
 
-Step 2. The user types `select /nCS2113T`. The `select` command is passed through `InputParser#getCommandFromInput`.
+2. The user types `select /nCS2113T`. The `select` command is passed through `InputParser#getCommandFromInput`.
 
-Step 3. `InputParser#getCommandFromInput` returns the command `SelectCommandNotebookMode`.
+3. `InputParser#getCommandFromInput` returns the command `SelectCommandNotebookMode`.
 
-Step 4. A constructor for `SelectCommandNotebookMode` is created.
+4. A constructor for `SelectCommandNotebookMode` is created.
 
-Step 5. `SelectCommandNotebookMode#execute()` runs, which then calls `InputParser#extractParams`.
+5. `SelectCommandNotebookMode#execute()` runs, which then calls `InputParser#extractParams`.
 
-Step 6. If the argument typed by the user contains `/n`, which is the Notebook delimitter, `InputParser#extractNotebookParams` is called.
+6. If the argument typed by the user contains `/n`, which is the Notebook delimitter, `InputParser#extractNotebookParams` is called.
 
-Step 7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
+7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
 
-The UML sequence diagram below shows how the select noteboook command works.
+The UML sequence diagram below shows how the select notebook command works.
 ![Sequence Diagram for Add Task Command](/diagrams/class/jpeg/select_notebook.jpg)
 
 ##### 4.3.3.2. Design Considerations
@@ -579,42 +580,58 @@ The `Storage.saveToFile()` method saves the current application state to a file.
 
 ##### 4.4.2.2. Reading the application state
 
-### 4.5 [Proposed] Find duplicate feature
+### 4.5 Error Handling
 
-#### 4.5.1 Proposed implementation
+The `ZeroNoteException` class extends `Exception` by printing an error message to the user when the user encounters an exception.
+
+The following example is a scenario that demonstrates how exceptions are handled in **Zer0Note**.
+
+1. The user launches the application for the first time. `CliUserInterface#executeCommand` is called when the user types in `hello`.
+
+2. The `hello` command is passed through a switch-case block within `InputParser#getCommandFromInput`.
+
+3. As `hello` is not a command in `Zer0Note`, `InvalidCommandException` which extends `ZeroNoteException` will be thrown.
+
+4. This `ZeroNoteException` is caught by `CliUserInterface#run`, which will then call `ZeroNoteException#printErrorMessage`.
+
+<br>
+
+### 4.6 [Proposed] Find duplicate feature
+
+#### 4.6.1 Proposed implementation
 
 The proposed find duplicate function is facilitated by a method in the classes `Task List`, `Notebook Shelf`, `Notebook`
 and `Section`.
 
 Given below is an example usage scenario and how the find duplicates function behaves.
 
-Step 1. The user launches the application for the first time. `CliUserInterface#executeCommand` is called when the user
+1. The user launches the application for the first time. `CliUserInterface#executeCommand` is called when the user
 adds a task into the task list.
 
-Step 2. The user types `add /tTask /by19-10-2020 1900`. The `add` command is passed through
+2. The user types `add /tTask /by19-10-2020 1900`. The `add` command is passed through
 `InputParser#getCommandFromInput`, which then calls `AddCommandTimetableMode#execute()`.
 
-Step 3. `execute()` is called, which then calls `InputParser#parseTaskTitle`, which first extracts the `title` from the
+3. `execute()` is called, which then calls `InputParser#parseTaskTitle`, which first extracts the `title` from the
 user's input.
 
-Step 4. The `title` is then passed to the `findDuplicate` method in `TaskList`.
+4. The `title` is then passed to the `findDuplicate` method in `TaskList`.
 
-Step 5. The `findDuplicate` method returns false, since it is the first task titled `Task` to be added into the
+5. The `findDuplicate` method returns false, since it is the first task titled `Task` to be added into the
 `TaskList`. Conversely, the `findDuplicate` method returns true when a task with the same `title` already exists in the
 `TaskList`.
 
-Step 6. `InputParser#parseDeadline` is then called, which returns the `deadline` to `AddCommandTimetableMode#execute()`.
+6. `InputParser#parseDeadline` is then called, which returns the `deadline` to `AddCommandTimetableMode#execute()`.
 
-Step 7. `TaskList#addTask` is then called and a new `Task`, with `title` and `deadline`, is initialised.
+7. `TaskList#addTask` is then called and a new `Task`, with `title` and `deadline`, is initialised.
 
-Step 8. To signal that the user has successfully added a task, a message is printed with
+8. To signal that the user has successfully added a task, a message is printed with
 `CliMessages#printAddedTaskMessage`.
 
 The sequence diagram below shows how the find duplicate command works:
 
-![Sequence diagram for finding duplicates](/diagrams/class/jpeg/duplicates_francene.jpg)
+![Sequence diagram for finding duplicates](diagrams/class/jpeg/duplicates_francene.jpg)
 
-#### 4.5.2 Design consideration
+#### 4.6.2 Design consideration
 
 ##### Aspect: Where findDuplicate should be placed
 
@@ -774,7 +791,7 @@ Expected: First task is deleted from the tasklist.
 iii. Test case: `delete 0`  
 Expected: No task is deleted. Error message will be printed in the command line interface.  
 iv. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the number of tasks in the tasklist)  
-Expected: No task is deleted. Error message will be printed in the command line interface. 
+Expected: No task is deleted. Error message will be printed in the command line interface.
 
 #### 2.2 Adding a task
 
@@ -820,7 +837,7 @@ i. Prerequisites: User must be in the Timetable mode. Enter `mode /t` command to
 
 2.5.1.1. Listing all existing task in the tasklist.  
 i. Test case: `list`  
-Expected: All existing tasks in the tasklist will be printed out. 
+Expected: All existing tasks in the tasklist will be printed out.
 
 2.5.1.2. Listing all marked as done existing tasks in the tasklist.  
 i. Test case: `list /d`  
@@ -881,11 +898,11 @@ i. Prerequisites: User must be in the Notebook mode. Enter `mode /n` command to 
 
 2.9.1.1. Selecting a Notebook.    
 i. Test case: `select /nCS2113T`  
-Expected: The user will enter the selected notebook 'CS2113T' with a success message printed. 
+Expected: The user will enter the selected notebook 'CS2113T' with a success message printed.
 
 2.9.1.2. Selecting a Section.  
 i. Test case: `select /sChapter 1`  
-Expected: The user will enter the selected Section 'Chapter 1' with a success message printed. 
+Expected: The user will enter the selected Section 'Chapter 1' with a success message printed.
 
 2.9.1.3. Selecting a Page.  
 i. Test case: `select /pPage 1`  
@@ -900,17 +917,17 @@ i. Prerequisites: User must be in the Notebook mode. Enter `mode /n` command to 
 
 2.10.1.1. Deleting a notebook.  
 i. Test case: `delete /nCS2113T`    
-Expected: The selected notebook 'CS2113T' will be deleted, along with the sections and pages under it, with a success message printed. 
+Expected: The selected notebook 'CS2113T' will be deleted, along with the sections and pages under it, with a success message printed.
 
 2.10.1.2. Deleting a section.  
 i. Test case: `delete /sChapter 1`    
-Expected: The selected section 'Chapter 1' will be deleted, along with the pages under it, with a success message printed. 
+Expected: The selected section 'Chapter 1' will be deleted, along with the pages under it, with a success message printed.
 
 2.10.1.3. Deleting a notebook.  
 i. Test case: `delete /pPage 1`    
-Expected: The selected page 'Page 1' will be deleted with a success message printed. 
+Expected: The selected page 'Page 1' will be deleted with a success message printed.
 
-#### 2.11 Listing a Notebook/Section/Page 
+#### 2.11 Listing a Notebook/Section/Page
 
 2.11.1 Listing existing notebook/section/page in the NotebookShelf.  
 i. Prerequisites: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. There must be existing notebooks/sections/pages in the respective list when command `list` is entered.  
@@ -944,7 +961,7 @@ Expected: All notebooks/sections/pages with tags that contains the word 'Project
 iii. Test case: `Find`   
 Expected: An error message along with a formatting guideline message will be printed in the command line interface.  
 
-### 3. Saving Data 
+### 3. Saving Data
 
 3.1. Dealing with corrupted data files  
 i. Click on the folder that the jar file had been saved in.  
@@ -952,5 +969,3 @@ ii. Select both the 'tasks.txt' and 'notebooks.txt'.
 iii. Delete both files.  
 iv. Restart the application by double-clicking the jar file and running Zer0Note.  
 Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1.  
-
-
