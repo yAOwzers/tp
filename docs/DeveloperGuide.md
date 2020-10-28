@@ -1,5 +1,6 @@
 # Developer Guide for Zer0Note
 
+## Table Of Contents
 [1. Introduction](#1-introduction) <br>
 &nbsp;&nbsp;[1.1. Welcome!](#11-welcome)<br>
 &nbsp;&nbsp;[1.2. How to use this document](#12-how-to-use-this-document)<br>
@@ -24,16 +25,19 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.2. Tag Feature](#422-tag-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.1. Implementation](#4211-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4212-design-considerations) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2. List Feature](#421-tasklist-management-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.1. Implementation](#4211-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4212-design-considerations) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.2.3. List Feature](#421-tasklist-management-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.3.1. Implementation](#4211-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.3.2. Design Considerations](#4212-design-considerations) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.2.4. Search Feature](#424-search-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.4.1. Implementation](#4241-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.4.2. Design Considerations](#4242-design-considerations) <br>
 &nbsp;&nbsp;[4.3. Notebook Mode](#43-notebook-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.1. Notebook Management Feature](#431-notebook-management-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.1.1. Implementation](#4311-implementation)
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.2. Tag Feature](#432-tag-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.1. Implementation](#4321-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.2. Design Considerations](#4322-design-considerations) <br>
-&nbsp;&nbsp;[4.4. Notebook Mode](#44-storage-neil) <br>
+&nbsp;&nbsp;[4.4. Storage](#44-storage-neil) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.1. Storage Format](#441-storage-format) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.1. TaskList](#4411-tasklist) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.2. Page](#4412-page) <br>
@@ -43,9 +47,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.2. Implementation](#442-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.1. Saving the application state](#4421-saving-the-application-state) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.2. Reading the application state](#4422-reading-the-application-state) <br>
-&nbsp;&nbsp;[4.4. [Proposed] Find duplicates](#44-find-duplicates) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1 Proposed implementation](#441-proposed-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2 Design considerations](#442-design-considerations) <br>
+&nbsp;&nbsp;[4.5. [Proposed] Find duplicates](#44-find-duplicates) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.5.1 Proposed implementation](#441-proposed-implementation) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[4.5.2 Design considerations](#442-design-considerations) <br>
 [5. Documentation](#5-documentation) <br>
 &nbsp;&nbsp;[5.1. Setting up and maintaining the project website](#51-setting-up-and-maintaining-the-project-website) <br>
 &nbsp;&nbsp;[5.2. Style guidance](#52-style-guidance) <br>
