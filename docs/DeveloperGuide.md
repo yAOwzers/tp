@@ -213,9 +213,11 @@ The `Commands` component,
 
 The `Storage` component,
 
-* can save the name of user in a .txt file and read it back.
+* Contains the method `saveToFile` to save the current AppState of the application in the `notebooks.txt` and `tasks.txt` files.  
 
-* can save the Tasklist and NotebookShelf data in a .txt file and read it back.
+* Contains the method `readFromFile` to load up data containing the input of the user's previous session on Zer0Note.  
+
+* Saves the name of the user in a `nameOfUser.txt` and reads it back in the form of personalised messages.   
 
 ## 4. Implementation
 
