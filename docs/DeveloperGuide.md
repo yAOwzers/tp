@@ -246,7 +246,7 @@ And this diagram describes the `CliCommand`s related to the Notebook mode.
 
 ### 3.4. Tasks Component
 
-<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/taskComponent.jpg">
+![UML Diagram from Task Component](diagrams/class/jpeg/taskComponent.jpg)
 
 Figure []. Structure of Tasks Component
 
@@ -261,7 +261,7 @@ The `TaskList` class,
 
 ### 3.5. Notebooks Component
 
-<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/notebooks_simplified.jpg">
+![UML diagram for Notebooks Component](diagrams/class/jpeg/notebooks_simplified.jpg)
 
 Figure []. Structure of Notebooks Component
 
@@ -312,7 +312,7 @@ decisions.
 
 #### 4.1.1. Implementation
 
-The mode switch mechanism is facilitated by `AppState`. It contains an `AppMode` object and can be accessed from 
+The mode switch mechanism is facilitated by `AppState`. It contains an `AppMode` object and can be accessed from
 `Mode Switch` object.
 
 The following sequence diagram shows how the mode switch operation works:
@@ -321,16 +321,16 @@ The following sequence diagram shows how the mode switch operation works:
 
 Given below is an example usage scenario and how the find mode switch function behaves.
 
-Step 1. The user launches the application for the first time. The `AppState` object is constructed and the `AppMode` 
+Step 1. The user launches the application for the first time. The `AppState` object is constructed and the `AppMode`
 field is set to `TIMETABLE` by default.
 
-Step 2. The user types `mode /n`. The `mode /t` command is passed through 
+Step 2. The user types `mode /n`. The `mode /t` command is passed through
 `InputParser#getCommandFromInput`, which constructs a `ModeSwitch` object and calls `ModeSwitch#execute()`.
 
-Step 3. `execute()` is called, which then set the `AppMode` field in the `AppState` object either to `TIMETABLE` 
+Step 3. `execute()` is called, which then set the `AppMode` field in the `AppState` object either to `TIMETABLE`
 or `NOTEBOOK_SHELF` or throw an `InvalidCommandException`.
 
-Step 4. To signal that the user has successfully changed the mode, a message is printed with the current mode of the 
+Step 4. To signal that the user has successfully changed the mode, a message is printed with the current mode of the
 program.  
 
 #### 4.1.2. Design Considerations
@@ -461,15 +461,15 @@ This section describes some of the considerations involved when designing the ta
 
 The following sequence diagram shows how the list operation works:
 
-<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/SequenceDiagram_ListUrgent.jpg">
+![Sequence Diagram for List Urgent](diagrams/class/jpeg/SequenceDiagram_ListUrgent.jpg)
 
 Given below is an example usage scenario and how the list function behaves.
 
-Step 1. The user types `list /urgent`. The `list /urgent` command is passed through 
-`InputParser#getCommandFromInput`, which constructs a `ListCommandTimetableMode` object and calls 
+Step 1. The user types `list /urgent`. The `list /urgent` command is passed through
+`InputParser#getCommandFromInput`, which constructs a `ListCommandTimetableMode` object and calls
 `ListCommandTimetableMode#execute()`.
 
-Step 2. `execute()` is called, which then calls the `sort()` function of `Collections` utility class and sort the list 
+Step 2. `execute()` is called, which then calls the `sort()` function of `Collections` utility class and sort the list
 based on the due date of the `Task` objects in the list.
 
 Step 3. The program prints up to three tasks in the sorted list.
@@ -558,7 +558,7 @@ Given below is an example usage scenario and how the add notebook function behav
 6. A new `Notebook`, entitled `CS2113T` is initialised.
 
 The UML sequence diagram below shows how the add notebook command works.
-![Sequence Diagram for Add Notebook Command](/diagrams/class/jpeg/add_notebook.jpg)
+![Sequence Diagram for Add Notebook Command](diagrams/class/jpeg/add_notebook.jpg)
 
 <hr>
 Notebook Mode also allows the user to remove a notebook/section/page.
@@ -730,12 +730,12 @@ Aspect: Way to search through the notebook shelf
 
 The following sequence diagram shows how the list operation in the notebook mode works:
 
-![Sequence Diagram for List](diagrams/class/jpeg/SequenceDiagram_ListUrgent.jpg)
+![Sequence Diagram for List](diagrams/class/jpeg/SequenceDiagram_ListSection.jpg)
 
 Given below is an example usage scenario and how the list function behaves.
 
-Step 1. The user types `list /s`. The `list /s` command is passed through 
-`InputParser#getCommandFromInput`, which constructs a `ListCommandNoteMode` object and calls 
+Step 1. The user types `list /s`. The `list /s` command is passed through
+`InputParser#getCommandFromInput`, which constructs a `ListCommandNoteMode` object and calls
 `ListCommandNotebookMode#execute()`.
 
 Step 2. `execute()` is called, which then calls the print functions based on the `AppMode` field in `AppState`.
