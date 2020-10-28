@@ -77,17 +77,13 @@ contributing code to the project.
 
 ### 1.2. How to use this document
 
-Text that looks like this is normal text. It should be read as-is; it has no special meaning beyond what it says.
-
-Example: The sequence diagram below shows the operation of the delete command.
-
-<br>
+#### 1.2.1. Keywords
 
 `Text that looks like this denotes a keyword or small extract of code.`
 
 Example: The `CliUserInterface` is used to handle input and output to and from the console.
 
-<br>
+#### 1.2.2. Code blocks
 
 ```
     Text that looks like this denotes a larger extract of code.
@@ -98,13 +94,13 @@ Example:
     System.out.println("This is a code block!");
 ```
 
-<br>
+#### 1.2.3. UI elements
 
 **`Text that looks like this denotes a button, or other UI element you may see on screen. `**
 
-Example: Click **`Configure` ** > **`Project Defaults`** > **`Project Structure`**
+Example: Click **`Configure`** > **`Project Defaults`** > **`Project Structure`**
 
-<br>
+#### 1.2.4. Tips
 
 > Text that looks like this indicates a tip, providing additional information that is useful but not critically
 > important
@@ -113,7 +109,7 @@ Example:
 
 > We use this method because Chrome's built-in PDF viewer preserves hyperlinks.
 
-<br>
+#### 1.2.5. Important information
 
 > :exclamation: Text that looks like this, beginning with the :exclamation: sign indicates information that is very
 > important, such as warnings about potential mistakes or common problems
@@ -170,32 +166,71 @@ understandable. However, you may wish to consult [[CS2113/T] Modeling](https://n
 ### 3.1 Architecture (Neil)
 
 **How the architecture components interact with each other**
-The Sequence Diagram below shows how the components interact with each other for the scenario...
 
-/* work in progress */
+The following diagram provides a rough overview of how **Zer0Note** is built. 
+
+![Architecture Diagram](diagrams/class/jpeg/architecture_neil.jpg)
+
+The `CliUserInteface` (see [here](#32-userinterface-component-neil)) is the "highest" layer of the application, in 
+the sense that it interacts directly with the user, and it passes along the input to other classes. The 
+`CliUserInterface` contains the state of the application, stored in an instance of `AppState`. It then uses the other
+classes such as `InputParser` and the various `CliCommand` classes to execute the instructions provided by the user
+. This is explained in more detail in the following sections. 
 
 ### 3.2 UserInterface Component (Neil)
 
-The UserInterface Component is made up of `AppMode`, `AppState`, `CliMessages`, `CliUserInterface`, `InputParser`.
+The user interface of **Zer0Note** is provided by the class `CliUserInterface`. It is instantiated once in the main
+method, and its `run()` method is called to start the UI for the application. 
 
-The `UserInterface` component,
+The class diagram below describes the `CliUserInterface` class, and the classes it depends on. 
 
-* Executes user commands using the `Commands` component.
-* // how it interacts with the other components
+// TODO: add class diagram for CliUserInterface
 
-/* TODO explain the various variables and methods */
+The `CliUserInterface` class contains an instance of `AppState`. This is a class that, as the name implies, contains
+the current state of the running instance of the application. For example, it contains the user data, the current mode, 
+the navigation state (i.e. currently chosen notebook/section/page). 
+
+The following sequence diagram describes the operation of the `run()` method in `CliUserInterface`. 
+
+// TODO: add sequence diagram.
+
+First, the method `loadState()` is called, which loads the save file, and populates the `AppState` object with the
+previously saved user data. 
+
+Then, the `startUI()` method is called to display the welcome message to the user. 
+
+The `CliUserInterface` class then continuously gets the input from the user. It then uses the `InputParser` class to
+parse this input and creates a new `CliCommand` object based on the command entered by the user. It executes the
+command with `CliCommand.execute()` (learn more [here](#33-commands-component-neil)), which will use or modify the
+`AppState` instance to make the requested change. 
+
+If any of these steps encounters an error, an exception of the type `ZeroNoteException` is thrown by the method, and
+caught in the `run()` method. Upon catching an exception, the `printErrorMessage()` method is called to display the
+appropriate error message to the user. See [here]() for more information on how exceptions work in **Zer0Note**. 
 
 ### 3.3. Commands Component (Neil)
 
-![UML diagram for Timetable Commands](/diagrams/class/jpeg/timetable_commands.jpg)
+Every command that a user can input into **Zer0Note** is represented by an object that extends the abstract class
+`CliCommand`. `CliCommand` contains some basic fields and methods that are shared by all types of commands, such as: 
 
-![UML diagrams for Notebook Commands](/diagrams/class/jpeg/notebook_commands.jpg)
+* `execute()`, which is called after setting up the object appropriately, to perform the action requested by the user;
 
-/* to insert UML diagram */
+* `appState`, which refers to the `AppState` object that stores the state of the currently running instance of
+**Zer0Note**; and
 
-The `Commands` component,
+* `commandParams`, which is a String containing the parameters the user entered as parameters to the command. 
 
-// TODO add components
+The following 2 UML diagrams show the different types of `CliCommand` components used in the application. 
+
+This diagram describes the `CliCommand`s related to the Timetable mode. 
+
+![UML diagram for Timetable Commands](diagrams/class/jpeg/timetable_commands.jpg)
+
+And this diagram describes the `CliCommand`s related to the Notebook mode. 
+
+![UML diagrams for Notebook Commands](diagrams/class/jpeg/notebook_commands.jpg)
+
+// TODO: add the new commands for "Find", "Tag", "SortByDate".
 
 ### 3.4. Tasks Component
 
@@ -203,7 +238,7 @@ The `Commands` component,
 
 ### 3.5 Notebooks Component
 
-![UML diagram for Notebooks](/diagrams/class/jpeg/notebooks.jpg)
+![UML diagram for Notebooks](diagrams/class/jpeg/notebooks.jpg)
 
 /* TODO explain the various variables and methods */
 
@@ -261,7 +296,7 @@ Step 5. `TaskList#addTask` is then called and a new `Task`, with `title` and `de
 Step 6. To signal that the user has successfully added a task, a message is printed with `CliMessages#printAddedTaskMessage`.
 
 The UML sequence diagram below shows how the add task command works.
-![Sequence Diagram for Add Task Command](/diagrams/class/jpeg/add_task.jpg)
+![Sequence Diagram for Add Task Command](diagrams/class/jpeg/add_task.jpg)
 
 <hr>
 
@@ -301,7 +336,7 @@ The `Task` class contains a member `tag` of String type.
 
 The figure below shows how the tag operation works:
 
-![Sequence Diagram for Tag Timetable command](/diagrams/class/jpeg/SequenceDiagram_TagTimetable.jpg)
+![Sequence Diagram for Tag Timetable command](diagrams/class/jpeg/SequenceDiagram_TagTimetable.jpg)
 
 There are 3 crucial processes during the tag operation. When the user enters `tag 1 /tCS2113T` into the command window while using the application:
 
@@ -347,7 +382,7 @@ This section describes some of the considerations involved when designing the ta
 
 The following sequence diagram shows how the list operation works:
 
-![Sequence Diagram for List command](/diagrams/class/jpeg/SequenceDiagram_List.jpg)
+![Sequence Diagram for List command](diagrams/class/jpeg/SequenceDiagram_List.jpg)
 
 ### 4.2.3. Mark as done feature  
 
@@ -386,7 +421,7 @@ Step 5. `AddCommandNotebookMode#execute()` runs, which then calls `NotebookShelf
 Step 6. A new `Notebook`, entitled `CS2113T` is initialised.
 
 The UML sequence diagram below shows how the add task command works.
-![Sequence Diagram for Add Task Command](/diagrams/class/jpeg/add_notebook.jpg)
+![Sequence Diagram for Add Task Command](diagrams/class/jpeg/add_notebook.jpg)
 
 <hr>
 
@@ -424,7 +459,7 @@ The `Notebook`, `Section` and `Page` classes each contain a member `tag` of type
 
 The figure below shows how the tag operation works:
 
-![Sequence Diagram for Tag Notebook command](/diagrams/class/jpeg/SequenceDiagram_TagNotebook.jpg)
+![Sequence Diagram for Tag Notebook command](diagrams/class/jpeg/SequenceDiagram_TagNotebook.jpg)
 
 There are 3 crucial processes during the tag operation. When the user enters `tag /tCS2113T` into the command window while using the application:
 
@@ -489,7 +524,7 @@ Step 6. If the argument typed by the user contains `/n`, which is the Notebook d
 Step 7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
 
 The UML sequence diagram below shows how the select noteboook command works.
-![Sequence Diagram for Add Task Command](/diagrams/class/jpeg/select_notebook.jpg)
+![Sequence Diagram for Add Task Command](diagrams/class/jpeg/select_notebook.jpg)
 
 ##### 4.3.3.2. Design Considerations
 
@@ -503,7 +538,7 @@ The UML sequence diagram below shows how the select noteboook command works.
 
 ### 4.4. Storage (Neil)
 
-The `Storage` class is used to read and write the application state to and from a text file.
+The `Storage` class reads and writes the application state to and from a text file.
 
 #### 4.4.1. Storage format
 
@@ -571,13 +606,42 @@ combines their outputs with a `StringBuilder`.
 
 ##### 4.4.2.1. Saving the application state
 
-The following sequence diagram describes the operation of the `saveToFile()` operation
+The following sequence diagram describes the operation of the `saveToFile()` operation. 
 
 ![Sequence Diagram for saveToFile command](diagrams/class/jpeg/storage_neil.jpg)
 
+Note: The diagram above does not show how the `saveToFile()` method saves `Task` objects from the `TaskList`, in 
+the interest of brevity. The operation of the method is very similar for the `TaskList`, except the hierarchy is much
+simpler for tasks (since `Task` objects do not contain other objects).  
+
 The `Storage.saveToFile()` method saves the current application state to a file.
 
+It gets the NotebookShelf and TaskList objects from the current appState, passed in as a parameter. Then, as
+described above in the sequence diagram, it iterates through the lists of `Task` objects in the `TaskList` and
+`Notebook` objects in the `NotebookShelf`, calling their `serialize()` methods, which in turn call the 
+`serialize()` methods for each of their contained objects (if applicable). The `saveToFile()` method then uses 
+`FileWriter`s to write to `File` objects, saving the serialized version of the application state to two text files. 
+
 ##### 4.4.2.2. Reading the application state
+
+The following sequence diagram describes the operation of the `readFromFile()` operation.
+
+// TODO: Add a sequence diagram to this section. 
+
+Note: As above, the diagram omits the reading of the `TaskList` from the text file in the interest of brevity. Again,
+this operation is similar to that for `NotebookShelf` but much simpler. 
+
+The `Storage.readFromFile()` method creates an instance of `AppState` based on the contents of the saved text files, and
+returns said instance of `AppState` if reading the save files was successful, and a blank instance otherwise. 
+
+`readFromFile()` uses `Scanner`s, and the `Scanner.nextLine()` method to read the text files line by line. It parses 
+the lines containing integers indicating the number of notebooks/sections/pages/tasks, and subsequently uses `for` 
+loops to read the appropriate number of lines. 
+
+Each iteration of the loop creates a new instance of `Task`/`Notebook`/`Section`/`Page` as appropriate, using the 
+constructor to set the fields appropriately based on what is read from the save file, and then it adds the objects
+to the appropriate container (i.e. adds each `Task` to the `TaskList`, adds each `Page` to its respective `Section` 
+etc. ). It then stores the loaded `TaskList` and `NotebookShelf` to a new instance of `AppState` and returns this.
 
 ### 4.5 [Proposed] Find duplicate feature
 
@@ -612,7 +676,7 @@ Step 8. To signal that the user has successfully added a task, a message is prin
 
 The sequence diagram below shows how the find duplicate command works:
 
-![Sequence diagram for finding duplicates](/diagrams/class/jpeg/duplicates_francene.jpg)
+![Sequence diagram for finding duplicates](diagrams/class/jpeg/duplicates_francene.jpg)
 
 #### 4.5.2 Design consideration
 
@@ -952,5 +1016,3 @@ ii. Select both the 'tasks.txt' and 'notebooks.txt'.
 iii. Delete both files.  
 iv. Restart the application by double-clicking the jar file and running Zer0Note.  
 Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1.  
-
-
