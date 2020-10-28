@@ -246,13 +246,51 @@ And this diagram describes the `CliCommand`s related to the Notebook mode.
 
 ### 3.4. Tasks Component
 
-/* to insert UML diagram */
+<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/taskComponent.jpg">
 
-### 3.5 Notebooks Component
+Figure []. Structure of Tasks Component
 
-![UML diagram for Notebooks](diagrams/class/jpeg/notebooks.jpg)
+The `Tasks` component,
 
-/* TODO explain the various variables and methods */
+- stores an array of `Task` objects that represents the deadline of the user.
+- together with the `Notebooks` component form the `AppState` component.   
+
+The `TaskList` class,
+
+- has methods to add a new `Task` object and remove existing one at an index.
+
+### 3.5. Notebooks Component
+
+<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/notebooks_simplified.jpg">
+
+Figure []. Structure of Notebooks Component
+
+The `Notebooks` class,
+
+- stores a `NotebookShelf` object that contains a list of `Notebook` objects.
+- together with the `Tasks` component form the `AppState` component.
+
+The `NotebookShelf` class,
+
+- has methods to add new `Notebook` object and remove existing one.
+- has methods to search through to find a `Notebook` object with matching titles.
+
+The `Notebook` class,
+
+- contains a title and a list of `Section` objects.
+- has methods to add new `Section` object or remove existing one.
+- has a `tag` field that user can be set and get.
+
+The `Section` object,
+
+- contains a title and list of `Page` objects.
+- has methods to add new `Page` object or remove existing one.
+- has a `tag` field that user can be set and get.
+
+The `Page` object,
+
+- contains a title, and the content of the page as a String object.
+- has a `tag` field that user can be set and get.
 
 ### 3.6. Storage Component
 
@@ -274,7 +312,26 @@ decisions.
 
 #### 4.1.1. Implementation
 
-/* work in progress */
+The mode switch mechanism is facilitated by `AppState`. It contains an `AppMode` object and can be accessed from 
+`Mode Switch` object.
+
+The following sequence diagram shows how the mode switch operation works:
+
+<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/SequenceDiagram_ModeSwitch.jpg">
+
+Given below is an example usage scenario and how the find mode switch function behaves.
+
+Step 1. The user launches the application for the first time. The `AppState` object is constructed and the `AppMode` 
+field is set to `TIMETABLE` by default.
+
+Step 2. The user types `mode /n`. The `mode /t` command is passed through 
+`InputParser#getCommandFromInput`, which constructs a `ModeSwitch` object and calls `ModeSwitch#execute()`.
+
+Step 3. `execute()` is called, which then set the `AppMode` field in the `AppState` object either to `TIMETABLE` 
+or `NOTEBOOK_SHELF` or throw an `InvalidCommandException`.
+
+Step 4. To signal that the user has successfully changed the mode, a message is printed with the current mode of the 
+program.  
 
 #### 4.1.2. Design Considerations
 
@@ -403,7 +460,18 @@ This section describes some of the considerations involved when designing the ta
 
 The following sequence diagram shows how the list operation works:
 
-![Sequence Diagram for List command](diagrams/class/jpeg/SequenceDiagram_List.jpg)
+<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/SequenceDiagram_ListUrgent.jpg">
+
+Given below is an example usage scenario and how the list function behaves.
+
+Step 1. The user types `list /urgent`. The `list /urgent` command is passed through 
+`InputParser#getCommandFromInput`, which constructs a `ListCommandTimetableMode` object and calls 
+`ListCommandTimetableMode#execute()`.
+
+Step 2. `execute()` is called, which then calls the `sort()` function of `Collections` utility class and sort the list 
+based on the due date of the `Task` objects in the list.
+
+Step 3. The program prints up to three tasks in the sorted list.
 
 #### 4.2.5. Search Feature
 This feature allows the user to search for tasks by keyword or by tag. Refer to
@@ -623,6 +691,14 @@ only covers the main differences in the two.
 - If the application is in the Notebook mode, `InputParser#getCommandFromInput` constructs the `FindCommandNotebookMode`
 class.
 
+###### Aspect: How much navigability the Select function should have
+- **Alternative 1 (current choice):** The user must always select the notebook title if he wants to choose a section or page within it.
+    - Pros: It is easy to catch exceptions when the notebook/section does not exist. This also ensures that even if there are 2 sections in 2 different notebooks with the same name, the user can select the correct section.
+    - Cons: The format for the command is longer.
+- **Alternative 2**: The user can select a notebook/section/page wherever he wants.
+    - Pros: The command the user has to type is much shorter.
+    - Cons: If the user has notebooks/sections with the same name, he cannot be sure that the item he wants will be selected correctly.
+
 **Command Execution**
 Method `FindCommandNotebookMode#execute()` does the following:<br>
 a. Constructs `CliMessages` class, which prints any outputs to the user<br>
@@ -646,6 +722,27 @@ Aspect: Way to search through the notebook shelf
 - **Alternative 2:** Store all notebooks, sections and pages into respective lists
     - Pros: Has better time complexity of O(n) as it only needs to iterate through each list.
     - Cons: Unable to output the notebook and section a page belongs to to the user
+
+#### 4.3.5. List Feature
+
+##### 4.3.5.1. Implementation
+
+The following sequence diagram shows how the list operation in the notebook mode works:
+
+<img src= https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/SequenceDiagram_ListSection.jpg">
+
+Given below is an example usage scenario and how the list function behaves.
+
+Step 1. The user types `list /s`. The `list /s` command is passed through 
+`InputParser#getCommandFromInput`, which constructs a `ListCommandNoteMode` object and calls 
+`ListCommandNotebookMode#execute()`.
+
+Step 2. `execute()` is called, which then calls the print functions based on the `AppMode` field in `AppState`.
+
+Step 3. The program prints the contents corresponding to the input or throw an exception if the command is
+invalid.
+
+##### 4.3.5.2. Design Considerations
 
 ### 4.4. Storage (Neil)
 
