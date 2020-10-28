@@ -6,16 +6,20 @@ import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Exit;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class CliUserInterface {
     private AppState appState;
 
     private boolean toQuit = false;
+    private PersonalMesssageGenerator msgGenerator;
     private CliMessages messages;
 
+
     public CliUserInterface() {
-        CliMessages messages = new CliMessages();
+        msgGenerator = new PersonalMesssageGenerator();
+        messages = new CliMessages();
     }
 
     private void loadState() throws CorruptFileException {
@@ -28,14 +32,28 @@ public class CliUserInterface {
         storage.saveToFile(appState);
     }
 
+    // TODO implement saving name on first startup
+    private void checkNameOfUser() throws IOException {
+        Storage storage = new Storage();
+        boolean isNameOfUserFilled;
+        isNameOfUserFilled = storage.isNameOfUserFilled();
+        if (!isNameOfUserFilled) {
+            messages.printFillInNameOfUserMessage();
+            storage.saveNameOfUser();
+        } else {
+            msgGenerator.greetUser();
+        }
+    }
 
-    public void run() {
+
+    public void run() throws IOException {
         try {
             loadState();
         } catch (CorruptFileException e) {
             e.printErrorMessage();
         }
         startUI();
+        checkNameOfUser();
         String userInput;
         Scanner keyboard = new Scanner(System.in);
         while (!toQuit) {
@@ -57,6 +75,10 @@ public class CliUserInterface {
     private void executeCommand(String userInput) throws ZeroNoteException {
         InputParser parser = new InputParser();
         CliCommand command = parser.getCommandFromInput(userInput, appState);
+        if (command.isPersonalised()) {
+            String personalMessage = msgGenerator.generatePersonalisedMessage();
+            System.out.println(personalMessage);
+        }
         command.execute();
         if (command.isTriggerAutoSave()) {
             saveState();

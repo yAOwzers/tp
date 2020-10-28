@@ -11,6 +11,7 @@ import seedu.duke.userinterface.command.CliCommand;
 
 public class ListCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "list";
+    private boolean isPersonalised = true;
 
     public ListCommandNotebookMode(String argument, AppState appState) {
         this.setAppState(appState);
@@ -110,5 +111,10 @@ public class ListCommandNotebookMode extends CliCommand {
         default:
             throw new IncorrectAppModeException();
         }
+    }
+
+    @Override
+    public boolean isPersonalised() {
+        return isPersonalised;
     }
 }
