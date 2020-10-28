@@ -135,6 +135,7 @@ public class InputParser {
             appState.setAppMode(AppMode.NOTEBOOK_PAGE);
         } else if (argument.startsWith(SHOW_ALL)) {
             appState.setAppMode(AppMode.NOTEBOOK_SHELF);
+            System.out.println("now in " + appState.getAppMode() + "mode.");
         } else {
             throw new InvalidSelectCommandException(argument);
         }
