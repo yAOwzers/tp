@@ -169,7 +169,7 @@ understandable. However, you may wish to consult [[CS2113/T] Modeling](https://n
 
 The following diagram provides a rough overview of how **Zer0Note** is built. 
 
-//TODO: add some sort of architecture diagram explaining how the application works. 
+![Architecture Diagram](diagrams/class/jpeg/architecture_neil.jpg)
 
 The `CliUserInteface` (see [here](#32-userinterface-component-neil)) is the "highest" layer of the application, in 
 the sense that it interacts directly with the user, and it passes along the input to other classes. The 
