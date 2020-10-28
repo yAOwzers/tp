@@ -353,7 +353,7 @@ The following sequence diagram shows how the list operation works:
 
 #### 4.2.2.1. Implementation  
 
-The following sequence diagram hows how the mark as done operation works:  
+The following sequence diagram how the mark as done operation works:  
 
 #### 4.2.2.2. Design Considerations  
 
