@@ -294,7 +294,7 @@ The `Page` object,
 
 ### 3.6. Storage Component
 
-![UML diagram for Storage](/diagrams/class/jpeg/Storage_UML_class.jpg)
+![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_class.jpg)
 
 The `Storage` component,
 
