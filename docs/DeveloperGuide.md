@@ -317,7 +317,7 @@ The mode switch mechanism is facilitated by `AppState`. It contains an `AppMode`
 
 The following sequence diagram shows how the mode switch operation works:
 
-<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/SequenceDiagram_ModeSwitch.jpg">
+![Sequence Diagram for Mode Switch Command](diagrams/class/jpeg/SequenceDiagram_ModeSwitch.jpg)
 
 Given below is an example usage scenario and how the find mode switch function behaves.
 
@@ -609,7 +609,7 @@ Given below is an example usage scenario and how the select notebook function be
 
 7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
 
-The UML sequence diagram below shows how the select noteboook command works.
+The UML sequence diagram below shows how the select notebook command works.
 ![Sequence Diagram for Add Task Command](diagrams/class/jpeg/select_notebook.jpg)
 
 ##### 4.3.2.2. Design Considerations
