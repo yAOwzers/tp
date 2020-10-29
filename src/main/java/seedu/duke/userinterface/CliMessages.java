@@ -207,7 +207,7 @@ public class CliMessages {
     public void printFoundNotebooksMessages(ArrayList<String> messages) {
         int index = 1;
         for (String message : messages) {
-            System.out.println(index + ". " + message + "/n");
+            System.out.println(index + ". " + message + "\n");
             index++;
         }
     }
