@@ -1,7 +1,9 @@
 package seedu.duke.userinterface.command.notebook;
 
 import seedu.duke.exceptions.IncorrectAppModeException;
-import seedu.duke.exceptions.InvalidCommandException;
+import seedu.duke.exceptions.InvalidNotebookException;
+import seedu.duke.exceptions.InvalidPageException;
+import seedu.duke.exceptions.InvalidSectionException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
@@ -14,7 +16,7 @@ import seedu.duke.userinterface.command.CliCommand;
 public class RemoveCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "delete";
 
-    private static CliMessages cliMessages = new CliMessages();
+    private CliMessages cliMessages = new CliMessages();
     private NotebookShelf currentBookshelf;
     private Notebook currentNotebook;
     private String notebookTitleToRemove;
@@ -41,12 +43,21 @@ public class RemoveCommandNotebookMode extends CliCommand {
         try {
             switch (appState.getAppMode()) {
             case NOTEBOOK_SHELF:
+                if (notebookTitleToRemove.equals("")) {
+                    throw new InvalidNotebookException(notebookTitleToRemove);
+                }
                 removeFromNotebookShelf();
                 break;
             case NOTEBOOK_BOOK:
+                if (!notebookTitleToRemove.equals("")) {
+                    throw new IncorrectAppModeException();
+                }
                 removeFromNotebook();
                 break;
             case NOTEBOOK_SECTION:
+                if (!notebookTitleToRemove.equals("") || !sectionTitleToRemove.equals("")) {
+                    throw new IncorrectAppModeException();
+                }
                 removeFromSection();
                 break;
             default:
@@ -57,55 +68,79 @@ public class RemoveCommandNotebookMode extends CliCommand {
         }
     }
 
-    private void removeFromSection() throws InvalidCommandException {
-        if (pageNumberToRemove > -1) {
-            Page pageRemoved = currentSection.removePage(pageNumberToRemove);
-            cliMessages.printRemovePageMessage(pageRemoved);
-        } else {
-            throw new InvalidCommandException("Please enter in the format:\n"
-                    + "delete /pPAGE_NUMBER");
-        }
+    private void removeFromSection() throws InvalidPageException {
+        Page pageRemoved = currentSection.removePage(pageNumberToRemove);
+        cliMessages.printRemovePageMessage(pageRemoved);
     }
 
-    private void removeFromNotebook() throws InvalidCommandException {
+    private void removeFromNotebook() throws InvalidPageException, InvalidSectionException {
         if (!sectionTitleToRemove.equals("") && pageNumberToRemove > -1) {
             int indexOfSectionToRemove = currentNotebook.findSection(sectionTitleToRemove);
-            Section section = currentNotebook.getSectionAtIndex(indexOfSectionToRemove);
+            Section section;
+            try {
+                section = currentNotebook.getSectionAtIndex(indexOfSectionToRemove);
+            } catch (IndexOutOfBoundsException ioe) {
+                throw new InvalidSectionException(sectionTitleToRemove);
+            }
             Page pageRemoved = section.removePage(pageNumberToRemove);
             cliMessages.printRemovePageMessage(pageRemoved);
         } else if (!sectionTitleToRemove.equals("") && pageNumberToRemove == -1) {
             int indexOfSectionToRemove = currentNotebook.findSection(sectionTitleToRemove);
-            Section sectionRemoved = currentNotebook.removeSection(indexOfSectionToRemove);
-            cliMessages.printRemoveSectionMessage(sectionRemoved);
+            try {
+                Section sectionRemoved = currentNotebook.removeSection(indexOfSectionToRemove);
+                cliMessages.printRemoveSectionMessage(sectionRemoved);
+            } catch (IndexOutOfBoundsException ioe) {
+                throw new InvalidSectionException(sectionTitleToRemove);
+            }
         } else {
-            throw new InvalidCommandException("Please enter in the format:\n"
-                    + "delete /sSECTION /pPAGE_NUMBER");
+            throw new InvalidSectionException(sectionTitleToRemove);
         }
     }
 
-    private void removeFromNotebookShelf() throws InvalidCommandException {
+    private void removeFromNotebookShelf() throws InvalidNotebookException, InvalidSectionException,
+            InvalidPageException {
         int indexOfNotebookToRemove = currentBookshelf.findNotebook(notebookTitleToRemove);
 
-        if (!notebookTitleToRemove.equals("") && !sectionTitleToRemove.equals("")
-                && pageNumberToRemove > -1) {
-            Notebook notebook = currentBookshelf.getNotebookAtIndex(indexOfNotebookToRemove);
+        if (!notebookTitleToRemove.equals("") && !sectionTitleToRemove.equals("")) {
+            Notebook notebook;
+            try {
+                notebook = currentBookshelf.getNotebookAtIndex(indexOfNotebookToRemove);
+            } catch (IndexOutOfBoundsException ioe) {
+                throw new InvalidNotebookException(notebookTitleToRemove);
+            }
             int indexOfSectionToRemove = notebook.findSection(sectionTitleToRemove);
-            Section section = notebook.getSectionAtIndex(indexOfSectionToRemove);
-            Page pageRemoved = section.removePage(pageNumberToRemove);
-            CliMessages.printRemovePageMessage(pageRemoved);
-        } else if (!notebookTitleToRemove.equals("") && !sectionTitleToRemove.equals("")
-                && pageNumberToRemove == -1) {
-            Notebook notebook = currentBookshelf.getNotebookAtIndex(indexOfNotebookToRemove);
-            int indexOfSectionToRemove = notebook.findSection(sectionTitleToRemove);
-            Section sectionRemoved = notebook.removeSection(indexOfSectionToRemove);
-            CliMessages.printRemoveSectionMessage(sectionRemoved);
+            if (pageNumberToRemove > -1) {
+                Section section;
+                try {
+                    section = notebook.getSectionAtIndex(indexOfSectionToRemove);
+                } catch (IndexOutOfBoundsException ioe) {
+                    throw new InvalidSectionException(sectionTitleToRemove);
+                }
+                Page pageRemoved = section.removePage(pageNumberToRemove);
+                cliMessages.printRemovePageMessage(pageRemoved);
+            } else if (pageNumberToRemove == -1) {
+                Section sectionRemoved = notebook.removeSection(indexOfSectionToRemove);
+                cliMessages.printRemoveSectionMessage(sectionRemoved);
+            } else {
+                throw new InvalidPageException(Integer.toString(pageNumberToRemove + 1));
+            }
+            return;
         } else if (!notebookTitleToRemove.equals("") && sectionTitleToRemove.equals("")
                 && pageNumberToRemove == -1) {
-            Notebook notebookRemoved = currentBookshelf.removeNotebook(indexOfNotebookToRemove);
-            CliMessages.printRemoveNotebookMessage(notebookRemoved);
-        } else {
-            throw new InvalidCommandException("Please enter in the format:\n"
-                    + "delete /nNOTEBOOK /sSECTION /pPAGE_NUMBER");
+            try {
+                Notebook notebookRemoved = currentBookshelf.removeNotebook(indexOfNotebookToRemove);
+                cliMessages.printRemoveNotebookMessage(notebookRemoved);
+            } catch (IndexOutOfBoundsException ioe) {
+                throw new InvalidNotebookException(notebookTitleToRemove);
+            }
+            return;
+        }
+
+        if (sectionTitleToRemove.equals("")) {
+            throw new InvalidSectionException(sectionTitleToRemove);
+        }
+        if (pageNumberToRemove == -1) {
+            throw new InvalidPageException(Integer.toString(pageNumberToRemove + 1));
         }
     }
 

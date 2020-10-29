@@ -204,7 +204,7 @@ public class InputParser {
         if (argument.contains(PAGE_DELIMITER)) {
             int pageNum = parsePageNumber(argument);
             if (pageNum > section.getPageArrayList().size()) {
-                throw new InvalidPageException();
+                throw new InvalidPageException(Integer.toString(pageNum + 1));
             }
             section.getPage(pageNum);
         }
@@ -221,7 +221,7 @@ public class InputParser {
         if (input.startsWith(NOTEBOOK_DELIMITER)) {
             String notebookTitle = input.replace(NOTEBOOK_DELIMITER, "").trim();
             if (notebookTitle.isBlank()) {
-                throw new InvalidNotebookException(null);
+                throw new InvalidNotebookException(notebookTitle);
             }
             if (notebookTitle.contains(SECTION_DELIMITER)) {
                 int indexPos = notebookTitle.indexOf(SECTION_DELIMITER);
@@ -252,7 +252,7 @@ public class InputParser {
         if (input.startsWith(SECTION_DELIMITER)) {
             String sectionTitle = input.replace(SECTION_DELIMITER, "");
             if (sectionTitle.isBlank()) {
-                throw new InvalidSectionException(null);
+                throw new InvalidSectionException(sectionTitle);
             }
             if (sectionTitle.contains(PAGE_DELIMITER)) {
                 int indexPos = sectionTitle.indexOf(PAGE_DELIMITER);
@@ -285,21 +285,21 @@ public class InputParser {
             int dividerPos = input.indexOf(PAGE_DELIMITER);
             input = input.substring(dividerPos);
         } catch (StringIndexOutOfBoundsException e) {
-            throw new InvalidPageException();
+            throw new InvalidPageException(input);
         }
 
         if (input.startsWith(PAGE_DELIMITER)) {
+            String page = input.replace(PAGE_DELIMITER, "");
             try {
-                String page = input.replace(PAGE_DELIMITER, "");
                 if (page.isBlank()) {
-                    throw new InvalidPageException();
+                    throw new InvalidPageException(page);
                 }
                 return Integer.parseInt(page) - 1;
             } catch (NumberFormatException e) {
-                throw new InvalidPageException();
+                throw new InvalidPageException(page);
             }
         } else {
-            throw new InvalidPageException();
+            throw new InvalidPageException(input);
         }
     }
 
@@ -315,7 +315,7 @@ public class InputParser {
         if (input.startsWith(PAGE_DELIMITER)) {
             String pageTitle = input.replace(PAGE_DELIMITER, "").trim();
             if (pageTitle.isBlank()) {
-                throw new InvalidPageException();
+                throw new InvalidPageException(pageTitle);
             }
             if (!pageTitle.contains(CONTENT_DELIMITER)) {
                 throw new EmptyPageException();
@@ -324,7 +324,7 @@ public class InputParser {
             pageTitle = pageTitle.substring(0, indexPos).trim();
             return pageTitle;
         } else {
-            throw new InvalidPageException();
+            throw new InvalidPageException(input);
         }
     }
 
@@ -347,7 +347,7 @@ public class InputParser {
             }
             return content;
         } else {
-            throw new InvalidPageException();
+            throw new InvalidPageException(input);
         }
     }
 
@@ -438,6 +438,9 @@ public class InputParser {
                 }
                 if (argument.contains(PAGE_DELIMITER)) {
                     pageNumberToRemove = parsePageNumber(argument);
+                    if (pageNumberToRemove < 0) {
+                        throw new InvalidPageException(Integer.toString(pageNumberToRemove + 1));
+                    }
                 }
                 return new RemoveCommandNotebookMode(notebookTitleToRemove,
                         sectionTitleToRemove, pageNumberToRemove, appState);
