@@ -404,9 +404,21 @@ It also constructs `CliMessages` to display messages to the user.
 
 ##### 4.2.2.1. Implementation  
 
+The `Task` class contains a member `isDone` of Boolean type.
+
 The following sequence diagram shows how the mark as done operation works:  
 
-##### 4.2.2.2. Design Considerations  
+// TODO Insert diagram inside 
+
+The following is an example of the processes that occur when the user uses the mark as done function:  
+
+Step 1. The user types `done 1`. The `done 1` command is passed through `InputParser#getCommandFromInput`, which constructs a DoneCommandTimetableMode object and calls `DoneCommandTimetable#execute()`.  
+
+Step 2. `execute()` is called, which then initialises a variable `taskList` of type TaskList. The method then calls `AppState#getTaskList`, which returns all exisiting tasks in the current tasklist.  
+
+Step 3. The `execute()` method proceeds to parse the user's intended task index to be marked as done through `Integer.parseInt()`. Using this index, it initialises a varible `taskDone` of type task and calls `AppState#markAsDone(index)`.  
+        
+Step 4. After `taskDone` is initialised, a `messages` of type CliMessages calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
 
 #### 4.2.3. Tag Feature
 The user can tag `Task`s in the `TaskList`. This section describes the implementation and design considerations for this
