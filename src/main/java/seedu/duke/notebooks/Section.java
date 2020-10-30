@@ -2,6 +2,7 @@ package seedu.duke.notebooks;
 
 import java.util.ArrayList;
 
+import seedu.duke.exceptions.InvalidPageException;
 import seedu.duke.exceptions.InvalidTagException;
 
 public class Section {
@@ -50,16 +51,11 @@ public class Section {
         }
     }
 
-    public Page removePage(int indexToRemove) {
-        return pageArrayList.remove(indexToRemove);
-    }
-
-    public void removePage(String titleToRemove) {
-        int indexToRemove = getPage(titleToRemove);
-        if (indexToRemove >= 0) {
-            removePage(indexToRemove);
-        } else {
-            System.out.println("doesn't exist");
+    public Page removePage(int indexToRemove) throws InvalidPageException {
+        try {
+            return pageArrayList.remove(indexToRemove);
+        } catch (Exception e) {
+            throw new InvalidPageException(Integer.toString(indexToRemove + 1));
         }
     }
 
