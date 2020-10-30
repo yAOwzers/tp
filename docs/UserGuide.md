@@ -236,7 +236,7 @@ Yay! I've marked this task as done:
 #### 3.3.3 Tagging tasks: `tag`
 
 You have added a few tasks, and completed some of them. Congratulations! After reviewing, you realise that some of the 
-tasks come from the same module, or that some or non-academic-related. Is there any way you can categorise them together?
+tasks come from the same module, or that some are non-academic-related. Is there any way you can categorise them together?
 
 This command lets you add a single `tag` to an existing `task` to remind you of the category it belongs to. You can
 learn how to search for all tasks with the same `tag` in [Finding tasks](#335-finding-tasks-find).
