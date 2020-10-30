@@ -108,8 +108,9 @@ or an open-source alternative like [AdoptOpenJDK](https://adoptopenjdk.net/index
 
     *Figure 1. Changing directory in Windows command prompt*
 
-5. Type `java -jar Zer0Note.jar` and press Enter.
-6. If successful, you will see the following message.
+5. Type `chcp 65001` and press Enter.
+6. Type `java -jar Zer0Note.jar` and press Enter.
+7. If successful, you will see the following message.
 
     ![Welcome message](images/welcome.png)
 
