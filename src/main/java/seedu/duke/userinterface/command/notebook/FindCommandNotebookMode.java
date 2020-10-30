@@ -25,7 +25,7 @@ public class FindCommandNotebookMode extends CliCommand {
 
     public FindCommandNotebookMode(String keyword, String tag, AppState appState) {
         this.keyword = keyword.toLowerCase();
-        this.tag = tag.toLowerCase();
+        this.tag = tag;
         this.appState = appState;
     }
 

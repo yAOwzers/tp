@@ -18,7 +18,7 @@ public class FindCommandTimetableMode extends CliCommand {
 
     public FindCommandTimetableMode(String keyword, String tag, AppState appState) {
         this.keyword = keyword.toLowerCase();
-        this.tag = tag.toLowerCase();
+        this.tag = tag;
         this.appState = appState;
     }
 
@@ -56,7 +56,7 @@ public class FindCommandTimetableMode extends CliCommand {
     private ArrayList<Task> getTasksWithTagsContainingKeyword(TaskList tasks) {
         ArrayList<Task> matchedTasks = new ArrayList<>();
         for (Task task : tasks.getTaskArrayList()) {
-            String taskTag = task.getTag().toLowerCase();
+            String taskTag = task.getTag();
             if (!taskTag.equals("") && taskTag.contains(tag)) {
                 matchedTasks.add(task);
             }

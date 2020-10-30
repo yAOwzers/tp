@@ -6,7 +6,7 @@ import seedu.duke.exceptions.InvalidTagException;
 
 public class Notebook {
     private String title;
-    private String tag;
+    private String tag = "";
     private final ArrayList<Section> sectionArrayList;
 
     public Notebook(String title) {
