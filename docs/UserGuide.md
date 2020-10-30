@@ -63,7 +63,7 @@ By using these commands, you will be able to keep track of your deadlines and or
 
 Here are some icons that will be used in this User Guide:
 
-#### Table 1: Icons and their meanings
+*Table 1: Icons and their meanings*
 
 **Icon** | **Meaning** 
 -------- | ---------- 
@@ -651,7 +651,7 @@ This section lists all the commands available in **Zer0Note**! There are general
 
 The following table shows you a list of commands that can be used anywhere, and in any mode.
 
-#### Table 2: Commands that can be used anywhere
+*Table 2: Commands that can be used anywhere*
 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
@@ -663,7 +663,7 @@ The following table shows you a list of commands that can be used anywhere, and 
 
 The following table is a cheatsheet of the commands available in Timetable Mode.
 
-#### Table 3: Cheatsheet of the commands available in Timetable Mode
+*Table 3: Cheatsheet of the commands available in Timetable Mode*
 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
@@ -677,7 +677,7 @@ The following table is a cheatsheet of the commands available in Timetable Mode.
 
 The following table is a cheatsheet of the commands available in Notebook Mode.
 
-#### Table 4: Cheatsheet of the commands available in Notebook Mode
+*Table 4: Cheatsheet of the commands available in Notebook Mode*
 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
