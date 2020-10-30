@@ -274,7 +274,7 @@ Example of usage:
 
 ```
 >>> list
-1:[o] Read book (by: Oct 19 2020 06.00 PM)
+1:[o] Read book (by: Oct 19 2020 06.00 PM)(tag: Todo)
 2:[x] Return book (by: Oct 23 2020 12.00 PM)
 3:[x] Submit assignment (by: Oct 18 2020 04.00 PM)
 4:[x] CS2113T Quiz (by: Oct 23 2020 11.00 PM)
@@ -295,7 +295,7 @@ Example of usage:
 
 ```
 >>> list /d
-1:[o] Read book (by: Oct 19 2020 06.00 PM)
+1:[o] Read book (by: Oct 19 2020 06.00 PM)(tag: Todo)
 2:[o] CS2101 OP2 (by: Oct 25 2020 11.00 AM)
 ```
 
@@ -339,6 +339,48 @@ Example of usage:
 ```
 
 <br>
+
+#### 3.3.5 Finding a task: `find`
+
+Your tasklist has grown, and it becomes a pain to go through every single task in the list. Filtering the list by 
+completion and deadline does not provide the intended result either. Don't worry! You can search for any task directly 
+too.
+
+There are two ways to find a task:
+
+##### 3.3.5.1 Finding a task by keyword
+
+Finds any task that contains the keyword in the task description.  The search is not case-sensitive.
+
+Format: `find [KEYWORD]`
+
+These are the parameters required in the command:
+
+* `KEYWORD`: keyword to look for
+
+Example of usage:
+```
+>>> find book
+1:[o] Read book (by: Oct 19 2020 06.00 PM)(tag: Todo)
+2:[x] Return book (by: Oct 23 2020 12.00 PM)
+```
+
+##### 3.3.5.2 Finding a task by tag
+
+Finds any task that has a specified tag.  The search is not case-sensitive.
+
+Format: `find /t[TAG]`
+
+These are the parameters required in the command:
+
+* `TAG`: tag to look for
+
+Example of usage:
+```
+>>> find /tTodo
+Here are the tasks I found:
+1:[o] Read book (by: Oct 19 2020 06.00 PM)(tag: Todo)
+```
 
 #### 3.3.5 Deleting a task: `delete`
 
@@ -644,6 +686,44 @@ now in notebook section: Chapter 1
 ```
 
 <br>
+
+#### 3.4.5 Finding contents: `find`
+
+Just like how you can find a task in the Timetable mode, you can look for contents here. There are two ways to do so:
+
+##### 3.4.5.1 Finding by keyword
+
+Finds all notebooks, sections and pages that contain the keyword in their title.  The search is not case-sensitive.
+
+Format: `find [KEYWORD]`
+
+These are the parameters required in the command:
+
+* `KEYWORD`: keyword to look for
+
+Example of usage:
+```
+>>> find book
+1:[o] Read book (by: Oct 19 2020 06.00 PM)(tag: Todo)
+2:[x] Return book (by: Oct 23 2020 12.00 PM)
+```
+
+##### 3.3.5.2 Finding a task by tag
+
+Finds any task that has a specified tag.  The search is not case-sensitive.
+
+Format: `find /t[TAG]`
+
+These are the parameters required in the command:
+
+* `TAG`: tag to look for
+
+Example of usage:
+```
+>>> find /tTodo
+Here are the tasks I found:
+1:[o] Read book (by: Oct 19 2020 06.00 PM)(tag: Todo)
+```
 
 #### 3.4.5 Deleting a notebook/section/page: `delete`
 
