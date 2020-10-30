@@ -220,12 +220,12 @@ public class InputParser {
     public String parseNotebookTitle(String input) throws InvalidNotebookException {
         if (input.startsWith(NOTEBOOK_DELIMITER)) {
             String notebookTitle = input.replace(NOTEBOOK_DELIMITER, "").trim();
-            if (notebookTitle.isBlank()) {
-                throw new InvalidNotebookException(notebookTitle);
-            }
             if (notebookTitle.contains(SECTION_DELIMITER)) {
                 int indexPos = notebookTitle.indexOf(SECTION_DELIMITER);
                 notebookTitle = notebookTitle.substring(0, indexPos).trim();
+            }
+            if (notebookTitle.isBlank()) {
+                throw new InvalidNotebookException(notebookTitle);
             }
             return notebookTitle;
         } else {
@@ -251,12 +251,12 @@ public class InputParser {
 
         if (input.startsWith(SECTION_DELIMITER)) {
             String sectionTitle = input.replace(SECTION_DELIMITER, "");
-            if (sectionTitle.isBlank()) {
-                throw new InvalidSectionException(sectionTitle);
-            }
             if (sectionTitle.contains(PAGE_DELIMITER)) {
                 int indexPos = sectionTitle.indexOf(PAGE_DELIMITER);
                 sectionTitle = sectionTitle.substring(0, indexPos).trim();
+            }
+            if (sectionTitle.isBlank()) {
+                throw new InvalidSectionException(sectionTitle);
             }
             return sectionTitle;
         } else {
@@ -314,14 +314,14 @@ public class InputParser {
     public String parsePageTitle(String input) throws InvalidPageException, EmptyPageException {
         if (input.startsWith(PAGE_DELIMITER)) {
             String pageTitle = input.replace(PAGE_DELIMITER, "").trim();
-            if (pageTitle.isBlank()) {
-                throw new InvalidPageException(pageTitle);
-            }
             if (!pageTitle.contains(CONTENT_DELIMITER)) {
                 throw new EmptyPageException();
             }
             int indexPos = pageTitle.indexOf(CONTENT_DELIMITER);
             pageTitle = pageTitle.substring(0, indexPos).trim();
+            if (pageTitle.isBlank()) {
+                throw new InvalidPageException(pageTitle);
+            }
             return pageTitle;
         } else {
             throw new InvalidPageException(input);

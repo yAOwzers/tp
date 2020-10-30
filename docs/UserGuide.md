@@ -79,10 +79,11 @@ Here are some icons that will be used in this User Guide:
 #### Table 1: Icons and their meanings
 
 **Icon** | **Meaning** 
------------ | ---------- 
+-------- | ---------- 
 :exclamation: | This is a note. A note suggests some considerations when using Zer0Note.
-:bulb: | This is a tip. A tip gives you a suggestion when using Zer0Note.
+:bulb: | This is a tip. A tip gives you a suggestion when using **Zer0Note**.
 :warning: | This is a warning. A warning suggests that you may get an error.
+
 <br> 
 <hr>
 
@@ -116,16 +117,16 @@ or an open-source alternative like [AdoptOpenJDK](https://adoptopenjdk.net/index
 4. Open a terminal on your computer and navigate to the folder containing the jar file. In the following example, the
  file has been saved in the Downloads folder.
 
-    ![Change directory](/images/command-change-dir.png)
+    ![Change directory](images/command-change-dir.png)
 
-    #### Figure 1. Changing directory in Windows command prompt
+    *Figure 1. Changing directory in Windows command prompt*
 
 5. Type `java -jar Zer0Note.jar` and press Enter.
 6. If successful, you will see the following message.
 
-    ![Welcome message](/images/welcome.png)
+    ![Welcome message](images/welcome.png)
 
-    #### Figure 2. Welcome message on successful run
+    *Figure 2. Welcome message on successful run*
 
 Great! Now that you have successfully run Zer0Note, go ahead and try out the different commands available (shown in section 3. Features).
 
