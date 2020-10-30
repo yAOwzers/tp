@@ -25,7 +25,12 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.2 Listing done tasks](#3342-listing-done-tasks) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.3 Listing undone tasks](#3343-listing-undone-tasks) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.4 Listing urgent tasks](#3344-listing-urgent-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5. Deleting a task: `delete`](#335-deleting-a-task-delete) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5 Finding tasks: `find`](#335-deleting-a-task-delete) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5.1 Finding by keyword](#3351-finding-a-task-by-keyword) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5.2 Finding by tag](#3352-finding-by-tag) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.3 Listing undone tasks](#3343-listing-undone-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.4 Listing urgent tasks](#3344-listing-urgent-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.6. Deleting a task: `delete`](#335-deleting-a-task-delete) <br>
 &nbsp;&nbsp;[3.4 Notebook Mode](#34-notebook-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.1 Adding a notebook/section/page: `add`](#341-adding-a-notebooksectionpage-add) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.1 Adding a notebook](#3411-adding-a-notebook) <br>
@@ -34,7 +39,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.2 Selecting a notebook/section/page: `select`](#342-selecting-a-notebooksectionpage-select) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.3 Tagging a notebook/section/page: `tag`](#343-tagging-a-notebooksectionpage-tag) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.4 Listing contents: `list`](#344-listing-contents-list) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5 Deleting a notebook/section/page: `delete`](#345-deleting-a-notebooksectionpage-delete) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5 Finding contents: `find`](#345-finding-contents-find) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5.1 Finding by keyword](#3351-finding-by-keyword) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5.2 Finding by tag](#3352-finding-by-tag) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6 Deleting a notebook/section/page: `delete`](#346-deleting-a-notebooksectionpage-delete) <br>
 &nbsp;&nbsp;[3.5 Exiting the program: `exit`](#35-exiting-the-program-exit) <br>
 [**4. FAQ**](#4-faq) <br>
 [**5. Command Summary**](#5-command-summary) <br>
@@ -340,7 +348,7 @@ Example of usage:
 
 <br>
 
-#### 3.3.5 Finding a task: `find`
+#### 3.3.5 Finding tasks `find`
 
 Your tasklist has grown, and it becomes a pain to go through every single task in the list. Filtering the list by 
 completion and deadline does not provide the intended result either. Don't worry! You can search for any task directly 
@@ -348,7 +356,7 @@ too.
 
 There are two ways to find a task:
 
-##### 3.3.5.1 Finding a task by keyword
+##### 3.3.5.1 Finding by keyword
 
 Finds any task that contains the keyword in the task description.  The search is not case-sensitive.
 
@@ -365,9 +373,9 @@ Example of usage:
 2:[x] Return book (by: Oct 23 2020 12.00 PM)
 ```
 
-##### 3.3.5.2 Finding a task by tag
+##### 3.3.5.2 Finding by tag
 
-Finds any task that has a specified tag.  The search is not case-sensitive.
+Finds any task that has a specified tag.  The search is case-sensitive.
 
 Format: `find /t[TAG]`
 
@@ -382,7 +390,7 @@ Here are the tasks I found:
 1:[o] Read book (by: Oct 19 2020 06.00 PM)(tag: Todo)
 ```
 
-#### 3.3.5 Deleting a task: `delete`
+#### 3.3.6 Deleting a task: `delete`
 
 Use the `delete` command to delete tasks you previously added to **Zer0Note**. 
 
@@ -689,7 +697,8 @@ now in notebook section: Chapter 1
 
 #### 3.4.5 Finding contents: `find`
 
-Just like how you can find a task in the Timetable mode, you can look for contents here. There are two ways to do so:
+Just like how you can find a task in the Timetable mode, you can look for contents in this mode. Even sections and pages
+that do not belong to a select notebook can be found. There are two ways to do so:
 
 ##### 3.4.5.1 Finding by keyword
 
@@ -703,14 +712,21 @@ These are the parameters required in the command:
 
 Example of usage:
 ```
->>> find book
-1:[o] Read book (by: Oct 19 2020 06.00 PM)(tag: Todo)
-2:[x] Return book (by: Oct 23 2020 12.00 PM)
+>>> find chapter
+I've found these for keyword: chapter
+Sections:
+1. CS2113 |-- Chapter 1
+2. CS2113 |-- Chapter 2
+3. CS2101 |-- Chapter 1
+4. CS2101 |-- Chapter 2
+5. CS2101 |-- Chapter 3
 ```
+>:bulb: "|--" indicates "belongs to". You can use this to identify the particular notebook and section a page is in.
 
-##### 3.3.5.2 Finding a task by tag
 
-Finds any task that has a specified tag.  The search is not case-sensitive.
+##### 3.3.5.2 Finding by tag
+
+Finds all notebooks, sections and pages that has a specified tag.  The search is case-sensitive.
 
 Format: `find /t[TAG]`
 
@@ -720,12 +736,13 @@ These are the parameters required in the command:
 
 Example of usage:
 ```
->>> find /tTodo
-Here are the tasks I found:
-1:[o] Read book (by: Oct 19 2020 06.00 PM)(tag: Todo)
+>>> find /tModule
+I've found these for tag: Module
+Notebooks:
+1. CS2113
 ```
 
-#### 3.4.5 Deleting a notebook/section/page: `delete`
+#### 3.4.6 Deleting a notebook/section/page: `delete`
 
 Use the `delete` command to delete an existing notebook, section or page.
 
@@ -815,7 +832,8 @@ The following table is a cheatsheet of the commands available in Timetable Mode.
 [Mark a task as done](#332-marking-a-task-as-done-done): `done` | done [INDEX] | done 1
 [Tag a task](#333-tagging-tasks-tag): `tag` | tag [INDEX] /t[TAG] | tag 1 /tCS2113T
 [List tasks](#333-listing-tasks-list): `list` | list (/u) (/d) (/urgent) |
-[Delete](#334-deleting-a-task-delete): `delete` | delete [INDEX] | delete 1
+[Finding tasks](#335-finding-tasks-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find book 2) find /tTodo
+[Delete a task](#336-deleting-a-task-delete): `delete` | delete [INDEX] | delete 1
 [Switch to notebook mode](#32-switching-between-the-two-modes-mode): `mode` | mode /n |
 
 ### Notebook Mode
@@ -830,6 +848,7 @@ The following table is a cheatsheet of the commands available in Notebook Mode.
 [Select](#342-selecting-a-notebooksectionpage-select): `select` | 1) select /n[NOTEBOOK] 2) select /s[SECTION] 3) select /p[NUMBER] | select /nCS2101
 [Tag](#343-tagging-a-notebook-section-page): `tag` | tag /t[TAG] | tag /tCS2113T
 [List contents](#344-listing-contents-list): `list` | list (/s) (/a) |
+[Find](#345-finding-contents-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find chapter 2) find /tModule
 [Delete](#345-deleting-a-notebooksectionpage-delete): `delete` | 1) delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER] | select /nCS2113T /sW10 /p1
 [Switch to timetable mode](#32-switching-between-the-two-modes-mode): `mode` | mode /t |
 
