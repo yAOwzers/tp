@@ -80,7 +80,7 @@ Here are some icons that will be used in this User Guide:
 -------- | ----------
 :exclamation: | This is a note. A note suggests some considerations when using Zer0Note.
 :bulb: | This is a tip. A tip gives you a suggestion when using **Zer0Note**.
-:warning: | This is a warning. A warning suggests that you may get an error.
+:warning: | This is a warning. A warning suggests that you **may** get an error.
 
 <br>
 <hr>
@@ -429,6 +429,9 @@ lecture, and pages for different concepts.
 
 Within `Notebook Mode`, you can `add` a `notebook`, `section` or a `page`. This section will guide you through these commands.
 
+> :warning: This feature does not support adding a notebook, section and page (or any combination of the 3) 
+> all at once. e.g. `add /nSchool /sAdmin /p1: Modules` will throw an error.
+
 ##### 3.4.1.1 Adding a notebook
 
 Use the `add /n` command to add a `notebook`  into the `notebook shelf`.
@@ -492,6 +495,9 @@ Great! You can now add a `page` (or as many pages as you like) into your new sec
 
 Use the `add /p` command to add a `page`  into the [selected](#342-selecting-a-notebooksectionpage-select) `section`.
 >:bulb: You must select a `section` before adding a page!
+>
+> :warning: Please also make sure not to use ";" in your page title! ";" should only be used to 
+> separate the page title from its contents.
 
 Format: `add /p[PAGE]; [PAGE CONTENT]`
 
@@ -516,7 +522,8 @@ Added page with title: HELLO WORLD
 You've successfully added a new page into the section `W1: Java` of the notebook `CS2113T`.
 
 >:warning: Ensure that your page title is preceded by "/p" and that there is a ";" to separate the contents from the page title.
-> Otherwise, an error message will be shown.
+> Otherwise, an error message will be shown. 
+
 
 <br>
 
@@ -525,31 +532,31 @@ You've successfully added a new page into the section `W1: Java` of the notebook
 After adding a `notebook`, `section` or `page`, you may want to view its contents.
 Use the `select` command to select a `notebook`, `section`, `page` or a combination of the three.
 
-> :bulb: When you want to `add` a `section`, you must select a `notebook` first.
+> :bulb: When you want to [`add` a `section`](#3412-adding-a-section), you must select a `notebook` first.
 >
-> :bulb: When you want to `add` a `page`, you must select a `section` first.
+> :bulb: When you want to [`add` a `page`](#3413-adding-a-page), you must select a `section` first.
 
-Format: `select /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
+Format: `select /n[NOTEBOOK] /s[SECTION] /p[PAGE]`
 
 These are the parameters required in the command:
 
 * `NOTEBOOK`: the title of the expected `notebook`.
 * `SECTION`: the title of the expected `section` in `notebook`.
-* `NUMBER`: the page number in the expected `section`.
+* `PAGE`: the page title in the expected `section`.
 
 In *NOTEBOOK MODE*:
-* `select /nCS2101 /sW2 /p1` - selects page 1 in the notebook `CS2101`, under the section `W2`.
-* `select /nCS2101 /sW2` - selects section titled `W2` in the notebook `CS2101`.
+* `select /nCS2101 /sW2 /pEmails` - selects the page titled `Emails` in the notebook `CS2101`, under the section `W2`.
+* `select /nCS2101 /sW2` - selects the section titled `W2` in the notebook `CS2101`.
 * `select /nCS2101` - selects the notebook titled `CS2101`.
 * `select /all` - navigates back into `NOTEBOOK MODE`, where you can list to see all available notebooks.
 > These commands can be run anywhere(i.e in a selected notebook or section) once you're in NOTEBOOK MODE.  
 
 In a selected *NOTEBOOK*:
-* `select /s1: What is OOP? /p1` - selects page 1 in the section `1: What is OOP?`, in the selected `notebook`.
+* `select /s1: What is OOP? /pDefinition` - selects the page titled `Definition`, in the section `1: What is OOP?` of the selected `notebook`.
 * `select /s1: What is OOP?` - selects the section entitled `1: What is OOP?` in the selected `notebook`.
 
 In a selected *SECTION*:
-* `select /p1` - selects page 1 in the selected `section`.
+* `select /pDefinition` - selects the page titled `Definition` in the selected `section`.
 
 > :bulb: Whenever you want to select something, you may want to use the list all function, `list /a`
 > to ensure that you're typing in the correct parameters.
