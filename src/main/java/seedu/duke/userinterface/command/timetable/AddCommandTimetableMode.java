@@ -37,7 +37,7 @@ public class AddCommandTimetableMode extends CliCommand {
             } else {
                 throw new TaskWrongFormatException();
             }
-        } catch (ArrayIndexOutOfBoundsException | TaskWrongFormatException w) {
+        } catch (ArrayIndexOutOfBoundsException a) {
             System.out.println("\tPlease type in the format: add /tTITLE /byDEADLINE");
         } catch (ZeroNoteException z) {
             z.printErrorMessage();

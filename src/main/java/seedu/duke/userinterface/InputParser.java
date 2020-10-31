@@ -354,20 +354,20 @@ public class InputParser {
                 String titleToAdd;
                 String contentToAdd;
                 if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
-                    if (argument.contains(SECTION_DELIMITER) | argument.contains(PAGE_DELIMITER)) {
+                    if (argument.contains(SECTION_DELIMITER) || argument.contains(PAGE_DELIMITER)) {
                         throw new InvalidNotebookException(argument);
                     }
                     titleToAdd = parseNotebookTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
                 } else if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
-                    if (argument.contains(PAGE_DELIMITER) | argument.contains(NOTEBOOK_DELIMITER)) {
+                    if (argument.contains(PAGE_DELIMITER) || argument.contains(NOTEBOOK_DELIMITER)) {
                         throw new InvalidSectionException(argument);
                     }
                     titleToAdd = parseSectionTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
                 } else if (appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
-                    if (!argument.contains(CONTENT_DELIMITER) | argument.contains(NOTEBOOK_DELIMITER)
-                            | argument.contains(SECTION_DELIMITER)) {
+                    if (!argument.contains(CONTENT_DELIMITER) || argument.contains(NOTEBOOK_DELIMITER)
+                            || argument.contains(SECTION_DELIMITER)) {
                         throw new InvalidPageException(argument);
                     }
                     titleToAdd = parsePageTitle(argument);
