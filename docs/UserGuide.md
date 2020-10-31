@@ -25,12 +25,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.2 Listing done tasks](#3342-listing-done-tasks) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.3 Listing undone tasks](#3343-listing-undone-tasks) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.4 Listing urgent tasks](#3344-listing-urgent-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5 Finding tasks: `find`](#335-deleting-a-task-delete) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5.1 Finding by keyword](#3351-finding-a-task-by-keyword) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5 Finding tasks: `find`](#335-finding-tasks-find) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5.1 Finding by keyword](#3351-finding-by-keyword) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5.2 Finding by tag](#3352-finding-by-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.3 Listing undone tasks](#3343-listing-undone-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.4 Listing urgent tasks](#3344-listing-urgent-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.6. Deleting a task: `delete`](#335-deleting-a-task-delete) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.6. Deleting a task: `delete`](#336-deleting-a-task-delete) <br>
 &nbsp;&nbsp;[3.4 Notebook Mode](#34-notebook-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.1 Adding a notebook/section/page: `add`](#341-adding-a-notebooksectionpage-add) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.1 Adding a notebook](#3411-adding-a-notebook) <br>
@@ -575,7 +573,7 @@ inspirations you have.
 
 This command lets you add a single `tag` to a selected `notebook`, `section` or `tag` to remind you of the category it
 belongs to. You can learn how to search for all notebooks, sections and pages in the bookshelf with the same `tag` in
-[Finding notebooks](#344-finding-a-notebooksectionpage-find).
+[Finding notebooks](#345-finding-contents-find).
 
 >:exclamation: The tag is added to the selected notebook, section or page. The tag will not be added to components
 >belonging to the selected notebook or section are not tagged.
