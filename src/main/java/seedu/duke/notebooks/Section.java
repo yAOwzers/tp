@@ -2,6 +2,7 @@ package seedu.duke.notebooks;
 
 import java.util.ArrayList;
 
+import seedu.duke.exceptions.DuplicateFoundException;
 import seedu.duke.exceptions.InvalidPageException;
 import seedu.duke.exceptions.InvalidTagException;
 
@@ -23,7 +24,18 @@ public class Section {
         this.title = title;
     }
 
-    public void addPage(String title, String content) {
+    /**
+     * Add a new page with a given title to this section.
+     *
+     * @param title the title of the page to be added
+     * @throws DuplicateFoundException when the user inputs a page title that has already been used.
+     */
+    public void addPage(String title, String content) throws DuplicateFoundException {
+        for (Page p : pageArrayList) {
+            if (p.getTitle().equals(title)) {
+                throw new DuplicateFoundException(title);
+            }
+        }
         pageArrayList.add(new Page(title, content));
     }
 

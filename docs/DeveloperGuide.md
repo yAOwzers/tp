@@ -58,9 +58,6 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.1. Saving the application state](#4421-saving-the-application-state) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.2. Reading the application state](#4422-reading-the-application-state) <br>
 &nbsp;&nbsp;[4.5. Error handling](#45-error-handling) <br>
-&nbsp;&nbsp;[4.6. [Proposed] Find duplicates](#46-proposed-find-duplicates-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.6.1 Proposed implementation](#461-proposed-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.6.2 Design considerations](#462-design-considerations) <br>
 [5. Documentation](#5-documentation) <br>
 &nbsp;&nbsp;[5.1. Setting up and maintaining the project website](#51-setting-up-and-maintaining-the-project-website) <br>
 &nbsp;&nbsp;[5.2. Style guidance](#52-style-guidance) <br>
@@ -883,52 +880,6 @@ The following example is a scenario that demonstrates how exceptions are handled
 4. This `ZeroNoteException` is caught by `CliUserInterface#run`, which will then call `ZeroNoteException#printErrorMessage`.
 
 <br>
-
-### 4.6 [Proposed] Find duplicates feature
-
-#### 4.6.1 Proposed implementation
-
-The proposed find duplicate function is facilitated by a method in the classes `Task List`, `Notebook Shelf`, `Notebook`
-and `Section`.
-
-Given below is an example usage scenario and how the find duplicates function behaves.
-
-1. The user launches the application for the first time. `CliUserInterface#executeCommand` is called when the user
-adds a task into the task list.
-
-2. The user types `add /tTask /by19-10-2020 1900`. The `add` command is passed through
-`InputParser#getCommandFromInput`, which then calls `AddCommandTimetableMode#execute()`.
-
-3. `execute()` is called, which then calls `InputParser#parseTaskTitle`, which first extracts the `title` from the
-user's input.
-
-4. The `title` is then passed to the `findDuplicate` method in `TaskList`.
-
-5. The `findDuplicate` method returns false, since it is the first task titled `Task` to be added into the
-`TaskList`. Conversely, the `findDuplicate` method returns true when a task with the same `title` already exists in the
-`TaskList`.
-
-6. `InputParser#parseDeadline` is then called, which returns the `deadline` to `AddCommandTimetableMode#execute()`.
-
-7. `TaskList#addTask` is then called and a new `Task`, with `title` and `deadline`, is initialised.
-
-8. To signal that the user has successfully added a task, a message is printed with
-`CliMessages#printAddedTaskMessage`.
-
-The sequence diagram below shows how the find duplicate command works:
-
-![Sequence diagram for finding duplicates](diagrams/class/jpeg/duplicates_francene.jpg)
-
-#### 4.6.2 Design consideration
-
-##### Aspect: Where findDuplicate should be placed
-
-* **Alternative 1 (current choice)**: findDuplicate should be saved in the class that potentially creates duplicates.
-  * Pros: Easier to access previously saved tasks/notebooks/notebook sections.
-  * Cons: May have performance issues in terms of memory usage.
-* **Alternative 2**: findDuplicate should be saved in the command that creates it.
-  * Pros: Less time spent in passing variables to different classes.
-  * Cons: We must grant access to private objects that are not within the command class.
 
 ## 5. Documentation
 
