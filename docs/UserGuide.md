@@ -19,7 +19,7 @@
 &nbsp;&nbsp;[3.3 Timetable Mode](#33-timetable-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3.1 Adding a task: `add`](#331-adding-a-task-add) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3.2 Marking a task as done: `done`](#332-marking-a-task-as-done-done) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3 Tagging a task](#333-tagging-tasks-tag) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3 Tagging a task: `tag`](#333-tagging-tasks-tag) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3.4 Listing tasks: `list`](#334-listing-tasks-list) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.1 Listing all tasks](#3341-listing-all-tasks) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.2 Listing done tasks](#3342-listing-done-tasks) <br>
