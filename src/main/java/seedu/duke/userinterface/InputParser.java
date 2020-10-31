@@ -151,7 +151,6 @@ public class InputParser {
     public void extractNotebookParams(String argument, AppState appState)
             throws InvalidNotebookException, InvalidSectionException, InvalidPageException, EmptyPageException {
         Notebook notebook;
-        Section section = null;
         String notebookTitle = parseNotebookTitle(argument);
         NotebookShelf notebookShelf = appState.getCurrentBookShelf();
         int notebookIndex = notebookShelf.findNotebook(notebookTitle);
@@ -161,6 +160,7 @@ public class InputParser {
         notebook = notebookShelf.getNotebookAtIndex(notebookIndex);
         appState.setAppMode(AppMode.NOTEBOOK_BOOK);
         appState.setCurrentNotebook(notebook);
+        Section section = null;
         System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentNotebook().getTitle());
         if (argument.contains(SECTION_DELIMITER)) {
             extractSectionParams(argument, appState);
@@ -206,8 +206,8 @@ public class InputParser {
         Section section = appState.getCurrentSection();
         String pageTitle = parsePageTitle(argument);
         int pageNum = section.findPage(pageTitle);
-        Page page = section.getPageAtIndex(pageNum);
         appState.setCurrentPage(pageNum);
+        Page page = section.getPageAtIndex(pageNum);
         appState.setAppMode(AppMode.NOTEBOOK_PAGE);
         System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentPage().getTitle());
         page.printPage();
@@ -366,8 +366,8 @@ public class InputParser {
                     titleToAdd = parseSectionTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
                 } else if (appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
-                    if (!argument.contains(CONTENT_DELIMITER) | argument.contains(NOTEBOOK_DELIMITER) |
-                            argument.contains(SECTION_DELIMITER)) {
+                    if (!argument.contains(CONTENT_DELIMITER) | argument.contains(NOTEBOOK_DELIMITER)
+                            | argument.contains(SECTION_DELIMITER)) {
                         throw new InvalidPageException(argument);
                     }
                     titleToAdd = parsePageTitle(argument);
