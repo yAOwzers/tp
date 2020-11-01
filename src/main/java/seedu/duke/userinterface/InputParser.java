@@ -5,6 +5,7 @@ import seedu.duke.exceptions.IncorrectAppModeException;
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIndexException;
+import seedu.duke.exceptions.InvalidModeException;
 import seedu.duke.exceptions.InvalidNotebookException;
 import seedu.duke.exceptions.InvalidPageException;
 import seedu.duke.exceptions.InvalidSectionException;
@@ -358,7 +359,7 @@ public class InputParser {
     public CliCommand getCommandFromInput(String userInput, AppState appState) throws ZeroNoteException {
         String trimmedInput = userInput.trim();
         String[] input = trimmedInput.split(" ", 2); // split input into command and arguments
-        String commandWord = input[0];
+        String commandWord = input[0].toLowerCase();
         String argument = "";
         if (input.length > 1) {
             argument = input[1].trim();
@@ -450,7 +451,11 @@ public class InputParser {
         case Help.COMMAND_WORD:
             return new Help(argument);
         case DoneCommandTimetableMode.COMMAND_WORD:
-            return new DoneCommandTimetableMode(argument, appState);
+            if (appState.getAppMode() == AppMode.TIMETABLE) {
+                return new DoneCommandTimetableMode(argument, appState);
+            } else {
+                throw new InvalidModeException();
+            }
         case ModeSwitch.COMMAND_WORD:
             return new ModeSwitch(argument, appState);
         default:
