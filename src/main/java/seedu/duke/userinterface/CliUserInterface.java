@@ -32,7 +32,6 @@ public class CliUserInterface {
         storage.saveToFile(appState);
     }
 
-    // TODO implement saving name on first startup
     private void checkNameOfUser() throws IOException {
         Storage storage = new Storage();
         boolean isNameOfUserFilled;
