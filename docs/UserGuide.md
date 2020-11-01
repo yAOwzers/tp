@@ -19,18 +19,16 @@
 &nbsp;&nbsp;[3.3 Timetable Mode](#33-timetable-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3.1 Adding a task: `add`](#331-adding-a-task-add) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3.2 Marking a task as done: `done`](#332-marking-a-task-as-done-done) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3 Tagging a task](#333-tagging-tasks-tag) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3 Tagging a task: `tag`](#333-tagging-tasks-tag) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3.4 Listing tasks: `list`](#334-listing-tasks-list) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.1 Listing all tasks](#3341-listing-all-tasks) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.2 Listing done tasks](#3342-listing-done-tasks) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.3 Listing undone tasks](#3343-listing-undone-tasks) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.4 Listing urgent tasks](#3344-listing-urgent-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5 Finding tasks: `find`](#335-deleting-a-task-delete) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5.1 Finding by keyword](#3351-finding-a-task-by-keyword) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5 Finding tasks: `find`](#335-finding-tasks-find) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5.1 Finding by keyword](#3351-finding-by-keyword) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5.2 Finding by tag](#3352-finding-by-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.3 Listing undone tasks](#3343-listing-undone-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.4 Listing urgent tasks](#3344-listing-urgent-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.6. Deleting a task: `delete`](#335-deleting-a-task-delete) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3.6. Deleting a task: `delete`](#336-deleting-a-task-delete) <br>
 &nbsp;&nbsp;[3.4 Notebook Mode](#34-notebook-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.1 Adding a notebook/section/page: `add`](#341-adding-a-notebooksectionpage-add) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.1 Adding a notebook](#3411-adding-a-notebook) <br>
@@ -39,20 +37,20 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.2 Selecting a notebook/section/page: `select`](#342-selecting-a-notebooksectionpage-select) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.3 Tagging a notebook/section/page: `tag`](#343-tagging-a-notebooksectionpage-tag) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.4 Listing contents: `list`](#344-listing-contents-list) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5 Finding contents: `find`](#345-finding-contents-find) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5.1 Finding by keyword](#3351-finding-by-keyword) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5.2 Finding by tag](#3352-finding-by-tag) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5 Finding contents: `find`](#345-finding-contents-find) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.1 Finding by keyword](#3351-finding-by-keyword) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.2 Finding by tag](#3452-finding-by-tag) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.6 Deleting a notebook/section/page: `delete`](#346-deleting-a-notebooksectionpage-delete) <br>
 &nbsp;&nbsp;[3.5 Exiting the program: `exit`](#35-exiting-the-program-exit) <br>
 [**4. FAQ**](#4-faq) <br>
 [**5. Command Summary**](#5-command-summary) <br>
-[**6. For advanced users: Editing your save file](#6-for-advanced-users-editing-your-save-file)<br>
+[**6. For advanced users: Editing your save file**](#6-for-advanced-users-editing-your-save-file)<br>
 &nbsp;&nbsp;[6.1 The tasks save file](#61-the-tasks-save-file)<br>
 &nbsp;&nbsp;[6.2 The notebooks save file](#62-the-notebooks-save-file)<br>
 
 <br>
 
-## 1. Introduction 
+## 1. Introduction
 
 Welcome, and thank you for choosing **Zer0Note**!
 
@@ -60,13 +58,13 @@ Welcome, and thank you for choosing **Zer0Note**!
 It combines the features of note-taking apps (like OneNote) with the interaction speed of command-line based tools like vim and emacs.
 It helps students (like yourself!) to keep track of deadlines and take notes quickly.
 
-**Zer0Note** is designed for students who love typing, and the command line! 
+**Zer0Note** is designed for students who love typing, and the command line!
 
 This document contains all the information you need to get started with using Zer0Note. It contains an exhaustive
 guide to all the features in the application. A condensed version of this guide is available inside the application
 too, for quick reference while you're using **Zer0Note**. To learn how to access the built-in user guide, see
-[Section 3.1](#31-viewing-the-user-guide-help). 
- 
+[Section 3.1](#31-viewing-the-user-guide-help).
+
 <br>
 
 ### 1.1 How to use this guide
@@ -76,14 +74,15 @@ By using these commands, you will be able to keep track of your deadlines and or
 
 Here are some icons that will be used in this User Guide:
 
-#### Table 1: Icons and their meanings
+*Table 1: Icons and their meanings*
 
-**Icon** | **Meaning** 
------------ | ---------- 
+**Icon** | **Meaning**
+-------- | ----------
 :exclamation: | This is a note. A note suggests some considerations when using Zer0Note.
-:bulb: | This is a tip. A tip gives you a suggestion when using Zer0Note.
-:warning: | This is a warning. A warning suggests that you may get an error.
-<br> 
+:bulb: | This is a tip. A tip gives you a suggestion when using **Zer0Note**.
+:warning: | This is a warning. A warning suggests that you **may** get an error.
+
+<br>
 <hr>
 
 :exclamation: Notes about the format:
@@ -99,7 +98,7 @@ Here are some icons that will be used in this User Guide:
     >>> select /sChapter 1
         now in notebook section: Chapter 1
     ```
-  
+
   `select /sChapter 1` is the user's input, and `now in notebook section: Chapter 1` is the output message.      
 
 <br>
@@ -108,24 +107,25 @@ Here are some icons that will be used in this User Guide:
 
 Here is a list of instructions on how you can download Zer0Note!
 
-1. Ensure that you have Java 11 or above installed. You may use the 
-[Oracle Java SE runtime](https://www.oracle.com/java/technologies/javase-downloads.html) 
-or an open-source alternative like [AdoptOpenJDK](https://adoptopenjdk.net/index.html). 
+1. Ensure that you have Java 11 or above installed. You may use the
+[Oracle Java SE runtime](https://www.oracle.com/java/technologies/javase-downloads.html)
+or an open-source alternative like [AdoptOpenJDK](https://adoptopenjdk.net/index.html).
 2. Download the latest version of `Zer0Note` from [here](https://github.com/AY2021S1-CS2113T-T12-3/tp/releases).
 3. Copy the file to the folder you want to use as the home folder for Zer0Note.
 4. Open a terminal on your computer and navigate to the folder containing the jar file. In the following example, the
  file has been saved in the Downloads folder.
 
-    ![Change directory](/images/command-change-dir.png)
+    ![Change directory](images/command-change-dir.png)
 
-    #### Figure 1. Changing directory in Windows command prompt
+    *Figure 1. Changing directory in Windows command prompt*
 
-5. Type `java -jar Zer0Note.jar` and press Enter.
-6. If successful, you will see the following message.
+5. Type `chcp 65001` and press Enter.
+6. Type `java -jar Zer0Note.jar` and press Enter.
+7. If successful, you will see the following message.
 
-    ![Welcome message](/images/welcome.png)
+    ![Welcome message](images/welcome.png)
 
-    #### Figure 2. Welcome message on successful run
+    *Figure 2. Welcome message on successful run*
 
 Great! Now that you have successfully run Zer0Note, go ahead and try out the different commands available (shown in section 3. Features).
 
@@ -174,7 +174,7 @@ Keeping up with deadlines may seem like a daunting task, especially when you're 
 With Zer0Note's Timetable Mode, you'll be able to manage a list of tasks.
 You can `add`, `delete`, `list` and mark your deadlines as `done`!
 
-For example, you can add your assignments with their due dates as tasks. 
+For example, you can add your assignments with their due dates as tasks.
 You can then mark them as done when you're finished with them, or delete them if you've made a mistake.
 
 The following sections explain the various features you can use while you are in the Timetable Mode.
@@ -183,7 +183,7 @@ The following sections explain the various features you can use while you are in
 
 #### 3.3.1 Adding a task: `add`
 
-This command lets you `add` a `task` with a deadline to the task list. 
+This command lets you `add` a `task` with a deadline to the task list.
 
 Format: `add /t[TASK] /by[dd-MM-yyyy] [hhmm]`
 
@@ -235,7 +235,7 @@ Yay! I've marked this task as done:
 
 #### 3.3.3 Tagging tasks: `tag`
 
-You have added a few tasks, and completed some of them. Congratulations! After reviewing, you realise that some of the 
+You have added a few tasks, and completed some of them. Congratulations! After reviewing, you realise that some of the
 tasks come from the same module, or that some are non-academic-related. Is there any way you can categorise them together?
 
 This command lets you add a single `tag` to an existing `task` to remind you of the category it belongs to. You can
@@ -266,7 +266,7 @@ Got it! I've tagged this as:
 #### 3.3.4 Listing tasks: `list`
 
 Use the `list` command to list the tasks you have added to **Zer0Note**. There are 4 ways you can use this
-command, described below: 
+command, described below:
 
 <br>
 
@@ -350,8 +350,8 @@ Example of usage:
 
 #### 3.3.5 Finding tasks `find`
 
-Your tasklist has grown, and it becomes a pain to go through every single task in the list. Filtering the list by 
-completion and deadline does not provide the intended result either. Don't worry! You can search for any task directly 
+Your tasklist has grown, and it becomes a pain to go through every single task in the list. Filtering the list by
+completion and deadline does not provide the intended result either. Don't worry! You can search for any task directly
 too.
 
 There are two ways to find a task:
@@ -392,7 +392,7 @@ Here are the tasks I found:
 
 #### 3.3.6 Deleting a task: `delete`
 
-Use the `delete` command to delete tasks you previously added to **Zer0Note**. 
+Use the `delete` command to delete tasks you previously added to **Zer0Note**.
 
 Format: `delete [INDEX]`
 
@@ -429,6 +429,9 @@ lecture, and pages for different concepts.
 
 Within `Notebook Mode`, you can `add` a `notebook`, `section` or a `page`. This section will guide you through these commands.
 
+> :warning: This feature does not support adding a notebook, section and page (or any combination of the 3) 
+> all at once. e.g. `add /nSchool /sAdmin /p1: Modules` will throw an error.
+
 ##### 3.4.1.1 Adding a notebook
 
 Use the `add /n` command to add a `notebook`  into the `notebook shelf`.
@@ -459,7 +462,7 @@ Now that you have added a new notebook for `CS2113T`, you can add a `section`!
 
 ##### 3.4.1.2 Adding a section
 
-Use the `add /s` command to add a `section`  into the [selected](#342-select-feature-select) `notebook`.
+Use the `add /s` command to add a `section`  into the [selected](#342-selecting-a-notebooksectionpage-select) `notebook`.
 
 >:bulb: You must select a `notebook` before adding a section!
 
@@ -484,14 +487,17 @@ Added section with title: W1: Java
 
 >:warning: Ensure that your section title is preceded by "/s", or an error message will be shown.
 
-Great! You can now add a `page` (or as many pages as you like) into your new section titled `W1: Java`. 
+Great! You can now add a `page` (or as many pages as you like) into your new section titled `W1: Java`.
 
 <br>
 
 ##### 3.4.1.3 Adding a page
 
-Use the `add /p` command to add a `page`  into the [selected](#342-select-feature-select) `section`.
+Use the `add /p` command to add a `page`  into the [selected](#342-selecting-a-notebooksectionpage-select) `section`.
 >:bulb: You must select a `section` before adding a page!
+>
+> :warning: Please also make sure not to use ";" in your page title! ";" should only be used to 
+> separate the page title from its contents.
 
 Format: `add /p[PAGE]; [PAGE CONTENT]`
 
@@ -504,7 +510,7 @@ These are the parameters required in the command:
 
 Example of usage:
 
-Let's say you want to add a page into a selected notebook `section`. 
+Let's say you want to add a page into a selected notebook `section`.
 
 > :bulb: Remember to select the `W1: Java` section!
 
@@ -513,10 +519,11 @@ Let's say you want to add a page into a selected notebook `section`.
 Added page with title: HELLO WORLD
 ```
 
-You've successfully added a new page into the section `W1: Java` of the notebook `CS2113T`. 
+You've successfully added a new page into the section `W1: Java` of the notebook `CS2113T`.
 
 >:warning: Ensure that your page title is preceded by "/p" and that there is a ";" to separate the contents from the page title.
-> Otherwise, an error message will be shown.
+> Otherwise, an error message will be shown. 
+
 
 <br>
 
@@ -525,33 +532,33 @@ You've successfully added a new page into the section `W1: Java` of the notebook
 After adding a `notebook`, `section` or `page`, you may want to view its contents.
 Use the `select` command to select a `notebook`, `section`, `page` or a combination of the three.
 
-> :bulb: When you want to `add` a `section`, you must select a `notebook` first.
+> :bulb: When you want to [`add` a `section`](#3412-adding-a-section), you must select a `notebook` first.
 >
-> :bulb: When you want to `add` a `page`, you must select a `section` first.
+> :bulb: When you want to [`add` a `page`](#3413-adding-a-page), you must select a `section` first.
 
-Format: `select /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
+Format: `select /n[NOTEBOOK] /s[SECTION] /p[PAGE]`
 
 These are the parameters required in the command:
 
 * `NOTEBOOK`: the title of the expected `notebook`.
 * `SECTION`: the title of the expected `section` in `notebook`.
-* `NUMBER`: the page number in the expected `section`.
+* `PAGE`: the page title in the expected `section`.
 
 In *NOTEBOOK MODE*:
-* `select /nCS2101 /sW2 /p1` - selects page 1 in the notebook `CS2101`, under the section `W2`.
-* `select /nCS2101 /sW2` - selects section titled `W2` in the notebook `CS2101`.
+* `select /nCS2101 /sW2 /pEmails` - selects the page titled `Emails` in the notebook `CS2101`, under the section `W2`.
+* `select /nCS2101 /sW2` - selects the section titled `W2` in the notebook `CS2101`.
 * `select /nCS2101` - selects the notebook titled `CS2101`.
 * `select /all` - navigates back into `NOTEBOOK MODE`, where you can list to see all available notebooks.
 > These commands can be run anywhere(i.e in a selected notebook or section) once you're in NOTEBOOK MODE.  
 
 In a selected *NOTEBOOK*:
-* `select /s1: What is OOP? /p1` - selects page 1 in the section `1: What is OOP?`, in the selected `notebook`.
+* `select /s1: What is OOP? /pDefinition` - selects the page titled `Definition`, in the section `1: What is OOP?` of the selected `notebook`.
 * `select /s1: What is OOP?` - selects the section entitled `1: What is OOP?` in the selected `notebook`.
 
 In a selected *SECTION*:
-* `select /p1` - selects page 1 in the selected `section`.
+* `select /pDefinition` - selects the page titled `Definition` in the selected `section`.
 
-> :bulb: Whenever you want to select something, you may want to use the list all function, `list /a` 
+> :bulb: Whenever you want to select something, you may want to use the list all function, `list /a`
 > to ensure that you're typing in the correct parameters.
 
 <br>
@@ -571,14 +578,14 @@ now in notebook book: CS2101
 You have now several notebooks in the bookshelf. Some come from the same module, while others are just a running list of
 inspirations you have.
 
-This command lets you add a single `tag` to a selected `notebook`, `section` or `tag` to remind you of the category it 
-belongs to. You can learn how to search for all notebooks, sections and pages in the bookshelf with the same `tag` in 
-[Finding notebooks](#344-finding-a-notebook-section-page-find).
+This command lets you add a single `tag` to a selected `notebook`, `section` or `tag` to remind you of the category it
+belongs to. You can learn how to search for all notebooks, sections and pages in the bookshelf with the same `tag` in
+[Finding notebooks](#345-finding-contents-find).
 
->:exclamation: The tag is added to the selected notebook, section or page. The tag will not be added to components 
+>:exclamation: The tag is added to the selected notebook, section or page. The tag will not be added to components
 >belonging to the selected notebook or section are not tagged.
 >
->:bulb: Each notebook, section and page can only have one tag. The previous tag will be automatically overwritten 
+>:bulb: Each notebook, section and page can only have one tag. The previous tag will be automatically overwritten
 >by the new tag and no reminder will be given.
 >
 Format: `tag /t[TAG]`
@@ -727,7 +734,7 @@ Sections:
 >:bulb: "|--" indicates "belongs to". You can use this to identify the particular notebook and section a page is in.
 
 
-##### 3.3.5.2 Finding by tag
+##### 3.4.5.2 Finding by tag
 
 Finds all notebooks, sections and pages that has a specified tag.  The search is case-sensitive.
 
@@ -815,26 +822,26 @@ This section lists all the commands available in **Zer0Note**! There are general
 
 The following table shows you a list of commands that can be used anywhere, and in any mode.
 
-#### Table 2: Commands that can be used anywhere
+*Table 2: Commands that can be used anywhere*
 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
 [Help](#31-viewing-the-user-guide-help): `help` | 1) help 2) help timetable 3) help notebook |
-[Exit](#35-exit-the-program-exit) `exit` | exit |
+[Exit](#35-exiting-the-program-exit) `exit` | exit |
 
 
 ### Timetable Mode
 
 The following table is a cheatsheet of the commands available in Timetable Mode.
 
-#### Table 3: Cheatsheet of the commands available in Timetable Mode
+*Table 3: Cheatsheet of the commands available in Timetable Mode*
 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
 [Add a task](#331-adding-a-task-add): `add` | add /t[TASK] /by[dd-MM-yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
 [Mark a task as done](#332-marking-a-task-as-done-done): `done` | done [INDEX] | done 1
 [Tag a task](#333-tagging-tasks-tag): `tag` | tag [INDEX] /t[TAG] | tag 1 /tCS2113T
-[List tasks](#333-listing-tasks-list): `list` | list (/u) (/d) (/urgent) |
+[List tasks](#334-listing-tasks-list): `list` | list (/u) (/d) (/urgent) |
 [Finding tasks](#335-finding-tasks-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find book 2) find /tTodo
 [Delete a task](#336-deleting-a-task-delete): `delete` | delete [INDEX] | delete 1
 [Switch to notebook mode](#32-switching-between-the-two-modes-mode): `mode` | mode /n |
@@ -843,16 +850,16 @@ The following table is a cheatsheet of the commands available in Timetable Mode.
 
 The following table is a cheatsheet of the commands available in Notebook Mode.
 
-#### Table 4: Cheatsheet of the commands available in Notebook Mode
+*Table 4: Cheatsheet of the commands available in Notebook Mode*
 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
 [Add](#341-adding-a-notebooksectionpage-add): `add` | 1) add /n[NOTEBOOK] 2) add /s[SECTION] 3) add /p[PAGE]; [CONTENT] | add /nCS2101
 [Select](#342-selecting-a-notebooksectionpage-select): `select` | 1) select /n[NOTEBOOK] 2) select /s[SECTION] 3) select /p[NUMBER] | select /nCS2101
-[Tag](#343-tagging-a-notebook-section-page): `tag` | tag /t[TAG] | tag /tCS2113T
+[Tag](#343-tagging-a-notebooksectionpage-tag): `tag` | tag /t[TAG] | tag /tCS2113T
 [List contents](#344-listing-contents-list): `list` | list (/s) (/a) |
 [Find](#345-finding-contents-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find chapter 2) find /tModule
-[Delete](#345-deleting-a-notebooksectionpage-delete): `delete` | 1) delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER] | select /nCS2113T /sW10 /p1
+[Delete](#346-deleting-a-notebooksectionpage-delete): `delete` | 1) delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER] | select /nCS2113T /sW10 /p1
 [Switch to timetable mode](#32-switching-between-the-two-modes-mode): `mode` | mode /t |
 
 <br>
@@ -862,7 +869,7 @@ The following table is a cheatsheet of the commands available in Notebook Mode.
 **Zer0Note** saves your tasks as a plain text file, in a format designed to be easy to read, understand and modify if
 you so desire. We realise that power users may wish to use a different text editor such as vim or Visual Studio Code
 to edit their notes, while also taking advantage of the organisation features of Zer0Note. If you wish to edit the
-save file by yourself, here's a detailed guide on the contents of the save file and how to edit it. 
+save file by yourself, here's a detailed guide on the contents of the save file and how to edit it.
 
 > :exclamation: **Zer0Note** is very sensitive to the format of the saved file! If there are any errors in the save
 > file, **Zer0Note** will not load it at all, since it cannot be sure if any of the file is uncorrupted. Proceed with
@@ -872,13 +879,13 @@ save file by yourself, here's a detailed guide on the contents of the save file 
 
 ### 6.1. The tasks save file
 
-The tasks save file is formatted as follows. 
+The tasks save file is formatted as follows.
 
-First, one line containing only an integer number `n` indicating the number of tasks in the list. 
+First, one line containing only an integer number `n` indicating the number of tasks in the list.
 
 This is followed by `n` sets of 3 lines each. The first line contains the name of the task. The second line contains
-the deadline of the task, in the format `dd-MM-YYYY hhmm`. The third line contains a value `true` or `false`, 
-indicating whether the task is done. `true` means it is done, `false` means it is not done. 
+the deadline of the task, in the format `dd-MM-YYYY hhmm`. The third line contains a value `true` or `false`,
+indicating whether the task is done. `true` means it is done, `false` means it is not done.
 
 Here is an example of the contents of a tasks save file:
 
@@ -899,29 +906,29 @@ false
 
 ### 6.2. The notebooks save file
 
-The notebooks save file is formatted as follows. 
+The notebooks save file is formatted as follows.
 
-First, one line containing only an integer number `n` indicating the number of notebooks on the shelf. 
+First, one line containing only an integer number `n` indicating the number of notebooks on the shelf.
 
 This is followed by `n` sets of lines, describing each of the `n` notebooks. The `i`th set describes the `i`th
-notebook. 
+notebook.
 
-The first line in the set contains the title of the `i`th notebook. 
+The first line in the set contains the title of the `i`th notebook.
 
-The next line in the set contains only an integer number `s` indicating the number of sections in the `i`th notebook. 
+The next line in the set contains only an integer number `s` indicating the number of sections in the `i`th notebook.
 
 This is followed by `s` sets of lines, describing each of the `s` sections in notebook `i`. The `j`th set describes
 the `j`th section in the `i`th notebook.
 
-The first line in the `j`th set contains the title of the `j`th section of the `i`th notebook. 
+The first line in the `j`th set contains the title of the `j`th section of the `i`th notebook.
 
 The next line in the set contains only an integer number `p` indicating the number of pages in the `j`th section of
- the `i`th notebook. 
- 
-This is followed by `p` sets of 2 lines each. The `k`th set describes the `k`th page, of the `j`th section, of the `i
-`th notebook. 
+ the `i`th notebook.
 
-The first line of the `k`th set contains the title of the page. 
+This is followed by `p` sets of 2 lines each. The `k`th set describes the `k`th page, of the `j`th section, of the `i
+`th notebook.
+
+The first line of the `k`th set contains the title of the page.
 
 The second line of the `k`th set contains the content of the page. The newline characters in the content of the
 page are replaced by `~~~`.  
@@ -935,23 +942,23 @@ CS2113T
 Java
 2
 What is Java?
-Java is a programming language used by 3 billion devices. 
+Java is a programming language used by 3 billion devices.
 Why Java?
-It's highly portable and relatively fast. 
+It's highly portable and relatively fast.
 OOP
 1
 What is OOP?
-OOP is Object Oriented Programming. 
+OOP is Object Oriented Programming.
 UML
 2
 What is UML?
-UML is Unified Modeling Language. 
+UML is Unified Modeling Language.
 Why UML?
 UML is used to draw diagrams to explain your code to noobs.
 Assertions
 1
 Why assertions?
-Honestly I don't know. 
+Honestly I don't know.
 CS2101
 2
 User Guides
@@ -959,13 +966,13 @@ User Guides
 What are UGs?
 UGs are documents for the user to read to understand how to use the product
 How to write UGs?
-Be user focused. That's all. 
+Be user focused. That's all.
 Developer Guides
 3
 What are DGs?
 DGs are documents for the developer to understand how the program is written.
 How to write DGs?
-Make sure the level of technicality is appropriate. 
+Make sure the level of technicality is appropriate.
 Diagrams
-Make sure diagrams use UML. 
+Make sure diagrams use UML.
 ```
