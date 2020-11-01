@@ -26,7 +26,7 @@ public class Storage {
 
     private final String tasksFilePath = "tasks.txt";
     private final String notebooksFilePath = "notebooks.txt";
-    private final String nameFilepath = "txt/nameOfUser.txt";
+    private final String nameFilepath = "src/main/resources/txt/nameOfUser.txt";
     private PersonalMesssageGenerator msgGenerator;
 
     public Storage() {
@@ -108,7 +108,6 @@ public class Storage {
 
     public boolean isNameOfUserFilled() throws IOException {
         File nameOfUserFile = new File(this.nameFilepath);
-        System.out.println(nameOfUserFile.length());
         if (nameOfUserFile.length() == 0 || !nameOfUserFile.exists()) {
             return false;
         }
@@ -124,8 +123,9 @@ public class Storage {
         //If the file doesn't exist, create it
         File f = new File(this.nameFilepath);
         // create a Scanner using the File as the source
+        Scanner s = null;
         try {
-            Scanner s = new Scanner(f);
+            s = new Scanner(f);
         } catch (FileNotFoundException e) {
 //            System.out.println("File Not Found");
             try {
