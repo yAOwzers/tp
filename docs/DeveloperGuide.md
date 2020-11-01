@@ -408,7 +408,7 @@ The `Task` class contains a member `isDone` of Boolean type.
 
 The following sequence diagram shows how the mark as done operation works:  
 
-// TODO Insert diagram inside 
+![Sequence diagram for Storage](diagrams/class/jpeg/DoneCommand_Sequence_diagram.jpg)
 
 The following is an example of the processes that occur when the user uses the mark as done function:  
 
