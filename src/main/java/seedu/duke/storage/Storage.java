@@ -106,7 +106,7 @@ public class Storage {
         }
     }
 
-    public boolean isNameOfUserFilled() throws IOException {
+    public boolean isNameOfUserFilled() {
         File nameOfUserFile = new File(this.nameFilepath);
         if (nameOfUserFile.length() == 0 || !nameOfUserFile.exists()) {
             return false;
@@ -114,27 +114,12 @@ public class Storage {
         return true;
     }
 
-    public void saveNameOfUser() throws IOException {
+    public void saveNameOfUser() {
 
-        //If the folder doesn't exists, create it
-        File folder = new File("data");
-        boolean bool = folder.mkdirs();
-
-        //If the file doesn't exist, create it
-        File f = new File(this.nameFilepath);
-        // create a Scanner using the File as the source
-        Scanner s = null;
+        File file = new File(this.nameFilepath);
         try {
-            s = new Scanner(f);
-        } catch (FileNotFoundException e) {
-//            System.out.println("File Not Found");
-            try {
-                f.createNewFile();
-                //System.out.println("New File");
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-        }
+            file.getParentFile().mkdir(); // create a directory
+            file.createNewFile(); // create .txt file
 
             Scanner keyboard = new Scanner(System.in);
             String userInput = keyboard.nextLine();
@@ -143,7 +128,9 @@ public class Storage {
             msgGenerator.setChosenName(userInput);
             msgGenerator.greetFirstTimeUser();
             nameOfUserFileToSave.close();
-
+        } catch (IOException e) {
+            System.out.println("Error in FileSaving");
+        }
 
     }
 }
