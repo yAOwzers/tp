@@ -25,7 +25,7 @@ public class Storage {
 
     private final String tasksFilePath = "tasks.txt";
     private final String notebooksFilePath = "notebooks.txt";
-    private String nameFilepath = "data/nameFilepath.txt";
+    private String nameFilepath = "src/main/resources/txt/nameOfUser.txt";
     private PersonalMesssageGenerator msgGenerator;
 
     public Storage() {
