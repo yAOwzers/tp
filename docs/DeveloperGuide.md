@@ -291,7 +291,7 @@ The `Page` object,
 
 ### 3.6. Storage Component
 
-![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_class.jpg)
+![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_class.jpeg)
 
 The `Storage` component,
 
@@ -416,6 +416,8 @@ Step 2. `execute()` is called, which then initialises a variable `taskList` of t
 Step 3. The `execute()` method proceeds to parse the user's intended task index to be marked as done through `Integer.parseInt()`. Using this index, it initialises a varible `taskDone` of type task and calls `AppState#markAsDone(index)`.  
         
 Step 4. After `taskDone` is initialised, a `messages` of type CliMessages calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
+
+##### 4.2.2.2. Design Considerations
 
 #### 4.2.3. Tag Feature
 The user can tag `Task`s in the `TaskList`. This section describes the implementation and design considerations for this
