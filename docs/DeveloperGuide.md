@@ -1257,4 +1257,16 @@ i. Click on the folder that the jar file had been saved in.
 ii. Select both the 'tasks.txt' and 'notebooks.txt'.
 iii. Delete both files.  
 iv. Restart the application by double-clicking the jar file and running Zer0Note.  
-Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1.  
+Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1. 
+
+3.2 Dealing with corrupted name file  
+i. Click on the folder that the jar file had been saved in.  
+ii. Enter the 'src', then 'main', 'resources' and then 'txt' folder.  
+iii. Delete the file named 'nameOfUser.txt'  
+iv. Restart the application by double-clicking the jar file. Re-enter the name of user.  
+
+3.3 Changing of saved name  
+i. Click on the folder that the jar file had been saved in.  
+ii. Enter the 'src', then 'main', 'resources' and then 'txt' folder.  
+iii. Double-click the 'nameOfUser.txt' file to edit it.  
+iv. Change the name in the txt file with the intended name and save the file.  
