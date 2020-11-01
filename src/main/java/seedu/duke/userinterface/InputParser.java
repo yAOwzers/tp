@@ -359,7 +359,7 @@ public class InputParser {
     public CliCommand getCommandFromInput(String userInput, AppState appState) throws ZeroNoteException {
         String trimmedInput = userInput.trim();
         String[] input = trimmedInput.split(" ", 2); // split input into command and arguments
-        String commandWord = input[0].toLowerCase();
+        String commandWord = input[0];
         String argument = "";
         if (input.length > 1) {
             argument = input[1].trim();
