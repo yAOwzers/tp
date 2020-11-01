@@ -124,7 +124,7 @@ public class InputParser {
      */
     public void extractParams(String argument, AppState appState)
             throws InvalidNotebookException, InvalidSectionException, InvalidPageException,
-            InvalidSelectCommandException, EmptyPageException {
+            InvalidSelectCommandException {
         if (argument.startsWith(NOTEBOOK_DELIMITER)) {
             extractNotebookParams(argument, appState);
         } else if ((argument.startsWith(SECTION_DELIMITER)) && (appState.getAppMode() == AppMode.NOTEBOOK_BOOK)) {
@@ -149,7 +149,7 @@ public class InputParser {
      * @throws InvalidPageException     when the page number input by the user does not exist.
      */
     public void extractNotebookParams(String argument, AppState appState)
-            throws InvalidNotebookException, InvalidSectionException, InvalidPageException, EmptyPageException {
+            throws InvalidNotebookException, InvalidSectionException, InvalidPageException {
         Notebook notebook;
         String notebookTitle = parseNotebookTitle(argument);
         NotebookShelf notebookShelf = appState.getCurrentBookShelf();
@@ -160,13 +160,9 @@ public class InputParser {
         notebook = notebookShelf.getNotebookAtIndex(notebookIndex);
         appState.setAppMode(AppMode.NOTEBOOK_BOOK);
         appState.setCurrentNotebook(notebook);
-        Section section = null;
         System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentNotebook().getTitle());
         if (argument.contains(SECTION_DELIMITER)) {
             extractSectionParams(argument, appState);
-        }
-        if (argument.contains(PAGE_DELIMITER) && section != null) {
-            extractPageParams(argument, appState);
         }
     }
 
@@ -179,7 +175,7 @@ public class InputParser {
      * @throws InvalidPageException    when the page title input by the user does not exist.
      */
     public void extractSectionParams(String argument, AppState appState)
-            throws InvalidSectionException, InvalidPageException, EmptyPageException {
+            throws InvalidSectionException, InvalidPageException {
         Notebook notebook = appState.getCurrentNotebook();
         String sectionTitle = parseSectionTitle(argument);
         int sectionIndex = notebook.findSection(sectionTitle);
@@ -281,7 +277,6 @@ public class InputParser {
      * @param input is the user's input.
      * @return the page title input by the user.
      * @throws InvalidPageException when the user's input is in the wrong format, or when the page title is blank.
-     * @throws EmptyPageException   when the user's page input does not contain the content delimiter.
      */
     public String parsePageTitle(String input) throws InvalidPageException {
         try {
