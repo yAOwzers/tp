@@ -1269,4 +1269,5 @@ iv. Restart the application by double-clicking the jar file. Re-enter the name o
 i. Click on the folder that the jar file had been saved in.  
 ii. Enter the 'src', then 'main', 'resources' and then 'txt' folder.  
 iii. Double-click the 'nameOfUser.txt' file to edit it.  
-iv. Change the name in the txt file with the intended name and save the file.  
+iv. Change the name in the txt file with the desired name and save the file.  
+v. Re-run Zer0Note with the desired name.  
