@@ -1,6 +1,5 @@
 package seedu.duke;
 
-import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.CliUserInterface;
 
 public class Duke {
