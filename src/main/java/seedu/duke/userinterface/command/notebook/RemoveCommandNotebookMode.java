@@ -22,17 +22,17 @@ public class RemoveCommandNotebookMode extends CliCommand {
     private String notebookTitleToRemove;
     private Section currentSection;
     private String sectionTitleToRemove;
-    private int pageNumberToRemove;
+    private String pageTitleToRemove;
 
     private boolean isPersonalised = true;
     private static final boolean isAutoSave = true;
 
     public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
-                                     int pageNumber, AppState appState) {
+                                     String pageTitle, AppState appState) {
         this.appState = appState;
         notebookTitleToRemove = notebookTitle;
         sectionTitleToRemove = sectionTitle;
-        pageNumberToRemove = pageNumber;
+        pageTitleToRemove = pageTitle;
 
         currentBookshelf = appState.getCurrentBookShelf();
         currentNotebook = appState.getCurrentNotebook();
@@ -52,13 +52,13 @@ public class RemoveCommandNotebookMode extends CliCommand {
                 if (!notebookTitleToRemove.equals("")) {
                     throw new IncorrectAppModeException();
                 }
-                removeFromNotebook();
+                removeFromNotebook(currentNotebook);
                 break;
             case NOTEBOOK_SECTION:
                 if (!notebookTitleToRemove.equals("") || !sectionTitleToRemove.equals("")) {
                     throw new IncorrectAppModeException();
                 }
-                removeFromSection();
+                removeFromSection(currentSection);
                 break;
             default:
                 throw new IncorrectAppModeException();
@@ -68,26 +68,26 @@ public class RemoveCommandNotebookMode extends CliCommand {
         }
     }
 
-    private void removeFromSection() throws InvalidPageException {
-        Page pageRemoved = currentSection.removePage(pageNumberToRemove);
+    private void removeFromSection(Section section) throws InvalidPageException {
+        int indexOfPage = section.findPage(pageTitleToRemove);
+        Page pageRemoved = section.removePage(indexOfPage);
         cliMessages.printRemovePageMessage(pageRemoved);
     }
 
-    private void removeFromNotebook() throws InvalidPageException, InvalidSectionException {
-        if (!sectionTitleToRemove.equals("") && pageNumberToRemove > -1) {
-            int indexOfSectionToRemove = currentNotebook.findSection(sectionTitleToRemove);
+    private void removeFromNotebook(Notebook notebook) throws InvalidPageException, InvalidSectionException {
+        if (!sectionTitleToRemove.equals("") && !pageTitleToRemove.equals("")) {
+            int indexOfSectionToRemove = notebook.findSection(sectionTitleToRemove);
             Section section;
             try {
-                section = currentNotebook.getSectionAtIndex(indexOfSectionToRemove);
+                section = notebook.getSectionAtIndex(indexOfSectionToRemove);
             } catch (IndexOutOfBoundsException ioe) {
                 throw new InvalidSectionException(sectionTitleToRemove);
             }
-            Page pageRemoved = section.removePage(pageNumberToRemove);
-            cliMessages.printRemovePageMessage(pageRemoved);
-        } else if (!sectionTitleToRemove.equals("") && pageNumberToRemove == -1) {
-            int indexOfSectionToRemove = currentNotebook.findSection(sectionTitleToRemove);
+            removeFromSection(section);
+        } else if (!sectionTitleToRemove.equals("") && pageTitleToRemove.equals("")) {
+            int indexOfSectionToRemove = notebook.findSection(sectionTitleToRemove);
             try {
-                Section sectionRemoved = currentNotebook.removeSection(indexOfSectionToRemove);
+                Section sectionRemoved = notebook.removeSection(indexOfSectionToRemove);
                 cliMessages.printRemoveSectionMessage(sectionRemoved);
             } catch (IndexOutOfBoundsException ioe) {
                 throw new InvalidSectionException(sectionTitleToRemove);
@@ -108,25 +108,10 @@ public class RemoveCommandNotebookMode extends CliCommand {
             } catch (IndexOutOfBoundsException ioe) {
                 throw new InvalidNotebookException(notebookTitleToRemove);
             }
-            int indexOfSectionToRemove = notebook.findSection(sectionTitleToRemove);
-            if (pageNumberToRemove > -1) {
-                Section section;
-                try {
-                    section = notebook.getSectionAtIndex(indexOfSectionToRemove);
-                } catch (IndexOutOfBoundsException ioe) {
-                    throw new InvalidSectionException(sectionTitleToRemove);
-                }
-                Page pageRemoved = section.removePage(pageNumberToRemove);
-                cliMessages.printRemovePageMessage(pageRemoved);
-            } else if (pageNumberToRemove == -1) {
-                Section sectionRemoved = notebook.removeSection(indexOfSectionToRemove);
-                cliMessages.printRemoveSectionMessage(sectionRemoved);
-            } else {
-                throw new InvalidPageException(Integer.toString(pageNumberToRemove + 1));
-            }
+            removeFromNotebook(notebook);
             return;
         } else if (!notebookTitleToRemove.equals("") && sectionTitleToRemove.equals("")
-                && pageNumberToRemove == -1) {
+                && pageTitleToRemove.equals("")) {
             try {
                 Notebook notebookRemoved = currentBookshelf.removeNotebook(indexOfNotebookToRemove);
                 cliMessages.printRemoveNotebookMessage(notebookRemoved);
@@ -139,8 +124,8 @@ public class RemoveCommandNotebookMode extends CliCommand {
         if (sectionTitleToRemove.equals("")) {
             throw new InvalidSectionException(sectionTitleToRemove);
         }
-        if (pageNumberToRemove == -1) {
-            throw new InvalidPageException(Integer.toString(pageNumberToRemove + 1));
+        if (!pageTitleToRemove.equals("")) {
+            throw new InvalidPageException(pageTitleToRemove);
         }
     }
 

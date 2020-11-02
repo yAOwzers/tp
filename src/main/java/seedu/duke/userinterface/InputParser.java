@@ -312,16 +312,22 @@ public class InputParser {
      * @throws EmptyPageException   when the user's page input does not contain the content delimiter.
      */
     public String parsePageTitle(String input) throws InvalidPageException, EmptyPageException {
+        try {
+            int dividerPos = input.indexOf(PAGE_DELIMITER);
+            input = input.substring(dividerPos);
+        } catch (StringIndexOutOfBoundsException e) {
+            throw new InvalidPageException(input);
+        }
+
         if (input.startsWith(PAGE_DELIMITER)) {
             String pageTitle = input.replace(PAGE_DELIMITER, "").trim();
             if (pageTitle.isBlank()) {
                 throw new InvalidPageException(pageTitle);
             }
-            if (!pageTitle.contains(CONTENT_DELIMITER)) {
-                throw new EmptyPageException();
+            if (pageTitle.contains(CONTENT_DELIMITER)) {
+                int indexPos = pageTitle.indexOf(CONTENT_DELIMITER);
+                pageTitle = pageTitle.substring(0, indexPos).trim();
             }
-            int indexPos = pageTitle.indexOf(CONTENT_DELIMITER);
-            pageTitle = pageTitle.substring(0, indexPos).trim();
             return pageTitle;
         } else {
             throw new InvalidPageException(input);
@@ -429,7 +435,7 @@ public class InputParser {
             } else {
                 String notebookTitleToRemove = "";
                 String sectionTitleToRemove = "";
-                int pageNumberToRemove = -1;
+                String pageTitleToRemove = "";
                 if (argument.contains(NOTEBOOK_DELIMITER)) {
                     notebookTitleToRemove = parseNotebookTitle(argument);
                 }
@@ -437,13 +443,10 @@ public class InputParser {
                     sectionTitleToRemove = parseSectionTitle(argument);
                 }
                 if (argument.contains(PAGE_DELIMITER)) {
-                    pageNumberToRemove = parsePageNumber(argument);
-                    if (pageNumberToRemove < 0) {
-                        throw new InvalidPageException(Integer.toString(pageNumberToRemove + 1));
-                    }
+                    pageTitleToRemove = parsePageTitle(argument);
                 }
                 return new RemoveCommandNotebookMode(notebookTitleToRemove,
-                        sectionTitleToRemove, pageNumberToRemove, appState);
+                        sectionTitleToRemove, pageTitleToRemove, appState);
             }
         case Exit.COMMAND_WORD:
             return new Exit(argument, appState);

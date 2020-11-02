@@ -51,6 +51,17 @@ public class Section {
         }
     }
 
+    public int findPage(String searchKey) {
+        int index = 0;
+        for (Page p : pageArrayList) {
+            if (p.getTitle().equals(searchKey)) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
+    }
+
     public Page removePage(int indexToRemove) throws InvalidPageException {
         try {
             return pageArrayList.remove(indexToRemove);

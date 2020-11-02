@@ -1,6 +1,7 @@
 package seedu.duke.userinterface.command.notebook;
 
 import seedu.duke.exceptions.AddCommandNotebookException;
+import seedu.duke.exceptions.EmptyPageException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
@@ -50,6 +51,9 @@ public class AddCommandNotebookMode extends CliCommand {
                 System.out.println("Added section with title : " + title);
                 break;
             case NOTEBOOK_SECTION:
+                if (content == "") {
+                    throw new EmptyPageException();
+                }
                 currentSection.addPage(title, content);
                 System.out.println("Added page with title: " + title);
                 break;
