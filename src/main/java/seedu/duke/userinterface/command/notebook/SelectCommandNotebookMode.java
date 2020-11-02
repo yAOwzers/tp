@@ -24,6 +24,7 @@ public class SelectCommandNotebookMode extends CliCommand {
             case NOTEBOOK_SHELF:
             case NOTEBOOK_BOOK:
             case NOTEBOOK_SECTION:
+            case NOTEBOOK_PAGE:
                 parser.extractParams(argument, appState);
                 break;
             default:
