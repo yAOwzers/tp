@@ -810,6 +810,10 @@ This section answers some frequently asked questions.
 
 **A**: {your answer here}
 
+**Q**: Where do I find the release? 
+
+**A**: You can find it [here](https://github.com/AY2021S1-CS2113T-T12-3/tp/releases).
+
 <br>
 
 ## 5. Command Summary
