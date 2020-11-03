@@ -12,7 +12,6 @@ public class RemoveCommandTimetableMode extends CliCommand {
 
     private final int indexToRemove;
 
-    private boolean isPersonalised = true;
     private static final boolean isAutoSave = true;
 
 
@@ -39,11 +38,6 @@ public class RemoveCommandTimetableMode extends CliCommand {
                 System.out.println("There are no tasks in the list.");
             }
         }
-    }
-
-    @Override
-    public boolean isPersonalised() {
-        return isPersonalised;
     }
 
     @Override

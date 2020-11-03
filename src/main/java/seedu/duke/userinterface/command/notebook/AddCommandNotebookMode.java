@@ -20,7 +20,6 @@ public class AddCommandNotebookMode extends CliCommand {
     private final Notebook currentNotebook;
     private final Section currentSection;
 
-    private boolean isPersonalised = true;
     private static final boolean isAutoSave = true;
 
 
@@ -59,11 +58,6 @@ public class AddCommandNotebookMode extends CliCommand {
         } catch (ZeroNoteException e) {
             e.printErrorMessage();
         }
-    }
-
-    @Override
-    public boolean isPersonalised() {
-        return isPersonalised;
     }
 
     @Override
