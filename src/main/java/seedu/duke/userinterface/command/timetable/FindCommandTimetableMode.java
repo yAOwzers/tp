@@ -75,4 +75,8 @@ public class FindCommandTimetableMode extends CliCommand {
         return Arrays.asList(title.toLowerCase().split(" "));
     }
 
+    public boolean isPersonalised() {
+        return isPersonalised;
+    }
+
 }
