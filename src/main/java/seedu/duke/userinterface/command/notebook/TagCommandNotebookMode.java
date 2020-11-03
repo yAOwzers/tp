@@ -16,7 +16,6 @@ public class TagCommandNotebookMode extends CliCommand {
     private final Section currentSection;
     private final Page currentPage;
     private CliMessages cliMessages = new CliMessages();
-    private boolean isPersonalised = true;
     private static final boolean isAutoSave = true;
 
 
@@ -51,11 +50,6 @@ public class TagCommandNotebookMode extends CliCommand {
         } catch (ZeroNoteException zne) {
             zne.printErrorMessage();
         }
-    }
-
-    @Override
-    public boolean isPersonalised() {
-        return isPersonalised;
     }
 
     @Override
