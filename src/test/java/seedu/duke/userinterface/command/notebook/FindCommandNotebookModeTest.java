@@ -1,6 +1,7 @@
 package seedu.duke.userinterface.command.notebook;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -144,6 +145,6 @@ class FindCommandNotebookModeTest {
     void isPersonalised_noInput_ReturnsTrue() {
         AppState appState = new AppState();
         FindCommandNotebookMode f = new FindCommandNotebookMode("", "", appState);
-        assertEquals(f.isPersonalised(),true);
+        assertTrue(f.isPersonalised());
     }
 }
