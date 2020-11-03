@@ -1,5 +1,17 @@
 package seedu.duke.userinterface;
 
+import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.CONTENT_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.NOTEBOOK_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.PAGE_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.SECTION_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode.SHOW_ALL;
+import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.DEADLINE_DELIMITER;
+import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.TASK_DELIMITER;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import seedu.duke.exceptions.EmptyPageException;
 import seedu.duke.exceptions.IncorrectAppModeException;
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
@@ -33,18 +45,6 @@ import seedu.duke.userinterface.command.timetable.FindCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.ListCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.TagCommandTimetableMode;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-
-import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.CONTENT_DELIMITER;
-import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.NOTEBOOK_DELIMITER;
-import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.PAGE_DELIMITER;
-import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.SECTION_DELIMITER;
-import static seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode.SHOW_ALL;
-import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.DEADLINE_DELIMITER;
-import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.TASK_DELIMITER;
 
 public class InputParser {
     /**
