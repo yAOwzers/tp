@@ -1,6 +1,6 @@
 package seedu.duke.exceptions;
 
-public class InvalidKeywordTagException extends ZeroNoteException{
+public class InvalidKeywordTagException extends ZeroNoteException {
     public InvalidKeywordTagException(String problematicInput) {
         super(problematicInput);
     }
