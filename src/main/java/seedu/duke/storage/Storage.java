@@ -9,6 +9,7 @@ import seedu.duke.notebooks.Section;
 import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.AppState;
+import seedu.duke.userinterface.CliMessages;
 import seedu.duke.userinterface.PersonalMesssageGenerator;
 
 import java.io.File;
@@ -25,7 +26,7 @@ public class Storage {
 
     private final String tasksFilePath = "tasks.txt";
     private final String notebooksFilePath = "notebooks.txt";
-    private String nameOfUserFilepath = "src/main/resources/txt/nameOfUser.txt";
+    private final String nameFilepath = "src/main/resources/txt/nameOfUser.txt";
     private PersonalMesssageGenerator msgGenerator;
 
     public Storage() {
@@ -105,25 +106,31 @@ public class Storage {
         }
     }
 
-    public boolean isNameOfUserFilled() throws IOException {
-        File nameOfUserFile = new File(nameOfUserFilepath);
-        if (nameOfUserFile.length() == 0) {
+    public boolean isNameOfUserFilled() {
+        File nameOfUserFile = new File(this.nameFilepath);
+        if (nameOfUserFile.length() == 0 || !nameOfUserFile.exists()) {
             return false;
         }
         return true;
     }
 
-    public void saveNameOfUser() throws IOException {
-        File nameOfUserFile = new File(nameOfUserFilepath);
-        nameOfUserFile.getParentFile().mkdir(); // create a directory
-        nameOfUserFile.createNewFile(); // create .txt file
+    public void saveNameOfUser() {
 
-        Scanner keyboard = new Scanner(System.in);
-        String userInput = keyboard.nextLine();
-        FileWriter nameOfUserFileToSave = new FileWriter(nameOfUserFile);
-        nameOfUserFileToSave.write(userInput);
-        msgGenerator.setChosenName(userInput);
-        msgGenerator.greetFirstTimeUser();
-        nameOfUserFileToSave.close();
+        File file = new File(this.nameFilepath);
+        try {
+            file.getParentFile().mkdir(); // create a directory
+            file.createNewFile(); // create .txt file
+
+            Scanner keyboard = new Scanner(System.in);
+            String userInput = keyboard.nextLine();
+            FileWriter nameOfUserFileToSave = new FileWriter(this.nameFilepath);
+            nameOfUserFileToSave.write(userInput);
+            msgGenerator.setChosenName(userInput);
+            msgGenerator.greetFirstTimeUser();
+            nameOfUserFileToSave.close();
+        } catch (IOException e) {
+            System.out.println("Error in FileSaving");
+        }
+
     }
 }

@@ -58,9 +58,6 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.1. Saving the application state](#4421-saving-the-application-state) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.2. Reading the application state](#4422-reading-the-application-state) <br>
 &nbsp;&nbsp;[4.5. Error handling](#45-error-handling) <br>
-&nbsp;&nbsp;[4.6. [Proposed] Find duplicates](#46-proposed-find-duplicates-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.6.1 Proposed implementation](#461-proposed-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.6.2 Design considerations](#462-design-considerations) <br>
 [5. Documentation](#5-documentation) <br>
 &nbsp;&nbsp;[5.1. Setting up and maintaining the project website](#51-setting-up-and-maintaining-the-project-website) <br>
 &nbsp;&nbsp;[5.2. Style guidance](#52-style-guidance) <br>
@@ -294,13 +291,15 @@ The `Page` object,
 
 ### 3.6. Storage Component
 
-/* to insert UML diagram */
+![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_class.jpeg)
 
 The `Storage` component,
 
-* can save the name of user in a .txt file and read it back.
+* Contains the method `saveToFile` to save the current AppState of the application in the `notebooks.txt` and `tasks.txt` files.  
 
-* can save the Tasklist and NotebookShelf data in a .txt file and read it back.
+* Contains the method `readFromFile` to load up data containing the input of the user's previous session on Zer0Note.  
+
+* Saves the name of the user in a `nameOfUser.txt` and reads it back in the form of personalised messages.   
 
 ## 4. Implementation
 
@@ -317,7 +316,7 @@ The mode switch mechanism is facilitated by `AppState`. It contains an `AppMode`
 
 The following sequence diagram shows how the mode switch operation works:
 
-<img src= "https://github.com/longngng/tp/blob/branch-DG-models/docs/diagrams/class/jpeg/SequenceDiagram_ModeSwitch.jpg">
+![Sequence Diagram for Mode Switch Command](diagrams/class/jpeg/SequenceDiagram_ModeSwitch.jpg)
 
 Given below is an example usage scenario and how the find mode switch function behaves.
 
@@ -402,9 +401,23 @@ It also constructs `CliMessages` to display messages to the user.
 
 ##### 4.2.2.1. Implementation  
 
+The `Task` class contains a member `isDone` of Boolean type.
+
 The following sequence diagram shows how the mark as done operation works:  
 
-##### 4.2.2.2. Design Considerations  
+// TODO Insert diagram inside 
+
+The following is an example of the processes that occur when the user uses the mark as done function:  
+
+Step 1. The user types `done 1`. The `done 1` command is passed through `InputParser#getCommandFromInput`, which constructs a DoneCommandTimetableMode object and calls `DoneCommandTimetable#execute()`.  
+
+Step 2. `execute()` is called, which then initialises a variable `taskList` of type TaskList. The method then calls `AppState#getTaskList`, which returns all exisiting tasks in the current tasklist.  
+
+Step 3. The `execute()` method proceeds to parse the user's intended task index to be marked as done through `Integer.parseInt()`. Using this index, it initialises a varible `taskDone` of type task and calls `AppState#markAsDone(index)`.  
+        
+Step 4. After `taskDone` is initialised, a `messages` of type CliMessages calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
+
+##### 4.2.2.2. Design Considerations
 
 #### 4.2.3. Tag Feature
 The user can tag `Task`s in the `TaskList`. This section describes the implementation and design considerations for this
@@ -595,21 +608,21 @@ The user can `select` a `Notebook`, `Section` or `Page` to view its contents. Th
 
 Given below is an example usage scenario and how the select notebook function behaves.
 
-Step 1. `CliUserInterface#executeCommand` is called when the user selects a `Notebook` from the `NotebookShelf`.
+1. `CliUserInterface#executeCommand` is called when the user selects a `Notebook` from the `NotebookShelf`.
 
-Step 2. The user types `select /nCS2113T`. The `select` command is passed through `InputParser#getCommandFromInput`.
+2. The user types `select /nCS2113T`. The `select` command is passed through `InputParser#getCommandFromInput`.
 
-Step 3. `InputParser#getCommandFromInput` returns the command `SelectCommandNotebookMode`.
+3. `InputParser#getCommandFromInput` returns the command `SelectCommandNotebookMode`.
 
-Step 4. A constructor for `SelectCommandNotebookMode` is created.
+4. A constructor for `SelectCommandNotebookMode` is created.
 
-Step 5. `SelectCommandNotebookMode#execute()` runs, which then calls `InputParser#extractParams`.
+5. `SelectCommandNotebookMode#execute()` runs, which then calls `InputParser#extractParams`.
 
-Step 6. If the argument typed by the user contains `/n`, which is the Notebook delimitter, `InputParser#extractNotebookParams` is called.
+6. If the argument typed by the user contains `/n`, which is the Notebook delimitter, `InputParser#extractNotebookParams` is called.
 
-Step 7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
+7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
 
-The UML sequence diagram below shows how the select noteboook command works.
+The UML sequence diagram below shows how the select notebook command works.
 ![Sequence Diagram for Add Task Command](diagrams/class/jpeg/select_notebook.jpg)
 
 ##### 4.3.2.2. Design Considerations
@@ -870,52 +883,6 @@ The following example is a scenario that demonstrates how exceptions are handled
 
 <br>
 
-### 4.6 [Proposed] Find duplicates feature
-
-#### 4.6.1 Proposed implementation
-
-The proposed find duplicate function is facilitated by a method in the classes `Task List`, `Notebook Shelf`, `Notebook`
-and `Section`.
-
-Given below is an example usage scenario and how the find duplicates function behaves.
-
-1. The user launches the application for the first time. `CliUserInterface#executeCommand` is called when the user
-adds a task into the task list.
-
-2. The user types `add /tTask /by19-10-2020 1900`. The `add` command is passed through
-`InputParser#getCommandFromInput`, which then calls `AddCommandTimetableMode#execute()`.
-
-3. `execute()` is called, which then calls `InputParser#parseTaskTitle`, which first extracts the `title` from the
-user's input.
-
-4. The `title` is then passed to the `findDuplicate` method in `TaskList`.
-
-5. The `findDuplicate` method returns false, since it is the first task titled `Task` to be added into the
-`TaskList`. Conversely, the `findDuplicate` method returns true when a task with the same `title` already exists in the
-`TaskList`.
-
-6. `InputParser#parseDeadline` is then called, which returns the `deadline` to `AddCommandTimetableMode#execute()`.
-
-7. `TaskList#addTask` is then called and a new `Task`, with `title` and `deadline`, is initialised.
-
-8. To signal that the user has successfully added a task, a message is printed with
-`CliMessages#printAddedTaskMessage`.
-
-The sequence diagram below shows how the find duplicate command works:
-
-![Sequence diagram for finding duplicates](diagrams/class/jpeg/duplicates_francene.jpg)
-
-#### 4.6.2 Design consideration
-
-##### Aspect: Where findDuplicate should be placed
-
-* **Alternative 1 (current choice)**: findDuplicate should be saved in the class that potentially creates duplicates.
-  * Pros: Easier to access previously saved tasks/notebooks/notebook sections.
-  * Cons: May have performance issues in terms of memory usage.
-* **Alternative 2**: findDuplicate should be saved in the command that creates it.
-  * Pros: Less time spent in passing variables to different classes.
-  * Cons: We must grant access to private objects that are not within the command class.
-
 ## 5. Documentation
 
 The following section describes how documentation for the project should be written. Note: documentation is all
@@ -1044,6 +1011,7 @@ Given below are instructions to test the app manually.
 i. Download the jar file and copy into an empty folder.  
 ii. Double-click the jar file  
 Expected: Command Line Interface should launch with a welcome message from Zer0Note as shown below:  
+
 ```
 Welcome to
  _ _ _                  _ _ _   _    _            _
