@@ -1,13 +1,13 @@
 package seedu.duke.userinterface.command.timetable;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.duke.exceptions.InvalidTagException;
 import seedu.duke.tasks.Task;
 import seedu.duke.userinterface.AppState;
-import seedu.duke.userinterface.command.notebook.FindCommandNotebookMode;
 
 class FindCommandTimetableModeTest {
 
@@ -18,9 +18,9 @@ class FindCommandTimetableModeTest {
         AddCommandTimetableMode a = new AddCommandTimetableMode(input, appState);
         a.execute();
 
-        FindCommandTimetableMode f = new FindCommandTimetableMode("test","", appState);
+        FindCommandTimetableMode f = new FindCommandTimetableMode("test", "", appState);
         f.execute();
-        assertEquals(f.getTasksFound().size(),0);
+        assertEquals(f.getTasksFound().size(), 0);
     }
 
     @Test
@@ -29,9 +29,9 @@ class FindCommandTimetableModeTest {
         Task t = new Task("Task 1", "03-11-2020 1112");
         appState.getTaskList().addTask(t);
 
-        FindCommandTimetableMode f = new FindCommandTimetableMode("task","", appState);
+        FindCommandTimetableMode f = new FindCommandTimetableMode("task", "", appState);
         f.execute();
-        assertEquals(f.getTasksFound().size(),1);
+        assertEquals(f.getTasksFound().size(), 1);
     }
 
     @Test
@@ -45,9 +45,9 @@ class FindCommandTimetableModeTest {
         }
         appState.getTaskList().addTask(t);
 
-        FindCommandTimetableMode f = new FindCommandTimetableMode("","task", appState);
+        FindCommandTimetableMode f = new FindCommandTimetableMode("", "task", appState);
         f.execute();
-        assertEquals(f.getTasksFound().size(),0);
+        assertEquals(f.getTasksFound().size(), 0);
     }
 
     @Test
@@ -61,9 +61,9 @@ class FindCommandTimetableModeTest {
         }
         appState.getTaskList().addTask(t);
 
-        FindCommandTimetableMode f = new FindCommandTimetableMode("","test", appState);
+        FindCommandTimetableMode f = new FindCommandTimetableMode("", "test", appState);
         f.execute();
-        assertEquals(f.getTasksFound().size(),1);
+        assertEquals(f.getTasksFound().size(), 1);
     }
 
     @Test
