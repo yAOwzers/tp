@@ -1,8 +1,7 @@
 package seedu.duke.userinterface.command.timetable;
 
-import seedu.duke.exceptions.IncorrectDeadlineFormatException;
-import seedu.duke.exceptions.TaskTitleException;
 import seedu.duke.exceptions.TaskWrongFormatException;
+import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.AppState;
@@ -11,14 +10,11 @@ import seedu.duke.userinterface.InputParser;
 import seedu.duke.userinterface.command.CliCommand;
 
 public class AddCommandTimetableMode extends CliCommand {
-    //TODO have subclasses of CliCommand for commands with and without arguments, and the subclass with arguments could
-    // contain these fields to be overridden.
     public static final String COMMAND_WORD = "add";
     public static final String TASK_DELIMITER = "/t";
     public static final String DEADLINE_DELIMITER = "/by";
     private final String argument;
     private final CliMessages messages = new CliMessages();
-    private boolean isPersonalised = true;
     private static final boolean isAutoSave = true;
 
 
@@ -40,21 +36,14 @@ public class AddCommandTimetableMode extends CliCommand {
             } else {
                 throw new TaskWrongFormatException();
             }
-        } catch (TaskTitleException t) {
-            t.printErrorMessage();
-        } catch (ArrayIndexOutOfBoundsException | TaskWrongFormatException w) {
+        } catch (ArrayIndexOutOfBoundsException a) {
             System.out.println("\tPlease type in the format: add /tTITLE /byDEADLINE");
-        } catch (IncorrectDeadlineFormatException d) {
-            System.out.println("\tOops! Your deadline should be in this format");
-            System.out.println("\tdd-MM-yyyy HHmm where time is in 24h");
+        } catch (ZeroNoteException z) {
+            z.printErrorMessage();
         }
     }
 
     @Override
-    public boolean isPersonalised() {
-        return isPersonalised;
-    }
-
     public boolean isTriggerAutoSave() {
         return isAutoSave;
     }
