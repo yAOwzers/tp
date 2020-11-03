@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.duke.exceptions.DuplicateFoundException;
 import seedu.duke.exceptions.InvalidTagException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
@@ -17,7 +18,11 @@ class FindCommandNotebookModeTest {
     @Test
     void execute_keywordInput_noResults() {
         Section s = new Section("Section 1");
-        s.addPage("Page 1", "test");
+        try {
+            s.addPage("Page 1", "test");
+        } catch (DuplicateFoundException e) {
+            e.printErrorMessage();
+        }
         Notebook n = new Notebook("Notebook 1 ");
         n.addSection(s);
         NotebookShelf ns = new NotebookShelf();
@@ -36,7 +41,11 @@ class FindCommandNotebookModeTest {
     @Test
     void execute_keywordInput_onlyNotebookFound() {
         Section s = new Section("Section 1");
-        s.addPage("Page 1", "test");
+        try {
+            s.addPage("Page 1", "test");
+        } catch (DuplicateFoundException e) {
+            e.printErrorMessage();
+        }
         Notebook n = new Notebook("Notebook 1");
         n.addSection(s);
         NotebookShelf ns = new NotebookShelf();
@@ -55,7 +64,11 @@ class FindCommandNotebookModeTest {
     @Test
     void execute_keywordInput_allFound() {
         Section s = new Section("Section 1");
-        s.addPage("Page 1", "test");
+        try {
+            s.addPage("Page 1", "test");
+        } catch (DuplicateFoundException e) {
+            e.printErrorMessage();
+        }
         Notebook n = new Notebook("Notebook 1");
         n.addSection(s);
         NotebookShelf ns = new NotebookShelf();
@@ -74,7 +87,11 @@ class FindCommandNotebookModeTest {
     @Test
     void execute_tagInput_noResults() {
         Section s = new Section("Section 1");
-        s.addPage("Page 1", "test");
+        try {
+            s.addPage("Page 1", "test");
+        } catch (DuplicateFoundException e) {
+            e.printErrorMessage();
+        }
         Notebook n = new Notebook("Notebook 1 ");
         n.addSection(s);
         NotebookShelf ns = new NotebookShelf();
@@ -93,7 +110,11 @@ class FindCommandNotebookModeTest {
     @Test
     void execute_tagInput_onlyNotebookFound() {
         Section s = new Section("Section 1");
-        s.addPage("Page 1", "test");
+        try {
+            s.addPage("Page 1", "test");
+        } catch (DuplicateFoundException e) {
+            e.printErrorMessage();
+        }
         Notebook n = new Notebook("Notebook 1");
         n.addSection(s);
         try {
