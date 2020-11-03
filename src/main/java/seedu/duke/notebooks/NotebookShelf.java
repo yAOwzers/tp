@@ -1,5 +1,7 @@
 package seedu.duke.notebooks;
 
+import seedu.duke.exceptions.DuplicateFoundException;
+
 import java.util.ArrayList;
 
 public class NotebookShelf {
@@ -43,8 +45,14 @@ public class NotebookShelf {
      * Add a notebook with a given title to the shelf.
      *
      * @param title the title of the notebook to be added
+     * @throws DuplicateFoundException when the notebook title input by the user has already been used.
      */
-    public void addNotebook(String title) {
+    public void addNotebook(String title) throws DuplicateFoundException {
+        for (Notebook n : notebooksArrayList) {
+            if (n.getTitle().equals(title)) {
+                throw new DuplicateFoundException(title);
+            }
+        }
         notebooksArrayList.add(new Notebook(title));
     }
 

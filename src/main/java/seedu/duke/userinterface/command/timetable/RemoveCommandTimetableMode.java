@@ -14,6 +14,7 @@ public class RemoveCommandTimetableMode extends CliCommand {
 
     private static final boolean isAutoSave = true;
 
+
     public RemoveCommandTimetableMode(int indexToRemove, AppState uiMode) {
         this.setAppState(uiMode);
         this.indexToRemove = indexToRemove;

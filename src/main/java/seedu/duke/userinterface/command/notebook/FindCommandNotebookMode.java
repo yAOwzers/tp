@@ -18,6 +18,7 @@ public class FindCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "find";
     private String keyword;
     private String tag;
+    private boolean isPersonalised = true;
 
     private ArrayList<String> notebookMessages = new ArrayList<>();
     private ArrayList<String> sectionMessages = new ArrayList<>();
@@ -25,7 +26,7 @@ public class FindCommandNotebookMode extends CliCommand {
 
     public FindCommandNotebookMode(String keyword, String tag, AppState appState) {
         this.keyword = keyword.toLowerCase();
-        this.tag = tag.toLowerCase();
+        this.tag = tag;
         this.appState = appState;
     }
 
@@ -130,4 +131,5 @@ public class FindCommandNotebookMode extends CliCommand {
     private List<String> getWordsInTitle(String title) {
         return Arrays.asList(title.toLowerCase().split(" "));
     }
+
 }

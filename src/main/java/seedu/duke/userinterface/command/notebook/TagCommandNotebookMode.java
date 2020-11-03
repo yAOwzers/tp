@@ -15,7 +15,9 @@ public class TagCommandNotebookMode extends CliCommand {
     private final Notebook currentNotebook;
     private final Section currentSection;
     private final Page currentPage;
+    private CliMessages cliMessages = new CliMessages();
     private static final boolean isAutoSave = true;
+
 
     public TagCommandNotebookMode(String params, AppState appState) {
         this.appState = appState;

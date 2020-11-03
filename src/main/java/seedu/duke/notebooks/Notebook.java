@@ -2,11 +2,12 @@ package seedu.duke.notebooks;
 
 import java.util.ArrayList;
 
+import seedu.duke.exceptions.DuplicateFoundException;
 import seedu.duke.exceptions.InvalidTagException;
 
 public class Notebook {
     private String title;
-    private String tag;
+    private String tag = "";
     private final ArrayList<Section> sectionArrayList;
 
     public Notebook(String title) {
@@ -56,8 +57,14 @@ public class Notebook {
      * Add a new section with a given title to this notebook.
      *
      * @param title the title of the section to be added
+     * @throws DuplicateFoundException when the user inputs a section title that has already been used.
      */
-    public void addSection(String title) {
+    public void addSection(String title) throws DuplicateFoundException {
+        for (Section s : sectionArrayList) {
+            if (s.getTitle().equals(title)) {
+                throw new DuplicateFoundException(title);
+            }
+        }
         sectionArrayList.add(new Section(title));
     }
 
