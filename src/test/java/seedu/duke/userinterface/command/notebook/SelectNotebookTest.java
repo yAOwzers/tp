@@ -29,8 +29,6 @@ public class SelectNotebookTest {
 
     @Test
     void selectInvalid_pageTitle_expectException() {
-        InputParser parser = new InputParser();
-        String argument = "/ntest_notebook /ssection /ppage2";
         AppState appState = new AppState();
         appState.setAppMode(AppMode.NOTEBOOK_SHELF);
         NotebookShelf ns = new NotebookShelf();
@@ -42,6 +40,8 @@ public class SelectNotebookTest {
         notebook.addSection(section);
         section.addPage(page);
 
+        InputParser parser = new InputParser();
+        String argument = "/ntest_notebook /ssection /ppage2";
         assertThrows(ZeroNoteException.class, () -> {
             parser.extractParams(argument, appState);
         });
@@ -49,8 +49,6 @@ public class SelectNotebookTest {
 
     @Test
     void selectInvalid_page_expectException() {
-        InputParser parser = new InputParser();
-        String inputString = "select /ntest_notebook /ssection /ppage ; content";
         AppState appState = new AppState();
         appState.setAppMode(AppMode.NOTEBOOK_SHELF);
         NotebookShelf ns = new NotebookShelf();
@@ -67,7 +65,9 @@ public class SelectNotebookTest {
         } catch (DuplicateFoundException e) {
             e.printErrorMessage();
         }
-
+        
+        InputParser parser = new InputParser();
+        String inputString = "select /ntest_notebook /ssection /ppage ; content";
         assertThrows(ZeroNoteException.class, () -> {
             parser.getCommandFromInput(inputString, appState);
         });
