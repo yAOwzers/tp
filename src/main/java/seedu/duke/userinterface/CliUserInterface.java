@@ -16,9 +16,7 @@ public class CliUserInterface {
     private PersonalMesssageGenerator msgGenerator;
     private CliMessages messages;
 
-
     public CliUserInterface() {
-        msgGenerator = new PersonalMesssageGenerator();
         messages = new CliMessages();
     }
 
@@ -32,29 +30,27 @@ public class CliUserInterface {
         storage.saveToFile(appState);
     }
 
-    private void checkNameOfUser() throws IOException {
-        Storage storage = new Storage();
-        boolean isNameOfUserFilled;
-        isNameOfUserFilled = storage.isNameOfUserFilled();
-        if (!isNameOfUserFilled) {
+    private void checkNameOfUser(Scanner keyboard) {
+        if (appState.getUserName().equals("")) {
             messages.printFillInNameOfUserMessage();
-            storage.saveNameOfUser();
-        } else {
+            String userName = keyboard.nextLine();
+            appState.setUserName(userName);
             msgGenerator.greetUser();
         }
     }
 
 
-    public void run() throws IOException {
+    public void run() {
         try {
             loadState();
         } catch (CorruptFileException e) {
             e.printErrorMessage();
         }
         startUI();
-        checkNameOfUser();
+        msgGenerator = new PersonalMesssageGenerator(appState.getUserName());
         String userInput;
         Scanner keyboard = new Scanner(System.in);
+        checkNameOfUser(keyboard);
         while (!toQuit) {
             userInput = keyboard.nextLine();
             try {
@@ -74,6 +70,9 @@ public class CliUserInterface {
     private void executeCommand(String userInput) throws ZeroNoteException {
         InputParser parser = new InputParser();
         CliCommand command = parser.getCommandFromInput(userInput, appState);
+        if(command.printsPersonalMessage()) {
+            msgGenerator.generatePersonalisedMessage();
+        }
         command.execute();
         if (command.isTriggerAutoSave()) {
             saveState();

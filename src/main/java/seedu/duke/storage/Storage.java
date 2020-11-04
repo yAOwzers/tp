@@ -27,44 +27,54 @@ public class Storage {
     private final String tasksFilePath = "tasks.txt";
     private final String notebooksFilePath = "notebooks.txt";
     private final String nameFilepath = "src/main/resources/txt/nameOfUser.txt";
-    private PersonalMesssageGenerator msgGenerator;
 
-    public Storage() {
-        msgGenerator = new PersonalMesssageGenerator();
-    }
-
-    public void saveToFile(AppState currentAppState) throws FileSavingException {
+    public void saveTasks(AppState currentAppState) throws FileSavingException {
         File tasksFile = new File(tasksFilePath);
-        File notebooksFile = new File(notebooksFilePath);
-
         TaskList currentTaskList = currentAppState.getTaskList();
-        NotebookShelf currentNotebookShelf = currentAppState.getCurrentBookShelf();
-
         String tasksToSave = currentTaskList.serialize();
-        String notebooksToSave = currentNotebookShelf.serialize();
-
         try {
             FileWriter tasksFileWriter = new FileWriter(tasksFile);
-            FileWriter notebooksFileWriter = new FileWriter(notebooksFile);
             tasksFileWriter.write(tasksToSave);
-            notebooksFileWriter.write(notebooksToSave);
             tasksFileWriter.close();
+        } catch (IOException e) {
+            throw new FileSavingException(e.getMessage());
+        }
+    }
+
+    public void saveNotebooks(AppState currentAppState) throws FileSavingException {
+        File notebooksFile = new File(notebooksFilePath);
+        NotebookShelf currentNotebookShelf = currentAppState.getCurrentBookShelf();
+        String notebooksToSave = currentNotebookShelf.serialize();
+        try {
+            FileWriter notebooksFileWriter = new FileWriter(notebooksFile);
+            notebooksFileWriter.write(notebooksToSave);
             notebooksFileWriter.close();
         } catch (IOException e) {
             throw new FileSavingException(e.getMessage());
         }
     }
 
-    public AppState readFromFile() throws CorruptFileException {
-        AppState loadedAppState = new AppState();
-        TaskList loadedTaskList = loadedAppState.getTaskList();
-        NotebookShelf loadedNotebookShelf = loadedAppState.getCurrentBookShelf();
+    public void saveUserName(AppState currentAppState) throws FileSavingException {
+        File userNameFile = new File(nameFilepath);
+        try {
+            FileWriter userNameFileWriter = new FileWriter(userNameFile);
+            userNameFileWriter.write(currentAppState.getUserName());
+        } catch (IOException e) {
+            throw new FileSavingException(e.getMessage());
+        }
+    }
 
+    public void saveToFile(AppState currentAppState) throws FileSavingException {
+        saveTasks(currentAppState);
+        saveNotebooks(currentAppState);
+        saveUserName(currentAppState);
+    }
+
+    public void readTasks(AppState loadedAppState) {
+        TaskList loadedTaskList = new TaskList();
         File tasksFile = new File(tasksFilePath);
-        File notebooksFile = new File(notebooksFilePath);
         try {
             Scanner tasksFileScanner = new Scanner(tasksFile);
-            Scanner notebooksFileScanner = new Scanner(notebooksFile);
             int numTasks = Integer.parseInt(tasksFileScanner.nextLine());
             for (int i = 0; i < numTasks; i++) {
                 String taskTitle = tasksFileScanner.nextLine();
@@ -76,36 +86,83 @@ public class Storage {
                 }
                 loadedTaskList.addTask(currentTask);
             }
+            loadedAppState.setTaskList(loadedTaskList);
+        } catch (FileNotFoundException e) {
+            CliMessages.printNoTaskFile();
+        } catch (Exception e) {
+            CliMessages.printCorruptTaskFile();
+            PrintStream syserr = System.err;
+            System.setErr(System.out);
+            e.printStackTrace();
+            System.setErr(syserr);
+        }
+    }
+
+    public void readNotebooks(AppState loadedAppState) {
+        NotebookShelf loadedNotebookShelf = new NotebookShelf();
+        File notebooksFile = new File(notebooksFilePath);
+        try {
+            Scanner notebooksFileScanner = new Scanner(notebooksFile);
             int numNotebooks = Integer.parseInt(notebooksFileScanner.nextLine());
             for (int i = 0; i < numNotebooks; i++) {
                 String notebookTitle = notebooksFileScanner.nextLine();
                 int numSections = Integer.parseInt(notebooksFileScanner.nextLine());
                 Notebook currentNotebook = new Notebook(notebookTitle);
-                for (int j = 0; j < numSections; j++) {
-                    String sectionTitle = notebooksFileScanner.nextLine();
-                    int numPages = Integer.parseInt(notebooksFileScanner.nextLine());
-                    Section currentSection = new Section(sectionTitle);
-                    for (int k = 0; k < numPages; k++) {
-                        String pageTitle = notebooksFileScanner.nextLine();
-                        String pageContent = notebooksFileScanner.nextLine();
-                        pageContent = pageContent.replaceAll("~~~", System.lineSeparator());
-                        Page currentPage = new Page(pageTitle, pageContent);
-                        currentSection.addPage(currentPage);
-                    }
-                    currentNotebook.addSection(currentSection);
-                }
+                readSections(numSections, currentNotebook, notebooksFileScanner);
                 loadedNotebookShelf.addNotebook(currentNotebook);
             }
-            return loadedAppState;
+            loadedAppState.setCurrentBookShelf(loadedNotebookShelf);
         } catch (FileNotFoundException e) {
-            System.out.println("File was not found. A new save file will be created upon exit. ");
-            return new AppState();
-        } catch (InputMismatchException | NumberFormatException e) {
+            CliMessages.printNoNotebookFile();
+        } catch (Exception e) {
+            CliMessages.printCorruptNotebookFile();
+            PrintStream syserr = System.err;
+            System.setErr(System.out);
             e.printStackTrace();
-            return new AppState();
+            System.setErr(syserr);
         }
     }
 
+    public void readSections(int numSections, Notebook currentNotebook, Scanner notebooksFileScanner) {
+        for (int j = 0; j < numSections; j++) {
+            String sectionTitle = notebooksFileScanner.nextLine();
+            int numPages = Integer.parseInt(notebooksFileScanner.nextLine());
+            Section currentSection = new Section(sectionTitle);
+            readPages(numPages, currentSection, notebooksFileScanner);
+            currentNotebook.addSection(currentSection);
+        }
+    }
+
+    public void readPages(int numPages, Section currentSection, Scanner notebooksFileScanner) {
+        for (int k = 0; k < numPages; k++) {
+            String pageTitle = notebooksFileScanner.nextLine();
+            String pageContent = notebooksFileScanner.nextLine();
+            pageContent = pageContent.replaceAll("~~~", System.lineSeparator());
+            Page currentPage = new Page(pageTitle, pageContent);
+            currentSection.addPage(currentPage);
+        }
+    }
+
+    public void readUserName(AppState loadedAppState) {
+        File userNameFile = new File(nameFilepath);
+        try{
+            Scanner userNameFileScanner = new Scanner(userNameFile);
+            String userName = userNameFileScanner.nextLine();
+            loadedAppState.setUserName(userName);
+        } catch (Exception e) {
+
+        }
+    }
+
+    public AppState readFromFile() throws CorruptFileException {
+        AppState loadedAppState = new AppState();
+        readTasks(loadedAppState);
+        readNotebooks(loadedAppState);
+        readUserName(loadedAppState);
+        return loadedAppState;
+    }
+
+    @Deprecated
     public boolean isNameOfUserFilled() {
         File nameOfUserFile = new File(this.nameFilepath);
         if (nameOfUserFile.length() == 0 || !nameOfUserFile.exists()) {
@@ -113,14 +170,13 @@ public class Storage {
         }
         return true;
     }
-
+    
+    @Deprecated
     public void saveNameOfUser() {
-
         File file = new File(this.nameFilepath);
         try {
             file.getParentFile().mkdir(); // create a directory
             file.createNewFile(); // create .txt file
-
             Scanner keyboard = new Scanner(System.in);
             String userInput = keyboard.nextLine();
             FileWriter nameOfUserFileToSave = new FileWriter(this.nameFilepath);

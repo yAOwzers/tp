@@ -40,6 +40,44 @@ public class CliMessages {
         page.printPage();
     }
 
+    public static void printCorruptTaskFile() {
+        System.out.println("There was some error reading the Tasks file; something has likely been corrupted");
+        System.out.println("You may continue, and Zer0Note will start from scratch with no Task data. ");
+        System.out.println("Unless otherwise mentioned, your notebooks should be fine. ");
+        System.out.println("Note that continuing will overwrite the corrupted file, so you won't be able to "
+                + "recover it at all. ");
+        System.out.println("You may also quit Zer0Note now by pressing Ctrl-C (PC keyboards) or control-C (Mac "
+                + "keyboards) NOW"
+                + "and attempt to recover the "
+                + "file manually. ");
+        System.out.println("If you contact the developers for help, please provide the corrupt files, "
+                + "and the following error message "
+                + " ");
+    }
+
+    public static void printNoNotebookFile() {
+        System.out.println("Notebook save file was not found. A new save file will be created upon exit. ");
+    }
+
+    public static void printCorruptNotebookFile() {
+        System.out.println("There was some error reading the Notebooks file; something has likely been corrupted");
+        System.out.println("You may continue, and Zer0Note will start from scratch with no Task data. ");
+        System.out.println("Unless otherwise mentioned, your tasks should be fine. ");
+        System.out.println("Note that continuing will overwrite the corrupted file, so you won't be able to "
+                + "recover it at all. ");
+        System.out.println("You may also quit Zer0Note now by pressing Ctrl-C (PC keyboards) or control-C (Mac "
+                + "keyboards) NOW"
+                + "and attempt to recover the "
+                + "file manually. ");
+        System.out.println("If you contact the developers for help, please provide the corrupt files, "
+                + "and the following error message "
+                + " ");
+    }
+
+    public static void printNoTaskFile() {
+        System.out.println("Task save file was not found. A new save file will be created upon exit. ");
+    }
+
     public static void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
         String personalMessage = msgGenerator.generatePersonalisedMessage();
         System.out.println(personalMessage);

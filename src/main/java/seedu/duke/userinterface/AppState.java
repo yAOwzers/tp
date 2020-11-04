@@ -17,11 +17,13 @@ public class AppState {
     private int indexOfCurrentNotebook;
     private int indexOfCurrentSection;
     private int indexOfCurrentPage;
+    private String userName;
 
     public AppState() {
         taskList = new TaskList();
         appMode = AppMode.TIMETABLE;
         currentBookShelf = new NotebookShelf();
+        userName = "";
     }
 
     public AppMode getAppMode() {
@@ -100,5 +102,13 @@ public class AppState {
 
     public void setIndexOfCurrentPage(int indexOfCurrentPage) {
         this.indexOfCurrentPage = indexOfCurrentPage;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

@@ -24,3 +24,5 @@ tasks.txt
 
 *.~vsdx
 docs/diagrams/class/visio/~$$add-select_notebook.~vsdx
+
+*.txt

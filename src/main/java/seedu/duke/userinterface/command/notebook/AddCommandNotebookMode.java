@@ -22,8 +22,8 @@ public class AddCommandNotebookMode extends CliCommand {
 
     private static final boolean isAutoSave = true;
 
-
     public AddCommandNotebookMode(String title, AppState appState) {
+        PRINTS_PERSONAL_MESSAGE = true;
         this.appState = appState;
         this.title = title;
         assert title != null;
