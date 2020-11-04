@@ -12,7 +12,10 @@ The user interacts with it using a CLI. It is written in Java, and has about ?? 
   - Managed release `v2.0` on GitHub
 - Documentation:
     - User Guide:
-        - Added documentation for the features `add` and `select` #69,
-        - Did cosmetic tweaks to existing documentation of features clear, exit: #74
+        - Added documentation for `Quick Start`, the features `add` and `select` #69, #109,...
+        - Tweaked existing documentation of features #109, #130
     - Developer Guide:
         - Added implementation details of the add and select features, as well as error handling.
+
+- Community:
+  - Reported bug in forum [#121](https://github.com/nus-cs2113-AY2021S1/forum/issues/121)
