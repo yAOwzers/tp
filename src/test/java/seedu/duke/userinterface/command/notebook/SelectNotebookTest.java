@@ -15,6 +15,7 @@ import seedu.duke.userinterface.InputParser;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 //@@chuckiex3
+
 public class SelectNotebookTest {
     @Test
     void selectNotebook_in_wrongMode() {
@@ -65,7 +66,7 @@ public class SelectNotebookTest {
         } catch (DuplicateFoundException e) {
             e.printErrorMessage();
         }
-        
+
         InputParser parser = new InputParser();
         String inputString = "select /ntest_notebook /ssection /ppage ; content";
         assertThrows(ZeroNoteException.class, () -> {
