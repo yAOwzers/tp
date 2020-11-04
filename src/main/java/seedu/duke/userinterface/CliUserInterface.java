@@ -32,6 +32,12 @@ public class CliUserInterface {
         storage.saveToFile(appState);
     }
 
+    /**
+     * Checks if the user had already input their name into Zer0Note for the personalised message
+     * generator feature.
+     *
+     * @throws IOException when the user enters an invalid input.
+     */
     private void checkNameOfUser() throws IOException {
         Storage storage = new Storage();
         boolean isNameOfUserFilled;

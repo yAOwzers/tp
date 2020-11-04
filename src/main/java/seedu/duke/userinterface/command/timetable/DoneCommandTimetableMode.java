@@ -6,6 +6,10 @@ import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.CliMessages;
 import seedu.duke.userinterface.command.CliCommand;
 
+/**
+ * Marks a specific task in the tasklist in Zer0Note as done.
+ *
+ */
 public class DoneCommandTimetableMode extends CliCommand {
 
     public static final String COMMAND_WORD = "done";

@@ -18,9 +18,6 @@ public class PersonalMesssageGenerator {
      * with a random user name from txt/nameOfUser file.
      *
      * @return the generated message.
-     *
-     * @author neilbaner
-     * @author yAOwzers
      */
     public static String generatePersonalisedMessage() {
         ClassLoader classLoader = PersonalMesssageGenerator.class.getClassLoader();
@@ -54,6 +51,9 @@ public class PersonalMesssageGenerator {
         }
     }
 
+    /**
+     * Prints a welcome message to users who have yet to input their name into Zer0Note.
+     */
     public static void greetFirstTimeUser() {
         System.out.println("It's nice to meet you " + firstTimeUserName + "!"
                 + " How may I be of service?");
@@ -63,6 +63,12 @@ public class PersonalMesssageGenerator {
         this.firstTimeUserName = chosenName;
     }
 
+    /**
+     * Greets user with the desired name that had been input in the previous launch of Zer0Note at
+     * the start of the Zer0Note application.
+     *
+     * @throws IOException when the file is unable to be read.
+     */
     public void greetUser() throws IOException {
         ClassLoader classLoader = PersonalMesssageGenerator.class.getClassLoader();
         InputStream namesOfUserInputStream = classLoader.getResourceAsStream("txt/nameOfUser.txt");
