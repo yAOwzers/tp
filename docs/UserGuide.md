@@ -436,6 +436,8 @@ Within `Notebook Mode`, you can `add` a `notebook`, `section` or a `page`. This 
 
 Use the `add /n` command to add a `notebook`  into the `notebook shelf`.
 
+> :warning: Please make sure not to use ";" in your notebook title!
+
 Format: `add /n[NOTEBOOK]`
 
 This is the parameter required in the command:
@@ -465,6 +467,8 @@ Now that you have added a new notebook for `CS2113T`, you can add a `section`!
 Use the `add /s` command to add a `section`  into the [selected](#342-selecting-a-notebooksectionpage-select) `notebook`.
 
 >:bulb: You must select a `notebook` before adding a section!
+>
+> :warning: Please also make sure not to use ";" in your section title!
 
 Format: `add /s[SECTION]`
 
