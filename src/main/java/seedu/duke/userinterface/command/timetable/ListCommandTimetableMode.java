@@ -10,7 +10,6 @@ import java.util.Collections;
 
 public class ListCommandTimetableMode extends CliCommand {
     public static final String COMMAND_WORD = "list";
-    private boolean isPersonalised = true;
 
     public ListCommandTimetableMode(String argument, AppState appState) {
         this.setAppState(appState);
@@ -97,10 +96,5 @@ public class ListCommandTimetableMode extends CliCommand {
         if (i == 1) {
             System.out.println("The list of undone tasks is empty");
         }
-    }
-
-    @Override
-    public boolean isPersonalised() {
-        return isPersonalised;
     }
 }

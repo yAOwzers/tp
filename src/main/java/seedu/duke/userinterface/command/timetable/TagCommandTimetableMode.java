@@ -10,6 +10,7 @@ public class TagCommandTimetableMode extends CliCommand {
     public static final String COMMAND_WORD = "tag";
     private int index;
     private String tag;
+    private boolean isPersonalised = true;
     private static final boolean isAutoSave = true;
 
     public TagCommandTimetableMode(int index, String tag, AppState appState) {
@@ -44,4 +45,5 @@ public class TagCommandTimetableMode extends CliCommand {
     public boolean isTriggerAutoSave() {
         return isAutoSave;
     }
+
 }

@@ -32,7 +32,6 @@ public class CliUserInterface {
         storage.saveToFile(appState);
     }
 
-    // TODO implement saving name on first startup
     private void checkNameOfUser() throws IOException {
         Storage storage = new Storage();
         boolean isNameOfUserFilled;
@@ -75,10 +74,6 @@ public class CliUserInterface {
     private void executeCommand(String userInput) throws ZeroNoteException {
         InputParser parser = new InputParser();
         CliCommand command = parser.getCommandFromInput(userInput, appState);
-        if (command.isPersonalised()) {
-            String personalMessage = msgGenerator.generatePersonalisedMessage();
-            System.out.println(personalMessage);
-        }
         command.execute();
         if (command.isTriggerAutoSave()) {
             saveState();

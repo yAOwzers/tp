@@ -132,8 +132,4 @@ public class FindCommandNotebookMode extends CliCommand {
         return Arrays.asList(title.toLowerCase().split(" "));
     }
 
-    @Override
-    public boolean isPersonalised() {
-        return isPersonalised;
-    }
 }

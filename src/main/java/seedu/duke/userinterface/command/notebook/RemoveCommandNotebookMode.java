@@ -24,7 +24,6 @@ public class RemoveCommandNotebookMode extends CliCommand {
     private String sectionTitleToRemove;
     private int pageNumberToRemove;
 
-    private boolean isPersonalised = true;
     private static final boolean isAutoSave = true;
 
     public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
@@ -142,11 +141,6 @@ public class RemoveCommandNotebookMode extends CliCommand {
         if (pageNumberToRemove == -1) {
             throw new InvalidPageException(Integer.toString(pageNumberToRemove + 1));
         }
-    }
-
-    @Override
-    public boolean isPersonalised() {
-        return isPersonalised;
     }
 
     @Override
