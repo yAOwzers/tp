@@ -20,21 +20,47 @@ public class CliMessages {
     private static PersonalMesssageGenerator msgGenerator;
 
     public static void printRemoveNotebookMessage(Notebook notebook) {
+        String personalMessage = msgGenerator.generatePersonalisedMessage();
+        System.out.println(personalMessage);
         System.out.println("Noted. I've removed this notebook: ");
         System.out.println("\t" + notebook.getTitle());
     }
 
     public static void printRemoveSectionMessage(Section section) {
+        String personalMessage = msgGenerator.generatePersonalisedMessage();
+        System.out.println(personalMessage);
         System.out.println("Noted. I've removed this section: ");
         System.out.println("\t" + section.getTitle());
     }
 
     public static void printRemovePageMessage(Page page) {
+        String personalMessage = msgGenerator.generatePersonalisedMessage();
+        System.out.println(personalMessage);
         System.out.println("Noted. I've removed this page: " + page.getTitle());
         page.printPage();
     }
 
+    public static void printCorruptFile() {
+        System.out.println("There was some error reading the save files; something has likely been corrupted");
+        System.out.println("You may continue, and Zer0Note will start from scratch with no data. ");
+        System.out.println("Note that continuing will overwrite the corrupted file, so you won't be able to "
+                + "recover it at all. ");
+        System.out.println("You may also quit Zer0Note now by pressing Ctrl-C (PC keyboards) or control-C (Mac "
+                + "keyboards) NOW"
+                + "and attempt to recover the "
+                + "file manually. ");
+        System.out.println("If you contact the developers for help, please provide the corrupt files, "
+                + "and the following error message "
+                + " ");
+    }
+
+    public static void printNoFile() {
+        System.out.println("File was not found. A new save file will be created upon exit. ");
+    }
+
     public static void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
+        String personalMessage = msgGenerator.generatePersonalisedMessage();
+        System.out.println(personalMessage);
         System.out.println(REMOVE_TASK_SUCCESS_MESSAGE);
         System.out.println(deletedTask.toString());
         if (numberOfTasks == 1) {
@@ -45,6 +71,8 @@ public class CliMessages {
     }
 
     public void printAddedTaskMessage(TaskList tasksList, String title) {
+        String personalMessage = msgGenerator.generatePersonalisedMessage();
+        System.out.println(personalMessage);
         System.out.println("Added: " + title);
         System.out.println(tasksList.getNumberOfTasks() + ":" + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
     }
@@ -195,11 +223,15 @@ public class CliMessages {
     }
 
     public void printTagNotebookMessage(String description, String tag) {
+        String personalMessage = msgGenerator.generatePersonalisedMessage();
+        System.out.println(personalMessage);
         String createTagMessage = "Got it! I've tagged this as:\n";
         System.out.println(createTagMessage + description + " (tag: " + tag + ")");
     }
 
     public void printTagTaskMessage(Task task) {
+        String personalMessage = msgGenerator.generatePersonalisedMessage();
+        System.out.println(personalMessage);
         String createTagMessage = "Got it! I've tagged this as:\n";
         System.out.println(createTagMessage + task);
     }

@@ -113,8 +113,4 @@ public class ListCommandNotebookMode extends CliCommand {
         }
     }
 
-    @Override
-    public boolean isPersonalised() {
-        return isPersonalised;
-    }
 }
