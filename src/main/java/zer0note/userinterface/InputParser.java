@@ -1,50 +1,42 @@
-package teetwelvedashthree.zeronote.userinterface;
-
-import static teetwelvedashthree.zeronote.userinterface.command.notebook.AddCommandNotebookMode.CONTENT_DELIMITER;
-import static teetwelvedashthree.zeronote.userinterface.command.notebook.AddCommandNotebookMode.NOTEBOOK_DELIMITER;
-import static teetwelvedashthree.zeronote.userinterface.command.notebook.AddCommandNotebookMode.PAGE_DELIMITER;
-import static teetwelvedashthree.zeronote.userinterface.command.notebook.AddCommandNotebookMode.SECTION_DELIMITER;
-import static teetwelvedashthree.zeronote.userinterface.command.notebook.SelectCommandNotebookMode.SHOW_ALL;
-import static teetwelvedashthree.zeronote.userinterface.command.timetable.AddCommandTimetableMode.DEADLINE_DELIMITER;
-import static teetwelvedashthree.zeronote.userinterface.command.timetable.AddCommandTimetableMode.TASK_DELIMITER;
+package zer0note.userinterface;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-import teetwelvedashthree.zeronote.exceptions.EmptyPageException;
-import teetwelvedashthree.zeronote.exceptions.IncorrectAppModeException;
-import teetwelvedashthree.zeronote.exceptions.IncorrectDeadlineFormatException;
-import teetwelvedashthree.zeronote.exceptions.InvalidCommandException;
-import teetwelvedashthree.zeronote.exceptions.InvalidIndexException;
-import teetwelvedashthree.zeronote.exceptions.InvalidModeException;
-import teetwelvedashthree.zeronote.exceptions.InvalidNotebookException;
-import teetwelvedashthree.zeronote.exceptions.InvalidPageException;
-import teetwelvedashthree.zeronote.exceptions.InvalidSectionException;
-import teetwelvedashthree.zeronote.exceptions.InvalidSelectCommandException;
-import teetwelvedashthree.zeronote.exceptions.InvalidTagException;
-import teetwelvedashthree.zeronote.exceptions.TaskTitleException;
-import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
-import teetwelvedashthree.zeronote.notebooks.Notebook;
-import teetwelvedashthree.zeronote.notebooks.NotebookShelf;
-import teetwelvedashthree.zeronote.notebooks.Page;
-import teetwelvedashthree.zeronote.notebooks.Section;
-import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
-import teetwelvedashthree.zeronote.userinterface.command.Exit;
-import teetwelvedashthree.zeronote.userinterface.command.Help;
-import teetwelvedashthree.zeronote.userinterface.command.ModeSwitch;
-import teetwelvedashthree.zeronote.userinterface.command.notebook.AddCommandNotebookMode;
-import teetwelvedashthree.zeronote.userinterface.command.notebook.FindCommandNotebookMode;
-import teetwelvedashthree.zeronote.userinterface.command.notebook.ListCommandNotebookMode;
-import teetwelvedashthree.zeronote.userinterface.command.notebook.RemoveCommandNotebookMode;
-import teetwelvedashthree.zeronote.userinterface.command.notebook.SelectCommandNotebookMode;
-import teetwelvedashthree.zeronote.userinterface.command.notebook.TagCommandNotebookMode;
-import teetwelvedashthree.zeronote.userinterface.command.timetable.AddCommandTimetableMode;
-import teetwelvedashthree.zeronote.userinterface.command.timetable.DoneCommandTimetableMode;
-import teetwelvedashthree.zeronote.userinterface.command.timetable.FindCommandTimetableMode;
-import teetwelvedashthree.zeronote.userinterface.command.timetable.ListCommandTimetableMode;
-import teetwelvedashthree.zeronote.userinterface.command.timetable.RemoveCommandTimetableMode;
-import teetwelvedashthree.zeronote.userinterface.command.timetable.TagCommandTimetableMode;
+import zer0note.exceptions.EmptyPageException;
+import zer0note.exceptions.IncorrectAppModeException;
+import zer0note.exceptions.IncorrectDeadlineFormatException;
+import zer0note.exceptions.InvalidCommandException;
+import zer0note.exceptions.InvalidIndexException;
+import zer0note.exceptions.InvalidModeException;
+import zer0note.exceptions.InvalidNotebookException;
+import zer0note.exceptions.InvalidPageException;
+import zer0note.exceptions.InvalidSectionException;
+import zer0note.exceptions.InvalidSelectCommandException;
+import zer0note.exceptions.InvalidTagException;
+import zer0note.exceptions.TaskTitleException;
+import zer0note.exceptions.ZeroNoteException;
+import zer0note.notebooks.Notebook;
+import zer0note.notebooks.NotebookShelf;
+import zer0note.notebooks.Page;
+import zer0note.notebooks.Section;
+import zer0note.userinterface.command.CliCommand;
+import zer0note.userinterface.command.Exit;
+import zer0note.userinterface.command.Help;
+import zer0note.userinterface.command.ModeSwitch;
+import zer0note.userinterface.command.notebook.AddCommandNotebookMode;
+import zer0note.userinterface.command.notebook.FindCommandNotebookMode;
+import zer0note.userinterface.command.notebook.ListCommandNotebookMode;
+import zer0note.userinterface.command.notebook.RemoveCommandNotebookMode;
+import zer0note.userinterface.command.notebook.SelectCommandNotebookMode;
+import zer0note.userinterface.command.notebook.TagCommandNotebookMode;
+import zer0note.userinterface.command.timetable.AddCommandTimetableMode;
+import zer0note.userinterface.command.timetable.DoneCommandTimetableMode;
+import zer0note.userinterface.command.timetable.FindCommandTimetableMode;
+import zer0note.userinterface.command.timetable.ListCommandTimetableMode;
+import zer0note.userinterface.command.timetable.RemoveCommandTimetableMode;
+import zer0note.userinterface.command.timetable.TagCommandTimetableMode;
 
 public class InputParser {
     /**
@@ -57,8 +49,8 @@ public class InputParser {
      */
     public String parseTaskTitle(String input)
             throws TaskTitleException, IncorrectDeadlineFormatException {
-        if (input.startsWith(TASK_DELIMITER) && input.contains(DEADLINE_DELIMITER)) {
-            String taskTitle = input.substring(TASK_DELIMITER.length());
+        if (input.startsWith(AddCommandTimetableMode.TASK_DELIMITER) && input.contains(AddCommandTimetableMode.DEADLINE_DELIMITER)) {
+            String taskTitle = input.substring(AddCommandTimetableMode.TASK_DELIMITER.length());
             int indexPos = taskTitle.indexOf("/by");
             taskTitle = taskTitle.substring(0, indexPos).trim();
 
@@ -80,10 +72,10 @@ public class InputParser {
      * @throws IncorrectDeadlineFormatException when the deadline input is in the wrong format.
      */
     public String parseDeadline(String input) throws IncorrectDeadlineFormatException {
-        if (input.contains(DEADLINE_DELIMITER)) {
-            int dividerPos = input.indexOf(DEADLINE_DELIMITER);
+        if (input.contains(AddCommandTimetableMode.DEADLINE_DELIMITER)) {
+            int dividerPos = input.indexOf(AddCommandTimetableMode.DEADLINE_DELIMITER);
             input = input.substring(dividerPos);
-            String deadline = input.substring(DEADLINE_DELIMITER.length()).trim();
+            String deadline = input.substring(AddCommandTimetableMode.DEADLINE_DELIMITER.length()).trim();
             if (deadline.isBlank()) {
                 throw new IncorrectDeadlineFormatException();
             }
@@ -126,13 +118,13 @@ public class InputParser {
     public void extractParams(String argument, AppState appState)
             throws InvalidNotebookException, InvalidSectionException, InvalidPageException,
             InvalidSelectCommandException {
-        if (argument.startsWith(NOTEBOOK_DELIMITER)) {
+        if (argument.startsWith(AddCommandNotebookMode.NOTEBOOK_DELIMITER)) {
             extractNotebookParams(argument, appState);
-        } else if ((argument.startsWith(SECTION_DELIMITER)) && (appState.getAppMode() == AppMode.NOTEBOOK_BOOK)) {
+        } else if ((argument.startsWith(AddCommandNotebookMode.SECTION_DELIMITER)) && (appState.getAppMode() == AppMode.NOTEBOOK_BOOK)) {
             extractSectionParams(argument, appState);
-        } else if ((argument.startsWith(PAGE_DELIMITER)) && (appState.getAppMode() == AppMode.NOTEBOOK_SECTION)) {
+        } else if ((argument.startsWith(AddCommandNotebookMode.PAGE_DELIMITER)) && (appState.getAppMode() == AppMode.NOTEBOOK_SECTION)) {
             extractPageParams(argument, appState);
-        } else if (argument.startsWith(SHOW_ALL)) {
+        } else if (argument.startsWith(SelectCommandNotebookMode.SHOW_ALL)) {
             appState.setAppMode(AppMode.NOTEBOOK_SHELF);
             System.out.println("now in " + appState.getAppMode() + " mode.");
         } else {
@@ -162,7 +154,7 @@ public class InputParser {
         appState.setAppMode(AppMode.NOTEBOOK_BOOK);
         appState.setCurrentNotebook(notebook);
         System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentNotebook().getTitle());
-        if (argument.contains(SECTION_DELIMITER)) {
+        if (argument.contains(AddCommandNotebookMode.SECTION_DELIMITER)) {
             extractSectionParams(argument, appState);
         }
     }
@@ -187,7 +179,7 @@ public class InputParser {
         appState.setAppMode(AppMode.NOTEBOOK_SECTION);
         appState.setCurrentSection(section);
         System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentSection().getTitle());
-        if (argument.contains(PAGE_DELIMITER)) {
+        if (argument.contains(AddCommandNotebookMode.PAGE_DELIMITER)) {
             extractPageParams(argument, appState);
         }
     }
@@ -221,10 +213,10 @@ public class InputParser {
      * @throws InvalidNotebookException when user's input is in the wrong format.
      */
     public String parseNotebookTitle(String input) throws InvalidNotebookException {
-        if (input.startsWith(NOTEBOOK_DELIMITER)) {
-            String notebookTitle = input.substring(NOTEBOOK_DELIMITER.length()).trim();
-            if (notebookTitle.contains(SECTION_DELIMITER)) {
-                int indexPos = notebookTitle.indexOf(SECTION_DELIMITER);
+        if (input.startsWith(AddCommandNotebookMode.NOTEBOOK_DELIMITER)) {
+            String notebookTitle = input.substring(AddCommandNotebookMode.NOTEBOOK_DELIMITER.length()).trim();
+            if (notebookTitle.contains(AddCommandNotebookMode.SECTION_DELIMITER)) {
+                int indexPos = notebookTitle.indexOf(AddCommandNotebookMode.SECTION_DELIMITER);
                 notebookTitle = notebookTitle.substring(0, indexPos).trim();
             }
             if (notebookTitle.isBlank()) {
@@ -246,16 +238,16 @@ public class InputParser {
      */
     public String parseSectionTitle(String input) throws InvalidSectionException {
         try {
-            int dividerPos = input.indexOf(SECTION_DELIMITER);
+            int dividerPos = input.indexOf(AddCommandNotebookMode.SECTION_DELIMITER);
             input = input.substring(dividerPos);
         } catch (StringIndexOutOfBoundsException e) {
             throw new InvalidSectionException(input);
         }
 
-        if (input.startsWith(SECTION_DELIMITER)) {
-            String sectionTitle = input.substring(SECTION_DELIMITER.length()).trim();
-            if (sectionTitle.contains(PAGE_DELIMITER)) {
-                int indexPos = sectionTitle.indexOf(PAGE_DELIMITER);
+        if (input.startsWith(AddCommandNotebookMode.SECTION_DELIMITER)) {
+            String sectionTitle = input.substring(AddCommandNotebookMode.SECTION_DELIMITER.length()).trim();
+            if (sectionTitle.contains(AddCommandNotebookMode.PAGE_DELIMITER)) {
+                int indexPos = sectionTitle.indexOf(AddCommandNotebookMode.PAGE_DELIMITER);
                 sectionTitle = sectionTitle.substring(0, indexPos).trim();
             }
             if (sectionTitle.isBlank()) {
@@ -284,16 +276,16 @@ public class InputParser {
      */
     public String parsePageTitle(String input) throws InvalidPageException {
         try {
-            int dividerPos = input.indexOf(PAGE_DELIMITER);
+            int dividerPos = input.indexOf(AddCommandNotebookMode.PAGE_DELIMITER);
             input = input.substring(dividerPos);
         } catch (StringIndexOutOfBoundsException e) {
             throw new InvalidPageException(input);
         }
 
-        if (input.startsWith(PAGE_DELIMITER)) {
-            String pageTitle = input.substring(PAGE_DELIMITER.length()).trim();
-            if (pageTitle.contains(CONTENT_DELIMITER)) {
-                int indexPos = pageTitle.indexOf(CONTENT_DELIMITER);
+        if (input.startsWith(AddCommandNotebookMode.PAGE_DELIMITER)) {
+            String pageTitle = input.substring(AddCommandNotebookMode.PAGE_DELIMITER.length()).trim();
+            if (pageTitle.contains(AddCommandNotebookMode.CONTENT_DELIMITER)) {
+                int indexPos = pageTitle.indexOf(AddCommandNotebookMode.CONTENT_DELIMITER);
                 pageTitle = pageTitle.substring(0, indexPos).trim();
             }
             if (pageTitle.isBlank()) {
@@ -315,14 +307,14 @@ public class InputParser {
      */
     public String parsePageContent(String input) throws InvalidPageException, EmptyPageException {
         try {
-            int dividerPos = input.indexOf(CONTENT_DELIMITER);
+            int dividerPos = input.indexOf(AddCommandNotebookMode.CONTENT_DELIMITER);
             input = input.substring(dividerPos);
         } catch (StringIndexOutOfBoundsException e) {
             throw new InvalidPageException(input);
         }
 
-        if (input.startsWith(CONTENT_DELIMITER)) {
-            String content = input.substring(CONTENT_DELIMITER.length()).trim();
+        if (input.startsWith(AddCommandNotebookMode.CONTENT_DELIMITER)) {
+            String content = input.substring(AddCommandNotebookMode.CONTENT_DELIMITER.length()).trim();
             if (content.isBlank()) {
                 throw new EmptyPageException();
             }
@@ -333,7 +325,7 @@ public class InputParser {
     }
 
     public String[] parseTagDescription(String input) {
-        return input.split(TASK_DELIMITER, 2);
+        return input.split(AddCommandTimetableMode.TASK_DELIMITER, 2);
     }
 
     public CliCommand getCommandFromInput(String userInput, AppState appState) throws ZeroNoteException {
@@ -352,20 +344,20 @@ public class InputParser {
                 String titleToAdd;
                 String contentToAdd;
                 if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
-                    if (argument.contains(SECTION_DELIMITER) || argument.contains(PAGE_DELIMITER)) {
+                    if (argument.contains(AddCommandNotebookMode.SECTION_DELIMITER) || argument.contains(AddCommandNotebookMode.PAGE_DELIMITER)) {
                         throw new InvalidNotebookException(argument);
                     }
                     titleToAdd = parseNotebookTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
                 } else if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
-                    if (argument.contains(PAGE_DELIMITER) || argument.contains(NOTEBOOK_DELIMITER)) {
+                    if (argument.contains(AddCommandNotebookMode.PAGE_DELIMITER) || argument.contains(AddCommandNotebookMode.NOTEBOOK_DELIMITER)) {
                         throw new InvalidSectionException(argument);
                     }
                     titleToAdd = parseSectionTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
                 } else if (appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
-                    if (!argument.contains(CONTENT_DELIMITER) || argument.contains(NOTEBOOK_DELIMITER)
-                            || argument.contains(SECTION_DELIMITER)) {
+                    if (!argument.contains(AddCommandNotebookMode.CONTENT_DELIMITER) || argument.contains(AddCommandNotebookMode.NOTEBOOK_DELIMITER)
+                            || argument.contains(AddCommandNotebookMode.SECTION_DELIMITER)) {
                         throw new InvalidPageException(argument);
                     }
                     titleToAdd = parsePageTitle(argument);
@@ -394,7 +386,7 @@ public class InputParser {
             }
         case SelectCommandNotebookMode.COMMAND_WORD:
             if (appState.getAppMode() != AppMode.TIMETABLE) {
-                if (argument.contains(CONTENT_DELIMITER)) {
+                if (argument.contains(AddCommandNotebookMode.CONTENT_DELIMITER)) {
                     throw new InvalidSelectCommandException(argument);
                 }
                 return new SelectCommandNotebookMode(argument, appState);
@@ -424,13 +416,13 @@ public class InputParser {
                 String notebookTitleToRemove = "";
                 String sectionTitleToRemove = "";
                 String pageTitleToRemove = "";
-                if (argument.contains(NOTEBOOK_DELIMITER)) {
+                if (argument.contains(AddCommandNotebookMode.NOTEBOOK_DELIMITER)) {
                     notebookTitleToRemove = parseNotebookTitle(argument);
                 }
-                if (argument.contains(SECTION_DELIMITER)) {
+                if (argument.contains(AddCommandNotebookMode.SECTION_DELIMITER)) {
                     sectionTitleToRemove = parseSectionTitle(argument);
                 }
-                if (argument.contains(PAGE_DELIMITER)) {
+                if (argument.contains(AddCommandNotebookMode.PAGE_DELIMITER)) {
                     pageTitleToRemove = parsePageTitle(argument);
                 }
                 return new RemoveCommandNotebookMode(notebookTitleToRemove,

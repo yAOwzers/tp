@@ -1,6 +1,4 @@
-package teetwelvedashthree.zeronote.exceptions;
-
-import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
+package zer0note.exceptions;
 
 public class InvalidKeywordTagException extends ZeroNoteException {
     public InvalidKeywordTagException(String problematicInput) {

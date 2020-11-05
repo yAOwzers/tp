@@ -1,13 +1,13 @@
-package teetwelvedashthree.zeronote.userinterface.command.notebook;
+package zer0note.userinterface.command.notebook;
 
-import teetwelvedashthree.zeronote.exceptions.AddCommandNotebookException;
-import teetwelvedashthree.zeronote.exceptions.EmptyPageException;
-import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
-import teetwelvedashthree.zeronote.notebooks.Notebook;
-import teetwelvedashthree.zeronote.notebooks.NotebookShelf;
-import teetwelvedashthree.zeronote.notebooks.Section;
-import teetwelvedashthree.zeronote.userinterface.AppState;
-import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
+import zer0note.exceptions.AddCommandNotebookException;
+import zer0note.exceptions.EmptyPageException;
+import zer0note.exceptions.ZeroNoteException;
+import zer0note.notebooks.Notebook;
+import zer0note.notebooks.NotebookShelf;
+import zer0note.notebooks.Section;
+import zer0note.userinterface.AppState;
+import zer0note.userinterface.command.CliCommand;
 
 public class AddCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "add";

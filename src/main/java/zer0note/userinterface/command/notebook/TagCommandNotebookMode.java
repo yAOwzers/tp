@@ -1,14 +1,13 @@
-package teetwelvedashthree.zeronote.userinterface.command.notebook;
+package zer0note.userinterface.command.notebook;
 
-import teetwelvedashthree.zeronote.exceptions.IncorrectAppModeException;
-import teetwelvedashthree.zeronote.exceptions.InvalidTagException;
-import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
-import teetwelvedashthree.zeronote.notebooks.Notebook;
-import teetwelvedashthree.zeronote.notebooks.Page;
-import teetwelvedashthree.zeronote.notebooks.Section;
-import teetwelvedashthree.zeronote.userinterface.AppState;
-import teetwelvedashthree.zeronote.userinterface.CliMessages;
-import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
+import zer0note.exceptions.IncorrectAppModeException;
+import zer0note.exceptions.ZeroNoteException;
+import zer0note.notebooks.Notebook;
+import zer0note.notebooks.Page;
+import zer0note.notebooks.Section;
+import zer0note.userinterface.AppState;
+import zer0note.userinterface.CliMessages;
+import zer0note.userinterface.command.CliCommand;
 
 public class TagCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "tag";

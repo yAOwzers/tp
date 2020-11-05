@@ -1,13 +1,13 @@
-package teetwelvedashthree.zeronote.userinterface.command.notebook;
+package zer0note.userinterface.command.notebook;
 
-import teetwelvedashthree.zeronote.exceptions.IncorrectAppModeException;
-import teetwelvedashthree.zeronote.exceptions.InvalidCommandException;
-import teetwelvedashthree.zeronote.notebooks.Notebook;
-import teetwelvedashthree.zeronote.notebooks.NotebookShelf;
-import teetwelvedashthree.zeronote.notebooks.Page;
-import teetwelvedashthree.zeronote.notebooks.Section;
-import teetwelvedashthree.zeronote.userinterface.AppState;
-import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
+import zer0note.exceptions.IncorrectAppModeException;
+import zer0note.exceptions.InvalidCommandException;
+import zer0note.notebooks.Notebook;
+import zer0note.notebooks.NotebookShelf;
+import zer0note.notebooks.Page;
+import zer0note.notebooks.Section;
+import zer0note.userinterface.AppState;
+import zer0note.userinterface.command.CliCommand;
 
 public class ListCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "list";

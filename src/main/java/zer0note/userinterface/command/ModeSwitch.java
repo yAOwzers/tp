@@ -1,8 +1,8 @@
-package teetwelvedashthree.zeronote.userinterface.command;
+package zer0note.userinterface.command;
 
-import teetwelvedashthree.zeronote.exceptions.InvalidCommandException;
-import teetwelvedashthree.zeronote.userinterface.AppMode;
-import teetwelvedashthree.zeronote.userinterface.AppState;
+import zer0note.exceptions.InvalidCommandException;
+import zer0note.userinterface.AppMode;
+import zer0note.userinterface.AppState;
 
 public class ModeSwitch extends CliCommand {
     public static final String COMMAND_WORD = "mode";

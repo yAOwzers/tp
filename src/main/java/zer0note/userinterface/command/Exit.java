@@ -1,7 +1,7 @@
-package teetwelvedashthree.zeronote.userinterface.command;
+package zer0note.userinterface.command;
 
-import teetwelvedashthree.zeronote.userinterface.AppState;
-import teetwelvedashthree.zeronote.userinterface.CliMessages;
+import zer0note.userinterface.AppState;
+import zer0note.userinterface.CliMessages;
 
 public class Exit extends CliCommand {
     public static final String COMMAND_WORD = "exit";

@@ -1,4 +1,4 @@
-package teetwelvedashthree.zeronote.tasks;
+package zer0note.tasks;
 
 import java.util.ArrayList;
 

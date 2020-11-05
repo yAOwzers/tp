@@ -1,10 +1,10 @@
-package teetwelvedashthree.zeronote.userinterface.command.notebook;
+package zer0note.userinterface.command.notebook;
 
 import org.junit.jupiter.api.Test;
-import teetwelvedashthree.zeronote.exceptions.IncorrectAppModeException;
-import teetwelvedashthree.zeronote.exceptions.InvalidCommandException;
-import teetwelvedashthree.zeronote.userinterface.AppMode;
-import teetwelvedashthree.zeronote.userinterface.AppState;
+import zer0note.exceptions.IncorrectAppModeException;
+import zer0note.exceptions.InvalidCommandException;
+import zer0note.userinterface.AppMode;
+import zer0note.userinterface.AppState;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;

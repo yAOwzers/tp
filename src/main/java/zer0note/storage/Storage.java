@@ -1,14 +1,14 @@
-package teetwelvedashthree.zeronote.storage;
+package zer0note.storage;
 
-import teetwelvedashthree.zeronote.exceptions.FileSavingException;
-import teetwelvedashthree.zeronote.notebooks.Notebook;
-import teetwelvedashthree.zeronote.notebooks.NotebookShelf;
-import teetwelvedashthree.zeronote.notebooks.Page;
-import teetwelvedashthree.zeronote.notebooks.Section;
-import teetwelvedashthree.zeronote.tasks.Task;
-import teetwelvedashthree.zeronote.tasks.TaskList;
-import teetwelvedashthree.zeronote.userinterface.AppState;
-import teetwelvedashthree.zeronote.userinterface.CliMessages;
+import zer0note.exceptions.FileSavingException;
+import zer0note.notebooks.Notebook;
+import zer0note.notebooks.NotebookShelf;
+import zer0note.notebooks.Page;
+import zer0note.notebooks.Section;
+import zer0note.tasks.Task;
+import zer0note.tasks.TaskList;
+import zer0note.userinterface.AppState;
+import zer0note.userinterface.CliMessages;
 
 import java.io.File;
 import java.io.FileNotFoundException;

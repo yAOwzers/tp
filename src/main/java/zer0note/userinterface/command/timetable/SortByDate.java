@@ -1,6 +1,6 @@
-package teetwelvedashthree.zeronote.userinterface.command.timetable;
+package zer0note.userinterface.command.timetable;
 
-import teetwelvedashthree.zeronote.tasks.Task;
+import zer0note.tasks.Task;
 
 import java.util.Comparator;
 

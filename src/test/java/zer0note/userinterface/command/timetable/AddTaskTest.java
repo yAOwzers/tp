@@ -1,9 +1,9 @@
-package teetwelvedashthree.zeronote.userinterface.command.timetable;
+package zer0note.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
-import teetwelvedashthree.zeronote.exceptions.IncorrectDeadlineFormatException;
-import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
-import teetwelvedashthree.zeronote.userinterface.InputParser;
+import zer0note.exceptions.IncorrectDeadlineFormatException;
+import zer0note.exceptions.ZeroNoteException;
+import zer0note.userinterface.InputParser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

@@ -1,8 +1,8 @@
-package teetwelvedashthree.zeronote.userinterface.command.timetable;
+package zer0note.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
-import teetwelvedashthree.zeronote.exceptions.InvalidCommandException;
-import teetwelvedashthree.zeronote.userinterface.AppState;
+import zer0note.exceptions.InvalidCommandException;
+import zer0note.userinterface.AppState;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;

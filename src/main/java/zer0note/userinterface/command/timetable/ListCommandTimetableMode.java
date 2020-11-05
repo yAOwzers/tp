@@ -1,9 +1,9 @@
-package teetwelvedashthree.zeronote.userinterface.command.timetable;
+package zer0note.userinterface.command.timetable;
 
-import teetwelvedashthree.zeronote.exceptions.InvalidCommandException;
-import teetwelvedashthree.zeronote.tasks.Task;
-import teetwelvedashthree.zeronote.userinterface.AppState;
-import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
+import zer0note.exceptions.InvalidCommandException;
+import zer0note.tasks.Task;
+import zer0note.userinterface.AppState;
+import zer0note.userinterface.command.CliCommand;
 
 import java.util.ArrayList;
 import java.util.Collections;

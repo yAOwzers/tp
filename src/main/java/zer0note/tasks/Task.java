@@ -1,4 +1,4 @@
-package teetwelvedashthree.zeronote.tasks;
+package zer0note.tasks;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 
-import teetwelvedashthree.zeronote.exceptions.InvalidTagException;
+import zer0note.exceptions.InvalidTagException;
 
 public class Task {
     private final String title;

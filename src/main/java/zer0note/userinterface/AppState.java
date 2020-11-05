@@ -1,11 +1,11 @@
-package teetwelvedashthree.zeronote.userinterface;
+package zer0note.userinterface;
 
-import teetwelvedashthree.zeronote.notebooks.Notebook;
-import teetwelvedashthree.zeronote.notebooks.NotebookShelf;
-import teetwelvedashthree.zeronote.notebooks.Page;
-import teetwelvedashthree.zeronote.notebooks.Section;
-import teetwelvedashthree.zeronote.tasks.Task;
-import teetwelvedashthree.zeronote.tasks.TaskList;
+import zer0note.notebooks.Notebook;
+import zer0note.notebooks.NotebookShelf;
+import zer0note.notebooks.Page;
+import zer0note.notebooks.Section;
+import zer0note.tasks.Task;
+import zer0note.tasks.TaskList;
 
 public class AppState {
     private AppMode appMode;

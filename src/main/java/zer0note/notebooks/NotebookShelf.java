@@ -1,6 +1,6 @@
-package teetwelvedashthree.zeronote.notebooks;
+package zer0note.notebooks;
 
-import teetwelvedashthree.zeronote.exceptions.DuplicateFoundException;
+import zer0note.exceptions.DuplicateFoundException;
 
 import java.util.ArrayList;
 

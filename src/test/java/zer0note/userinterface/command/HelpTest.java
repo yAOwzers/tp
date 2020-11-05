@@ -1,4 +1,4 @@
-package teetwelvedashthree.zeronote.userinterface.command;
+package zer0note.userinterface.command;
 
 import org.junit.jupiter.api.Test;
 

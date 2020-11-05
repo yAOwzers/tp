@@ -1,10 +1,7 @@
-package teetwelvedashthree.zeronote.userinterface.command.timetable;
+package zer0note.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
-import teetwelvedashthree.zeronote.tasks.TaskList;
-import teetwelvedashthree.zeronote.userinterface.AppState;
-import teetwelvedashthree.zeronote.userinterface.command.timetable.AddCommandTimetableMode;
-import teetwelvedashthree.zeronote.userinterface.command.timetable.DoneCommandTimetableMode;
+import zer0note.userinterface.AppState;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

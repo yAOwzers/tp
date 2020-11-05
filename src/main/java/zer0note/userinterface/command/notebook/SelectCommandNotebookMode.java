@@ -1,10 +1,10 @@
-package teetwelvedashthree.zeronote.userinterface.command.notebook;
+package zer0note.userinterface.command.notebook;
 
-import teetwelvedashthree.zeronote.exceptions.InvalidSelectCommandException;
-import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
-import teetwelvedashthree.zeronote.userinterface.AppState;
-import teetwelvedashthree.zeronote.userinterface.InputParser;
-import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
+import zer0note.exceptions.InvalidSelectCommandException;
+import zer0note.exceptions.ZeroNoteException;
+import zer0note.userinterface.AppState;
+import zer0note.userinterface.InputParser;
+import zer0note.userinterface.command.CliCommand;
 
 public class SelectCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "select";

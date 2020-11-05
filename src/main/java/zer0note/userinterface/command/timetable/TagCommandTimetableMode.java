@@ -1,10 +1,10 @@
-package teetwelvedashthree.zeronote.userinterface.command.timetable;
+package zer0note.userinterface.command.timetable;
 
-import teetwelvedashthree.zeronote.exceptions.InvalidTagException;
-import teetwelvedashthree.zeronote.tasks.Task;
-import teetwelvedashthree.zeronote.userinterface.AppState;
-import teetwelvedashthree.zeronote.userinterface.CliMessages;
-import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
+import zer0note.exceptions.InvalidTagException;
+import zer0note.tasks.Task;
+import zer0note.userinterface.AppState;
+import zer0note.userinterface.CliMessages;
+import zer0note.userinterface.command.CliCommand;
 
 public class TagCommandTimetableMode extends CliCommand {
     public static final String COMMAND_WORD = "tag";

@@ -1,10 +1,10 @@
-package teetwelvedashthree.zeronote.userinterface;
+package zer0note.userinterface;
 
-import teetwelvedashthree.zeronote.exceptions.CorruptFileException;
-import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
-import teetwelvedashthree.zeronote.storage.Storage;
-import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
-import teetwelvedashthree.zeronote.userinterface.command.Exit;
+import zer0note.exceptions.CorruptFileException;
+import zer0note.exceptions.ZeroNoteException;
+import zer0note.storage.Storage;
+import zer0note.userinterface.command.CliCommand;
+import zer0note.userinterface.command.Exit;
 
 import java.util.Scanner;
 

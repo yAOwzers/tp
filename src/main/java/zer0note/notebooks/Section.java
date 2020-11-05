@@ -1,8 +1,8 @@
-package teetwelvedashthree.zeronote.notebooks;
+package zer0note.notebooks;
 
-import teetwelvedashthree.zeronote.exceptions.DuplicateFoundException;
-import teetwelvedashthree.zeronote.exceptions.InvalidPageException;
-import teetwelvedashthree.zeronote.exceptions.InvalidTagException;
+import zer0note.exceptions.DuplicateFoundException;
+import zer0note.exceptions.InvalidPageException;
+import zer0note.exceptions.InvalidTagException;
 
 import java.util.ArrayList;
 
