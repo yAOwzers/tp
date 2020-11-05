@@ -1,18 +1,19 @@
-package seedu.duke.userinterface.command.notebook;
+package teetwelvedashthree.zeronote.userinterface.command.notebook;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.duke.exceptions.DuplicateFoundException;
-import seedu.duke.exceptions.InvalidTagException;
-import seedu.duke.notebooks.Notebook;
-import seedu.duke.notebooks.NotebookShelf;
-import seedu.duke.notebooks.Page;
-import seedu.duke.notebooks.Section;
-import seedu.duke.userinterface.AppMode;
-import seedu.duke.userinterface.AppState;
+import zeronote.exceptions.DuplicateFoundException;
+import zeronote.exceptions.InvalidTagException;
+import zeronote.notebooks.Notebook;
+import zeronote.notebooks.NotebookShelf;
+import zeronote.notebooks.Page;
+import zeronote.notebooks.Section;
+import zeronote.userinterface.AppMode;
+import zeronote.userinterface.AppState;
+import zeronote.userinterface.command.notebook.FindCommandNotebookMode;
 
 class FindCommandNotebookModeTest {
     @Test
