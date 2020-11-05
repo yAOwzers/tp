@@ -203,6 +203,9 @@ public class InputParser {
         Section section = appState.getCurrentSection();
         String pageTitle = parsePageTitle(argument);
         int pageNum = section.findPage(pageTitle);
+        if (pageNum == -1) {
+            throw new InvalidPageException(pageTitle);
+        }
         appState.setCurrentPage(pageNum);
         Page page = section.getPageAtIndex(pageNum);
         appState.setAppMode(AppMode.NOTEBOOK_PAGE);
@@ -391,6 +394,9 @@ public class InputParser {
             }
         case SelectCommandNotebookMode.COMMAND_WORD:
             if (appState.getAppMode() != AppMode.TIMETABLE) {
+                if (argument.contains(CONTENT_DELIMITER)) {
+                    throw new InvalidSelectCommandException(argument);
+                }
                 return new SelectCommandNotebookMode(argument, appState);
             } else {
                 throw new IncorrectAppModeException();

@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -27,6 +28,7 @@ public class Storage {
     private final String tasksFilePath = "tasks.txt";
     private final String notebooksFilePath = "notebooks.txt";
     private final String nameFilepath = "src/main/resources/txt/nameOfUser.txt";
+
     private PersonalMesssageGenerator msgGenerator;
 
     public Storage() {
@@ -98,10 +100,14 @@ public class Storage {
             }
             return loadedAppState;
         } catch (FileNotFoundException e) {
-            System.out.println("File was not found. A new save file will be created upon exit. ");
+            CliMessages.printNoFile();
             return new AppState();
-        } catch (InputMismatchException | NumberFormatException e) {
+        } catch (Exception e) {
+            CliMessages.printCorruptFile();
+            PrintStream syserr = System.err;
+            System.setErr(System.out);
             e.printStackTrace();
+            System.setErr(syserr);
             return new AppState();
         }
     }
