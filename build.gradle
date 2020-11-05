@@ -29,11 +29,11 @@ test {
 }
 
 application {
-    mainClassName = "teetwelvedashthree.zeronote.Duke"
+    mainClassName = "zeronote.ZeroNote"
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    archiveBaseName = "Zer0Note"
     archiveClassifier = null
 }
 
