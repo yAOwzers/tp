@@ -5,15 +5,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import zer0note.exceptions.DuplicateFoundException;
-import zer0note.exceptions.InvalidTagException;
-import zer0note.notebooks.Notebook;
-import zer0note.notebooks.NotebookShelf;
-import zer0note.notebooks.Page;
-import zer0note.notebooks.Section;
-import zer0note.userinterface.AppMode;
-import zer0note.userinterface.AppState;
-import zer0note.userinterface.command.notebook.FindCommandNotebookMode;
+import zeronote.exceptions.DuplicateFoundException;
+import zeronote.exceptions.InvalidTagException;
+import zeronote.notebooks.Notebook;
+import zeronote.notebooks.NotebookShelf;
+import zeronote.notebooks.Page;
+import zeronote.notebooks.Section;
+import zeronote.userinterface.AppMode;
+import zeronote.userinterface.AppState;
+import zeronote.userinterface.command.notebook.FindCommandNotebookMode;
 
 class FindCommandNotebookModeTest {
     @Test

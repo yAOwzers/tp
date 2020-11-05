@@ -1,4 +1,4 @@
-package zer0note;
+package zeronote;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
