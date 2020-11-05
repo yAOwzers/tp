@@ -1,13 +1,15 @@
-package seedu.duke.userinterface.command.timetable;
+package teetwelvedashthree.zeronote.userinterface.command.timetable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.duke.exceptions.InvalidTagException;
-import seedu.duke.tasks.Task;
-import seedu.duke.userinterface.AppState;
+import zeronote.exceptions.InvalidTagException;
+import zeronote.tasks.Task;
+import zeronote.userinterface.AppState;
+import zeronote.userinterface.command.timetable.AddCommandTimetableMode;
+import zeronote.userinterface.command.timetable.FindCommandTimetableMode;
 
 class FindCommandTimetableModeTest {
 
