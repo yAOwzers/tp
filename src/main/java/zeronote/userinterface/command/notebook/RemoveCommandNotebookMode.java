@@ -94,6 +94,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
     private void removeFromNotebookShelf() throws InvalidNotebookException, InvalidSectionException,
             InvalidPageException {
 
+        assert !notebookTitleToRemove.equals("");
         NotebookShelf currentBookshelf = appState.getCurrentBookShelf();
         int indexOfNotebookToRemove = currentBookshelf.findNotebook(notebookTitleToRemove);
 
