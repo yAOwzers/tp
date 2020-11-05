@@ -1,6 +1,8 @@
 package seedu.duke.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
+
+import seedu.duke.tasks.Task;
 import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.command.timetable.AddCommandTimetableMode;
@@ -12,16 +14,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class RemoveTaskTest {
     @Test
     void execute_DeleteTaskOne_NoTasksInTaskList() {
-        TaskList taskslist = new TaskList();
         AppState appState = new AppState();
+        TaskList tasksList = appState.getTaskList();
 
-        String input = "add /tTask1 /by12-10-2020 2252";
-        AddCommandTimetableMode addTimetableMode = new AddCommandTimetableMode(input,appState);
-        addTimetableMode.execute();
+        Task t = new Task("Task 1", "12-10-2020 2252");
+        tasksList.addTask(t);
 
-        RemoveCommandTimetableMode removeTimetableMode = new RemoveCommandTimetableMode(1,appState);
-        removeTimetableMode.execute();
+        RemoveCommandTimetableMode r = new RemoveCommandTimetableMode(1,appState);
+        r.execute();
+        tasksList = appState.getTaskList();
 
-        assertEquals(taskslist.getNumberOfTasks(), 0);
+        assertEquals(tasksList.getNumberOfTasks(), 0);
     }
 }
