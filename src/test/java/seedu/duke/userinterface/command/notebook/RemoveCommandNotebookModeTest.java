@@ -8,16 +8,7 @@ import seedu.duke.userinterface.AppMode;
 import seedu.duke.userinterface.AppState;
 
 class RemoveCommandNotebookModeTest {
-
-    @Test
-    void isPersonalised_correctMode_returnsTrue() {
-        AppState appState = new AppState();
-        appState.setAppMode(AppMode.NOTEBOOK_SHELF);
-
-        RemoveCommandNotebookMode r = new RemoveCommandNotebookMode("","","",appState);
-        assertTrue(r.isPersonalised());
-    }
-
+    
     @Test
     void isTriggerAutoSave_correctMode_returnsTrue() {
         AppState appState = new AppState();
