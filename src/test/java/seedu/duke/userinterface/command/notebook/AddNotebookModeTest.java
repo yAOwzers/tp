@@ -1,15 +1,15 @@
 package teetwelvedashthree.zeronote.userinterface.command.notebook;
 
 import org.junit.jupiter.api.Test;
-import teetwelvedashthree.zeronote.exceptions.DuplicateFoundException;
-import teetwelvedashthree.zeronote.exceptions.InvalidCommandException;
-import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
-import teetwelvedashthree.zeronote.notebooks.Notebook;
-import teetwelvedashthree.zeronote.notebooks.NotebookShelf;
-import teetwelvedashthree.zeronote.notebooks.Section;
-import teetwelvedashthree.zeronote.userinterface.AppMode;
-import teetwelvedashthree.zeronote.userinterface.AppState;
-import teetwelvedashthree.zeronote.userinterface.InputParser;
+import zer0note.exceptions.DuplicateFoundException;
+import zer0note.exceptions.InvalidCommandException;
+import zer0note.exceptions.ZeroNoteException;
+import zer0note.notebooks.Notebook;
+import zer0note.notebooks.NotebookShelf;
+import zer0note.notebooks.Section;
+import zer0note.userinterface.AppMode;
+import zer0note.userinterface.AppState;
+import zer0note.userinterface.InputParser;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

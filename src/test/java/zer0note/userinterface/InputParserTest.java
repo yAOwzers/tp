@@ -1,10 +1,10 @@
-package teetwelvedashthree.zeronote.userinterface;
+package zer0note.userinterface;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import teetwelvedashthree.zeronote.exceptions.IncorrectDeadlineFormatException;
-import teetwelvedashthree.zeronote.exceptions.InvalidIndexException;
-import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
+import zer0note.exceptions.IncorrectDeadlineFormatException;
+import zer0note.exceptions.InvalidIndexException;
+import zer0note.exceptions.ZeroNoteException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

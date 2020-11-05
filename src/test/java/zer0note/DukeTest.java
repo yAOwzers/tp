@@ -1,4 +1,4 @@
-package teetwelvedashthree.zeronote;
+package zer0note;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

@@ -5,9 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import teetwelvedashthree.zeronote.exceptions.InvalidTagException;
-import teetwelvedashthree.zeronote.tasks.Task;
-import teetwelvedashthree.zeronote.userinterface.AppState;
+import zer0note.exceptions.InvalidTagException;
+import zer0note.tasks.Task;
+import zer0note.userinterface.AppState;
+import zer0note.userinterface.command.timetable.AddCommandTimetableMode;
+import zer0note.userinterface.command.timetable.FindCommandTimetableMode;
 
 class FindCommandTimetableModeTest {
 
