@@ -1,5 +1,17 @@
 package seedu.duke.userinterface;
 
+import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.CONTENT_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.NOTEBOOK_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.PAGE_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.SECTION_DELIMITER;
+import static seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode.SHOW_ALL;
+import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.DEADLINE_DELIMITER;
+import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.TASK_DELIMITER;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import seedu.duke.exceptions.EmptyPageException;
 import seedu.duke.exceptions.IncorrectAppModeException;
 import seedu.duke.exceptions.IncorrectDeadlineFormatException;
@@ -33,18 +45,6 @@ import seedu.duke.userinterface.command.timetable.FindCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.ListCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
 import seedu.duke.userinterface.command.timetable.TagCommandTimetableMode;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-
-import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.CONTENT_DELIMITER;
-import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.NOTEBOOK_DELIMITER;
-import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.PAGE_DELIMITER;
-import static seedu.duke.userinterface.command.notebook.AddCommandNotebookMode.SECTION_DELIMITER;
-import static seedu.duke.userinterface.command.notebook.SelectCommandNotebookMode.SHOW_ALL;
-import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.DEADLINE_DELIMITER;
-import static seedu.duke.userinterface.command.timetable.AddCommandTimetableMode.TASK_DELIMITER;
 
 public class InputParser {
     /**
@@ -203,6 +203,9 @@ public class InputParser {
         Section section = appState.getCurrentSection();
         String pageTitle = parsePageTitle(argument);
         int pageNum = section.findPage(pageTitle);
+        if (pageNum == -1) {
+            throw new InvalidPageException(pageTitle);
+        }
         appState.setCurrentPage(pageNum);
         Page page = section.getPageAtIndex(pageNum);
         appState.setAppMode(AppMode.NOTEBOOK_PAGE);
@@ -293,7 +296,6 @@ public class InputParser {
                 int indexPos = pageTitle.indexOf(CONTENT_DELIMITER);
                 pageTitle = pageTitle.substring(0, indexPos).trim();
             }
-
             if (pageTitle.isBlank()) {
                 throw new InvalidPageException(pageTitle);
             }
@@ -392,6 +394,9 @@ public class InputParser {
             }
         case SelectCommandNotebookMode.COMMAND_WORD:
             if (appState.getAppMode() != AppMode.TIMETABLE) {
+                if (argument.contains(CONTENT_DELIMITER)) {
+                    throw new InvalidSelectCommandException(argument);
+                }
                 return new SelectCommandNotebookMode(argument, appState);
             } else {
                 throw new IncorrectAppModeException();
@@ -418,7 +423,7 @@ public class InputParser {
             } else {
                 String notebookTitleToRemove = "";
                 String sectionTitleToRemove = "";
-                int pageNumberToRemove = -1;
+                String pageTitleToRemove = "";
                 if (argument.contains(NOTEBOOK_DELIMITER)) {
                     notebookTitleToRemove = parseNotebookTitle(argument);
                 }
@@ -426,14 +431,10 @@ public class InputParser {
                     sectionTitleToRemove = parseSectionTitle(argument);
                 }
                 if (argument.contains(PAGE_DELIMITER)) {
-                    //TODO change this to remove based on title
-                    //pageNumberToRemove = parsePageTitle(argument);
-                    if (pageNumberToRemove < 0) {
-                        throw new InvalidPageException(Integer.toString(pageNumberToRemove + 1));
-                    }
+                    pageTitleToRemove = parsePageTitle(argument);
                 }
                 return new RemoveCommandNotebookMode(notebookTitleToRemove,
-                        sectionTitleToRemove, pageNumberToRemove, appState);
+                        sectionTitleToRemove, pageTitleToRemove, appState);
             }
         case Exit.COMMAND_WORD:
             return new Exit(argument, appState);

@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import seedu.duke.exceptions.InvalidKeywordTagException;
+import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
 import seedu.duke.notebooks.Page;
@@ -31,19 +33,29 @@ public class FindCommandNotebookMode extends CliCommand {
     }
 
     public void execute() {
-        CliMessages cliMessages = new CliMessages();
-        if (tag.equals("") && !keyword.equals("")) {
-            getAllWithTitleContainingKeyword();
-            System.out.println("I've found these for keyword: " + keyword);
-        } else if (!tag.equals("") && keyword.equals("")) {
-            getAllWithTagsContainingKeyword();
-            System.out.println("I've found these for tag: " + tag);
-        } else {
-            System.out.println("Missing keyword/tag");
-            System.out.println("Format: find [KEYWORD] or find /t[TAG]");
+        try {
+            if (tag.equals("") && !keyword.equals("")) {
+                getAllWithTitleContainingKeyword();
+                System.out.println("I've found these for keyword: " + keyword);
+            } else if (!tag.equals("") && keyword.equals("")) {
+                getAllWithTag();
+                System.out.println("I've found these for tag: " + tag);
+            } else {
+                throw new InvalidKeywordTagException(keyword + "\t" + tag);
+            }
+        } catch (ZeroNoteException zne) {
+            zne.printErrorMessage();
             return;
         }
 
+        print();
+    }
+
+    private void print() {
+        CliMessages cliMessages = new CliMessages();
+        if (notebookMessages.isEmpty() && sectionMessages.isEmpty() && pageMessages.isEmpty()) {
+            System.out.println("Nothing is found!");
+        }
         if (!notebookMessages.isEmpty()) {
             System.out.println("Notebooks:");
             cliMessages.printFoundNotebooksMessages(notebookMessages);
@@ -88,28 +100,28 @@ public class FindCommandNotebookMode extends CliCommand {
         }
     }
 
-    private void getAllWithTagsContainingKeyword() {
+    private void getAllWithTag() {
         NotebookShelf currentNotebookShelf = appState.getCurrentBookShelf();
         for (Notebook notebook : currentNotebookShelf.getNotebooksArrayList()) {
             String notebookTag = notebook.getTag();
             if (!notebookTag.equals("") && notebookTag.equals(tag)) {
                 notebookMessages.add(notebook.getTitle());
             }
-            getSectionsWithTagContainingKeyword(notebook);
+            getSectionsWithTag(notebook);
         }
     }
 
-    private void getSectionsWithTagContainingKeyword(Notebook notebook) {
+    private void getSectionsWithTag(Notebook notebook) {
         for (Section section : notebook.getSectionArrayList()) {
             String sectionTag = section.getTag();
             if (!sectionTag.equals("") && sectionTag.equals(tag)) {
                 sectionMessages.add(notebook.getTitle() + " |-- " + section.getTitle());
             }
-            getPagesWithTagContainingKeyword(notebook, section);
+            getPagesWithTag(notebook, section);
         }
     }
 
-    private void getPagesWithTagContainingKeyword(Notebook notebook, Section section) {
+    private void getPagesWithTag(Notebook notebook, Section section) {
         for (Page page : section.getPageArrayList()) {
             String pageTag = page.getTag();
             if (!pageTag.equals("") && pageTag.equals(tag)) {
@@ -128,8 +140,23 @@ public class FindCommandNotebookMode extends CliCommand {
         return false;
     }
 
+    public ArrayList<String> getNotebookMessages() {
+        return notebookMessages;
+    }
+
+    public ArrayList<String> getSectionMessages() {
+        return sectionMessages;
+    }
+
+    public ArrayList<String> getPageMessages() {
+        return pageMessages;
+    }
+
     private List<String> getWordsInTitle(String title) {
         return Arrays.asList(title.toLowerCase().split(" "));
     }
 
+    public boolean isPersonalised() {
+        return isPersonalised;
+    }
 }

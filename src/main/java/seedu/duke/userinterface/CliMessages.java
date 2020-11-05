@@ -40,6 +40,24 @@ public class CliMessages {
         page.printPage();
     }
 
+    public static void printCorruptFile() {
+        System.out.println("There was some error reading the save files; something has likely been corrupted");
+        System.out.println("You may continue, and Zer0Note will start from scratch with no data. ");
+        System.out.println("Note that continuing will overwrite the corrupted file, so you won't be able to "
+                + "recover it at all. ");
+        System.out.println("You may also quit Zer0Note now by pressing Ctrl-C (PC keyboards) or control-C (Mac "
+                + "keyboards) NOW"
+                + "and attempt to recover the "
+                + "file manually. ");
+        System.out.println("If you contact the developers for help, please provide the corrupt files, "
+                + "and the following error message "
+                + " ");
+    }
+
+    public static void printNoFile() {
+        System.out.println("File was not found. A new save file will be created upon exit. ");
+    }
+
     public static void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
         String personalMessage = msgGenerator.generatePersonalisedMessage();
         System.out.println(personalMessage);

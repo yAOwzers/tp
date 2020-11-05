@@ -2,11 +2,10 @@ package seedu.duke.userinterface.command.notebook;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.exceptions.DuplicateFoundException;
-import seedu.duke.exceptions.IncorrectAppModeException;
+import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.ZeroNoteException;
 import seedu.duke.notebooks.Notebook;
 import seedu.duke.notebooks.NotebookShelf;
-import seedu.duke.notebooks.Page;
 import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.AppMode;
 import seedu.duke.userinterface.AppState;
@@ -15,43 +14,42 @@ import seedu.duke.userinterface.InputParser;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 //@@chuckiex3
-
-public class SelectNotebookTest {
+public class AddNotebookModeTest {
     @Test
-    void selectNotebook_in_wrongMode() {
-        InputParser parser = new InputParser();
+    void addNotebook_wrongFormat_expectException() {
         AppState appState = new AppState();
-        appState.setAppMode(AppMode.TIMETABLE);
-        String inputString = "select /nNOTEBOOK";
-        assertThrows(IncorrectAppModeException.class, () -> {
+        appState.setAppMode(AppMode.NOTEBOOK_PAGE);
+        InputParser parser = new InputParser();
+        String inputString = "add notebook";
+        assertThrows(InvalidCommandException.class, () -> {
             parser.getCommandFromInput(inputString, appState);
         });
     }
 
     @Test
-    void selectInvalid_pageTitle_expectException() {
-        AppState appState = new AppState();
-        appState.setAppMode(AppMode.NOTEBOOK_SHELF);
-        NotebookShelf ns = new NotebookShelf();
-        Notebook notebook = new Notebook("test_notebook");
-        Section section = new Section("section");
-        Page page = new Page("page", "content");
-
-        ns.addNotebook(notebook);
-        notebook.addSection(section);
-        section.addPage(page);
-
+    void addNotebook_wrongMode_expectException() {
         InputParser parser = new InputParser();
-        String argument = "/ntest_notebook /ssection /ppage2";
-        assertThrows(ZeroNoteException.class, () -> {
-            parser.extractParams(argument, appState);
+        AppState appState = new AppState();
+        appState.setAppMode(AppMode.NOTEBOOK_PAGE);
+        String inputString = "add /nNOTEBOOK";
+        assertThrows(InvalidCommandException.class, () -> {
+            parser.getCommandFromInput(inputString, appState);
         });
     }
 
     @Test
-    void selectInvalid_page_expectException() {
+    void addNotebook_SectionPage_expectException() {
+        InputParser parser = new InputParser();
         AppState appState = new AppState();
-        appState.setAppMode(AppMode.NOTEBOOK_SHELF);
+        appState.setAppMode(AppMode.NOTEBOOK_PAGE);
+        String inputString = "add /nNOTEBOOK /sSection /p";
+        assertThrows(ZeroNoteException.class, () -> {
+            parser.getCommandFromInput(inputString, appState);
+        });
+    }
+
+    @Test
+    void addDuplicate_page_expectException() {
         NotebookShelf ns = new NotebookShelf();
         Notebook notebook = new Notebook("test_notebook");
         Section section = new Section("section");
@@ -67,10 +65,8 @@ public class SelectNotebookTest {
             e.printErrorMessage();
         }
 
-        InputParser parser = new InputParser();
-        String inputString = "select /ntest_notebook /ssection /ppage ; content";
         assertThrows(ZeroNoteException.class, () -> {
-            parser.getCommandFromInput(inputString, appState);
+            section.addPage(page, content);
         });
     }
 }
