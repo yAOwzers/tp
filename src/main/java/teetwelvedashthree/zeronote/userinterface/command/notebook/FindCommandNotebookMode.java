@@ -29,7 +29,7 @@ public class FindCommandNotebookMode extends CliCommand {
         this.keyword = keyword.toLowerCase();
         this.tag = tag;
         this.appState = appState;
-        PRINTS_PERSONAL_MESSAGE = false;
+        PRINTS_PERSONAL_MESSAGE = true;
     }
 
     public void execute() {
