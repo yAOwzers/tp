@@ -436,6 +436,8 @@ Within `Notebook Mode`, you can `add` a `notebook`, `section` or a `page`. This 
 
 Use the `add /n` command to add a `notebook`  into the `notebook shelf`.
 
+> :warning: Please make sure not to use ";" in your notebook title!
+
 Format: `add /n[NOTEBOOK]`
 
 This is the parameter required in the command:
@@ -465,6 +467,8 @@ Now that you have added a new notebook for `CS2113T`, you can add a `section`!
 Use the `add /s` command to add a `section`  into the [selected](#342-selecting-a-notebooksectionpage-select) `notebook`.
 
 >:bulb: You must select a `notebook` before adding a section!
+>
+> :warning: Please also make sure not to use ";" in your section title!
 
 Format: `add /s[SECTION]`
 
@@ -809,6 +813,10 @@ This section answers some frequently asked questions.
 **Q**: How do I transfer my data to another computer?
 
 **A**: {your answer here}
+
+**Q**: Where do I find the release? 
+
+**A**: You can find it [here](https://github.com/AY2021S1-CS2113T-T12-3/tp/releases).
 
 <br>
 
