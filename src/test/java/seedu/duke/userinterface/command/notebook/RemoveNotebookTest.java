@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.userinterface.AppMode;
 import seedu.duke.userinterface.AppState;
 
-class RemoveCommandNotebookModeTest {
+class RemoveNotebookTest {
 
     @Test
     void isTriggerAutoSave_correctMode_returnsTrue() {

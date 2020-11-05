@@ -9,7 +9,7 @@ import seedu.duke.exceptions.InvalidTagException;
 import seedu.duke.tasks.Task;
 import seedu.duke.userinterface.AppState;
 
-class FindCommandTimetableModeTest {
+class FindTaskTest {
 
     @Test
     void execute_keywordInput_noneFound() {

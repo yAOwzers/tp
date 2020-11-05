@@ -14,7 +14,7 @@ import seedu.duke.notebooks.Section;
 import seedu.duke.userinterface.AppMode;
 import seedu.duke.userinterface.AppState;
 
-class FindCommandNotebookModeTest {
+class FindNotebookTest {
     @Test
     void execute_keywordInput_noResults() {
         Section s = new Section("Section 1");
