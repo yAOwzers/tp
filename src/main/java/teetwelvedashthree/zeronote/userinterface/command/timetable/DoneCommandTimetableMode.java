@@ -19,6 +19,7 @@ public class DoneCommandTimetableMode extends CliCommand {
     public DoneCommandTimetableMode(String argument, AppState appState) {
         this.argument = argument;
         this.appState = appState;
+        PRINTS_PERSONAL_MESSAGE = true;
     }
 
     @Override

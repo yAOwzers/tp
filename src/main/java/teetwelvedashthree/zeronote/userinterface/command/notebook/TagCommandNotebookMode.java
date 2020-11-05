@@ -26,6 +26,7 @@ public class TagCommandNotebookMode extends CliCommand {
         currentNotebook = appState.getCurrentNotebook();
         currentSection = appState.getCurrentSection();
         currentPage = appState.getCurrentPage();
+        PRINTS_PERSONAL_MESSAGE = true;
     }
 
     public void execute() {

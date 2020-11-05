@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class PersonalMesssageGenerator {
+public class PersonalMessageGenerator {
 
     private static final int NUMBER_OF_MESSAGES = 14;
     private String userName;
@@ -20,12 +20,12 @@ public class PersonalMesssageGenerator {
      * @author yAOwzers
      */
 
-    public PersonalMesssageGenerator(String userName) {
+    public PersonalMessageGenerator(String userName) {
         this.userName = userName;
     }
 
     public String generatePersonalisedMessage() {
-        ClassLoader classLoader = PersonalMesssageGenerator.class.getClassLoader();
+        ClassLoader classLoader = PersonalMessageGenerator.class.getClassLoader();
         InputStream personalMessageStream = classLoader.getResourceAsStream("txt/personalMessages.txt");
         BufferedReader personalMessageReader = new BufferedReader(new InputStreamReader(personalMessageStream));
         int messageToDisplay = (int) (Math.random() * (NUMBER_OF_MESSAGES));

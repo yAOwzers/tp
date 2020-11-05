@@ -6,18 +6,19 @@ import seedu.duke.storage.Storage;
 import seedu.duke.userinterface.command.CliCommand;
 import seedu.duke.userinterface.command.Exit;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class CliUserInterface {
     private AppState appState;
 
     private boolean toQuit = false;
-    private PersonalMesssageGenerator msgGenerator;
+    private PersonalMessageGenerator msgGenerator;
     private CliMessages messages;
+    private Scanner keyboardScanner;
 
     public CliUserInterface() {
         messages = new CliMessages();
+        keyboardScanner = new Scanner(System.in);
     }
 
     private void loadState() throws CorruptFileException {
@@ -30,11 +31,12 @@ public class CliUserInterface {
         storage.saveToFile(appState);
     }
 
-    private void checkNameOfUser(Scanner keyboard) {
+    private void checkNameOfUser() {
         if (appState.getUserName().equals("")) {
             messages.printFillInNameOfUserMessage();
-            String userName = keyboard.nextLine();
+            String userName = keyboardScanner.nextLine();
             appState.setUserName(userName);
+            msgGenerator = new PersonalMessageGenerator(userName);
             msgGenerator.greetUser();
         }
     }
@@ -47,12 +49,11 @@ public class CliUserInterface {
             e.printErrorMessage();
         }
         startUI();
-        msgGenerator = new PersonalMesssageGenerator(appState.getUserName());
         String userInput;
-        Scanner keyboard = new Scanner(System.in);
-        checkNameOfUser(keyboard);
+        checkNameOfUser();
+        msgGenerator = new PersonalMessageGenerator(appState.getUserName());
         while (!toQuit) {
-            userInput = keyboard.nextLine();
+            userInput = keyboardScanner.nextLine();
             try {
                 if (userInput.equals(Exit.COMMAND_WORD)) {
                     toQuit = true;
@@ -71,7 +72,8 @@ public class CliUserInterface {
         InputParser parser = new InputParser();
         CliCommand command = parser.getCommandFromInput(userInput, appState);
         if(command.printsPersonalMessage()) {
-            msgGenerator.generatePersonalisedMessage();
+            String message = msgGenerator.generatePersonalisedMessage();
+            System.out.println(message);
         }
         command.execute();
         if (command.isTriggerAutoSave()) {

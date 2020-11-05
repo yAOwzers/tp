@@ -8,8 +8,8 @@ public abstract class CliCommand {
     public static final String COMMAND_WORD = "mode";
     protected AppState appState;
     protected String commandParams;
-    protected static final boolean isAutoSave = false;
-    protected static boolean PRINTS_PERSONAL_MESSAGE = false;
+    protected static boolean isAutoSave = false;
+    protected static boolean PRINTS_PERSONAL_MESSAGE = true;
 
     public static String getCommandWord() {
         return COMMAND_WORD;
@@ -38,6 +38,6 @@ public abstract class CliCommand {
     }
 
     public boolean printsPersonalMessage() {
-        return printsPersonalMessage();
+        return PRINTS_PERSONAL_MESSAGE;
     }
 }

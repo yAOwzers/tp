@@ -18,7 +18,6 @@ public class FindCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "find";
     private String keyword;
     private String tag;
-    private boolean isPersonalised = true;
 
     private ArrayList<String> notebookMessages = new ArrayList<>();
     private ArrayList<String> sectionMessages = new ArrayList<>();
@@ -28,7 +27,7 @@ public class FindCommandNotebookMode extends CliCommand {
         this.keyword = keyword.toLowerCase();
         this.tag = tag;
         this.appState = appState;
-        PRINTS_PERSONAL_MESSAGE =
+        PRINTS_PERSONAL_MESSAGE = false;
     }
 
     public void execute() {

@@ -1,33 +1,36 @@
 package seedu.duke.userinterface.command.timetable;
 
-import seedu.duke.exceptions.InvalidTagException;
 import seedu.duke.tasks.Task;
+import seedu.duke.tasks.TaskList;
 import seedu.duke.userinterface.AppState;
 import seedu.duke.userinterface.CliMessages;
 import seedu.duke.userinterface.command.CliCommand;
 
-public class TagCommandTimetableMode extends CliCommand {
-    public static final String COMMAND_WORD = "tag";
-    private int index;
-    private String tag;
-    private boolean isPersonalised = true;
+public class RemoveCommandTimetableMode extends CliCommand {
+
+    public static final String COMMAND_WORD = "delete";
+
+    private final int indexToRemove;
+
     private static final boolean isAutoSave = true;
 
-    public TagCommandTimetableMode(int index, String tag, AppState appState) {
-        this.index = index;
-        this.tag = tag;
-        assert this.tag != null;
-        this.appState = appState;
+
+    public RemoveCommandTimetableMode(int indexToRemove, AppState uiMode) {
+        this.setAppState(uiMode);
+        this.indexToRemove = indexToRemove;
+        PRINTS_PERSONAL_MESSAGE = true;
     }
 
+    @Override
     public void execute() {
         CliMessages cliMessages = new CliMessages();
+        TaskList taskList = appState.getTaskList();
+        int numberOfTasks = taskList.getNumberOfTasks();
         try {
-            Task targetTask = appState.getTaskList().getTask(index);
-            targetTask.setTag(tag);
-            cliMessages.printTagTaskMessage(targetTask);
+            Task deletedTask = taskList.removeTask(indexToRemove);
+            numberOfTasks--;
+            cliMessages.printRemoveTaskMessage(deletedTask, numberOfTasks);
         } catch (IndexOutOfBoundsException ioe) {
-            int numberOfTasks = appState.getTaskList().getNumberOfTasks();
             if (numberOfTasks > 1) {
                 System.out.println("Please enter a valid index between 1 and " + numberOfTasks + ".");
             } else if (numberOfTasks == 1) {
@@ -35,9 +38,6 @@ public class TagCommandTimetableMode extends CliCommand {
             } else {
                 System.out.println("There are no tasks in the list.");
             }
-        } catch (InvalidTagException ite) {
-            ite.setProblematicInput("tag " + index + " /t");
-            ite.printErrorMessage();
         }
     }
 
@@ -45,5 +45,4 @@ public class TagCommandTimetableMode extends CliCommand {
     public boolean isTriggerAutoSave() {
         return isAutoSave;
     }
-
 }

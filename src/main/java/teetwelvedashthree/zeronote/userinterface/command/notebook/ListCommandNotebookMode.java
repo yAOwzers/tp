@@ -11,11 +11,11 @@ import seedu.duke.userinterface.command.CliCommand;
 
 public class ListCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "list";
-    private boolean isPersonalised = true;
 
     public ListCommandNotebookMode(String argument, AppState appState) {
         this.setAppState(appState);
         this.setCommandParams(argument);
+        PRINTS_PERSONAL_MESSAGE = true;
     }
 
     private static void listBookshelf_nsp(NotebookShelf notebookShelf) {

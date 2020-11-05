@@ -14,6 +14,7 @@ public class SelectCommandNotebookMode extends CliCommand {
     public SelectCommandNotebookMode(String argument, AppState uiMode) {
         this.setAppState(uiMode);
         this.argument = argument;
+        PRINTS_PERSONAL_MESSAGE = false;
     }
 
     @Override

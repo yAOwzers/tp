@@ -36,6 +36,8 @@ public class RemoveCommandNotebookMode extends CliCommand {
         currentBookshelf = appState.getCurrentBookShelf();
         currentNotebook = appState.getCurrentNotebook();
         currentSection = appState.getCurrentSection();
+
+        PRINTS_PERSONAL_MESSAGE = true;
     }
 
     public void execute() {

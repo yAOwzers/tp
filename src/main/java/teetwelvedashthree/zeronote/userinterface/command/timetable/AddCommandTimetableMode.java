@@ -21,6 +21,7 @@ public class AddCommandTimetableMode extends CliCommand {
     public AddCommandTimetableMode(String argument, AppState appState) {
         this.appState = appState;
         this.argument = argument;
+        PRINTS_PERSONAL_MESSAGE = true;
     }
 
     @Override
