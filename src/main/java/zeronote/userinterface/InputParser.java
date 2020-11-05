@@ -50,8 +50,8 @@ public class InputParser {
      * @throws IncorrectDeadlineFormatException when the user's input does not include the DEADLINE_DELIMITER.
      */
     public String parseTaskTitle(String input) throws TaskTitleException, IncorrectDeadlineFormatException {
-        if (input.startsWith(AddCommandTimetableMode.TASK_DELIMITER)
-                && input.contains(AddCommandTimetableMode.DEADLINE_DELIMITER)) {
+        if (input.startsWith(AddCommandTimetableMode.TASK_DELIMITER) && input.contains(
+                AddCommandTimetableMode.DEADLINE_DELIMITER)) {
             String taskTitle = input.substring(AddCommandTimetableMode.TASK_DELIMITER.length());
             int indexPos = taskTitle.indexOf("/by");
             taskTitle = taskTitle.substring(0, indexPos).trim();
@@ -121,7 +121,8 @@ public class InputParser {
      * @throws InvalidPageException          when the page number the user wants to select does not exist.
      * @throws InvalidSelectCommandException when the select command types by the user is wrong.
      */
-    public void extractParams(String argument, AppState appState) throws InvalidNotebookException, InvalidSectionException, InvalidPageException, InvalidSelectCommandException {
+    public void extractParams(String argument, AppState appState) throws InvalidNotebookException,
+            InvalidSectionException, InvalidPageException, InvalidSelectCommandException {
         if (argument.startsWith(AddCommandNotebookMode.NOTEBOOK_DELIMITER)) {
             extractNotebookParams(argument, appState);
         } else if ((argument.startsWith(AddCommandNotebookMode.SECTION_DELIMITER)) && (appState.getAppMode()
@@ -148,7 +149,8 @@ public class InputParser {
      * @throws InvalidSectionException  when the section title input by the user does not exist.
      * @throws InvalidPageException     when the page number input by the user does not exist.
      */
-    public void extractNotebookParams(String argument, AppState appState) throws InvalidNotebookException, InvalidSectionException, InvalidPageException {
+    public void extractNotebookParams(String argument, AppState appState) throws InvalidNotebookException,
+            InvalidSectionException, InvalidPageException {
         Notebook notebook;
         String notebookTitle = parseNotebookTitle(argument);
         NotebookShelf notebookShelf = appState.getCurrentBookShelf();
@@ -174,7 +176,8 @@ public class InputParser {
      * @throws InvalidSectionException when the section title input by the user does not exist.
      * @throws InvalidPageException    when the page title input by the user does not exist.
      */
-    public void extractSectionParams(String argument, AppState appState) throws InvalidSectionException, InvalidPageException {
+    public void extractSectionParams(String argument, AppState appState) throws InvalidSectionException,
+            InvalidPageException {
         Notebook notebook = appState.getCurrentNotebook();
         String sectionTitle = parseSectionTitle(argument);
         int sectionIndex = notebook.findSection(sectionTitle);
@@ -359,23 +362,23 @@ public class InputParser {
                 String titleToAdd;
                 String contentToAdd;
                 if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
-                    if (argument.contains(AddCommandNotebookMode.SECTION_DELIMITER)
-                            || argument.contains(AddCommandNotebookMode.PAGE_DELIMITER)) {
+                    if (argument.contains(AddCommandNotebookMode.SECTION_DELIMITER) || argument.contains(
+                            AddCommandNotebookMode.PAGE_DELIMITER)) {
                         throw new InvalidNotebookException(argument);
                     }
                     titleToAdd = parseNotebookTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
                 } else if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
-                    if (argument.contains(AddCommandNotebookMode.PAGE_DELIMITER)
-                            || argument.contains(AddCommandNotebookMode.NOTEBOOK_DELIMITER)) {
+                    if (argument.contains(AddCommandNotebookMode.PAGE_DELIMITER) || argument.contains(
+                            AddCommandNotebookMode.NOTEBOOK_DELIMITER)) {
                         throw new InvalidSectionException(argument);
                     }
                     titleToAdd = parseSectionTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
                 } else if (appState.getAppMode() == AppMode.NOTEBOOK_SECTION) {
-                    if (!argument.contains(AddCommandNotebookMode.CONTENT_DELIMITER)
-                            || argument.contains(AddCommandNotebookMode.NOTEBOOK_DELIMITER)
-                            || argument.contains(AddCommandNotebookMode.SECTION_DELIMITER)) {
+                    if (!argument.contains(AddCommandNotebookMode.CONTENT_DELIMITER) || argument.contains(
+                            AddCommandNotebookMode.NOTEBOOK_DELIMITER) || argument.contains(
+                            AddCommandNotebookMode.SECTION_DELIMITER)) {
                         throw new InvalidPageException(argument);
                     }
                     titleToAdd = parsePageTitle(argument);
@@ -443,7 +446,8 @@ public class InputParser {
                 if (argument.contains(AddCommandNotebookMode.PAGE_DELIMITER)) {
                     pageTitleToRemove = parsePageTitle(argument);
                 }
-                return new RemoveCommandNotebookMode(notebookTitleToRemove, sectionTitleToRemove, pageTitleToRemove, appState);
+                return new RemoveCommandNotebookMode(notebookTitleToRemove, sectionTitleToRemove, pageTitleToRemove,
+                        appState);
             }
         case Exit.COMMAND_WORD:
             return new Exit(argument, appState);
