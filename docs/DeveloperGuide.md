@@ -154,7 +154,7 @@ code to improve Zer0Note.
 
 ### 2.3. Verifying the setup
 
-1. Run the `seedu.duke.Duke`.
+1. Run the `teetwelvedashthree.zeronote.Duke`.
 2. Try a few commands.
 3. [Run the tests](#61-running-tests) to ensure they all pass.
 
@@ -405,7 +405,7 @@ The `Task` class contains a member `isDone` of Boolean type.
 
 The following sequence diagram shows how the mark as done operation works:  
 
-// TODO Insert diagram inside 
+![Sequence diagram for Storage](diagrams/class/jpeg/DoneCommand_Sequence_diagram.jpg)
 
 The following is an example of the processes that occur when the user uses the mark as done function:  
 
@@ -939,7 +939,7 @@ There are two ways to run tests.
 
 This project has one type of test:
 Unit tests targeting the lowest level methods/classes.
-e.g. `seedu.duke.userinterface.command.notebook.AddNotebookTest`
+e.g. `teetwelvedashthree.zeronote.userinterface.command.notebook.AddNotebookModeTest`
 
 ## Appendix A: Project Scope
 
@@ -1210,4 +1210,17 @@ i. Click on the folder that the jar file had been saved in.
 ii. Select both the 'tasks.txt' and 'notebooks.txt'.
 iii. Delete both files.  
 iv. Restart the application by double-clicking the jar file and running Zer0Note.  
-Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1.  
+Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1. 
+
+3.2 Dealing with corrupted name file  
+i. Click on the folder that the jar file had been saved in.  
+ii. Enter the 'src', then 'main', 'resources' and then 'txt' folder.  
+iii. Delete the file named 'nameOfUser.txt'  
+iv. Restart the application by double-clicking the jar file. Re-enter the name of user.  
+
+3.3 Changing of saved name  
+i. Click on the folder that the jar file had been saved in.  
+ii. Enter the 'src', then 'main', 'resources' and then 'txt' folder.  
+iii. Double-click the 'nameOfUser.txt' file to edit it.  
+iv. Change the name in the txt file with the desired name and save the file.  
+v. Re-run Zer0Note with the desired name.  
