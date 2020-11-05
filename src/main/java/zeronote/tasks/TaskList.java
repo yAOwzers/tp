@@ -1,4 +1,4 @@
-package zer0note.tasks;
+package zeronote.tasks;
 
 import java.util.ArrayList;
 

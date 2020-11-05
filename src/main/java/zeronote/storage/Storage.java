@@ -1,14 +1,14 @@
-package zer0note.storage;
+package zeronote.storage;
 
-import zer0note.exceptions.FileSavingException;
-import zer0note.notebooks.Notebook;
-import zer0note.notebooks.NotebookShelf;
-import zer0note.notebooks.Page;
-import zer0note.notebooks.Section;
-import zer0note.tasks.Task;
-import zer0note.tasks.TaskList;
-import zer0note.userinterface.AppState;
-import zer0note.userinterface.CliMessages;
+import zeronote.exceptions.FileSavingException;
+import zeronote.notebooks.Notebook;
+import zeronote.notebooks.NotebookShelf;
+import zeronote.notebooks.Page;
+import zeronote.notebooks.Section;
+import zeronote.tasks.Task;
+import zeronote.tasks.TaskList;
+import zeronote.userinterface.AppState;
+import zeronote.userinterface.CliMessages;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,7 +18,7 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 /**
- * Represents the storage of where Zer0Note is loading from and saving information to.
+ * Represents the storage of where ZeroNote is loading from and saving information to.
  */
 public class Storage {
 

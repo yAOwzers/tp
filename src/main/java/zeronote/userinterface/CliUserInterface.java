@@ -1,10 +1,10 @@
-package zer0note.userinterface;
+package zeronote.userinterface;
 
-import zer0note.exceptions.CorruptFileException;
-import zer0note.exceptions.ZeroNoteException;
-import zer0note.storage.Storage;
-import zer0note.userinterface.command.CliCommand;
-import zer0note.userinterface.command.Exit;
+import zeronote.exceptions.CorruptFileException;
+import zeronote.exceptions.ZeroNoteException;
+import zeronote.storage.Storage;
+import zeronote.userinterface.command.CliCommand;
+import zeronote.userinterface.command.Exit;
 
 import java.util.Scanner;
 

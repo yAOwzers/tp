@@ -1,9 +1,9 @@
-package zer0note.userinterface.command.timetable;
+package zeronote.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
-import zer0note.exceptions.IncorrectDeadlineFormatException;
-import zer0note.exceptions.ZeroNoteException;
-import zer0note.userinterface.InputParser;
+import zeronote.exceptions.IncorrectDeadlineFormatException;
+import zeronote.exceptions.ZeroNoteException;
+import zeronote.userinterface.InputParser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

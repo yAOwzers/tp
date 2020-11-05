@@ -1,9 +1,9 @@
-package zer0note.userinterface.command.timetable;
+package zeronote.userinterface.command.timetable;
 
-import zer0note.exceptions.InvalidCommandException;
-import zer0note.tasks.Task;
-import zer0note.userinterface.AppState;
-import zer0note.userinterface.command.CliCommand;
+import zeronote.exceptions.InvalidCommandException;
+import zeronote.tasks.Task;
+import zeronote.userinterface.AppState;
+import zeronote.userinterface.command.CliCommand;
 
 import java.util.ArrayList;
 import java.util.Collections;

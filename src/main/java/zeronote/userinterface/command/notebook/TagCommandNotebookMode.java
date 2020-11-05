@@ -1,13 +1,13 @@
-package zer0note.userinterface.command.notebook;
+package zeronote.userinterface.command.notebook;
 
-import zer0note.exceptions.IncorrectAppModeException;
-import zer0note.exceptions.ZeroNoteException;
-import zer0note.notebooks.Notebook;
-import zer0note.notebooks.Page;
-import zer0note.notebooks.Section;
-import zer0note.userinterface.AppState;
-import zer0note.userinterface.CliMessages;
-import zer0note.userinterface.command.CliCommand;
+import zeronote.exceptions.IncorrectAppModeException;
+import zeronote.exceptions.ZeroNoteException;
+import zeronote.notebooks.Notebook;
+import zeronote.notebooks.Page;
+import zeronote.notebooks.Section;
+import zeronote.userinterface.AppState;
+import zeronote.userinterface.CliMessages;
+import zeronote.userinterface.command.CliCommand;
 
 public class TagCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "tag";

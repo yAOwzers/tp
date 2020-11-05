@@ -1,16 +1,16 @@
-package zer0note.userinterface.command.notebook;
+package zeronote.userinterface.command.notebook;
 
 import org.junit.jupiter.api.Test;
-import zer0note.exceptions.DuplicateFoundException;
-import zer0note.exceptions.IncorrectAppModeException;
-import zer0note.exceptions.ZeroNoteException;
-import zer0note.notebooks.Notebook;
-import zer0note.notebooks.NotebookShelf;
-import zer0note.notebooks.Page;
-import zer0note.notebooks.Section;
-import zer0note.userinterface.AppMode;
-import zer0note.userinterface.AppState;
-import zer0note.userinterface.InputParser;
+import zeronote.exceptions.DuplicateFoundException;
+import zeronote.exceptions.IncorrectAppModeException;
+import zeronote.exceptions.ZeroNoteException;
+import zeronote.notebooks.Notebook;
+import zeronote.notebooks.NotebookShelf;
+import zeronote.notebooks.Page;
+import zeronote.notebooks.Section;
+import zeronote.userinterface.AppMode;
+import zeronote.userinterface.AppState;
+import zeronote.userinterface.InputParser;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

@@ -1,8 +1,8 @@
-package zer0note.notebooks;
+package zeronote.notebooks;
 
-import zer0note.exceptions.DuplicateFoundException;
-import zer0note.exceptions.InvalidPageException;
-import zer0note.exceptions.InvalidTagException;
+import zeronote.exceptions.DuplicateFoundException;
+import zeronote.exceptions.InvalidPageException;
+import zeronote.exceptions.InvalidTagException;
 
 import java.util.ArrayList;
 

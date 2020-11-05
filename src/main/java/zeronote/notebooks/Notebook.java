@@ -1,9 +1,9 @@
-package zer0note.notebooks;
+package zeronote.notebooks;
 
 import java.util.ArrayList;
 
-import zer0note.exceptions.DuplicateFoundException;
-import zer0note.exceptions.InvalidTagException;
+import zeronote.exceptions.DuplicateFoundException;
+import zeronote.exceptions.InvalidTagException;
 
 public class Notebook {
     private String title;

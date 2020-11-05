@@ -1,13 +1,13 @@
-package zer0note.userinterface.command.notebook;
+package zeronote.userinterface.command.notebook;
 
-import zer0note.exceptions.AddCommandNotebookException;
-import zer0note.exceptions.EmptyPageException;
-import zer0note.exceptions.ZeroNoteException;
-import zer0note.notebooks.Notebook;
-import zer0note.notebooks.NotebookShelf;
-import zer0note.notebooks.Section;
-import zer0note.userinterface.AppState;
-import zer0note.userinterface.command.CliCommand;
+import zeronote.exceptions.AddCommandNotebookException;
+import zeronote.exceptions.EmptyPageException;
+import zeronote.exceptions.ZeroNoteException;
+import zeronote.notebooks.Notebook;
+import zeronote.notebooks.NotebookShelf;
+import zeronote.notebooks.Section;
+import zeronote.userinterface.AppState;
+import zeronote.userinterface.command.CliCommand;
 
 public class AddCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "add";

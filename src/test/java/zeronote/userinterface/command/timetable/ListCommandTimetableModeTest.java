@@ -1,8 +1,8 @@
-package zer0note.userinterface.command.timetable;
+package zeronote.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
-import zer0note.exceptions.InvalidCommandException;
-import zer0note.userinterface.AppState;
+import zeronote.exceptions.InvalidCommandException;
+import zeronote.userinterface.AppState;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;

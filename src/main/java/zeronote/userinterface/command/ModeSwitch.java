@@ -1,8 +1,8 @@
-package zer0note.userinterface.command;
+package zeronote.userinterface.command;
 
-import zer0note.exceptions.InvalidCommandException;
-import zer0note.userinterface.AppMode;
-import zer0note.userinterface.AppState;
+import zeronote.exceptions.InvalidCommandException;
+import zeronote.userinterface.AppMode;
+import zeronote.userinterface.AppState;
 
 public class ModeSwitch extends CliCommand {
     public static final String COMMAND_WORD = "mode";

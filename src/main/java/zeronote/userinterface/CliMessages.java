@@ -1,10 +1,10 @@
-package zer0note.userinterface;
+package zeronote.userinterface;
 
-import zer0note.notebooks.Notebook;
-import zer0note.notebooks.Page;
-import zer0note.notebooks.Section;
-import zer0note.tasks.Task;
-import zer0note.tasks.TaskList;
+import zeronote.notebooks.Notebook;
+import zeronote.notebooks.Page;
+import zeronote.notebooks.Section;
+import zeronote.tasks.Task;
+import zeronote.tasks.TaskList;
 
 import java.util.ArrayList;
 
@@ -42,12 +42,12 @@ public class CliMessages {
 
     public static void printCorruptTaskFile() {
         System.out.println("There was some error reading the Tasks file; something has likely been corrupted");
-        System.out.println("You may continue, and Zer0Note will start from scratch with no Task data. ");
+        System.out.println("You may continue, and ZeroNote will start from scratch with no Task data. ");
         System.out.println("Unless otherwise mentioned, your notebooks should be fine. ");
         System.out.println("Note that continuing will overwrite the corrupted file, so you won't be able to "
                 + "recover it at all. ");
         System.out.println(
-                "You may also quit Zer0Note now by pressing Ctrl-C (PC keyboards) or control-C (Mac " + "keyboards) NOW"
+                "You may also quit ZeroNote now by pressing Ctrl-C (PC keyboards) or control-C (Mac " + "keyboards) NOW"
                         + "and attempt to recover the " + "file manually. ");
         System.out.println("If you contact the developers for help, please provide the corrupt files, "
                 + "and the following error message " + " ");
@@ -59,12 +59,12 @@ public class CliMessages {
 
     public static void printCorruptNotebookFile() {
         System.out.println("There was some error reading the Notebooks file; something has likely been corrupted");
-        System.out.println("You may continue, and Zer0Note will start from scratch with no Task data. ");
+        System.out.println("You may continue, and ZeroNote will start from scratch with no Task data. ");
         System.out.println("Unless otherwise mentioned, your tasks should be fine. ");
         System.out.println("Note that continuing will overwrite the corrupted file, so you won't be able to "
                 + "recover it at all. ");
         System.out.println(
-                "You may also quit Zer0Note now by pressing Ctrl-C (PC keyboards) or control-C (Mac " + "keyboards) NOW"
+                "You may also quit ZeroNote now by pressing Ctrl-C (PC keyboards) or control-C (Mac " + "keyboards) NOW"
                         + "and attempt to recover the " + "file manually. ");
         System.out.println("If you contact the developers for help, please provide the corrupt files, "
                 + "and the following error message " + " ");
@@ -136,7 +136,7 @@ public class CliMessages {
     }
 
     public void printExitHelp() {
-        System.out.println("To quit Zer0Note:");
+        System.out.println("To quit ZeroNote:");
         System.out.println("exit");
     }
 
@@ -210,19 +210,19 @@ public class CliMessages {
     }
 
     public void printGeneralHelp() {
-        System.out.println("Here are some general commands that will work throughout Zer0Note: ");
+        System.out.println("Here are some general commands that will work throughout ZeroNote: ");
         printModeSwitchHelp();
         printExitHelp();
     }
 
     public void printOnlineGuideLink() {
-        System.out.println("Access the full user guide for Zer0Note online, at: ");
+        System.out.println("Access the full user guide for ZeroNote online, at: ");
         System.out.println("https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html");
         System.out.println();
     }
 
     public void printAllHelp() {
-        System.out.println("Here are all the commands you need to know to operate Zer0Note: ");
+        System.out.println("Here are all the commands you need to know to operate ZeroNote: ");
         printGeneralHelp();
         printNotebookModeHelp();
         printTimetableModeHelp();

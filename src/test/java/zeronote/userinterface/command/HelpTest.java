@@ -1,4 +1,4 @@
-package zer0note.userinterface.command;
+package zeronote.userinterface.command;
 
 import org.junit.jupiter.api.Test;
 
@@ -42,12 +42,12 @@ public class HelpTest {
             + "" + lineSeparator + "To delete an existing task from the task list: " + lineSeparator + "delete [INDEX]"
             + lineSeparator + "Example of usage: " + lineSeparator + "delete 1" + lineSeparator + "" + lineSeparator;
 
-    String expectedOutputNoParams = "Here are all the commands you need to know to operate Zer0Note: " + lineSeparator
-            + "Here are some general commands that will work throughout Zer0Note: " + lineSeparator
+    String expectedOutputNoParams = "Here are all the commands you need to know to operate ZeroNote: " + lineSeparator
+            + "Here are some general commands that will work throughout ZeroNote: " + lineSeparator
             + "To switch to timetable mode: " + lineSeparator + "mode /t" + lineSeparator
             + "To switch to notebook mode: " + lineSeparator + "mode /n" + lineSeparator + "" + lineSeparator
-            + "To quit Zer0Note:" + lineSeparator + "exit" + lineSeparator + expectedOutputNotebook
-            + expectedOutputTimetable + "Access the full user guide for Zer0Note online, at: " + lineSeparator
+            + "To quit ZeroNote:" + lineSeparator + "exit" + lineSeparator + expectedOutputNotebook
+            + expectedOutputTimetable + "Access the full user guide for ZeroNote online, at: " + lineSeparator
             + "https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html" + lineSeparator + lineSeparator;
 
     @Test

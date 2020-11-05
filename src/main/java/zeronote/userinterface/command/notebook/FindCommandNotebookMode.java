@@ -1,4 +1,4 @@
-package zer0note.userinterface.command.notebook;
+package zeronote.userinterface.command.notebook;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,15 +6,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import zer0note.exceptions.InvalidKeywordTagException;
-import zer0note.exceptions.ZeroNoteException;
-import zer0note.notebooks.Notebook;
-import zer0note.notebooks.NotebookShelf;
-import zer0note.notebooks.Page;
-import zer0note.notebooks.Section;
-import zer0note.userinterface.AppState;
-import zer0note.userinterface.CliMessages;
-import zer0note.userinterface.command.CliCommand;
+import zeronote.exceptions.InvalidKeywordTagException;
+import zeronote.exceptions.ZeroNoteException;
+import zeronote.notebooks.Notebook;
+import zeronote.notebooks.NotebookShelf;
+import zeronote.notebooks.Page;
+import zeronote.notebooks.Section;
+import zeronote.userinterface.AppState;
+import zeronote.userinterface.CliMessages;
+import zeronote.userinterface.command.CliCommand;
 
 public class FindCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "find";

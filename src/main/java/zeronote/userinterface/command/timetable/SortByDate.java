@@ -1,6 +1,6 @@
-package zer0note.userinterface.command.timetable;
+package zeronote.userinterface.command.timetable;
 
-import zer0note.tasks.Task;
+import zeronote.tasks.Task;
 
 import java.util.Comparator;
 

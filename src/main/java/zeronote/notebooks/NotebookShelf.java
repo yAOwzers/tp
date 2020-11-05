@@ -1,6 +1,6 @@
-package zer0note.notebooks;
+package zeronote.notebooks;
 
-import zer0note.exceptions.DuplicateFoundException;
+import zeronote.exceptions.DuplicateFoundException;
 
 import java.util.ArrayList;
 

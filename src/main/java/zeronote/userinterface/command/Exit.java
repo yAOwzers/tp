@@ -1,7 +1,7 @@
-package zer0note.userinterface.command;
+package zeronote.userinterface.command;
 
-import zer0note.userinterface.AppState;
-import zer0note.userinterface.CliMessages;
+import zeronote.userinterface.AppState;
+import zeronote.userinterface.CliMessages;
 
 public class Exit extends CliCommand {
     public static final String COMMAND_WORD = "exit";

@@ -1,4 +1,4 @@
-package zer0note.exceptions;
+package zeronote.exceptions;
 
 public class InvalidKeywordTagException extends ZeroNoteException {
     public InvalidKeywordTagException(String problematicInput) {

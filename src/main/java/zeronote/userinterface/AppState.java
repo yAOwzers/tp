@@ -1,11 +1,11 @@
-package zer0note.userinterface;
+package zeronote.userinterface;
 
-import zer0note.notebooks.Notebook;
-import zer0note.notebooks.NotebookShelf;
-import zer0note.notebooks.Page;
-import zer0note.notebooks.Section;
-import zer0note.tasks.Task;
-import zer0note.tasks.TaskList;
+import zeronote.notebooks.Notebook;
+import zeronote.notebooks.NotebookShelf;
+import zeronote.notebooks.Page;
+import zeronote.notebooks.Section;
+import zeronote.tasks.Task;
+import zeronote.tasks.TaskList;
 
 public class AppState {
     private AppMode appMode;

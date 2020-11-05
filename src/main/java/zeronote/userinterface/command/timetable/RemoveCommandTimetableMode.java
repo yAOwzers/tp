@@ -1,10 +1,10 @@
-package zer0note.userinterface.command.timetable;
+package zeronote.userinterface.command.timetable;
 
-import zer0note.tasks.Task;
-import zer0note.tasks.TaskList;
-import zer0note.userinterface.AppState;
-import zer0note.userinterface.CliMessages;
-import zer0note.userinterface.command.CliCommand;
+import zeronote.tasks.Task;
+import zeronote.tasks.TaskList;
+import zeronote.userinterface.AppState;
+import zeronote.userinterface.CliMessages;
+import zeronote.userinterface.command.CliCommand;
 
 public class RemoveCommandTimetableMode extends CliCommand {
 

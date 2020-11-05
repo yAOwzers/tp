@@ -1,4 +1,4 @@
-package zer0note.userinterface;
+package zeronote.userinterface;
 
 import java.io.BufferedReader;
 import java.io.IOException;

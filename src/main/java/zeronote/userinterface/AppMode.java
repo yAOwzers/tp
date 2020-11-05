@@ -1,4 +1,4 @@
-package zer0note.userinterface;
+package zeronote.userinterface;
 
 public enum AppMode {
     TIMETABLE,

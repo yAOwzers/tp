@@ -1,4 +1,4 @@
-package zer0note.exceptions;
+package zeronote.exceptions;
 
 public class FileSavingException extends ZeroNoteException {
     public FileSavingException(String enteredCommand) {

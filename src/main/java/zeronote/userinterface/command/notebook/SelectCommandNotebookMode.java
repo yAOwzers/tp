@@ -1,10 +1,10 @@
-package zer0note.userinterface.command.notebook;
+package zeronote.userinterface.command.notebook;
 
-import zer0note.exceptions.InvalidSelectCommandException;
-import zer0note.exceptions.ZeroNoteException;
-import zer0note.userinterface.AppState;
-import zer0note.userinterface.InputParser;
-import zer0note.userinterface.command.CliCommand;
+import zeronote.exceptions.InvalidSelectCommandException;
+import zeronote.exceptions.ZeroNoteException;
+import zeronote.userinterface.AppState;
+import zeronote.userinterface.InputParser;
+import zeronote.userinterface.command.CliCommand;
 
 public class SelectCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "select";

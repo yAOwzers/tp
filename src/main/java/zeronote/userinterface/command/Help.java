@@ -1,6 +1,6 @@
-package zer0note.userinterface.command;
+package zeronote.userinterface.command;
 
-import zer0note.userinterface.CliMessages;
+import zeronote.userinterface.CliMessages;
 
 /**
  * This class is to be instantiated when the user enters the keyword "help". The arguments for the command are then

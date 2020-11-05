@@ -1,8 +1,8 @@
-package zer0note.userinterface.command.timetable;
+package zeronote.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
-import zer0note.tasks.TaskList;
-import zer0note.userinterface.AppState;
+import zeronote.tasks.TaskList;
+import zeronote.userinterface.AppState;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

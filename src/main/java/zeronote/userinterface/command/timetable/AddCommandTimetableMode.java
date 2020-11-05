@@ -1,13 +1,13 @@
-package zer0note.userinterface.command.timetable;
+package zeronote.userinterface.command.timetable;
 
-import zer0note.exceptions.TaskWrongFormatException;
-import zer0note.exceptions.ZeroNoteException;
-import zer0note.tasks.Task;
-import zer0note.tasks.TaskList;
-import zer0note.userinterface.AppState;
-import zer0note.userinterface.CliMessages;
-import zer0note.userinterface.InputParser;
-import zer0note.userinterface.command.CliCommand;
+import zeronote.exceptions.TaskWrongFormatException;
+import zeronote.exceptions.ZeroNoteException;
+import zeronote.tasks.Task;
+import zeronote.tasks.TaskList;
+import zeronote.userinterface.AppState;
+import zeronote.userinterface.CliMessages;
+import zeronote.userinterface.InputParser;
+import zeronote.userinterface.command.CliCommand;
 
 public class AddCommandTimetableMode extends CliCommand {
     public static final String COMMAND_WORD = "add";

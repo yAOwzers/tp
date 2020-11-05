@@ -1,4 +1,4 @@
-package zer0note.exceptions;
+package zeronote.exceptions;
 
 public abstract class ZeroNoteException extends Exception {
     public String problematicInput;

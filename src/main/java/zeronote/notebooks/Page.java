@@ -1,6 +1,6 @@
-package zer0note.notebooks;
+package zeronote.notebooks;
 
-import zer0note.exceptions.InvalidTagException;
+import zeronote.exceptions.InvalidTagException;
 
 public class Page {
     private String title;
