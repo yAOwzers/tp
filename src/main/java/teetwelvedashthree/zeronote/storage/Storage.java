@@ -28,7 +28,9 @@ public class Storage {
 
     /**
      * Saves the tasks to the specified path.
+     *
      * @param currentAppState the AppState of the running instance
+     *
      * @throws FileSavingException of there is an error saving the file
      */
     public void saveTasks(AppState currentAppState) throws FileSavingException {
@@ -45,8 +47,10 @@ public class Storage {
     }
 
     /**
-     * Saves the notebooks to the specified path
+     * Saves the notebooks to the specified path.
+     *
      * @param currentAppState the AppState of the running instance
+     *
      * @throws FileSavingException if there is an error saving the notebooks
      */
     public void saveNotebooks(AppState currentAppState) throws FileSavingException {
@@ -63,8 +67,10 @@ public class Storage {
     }
 
     /**
-     * Saves the username to the specified path
+     * Saves the username to the specified path.
+     *
      * @param currentAppState the AppState of the running instance
+     *
      * @throws FileSavingException if there is an error saving the username
      */
     public void saveUserName(AppState currentAppState) throws FileSavingException {
@@ -80,8 +86,10 @@ public class Storage {
     }
 
     /**
-     * Save the current application state to 3 text files
+     * Save the current application state to 3 text files.
+     *
      * @param currentAppState the AppState of the running instance
+     *
      * @throws FileSavingException if there is an error saving the instance
      */
     public void saveToFile(AppState currentAppState) throws FileSavingException {
@@ -91,7 +99,8 @@ public class Storage {
     }
 
     /**
-     * Read the tasks previously saved to a text file
+     * Read the tasks previously saved to a text file.
+     *
      * @param loadedAppState the AppState of the running instance
      */
     public void readTasks(AppState loadedAppState) {
@@ -173,12 +182,12 @@ public class Storage {
 
     public void readUserName(AppState loadedAppState) {
         File userNameFile = new File(nameFilepath);
-        try{
+        try {
             Scanner userNameFileScanner = new Scanner(userNameFile);
             String userName = userNameFileScanner.nextLine();
             loadedAppState.setUserName(userName);
         } catch (Exception e) {
-
+            loadedAppState.setUserName("");
         }
     }
 
@@ -198,7 +207,7 @@ public class Storage {
         }
         return true;
     }
-    
+
     @Deprecated
     public void saveNameOfUser() {
         File file = new File(this.nameFilepath);
@@ -209,8 +218,8 @@ public class Storage {
             String userInput = keyboard.nextLine();
             FileWriter nameOfUserFileToSave = new FileWriter(this.nameFilepath);
             nameOfUserFileToSave.write(userInput);
-//            msgGenerator.setChosenName(userInput);
-//            msgGenerator.greetFirstTimeUser();
+            //            msgGenerator.setChosenName(userInput);
+            //            msgGenerator.greetFirstTimeUser();
             nameOfUserFileToSave.close();
         } catch (IOException e) {
             System.out.println("Error in FileSaving");

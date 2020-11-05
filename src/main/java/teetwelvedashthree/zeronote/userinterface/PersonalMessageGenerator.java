@@ -9,7 +9,12 @@ public class PersonalMessageGenerator {
 
     private static final int NUMBER_OF_MESSAGES = 14;
     private String userName;
-    private final String DEFAULT_MESSAGE = "Great idea";
+    private static final String DEFAULT_MESSAGE = "Great idea";
+
+    public PersonalMessageGenerator(String userName) {
+        this.userName = userName;
+    }
+
     /**
      * Generates a random personal encouragement message as taken from txt/personalMessages.txt file along
      * with a random user name from txt/nameOfUser file.
@@ -19,11 +24,6 @@ public class PersonalMessageGenerator {
      * @author neilbaner
      * @author yAOwzers
      */
-
-    public PersonalMessageGenerator(String userName) {
-        this.userName = userName;
-    }
-
     public String generatePersonalisedMessage() {
         ClassLoader classLoader = PersonalMessageGenerator.class.getClassLoader();
         InputStream personalMessageStream = classLoader.getResourceAsStream("txt/personalMessages.txt");
@@ -36,7 +36,7 @@ public class PersonalMessageGenerator {
             for (int i = 0; i < messageToDisplay; i++) {
                 chosenMessage = personalMessageReader.readLine();
             }
-        } catch(IOException e) {
+        } catch (IOException e) {
             chosenMessage = DEFAULT_MESSAGE;
         }
         personalMessage = chosenMessage + ", " + userName + ". ";
