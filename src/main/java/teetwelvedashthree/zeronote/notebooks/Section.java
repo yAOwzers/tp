@@ -43,6 +43,15 @@ public class Section {
         pageArrayList.add(p);
     }
 
+    public void getPage(int pageIndex) {
+        try {
+            Page page = pageArrayList.get(pageIndex);
+            page.printPage();
+        } catch (IndexOutOfBoundsException | NullPointerException e) {
+            System.out.println("page <" + (pageIndex + 1) + "> doesn't exist");
+        }
+    }
+
     /**
      * Find a page with a given title in this section.
      *
