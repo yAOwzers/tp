@@ -1,13 +1,13 @@
-package seedu.duke.userinterface.command.notebook;
+package teetwelvedashthree.zeronote.userinterface.command.notebook;
 
-import seedu.duke.exceptions.AddCommandNotebookException;
-import seedu.duke.exceptions.EmptyPageException;
-import seedu.duke.exceptions.ZeroNoteException;
-import seedu.duke.notebooks.Notebook;
-import seedu.duke.notebooks.NotebookShelf;
-import seedu.duke.notebooks.Section;
-import seedu.duke.userinterface.AppState;
-import seedu.duke.userinterface.command.CliCommand;
+import teetwelvedashthree.zeronote.exceptions.AddCommandNotebookException;
+import teetwelvedashthree.zeronote.exceptions.EmptyPageException;
+import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
+import teetwelvedashthree.zeronote.notebooks.Notebook;
+import teetwelvedashthree.zeronote.notebooks.NotebookShelf;
+import teetwelvedashthree.zeronote.notebooks.Section;
+import teetwelvedashthree.zeronote.userinterface.AppState;
+import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
 
 public class AddCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "add";

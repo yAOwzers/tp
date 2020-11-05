@@ -1,10 +1,10 @@
-package seedu.duke.userinterface.command.timetable;
+package teetwelvedashthree.zeronote.userinterface.command.timetable;
 
-import seedu.duke.tasks.Task;
-import seedu.duke.tasks.TaskList;
-import seedu.duke.userinterface.AppState;
-import seedu.duke.userinterface.CliMessages;
-import seedu.duke.userinterface.command.CliCommand;
+import teetwelvedashthree.zeronote.tasks.Task;
+import teetwelvedashthree.zeronote.tasks.TaskList;
+import teetwelvedashthree.zeronote.userinterface.AppState;
+import teetwelvedashthree.zeronote.userinterface.CliMessages;
+import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
 
 public class DoneCommandTimetableMode extends CliCommand {
 

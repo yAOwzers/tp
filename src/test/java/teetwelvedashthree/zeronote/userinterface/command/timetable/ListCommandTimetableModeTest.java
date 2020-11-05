@@ -1,8 +1,8 @@
-package seedu.duke.userinterface.command.timetable;
+package teetwelvedashthree.zeronote.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.exceptions.InvalidCommandException;
-import seedu.duke.userinterface.AppState;
+import teetwelvedashthree.zeronote.exceptions.InvalidCommandException;
+import teetwelvedashthree.zeronote.userinterface.AppState;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;

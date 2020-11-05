@@ -1,8 +1,8 @@
-package seedu.duke.notebooks;
+package teetwelvedashthree.zeronote.notebooks;
 
-import seedu.duke.exceptions.DuplicateFoundException;
-import seedu.duke.exceptions.InvalidPageException;
-import seedu.duke.exceptions.InvalidTagException;
+import teetwelvedashthree.zeronote.exceptions.DuplicateFoundException;
+import teetwelvedashthree.zeronote.exceptions.InvalidPageException;
+import teetwelvedashthree.zeronote.exceptions.InvalidTagException;
 
 import java.util.ArrayList;
 

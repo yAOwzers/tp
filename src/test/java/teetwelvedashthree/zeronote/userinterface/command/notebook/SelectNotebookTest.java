@@ -1,16 +1,16 @@
-package seedu.duke.userinterface.command.notebook;
+package teetwelvedashthree.zeronote.userinterface.command.notebook;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.exceptions.DuplicateFoundException;
-import seedu.duke.exceptions.IncorrectAppModeException;
-import seedu.duke.exceptions.ZeroNoteException;
-import seedu.duke.notebooks.Notebook;
-import seedu.duke.notebooks.NotebookShelf;
-import seedu.duke.notebooks.Page;
-import seedu.duke.notebooks.Section;
-import seedu.duke.userinterface.AppMode;
-import seedu.duke.userinterface.AppState;
-import seedu.duke.userinterface.InputParser;
+import teetwelvedashthree.zeronote.exceptions.DuplicateFoundException;
+import teetwelvedashthree.zeronote.exceptions.IncorrectAppModeException;
+import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
+import teetwelvedashthree.zeronote.notebooks.Notebook;
+import teetwelvedashthree.zeronote.notebooks.NotebookShelf;
+import teetwelvedashthree.zeronote.notebooks.Page;
+import teetwelvedashthree.zeronote.notebooks.Section;
+import teetwelvedashthree.zeronote.userinterface.AppMode;
+import teetwelvedashthree.zeronote.userinterface.AppState;
+import teetwelvedashthree.zeronote.userinterface.InputParser;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

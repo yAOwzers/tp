@@ -1,7 +1,7 @@
-package seedu.duke.userinterface.command;
+package teetwelvedashthree.zeronote.userinterface.command;
 
-import seedu.duke.userinterface.AppState;
-import seedu.duke.userinterface.CliMessages;
+import teetwelvedashthree.zeronote.userinterface.AppState;
+import teetwelvedashthree.zeronote.userinterface.CliMessages;
 
 public class Exit extends CliCommand {
     public static final String COMMAND_WORD = "exit";

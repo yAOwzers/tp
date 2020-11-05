@@ -1,14 +1,14 @@
-package seedu.duke.storage;
+package teetwelvedashthree.zeronote.storage;
 
-import seedu.duke.exceptions.FileSavingException;
-import seedu.duke.notebooks.Notebook;
-import seedu.duke.notebooks.NotebookShelf;
-import seedu.duke.notebooks.Page;
-import seedu.duke.notebooks.Section;
-import seedu.duke.tasks.Task;
-import seedu.duke.tasks.TaskList;
-import seedu.duke.userinterface.AppState;
-import seedu.duke.userinterface.CliMessages;
+import teetwelvedashthree.zeronote.exceptions.FileSavingException;
+import teetwelvedashthree.zeronote.notebooks.Notebook;
+import teetwelvedashthree.zeronote.notebooks.NotebookShelf;
+import teetwelvedashthree.zeronote.notebooks.Page;
+import teetwelvedashthree.zeronote.notebooks.Section;
+import teetwelvedashthree.zeronote.tasks.Task;
+import teetwelvedashthree.zeronote.tasks.TaskList;
+import teetwelvedashthree.zeronote.userinterface.AppState;
+import teetwelvedashthree.zeronote.userinterface.CliMessages;
 
 import java.io.File;
 import java.io.FileNotFoundException;

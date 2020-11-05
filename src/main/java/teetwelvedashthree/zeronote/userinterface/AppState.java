@@ -1,11 +1,11 @@
-package seedu.duke.userinterface;
+package teetwelvedashthree.zeronote.userinterface;
 
-import seedu.duke.notebooks.Notebook;
-import seedu.duke.notebooks.NotebookShelf;
-import seedu.duke.notebooks.Page;
-import seedu.duke.notebooks.Section;
-import seedu.duke.tasks.Task;
-import seedu.duke.tasks.TaskList;
+import teetwelvedashthree.zeronote.notebooks.Notebook;
+import teetwelvedashthree.zeronote.notebooks.NotebookShelf;
+import teetwelvedashthree.zeronote.notebooks.Page;
+import teetwelvedashthree.zeronote.notebooks.Section;
+import teetwelvedashthree.zeronote.tasks.Task;
+import teetwelvedashthree.zeronote.tasks.TaskList;
 
 public class AppState {
     private AppMode appMode;

@@ -1,10 +1,10 @@
-package seedu.duke.userinterface.command.notebook;
+package teetwelvedashthree.zeronote.userinterface.command.notebook;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.exceptions.IncorrectAppModeException;
-import seedu.duke.exceptions.InvalidCommandException;
-import seedu.duke.userinterface.AppMode;
-import seedu.duke.userinterface.AppState;
+import teetwelvedashthree.zeronote.exceptions.IncorrectAppModeException;
+import teetwelvedashthree.zeronote.exceptions.InvalidCommandException;
+import teetwelvedashthree.zeronote.userinterface.AppMode;
+import teetwelvedashthree.zeronote.userinterface.AppState;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;

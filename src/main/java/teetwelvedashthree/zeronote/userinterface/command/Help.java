@@ -1,6 +1,6 @@
-package seedu.duke.userinterface.command;
+package teetwelvedashthree.zeronote.userinterface.command;
 
-import seedu.duke.userinterface.CliMessages;
+import teetwelvedashthree.zeronote.userinterface.CliMessages;
 
 /**
  * This class is to be instantiated when the user enters the keyword "help". The arguments for the command are then

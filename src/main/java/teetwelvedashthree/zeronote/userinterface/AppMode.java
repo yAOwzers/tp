@@ -1,4 +1,4 @@
-package seedu.duke.userinterface;
+package teetwelvedashthree.zeronote.userinterface;
 
 public enum AppMode {
     TIMETABLE,

@@ -1,6 +1,6 @@
-package seedu.duke.notebooks;
+package teetwelvedashthree.zeronote.notebooks;
 
-import seedu.duke.exceptions.InvalidTagException;
+import teetwelvedashthree.zeronote.exceptions.InvalidTagException;
 
 public class Page {
     private String title;

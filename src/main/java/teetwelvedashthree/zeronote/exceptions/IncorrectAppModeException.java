@@ -1,4 +1,4 @@
-package seedu.duke.exceptions;
+package teetwelvedashthree.zeronote.exceptions;
 
 //@@Lusi711
 public class IncorrectAppModeException extends ZeroNoteException {

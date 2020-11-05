@@ -1,4 +1,4 @@
-package seedu.duke.tasks;
+package teetwelvedashthree.zeronote.tasks;
 
 import java.util.ArrayList;
 

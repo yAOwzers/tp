@@ -1,6 +1,6 @@
-package seedu.duke.userinterface.command.timetable;
+package teetwelvedashthree.zeronote.userinterface.command.timetable;
 
-import seedu.duke.tasks.Task;
+import teetwelvedashthree.zeronote.tasks.Task;
 
 import java.util.Comparator;
 

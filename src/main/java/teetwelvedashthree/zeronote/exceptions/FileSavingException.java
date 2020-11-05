@@ -1,4 +1,4 @@
-package seedu.duke.exceptions;
+package teetwelvedashthree.zeronote.exceptions;
 
 public class FileSavingException extends ZeroNoteException {
     public FileSavingException(String enteredCommand) {

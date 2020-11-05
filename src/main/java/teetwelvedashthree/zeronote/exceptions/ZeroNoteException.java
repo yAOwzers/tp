@@ -1,4 +1,4 @@
-package seedu.duke.exceptions;
+package teetwelvedashthree.zeronote.exceptions;
 
 public abstract class ZeroNoteException extends Exception {
     public String problematicInput;

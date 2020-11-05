@@ -1,8 +1,8 @@
-package seedu.duke.userinterface.command;
+package teetwelvedashthree.zeronote.userinterface.command;
 
-import seedu.duke.exceptions.IncorrectAppModeException;
-import seedu.duke.exceptions.InvalidCommandException;
-import seedu.duke.userinterface.AppState;
+import teetwelvedashthree.zeronote.exceptions.IncorrectAppModeException;
+import teetwelvedashthree.zeronote.exceptions.InvalidCommandException;
+import teetwelvedashthree.zeronote.userinterface.AppState;
 
 public abstract class CliCommand {
     public static final String COMMAND_WORD = "mode";

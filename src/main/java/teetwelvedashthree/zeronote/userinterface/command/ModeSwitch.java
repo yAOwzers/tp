@@ -1,8 +1,8 @@
-package seedu.duke.userinterface.command;
+package teetwelvedashthree.zeronote.userinterface.command;
 
-import seedu.duke.exceptions.InvalidCommandException;
-import seedu.duke.userinterface.AppMode;
-import seedu.duke.userinterface.AppState;
+import teetwelvedashthree.zeronote.exceptions.InvalidCommandException;
+import teetwelvedashthree.zeronote.userinterface.AppMode;
+import teetwelvedashthree.zeronote.userinterface.AppState;
 
 public class ModeSwitch extends CliCommand {
     public static final String COMMAND_WORD = "mode";

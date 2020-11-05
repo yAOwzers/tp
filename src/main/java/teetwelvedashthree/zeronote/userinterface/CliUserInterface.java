@@ -1,10 +1,10 @@
-package seedu.duke.userinterface;
+package teetwelvedashthree.zeronote.userinterface;
 
-import seedu.duke.exceptions.CorruptFileException;
-import seedu.duke.exceptions.ZeroNoteException;
-import seedu.duke.storage.Storage;
-import seedu.duke.userinterface.command.CliCommand;
-import seedu.duke.userinterface.command.Exit;
+import teetwelvedashthree.zeronote.exceptions.CorruptFileException;
+import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
+import teetwelvedashthree.zeronote.storage.Storage;
+import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
+import teetwelvedashthree.zeronote.userinterface.command.Exit;
 
 import java.util.Scanner;
 
@@ -58,12 +58,12 @@ public class CliUserInterface {
                 if (userInput.equals(Exit.COMMAND_WORD)) {
                     toQuit = true;
                 }
-                System.out.println(messages.lineSeparator());
+                messages.printLineSeparator();
                 executeCommand(userInput);
-                System.out.println(messages.lineSeparator());
+                messages.printLineSeparator();
             } catch (ZeroNoteException e) {
                 e.printErrorMessage();
-                System.out.println(messages.lineSeparator());
+                messages.printLineSeparator();
             }
         }
     }
@@ -71,11 +71,12 @@ public class CliUserInterface {
     private void executeCommand(String userInput) throws ZeroNoteException {
         InputParser parser = new InputParser();
         CliCommand command = parser.getCommandFromInput(userInput, appState);
-        if(command.printsPersonalMessage()) {
+        command.execute();
+        messages.printLineSeparator();
+        if (command.printsPersonalMessage()) {
             String message = msgGenerator.generatePersonalisedMessage();
             System.out.println(message);
         }
-        command.execute();
         if (command.isTriggerAutoSave()) {
             saveState();
         }

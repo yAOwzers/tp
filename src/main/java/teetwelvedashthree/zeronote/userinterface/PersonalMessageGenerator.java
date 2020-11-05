@@ -1,4 +1,4 @@
-package seedu.duke.userinterface;
+package teetwelvedashthree.zeronote.userinterface;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,9 +1,9 @@
-package seedu.duke.userinterface.command.timetable;
+package teetwelvedashthree.zeronote.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.exceptions.IncorrectDeadlineFormatException;
-import seedu.duke.exceptions.ZeroNoteException;
-import seedu.duke.userinterface.InputParser;
+import teetwelvedashthree.zeronote.exceptions.IncorrectDeadlineFormatException;
+import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
+import teetwelvedashthree.zeronote.userinterface.InputParser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

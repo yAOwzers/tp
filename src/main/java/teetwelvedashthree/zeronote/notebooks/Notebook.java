@@ -1,9 +1,9 @@
-package seedu.duke.notebooks;
+package teetwelvedashthree.zeronote.notebooks;
 
 import java.util.ArrayList;
 
-import seedu.duke.exceptions.DuplicateFoundException;
-import seedu.duke.exceptions.InvalidTagException;
+import teetwelvedashthree.zeronote.exceptions.DuplicateFoundException;
+import teetwelvedashthree.zeronote.exceptions.InvalidTagException;
 
 public class Notebook {
     private String title;

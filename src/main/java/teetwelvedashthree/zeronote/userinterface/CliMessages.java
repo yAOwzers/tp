@@ -1,12 +1,12 @@
-package seedu.duke.userinterface;
+package teetwelvedashthree.zeronote.userinterface;
 
 import java.util.ArrayList;
 
-import seedu.duke.notebooks.Notebook;
-import seedu.duke.notebooks.Page;
-import seedu.duke.notebooks.Section;
-import seedu.duke.tasks.Task;
-import seedu.duke.tasks.TaskList;
+import teetwelvedashthree.zeronote.notebooks.Notebook;
+import teetwelvedashthree.zeronote.notebooks.Page;
+import teetwelvedashthree.zeronote.notebooks.Section;
+import teetwelvedashthree.zeronote.tasks.Task;
+import teetwelvedashthree.zeronote.tasks.TaskList;
 
 /**
  * A class containing all the messages displayed to the user during operation.
@@ -264,8 +264,8 @@ public class CliMessages {
         }
     }
 
-    public static String lineSeparator() {
-        return "\n-------------------------------------------------------------\n";
+    public void printLineSeparator() {
+        System.out.println("\n-------------------------------------------------------------\n");
     }
 
     public void printFoundPagesMessage(ArrayList<Page> pagesFound) {

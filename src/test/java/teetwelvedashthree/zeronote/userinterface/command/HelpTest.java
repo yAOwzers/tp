@@ -1,4 +1,4 @@
-package seedu.duke.userinterface.command;
+package teetwelvedashthree.zeronote.userinterface.command;
 
 import org.junit.jupiter.api.Test;
 

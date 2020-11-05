@@ -1,9 +1,9 @@
-package seedu.duke.userinterface.command.timetable;
+package teetwelvedashthree.zeronote.userinterface.command.timetable;
 
-import seedu.duke.exceptions.InvalidCommandException;
-import seedu.duke.tasks.Task;
-import seedu.duke.userinterface.AppState;
-import seedu.duke.userinterface.command.CliCommand;
+import teetwelvedashthree.zeronote.exceptions.InvalidCommandException;
+import teetwelvedashthree.zeronote.tasks.Task;
+import teetwelvedashthree.zeronote.userinterface.AppState;
+import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
 
 import java.util.ArrayList;
 import java.util.Collections;

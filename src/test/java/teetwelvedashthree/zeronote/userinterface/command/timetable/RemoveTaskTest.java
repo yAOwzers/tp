@@ -1,10 +1,10 @@
-package seedu.duke.userinterface.command.timetable;
+package teetwelvedashthree.zeronote.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.tasks.TaskList;
-import seedu.duke.userinterface.AppState;
-import seedu.duke.userinterface.command.timetable.AddCommandTimetableMode;
-import seedu.duke.userinterface.command.timetable.RemoveCommandTimetableMode;
+import teetwelvedashthree.zeronote.tasks.TaskList;
+import teetwelvedashthree.zeronote.userinterface.AppState;
+import teetwelvedashthree.zeronote.userinterface.command.timetable.AddCommandTimetableMode;
+import teetwelvedashthree.zeronote.userinterface.command.timetable.RemoveCommandTimetableMode;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

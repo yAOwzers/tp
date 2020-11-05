@@ -1,13 +1,13 @@
-package seedu.duke.userinterface.command.notebook;
+package teetwelvedashthree.zeronote.userinterface.command.notebook;
 
-import seedu.duke.exceptions.IncorrectAppModeException;
-import seedu.duke.exceptions.InvalidCommandException;
-import seedu.duke.notebooks.Notebook;
-import seedu.duke.notebooks.NotebookShelf;
-import seedu.duke.notebooks.Page;
-import seedu.duke.notebooks.Section;
-import seedu.duke.userinterface.AppState;
-import seedu.duke.userinterface.command.CliCommand;
+import teetwelvedashthree.zeronote.exceptions.IncorrectAppModeException;
+import teetwelvedashthree.zeronote.exceptions.InvalidCommandException;
+import teetwelvedashthree.zeronote.notebooks.Notebook;
+import teetwelvedashthree.zeronote.notebooks.NotebookShelf;
+import teetwelvedashthree.zeronote.notebooks.Page;
+import teetwelvedashthree.zeronote.notebooks.Section;
+import teetwelvedashthree.zeronote.userinterface.AppState;
+import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
 
 public class ListCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "list";

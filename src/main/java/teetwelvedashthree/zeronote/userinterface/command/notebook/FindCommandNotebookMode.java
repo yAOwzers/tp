@@ -1,4 +1,4 @@
-package seedu.duke.userinterface.command.notebook;
+package teetwelvedashthree.zeronote.userinterface.command.notebook;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,15 +6,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import seedu.duke.exceptions.InvalidKeywordTagException;
-import seedu.duke.exceptions.ZeroNoteException;
-import seedu.duke.notebooks.Notebook;
-import seedu.duke.notebooks.NotebookShelf;
-import seedu.duke.notebooks.Page;
-import seedu.duke.notebooks.Section;
-import seedu.duke.userinterface.AppState;
-import seedu.duke.userinterface.CliMessages;
-import seedu.duke.userinterface.command.CliCommand;
+import teetwelvedashthree.zeronote.exceptions.InvalidKeywordTagException;
+import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
+import teetwelvedashthree.zeronote.notebooks.Notebook;
+import teetwelvedashthree.zeronote.notebooks.NotebookShelf;
+import teetwelvedashthree.zeronote.notebooks.Page;
+import teetwelvedashthree.zeronote.notebooks.Section;
+import teetwelvedashthree.zeronote.userinterface.AppState;
+import teetwelvedashthree.zeronote.userinterface.CliMessages;
+import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
 
 public class FindCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "find";
@@ -157,6 +157,6 @@ public class FindCommandNotebookMode extends CliCommand {
     }
 
     public boolean isPersonalised() {
-        return isPersonalised;
+        return PRINTS_PERSONAL_MESSAGE;
     }
 }

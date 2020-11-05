@@ -1,4 +1,4 @@
-package seedu.duke.exceptions;
+package teetwelvedashthree.zeronote.exceptions;
 
 public class InvalidTagException extends ZeroNoteException {
     public InvalidTagException(String problematicInput) {

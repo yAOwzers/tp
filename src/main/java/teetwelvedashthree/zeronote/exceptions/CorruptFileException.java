@@ -1,4 +1,4 @@
-package seedu.duke.exceptions;
+package teetwelvedashthree.zeronote.exceptions;
 
 public class CorruptFileException extends ZeroNoteException {
     public CorruptFileException(String enteredCommand) {

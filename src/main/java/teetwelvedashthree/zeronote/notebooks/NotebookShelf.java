@@ -1,6 +1,6 @@
-package seedu.duke.notebooks;
+package teetwelvedashthree.zeronote.notebooks;
 
-import seedu.duke.exceptions.DuplicateFoundException;
+import teetwelvedashthree.zeronote.exceptions.DuplicateFoundException;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package seedu.duke.tasks;
+package teetwelvedashthree.zeronote.tasks;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 
-import seedu.duke.exceptions.InvalidTagException;
+import teetwelvedashthree.zeronote.exceptions.InvalidTagException;
 
 public class Task {
     private final String title;

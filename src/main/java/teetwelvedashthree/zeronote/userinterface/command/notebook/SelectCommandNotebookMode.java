@@ -1,10 +1,10 @@
-package seedu.duke.userinterface.command.notebook;
+package teetwelvedashthree.zeronote.userinterface.command.notebook;
 
-import seedu.duke.exceptions.InvalidSelectCommandException;
-import seedu.duke.exceptions.ZeroNoteException;
-import seedu.duke.userinterface.AppState;
-import seedu.duke.userinterface.InputParser;
-import seedu.duke.userinterface.command.CliCommand;
+import teetwelvedashthree.zeronote.exceptions.InvalidSelectCommandException;
+import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
+import teetwelvedashthree.zeronote.userinterface.AppState;
+import teetwelvedashthree.zeronote.userinterface.InputParser;
+import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
 
 public class SelectCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "select";

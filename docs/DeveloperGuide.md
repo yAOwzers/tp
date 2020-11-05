@@ -154,7 +154,7 @@ code to improve Zer0Note.
 
 ### 2.3. Verifying the setup
 
-1. Run the `seedu.duke.Duke`.
+1. Run the `teetwelvedashthree.zeronote.Duke`.
 2. Try a few commands.
 3. [Run the tests](#61-running-tests) to ensure they all pass.
 
@@ -939,7 +939,7 @@ There are two ways to run tests.
 
 This project has one type of test:
 Unit tests targeting the lowest level methods/classes.
-e.g. `seedu.duke.userinterface.command.notebook.AddNotebookModeTest`
+e.g. `teetwelvedashthree.zeronote.userinterface.command.notebook.AddNotebookModeTest`
 
 ## Appendix A: Project Scope
 

@@ -1,4 +1,4 @@
-package seedu.duke.userinterface.command.timetable;
+package teetwelvedashthree.zeronote.userinterface.command.timetable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,12 +6,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import seedu.duke.exceptions.InvalidKeywordTagException;
-import seedu.duke.exceptions.ZeroNoteException;
-import seedu.duke.tasks.Task;
-import seedu.duke.tasks.TaskList;
-import seedu.duke.userinterface.AppState;
-import seedu.duke.userinterface.command.CliCommand;
+import teetwelvedashthree.zeronote.exceptions.InvalidKeywordTagException;
+import teetwelvedashthree.zeronote.exceptions.ZeroNoteException;
+import teetwelvedashthree.zeronote.tasks.Task;
+import teetwelvedashthree.zeronote.tasks.TaskList;
+import teetwelvedashthree.zeronote.userinterface.AppState;
+import teetwelvedashthree.zeronote.userinterface.command.CliCommand;
 
 public class FindCommandTimetableMode extends CliCommand {
     public static final String COMMAND_WORD = "find";
