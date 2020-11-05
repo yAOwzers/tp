@@ -31,6 +31,10 @@ public class CliUserInterface {
         storage.saveToFile(appState);
     }
 
+    private void printPrompt() {
+
+    }
+
     private void checkNameOfUser() {
         if (appState.getUserName().equals("")) {
             messages.printFillInNameOfUserMessage();
@@ -53,6 +57,7 @@ public class CliUserInterface {
         checkNameOfUser();
         msgGenerator = new PersonalMessageGenerator(appState.getUserName());
         while (!toQuit) {
+            printPrompt();
             userInput = keyboardScanner.nextLine();
             try {
                 if (userInput.equals(Exit.COMMAND_WORD)) {
