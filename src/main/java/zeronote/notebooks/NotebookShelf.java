@@ -23,13 +23,14 @@ public class NotebookShelf {
      */
     public int findNotebook(String title) {
         int index = 0;
+        int notFound = -1;
         for (Notebook n : notebooksArrayList) {
             if (n.getTitle().equals(title)) {
                 return index;
             }
             index++;
         }
-        return -1;
+        return notFound;
     }
 
     /**

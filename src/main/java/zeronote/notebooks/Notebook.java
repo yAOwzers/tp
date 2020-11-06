@@ -80,13 +80,14 @@ public class Notebook {
      */
     public int findSection(String searchKey) {
         int index = 0;
+        int notFound = -1;
         for (Section s : sectionArrayList) {
             if (s.getTitle().equals(searchKey)) {
                 return index;
             }
             index++;
         }
-        return -1;
+        return notFound;
     }
 
     /**

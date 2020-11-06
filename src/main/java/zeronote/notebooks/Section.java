@@ -43,15 +43,6 @@ public class Section {
         pageArrayList.add(p);
     }
 
-    public void getPage(int pageIndex) {
-        try {
-            Page page = pageArrayList.get(pageIndex);
-            page.printPage();
-        } catch (IndexOutOfBoundsException | NullPointerException e) {
-            System.out.println("page <" + (pageIndex + 1) + "> doesn't exist");
-        }
-    }
-
     /**
      * Find a page with a given title in this section.
      *
@@ -60,13 +51,14 @@ public class Section {
      */
     public int findPage(String searchKey) {
         int index = 0;
+        int notFound = -1;
         for (Page p : pageArrayList) {
             if (p.getTitle().equals(searchKey)) {
                 return index;
             }
             index++;
         }
-        return -1;
+        return notFound;
     }
 
     public Page removePage(int indexToRemove) throws InvalidPageException {
