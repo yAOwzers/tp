@@ -18,35 +18,17 @@
 &nbsp;&nbsp;[3.6. Storage Component](#36-storage-component)<br>
 [4. Implementation](#4-implementation) <br>
 &nbsp;&nbsp;[4.1. Mode Switch Feature](#41-mode-switch-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.1.1. Implementation](#411-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.1.2. Design Considerations](#412-design-considerations) <br>
 &nbsp;&nbsp;[4.2. Timetable Mode](#42-timetable-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.1. Tasklist Management Feature](#421-tasklist-management-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.1.1. Implementation](#4211-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.1.2. Design Considerations](#4212-design-considerations) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.2. Mark as done Feature](#422-mark-as-done-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.1. Implementation](#4221-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4222-design-considerations) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.3. Tag Feature](#423-tag-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.3.1. Implementation](#4231-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.3.2. Design Considerations](#4232-design-considerations) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.4. List Feature](#424-list-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.4.1. Implementation](#4241-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.5. Search Feature](#425-search-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.5.1. Implementation](#4251-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.5.2. Design Considerations](#4252-design-considerations) <br>
 &nbsp;&nbsp;[4.3. Notebook Mode](#43-notebook-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.1. Notebook Management Feature](#431-notebook-management-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.1.1. Implementation](#4311-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.2. Select Feature](#432-select-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.1. Implementation](#4321-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.2. Design Considerations](#4322-design-considerations) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.3. Tag Feature](#433-tag-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.1. Implementation](#4331-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.2. Design Considerations](#4332-design-considerations) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.4. Search Feature](#434-search-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.4.1. Implementation](#4341-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.4.2. Design Considerations](#4342-design-considerations) <br>
 &nbsp;&nbsp;[4.4. Storage](#44-storage-neil) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.1. Storage Format](#441-storage-format) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.1. TaskList](#4411-tasklist) <br>
@@ -72,6 +54,9 @@
 [Appendix D: Non-Functional Requirements](#appendix-d-non-functional-requirements) <br>
 [Appendix E: Glossary](#appendix-e-glossary) <br>
 [Appendix F: Instructions for manual testing](#appendix-f-instructions-for-manual-testing) <br>
+
+<hr>
+<hr>
 
 ## 1. Introduction (Neil)
 
@@ -127,6 +112,10 @@ Example:
 
 > :exclamation: **Caution** Follow the steps in the following guide precisely.
 
+<br>
+<hr>
+<hr>
+
 ## 2. Setting up
 
 The following section describes how to set up the coding environment on your own computer, in order to start writing
@@ -165,6 +154,10 @@ to set up IDEA’s coding style to match ours.
 
 >Optionally, you can follow the guide [[se-edu/guides] Using Checkstyle](https://se-education.org/guides/tutorials/checkstyle.html)
 >to find how to use the CheckStyle within IDEA e.g., to report problems as you write code.
+
+<br>
+<hr>
+<hr>
 
 ## 3. Design
 
@@ -301,6 +294,10 @@ The `Storage` component,
 
 * Saves the name of the user in a `nameOfUser.txt` and reads it back in the form of personalised messages.   
 
+<br>
+<hr>
+<hr>
+
 ## 4. Implementation
 
 The following section describes the implementation of certain key features in the current version of Zer0Note. It also
@@ -340,7 +337,7 @@ program.
 
 #### 4.2.1. TaskList Management Feature
 
-##### 4.2.1.1. Implementation
+**Implementation**
 
 `TaskList` is implemented to manage and store the tasks input by the user. It comprises an `ArrayList` list of
  `Task`s, and a few helper methods.
@@ -386,9 +383,9 @@ public RemoveCommandTimetableMode(int indexToRemove, AppState uiMode) {
 It also constructs `CliMessages` to display messages to the user.
 4. If the deletion is successful, `CliMessages` displays the message to the user.
 
-##### 4.2.1.2. Design Considerations
+**Design Considerations**
 
-###### Aspect: How to store tasks in `TaskList`
+*Aspect: How to store tasks in `TaskList`*
 - **Alternative 1 (current choice):** Store as an `ArrayList` of tasks
     - Pros: It is easier to implement because the code base are list based.
     - Cons: It is unoptimized in terms of complexity, which requires more work for scaling of the application.
@@ -399,7 +396,7 @@ It also constructs `CliMessages` to display messages to the user.
 
 #### 4.2.2. Mark as done feature  
 
-##### 4.2.2.1. Implementation  
+**Implementation**  
 
 The `Task` class contains a member `isDone` of Boolean type.
 
@@ -417,13 +414,14 @@ Step 3. The `execute()` method proceeds to parse the user's intended task index 
         
 Step 4. After `taskDone` is initialised, a `messages` of type CliMessages calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
 
-##### 4.2.2.2. Design Considerations
+**Design Considerations**
+//WIP
 
 #### 4.2.3. Tag Feature
 The user can tag `Task`s in the `TaskList`. This section describes the implementation and design considerations for this
 feature.
 
-##### 4.2.3.1. Implementation
+**Implementation**
 The `Task` class contains a member `tag` of String type.
 
 The figure below shows how the tag operation works:
@@ -455,10 +453,10 @@ has been made.
 current list.
 3. The tag operation ends.
 
-##### 4.2.3.2. Design Considerations
+**Design Considerations**
 This section describes some of the considerations involved when designing the tag feature.
 
-###### Aspect: How to store the tags
+*Aspect: How to store the tags*
 - **Alternative 1 (current choice):** Store as a private `String` member in every task
     - Pros: It is easy to access for print operations.
     - Cons: It is unoptimized in terms of complexity for search operations, which requires more work for scaling of the
@@ -470,7 +468,7 @@ This section describes some of the considerations involved when designing the ta
 
 #### 4.2.4. List Feature
 
-##### 4.2.4.1. Implementation
+**Implementation**
 
 The following sequence diagram shows how the list operation works:
 
@@ -493,7 +491,7 @@ This feature allows the user to search for tasks by keyword or by tag. Refer to
 
 This section explains the implementation and design considerations for the search feature.
 
-##### 4.2.5.1. Implementation
+**Implementation**
 
 The search feature is mainly executed by a `FindCommandTimetableMode` class. The following sequence diagram shows an
 example of how the complete command works:
@@ -531,11 +529,11 @@ has been made.
 current list.
 3. The find operation ends.
 
-##### 4.2.5.2. Design Considerations
+**Design Considerations**
 
 This section describes some considerations involved when designing the find feature.
 
-**Aspect: Distinction between finding by keyword and finding by tag**
+*Aspect: Distinction between finding by keyword and finding by tag*
 - **Alternative 1 (current choice):** Handle as a if-else statement in a single class
 - **Alternative 2:** Two different classes that are subclasses to a class `FindCommandTimetableMode`
     - Pros: Higher level of abstraction
@@ -552,7 +550,7 @@ can be done without affecting other instances at all, while updating the `Notebo
 
 This section explains the implementation and design considerations for managing `Notebook`s.
 
-##### 4.3.1.1 Implementation
+**Implementation**
 There are two main functions in notebook management: add and remove.
 <br>
 
@@ -604,7 +602,7 @@ A switch-case block is used to determine the method to call based on the `appMod
 
 The user can `select` a `Notebook`, `Section` or `Page` to view its contents. This section describes the implementation and design considerations for this feature.
 
-##### 4.3.2.1. Implementation
+**Implementation**
 
 Given below is an example usage scenario and how the select notebook function behaves.
 
@@ -625,9 +623,9 @@ Given below is an example usage scenario and how the select notebook function be
 The UML sequence diagram below shows how the select notebook command works.
 ![Sequence Diagram for Add Task Command](diagrams/class/jpeg/select_notebook.jpg)
 
-##### 4.3.2.2. Design Considerations
+**Design Considerations**
 
-###### Aspect: How much navigability the Select function should have
+*Aspect: How much navigability the Select function should have*
 - **Alternative 1 (current choice):** The user must always select the notebook title if he wants to choose a section or page within it.
     - Pros: It is easy to catch exceptions when the notebook/section does not exist. This also ensures that even if there are 2 sections in 2 different notebooks with the same name, the user can select the correct section.
     - Cons: The format for the command is longer.
@@ -640,7 +638,7 @@ The UML sequence diagram below shows how the select notebook command works.
 The user can add a `tag` to a `Notebook`, `Section` or `Page`. This section describes the implementation and design
 considerations for this feature.
 
-##### 4.3.3.1. Implementation
+**Implementation**
 The `Notebook`, `Section` and `Page` classes each contain a member `tag` of type String.
 
 The figure below shows how the tag operation works:
@@ -674,10 +672,10 @@ change has been made.
 current list.
 3. The tag operation ends.
 
-##### 4.3.3.2. Design Considerations
+**Design Considerations**
 This section describes some of the considerations involved when designing the tag feature.
 
-###### Aspect: How to store the tags
+*Aspect: How to store the tags*
 - **Alternative 1 (current choice):** Store as a private `String` member in every task
     - Pros: It is easy to access for print operations.
     - Cons: It is unoptimized in terms of complexity for search operations, which requires more work for scaling of the
@@ -692,7 +690,7 @@ This section describes some of the considerations involved when designing the ta
 This feature works similarly to the [search feature](#425-search-feature) in the Timetable mode. Refer to
 [Tag Feature](#433-tag-feature) for more information on the implementation of tags in the Notebook mode.
 
-##### 4.3.4.1. Implementation
+**Implementation**
 
 The following sequence diagram shows how the search feature works in the notebook mode:
 
@@ -705,7 +703,7 @@ only covers the main differences in the two.
 - If the application is in the Notebook mode, `InputParser#getCommandFromInput` constructs the `FindCommandNotebookMode`
 class.
 
-###### Aspect: How much navigability the Select function should have
+*Aspect: How much navigability the Select function should have*
 - **Alternative 1 (current choice):** The user must always select the notebook title if he wants to choose a section or page within it.
     - Pros: It is easy to catch exceptions when the notebook/section does not exist. This also ensures that even if there are 2 sections in 2 different notebooks with the same name, the user can select the correct section.
     - Cons: The format for the command is longer.
@@ -726,7 +724,7 @@ e. Calls `CliMessages#printFoundNotebooksMessages`, `CliMessages#printFoundSecti
 `CliMessages#printFoundPagesMessages` are called if `Notebook`s, `Section`s and `Page`s are found respectively. These
 methods output the titles of the found notebooks, sections and pages to the user.
 
-##### 4.3.4.2. Design Considerations
+**Design Considerations**
 
 Aspect: Way to search through the notebook shelf
 - **Alternative 1 (current choice):** Loop through every page, section and notebook
@@ -739,7 +737,7 @@ Aspect: Way to search through the notebook shelf
 
 #### 4.3.5. List Feature
 
-##### 4.3.5.1. Implementation
+**Implementation**
 
 The following sequence diagram shows how the list operation in the notebook mode works:
 
@@ -756,13 +754,14 @@ Step 2. `execute()` is called, which then calls the print functions based on the
 Step 3. The program prints the contents corresponding to the input or throw an exception if the command is
 invalid.
 
-##### 4.3.5.2. Design Considerations
+**Design Considerations**
+//WIP?
 
 ### 4.4. Storage (Neil)
 
 The `Storage` class reads and writes the application state to and from a text file.
 
-#### 4.4.1. Storage format
+### 4.4.1. Storage format
 
 This section describes the format used to store the TaskList and NotebookShelf from the application state in a plain
 text file.
@@ -770,7 +769,7 @@ text file.
 :exclamation: The operating system newline character is used to terminate lines; that is, `\r\n` on Windows and
 `\n` on UNIX-based systems.
 
-##### 4.4.1.1. TaskList
+#### 4.4.1.1. TaskList
 
 For `TaskList`, the format is as follows:
 
@@ -781,35 +780,35 @@ For `TaskList`, the format is as follows:
 * The third line contains a value `true` or `false`, indicating whether the task is done. (`true` means done,
 `false` means not done.)
 
-##### 4.4.1.2. Page
+#### 4.4.1.2. Page
 
 For a single page, the format is as follows:
 
 * One line containing the title of the page.
 * One line containing the content of the page. Newline characters in the content are replaced with the string `"~~~"`.
 
-##### 4.4.1.3. Section
+#### 4.4.1.3. Section
 
 For a single section, the format is as follows:
 
 * One line containing an integer `p`, the number of pages in the section.
 * `p` pages are then described, as specified [here](#4412-page).
 
-##### 4.4.1.4. Notebook
+#### 4.4.1.4. Notebook
 
 For a single notebook, the format is as follows:
 
 * One line containing an integer `s`, the number of sections.
 * `s` sections are then described, as specified [here](#4413-section)
 
-##### 4.4.1.5. NotebookShelf
+#### 4.4.1.5. NotebookShelf
 
 For `NotebookShelf`, the format is as follows:
 
 * One line containing an integer `n`, the number of notebooks.
 * `n` notebooks are then described, as specified [here](#4414-notebook).
 
-#### 4.4.2 Implementation
+### 4.4.2 Implementation
 
 `TaskList`, `Task`,`NotebookShelf`, `Notebook`, `Section`, and `page` contain methods called `serialize()`.
 These methods return`String` representations of themselves, as specified [here](#441-storage-format).  
@@ -826,7 +825,7 @@ it and combines their outputs with a `StringBuilder`.
 The `serialize()` method in `Section` calls the `serialize()` methods for every `Page` object within it and
 combines their outputs with a `StringBuilder`.
 
-##### 4.4.2.1. Saving the application state
+#### 4.4.2.1. Saving the application state
 
 The following sequence diagram describes the operation of the `saveToFile()` operation.
 
@@ -844,7 +843,7 @@ described above in the sequence diagram, it iterates through the lists of `Task`
 `serialize()` methods for each of their contained objects (if applicable). The `saveToFile()` method then uses
 `FileWriter`s to write to `File` objects, saving the serialized version of the application state to two text files.
 
-##### 4.4.2.2. Reading the application state
+#### 4.4.2.2. Reading the application state
 
 The following sequence diagram describes the operation of the `readFromFile()` operation.
 
@@ -882,6 +881,8 @@ The following example is a scenario that demonstrates how exceptions are handled
 4. This `ZeroNoteException` is caught by `CliUserInterface#run`, which will then call `ZeroNoteException#printErrorMessage`.
 
 <br>
+<hr>
+<hr>
 
 ## 5. Documentation
 
@@ -920,6 +921,10 @@ For best results, use the settings indicated in the screenshot below.
 
 <img src= "https://se-education.org/guides/tutorials/images/chrome_save_as_pdf.png">
 
+<br>
+<hr>
+<hr>
+
 ## 6. Testing
 
 The following section describes the testing methodologies followed in this project to ensure high-quality, bug-free
@@ -941,6 +946,10 @@ This project has one type of test:
 Unit tests targeting the lowest level methods/classes.
 e.g. `teetwelvedashthree.zeronote.userinterface.command.notebook.AddNotebookTest`
 
+<br>
+<hr>
+<hr>
+
 ## Appendix A: Project Scope
 
 **Target user profile**
@@ -953,6 +962,10 @@ e.g. `teetwelvedashthree.zeronote.userinterface.command.notebook.AddNotebookTest
 **Value proposition**:<br>
 manage both tasks and notes faster and lighter than a typical mouse/GUI driven app
 
+<br>
+<hr>
+<hr>
+
 ## Appendix B: User Stories
 
 Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikely to have) - `*`
@@ -964,6 +977,10 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 |`***`|new user|have usage instructions|refer to instructions when I forget how to use the App|
 |`**`|forgetful user|see the most urgent tasks|prioritise my tasks|
 |`*`|long-time user|have personalised messages|feel attached to my notes|
+
+<br>
+<hr>
+<hr>
 
 ## Appendix C: Use Cases
 
@@ -987,16 +1004,28 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 
 /* work in progress */
 
+<br>
+<hr>
+<hr>
+
 ## Appendix D: Non-Functional Requirements
 
 1. Should work on any *mainstream OS* as long as it has Java `11` or above installed.
 2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
+<br>
+<hr>
+<hr>
+
 ## Appendix E: Glossary
 
 * **Mainstream OS**: Windows, Linux, macOS
 * **Notebook shelf**: a list of all notebooks entered by the user
+
+<br>
+<hr>
+<hr>
 
 ## Appendix F: Instructions for manual testing
 
