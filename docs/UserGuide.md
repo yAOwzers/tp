@@ -270,7 +270,7 @@ command, described below:
 
 <br>
 
-##### 3.3.4.1 Listing all tasks
+#### 3.3.4.1 Listing all tasks
 
 When you want to have a look at your task list, you can list out all the existing tasks.
 
@@ -291,7 +291,7 @@ Example of usage:
 
 <br>
 
-##### 3.3.4.2 Listing done tasks
+#### 3.3.4.2 Listing done tasks
 
 When you want to keep track of your progress, you can list out all the tasks that are marked as done.
 
@@ -309,7 +309,7 @@ Example of usage:
 
 <br>
 
-##### 3.3.4.3 Listing undone tasks
+#### 3.3.4.3 Listing undone tasks
 
 If you want to have a look at what you need to do, you can list out all the tasks that are not marked as done.
 
@@ -328,7 +328,7 @@ Example of usage:
 
 <br>
 
-##### 3.3.4.4 Listing urgent tasks
+#### 3.3.4.4 Listing urgent tasks
 
 If you're in a time crunch, you can list out top urgent tasks that have not been done, sorted by deadlines. If there
 are many undone tasks, only the top three urgent ones will be displayed.
@@ -356,7 +356,7 @@ too.
 
 There are two ways to find a task:
 
-##### 3.3.5.1 Finding by keyword
+#### 3.3.5.1 Finding by keyword
 
 Finds any task that contains the keyword in the task description.  The search is not case-sensitive.
 
@@ -373,7 +373,7 @@ Example of usage:
 2:[x] Return book (by: Oct 23 2020 12.00 PM)
 ```
 
-##### 3.3.5.2 Finding by tag
+#### 3.3.5.2 Finding by tag
 
 Finds any task that has a specified tag.  The search is case-sensitive.
 
@@ -432,7 +432,7 @@ Within `Notebook Mode`, you can `add` a `notebook`, `section` or a `page`. This 
 > :warning: This feature does not support adding a notebook, section and page (or any combination of the 3) 
 > all at once. e.g. `add /nSchool /sAdmin /p1: Modules` will throw an error.
 
-##### 3.4.1.1 Adding a notebook
+#### 3.4.1.1 Adding a notebook
 
 Use the `add /n` command to add a `notebook`  into the `notebook shelf`.
 
@@ -462,7 +462,7 @@ Now that you have added a new notebook for `CS2113T`, you can add a `section`!
 
 <br>
 
-##### 3.4.1.2 Adding a section
+#### 3.4.1.2 Adding a section
 
 Use the `add /s` command to add a `section`  into the [selected](#342-selecting-a-notebooksectionpage-select) `notebook`.
 
@@ -495,7 +495,7 @@ Great! You can now add a `page` (or as many pages as you like) into your new sec
 
 <br>
 
-##### 3.4.1.3 Adding a page
+#### 3.4.1.3 Adding a page
 
 Use the `add /p` command to add a `page`  into the [selected](#342-selecting-a-notebooksectionpage-select) `section`.
 >:bulb: You must select a `section` before adding a page!
@@ -714,7 +714,7 @@ now in notebook section: Chapter 1
 Just like how you can find a task in the Timetable mode, you can look for contents in this mode. Even sections and pages
 that do not belong to a select notebook can be found. There are two ways to do so:
 
-##### 3.4.5.1 Finding by keyword
+#### 3.4.5.1 Finding by keyword
 
 Finds all notebooks, sections and pages that contain the keyword in their title.  The search is not case-sensitive.
 
@@ -738,7 +738,7 @@ Sections:
 >:bulb: "|--" indicates "belongs to". You can use this to identify the particular notebook and section a page is in.
 
 
-##### 3.4.5.2 Finding by tag
+#### 3.4.5.2 Finding by tag
 
 Finds all notebooks, sections and pages that has a specified tag.  The search is case-sensitive.
 
