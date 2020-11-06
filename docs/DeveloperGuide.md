@@ -703,14 +703,6 @@ only covers the main differences in the two.
 - If the application is in the Notebook mode, `InputParser#getCommandFromInput` constructs the `FindCommandNotebookMode`
 class.
 
-*Aspect: How much navigability the Select function should have*
-- **Alternative 1 (current choice):** The user must always select the notebook title if he wants to choose a section or page within it.
-    - Pros: It is easy to catch exceptions when the notebook/section does not exist. This also ensures that even if there are 2 sections in 2 different notebooks with the same name, the user can select the correct section.
-    - Cons: The format for the command is longer.
-- **Alternative 2**: The user can select a notebook/section/page wherever he wants.
-    - Pros: The command the user has to type is much shorter.
-    - Cons: If the user has notebooks/sections with the same name, he cannot be sure that the item he wants will be selected correctly.
-
 **Command Execution**
 Method `FindCommandNotebookMode#execute()` does the following:<br>
 a. Constructs `CliMessages` class, which prints any outputs to the user<br>
@@ -726,7 +718,7 @@ methods output the titles of the found notebooks, sections and pages to the user
 
 **Design Considerations**
 
-Aspect: Way to search through the notebook shelf
+*Aspect: Way to search through the notebook shelf*
 - **Alternative 1 (current choice):** Loop through every page, section and notebook
     - Pros: Able to trace the notebook and section that a found page belongs to. This makes it more convenient to show
     to the user.
