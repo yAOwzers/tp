@@ -43,9 +43,7 @@ public class InputParser {
      * Parses the user's input to extract the task title in TIMETABLE mode.
      *
      * @param input is the user's input.
-     *
      * @return the task title.
-     *
      * @throws TaskTitleException               when the user's input does not include a task title.
      * @throws IncorrectDeadlineFormatException when the user's input does not include the DEADLINE_DELIMITER.
      */
@@ -70,9 +68,7 @@ public class InputParser {
      * Parses user's input to extract deadline in TIMETABLE mode.
      *
      * @param input is the user's input.
-     *
      * @return deadline in the format dd-MM-yyyy hhMM, where time is in 24h format.
-     *
      * @throws IncorrectDeadlineFormatException when the deadline input is in the wrong format.
      */
     public String parseDeadline(String input) throws IncorrectDeadlineFormatException {
@@ -96,7 +92,6 @@ public class InputParser {
      * Checks if [deadline] input by the user is in the correct format.
      *
      * @param by is the string containing the deadline's due date and time.
-     *
      * @return true when the input is in the correct format, otherwise false.
      */
     private boolean correctTimeFormat(String by) {
@@ -115,7 +110,6 @@ public class InputParser {
      *
      * @param argument contains notebook title, section title or/and page number.
      * @param appState is the state of the application.
-     *
      * @throws InvalidNotebookException      when the notebook the user wants to select does not exist.
      * @throws InvalidSectionException       when the section the user wants to select does not exist.
      * @throws InvalidPageException          when the page number the user wants to select does not exist.
@@ -144,7 +138,6 @@ public class InputParser {
      *
      * @param argument is the user's input.
      * @param appState is the current mode the user is in.
-     *
      * @throws InvalidNotebookException when the notebook title input by the user does not exist.
      * @throws InvalidSectionException  when the section title input by the user does not exist.
      * @throws InvalidPageException     when the page number input by the user does not exist.
@@ -172,7 +165,6 @@ public class InputParser {
      *
      * @param argument is the user's input.
      * @param appState is the current mode the user is in.
-     *
      * @throws InvalidSectionException when the section title input by the user does not exist.
      * @throws InvalidPageException    when the page title input by the user does not exist.
      */
@@ -198,7 +190,6 @@ public class InputParser {
      *
      * @param argument is the user's input.
      * @param appState is the current mode the user is in.
-     *
      * @throws InvalidPageException when the page title input by the user does not exist.
      */
     public void extractPageParams(String argument, AppState appState) throws InvalidPageException {
@@ -219,9 +210,7 @@ public class InputParser {
      * Parses notebook title from the user's input.
      *
      * @param input is the input from the user.
-     *
      * @return the notebook title input by the user.
-     *
      * @throws InvalidNotebookException when user's input is in the wrong format.
      */
     public String parseNotebookTitle(String input) throws InvalidNotebookException {
@@ -244,9 +233,7 @@ public class InputParser {
      * Parses section title from the user's input.
      *
      * @param input is the user's input.
-     *
      * @return the section title input by the user.
-     *
      * @throws InvalidSectionException when the user's input does not contain the section delimiter, or when the
      *                                 section title is blank.
      */
@@ -285,9 +272,7 @@ public class InputParser {
      * Parses the page title input by the user.
      *
      * @param input is the user's input.
-     *
      * @return the page title input by the user.
-     *
      * @throws InvalidPageException when the user's input is in the wrong format, or when the page title is blank.
      */
     public String parsePageTitle(String input) throws InvalidPageException {
@@ -317,9 +302,7 @@ public class InputParser {
      * Parses the page contents of the user's input.
      *
      * @param input is the user's input.
-     *
      * @return contents in the page input by the user.
-     *
      * @throws InvalidPageException when the user's input does not contain the page content delimiter, or when there
      *                              is no content.
      */
@@ -363,14 +346,16 @@ public class InputParser {
                 String contentToAdd;
                 if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
                     if (argument.contains(AddCommandNotebookMode.SECTION_DELIMITER) || argument.contains(
-                            AddCommandNotebookMode.PAGE_DELIMITER)) {
+                            AddCommandNotebookMode.PAGE_DELIMITER) ||
+                            argument.contains(AddCommandNotebookMode.CONTENT_DELIMITER)) {
                         throw new InvalidNotebookException(argument);
                     }
                     titleToAdd = parseNotebookTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
                 } else if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
                     if (argument.contains(AddCommandNotebookMode.PAGE_DELIMITER) || argument.contains(
-                            AddCommandNotebookMode.NOTEBOOK_DELIMITER)) {
+                            AddCommandNotebookMode.NOTEBOOK_DELIMITER) ||
+                            argument.contains(AddCommandNotebookMode.CONTENT_DELIMITER)) {
                         throw new InvalidSectionException(argument);
                     }
                     titleToAdd = parseSectionTitle(argument);

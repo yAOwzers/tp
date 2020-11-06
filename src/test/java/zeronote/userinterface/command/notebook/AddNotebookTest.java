@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import zeronote.exceptions.DuplicateFoundException;
 import zeronote.exceptions.InvalidCommandException;
 import zeronote.exceptions.ZeroNoteException;
+import zeronote.notebooks.Notebook;
+import zeronote.notebooks.NotebookShelf;
+import zeronote.notebooks.Section;
 import zeronote.userinterface.AppMode;
 import zeronote.userinterface.AppState;
 import zeronote.userinterface.InputParser;
@@ -64,6 +67,18 @@ public class AddNotebookTest {
 
         assertThrows(ZeroNoteException.class, () -> {
             section.addPage(page, content);
+        });
+    }
+
+    @Test
+    public void addNotebook_withSemicolon_expectException() {
+        InputParser parser = new InputParser();
+        AppState appState = new AppState();
+        appState.setAppMode(AppMode.NOTEBOOK_SHELF);
+        String inputString = "add /nNotebook ;";
+
+        assertThrows(ZeroNoteException.class, () -> {
+            parser.getCommandFromInput(inputString, appState);
         });
     }
 }
