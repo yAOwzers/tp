@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 //@@longngng
-class ListCommandTimetableModeTest {
+class ListTaskTest {
 
     @Test
     void execute_invalidInput_exceptionThrown() {

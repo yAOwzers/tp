@@ -1,4 +1,4 @@
-package teetwelvedashthree.zeronote.userinterface.command.timetable;
+package zeronote.userinterface.command.timetable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -11,7 +11,7 @@ import zeronote.userinterface.AppState;
 import zeronote.userinterface.command.timetable.AddCommandTimetableMode;
 import zeronote.userinterface.command.timetable.FindCommandTimetableMode;
 
-class FindCommandTimetableModeTest {
+class FindTaskTest {
 
     @Test
     void execute_keywordInput_noneFound() {
