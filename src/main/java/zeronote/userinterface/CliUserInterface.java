@@ -76,6 +76,9 @@ public class CliUserInterface {
         case NOTEBOOK_PAGE:
             modeString = modeString + "N/" + notebookTitle + "/" + sectionTitle + "/" + pageTitle;
             break;
+        default:
+            modeString = "";
+            break;
         }
         modeString = modeString + "~$ ";
         System.out.print(modeString);
