@@ -346,16 +346,16 @@ public class InputParser {
                 String contentToAdd;
                 if (appState.getAppMode() == AppMode.NOTEBOOK_SHELF) {
                     if (argument.contains(AddCommandNotebookMode.SECTION_DELIMITER) || argument.contains(
-                            AddCommandNotebookMode.PAGE_DELIMITER) ||
-                            argument.contains(AddCommandNotebookMode.CONTENT_DELIMITER)) {
+                            AddCommandNotebookMode.PAGE_DELIMITER)
+                            || argument.contains(AddCommandNotebookMode.CONTENT_DELIMITER)) {
                         throw new InvalidNotebookException(argument);
                     }
                     titleToAdd = parseNotebookTitle(argument);
                     return new AddCommandNotebookMode(titleToAdd, appState);
                 } else if (appState.getAppMode() == AppMode.NOTEBOOK_BOOK) {
                     if (argument.contains(AddCommandNotebookMode.PAGE_DELIMITER) || argument.contains(
-                            AddCommandNotebookMode.NOTEBOOK_DELIMITER) ||
-                            argument.contains(AddCommandNotebookMode.CONTENT_DELIMITER)) {
+                            AddCommandNotebookMode.NOTEBOOK_DELIMITER)
+                            || argument.contains(AddCommandNotebookMode.CONTENT_DELIMITER)) {
                         throw new InvalidSectionException(argument);
                     }
                     titleToAdd = parseSectionTitle(argument);
