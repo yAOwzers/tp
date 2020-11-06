@@ -31,6 +31,60 @@ public class CliUserInterface {
         storage.saveToFile(appState);
     }
 
+    private void printPrompt() {
+        String modeString = "";
+        String notebookTitle;
+        String sectionTitle;
+        String pageTitle;
+        try {
+            notebookTitle = appState.getCurrentNotebook().getTitle();
+        } catch (NullPointerException e) {
+            notebookTitle = "";
+        }
+        try {
+            sectionTitle = appState.getCurrentSection().getTitle();
+        } catch (NullPointerException e) {
+            sectionTitle = "";
+        }
+        try {
+            pageTitle = appState.getCurrentPage().getTitle();
+        } catch (NullPointerException e) {
+            pageTitle = "";
+        }
+        if (notebookTitle.length() > 10) {
+            notebookTitle = notebookTitle.substring(0, 7) + "...";
+        }
+        if (sectionTitle.length() > 10) {
+            sectionTitle = sectionTitle.substring(0, 7) + "...";
+        }
+        if (pageTitle.length() > 10) {
+            pageTitle = pageTitle.substring(0, 7) + "...";
+        }
+        switch (appState.getAppMode()) {
+        case TIMETABLE:
+            modeString = modeString + "T";
+            break;
+        case NOTEBOOK_SHELF:
+            modeString = modeString + "N";
+            break;
+        case NOTEBOOK_BOOK:
+            modeString = modeString + "N/" + notebookTitle;
+            break;
+        case NOTEBOOK_SECTION:
+            modeString = modeString + "N/" + notebookTitle + "/" + sectionTitle;
+            break;
+        case NOTEBOOK_PAGE:
+            modeString = modeString + "N/" + notebookTitle + "/" + sectionTitle + "/" + pageTitle;
+            break;
+        default:
+            modeString = "";
+            break;
+        }
+        modeString = modeString + "~$ ";
+        System.out.print(modeString);
+        System.out.flush();
+    }
+
     private void checkNameOfUser() {
         if (appState.getUserName().equals("")) {
             messages.printFillInNameOfUserMessage();
@@ -53,6 +107,7 @@ public class CliUserInterface {
         checkNameOfUser();
         msgGenerator = new PersonalMessageGenerator(appState.getUserName());
         while (!toQuit) {
+            printPrompt();
             userInput = keyboardScanner.nextLine();
             try {
                 if (userInput.equals(Exit.COMMAND_WORD)) {
