@@ -18,12 +18,6 @@ bin/
 
 *.pdf
 
-notebooks.txt
-
-tasks.txt
-
-*.~vsdx
-docs/diagrams/class/visio/~$$add-select_notebook.~vsdx
 *.txt
 
 *.txt
