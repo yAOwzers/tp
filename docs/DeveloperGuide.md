@@ -939,7 +939,7 @@ There are two ways to run tests.
 
 This project has one type of test:
 Unit tests targeting the lowest level methods/classes.
-e.g. `teetwelvedashthree.zeronote.userinterface.command.notebook.AddNotebookModeTest`
+e.g. `teetwelvedashthree.zeronote.userinterface.command.notebook.AddNotebookTest`
 
 ## Appendix A: Project Scope
 
