@@ -1,6 +1,7 @@
 package zeronote.userinterface.command.notebook;
 
 import org.junit.jupiter.api.Test;
+import zeronote.exceptions.DuplicateFoundException;
 import zeronote.exceptions.InvalidCommandException;
 import zeronote.exceptions.ZeroNoteException;
 import zeronote.userinterface.AppMode;
@@ -34,14 +35,35 @@ public class AddNotebookTest {
     }
 
     @Test
-    void addNotebook_sectionPage_expectException() {
+    void addNotebook_SectionPage_expectException() {
         InputParser parser = new InputParser();
         AppState appState = new AppState();
-        appState.setAppMode(AppMode.NOTEBOOK_SHELF);
-        String userInput = "add /nNotebook /sSection /pPage";
+        appState.setAppMode(AppMode.NOTEBOOK_PAGE);
+        String inputString = "add /nNOTEBOOK /sSection /p";
         assertThrows(ZeroNoteException.class, () -> {
-           parser.getCommandFromInput(userInput, appState);
+            parser.getCommandFromInput(inputString, appState);
         });
+    }
 
+    @Test
+    void addDuplicate_page_expectException() {
+        NotebookShelf ns = new NotebookShelf();
+        Notebook notebook = new Notebook("test_notebook");
+        Section section = new Section("section");
+        String page = "page";
+        String content = "content";
+
+        ns.addNotebook(notebook);
+        notebook.addSection(section);
+
+        try {
+            section.addPage(page, content);
+        } catch (DuplicateFoundException e) {
+            e.printErrorMessage();
+        }
+
+        assertThrows(ZeroNoteException.class, () -> {
+            section.addPage(page, content);
+        });
     }
 }
