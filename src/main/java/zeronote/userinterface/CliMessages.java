@@ -95,7 +95,7 @@ public class CliMessages {
 
     public void printAddTaskHelp() {
         System.out.println("To add a task with a deadline to the task list: ");
-        System.out.println("add /t[TASK] /by[dd/MM/yyyy] [hhmm]");
+        System.out.println("add /t[TASK] /by[dd-MM-yyyy] [hhmm]");
         System.out.println("Example of usage: ");
         System.out.println("add /tcoding /by19-10-2020 1900");
         System.out.println();
