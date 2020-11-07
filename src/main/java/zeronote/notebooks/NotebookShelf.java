@@ -60,10 +60,17 @@ public class NotebookShelf {
         notebooksArrayList.add(n);
     }
 
-    public Notebook removeNotebook(int indexToRemove) {
-        return notebooksArrayList.remove(indexToRemove);
+    /**
+     * Removes a notebook with the specified index from the shelf
+     *
+     * @param index the index of the notebook to be removed
+     * @return the notebook that is removed
+     */
+    public Notebook removeNotebook(int index) {
+        return notebooksArrayList.remove(index);
     }
 
+    // TODO: add JavaDoc for serialize() method
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();

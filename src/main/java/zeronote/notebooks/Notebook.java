@@ -110,7 +110,6 @@ public class Notebook {
     }
 
     //TODO: Add JavaDoc for serialize() method
-    
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();
