@@ -273,6 +273,13 @@ public class InputParser {
         }
     }
 
+    /**
+     * Parses the index number from the user's input.
+     *
+     * @param args the user's input.
+     * @return the integer index number.
+     * @throws InvalidIndexException when the user's input is not a valid number.
+     */
     public int parseTaskIndex(String args) throws InvalidIndexException {
         try {
             return Integer.parseInt(args) - 1;
@@ -342,6 +349,12 @@ public class InputParser {
         }
     }
 
+    /**
+     * Parses the keyword and tag
+     *
+     * @param input the user's input.
+     * @return an array of Strings. The first element is the keyword and the second element is the tag.
+     */
     public String[] parseTagDescription(String input) {
         return input.split(AddCommandTimetableMode.TASK_DELIMITER, 2);
     }

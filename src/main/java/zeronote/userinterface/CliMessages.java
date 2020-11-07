@@ -286,7 +286,7 @@ public class CliMessages {
     public void printLineSeparator() {
         System.out.println("\n-------------------------------------------------------------\n");
     }
-    
+
     public void printFillInNameOfUserMessage() {
         System.out.println("Hi there! Sorry I don't think we have met, how may I address you?");
     }
