@@ -10,8 +10,6 @@ import zeronote.exceptions.InvalidTagException;
 import zeronote.exceptions.ZeroNoteException;
 import zeronote.tasks.Task;
 import zeronote.userinterface.AppState;
-import zeronote.userinterface.command.timetable.AddCommandTimetableMode;
-import zeronote.userinterface.command.timetable.FindCommandTimetableMode;
 
 class FindTaskTest {
 
