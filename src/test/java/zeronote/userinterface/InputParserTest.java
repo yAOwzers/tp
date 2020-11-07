@@ -3,8 +3,10 @@ package zeronote.userinterface;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import zeronote.exceptions.IncorrectDeadlineFormatException;
+import zeronote.exceptions.InvalidCommandException;
 import zeronote.exceptions.InvalidIndexException;
 import zeronote.exceptions.ZeroNoteException;
+import zeronote.userinterface.command.CliCommand;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -98,5 +100,47 @@ class InputParserTest {
         InputParser parser = new InputParser();
         String input = "/tBlowing Bubbles /by";
         assertThrows(IncorrectDeadlineFormatException.class, () -> parser.parseDeadline(input));
+    }
+
+    @Test
+    void parseCommand_validInput_Sucess() {
+        AppState appState = new AppState();
+        InputParser parser = new InputParser();
+        String input = "list /d";
+        CliCommand command;
+        try {
+            command = parser.getCommandFromInput(input, appState);
+            assertEquals("/d", command.getCommandParams());
+        } catch (ZeroNoteException e) {
+            System.out.println("ZeroNoteException Catched");
+        }
+    }
+
+    @Test
+    void parseCommand_inputWithSpaces_Sucess() throws ZeroNoteException {
+        AppState appState = new AppState();
+        InputParser parser = new InputParser();
+        String input = "list    /d  ";
+        CliCommand command;
+        command = parser.getCommandFromInput(input, appState);
+        assertEquals("/d", command.getCommandParams());
+    }
+
+    @Test
+    void parseCommand_inputWithDuplications_Sucess() throws ZeroNoteException {
+        AppState appState = new AppState();
+        InputParser parser = new InputParser();
+        String input = "list /d /d    ";
+        CliCommand command;
+        command = parser.getCommandFromInput(input, appState);
+        assertEquals("/d /d", command.getCommandParams());
+    }
+
+    @Test
+    void parseCommand_emptyInput_exceptionThrown() throws ZeroNoteException {
+        AppState appState = new AppState();
+        InputParser parser = new InputParser();
+        String input = "";
+        assertThrows(InvalidCommandException.class, () -> parser.getCommandFromInput(input, appState));
     }
 }
