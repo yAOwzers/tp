@@ -6,6 +6,11 @@ import zeronote.userinterface.AppState;
 import zeronote.userinterface.CliMessages;
 import zeronote.userinterface.command.CliCommand;
 
+//@@author Lusi711
+
+/**
+ * Class to tag a task with the index number specified by the user.
+ */
 public class TagCommandTimetableMode extends CliCommand {
     public static final String COMMAND_WORD = "tag";
     private int index;
@@ -21,6 +26,9 @@ public class TagCommandTimetableMode extends CliCommand {
         PRINTS_PERSONAL_MESSAGE = true;
     }
 
+    /**
+     * Tags a task with the index number matching <code>index</code>.
+     */
     public void execute() {
         CliMessages cliMessages = new CliMessages();
         try {
