@@ -37,7 +37,7 @@ public class HelpTest {
             + "delete /nCS2113T" + lineSeparator + "" + lineSeparator;
 
     String expectedOutputTimetable = "Here are some commands to help you work with the Timetable mode: " + lineSeparator
-            + "To add a task with a deadline to the task list: " + lineSeparator + "add /t[TASK] /by[dd/MM/yyyy] [hhmm]"
+            + "To add a task with a deadline to the task list: " + lineSeparator + "add /t[TASK] /by[dd-MM-yyyy] [hhmm]"
             + lineSeparator + "Example of usage: " + lineSeparator + "add /tcoding /by19-10-2020 1900" + lineSeparator
             + "" + lineSeparator + "To delete an existing task from the task list: " + lineSeparator + "delete [INDEX]"
             + lineSeparator + "Example of usage: " + lineSeparator + "delete 1" + lineSeparator + "" + lineSeparator;

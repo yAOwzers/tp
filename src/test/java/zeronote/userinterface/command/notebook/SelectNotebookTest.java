@@ -11,6 +11,7 @@ import zeronote.notebooks.Section;
 import zeronote.userinterface.AppMode;
 import zeronote.userinterface.AppState;
 import zeronote.userinterface.InputParser;
+import zeronote.userinterface.command.CliCommand;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -71,6 +72,29 @@ public class SelectNotebookTest {
         String inputString = "select /ntest_notebook /ssection /ppage ; content";
         assertThrows(ZeroNoteException.class, () -> {
             parser.getCommandFromInput(inputString, appState);
+        });
+    }
+
+    @Test
+    void selectInvalid_section_expectException() throws ZeroNoteException {
+        AppState appState = new AppState();
+        appState.setAppMode(AppMode.NOTEBOOK_SHELF);
+        NotebookShelf ns = new NotebookShelf();
+        Notebook notebook = new Notebook("test_notebook");
+        Section section = new Section("section");
+        String page = "page";
+        String content = "content";
+
+        ns.addNotebook(notebook);
+        notebook.addSection(section);
+        section.addPage(page, content);
+        InputParser parser = new InputParser();
+        String inputString = "select /ntest_notebook /sse /ppage";
+        CliCommand command = parser.getCommandFromInput(inputString, appState);
+        String argument = "/ntest_notebook /sse /ppage";
+        command.execute();
+        assertThrows(ZeroNoteException.class, () -> {
+            parser.extractParams(argument, appState);
         });
     }
 }
