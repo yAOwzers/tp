@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class NotebookShelf {
     private final ArrayList<Notebook> notebooksArrayList;
+    private static final int notFound = -1;
 
     public NotebookShelf() {
         notebooksArrayList = new ArrayList<>();
@@ -23,7 +24,6 @@ public class NotebookShelf {
      */
     public int findNotebook(String title) {
         int index = 0;
-        int notFound = -1;
         for (Notebook n : notebooksArrayList) {
             if (n.getTitle().equals(title)) {
                 return index;

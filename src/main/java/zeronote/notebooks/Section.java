@@ -10,6 +10,7 @@ public class Section {
     private String title;
     private String tag = "";
     private final ArrayList<Page> pageArrayList;
+    private static final int notFound = -1;
 
     public Section(String title) {
         this.title = title;
@@ -51,7 +52,6 @@ public class Section {
      */
     public int findPage(String searchKey) {
         int index = 0;
-        int notFound = -1;
         for (Page p : pageArrayList) {
             if (p.getTitle().equals(searchKey)) {
                 return index;

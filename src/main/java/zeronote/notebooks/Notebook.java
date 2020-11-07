@@ -9,6 +9,7 @@ public class Notebook {
     private String title;
     private String tag = "";
     private final ArrayList<Section> sectionArrayList;
+    private static final int notFound = -1;
 
     public Notebook(String title) {
         this.title = title;
@@ -80,7 +81,6 @@ public class Notebook {
      */
     public int findSection(String searchKey) {
         int index = 0;
-        int notFound = -1;
         for (Section s : sectionArrayList) {
             if (s.getTitle().equals(searchKey)) {
                 return index;
