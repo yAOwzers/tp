@@ -39,7 +39,7 @@ public class CliMessages {
         System.out.println("Noted. I've removed this page: " + page.getTitle());
         page.printPage();
     }
-
+    // @@author neilbaner
     public static void printCorruptTaskFile() {
         System.out.println("There was some error reading the Tasks file; something has likely been corrupted");
         System.out.println("You may continue, and ZeroNote will start from scratch with no Task data. ");
@@ -53,10 +53,12 @@ public class CliMessages {
                 + "and the following error message " + " ");
     }
 
+    //@@author neilbaner
     public static void printNoNotebookFile() {
         System.out.println("Notebook save file was not found. A new save file will be created upon exit. ");
     }
 
+    //@@author neilbaner
     public static void printCorruptNotebookFile() {
         System.out.println("There was some error reading the Notebooks file; something has likely been corrupted");
         System.out.println("You may continue, and ZeroNote will start from scratch with no Task data. ");
@@ -70,9 +72,11 @@ public class CliMessages {
                 + "and the following error message " + " ");
     }
 
+    //@@author neilbaner
     public static void printNoTaskFile() {
         System.out.println("Task save file was not found. A new save file will be created upon exit. ");
     }
+
 
     public static void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
         //        String personalMessage = msgGenerator.generatePersonalisedMessage();
@@ -93,6 +97,7 @@ public class CliMessages {
         System.out.println(tasksList.getNumberOfTasks() + ":" + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
     }
 
+    //@@author neilbaner
     public void printAddTaskHelp() {
         System.out.println("To add a task with a deadline to the task list: ");
         System.out.println("add /t[TASK] /by[dd-MM-yyyy] [hhmm]");
@@ -101,12 +106,14 @@ public class CliMessages {
         System.out.println();
     }
 
+    //@@author neilbaner
     public void printAddNotebookSectionPageHelp() {
         printAddNotebookHelp();
         printAddSectionHelp();
         printAddPageHelp();
     }
 
+    //@@author neilbaner
     private void printAddPageHelp() {
         System.out.println("To add a page into the selected section:");
         System.out.println("add /p[PAGE]; [PAGE CONTENT]");
@@ -115,6 +122,7 @@ public class CliMessages {
         System.out.println();
     }
 
+    //@@author neilbaner
     private void printAddSectionHelp() {
         System.out.println("To add a section into the selected notebook: ");
         System.out.println("add /s[SECTION]");
@@ -123,6 +131,7 @@ public class CliMessages {
         System.out.println();
     }
 
+    //@@author neilbaner
     private void printAddNotebookHelp() {
         System.out.println("To add a notebook into the notebook shelf: ");
         System.out.println("add /n[NOTEBOOK]");
@@ -131,23 +140,68 @@ public class CliMessages {
         System.out.println();
     }
 
+    //@@author neilbaner
     public void printDoneTaskHelp() {
-
+        System.out.println("To mark a task as done:");
+        System.out.println("done [INDEX]");
+        System.out.println("Example of usage: ");
+        System.out.println("done 1");
+        System.out.println();
     }
 
+    //@@author neilbaner
     public void printExitHelp() {
         System.out.println("To quit ZeroNote:");
         System.out.println("exit");
+        System.out.println();
     }
 
+    //@@author neilbaner
     public void printListTaskHelp() {
-
+        System.out.println("To list all tasks: ");
+        System.out.println("list");
+        System.out.println("To list done tasks: ");
+        System.out.println("list /d");
+        System.out.println("To list undone tasks: ");
+        System.out.println("list /u");
+        System.out.println("To list urgent tasks: ");
+        System.out.println("list /urgent");
+        System.out.println();
     }
 
+    //@@author neilbaner
     public void printListNotebookSectionPageHelp() {
-
+        printListShelfHelp();
+        printListNotebookHelp();
+        printListSectionHelp();
+        System.out.println();
     }
 
+    public void printListShelfHelp() {
+        System.out.println("When no notebook is selected: ");
+        System.out.println("To list all notebooks:");
+        System.out.println("list");
+        System.out.println("To list all notebooks with their sections: ");
+        System.out.println("list /s");
+        System.out.println("To list all notebooks with their sections and pages: ");
+        System.out.println("list /a");
+    }
+
+    public void printListNotebookHelp() {
+        System.out.println("When a notebook is selected: ");
+        System.out.println("To list all sections in the notebook: ");
+        System.out.println("list");
+        System.out.println("To list all sections in the notebook with their pages: ");
+        System.out.println("list /a");
+    }
+
+    public void printListSectionHelp() {
+        System.out.println("When a section is selected: ");
+        System.out.println("To list all pages in the notebook: ");
+        System.out.println("list");
+    }
+
+    //@@author neilbaner
     public void printModeSwitchHelp() {
         System.out.println("To switch to timetable mode: ");
         System.out.println("mode /t");
@@ -156,6 +210,7 @@ public class CliMessages {
         System.out.println();
     }
 
+    //@@author neilbaner
     public void printRemoveTaskHelp() {
         System.out.println("To delete an existing task from the task list: ");
         System.out.println("delete [INDEX]");
@@ -164,9 +219,10 @@ public class CliMessages {
         System.out.println();
     }
 
+    //@@author neilbaner
     public void printRemoveNotebookSectionPageHelp() {
         System.out.println("To delete and existing notebook, section or page: ");
-        System.out.println("delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER]");
+        System.out.println("delete /n[NOTEBOOK] /s[SECTION] /p[PAGE]");
         System.out.println("Examples of usage: ");
         System.out.println("delete /nCS2113T /sW10 /p1");
         System.out.println("delete /nCS2113T /sW10");
@@ -174,6 +230,7 @@ public class CliMessages {
         System.out.println();
     }
 
+    //@@author neilbaner
     public void printSelectHelp() {
         System.out.println("To select a notebook, section, page, or a combination of the three: ");
         System.out.println("select /n[NOTEBOOK] /s[SECTION] /p[PAGE]");
@@ -193,6 +250,7 @@ public class CliMessages {
         System.out.println();
     }
 
+    //@@author neilbaner
     public void printNotebookModeHelp() {
         System.out.println("Here are some commands to help you work with the Notebook mode: ");
         printAddNotebookSectionPageHelp();
@@ -201,6 +259,7 @@ public class CliMessages {
         printRemoveNotebookSectionPageHelp();
     }
 
+    //@@author neilbaner
     public void printTimetableModeHelp() {
         System.out.println("Here are some commands to help you work with the Timetable mode: ");
         printAddTaskHelp();
@@ -209,18 +268,21 @@ public class CliMessages {
         printRemoveTaskHelp();
     }
 
+    //@@author neilbaner
     public void printGeneralHelp() {
         System.out.println("Here are some general commands that will work throughout ZeroNote: ");
         printModeSwitchHelp();
         printExitHelp();
     }
 
+    //@@author neilbaner
     public void printOnlineGuideLink() {
         System.out.println("Access the full user guide for ZeroNote online, at: ");
         System.out.println("https://ay2021s1-cs2113t-t12-3.github.io/tp/UserGuide.html");
         System.out.println();
     }
 
+    //@@author neilbaner
     public void printAllHelp() {
         System.out.println("Here are all the commands you need to know to operate ZeroNote: ");
         printGeneralHelp();
@@ -229,6 +291,7 @@ public class CliMessages {
         printOnlineGuideLink();
     }
 
+    //@@author neilbaner
     public void printGoodBye() {
         System.out.println("Bye!");
     }
@@ -263,7 +326,6 @@ public class CliMessages {
     public void printLineSeparator() {
         System.out.println("-------------------------------------------------------------");
     }
-
     @Deprecated
     public void printFoundPagesMessage(ArrayList<Page> pagesFound) {
         int index = 1;

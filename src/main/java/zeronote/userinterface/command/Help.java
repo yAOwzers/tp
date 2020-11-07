@@ -23,6 +23,7 @@ public class Help extends CliCommand {
      */
     public Help(String commandArgs) {
         this.commandArgs = commandArgs.toLowerCase();
+        PRINTS_PERSONAL_MESSAGE = false;
     }
 
     /**
