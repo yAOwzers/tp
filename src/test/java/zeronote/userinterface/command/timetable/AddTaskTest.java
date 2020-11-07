@@ -3,14 +3,11 @@ package zeronote.userinterface.command.timetable;
 import org.junit.jupiter.api.Test;
 import zeronote.exceptions.IncorrectDeadlineFormatException;
 import zeronote.exceptions.ZeroNoteException;
-import zeronote.tasks.Task;
 import zeronote.tasks.TaskList;
 import zeronote.userinterface.AppMode;
 import zeronote.userinterface.AppState;
 import zeronote.userinterface.InputParser;
 import zeronote.userinterface.command.CliCommand;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -41,7 +38,7 @@ public class AddTaskTest {
         appState.setAppMode(AppMode.TIMETABLE);
         String inputString = "add /t /by18-10-2020 1900";
         String argument = "/t /by18-10-2020 1900";
-        CliCommand command  = parser.getCommandFromInput(inputString, appState);
+        CliCommand command = parser.getCommandFromInput(inputString, appState);
         command.execute();
         assertThrows(ZeroNoteException.class, () -> {
             parser.parseTaskTitle(argument);
@@ -55,7 +52,7 @@ public class AddTaskTest {
         appState.setAppMode(AppMode.TIMETABLE);
         String inputString = "add /t /by";
         String argument = "/t /by";
-        CliCommand command  = parser.getCommandFromInput(inputString, appState);
+        CliCommand command = parser.getCommandFromInput(inputString, appState);
         command.execute();
         assertThrows(ZeroNoteException.class, () -> {
             parser.parseTaskTitle(argument);
