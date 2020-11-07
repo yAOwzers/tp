@@ -96,6 +96,5 @@ public class SelectNotebookTest {
         assertThrows(ZeroNoteException.class, () -> {
             parser.extractParams(argument, appState);
         });
-
     }
 }
