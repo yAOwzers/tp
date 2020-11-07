@@ -176,7 +176,7 @@ public class CliMessages {
 
     public void printSelectHelp() {
         System.out.println("To select a notebook, section, page, or a combination of the three: ");
-        System.out.println("select /n[NOTEBOOK] /s[SECTION] /p[NUMBER]");
+        System.out.println("select /n[NOTEBOOK] /s[SECTION] /p[PAGE]");
         System.out.println("Examples of usage: ");
         System.out.println("In any context: ");
         System.out.println("select /nCS2101 /sW2 /p1");
@@ -261,9 +261,10 @@ public class CliMessages {
     }
 
     public void printLineSeparator() {
-        System.out.println("\n-------------------------------------------------------------\n");
+        System.out.println("-------------------------------------------------------------");
     }
 
+    @Deprecated
     public void printFoundPagesMessage(ArrayList<Page> pagesFound) {
         int index = 1;
         System.out.println("Pages:");
