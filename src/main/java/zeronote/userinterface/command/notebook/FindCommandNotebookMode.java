@@ -16,10 +16,9 @@ import zeronote.userinterface.AppState;
 import zeronote.userinterface.CliMessages;
 import zeronote.userinterface.command.CliCommand;
 
-//@@Lusi711
-
+//@@author Lusi711
 /**
- * Executes the command by the user to find all notebooks, sections and pages with titles containing a given keyword or
+ * Command class to find all notebooks, sections and pages with titles containing a given keyword or
  * have a given tag. There is no restriction on the current mode of the app. The search is non-case-sensitive.
  */
 public class FindCommandNotebookMode extends CliCommand {
