@@ -7,7 +7,7 @@ import zeronote.userinterface.AppState;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-//@@longngng
+// @@author longngng
 class ListTaskTest {
 
     @Test
@@ -20,7 +20,7 @@ class ListTaskTest {
             listCommandTimetableMode.execute();
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("There not exists such options", e.problematicInput);
+            assertEquals("list /d", e.problematicInput);
         }
     }
 }

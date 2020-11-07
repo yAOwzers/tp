@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-//@@yAOwzers
+//@@author yAOwzers
 public class MarkAsDoneTest {
     @Test
     void execute_MarkAsDoneTwo_IndexOutOfBound() {
@@ -28,6 +28,7 @@ public class MarkAsDoneTest {
         });
     }
 
+    // @@author neilbaner
     @Test
     void markDone_positiveTest() {
         AppState appState = new AppState();

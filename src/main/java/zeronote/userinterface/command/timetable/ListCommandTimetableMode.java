@@ -34,7 +34,7 @@ public class ListCommandTimetableMode extends CliCommand {
                 printAllTasks();
                 break;
             default:
-                throw new InvalidCommandException("There not exists such options");
+                throw new InvalidCommandException(commandParams);
             }
         } catch (NullPointerException e) {
             System.out.println("The list of tasks is empty");
