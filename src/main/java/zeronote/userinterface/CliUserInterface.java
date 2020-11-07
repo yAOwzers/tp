@@ -80,7 +80,7 @@ public class CliUserInterface {
             modeString = "";
             break;
         }
-        modeString = modeString + "~$ ";
+        modeString = modeString + ":$ ";
         System.out.print(modeString);
         System.out.flush();
     }
