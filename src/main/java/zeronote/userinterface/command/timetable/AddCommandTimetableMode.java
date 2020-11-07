@@ -9,6 +9,12 @@ import zeronote.userinterface.CliMessages;
 import zeronote.userinterface.InputParser;
 import zeronote.userinterface.command.CliCommand;
 
+//@@author chuckiex3
+
+/**
+ * Command class to add a task with a deadline into the user's task list.
+ * Neither the task nor deadline should be blank.
+ */
 public class AddCommandTimetableMode extends CliCommand {
     public static final String COMMAND_WORD = "add";
     public static final String TASK_DELIMITER = "/t";

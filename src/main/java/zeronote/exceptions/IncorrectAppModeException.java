@@ -1,6 +1,6 @@
 package zeronote.exceptions;
 
-//@@Lusi711
+//@@author Lusi711
 public class IncorrectAppModeException extends ZeroNoteException {
     @Override
     public void printErrorMessage() {

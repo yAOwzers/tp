@@ -1,7 +1,6 @@
 package zeronote.userinterface.command.notebook;
 
 import zeronote.exceptions.AddCommandNotebookException;
-import zeronote.exceptions.EmptyPageException;
 import zeronote.exceptions.ZeroNoteException;
 import zeronote.notebooks.Notebook;
 import zeronote.notebooks.NotebookShelf;
@@ -9,6 +8,11 @@ import zeronote.notebooks.Section;
 import zeronote.userinterface.AppState;
 import zeronote.userinterface.command.CliCommand;
 
+//@@author chuckiex3
+
+/**
+ * Command class to add a notebook/section/page.
+ */
 public class AddCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "add";
     public static final String NOTEBOOK_DELIMITER = "/n";
