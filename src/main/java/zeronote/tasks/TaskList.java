@@ -32,7 +32,7 @@ public class TaskList {
         return taskArrayList.get(index);
     }
 
-    public Task markAsDone(int i) throws ZeroNoteException{
+    public Task markAsDone(int i) throws ZeroNoteException {
         if (i > taskArrayList.size()) {
             throw new TaskIndexOutOfBoundsException(String.valueOf(i));
         }
