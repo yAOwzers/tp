@@ -15,6 +15,12 @@ public class Notebook {
         sectionArrayList = new ArrayList<>();
     }
 
+    /**
+     * Sets the tag of this notebook
+     *
+     * @param tag the tag of the notebook
+     * @throws InvalidTagException when the user inputs an empty tag
+     */
     public void setTag(String tag) throws InvalidTagException {
         if (!tag.equals("")) {
             this.tag = tag;
@@ -23,6 +29,11 @@ public class Notebook {
         }
     }
 
+    /**
+     * Gets the tag of this notebook
+     *
+     * @return the tag of the notebook
+     */
     public String getTag() {
         return tag;
     }
@@ -98,6 +109,8 @@ public class Notebook {
         return sectionArrayList.remove(indexToRemove);
     }
 
+    //TODO: Add JavaDoc for serialize() method
+    
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();
