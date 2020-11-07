@@ -11,11 +11,20 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 //@@longngng
 class ListNotebookTest {
+    @Test
+    void execute_validInput_success() {
+        AppState appState = new AppState();
+        String input = "/s";
 
+        ListCommandNotebookMode listCommandNotebookMode = new ListCommandNotebookMode(input, appState);
+        appState.setAppMode(AppMode.NOTEBOOK_SHELF);
+        assertEquals("/s", listCommandNotebookMode.getCommandParams());
+    }
+    
     @Test
     void execute_invalidInput_exceptionThrown() {
         AppState appState = new AppState();
-        String input = "list /d";
+        String input = " /d";
 
         ListCommandNotebookMode listCommandNotebookMode = new ListCommandNotebookMode(input, appState);
         appState.setAppMode(AppMode.NOTEBOOK_SHELF);
