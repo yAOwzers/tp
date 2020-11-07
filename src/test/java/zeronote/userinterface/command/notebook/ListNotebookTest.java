@@ -32,7 +32,7 @@ class ListNotebookTest {
             listCommandNotebookMode.execute();
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("There not exists such options", e.problematicInput);
+            assertEquals("list /d", e.problematicInput);
         } catch (IncorrectAppModeException e) {
             e.printStackTrace();
         }
