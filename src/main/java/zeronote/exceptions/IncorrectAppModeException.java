@@ -3,7 +3,7 @@ package zeronote.exceptions;
 //@@Lusi711
 
 /**
- * Signals that the user is in the wrong mode
+ * Signals that the user is in the wrong mode.
  */
 public class IncorrectAppModeException extends ZeroNoteException {
     @Override

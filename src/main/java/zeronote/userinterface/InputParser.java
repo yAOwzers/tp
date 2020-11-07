@@ -421,13 +421,13 @@ public class InputParser {
                 try {
                     return new TagCommandTimetableMode(index, splitParams[1].trim(), appState);
                 } catch (IndexOutOfBoundsException e) {
-                    throw new InvalidTagException(argument);
+                    throw new InvalidTagException(userInput);
                 }
             } else {
                 try {
                     return new TagCommandNotebookMode(splitParams[1].trim(), appState);
                 } catch (IndexOutOfBoundsException e) {
-                    throw new InvalidTagException(argument);
+                    throw new InvalidTagException(userInput);
                 }
             }
         case RemoveCommandTimetableMode.COMMAND_WORD:

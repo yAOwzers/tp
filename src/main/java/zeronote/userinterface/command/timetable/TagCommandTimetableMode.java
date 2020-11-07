@@ -37,7 +37,7 @@ public class TagCommandTimetableMode extends CliCommand {
                 System.out.println("There are no tasks in the list.");
             }
         } catch (InvalidTagException ite) {
-            ite.setProblematicInput("tag " + index + " /t");
+            ite.setProblematicInput("tag " + index + " /t" + tag);
             ite.printErrorMessage();
         }
     }
