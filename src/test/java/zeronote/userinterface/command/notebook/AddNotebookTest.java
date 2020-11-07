@@ -69,4 +69,16 @@ public class AddNotebookTest {
             section.addPage(page, content);
         });
     }
+
+    @Test
+    public void addNotebook_withSemicolon_expectException() {
+        InputParser parser = new InputParser();
+        AppState appState = new AppState();
+        appState.setAppMode(AppMode.NOTEBOOK_SHELF);
+        String inputString = "add /nNotebook ;";
+
+        assertThrows(ZeroNoteException.class, () -> {
+            parser.getCommandFromInput(inputString, appState);
+        });
+    }
 }
