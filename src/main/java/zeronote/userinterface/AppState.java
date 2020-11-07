@@ -92,10 +92,12 @@ public class AppState {
         return task;
     }
 
+    @Deprecated
     public int getIndexOfCurrentSection() {
         return indexOfCurrentSection;
     }
 
+    @Deprecated
     public void setIndexOfCurrentSection(int indexOfCurrentSection) {
         this.indexOfCurrentSection = indexOfCurrentSection;
     }
