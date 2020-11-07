@@ -13,7 +13,7 @@ public class Page {
     }
 
     //TODO: Add JavaDoc
-    
+
     public String getTitle() {
         return title;
     }

@@ -69,11 +69,18 @@ public class Section {
         return -1;
     }
 
-    public Page removePage(int indexToRemove) throws InvalidPageException {
+    /**
+     * Deletes a page with a specified index from this section.
+     *
+     * @param index index of the page to deleted.
+     * @return the page that is deleted
+     * @throws InvalidPageException when the specified page does not exist
+     */
+    public Page removePage(int index) throws InvalidPageException {
         try {
-            return pageArrayList.remove(indexToRemove);
+            return pageArrayList.remove(index);
         } catch (Exception e) {
-            throw new InvalidPageException(Integer.toString(indexToRemove + 1));
+            throw new InvalidPageException(Integer.toString(index + 1));
         }
     }
 
