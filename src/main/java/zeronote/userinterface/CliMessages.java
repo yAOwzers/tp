@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 public class CliMessages {
     private static final String REMOVE_TASK_SUCCESS_MESSAGE = "Noted. I've removed this task:";
-    private static PersonalMessageGenerator msgGenerator;
 
     public static void printRemoveNotebookMessage(Notebook notebook) {
         //        String personalMessage = msgGenerator.generatePersonalisedMessage();
@@ -88,8 +87,8 @@ public class CliMessages {
     }
 
     public void printAddedTaskMessage(TaskList tasksList, String title) {
-        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        System.out.println(personalMessage);
+        //String personalMessage = msgGenerator.generatePersonalisedMessage();
+        //System.out.println(personalMessage);
         System.out.println("Added: " + title);
         System.out.println(tasksList.getNumberOfTasks() + ":" + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
     }
