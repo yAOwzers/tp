@@ -224,7 +224,7 @@ public class CliMessages {
         System.out.println("To delete and existing notebook, section or page: ");
         System.out.println("delete /n[NOTEBOOK] /s[SECTION] /p[PAGE]");
         System.out.println("Examples of usage: ");
-        System.out.println("delete /nCS2113T /sW10 /p1");
+        System.out.println("delete /nCS2113T /sW10 /pJUnit Tests");
         System.out.println("delete /nCS2113T /sW10");
         System.out.println("delete /nCS2113T");
         System.out.println();
@@ -236,13 +236,13 @@ public class CliMessages {
         System.out.println("select /n[NOTEBOOK] /s[SECTION] /p[PAGE]");
         System.out.println("Examples of usage: ");
         System.out.println("In any context: ");
-        System.out.println("select /nCS2101 /sW2 /p1");
+        System.out.println("select /nCS2101 /sW2 /pBasics of Streams");
         System.out.println("select /nCS2101 /sW2");
         System.out.println("select /nCS2101");
         System.out.println("select /all");
         System.out.println();
         System.out.println("In a selected notebook");
-        System.out.println("select /s1: What is OOP? /p1");
+        System.out.println("select /s1: What is OOP? /pBasics of OOP");
         System.out.println("select /s1: What is OOP?");
         System.out.println();
         System.out.println("In a selected section");
@@ -326,6 +326,7 @@ public class CliMessages {
     public void printLineSeparator() {
         System.out.println("-------------------------------------------------------------");
     }
+
     @Deprecated
     public void printFoundPagesMessage(ArrayList<Page> pagesFound) {
         int index = 1;
