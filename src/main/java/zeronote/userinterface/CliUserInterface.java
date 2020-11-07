@@ -80,7 +80,7 @@ public class CliUserInterface {
             modeString = "";
             break;
         }
-        modeString = modeString + "~$ ";
+        modeString = modeString + ":$ ";
         System.out.print(modeString);
         System.out.flush();
     }
@@ -91,7 +91,7 @@ public class CliUserInterface {
             String userName = keyboardScanner.nextLine();
             appState.setUserName(userName);
             msgGenerator = new PersonalMessageGenerator(userName);
-            msgGenerator.greetUser();
+            msgGenerator.greetFirstTimeUser();
         }
     }
 
@@ -127,8 +127,8 @@ public class CliUserInterface {
         InputParser parser = new InputParser();
         CliCommand command = parser.getCommandFromInput(userInput, appState);
         command.execute();
-        messages.printLineSeparator();
         if (command.printsPersonalMessage()) {
+            messages.printLineSeparator();
             String message = msgGenerator.generatePersonalisedMessage();
             System.out.println(message);
         }
@@ -147,6 +147,7 @@ public class CliUserInterface {
         System.out.println("You are now in timetable mode");
     }
 
+    @Deprecated
     public String printExit() {
         return "GOODBYE HOPE TO SEE YOU AGAIN";
     }
