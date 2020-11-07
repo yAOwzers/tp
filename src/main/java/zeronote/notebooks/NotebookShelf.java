@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class NotebookShelf {
     private final ArrayList<Notebook> notebooksArrayList;
+    private static final int notFound = -1;
 
     public NotebookShelf() {
         notebooksArrayList = new ArrayList<>();
@@ -29,7 +30,7 @@ public class NotebookShelf {
             }
             index++;
         }
-        return -1;
+        return notFound;
     }
 
     /**
