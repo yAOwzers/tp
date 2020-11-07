@@ -1,6 +1,7 @@
 package zeronote.userinterface.command.timetable;
 
 import zeronote.exceptions.InvalidTagException;
+import zeronote.exceptions.ZeroNoteException;
 import zeronote.tasks.Task;
 import zeronote.userinterface.AppState;
 import zeronote.userinterface.CliMessages;
@@ -21,7 +22,7 @@ public class TagCommandTimetableMode extends CliCommand {
         PRINTS_PERSONAL_MESSAGE = true;
     }
 
-    public void execute() {
+    public void execute() throws ZeroNoteException {
         CliMessages cliMessages = new CliMessages();
         try {
             Task targetTask = appState.getTaskList().getTask(index);

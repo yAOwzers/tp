@@ -1,5 +1,6 @@
 package zeronote.userinterface;
 
+import zeronote.exceptions.ZeroNoteException;
 import zeronote.notebooks.Notebook;
 import zeronote.notebooks.NotebookShelf;
 import zeronote.notebooks.Page;
@@ -83,7 +84,7 @@ public class AppState {
         this.indexOfCurrentNotebook = indexOfCurrentNotebook;
     }
 
-    public Task markTaskAsDone(int index) {
+    public Task markTaskAsDone(int index) throws ZeroNoteException {
         Task task = this.taskList.markAsDone(index);
         return task;
     }
