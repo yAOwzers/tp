@@ -87,7 +87,7 @@ public class HelpTest {
         String output;
         assertDoesNotThrow(help::execute);
         output = os.toString();
-        assertEquals(output, expectedOutputNoParams);
+        assertEquals(expectedOutputNoParams, output);
     }
 
     @Test
@@ -102,7 +102,7 @@ public class HelpTest {
         assertDoesNotThrow(help::execute);
 
         output = os.toString();
-        assertEquals(output, expectedOutputNoParams);
+        assertEquals(expectedOutputNoParams, output);
     }
 
     @Test
@@ -117,7 +117,7 @@ public class HelpTest {
         assertDoesNotThrow(help::execute);
 
         output = os.toString();
-        assertEquals(output, expectedOutputNotebook);
+        assertEquals(expectedOutputNotebook, output);
     }
 
     @Test
@@ -132,7 +132,7 @@ public class HelpTest {
         assertDoesNotThrow(help::execute);
 
         output = os.toString();
-        assertEquals(output, expectedOutputNotebook);
+        assertEquals(expectedOutputNotebook, output);
     }
 
     @Test
@@ -147,7 +147,7 @@ public class HelpTest {
         assertDoesNotThrow(help::execute);
 
         output = os.toString();
-        assertEquals(output, expectedOutputTimetable);
+        assertEquals(expectedOutputTimetable, output);
     }
 
     @Test
@@ -162,6 +162,6 @@ public class HelpTest {
         assertDoesNotThrow(help::execute);
 
         output = os.toString();
-        assertEquals(output, expectedOutputTimetable);
+        assertEquals(expectedOutputTimetable, output);
     }
 }
