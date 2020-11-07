@@ -73,7 +73,6 @@ public class CliMessages {
     }
 
     //@@author Lusi711
-
     /**
      * Prints the success message after deleting a task.
      *
@@ -102,7 +101,7 @@ public class CliMessages {
 
     public void printAddTaskHelp() {
         System.out.println("To add a task with a deadline to the task list: ");
-        System.out.println("add /t[TASK] /by[dd/MM/yyyy] [hhmm]");
+        System.out.println("add /t[TASK] /by[dd-MM-yyyy] [hhmm]");
         System.out.println("Example of usage: ");
         System.out.println("add /tcoding /by19-10-2020 1900");
         System.out.println();
@@ -139,20 +138,60 @@ public class CliMessages {
     }
 
     public void printDoneTaskHelp() {
-
+        System.out.println("To mark a task as done:");
+        System.out.println("done [INDEX]");
+        System.out.println("Example of usage: ");
+        System.out.println("done 1");
+        System.out.println();
     }
 
     public void printExitHelp() {
         System.out.println("To quit ZeroNote:");
         System.out.println("exit");
+        System.out.println();
     }
 
     public void printListTaskHelp() {
-
+        System.out.println("To list all tasks: ");
+        System.out.println("list");
+        System.out.println("To list done tasks: ");
+        System.out.println("list /d");
+        System.out.println("To list undone tasks: ");
+        System.out.println("list /u");
+        System.out.println("To list urgent tasks: ");
+        System.out.println("list /urgent");
+        System.out.println();
     }
 
     public void printListNotebookSectionPageHelp() {
+        printListShelfHelp();
+        printListNotebookHelp();
+        printListSectionHelp();
+        System.out.println();
+    }
 
+    public void printListShelfHelp() {
+        System.out.println("When no notebook is selected: ");
+        System.out.println("To list all notebooks:");
+        System.out.println("list");
+        System.out.println("To list all notebooks with their sections: ");
+        System.out.println("list /s");
+        System.out.println("To list all notebooks with their sections and pages: ");
+        System.out.println("list /a");
+    }
+
+    public void printListNotebookHelp() {
+        System.out.println("When a notebook is selected: ");
+        System.out.println("To list all sections in the notebook: ");
+        System.out.println("list");
+        System.out.println("To list all sections in the notebook with their pages: ");
+        System.out.println("list /a");
+    }
+
+    public void printListSectionHelp() {
+        System.out.println("When a section is selected: ");
+        System.out.println("To list all pages in the notebook: ");
+        System.out.println("list");
     }
 
     public void printModeSwitchHelp() {
@@ -173,9 +212,9 @@ public class CliMessages {
 
     public void printRemoveNotebookSectionPageHelp() {
         System.out.println("To delete and existing notebook, section or page: ");
-        System.out.println("delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER]");
+        System.out.println("delete /n[NOTEBOOK] /s[SECTION] /p[PAGE]");
         System.out.println("Examples of usage: ");
-        System.out.println("delete /nCS2113T /sW10 /p1");
+        System.out.println("delete /nCS2113T /sW10 /pJUnit Tests");
         System.out.println("delete /nCS2113T /sW10");
         System.out.println("delete /nCS2113T");
         System.out.println();
@@ -183,16 +222,16 @@ public class CliMessages {
 
     public void printSelectHelp() {
         System.out.println("To select a notebook, section, page, or a combination of the three: ");
-        System.out.println("select /n[NOTEBOOK] /s[SECTION] /p[NUMBER]");
+        System.out.println("select /n[NOTEBOOK] /s[SECTION] /p[PAGE]");
         System.out.println("Examples of usage: ");
         System.out.println("In any context: ");
-        System.out.println("select /nCS2101 /sW2 /p1");
+        System.out.println("select /nCS2101 /sW2 /pBasics of Streams");
         System.out.println("select /nCS2101 /sW2");
         System.out.println("select /nCS2101");
         System.out.println("select /all");
         System.out.println();
         System.out.println("In a selected notebook");
-        System.out.println("select /s1: What is OOP? /p1");
+        System.out.println("select /s1: What is OOP? /pBasics of OOP");
         System.out.println("select /s1: What is OOP?");
         System.out.println();
         System.out.println("In a selected section");
@@ -287,7 +326,7 @@ public class CliMessages {
 
     //@@author
     public void printLineSeparator() {
-        System.out.println("\n-------------------------------------------------------------\n");
+        System.out.println("-------------------------------------------------------------");
     }
 
     public void printFillInNameOfUserMessage() {

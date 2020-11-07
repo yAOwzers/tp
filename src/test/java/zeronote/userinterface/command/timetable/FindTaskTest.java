@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import zeronote.exceptions.InvalidTagException;
 import zeronote.tasks.Task;
 import zeronote.userinterface.AppState;
-import zeronote.userinterface.command.timetable.AddCommandTimetableMode;
-import zeronote.userinterface.command.timetable.FindCommandTimetableMode;
 
 class FindTaskTest {
 

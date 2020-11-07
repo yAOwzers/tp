@@ -9,6 +9,7 @@ public class Notebook {
     private String title;
     private String tag = "";
     private final ArrayList<Section> sectionArrayList;
+    private static final int notFound = -1;
 
     public Notebook(String title) {
         this.title = title;
@@ -97,7 +98,7 @@ public class Notebook {
             }
             index++;
         }
-        return -1;
+        return notFound;
     }
 
     /**
