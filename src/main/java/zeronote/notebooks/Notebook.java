@@ -16,7 +16,7 @@ public class Notebook {
     }
 
     /**
-     * Sets the tag of this notebook
+     * Sets the tag of this notebook.
      *
      * @param tag the tag of the notebook
      * @throws InvalidTagException when the user inputs an empty tag
@@ -30,7 +30,7 @@ public class Notebook {
     }
 
     /**
-     * Gets the tag of this notebook
+     * Gets the tag of this notebook.
      *
      * @return the tag of the notebook
      */
@@ -68,7 +68,7 @@ public class Notebook {
      * Add a new section with a given title to this notebook.
      *
      * @param title the title of the section to be added
-     * @throws DuplicateFoundException when the user inputs a section title that has already been used.
+     * @throws DuplicateFoundException when the user inputs a section title that has already been used
      */
     public void addSection(String title) throws DuplicateFoundException {
         for (Section s : sectionArrayList) {

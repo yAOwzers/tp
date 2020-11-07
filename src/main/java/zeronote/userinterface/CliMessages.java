@@ -1,12 +1,12 @@
 package zeronote.userinterface;
 
+import java.util.ArrayList;
+
 import zeronote.notebooks.Notebook;
 import zeronote.notebooks.Page;
 import zeronote.notebooks.Section;
 import zeronote.tasks.Task;
 import zeronote.tasks.TaskList;
-
-import java.util.ArrayList;
 
 //@@author NeilBaner
 
@@ -73,10 +73,11 @@ public class CliMessages {
     }
 
     //@@author Lusi711
+
     /**
      * Prints the success message after deleting a task.
      *
-     * @param deletedTask the Task that had been deleted.
+     * @param deletedTask   the Task that had been deleted.
      * @param numberOfTasks the total number of tasks in the TaskList.
      */
     public static void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
@@ -90,6 +91,7 @@ public class CliMessages {
             System.out.println("\tNow you have " + numberOfTasks + " tasks in the list.");
         }
     }
+
     //@@author
     public void printAddedTaskMessage(TaskList tasksList, String title) {
         String personalMessage = msgGenerator.generatePersonalisedMessage();
@@ -244,11 +246,12 @@ public class CliMessages {
     }
 
     //@@author Lusi711
+
     /**
      * Prints the success message for tagging a notebook, section, or page.
      *
      * @param description the title of the tagged notebook, section, or page.
-     * @param tag the tag description
+     * @param tag         the tag description.
      */
     public void printTagNotebookMessage(String description, String tag) {
         //        String personalMessage = msgGenerator.generatePersonalisedMessage();
@@ -258,9 +261,9 @@ public class CliMessages {
     }
 
     /**
-     * Prints the success message for tagging a task
+     * Prints the success message for tagging a task.
      *
-     * @param task the task that is tagged
+     * @param task the task that is tagged.
      */
     public void printTagTaskMessage(Task task) {
         //        String personalMessage = msgGenerator.generatePersonalisedMessage();

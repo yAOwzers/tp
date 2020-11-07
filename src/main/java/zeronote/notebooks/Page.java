@@ -31,10 +31,10 @@ public class Page {
     }
 
     /**
-     * Sets the tag of this page
+     * Sets the tag of this page.
      *
-     * @param tag the tag of the page
-     * @throws InvalidTagException when the user inputs an empty tag
+     * @param tag the tag of the page.
+     * @throws InvalidTagException when the user inputs an empty tag.
      */
     public void setTag(String tag) throws InvalidTagException {
         if (!tag.equals("")) {
@@ -45,9 +45,9 @@ public class Page {
     }
 
     /**
-     * Gets the tag of this page
+     * Gets the tag of this page.
      *
-     * @return the tag of the page
+     * @return the tag of the page.
      */
     public String getTag() {
         return tag;

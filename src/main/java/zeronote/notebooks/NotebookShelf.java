@@ -61,7 +61,7 @@ public class NotebookShelf {
     }
 
     /**
-     * Removes a notebook with the specified index from the shelf
+     * Removes a notebook with the specified index from the shelf.
      *
      * @param index the index of the notebook to be removed
      * @return the notebook that is removed
