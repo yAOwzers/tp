@@ -367,21 +367,17 @@ The UML sequence diagram below shows how the add task command works.
 TaskList also allows the deletion of tasks by the user.
 
 The figure below shows how the delete task command works:
-![Sequence Diagram for Delete Task Command](diagrams/class/jpeg/SequenceDiagram_RemoveTimetable.jpg)
+![Sequence Diagram for Delete Task Command](diagrams/class/jpeg/delete_task.jpg)
 
 Here are the general steps that the command goes through when the user inputs "delete 1":
 1. The `CliUserInterface` receives the "delete 1" input by the user and passes it to the `InputParser` class.
 2. `InputParser` parses the input to determine the type of command and the index of the task that is required to delete.
-The Parser then constructs a `RemoveCommandTimetableMode` with constructor as shown below.
-```java
-public RemoveCommandTimetableMode(int indexToRemove, AppState uiMode) {
-    this.setAppState(uiMode);
-    this.indexToRemove = indexToRemove;
-}
-```
-3. Method **execute()** then calls the `TaskList` stored in `AppState` to update the deletion of the task.
-It also constructs `CliMessages` to display messages to the user.
-4. If the deletion is successful, `CliMessages` displays the message to the user.
+3. `InputParser` constructs a `RemoveCommandTimetableMode` and passes the index number to the class.
+4. `RemoveCommandTimetableMode#execute()` is called to delete the task.
+5. If the task is deleted, `RemoveCommandTimetableMode#execute()` also calls `CliMessages#printRemoveTaskMessage` to
+display the success message to the user.
+6. `CliUserInterface#IsTriggerAutosave` is called to verify whether a change has been made in the TaskList or
+NotebookShelf.
 
 **Design Considerations**
 
@@ -426,32 +422,19 @@ The `Task` class contains a member `tag` of String type.
 
 The figure below shows how the tag operation works:
 
-![Sequence Diagram for Tag Timetable command](diagrams/class/jpeg/SequenceDiagram_TagTimetable.jpg)
+![Sequence Diagram for Tag Timetable command](diagrams/class/jpeg/tag_task.jpg)
 
-There are 3 crucial processes during the tag operation. When the user enters `tag 1 /tCS2113T` into the command window while using the application:
-
-**Input Parsing**
-1. `CliUserInterface` receives the "tag 1 /tCS2113T" input by the user and calls the `executeCommand` method.
-2. Method `executeCommand` constructs the `InputParser` class and calls `InputParser#getCommandFromInput` to pass the
-input to `InputParser`.
-3. `InputParser#getCommandFromInput`calls `InputParser#parseTagDescription` to separate the index from the tag.
-4. If the application is in the timetable mode, `InputParser#getCommandFromInput` then parses the index and constructs
-the `TagCommandTimetableMode` class.
-5. `InputParser#getCommandFromInput` returns `TagCommandTimetableMode` back to `CliUserInterface`
-
-**Command Execution**
-1. `CliUserInterface#executeCommand` calls `TagCommandTimetableMode#execute` to execute the command.
-2. In `TagCommandTimetableMode#execute()`, the `CliMessages` class, which prints any outputs to the user, is constructed.
-3. `Tasklist#getTask` returns the `Task` that is specified by the index.
-4. `Task#setTag` changes the `tag` member of `Task` to the tag input by the user.
-5. If the tag is successful, `CliMessages#printTagTaskMessage` displays the message to the user.
-
-**Storage**
-1. `CliUserInterface#executeCommand` finally calls `TagCommandTimetableMode#isTriggerAutoSave` method to check whether a change
-has been made.
-2. If the method returns `True`, `CliUserInterface#executeCommand`calls `saveState` method to save the
-current list.
-3. The tag operation ends.
+There are the general steps during the tag operation. When the user enters `tag 1 /tCS2113T` into the command window
+while using the application:
+1. The `CliUserInterface` receives the "tag 1 /tCS2113T" input by the user and passes it to the `InputParser` class.
+2. `InputParser#getCommandFromInput` parses the input to get the task index number and the tag description
+3. `InputParser#getCommandFromInput` then constructs the `TagCommandTimetableMode` class and returns it to
+`CliUserInterface`.
+4. `TagCommandTimetableMode#execute()` is called to tag the task.
+5. If the tag is added successfully, `TagCommandTimetableMode#execute()` calls `CliMessages#printTagTaskMessage` to
+display the success message to the user.
+6. `CliUserInterface#IsTriggerAutosave` is called to verify whether a change has been made in the TaskList or
+NotebookShelf.
 
 **Design Considerations**
 This section describes some of the considerations involved when designing the tag feature.
@@ -486,48 +469,30 @@ based on the due date of the `Task` objects in the list.
 Step 3. The program prints up to three tasks in the sorted list.
 
 #### 4.2.5. Search Feature
-This feature allows the user to search for tasks by keyword or by tag. Refer to
-[Tag Feature](#423-tag-feature) for more information on the implementation of tags.
+This feature allows the user to search for tasks by keyword or by tag. Refer to [Tag Feature](#423-tag-feature) for more
+ information on the implementation of tags.
 
 This section explains the implementation and design considerations for the search feature.
 
 **Implementation**
 
-The search feature is mainly executed by a `FindCommandTimetableMode` class. The following sequence diagram shows an
-example of how the complete command works:
+The class `FindCommandTimetableMode` executes the search feature. The following sequence diagram shows an example of
+how the complete command works:
 
-![Sequence Diagram for Find command](diagrams/class/jpeg/SequenceDiagram_FindTimetable.jpg)
+![Sequence Diagram for Find command](diagrams/class/jpeg/find_task.jpg)
 
-There are 3 crucial processes during the search operation. For example, when the user enters `find ` into the command
-window while using the application:
-
-**Input Parsing**
-1. `CliUserInterface` receives the "find " input by the user and calls the `executeCommand` method.
-2. Method `executeCommand` constructs the `InputParser` class and calls `InputParser#getCommandFromInput` to pass the
-input to `InputParser`.
-3. Method `InputParser#getCommandFromInput` does the following:<br>
-    a. Calls `InputParser#parseTagDescription` to identify the keyword or tag. The `keyword` and `tag` are set as empty
-    if they are not specified.<br>
-    b. Constructs the `FindCommandTimetableMode` class. <br>
-    c. Returns `FindCommandTimetableMode` back to `CliUserInterface`. <br>
-
-**Command Execution**
-1. `CliUserInterface#executeCommand` calls `FindCommandTimetableMode#execute` to execute the command.
-2. Method `FindCommandTimetableMode#execute()` does the following:<br>
-    a. Constructs `CliMessages` class, which prints any outputs to the user<br>
-    b. Obtains the full tasklist `tasks` from `AppState#getTaskList`<br>
-    c. If `keyword` is specified (not empty), `getTasksWithTitleContainingKeyword(tasks)` is calle, which returns a
-    list of tasks with their titles containing `keyword`.<br>
-    d. Else, if the `tag` is specified (not empty), `getTasksWithTagsContainingKeyword(tasks)` is called, which returns
-    a list of tasks with their tags matching `tag`. This is the method called in this example.<br>
-    e. Calls `CliMessages#printFoundTasksMessage` to display the message to the user.
-
-**Storage**
-1. `CliUserInterface#executeCommand` calls `FindCommandTimetableMode#isTriggerAutoSave` method to check whether a change
-has been made.
-2. If the method returns `True`, `CliUserInterface#executeCommand` calls `saveState` method to save the
-current list.
-3. The find operation ends.
+For example, when the user enters `find /tCS2113T` into the command window while using the application:
+1. The `CliUserInterface` receives the "find /tCS2113T" input by the user and passes it to the `InputParser` class.
+2. `InputParser#getCommandFromInput` parses the input to return an empty keyword and the tag description.
+3. `InputParser#getCommandFromInput` then constructs the `FindCommandTimetableMode` class and returns it to
+`CliUserInterface`.
+4. `FindCommandTimetableMode#execute()` is called to conduct the search.
+    a. If tag is empty, `execute()` calls `getTasksWithTitleContainingKeyword(tasks)`, which returns all tasks which
+    contain the keyword in their title.
+    b. If keyword is empty, `execute()` calls `getTasksWithTag(tasks)`, which returns all tasks with the tag.
+5. If the tag is added successfully, `TagCommandTimetableMode#execute()` displays all found tasks to the user.
+6. `CliUserInterface#IsTriggerAutosave` is called to verify whether a change has been made in the TaskList or
+NotebookShelf.
 
 **Design Considerations**
 
@@ -574,29 +539,20 @@ The UML sequence diagram below shows how the add notebook command works.
 <hr>
 Notebook Mode also allows the user to remove a notebook/section/page.
 
-The figure below shows how the "remove task" command works:
-![Sequence Diagram for Delete Task Command](diagrams/class/jpeg/SequenceDiagram_RemoveNotebook.jpg)
+The figure below shows how the "delete notebook" command works:
+![Sequence Diagram for Delete Notebook Command](diagrams/class/jpeg/delete_notebook.jpg)
 
-After calling `InputParser#getCommandFromInput` from `CliUserInterface`:
-1. `InputParser` parses the input to return the `notebookTitleToRemove`, `sectionTitleToRemove` and `pageNumberToRemove`.
-Some of these members may be empty.
-2. `InputParser` constructs and returns the `RemoveCommandNotebookMode` class with constructor as shown below:
-```java
-public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
-                                     int pageNumber, AppState appState) {
-    this.appState = appState;
-    notebookTitleToRemove = notebookTitle;
-    sectionTitleToRemove = sectionTitle;
-    pageNumberToRemove = pageNumber;
-
-    currentBookshelf = appState.getCurrentBookShelf();
-    currentNotebook = appState.getCurrentNotebook();
-    currentSection = appState.getCurrentSection();
-}
-```
-3. Method **execute()** is called by `CliUserInterface` to delete a notebook, section, or page, depending on the input.
-A switch-case block is used to determine the method to call based on the `appMode`.
-4. If the deletion is successful, `CliMessages` displays the message to the user.
+The sequence diagram above depicts an example where the user wants to delete a page:
+1. The `CliUserInterface` receives the "delete /nCS2113T /sTP /p11" input by the user and passes it to the `InputParser`
+class.
+2. `InputParser#getCommandFromInput` parses the input to return the notebook title "CS2113T", section title "TP", and the page title "11".
+3. `InputParser#getCommandFromInput` then constructs the `RemoveCommandNotebookMode` class and returns it to
+ `CliUserInterface`.
+4. `RemoveCommandNotebookMode#execute()` is called to delete the page.
+    a. If the user is in a bookshelf, `execute()` calls `removeFromNotebookshelf()`.
+    b. If the user is in a notebook, `execute()` calls `removeFromNotebook(Notebook)`.
+    c. If the user is in a section, `execute()` calls `removeFromSection(Section)`.
+5. `CliUserInterface#IsTriggerAutosave` is called to verify whether a change has been made in the NotebookShelf.
 
 #### 4.3.2. Select Feature
 
@@ -643,34 +599,17 @@ The `Notebook`, `Section` and `Page` classes each contain a member `tag` of type
 
 The figure below shows how the tag operation works:
 
-![Sequence Diagram for Tag Notebook command](diagrams/class/jpeg/SequenceDiagram_TagNotebook.jpg)
+![Sequence Diagram for Tag Notebook command](diagrams/class/jpeg/tag_notebook.jpg)
 
-There are 3 crucial processes during the tag operation. When the user enters `tag /tCS2113T` into the command window while using the application:
-
-**Input Parsing**
-1. `CliUserInterface` receives the "tag /tCS2113T" input by the user and calls the `executeCommand` method.
-2. Method `executeCommand` constructs the `InputParser` class and calls `InputParser#getCommandFromInput` to pass the
-input to `InputParser`.
-3. `InputParser#getCommandFromInput`calls `InputParser#parseTagDescription` to separate the index from the tag.
-4. If the application is in the notebook mode, `InputParser#getCommandFromInput` constructs the
-`TagCommandTimetableMode` class. Note that `AppState#getCurrentNotebook`, `AppState#getCurrentSection` and
-`AppState#getCurrentPage` are called to determine the state of the application.
-5. `InputParser#getCommandFromInput` returns `TagCommandNotebookMode` back to `CliUserInterface`.
-
-**Command Execution**
-1. `CliUserInterface#executeCommand` calls `TagCommandNotebookMode#execute` to execute the command.
-2. `TagCommandNotebookMode#execute()` first constructs the `CliMessages` class, which prints any outputs to the user.
-3. `AppState#getAppMode` returns where the user is.
-3. If the user is in a `Notebook`, `Section` or `Page`, `Notebook#setTag`, `Section#setTag` or `Page#setTag` is called
-respectively to change the tag of the current notebook.
-4. If the tag is successful, `CliMessages#printTagNotebookMessage` displays the message to the user.
-
-**Storage**
-1. `CliUserInterface#executeCommand` finally calls `TagCommandNotebookMode#isTriggerAutoSave` method to check whether a
-change has been made.
-2. If the method returns `True`, `CliUserInterface#executeCommand`calls `saveState` method to save the
-current list.
-3. The tag operation ends.
+When the user enters `tag /tCS2113T` into the command window while using the application:
+1. The `CliUserInterface` receives the "tag /tCS2113T" input by the user and passes it to the `InputParser`
+class.
+2. `CliUserInterface#executeCommand(String argument)` calls `InputParser#getCommandFromInput`.
+2. `InputParser#getCommandFromInput` first parses the input to return the tag "CS2113T".
+3. `InputParser#getCommandFromInput` then constructs the `TagCommandNotebookMode` class and returns it to
+ `CliUserInterface`.
+4. `TagCommandNotebookMode#execute()` is called to add a tag to the notebook/section/page the user is in.
+5. `CliUserInterface#IsTriggerAutosave` is called to verify whether a change has been made in the NotebookShelf.
 
 **Design Considerations**
 This section describes some of the considerations involved when designing the tag feature.
@@ -694,27 +633,11 @@ This feature works similarly to the [search feature](#425-search-feature) in the
 
 The following sequence diagram shows how the search feature works in the notebook mode:
 
-![Sequence Diagram for Find Notebook Command](diagrams/class/jpeg/SequenceDiagram_FindNotebook.jpg)
+![Sequence Diagram for Find Notebook Command](diagrams/class/jpeg/find_notebook.jpg)
 
-As the implementation of the search feature in the Notebook mode is similar to that in the Timetable mode, this section
-only covers the main differences in the two.
-
-**Input Parsing**
-- If the application is in the Notebook mode, `InputParser#getCommandFromInput` constructs the `FindCommandNotebookMode`
-class.
-
-**Command Execution**
-Method `FindCommandNotebookMode#execute()` does the following:<br>
-a. Constructs `CliMessages` class, which prints any outputs to the user<br>
-b. If `keyword` is specified (not empty), `getAllWithTitleContainingKeyword()` is called.
-`getAllWithTitleContainingKeyword()`searches for all notebooks, sections and pages that have titles that contain the
-keyword. <br>
-c. Else, if the `tag` is specified (not empty), `getAllWithTagsContainingKeyword` is called. This method finds
-all notebooks, sections and pages that have tags that fit `tag`.<br>
-d. The messages to output to the user are added to `ArrayList`s.
-e. Calls `CliMessages#printFoundNotebooksMessages`, `CliMessages#printFoundSectionsMessages` and
-`CliMessages#printFoundPagesMessages` are called if `Notebook`s, `Section`s and `Page`s are found respectively. These
-methods output the titles of the found notebooks, sections and pages to the user.
+As the implementation of the search feature in the Notebook mode is similar to that in the Timetable mode, except:
+- The `CliMessages` class is constructed in `FindCommandNotebookMode#execute()` to display all the notebooks, sections
+and pages found.
 
 **Design Considerations**
 
@@ -725,7 +648,7 @@ methods output the titles of the found notebooks, sections and pages to the user
     - Cons: It is unoptimized in terms of complexity, with a complexity of O(n<sup>3</sup>).
 - **Alternative 2:** Store all notebooks, sections and pages into respective lists
     - Pros: Has better time complexity of O(n) as it only needs to iterate through each list.
-    - Cons: Unable to output the notebook and section a page belongs to to the user
+    - Cons: Unable to output the notebook and section that a page belongs to to the user
 
 #### 4.3.5. List Feature
 
