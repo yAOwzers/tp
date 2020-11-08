@@ -9,6 +9,11 @@ import zeronote.userinterface.AppState;
 import zeronote.userinterface.CliMessages;
 import zeronote.userinterface.command.CliCommand;
 
+//@@author Lusi711
+
+/**
+ * Class to set a tag to a notebook, section, or page the user is currently in.
+ */
 public class TagCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "tag";
     private static final boolean isAutoSave = true;
@@ -22,6 +27,9 @@ public class TagCommandNotebookMode extends CliCommand {
         PRINTS_PERSONAL_MESSAGE = true;
     }
 
+    /**
+     * Determines the mode of the app and set a tag to the corresponding notebook, section, or page.
+     */
     public void execute() {
         CliMessages cliMessages = new CliMessages();
         try {

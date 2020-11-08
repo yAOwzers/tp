@@ -7,6 +7,7 @@ import zeronote.userinterface.AppState;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+//@@author longngng
 class ListCommandTimetableModeTest {
 
     @Test

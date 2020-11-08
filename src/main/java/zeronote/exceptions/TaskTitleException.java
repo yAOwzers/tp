@@ -1,6 +1,6 @@
 package zeronote.exceptions;
 
-//@@chuckiex3
+//@@author chuckiex3
 
 /**
  * Signals that the user's input is missing a title.
