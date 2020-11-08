@@ -332,14 +332,6 @@ public class InputParser {
         return input.split(AddCommandTimetableMode.TASK_DELIMITER, 2);
     }
 
-    /**
-     * Parses the command word from the user's input.
-     *
-     * @param userInput is the user's input.
-     * @param appState is the current application state, containing the respective data such as tasklist and notebooklist.
-     * @return the respective CliCommand to the command word that had been parsed.
-     * @throws ZeroNoteException when there is a respective error based off the command word in the user's input.
-     */
     public CliCommand getCommandFromInput(String userInput, AppState appState) throws ZeroNoteException {
         String trimmedInput = userInput.trim();
         String[] input = trimmedInput.split(" ", 2); // split input into command and arguments
