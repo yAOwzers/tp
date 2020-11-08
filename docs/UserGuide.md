@@ -810,13 +810,35 @@ To close the program, type `exit`.
 
 This section answers some frequently asked questions.
 
-**Q**: How do I transfer my data to another computer?
+### How do I transfer my data to another computer?
 
-**A**: {your answer here}
+The save files for Zer0Note are stored in the same directory as the Zer0Note JAR file. You may move the entire
+directory to another computer and Zer0Note will continue to work with your saved data. Alternatively, you may move
+just the files named `nameOfUser.txt`, `notebooks.txt` and `tasks.txt` to another computer, into the directory
+containing the Zer0Note JAR file on that computer. 
 
-**Q**: Where do I find the release? 
+### Where do I find the release? 
 
-**A**: You can find it [here](https://github.com/AY2021S1-CS2113T-T12-3/tp/releases).
+You can find it [here](https://github.com/AY2021S1-CS2113T-T12-3/tp/releases). 
+
+### I found a bug! Where do I report it?
+
+Oh no! We tried to make Zer0Note as bug-free as possible, but sadly, we may have missed some. Please add an issue to
+our issue tracker [on GitHub over here](https://github.com/AY2021S1-CS2113T-T12-3/tp/issues), and we will attempt to
+fix it as soon as possible. 
+
+### I have a feature idea for Zer0Note! Can I suggest it to the developers?
+
+Thank you for using Zer0Note, we're glad you have a feature idea! Please submit it to 
+[our issue tracker](https://github.com/AY2021S1-CS2113T-T12-3/tp/issues) as well. While we cannot guarantee that we
+will implement your suggestion (sorry!) we will read all suggestions and consider them for future updates. 
+
+### How does Zer0Note work under the hood?
+
+We're delighted that you're curious about how Zer0Note works! Our code is fully open-source and can be accessed [on
+our GitHub repository](https://github.com/AY2021S1-CS2113T-T12-3/tp). We recommend you read our 
+[Developer Guide](https://ay2021s1-cs2113t-t12-3.github.io/tp/DeveloperGuide.html) to better understand the code, 
+especially if you want to contribute to development. 
 
 <br>
 
