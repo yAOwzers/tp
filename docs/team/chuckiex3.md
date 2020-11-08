@@ -26,4 +26,4 @@
 - Community:
   - PRs reviewed (with non-trivial comments) [#193](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/193), [#129](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/129)
   - Contributed to forum [#121](https://github.com/nus-cs2113-AY2021S1/forum/issues/121)
-  - Reported bugs and suggestions for other teams [WatchNext](https://github.com/nus-cs2113-AY2021S1/tp/pull/26), [Nav@NUS](https://github.com/nus-cs2113-AY2021S1/tp/pull/9)
+  - Reported bugs and suggestions for other teams [WatchNext](https://github.com/nus-cs2113-AY2021S1/tp/pull/26), [Nav@NUS](https://github.com/AY2021S1-CS2113T-F14-3/tp/issues/173)
