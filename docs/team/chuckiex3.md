@@ -1,8 +1,7 @@
 # Mooi Suet Yeng, Francene's Project Portfolio Page
 
 ## Project: Zer0Note
-Zer0Note is a note taking and organisation application meant for students(especially those who can type fast).
-The user interacts with it using a CLI. It is written in Java, and has about ?? kLoC.
+//todo standardise
 
 ### Summary of Contributions
 - Created ASCII art for Zer0Note
