@@ -21,22 +21,16 @@ public class CliMessages {
     private static PersonalMessageGenerator msgGenerator;
 
     public static void printRemoveNotebookMessage(Notebook notebook) {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         System.out.println("Noted. I've removed this notebook: ");
         System.out.println("\t" + notebook.getTitle());
     }
 
     public static void printRemoveSectionMessage(Section section) {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         System.out.println("Noted. I've removed this section: ");
         System.out.println("\t" + section.getTitle());
     }
 
     public static void printRemovePageMessage(Page page) {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         System.out.println("Noted. I've removed this page: " + page.getTitle());
         page.printPage();
     }
@@ -77,8 +71,6 @@ public class CliMessages {
 
 
     public static void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         System.out.println(REMOVE_TASK_SUCCESS_MESSAGE);
         System.out.println(deletedTask.toString());
         if (numberOfTasks == 1) {
@@ -89,8 +81,6 @@ public class CliMessages {
     }
 
     public void printAddedTaskMessage(TaskList tasksList, String title) throws ZeroNoteException {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         System.out.println("Added: " + title);
         System.out.println(tasksList.getNumberOfTasks() + ":" + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
     }
@@ -281,15 +271,11 @@ public class CliMessages {
     }
 
     public void printTagNotebookMessage(String description, String tag) {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         String createTagMessage = "Got it! I've tagged this as:\n";
         System.out.println(createTagMessage + description + " (tag: " + tag + ")");
     }
 
     public void printTagTaskMessage(Task task) {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         String createTagMessage = "Got it! I've tagged this as:\n";
         System.out.println(createTagMessage + task);
     }
