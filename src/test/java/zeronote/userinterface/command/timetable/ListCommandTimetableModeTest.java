@@ -20,7 +20,7 @@ class ListCommandTimetableModeTest {
             listCommandTimetableMode.execute();
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals(input, e.problematicInput);
+            assertEquals("/u/u", e.problematicInput);
         }
     }
 }

@@ -20,7 +20,7 @@ class ListNotebookTest {
         appState.setAppMode(AppMode.NOTEBOOK_SHELF);
         assertEquals("/s", listCommandNotebookMode.getCommandParams());
     }
-    
+
     @Test
     void execute_invalidInput_exceptionThrown() {
         AppState appState = new AppState();
@@ -32,7 +32,7 @@ class ListNotebookTest {
             listCommandNotebookMode.execute();
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals(input, e.problematicInput);
+            assertEquals(" /d", e.problematicInput);
         } catch (IncorrectAppModeException e) {
             e.printStackTrace();
         }
