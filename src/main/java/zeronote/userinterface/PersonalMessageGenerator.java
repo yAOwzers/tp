@@ -16,7 +16,7 @@ public class PersonalMessageGenerator {
         this.userName = userName;
     }
 
-    //@neilbaner
+    //@@author neilbaner
     /**
      * Generates a random personal encouragement message as taken from txt/personalMessages.txt file along
      * with a random user name from txt/nameOfUser file.
@@ -42,7 +42,7 @@ public class PersonalMessageGenerator {
         return personalMessage;
     }
 
-    //@@yAOwzers
+    //@@author yAOwzers
     /**
      * Prints a welcome message to users who have yet to input their name into Zer0Note.
      *

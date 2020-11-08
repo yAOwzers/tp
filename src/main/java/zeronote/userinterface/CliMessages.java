@@ -330,7 +330,7 @@ public class CliMessages {
         }
     }
 
-    //@@yAOwzers
+    //@@author yAOwzers
     public void printLineSeparator() {
         System.out.println("-------------------------------------------------------------");
     }
