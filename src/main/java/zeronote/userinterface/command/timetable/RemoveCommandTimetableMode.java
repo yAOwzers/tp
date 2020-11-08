@@ -6,6 +6,11 @@ import zeronote.userinterface.AppState;
 import zeronote.userinterface.CliMessages;
 import zeronote.userinterface.command.CliCommand;
 
+//@@author Lusi711
+
+/**
+ * Class to delete an existing task with the index specified by the user.
+ */
 public class RemoveCommandTimetableMode extends CliCommand {
 
     public static final String COMMAND_WORD = "delete";
@@ -21,6 +26,9 @@ public class RemoveCommandTimetableMode extends CliCommand {
         PRINTS_PERSONAL_MESSAGE = true;
     }
 
+    /**
+     * Executes the command to delete an existing task.
+     */
     @Override
     public void execute() {
         CliMessages cliMessages = new CliMessages();

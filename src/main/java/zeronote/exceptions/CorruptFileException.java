@@ -1,5 +1,7 @@
 package zeronote.exceptions;
 
+// TODO: Add JavaDoc for this exception
+
 public class CorruptFileException extends ZeroNoteException {
     public CorruptFileException(String enteredCommand) {
         super(enteredCommand);
