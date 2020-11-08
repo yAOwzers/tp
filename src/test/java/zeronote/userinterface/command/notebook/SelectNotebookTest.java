@@ -15,7 +15,7 @@ import zeronote.userinterface.command.CliCommand;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-//@@chuckiex3
+//@@author chuckiex3
 
 public class SelectNotebookTest {
     @Test
@@ -91,11 +91,8 @@ public class SelectNotebookTest {
         InputParser parser = new InputParser();
         String inputString = "select /ntest_notebook /sse /ppage";
         CliCommand command = parser.getCommandFromInput(inputString, appState);
-        String argument = "/ntest_notebook /sse /ppage";
-        command.execute();
         assertThrows(ZeroNoteException.class, () -> {
-            parser.extractParams(argument, appState);
+            command.execute();
         });
-
     }
 }

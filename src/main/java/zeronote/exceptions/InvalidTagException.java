@@ -1,5 +1,10 @@
 package zeronote.exceptions;
 
+//@@Lusi711
+
+/**
+ * Signals that the user entered an empty tag.
+ */
 public class InvalidTagException extends ZeroNoteException {
     public InvalidTagException(String problematicInput) {
         super(problematicInput);
@@ -10,8 +15,8 @@ public class InvalidTagException extends ZeroNoteException {
     }
 
     public void printErrorMessage() {
-        System.out.println("Missing tag/Invalid tag: tag /t" + problematicInput);
-        System.out.println("Format: tag [index] /t[tag] for timetable mode");
-        System.out.println("Format: tag /t[tag] for notebook mode");
+        System.out.println("Missing tag for command: " + problematicInput);
+        System.out.println("Format to tag a task: tag [index] /t[tag]");
+        System.out.println("Format to a selected notebook/section/page: tag /t[tag]");
     }
 }

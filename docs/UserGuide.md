@@ -162,9 +162,29 @@ This command allows you to switch from notebook mode (at the bookshelf level) to
 
 Format: `mode /n`
 
+Example of usage:
+
+```
+T:$ mode /n
+-------------------------------------------------------------
+You are now in notebook mode
+-------------------------------------------------------------
+```
+> `T:$` above means that you are in the timetable mode. Your input should go after the `$` sign.
+
 - Switch to the timetable mode
 
 Format: `mode /t`
+
+Example of usage:
+
+```
+N:$ mode /t
+-------------------------------------------------------------
+You are now in timetable mode
+-------------------------------------------------------------
+```
+> `N:$` above means that you are in the notebook mode. Your input should go after the `$` sign.
 
 <br>
 
@@ -205,7 +225,6 @@ Added: Read Book
 1:[x] Read book (by: Oct 19 2020 06.00 PM)
 -------------------------------------------------------------
 ```
->:bulb: `T:$` means that you are in the timetable mode.
 
 With that, you've successfully added a task titled `Read book`, with the deadline `Oct 19 2020 06.00 PM` into your task list!
 
@@ -278,7 +297,7 @@ command, described below:
 
 <br>
 
-##### 3.3.4.1 Listing all tasks
+#### 3.3.4.1 Listing all tasks
 
 When you want to have a look at your task list, you can list out all the existing tasks.
 
@@ -301,7 +320,7 @@ T:$ list
 
 <br>
 
-##### 3.3.4.2 Listing done tasks
+#### 3.3.4.2 Listing done tasks
 
 When you want to keep track of your progress, you can list out all the tasks that are marked as done.
 
@@ -321,7 +340,7 @@ T:$ list /d
 
 <br>
 
-##### 3.3.4.3 Listing undone tasks
+#### 3.3.4.3 Listing undone tasks
 
 If you want to have a look at what you need to do, you can list out all the tasks that are not marked as done.
 
@@ -342,7 +361,7 @@ T:$ list /u
 
 <br>
 
-##### 3.3.4.4 Listing urgent tasks
+#### 3.3.4.4 Listing urgent tasks
 
 If you're in a time crunch, you can list out top urgent tasks that have not been done, sorted by deadlines. If there
 are many undone tasks, only the top three urgent ones will be displayed.
@@ -372,7 +391,7 @@ too.
 
 There are two ways to find a task:
 
-##### 3.3.5.1 Finding by keyword
+#### 3.3.5.1 Finding by keyword
 
 Finds any task that contains the keyword in the task description.  The search is not case-sensitive.
 
@@ -391,7 +410,7 @@ T:$ find book
 -------------------------------------------------------------
 ```
 
-##### 3.3.5.2 Finding by tag
+#### 3.3.5.2 Finding by tag
 
 Finds any task that has a specified tag.  The search is not case-sensitive.
 
@@ -454,7 +473,7 @@ Within `Notebook Mode`, you can `add` a `notebook`, `section` or a `page`. This 
 > :warning: This feature does not support adding a notebook, section and page (or any combination of the 3) 
 > all at once. e.g. `add /nSchool /sAdmin /p1: Modules` will throw an error.
 
-##### 3.4.1.1 Adding a notebook
+#### 3.4.1.1 Adding a notebook
 
 Use the `add /n` command to add a `notebook`  into the `notebook shelf`.
 
@@ -486,7 +505,7 @@ Now that you have added a new notebook for `CS2113T`, you can add a `section`!
 
 <br>
 
-##### 3.4.1.2 Adding a section
+#### 3.4.1.2 Adding a section
 
 Use the `add /s` command to add a `section`  into the [selected](#342-selecting-a-notebooksectionpage-select) `notebook`.
 
@@ -507,6 +526,8 @@ Example of usage:
 Now that you have a notebook for `CS2113T`, you can make a `section` for each academic week.
 
 > :bulb: Remember to select the `CS2113T` notebook!
+>
+> :bulb: `N/CS2113T:$` means that you have selected the `CS2113T` notebook.
 
 ```
 N/CS2113T:$ add /sW1: Java
@@ -514,15 +535,14 @@ N/CS2113T:$ add /sW1: Java
 Added section with title: W1: Java
 -------------------------------------------------------------
 ```
->:bulb: N/CS2113T:$ means that you have selected the `CS2113T` notebook.
->
+
 >:warning: Ensure that your section title is preceded by "/s", or an error message will be shown.
 
 Great! You can now add a `page` (or as many pages as you like) into your new section titled `W1: Java`.
 
 <br>
 
-##### 3.4.1.3 Adding a page
+#### 3.4.1.3 Adding a page
 
 Use the `add /p` command to add a `page`  into the [selected](#342-selecting-a-notebooksectionpage-select) `section`.
 >:bulb: You must select a `section` before adding a page!
@@ -545,7 +565,7 @@ Let's say you want to add a page into a selected notebook `section`.
 
 > :bulb: Remember to select the `W1: Java` section!
 >
->:bulb: N/CS2113T/W1: Java:$ means that you have selected the `W1: Java` section.
+>:bulb: `N/CS2113T/W1: Java:$` means that you have selected the `W1: Java` section.
 
 ```
 N/CS2113T/W1: Java:$ add /pHELLO WORLD; System.out.println("Hello World!");
@@ -765,7 +785,7 @@ N/CS2101/Chapter 1:$ list
 Just like how you can find a task in the Timetable mode, you can look for contents in this mode. Even sections and pages
 that do not belong to a selected notebook can be found. There are two ways to do so:
 
-##### 3.4.5.1 Finding by keyword
+#### 3.4.5.1 Finding by keyword
 
 Finds all notebooks, sections and pages that contain the keyword in their title.  The search is not case-sensitive.
 
@@ -795,7 +815,8 @@ Sections:
 ```
 >:bulb: "|--" indicates "belongs to". You can use this to identify the particular notebook and section a page is in.
 
-##### 3.4.5.2 Finding by tag
+#### 3.4.5.2 Finding by tag
+>>>>>>> master
 
 Finds all notebooks, sections and pages that has a specified tag.  The search is case-sensitive.
 
