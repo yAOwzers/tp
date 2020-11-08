@@ -20,8 +20,8 @@ public class MarkAsDoneTest {
         AppState appState = new AppState();
 
         String input = "/tTask1 /by12-10-2020 2252";
-        AddCommandTimetableMode addTimetableMode = new AddCommandTimetableMode(input, appState);
-        assertDoesNotThrow(addTimetableMode::execute);
+        Task t = new Task("Task 1","12-10-2020 2252");
+        appState.getTaskList().addTask(t);
 
         assertThrows(TaskIndexOutOfBoundsException.class, () -> {
             appState.getTaskList().markAsDone(2);

@@ -9,7 +9,7 @@ import zeronote.userinterface.AppState;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-//@@longngng
+//@@author longngng
 class ListNotebookTest {
     @Test
     void execute_validInput_success() {
@@ -20,7 +20,7 @@ class ListNotebookTest {
         appState.setAppMode(AppMode.NOTEBOOK_SHELF);
         assertEquals("/s", listCommandNotebookMode.getCommandParams());
     }
-    
+
     @Test
     void execute_invalidInput_exceptionThrown() {
         AppState appState = new AppState();

@@ -1,6 +1,6 @@
 package zeronote.exceptions;
 
-//@@chuckiex3
+//@@author chuckiex3
 
 /**
  * Signals that the user input a notebook/section/page title that has already been used.

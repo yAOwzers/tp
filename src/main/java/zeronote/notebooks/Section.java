@@ -28,7 +28,7 @@ public class Section {
     /**
      * Add a new page with a given title to this section.
      *
-     * @param title the title of the page to be added
+     * @param title the title of the page to be added.
      * @throws DuplicateFoundException when the user inputs a page title that has already been used.
      */
     public void addPage(String title, String content) throws DuplicateFoundException {
@@ -47,7 +47,7 @@ public class Section {
     /**
      * Find a page with a given title in this section.
      *
-     * @param searchKey the title of the section to search for in the section.
+     * @param searchKey the title of the page to search for in the section.
      * @return the index of the page with the given title, -1 if not found.
      */
     public int findPage(String searchKey) {
@@ -61,11 +61,18 @@ public class Section {
         return notFound;
     }
 
-    public Page removePage(int indexToRemove) throws InvalidPageException {
+    /**
+     * Deletes a page with a specified index from this section.
+     *
+     * @param index index of the page to deleted.
+     * @return the page that is deleted
+     * @throws InvalidPageException when the specified page does not exist
+     */
+    public Page removePage(int index) throws InvalidPageException {
         try {
-            return pageArrayList.remove(indexToRemove);
+            return pageArrayList.remove(index);
         } catch (Exception e) {
-            throw new InvalidPageException(Integer.toString(indexToRemove + 1));
+            throw new InvalidPageException(Integer.toString(index + 1));
         }
     }
 

@@ -10,6 +10,11 @@ import zeronote.userinterface.AppState;
 import zeronote.userinterface.CliMessages;
 import zeronote.userinterface.command.CliCommand;
 
+//@@author yAOwzers
+/**
+ * Marks a specific task in the tasklist in Zer0Note as done.
+ *
+ */
 public class DoneCommandTimetableMode extends CliCommand {
 
     public static final String COMMAND_WORD = "done";
@@ -30,6 +35,7 @@ public class DoneCommandTimetableMode extends CliCommand {
     public void execute() throws ZeroNoteException {
         taskList = appState.getTaskList();
         int numberOfTasks = taskList.getNumberOfTasks();
+        assert numberOfTasks >= 0;
         if (numberOfTasks == 0) {
             throw new TaskListEmptyException();
         }

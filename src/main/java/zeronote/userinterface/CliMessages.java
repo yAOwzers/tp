@@ -1,5 +1,6 @@
 package zeronote.userinterface;
 
+import zeronote.exceptions.TaskIndexOutOfBoundsException;
 import zeronote.exceptions.ZeroNoteException;
 import zeronote.notebooks.Notebook;
 import zeronote.notebooks.Page;
@@ -9,16 +10,13 @@ import zeronote.tasks.TaskList;
 
 import java.util.ArrayList;
 
+//@@author NeilBaner
+
 /**
  * A class containing all the messages displayed to the user during operation.
- *
- * @author neilbaner
- * @version 0.1
  */
-
 public class CliMessages {
     private static final String REMOVE_TASK_SUCCESS_MESSAGE = "Noted. I've removed this task:";
-    private static PersonalMessageGenerator msgGenerator;
 
     public static void printRemoveNotebookMessage(Notebook notebook) {
         //        String personalMessage = msgGenerator.generatePersonalisedMessage();
@@ -75,7 +73,14 @@ public class CliMessages {
         System.out.println("Task save file was not found. A new save file will be created upon exit. ");
     }
 
+    //@@author Lusi711
 
+    /**
+     * Prints the success message after deleting a task.
+     *
+     * @param deletedTask   the Task that had been deleted.
+     * @param numberOfTasks the total number of tasks in the TaskList.
+     */
     public static void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
         //        String personalMessage = msgGenerator.generatePersonalisedMessage();
         //        System.out.println(personalMessage);
@@ -88,13 +93,24 @@ public class CliMessages {
         }
     }
 
+    //@@author chuckiex3
+
+    /**
+     * Print the name of the task that has been successfully added into the user's task list.
+     *
+     * @param tasksList is the user's task list.
+     * @param title     is the task description.
+     * @throws ZeroNoteException is thrown if the task index is invalid.
+     */
     public void printAddedTaskMessage(TaskList tasksList, String title) throws ZeroNoteException {
         //        String personalMessage = msgGenerator.generatePersonalisedMessage();
         //        System.out.println(personalMessage);
         System.out.println("Added: " + title);
-        System.out.println(tasksList.getNumberOfTasks() + ":" + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
+        System.out.println(tasksList.getNumberOfTasks() + ":"
+                + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
     }
 
+    //@@author NeilBaner
     public void printAddTaskHelp() {
         System.out.println("To add a task with a deadline to the task list: ");
         System.out.println("add /t[TASK] /by[dd-MM-yyyy] [hhmm]");
@@ -280,6 +296,14 @@ public class CliMessages {
         System.out.println(markDoneMessage + "\n " + task);
     }
 
+    //@@author Lusi711
+
+    /**
+     * Prints the success message for tagging a notebook, section, or page.
+     *
+     * @param description the title of the tagged notebook, section, or page.
+     * @param tag         the tag description.
+     */
     public void printTagNotebookMessage(String description, String tag) {
         //        String personalMessage = msgGenerator.generatePersonalisedMessage();
         //        System.out.println(personalMessage);
@@ -287,6 +311,11 @@ public class CliMessages {
         System.out.println(createTagMessage + description + " (tag: " + tag + ")");
     }
 
+    /**
+     * Prints the success message for tagging a task.
+     *
+     * @param task the task that is tagged.
+     */
     public void printTagTaskMessage(Task task) {
         //        String personalMessage = msgGenerator.generatePersonalisedMessage();
         //        System.out.println(personalMessage);
@@ -294,6 +323,11 @@ public class CliMessages {
         System.out.println(createTagMessage + task);
     }
 
+    /**
+     * Prints the notebooks, sections and pages that were found by keyword or by tag.
+     *
+     * @param messages an ArrayList of the titles of notebooks, sections and pages found.
+     */
     public void printFoundNotebooksMessages(ArrayList<String> messages) {
         int index = 1;
         for (String message : messages) {
@@ -302,18 +336,9 @@ public class CliMessages {
         }
     }
 
+    //@@author yAOwzers
     public void printLineSeparator() {
         System.out.println("-------------------------------------------------------------");
-    }
-
-    @Deprecated
-    public void printFoundPagesMessage(ArrayList<Page> pagesFound) {
-        int index = 1;
-        System.out.println("Pages:");
-        for (Page page : pagesFound) {
-            System.out.println(index + ". " + page.getTitle());
-            index += 1;
-        }
     }
 
     public void printFillInNameOfUserMessage() {

@@ -16,6 +16,12 @@ public class Notebook {
         sectionArrayList = new ArrayList<>();
     }
 
+    /**
+     * Sets the tag of this notebook.
+     *
+     * @param tag the tag of the notebook
+     * @throws InvalidTagException when the user inputs an empty tag
+     */
     public void setTag(String tag) throws InvalidTagException {
         if (!tag.equals("")) {
             this.tag = tag;
@@ -24,6 +30,11 @@ public class Notebook {
         }
     }
 
+    /**
+     * Gets the tag of this notebook.
+     *
+     * @return the tag of the notebook
+     */
     public String getTag() {
         return tag;
     }
@@ -50,6 +61,11 @@ public class Notebook {
         return sectionArrayList;
     }
 
+    /**
+     * Get the section at a particular index in the ArrayList. Use findSection() to get an index from a given title.
+     *
+     * @param index the index of the section to be found
+     */
     public Section getSectionAtIndex(int index) {
         return sectionArrayList.get(index);
     }
@@ -58,7 +74,7 @@ public class Notebook {
      * Add a new section with a given title to this notebook.
      *
      * @param title the title of the section to be added
-     * @throws DuplicateFoundException when the user inputs a section title that has already been used.
+     * @throws DuplicateFoundException when the user inputs a section title that has already been used
      */
     public void addSection(String title) throws DuplicateFoundException {
         for (Section s : sectionArrayList) {
@@ -99,6 +115,7 @@ public class Notebook {
         return sectionArrayList.remove(indexToRemove);
     }
 
+    //TODO: Add JavaDoc for serialize() method
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();
