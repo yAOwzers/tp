@@ -29,7 +29,7 @@ public class FindCommandTimetableMode extends CliCommand {
         this.keyword = keyword.toLowerCase();
         this.tag = tag.toLowerCase();
         this.appState = appState;
-        PRINTS_PERSONAL_MESSAGE = false;
+        PRINTS_PERSONAL_MESSAGE = true;
     }
 
     /**

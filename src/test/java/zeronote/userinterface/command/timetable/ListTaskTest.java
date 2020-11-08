@@ -2,8 +2,12 @@ package zeronote.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
 import zeronote.exceptions.InvalidCommandException;
+import zeronote.tasks.Task;
+import zeronote.tasks.TaskList;
 import zeronote.userinterface.AppState;
+import zeronote.userinterface.command.CliCommand;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
