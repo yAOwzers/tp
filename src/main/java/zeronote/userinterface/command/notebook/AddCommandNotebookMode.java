@@ -42,26 +42,22 @@ public class AddCommandNotebookMode extends CliCommand {
         this.content = content;
     }
 
-    public void execute() {
-        try {
-            switch (appState.getAppMode()) {
-            case NOTEBOOK_SHELF:
-                currentBookshelf.addNotebook(title);
-                System.out.println("Added notebook with title: " + title);
-                break;
-            case NOTEBOOK_BOOK:
-                currentNotebook.addSection(title);
-                System.out.println("Added section with title : " + title);
-                break;
-            case NOTEBOOK_SECTION:
-                currentSection.addPage(title, content);
-                System.out.println("Added page with title: " + title);
-                break;
-            default:
-                throw new AddCommandNotebookException(title);
-            }
-        } catch (ZeroNoteException e) {
-            e.printErrorMessage();
+    public void execute() throws ZeroNoteException {
+        switch (appState.getAppMode()) {
+        case NOTEBOOK_SHELF:
+            currentBookshelf.addNotebook(title);
+            System.out.println("Added notebook with title: " + title);
+            break;
+        case NOTEBOOK_BOOK:
+            currentNotebook.addSection(title);
+            System.out.println("Added section with title : " + title);
+            break;
+        case NOTEBOOK_SECTION:
+            currentSection.addPage(title, content);
+            System.out.println("Added page with title: " + title);
+            break;
+        default:
+            throw new AddCommandNotebookException(title);
         }
     }
 

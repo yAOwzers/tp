@@ -24,21 +24,17 @@ public class SelectCommandNotebookMode extends CliCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws ZeroNoteException {
         InputParser parser = new InputParser();
-        try {
-            switch (appState.getAppMode()) {
-            case NOTEBOOK_SHELF:
-            case NOTEBOOK_BOOK:
-            case NOTEBOOK_SECTION:
-            case NOTEBOOK_PAGE:
-                parser.extractParams(argument, appState);
-                break;
-            default:
-                throw new InvalidSelectCommandException(argument);
-            }
-        } catch (ZeroNoteException e) {
-            e.printErrorMessage();
+        switch (appState.getAppMode()) {
+        case NOTEBOOK_SHELF:
+        case NOTEBOOK_BOOK:
+        case NOTEBOOK_SECTION:
+        case NOTEBOOK_PAGE:
+            parser.extractParams(argument, appState);
+            break;
+        default:
+            throw new InvalidSelectCommandException(argument);
         }
     }
 }
