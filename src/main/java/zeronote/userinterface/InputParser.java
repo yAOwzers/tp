@@ -5,7 +5,6 @@ import zeronote.exceptions.IncorrectAppModeException;
 import zeronote.exceptions.IncorrectDeadlineFormatException;
 import zeronote.exceptions.InvalidCommandException;
 import zeronote.exceptions.InvalidIndexException;
-import zeronote.exceptions.InvalidModeException;
 import zeronote.exceptions.InvalidNotebookException;
 import zeronote.exceptions.InvalidPageException;
 import zeronote.exceptions.InvalidSectionException;
@@ -468,7 +467,7 @@ public class InputParser {
             if (appState.getAppMode() == AppMode.TIMETABLE) {
                 return new DoneCommandTimetableMode(argument, appState);
             } else {
-                throw new InvalidModeException();
+                throw new IncorrectAppModeException();
             }
         case ModeSwitch.COMMAND_WORD:
             return new ModeSwitch(argument, appState);
