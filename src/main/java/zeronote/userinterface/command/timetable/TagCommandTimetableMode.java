@@ -1,6 +1,7 @@
 package zeronote.userinterface.command.timetable;
 
 import zeronote.exceptions.InvalidTagException;
+import zeronote.exceptions.ZeroNoteException;
 import zeronote.tasks.Task;
 import zeronote.userinterface.AppState;
 import zeronote.userinterface.CliMessages;
@@ -29,7 +30,7 @@ public class TagCommandTimetableMode extends CliCommand {
     /**
      * Tags a task with the index number matching <code>index</code>.
      */
-    public void execute() {
+    public void execute() throws ZeroNoteException {
         CliMessages cliMessages = new CliMessages();
         try {
             Task targetTask = appState.getTaskList().getTask(index);

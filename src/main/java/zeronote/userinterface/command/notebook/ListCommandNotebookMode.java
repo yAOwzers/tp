@@ -84,7 +84,7 @@ public class ListCommandNotebookMode extends CliCommand {
                 listBookshelf_n(appState.getCurrentBookShelf());
                 break;
             default:
-                throw new InvalidCommandException("There not exists such options");
+                throw new InvalidCommandException(commandParams);
             }
             break;
         case NOTEBOOK_BOOK:
@@ -96,7 +96,7 @@ public class ListCommandNotebookMode extends CliCommand {
                 listNotebook_s(appState.getCurrentNotebook());
                 break;
             default:
-                throw new InvalidCommandException("There not exists such options");
+                throw new InvalidCommandException(commandParams);
             }
             break;
         case NOTEBOOK_SECTION:
@@ -105,7 +105,7 @@ public class ListCommandNotebookMode extends CliCommand {
                 listSection(appState.getCurrentSection());
                 break;
             default:
-                throw new InvalidCommandException("There not exists such options");
+                throw new InvalidCommandException(commandParams);
             }
             break;
         default:
