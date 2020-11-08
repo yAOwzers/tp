@@ -29,7 +29,7 @@ public class FindCommandTimetableMode extends CliCommand {
         if (tag.equals("") && !keyword.equals("")) {
             tasksFound = getTasksWithTitleContainingKeyword(tasks);
         } else if (!tag.equals("") && keyword.equals("")) {
-            tasksFound = getTasksWithTagsContainingKeyword(tasks);
+            tasksFound = getTasksWithTag(tasks);
         } else {
             System.out.println("Missing keyword/tag");
             System.out.println("Format: find [KEYWORD] or find /t[TAG]");
@@ -54,7 +54,7 @@ public class FindCommandTimetableMode extends CliCommand {
         return matchedTasks;
     }
 
-    private ArrayList<Task> getTasksWithTagsContainingKeyword(TaskList tasks) {
+    private ArrayList<Task> getTasksWithTag(TaskList tasks) {
         ArrayList<Task> matchedTasks = new ArrayList<>();
         for (Task task : tasks.getTaskArrayList()) {
             String taskTag = task.getTag().toLowerCase();
