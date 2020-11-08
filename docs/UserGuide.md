@@ -16,32 +16,33 @@
 [**3. Features**](#3-features) <br>
 &nbsp;&nbsp;[3.1 Viewing the user guide: `help`](#31-viewing-the-user-guide-help) <br>
 &nbsp;&nbsp;[3.2 Switching between the two modes: `mode`](#32-switching-between-the-two-modes-mode) <br>
-&nbsp;&nbsp;[3.3 Timetable Mode](#33-timetable-mode) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1 Adding a task: `add`](#331-adding-a-task-add) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2 Marking a task as done: `done`](#332-marking-a-task-as-done-done) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3 Tagging a task: `tag`](#333-tagging-tasks-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4 Listing tasks: `list`](#334-listing-tasks-list) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.1 Listing all tasks](#3341-listing-all-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.2 Listing done tasks](#3342-listing-done-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.3 Listing undone tasks](#3343-listing-undone-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4.4 Listing urgent tasks](#3344-listing-urgent-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5 Finding tasks: `find`](#335-finding-tasks-find) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5.1 Finding by keyword](#3351-finding-by-keyword) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5.2 Finding by tag](#3352-finding-by-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3.6. Deleting a task: `delete`](#336-deleting-a-task-delete) <br>
-&nbsp;&nbsp;[3.4 Notebook Mode](#34-notebook-mode) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1 Adding a notebook/section/page: `add`](#341-adding-a-notebooksectionpage-add) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.1 Adding a notebook](#3411-adding-a-notebook) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.2 Adding a section](#3412-adding-a-section) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1.3 Adding a page](#3413-adding-a-page) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2 Selecting a notebook/section/page: `select`](#342-selecting-a-notebooksectionpage-select) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3 Tagging a notebook/section/page: `tag`](#343-tagging-a-notebooksectionpage-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4 Listing contents: `list`](#344-listing-contents-list) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5 Finding contents: `find`](#345-finding-contents-find) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.1 Finding by keyword](#3351-finding-by-keyword) <br>
+&nbsp;&nbsp;[3.3  Personalised Messages](#33-personalised-messages) <br>
+&nbsp;&nbsp;[3.4 Timetable Mode](#34-timetable-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1 Adding a task: `add`](#341-adding-a-task-add) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2 Marking a task as done: `done`](#342-marking-a-task-as-done-done) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3 Tagging a task: `tag`](#343-tagging-tasks-tag) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4 Listing tasks: `list`](#344-listing-tasks-list) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.1 Listing all tasks](#3441-listing-all-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.2 Listing done tasks](#3442-listing-done-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.3 Listing undone tasks](#3443-listing-undone-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.4 Listing urgent tasks](#3444-listing-urgent-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5 Finding tasks: `find`](#345-finding-tasks-find) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.1 Finding by keyword](#3451-finding-by-keyword) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.2 Finding by tag](#3452-finding-by-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6 Deleting a notebook/section/page: `delete`](#346-deleting-a-notebooksectionpage-delete) <br>
-&nbsp;&nbsp;[3.5 Exiting the program: `exit`](#35-exiting-the-program-exit) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. Deleting a task: `delete`](#346-deleting-a-task-delete) <br>
+&nbsp;&nbsp;[3.5 Notebook Mode](#35-notebook-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1 Adding a notebook/section/page: `add`](#351-adding-a-notebooksectionpage-add) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.1 Adding a notebook](#3511-adding-a-notebook) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.2 Adding a section](#3512-adding-a-section) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.3 Adding a page](#3513-adding-a-page) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.2 Selecting a notebook/section/page: `select`](#352-selecting-a-notebooksectionpage-select) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.3 Tagging a notebook/section/page: `tag`](#353-tagging-a-notebooksectionpage-tag) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.4 Listing contents: `list`](#354-listing-contents-list) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5 Finding contents: `find`](#355-finding-contents-find) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5.1 Finding by keyword](#3551-finding-by-keyword) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5.2 Finding by tag](#3552-finding-by-tag) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.6 Deleting a notebook/section/page: `delete`](#356-deleting-a-notebooksectionpage-delete) <br>
+&nbsp;&nbsp;[3.6 Exiting the program: `exit`](#36-exiting-the-program-exit) <br>
 [**4. FAQ**](#4-faq) <br>
 [**5. Command Summary**](#5-command-summary) <br>
 [**6. For advanced users: Editing your save file**](#6-for-advanced-users-editing-your-save-file)<br>
@@ -92,14 +93,34 @@ Here are some icons that will be used in this User Guide:
 * Words within `(parentheses)` are optional user inputs.
   e.g. in `list (/urgent)`, `/urgent` is an optional parameter.
 * Words in [blue]() are clickable links.
-* Within a code segment, `>>>` denotes the command typed by the user.
-    Example:  
-    ```
-    >>> select /sChapter 1
-        now in notebook section: Chapter 1
-    ```
+* Within a code segment, the symbols before the `$` symbol indicates the current address that the user is in.
+    * The following symbols represents the respective address:
+        * `T:$` - The user is in TimeTable mode.  
+        * `N:$` - The user is in Notebook mode.
+        * `N/[NOTEBOOK NAME]:$` - The user is in Notebook mode, and is in the indicated notebook with 'NOTEBOOK NAME'.
+        * `N/[NOTEBOOK NAME]/[SECTION NAME]:$` - The user is in Notebook mode, and is in the indicated section with 'SECTION NAME' of the notebook with 'NOTEBOOK NAME'.  
+        * `N/[NOTEBOOK NAME]/[SECTION NAME]/[PAGE NAME]:$` - The user is in Notebook mode, and is in the indicated page with `PAGE NAME`, of the section with 'SECTION NAME', of the notebook with 'NOTEBOOK NAME'.  
 
-  `select /sChapter 1` is the user's input, and `now in notebook section: Chapter 1` is the output message.      
+Example:
+
+```
+N:$ select /sChapter 1
+-------------------------------------------------------------
+    now in notebook section: Chapter 1
+-------------------------------------------------------------
+```
+
+* `select /sChapter 1` is the user's input, and `now in notebook section: Chapter 1` is the output message. 
+
+* When the current address name is longer than 7 characters, a `...` symbol will be printed to represent the remaining characters.  
+
+Example:
+
+```
+N/noteboo...:$
+```     
+
+* where `N/` indicates that the user is in Notebook Mode and `noteboo...` is the name of the Notebook, which has more than 7 characters.  
 
 <br>
 
@@ -140,7 +161,7 @@ This section introduces the available features, and the format required for each
 2. Notebook Mode
 
 The following sections will explain more about the different commands that can be used in anywhere,
-and commands specific to [Timetable Mode](#33-timetable-mode) and [Notebook Mode](#34-notebook-mode).
+and commands specific to [Timetable Mode](#34-timetable-mode) and [Notebook Mode](#35-notebook-mode).
 
 <br>
 
@@ -170,25 +191,55 @@ T:$ mode /n
 You are now in notebook mode
 -------------------------------------------------------------
 ```
-> `T:$` above means that you are in the timetable mode. Your input should go after the `$` sign.
 
 - Switch to the timetable mode
 
 Format: `mode /t`
 
 Example of usage:
-
 ```
 N:$ mode /t
 -------------------------------------------------------------
 You are now in timetable mode
 -------------------------------------------------------------
 ```
-> `N:$` above means that you are in the notebook mode. Your input should go after the `$` sign.
 
 <br>
 
-### 3.3 Timetable Mode
+### 3.3 Personalised Messages  
+
+A personalised message will be printed out to the user whenever a particular command has been entered by the user.
+Personalised messages will include a random generated encouraging message followed by the name provided by the user upon launch of Zer0Note.
+
+Example of how a personalised message will look like:  
+```
+I like how you think, Tom
+```
+
+Commands that include personalised messages are:  
+1. `add`  
+2. `done`
+3. `list`
+4. `delete`
+5. `tag`  
+6. `find`
+
+Example of usage:
+
+```
+T:$ add /tRead book /by19-10-2020 1800
+-------------------------------------------------------------
+Added: Read Book
+1:[x] Read book (by: Oct 19 2020 06.00 PM)
+-------------------------------------------------------------
+{personalised message}
+-------------------------------------------------------------
+```
+
+> :exclamation: {personalised message} is a placeholder for the various personalised message that a user will receive.
+
+
+### 3.4 Timetable Mode
 
 Keeping up with deadlines may seem like a daunting task, especially when you're already busy with school.
 With Zer0Note's Timetable Mode, you'll be able to manage a list of tasks.
@@ -201,7 +252,7 @@ The following sections explain the various features you can use while you are in
 
 <br>
 
-#### 3.3.1 Adding a task: `add`
+#### 3.4.1 Adding a task: `add`
 
 This command lets you `add` a `task` with a deadline to the task list.
 
@@ -233,7 +284,7 @@ With that, you've successfully added a task titled `Read book`, with the deadlin
 
 <br>
 
-#### 3.3.2 Marking a task as done: `done`
+#### 3.4.2 Marking a task as done: `done`
 
 Marks an existing `task` as done in the current task list.
 
@@ -257,17 +308,17 @@ Yay! I've marked this task as done:
 
 <br>
 
-#### 3.3.3 Tagging tasks: `tag`
+#### 3.4.3 Tagging tasks: `tag`
 
 You have added a few tasks, and completed some of them. Congratulations! After reviewing, you realise that some of the
 tasks come from the same module, or that some are non-academic-related. Is there any way you can categorise them together?
 
 This command lets you add a single `tag` to an existing `task` to remind you of the category it belongs to. You can
-learn how to search for all tasks with the same `tag` in [Finding tasks](#335-finding-tasks-find).
+learn how to search for all tasks with the same `tag` in [Finding tasks by tag](#3452-finding-by-tag).
 
 >:bulb: Each task can only have one tag. The previous tag will be automatically overwritten by the new tag and no
 >reminder will be given.
->
+
 Format: `tag [INDEX] /t[TAG]`
 
 These are the parameters required in the command:
@@ -290,14 +341,14 @@ Got it! I've tagged this as:
 ```
 <br>
 
-#### 3.3.4 Listing tasks: `list`
+#### 3.4.4 Listing tasks: `list`
 
 Use the `list` command to list the tasks you have added to **Zer0Note**. There are 4 ways you can use this
 command, described below:
 
 <br>
 
-#### 3.3.4.1 Listing all tasks
+#### 3.4.4.1 Listing all tasks
 
 When you want to have a look at your task list, you can list out all the existing tasks.
 
@@ -320,7 +371,7 @@ T:$ list
 
 <br>
 
-#### 3.3.4.2 Listing done tasks
+#### 3.4.4.2 Listing done tasks
 
 When you want to keep track of your progress, you can list out all the tasks that are marked as done.
 
@@ -340,7 +391,7 @@ T:$ list /d
 
 <br>
 
-#### 3.3.4.3 Listing undone tasks
+#### 3.4.4.3 Listing undone tasks
 
 If you want to have a look at what you need to do, you can list out all the tasks that are not marked as done.
 
@@ -361,7 +412,7 @@ T:$ list /u
 
 <br>
 
-#### 3.3.4.4 Listing urgent tasks
+#### 3.4.4.4 Listing urgent tasks
 
 If you're in a time crunch, you can list out top urgent tasks that have not been done, sorted by deadlines. If there
 are many undone tasks, only the top three urgent ones will be displayed.
@@ -383,7 +434,7 @@ T:$ list /urgent
 
 <br>
 
-#### 3.3.5 Finding tasks `find`
+#### 3.4.5 Finding tasks `find`
 
 Your tasklist has grown, and it becomes a pain to go through every single task in the list. Filtering the list by
 completion and deadline does not provide the intended result either. Don't worry! You can search for any task directly
@@ -391,7 +442,7 @@ too.
 
 There are two ways to find a task:
 
-#### 3.3.5.1 Finding by keyword
+#### 3.4.5.1 Finding by keyword
 
 Finds any task that contains the keyword in the task description.  The search is not case-sensitive.
 
@@ -402,6 +453,7 @@ These are the parameters required in the command:
 * `KEYWORD`: keyword to look for
 
 Example of usage:
+
 ```
 T:$ find book
 -------------------------------------------------------------
@@ -410,7 +462,7 @@ T:$ find book
 -------------------------------------------------------------
 ```
 
-#### 3.3.5.2 Finding by tag
+#### 3.4.5.2 Finding by tag
 
 Finds any task that has a specified tag.  The search is not case-sensitive.
 
@@ -421,6 +473,7 @@ These are the parameters required in the command:
 * `TAG`: tag to look for
 
 Example of usage:
+
 ```
 T:$ find /tTodo
 -------------------------------------------------------------
@@ -429,7 +482,7 @@ Here are the tasks I found:
 -------------------------------------------------------------
 ```
 
-#### 3.3.6 Deleting a task: `delete`
+#### 3.4.6 Deleting a task: `delete`
 
 Use the `delete` command to delete tasks you previously added to **Zer0Note**.
 
@@ -454,7 +507,7 @@ Noted. I've removed this task:
 
 <br>
 
-### 3.4 Notebook Mode
+### 3.5 Notebook Mode
 
 In a semester, an average student takes about 4-5 modules. You can use **Zer0Note** to keep all your notes and
 thoughts about all those different classes in one place. This can help you organise your thoughts better!
@@ -466,14 +519,14 @@ Each notebook contains sections, and each section contains pages. Each page hold
 For example, you can keep one notebook for each module you take, one section for each week or
 lecture, and pages for different concepts.  
 
-#### 3.4.1 Adding a notebook/section/page: `add`
+#### 3.5.1 Adding a notebook/section/page: `add`
 
 Within `Notebook Mode`, you can `add` a `notebook`, `section` or a `page`. This section will guide you through these commands.
 
 > :warning: This feature does not support adding a notebook, section and page (or any combination of the 3) 
 > all at once. e.g. `add /nSchool /sAdmin /p1: Modules` will throw an error.
 
-#### 3.4.1.1 Adding a notebook
+#### 3.5.1.1 Adding a notebook
 
 Use the `add /n` command to add a `notebook`  into the `notebook shelf`.
 
@@ -505,9 +558,9 @@ Now that you have added a new notebook for `CS2113T`, you can add a `section`!
 
 <br>
 
-#### 3.4.1.2 Adding a section
+#### 3.5.1.2 Adding a section
 
-Use the `add /s` command to add a `section`  into the [selected](#342-selecting-a-notebooksectionpage-select) `notebook`.
+Use the `add /s` command to add a `section`  into the [selected](#352-selecting-a-notebooksectionpage-select) `notebook`.
 
 >:bulb: You must select a `notebook` before adding a section!
 >
@@ -526,8 +579,6 @@ Example of usage:
 Now that you have a notebook for `CS2113T`, you can make a `section` for each academic week.
 
 > :bulb: Remember to select the `CS2113T` notebook!
->
-> :bulb: `N/CS2113T:$` means that you have selected the `CS2113T` notebook.
 
 ```
 N/CS2113T:$ add /sW1: Java
@@ -542,9 +593,9 @@ Great! You can now add a `page` (or as many pages as you like) into your new sec
 
 <br>
 
-#### 3.4.1.3 Adding a page
+#### 3.5.1.3 Adding a page
 
-Use the `add /p` command to add a `page`  into the [selected](#342-selecting-a-notebooksectionpage-select) `section`.
+Use the `add /p` command to add a `page`  into the [selected](#352-selecting-a-notebooksectionpage-select) `section`.
 >:bulb: You must select a `section` before adding a page!
 >
 > :warning: Please also make sure not to use ";" in your page title! ";" should only be used to 
@@ -564,8 +615,6 @@ Example of usage:
 Let's say you want to add a page into a selected notebook `section`.
 
 > :bulb: Remember to select the `W1: Java` section!
->
->:bulb: `N/CS2113T/W1: Java:$` means that you have selected the `W1: Java` section.
 
 ```
 N/CS2113T/W1: Java:$ add /pHELLO WORLD; System.out.println("Hello World!");
@@ -581,14 +630,14 @@ You've successfully added a new page into the section `W1: Java` of the notebook
 
 <br>
 
-#### 3.4.2 Selecting a notebook/section/page: `select`
+#### 3.5.2 Selecting a notebook/section/page: `select`
 
 After adding a `notebook`, `section` or `page`, you may want to view its contents.
 Use the `select` command to select a `notebook`, `section`, `page` or a combination of the three.
 
-> :bulb: When you want to [`add` a `section`](#3412-adding-a-section), you must select a `notebook` first.
+> :bulb: When you want to [`add` a `section`](#3512-adding-a-section), you must select a `notebook` first.
 >
-> :bulb: When you want to [`add` a `page`](#3413-adding-a-page), you must select a `section` first.
+> :bulb: When you want to [`add` a `page`](#3513-adding-a-page), you must select a `section` first.
 
 Format: `select /n[NOTEBOOK] /s[SECTION] /p[PAGE]`
 
@@ -631,14 +680,14 @@ now in notebook book: CS2101
 
 <br>
 
-#### 3.4.3 Tagging a notebook/section/page: `tag`
+#### 3.5.3 Tagging a notebook/section/page: `tag`
 
 You have now several notebooks in the bookshelf. Some come from the same module, while others are just a running list of
 inspirations you have.
 
 This command lets you add a single `tag` to a selected `notebook`, `section` or `tag` to remind you of the category it
 belongs to. You can learn how to search for all notebooks, sections and pages in the bookshelf with the same `tag` in
-[Finding notebooks](#345-finding-contents-find).
+[Finding by tag](#3552-finding-by-tag).
 
 >:exclamation: The tag is added to the selected notebook, section or page. The tag will not be added to components
 > belonging to the selected notebook or section.
@@ -667,7 +716,7 @@ CS2101 (tag: Module)
 -------------------------------------------------------------
 ```
 
-#### 3.4.4 Listing contents: `list`
+#### 3.5.4 Listing contents: `list`
 
 Use the `list` command to view the content of the bookshelf, a selected book or a selected section.
 
@@ -737,8 +786,6 @@ In a selected *NOTEBOOK*:
 
 Examples of usage:
 
-For example, you have selected a notebook titled "CS2101". Below shows the possible outputs when you key in various 
-`list` commands.
 ```
 N/CS2101:$ list
 -------------------------------------------------------------
@@ -780,12 +827,12 @@ N/CS2101/Chapter 1:$ list
 
 <br>
 
-#### 3.4.5 Finding contents: `find`
+#### 3.5.5 Finding contents: `find`
 
 Just like how you can find a task in the Timetable mode, you can look for contents in this mode. Even sections and pages
 that do not belong to a selected notebook can be found. There are two ways to do so:
 
-#### 3.4.5.1 Finding by keyword
+#### 3.5.5.1 Finding by keyword
 
 Finds all notebooks, sections and pages that contain the keyword in their title.  The search is not case-sensitive.
 
@@ -796,8 +843,9 @@ These are the parameters required in the command:
 * `KEYWORD`: keyword to look for
 
 Example of usage:
+
 ```
-N/CS2101/Chapter 1:$ find chapter
+N:$ find chapter
 -------------------------------------------------------------
 I've found these for keyword: chapter
 Sections:
@@ -815,8 +863,7 @@ Sections:
 ```
 >:bulb: "|--" indicates "belongs to". You can use this to identify the particular notebook and section a page is in.
 
-#### 3.4.5.2 Finding by tag
->>>>>>> master
+#### 3.5.5.2 Finding by tag
 
 Finds all notebooks, sections and pages that has a specified tag.  The search is case-sensitive.
 
@@ -837,7 +884,7 @@ Notebooks:
 -------------------------------------------------------------
 ```
 
-#### 3.4.6 Deleting a notebook/section/page: `delete`
+#### 3.5.6 Deleting a notebook/section/page: `delete`
 
 Use the `delete` command to delete an existing notebook, section or page.
 
@@ -904,7 +951,7 @@ What is OOP?
 
 <br>
 
-### 3.5 Exiting the program: `exit`
+### 3.6 Exiting the program: `exit`
 
 To close the program, type `exit`.
 
@@ -961,7 +1008,7 @@ The following table shows you a list of commands that can be used anywhere, and 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
 [Help](#31-viewing-the-user-guide-help): `help` | 1) help 2) help timetable 3) help notebook |
-[Exit](#35-exiting-the-program-exit) `exit` | exit |
+[Exit](#36-exiting-the-program-exit) `exit` | exit |
 
 
 ### Timetable Mode
@@ -972,12 +1019,12 @@ The following table is a cheatsheet of the commands available in Timetable Mode.
 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
-[Add a task](#331-adding-a-task-add): `add` | add /t[TASK] /by[dd-MM-yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
-[Mark a task as done](#332-marking-a-task-as-done-done): `done` | done [INDEX] | done 1
-[Tag a task](#333-tagging-tasks-tag): `tag` | tag [INDEX] /t[TAG] | tag 1 /tCS2113T
-[List tasks](#334-listing-tasks-list): `list` | list (/u) (/d) (/urgent) |
-[Finding tasks](#335-finding-tasks-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find book 2) find /tTodo
-[Delete a task](#336-deleting-a-task-delete): `delete` | delete [INDEX] | delete 1
+[Add a task](#341-adding-a-task-add): `add` | add /t[TASK] /by[dd-MM-yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
+[Mark a task as done](#342-marking-a-task-as-done-done): `done` | done [INDEX] | done 1
+[Tag a task](#343-tagging-tasks-tag): `tag` | tag [INDEX] /t[TAG] | tag 1 /tCS2113T
+[List tasks](#344-listing-tasks-list): `list` | list (/u) (/d) (/urgent) |
+[Finding tasks](#345-finding-tasks-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find book 2) find /tTodo
+[Delete a task](#346-deleting-a-task-delete): `delete` | delete [INDEX] | delete 1
 [Switch to notebook mode](#32-switching-between-the-two-modes-mode): `mode` | mode /n |
 
 ### Notebook Mode
@@ -988,12 +1035,12 @@ The following table is a cheatsheet of the commands available in Notebook Mode.
 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
-[Add](#341-adding-a-notebooksectionpage-add): `add` | 1) add /n[NOTEBOOK] 2) add /s[SECTION] 3) add /p[PAGE]; [CONTENT] | add /nCS2101
-[Select](#342-selecting-a-notebooksectionpage-select): `select` | 1) select /n[NOTEBOOK] 2) select /s[SECTION] 3) select /p[NUMBER] | select /nCS2101
-[Tag](#343-tagging-a-notebooksectionpage-tag): `tag` | tag /t[TAG] | tag /tCS2113T
-[List contents](#344-listing-contents-list): `list` | list (/s) (/a) |
-[Find](#345-finding-contents-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find chapter 2) find /tModule
-[Delete](#346-deleting-a-notebooksectionpage-delete): `delete` | 1) delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER] | select /nCS2113T /sW10 /p1
+[Add](#351-adding-a-notebooksectionpage-add): `add` | 1) add /n[NOTEBOOK] 2) add /s[SECTION] 3) add /p[PAGE]; [CONTENT] | add /nCS2101
+[Select](#352-selecting-a-notebooksectionpage-select): `select` | 1) select /n[NOTEBOOK] 2) select /s[SECTION] 3) select /p[NUMBER] | select /nCS2101
+[Tag](#353-tagging-a-notebooksectionpage-tag): `tag` | tag /t[TAG] | tag /tCS2113T
+[List contents](#354-listing-contents-list): `list` | list (/s) (/a) |
+[Find](#355-finding-contents-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find chapter 2) find /tModule
+[Delete](#356-deleting-a-notebooksectionpage-delete): `delete` | 1) delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER] | select /nCS2113T /sW10 /p1
 [Switch to timetable mode](#32-switching-between-the-two-modes-mode): `mode` | mode /t |
 
 <br>
