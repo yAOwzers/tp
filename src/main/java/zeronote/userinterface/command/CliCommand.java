@@ -2,6 +2,7 @@ package zeronote.userinterface.command;
 
 import zeronote.exceptions.IncorrectAppModeException;
 import zeronote.exceptions.InvalidCommandException;
+import zeronote.exceptions.ZeroNoteException;
 import zeronote.userinterface.AppState;
 
 public abstract class CliCommand {
@@ -15,7 +16,7 @@ public abstract class CliCommand {
         return COMMAND_WORD;
     }
 
-    public abstract void execute() throws InvalidCommandException, IncorrectAppModeException;
+    public abstract void execute() throws ZeroNoteException;
 
     public AppState getAppState() {
         return appState;
