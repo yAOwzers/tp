@@ -10,11 +10,11 @@
 
 Welcome, and thank you for choosing **Zer0Note**!
 
-**Zer0Note** is a note taking and organisation application meant for students(especially those who can type fast).
+**Zer0Note** is a note taking and organisation application meant for people who love typing. (especially those who can type fast).
 It combines the features of note-taking apps (like OneNote) with the interaction speed of command-line based tools like vim and emacs.
-It helps students (like yourself!) to keep track of deadlines and take notes quickly.
+It helps users to keep track of deadlines and take notes quickly.
 
-**Zer0Note** is designed for students who love typing, and the command line! 
+**Zer0Note** is designed for users who love typing, and the command line! 
 
 Useful links:
 * [User Guide](UserGuide.md)
@@ -22,8 +22,8 @@ Useful links:
 * [About Us](AboutUs.md)
 
 Contributors:
-* [Francene Mooi](docs/team/francene.md)
-* [Joel Neo](docs/team/joel.md)
-* [Long Nguyen](docs/team/longnguyen.md)
-* [Lusi Wu](docs/team/lusi.md)
-* [Neil Banerjee](docs/team/neibaner.md)
+* [Francene Mooi](docs/team/chuckiex3.md)
+* [Joel Neo](docs/team/yAOwzers.md)
+* [Long Nguyen](docs/team/longngng.md)
+* [Lusi Wu](docs/team/Lusi711.md)
+* [Neil Banerjee](docs/team/NeilBaner.md)
