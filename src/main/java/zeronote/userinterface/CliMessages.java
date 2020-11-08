@@ -92,10 +92,10 @@ public class CliMessages {
         }
     }
 
-    //@@author
+    //@@author chuckiex3
     public void printAddedTaskMessage(TaskList tasksList, String title) {
-        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        System.out.println(personalMessage);
+        //String personalMessage = msgGenerator.generatePersonalisedMessage();
+        //System.out.println(personalMessage);
         System.out.println("Added: " + title);
         try {
             System.out.println(tasksList.getNumberOfTasks() + ":"
