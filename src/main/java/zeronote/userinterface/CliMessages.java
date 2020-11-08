@@ -93,12 +93,13 @@ public class CliMessages {
     }
 
     //@@author
-    public void printAddedTaskMessage (TaskList tasksList, String title) {
+    public void printAddedTaskMessage(TaskList tasksList, String title) {
         String personalMessage = msgGenerator.generatePersonalisedMessage();
         System.out.println(personalMessage);
         System.out.println("Added: " + title);
         try {
-            System.out.println(tasksList.getNumberOfTasks() + ":" + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
+            System.out.println(tasksList.getNumberOfTasks() + ":"
+                    + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
         } catch (ZeroNoteException zne) {
             zne.printErrorMessage();
         }
