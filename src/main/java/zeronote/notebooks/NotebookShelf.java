@@ -19,8 +19,8 @@ public class NotebookShelf {
     /**
      * Find the notebook on the shelf with the given title.
      *
-     * @param title the title of the notebook we want to find
-     * @return the index of the notebook we want to find
+     * @param title the title of the notebook the user wants to find.
+     * @return the index of the notebook the user wants to find.
      */
     public int findNotebook(String title) {
         int index = 0;

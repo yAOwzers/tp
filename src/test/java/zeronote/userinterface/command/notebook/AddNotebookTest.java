@@ -1,23 +1,22 @@
 package zeronote.userinterface.command.notebook;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
-
 import zeronote.exceptions.DuplicateFoundException;
 import zeronote.exceptions.InvalidCommandException;
 import zeronote.exceptions.ZeroNoteException;
 import zeronote.notebooks.Notebook;
 import zeronote.notebooks.NotebookShelf;
 import zeronote.notebooks.Section;
-import zeronote.tasks.TaskList;
 import zeronote.userinterface.AppMode;
 import zeronote.userinterface.AppState;
 import zeronote.userinterface.InputParser;
 import zeronote.userinterface.command.CliCommand;
 
-//@@chuckiex3
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+//@@author chuckiex3
+
 public class AddNotebookTest {
     @Test
     void addNotebook_wrongFormat_expectException() {

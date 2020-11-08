@@ -5,7 +5,6 @@ import zeronote.exceptions.IncorrectAppModeException;
 import zeronote.exceptions.IncorrectDeadlineFormatException;
 import zeronote.exceptions.InvalidCommandException;
 import zeronote.exceptions.InvalidIndexException;
-import zeronote.exceptions.InvalidModeException;
 import zeronote.exceptions.InvalidNotebookException;
 import zeronote.exceptions.InvalidPageException;
 import zeronote.exceptions.InvalidSectionException;
@@ -40,6 +39,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class InputParser {
+    //@@author chuckiex3
+
     /**
      * Parses the user's input to extract the task title in TIMETABLE mode.
      *
@@ -264,6 +265,8 @@ public class InputParser {
         }
     }
 
+    //@@author Lusi711
+
     /**
      * Parses the index number from the user's input.
      *
@@ -278,6 +281,8 @@ public class InputParser {
             throw new InvalidIndexException(args);
         }
     }
+
+    //@@author chuckiex3
 
     /**
      * Parses the page title input by the user.
@@ -336,6 +341,8 @@ public class InputParser {
         }
     }
 
+    //@@author Lusi711
+    
     /**
      * Parses the keyword and tag.
      *
@@ -345,6 +352,7 @@ public class InputParser {
     public String[] parseTagDescription(String input) {
         return input.split(AddCommandTimetableMode.TASK_DELIMITER, 2);
     }
+
 
     public CliCommand getCommandFromInput(String userInput, AppState appState) throws ZeroNoteException {
         String trimmedInput = userInput.trim();
@@ -459,7 +467,7 @@ public class InputParser {
             if (appState.getAppMode() == AppMode.TIMETABLE) {
                 return new DoneCommandTimetableMode(argument, appState);
             } else {
-                throw new InvalidModeException();
+                throw new IncorrectAppModeException();
             }
         case ModeSwitch.COMMAND_WORD:
             return new ModeSwitch(argument, appState);
