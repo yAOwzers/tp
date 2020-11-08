@@ -32,7 +32,7 @@ class ListNotebookTest {
             listCommandNotebookMode.execute();
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("list /d", e.problematicInput);
+            assertEquals(" /d", e.problematicInput);
         } catch (IncorrectAppModeException e) {
             e.printStackTrace();
         }
