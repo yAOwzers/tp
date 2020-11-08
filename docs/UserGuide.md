@@ -199,10 +199,13 @@ Example of usage:
 Let's say you have to read a book for one of your modules.
 
 ```
->>> add /tRead book /by19-10-2020 1800
+T:$ add /tRead book /by19-10-2020 1800
+-------------------------------------------------------------
 Added: Read Book
 1:[x] Read book (by: Oct 19 2020 06.00 PM)
+-------------------------------------------------------------
 ```
+>:bulb: `T:$` means that you are in the timetable mode.
 
 With that, you've successfully added a task titled `Read book`, with the deadline `Oct 19 2020 06.00 PM` into your task list!
 
@@ -226,9 +229,11 @@ This is the parameter required in the command:
 Example of usage:
 
 ```
->>> done 1
+T:$ done 1
+-------------------------------------------------------------
 Yay! I've marked this task as done:
  [o] Read book
+-------------------------------------------------------------
 ```
 
 <br>
@@ -254,13 +259,16 @@ These are the parameters required in the command:
 <br>
 
 Example of usage:
+For example, if you want to tag the first task in the list as "Todo", after `T:$` in the command window, type "tag 1 /tTodo".
+Below shows the expected output:
 
 ```
->>> tag 1 /tTodo
+T:$ tag 1 /tTodo
+-------------------------------------------------------------
 Got it! I've tagged this as:
  [o] Read book (by: Oct 19 2020 06.00PM)(tag: Todo)
+-------------------------------------------------------------
 ```
-
 <br>
 
 #### 3.3.4 Listing tasks: `list`
@@ -281,12 +289,14 @@ Format: `list`
 Example of usage:
 
 ```
->>> list
+T:$ list
+-------------------------------------------------------------
 1:[o] Read book (by: Oct 19 2020 06.00 PM)(tag: Todo)
 2:[x] Return book (by: Oct 23 2020 12.00 PM)
 3:[x] Submit assignment (by: Oct 18 2020 04.00 PM)
 4:[x] CS2113T Quiz (by: Oct 23 2020 11.00 PM)
 5:[o] CS2101 OP2 (by: Oct 25 2020 11.00 AM)
+-------------------------------------------------------------
 ```
 
 <br>
@@ -302,9 +312,11 @@ Format: `list /d`
 Example of usage:
 
 ```
->>> list /d
+T:$ list /d
+-------------------------------------------------------------
 1:[o] Read book (by: Oct 19 2020 06.00 PM)(tag: Todo)
 2:[o] CS2101 OP2 (by: Oct 25 2020 11.00 AM)
+-------------------------------------------------------------
 ```
 
 <br>
@@ -320,10 +332,12 @@ Format: `list /u`
 Example of usage:
 
 ```
->>> list /u
+T:$ list /u
+-------------------------------------------------------------
 1:[x] Return book (by: Oct 23 2020 12.00 PM)
 2:[x] Submit assignment (by: Oct 18 2020 04.00 PM)
 3:[x] CS2113T Quiz (by: Oct 23 2020 11.00 PM)
+-------------------------------------------------------------
 ```
 
 <br>
@@ -340,10 +354,12 @@ Format: `list /urgent`
 Example of usage:
 
 ```
->>> list /urgent
+T:$ list /urgent
+-------------------------------------------------------------
 1:[x] Submit assignment (by: Oct 18 2020 04.00 PM)
 2:[x] CS2113T Quiz (by: Oct 23 2020 11.00 PM)
 3:[x] Return book (by: Oct 23 2020 12.00 PM)
+-------------------------------------------------------------
 ```
 
 <br>
@@ -368,14 +384,16 @@ These are the parameters required in the command:
 
 Example of usage:
 ```
->>> find book
+T:$ find book
+-------------------------------------------------------------
 1:[o] Read book (by: Oct 19 2020 06.00 PM)(tag: Todo)
 2:[x] Return book (by: Oct 23 2020 12.00 PM)
+-------------------------------------------------------------
 ```
 
 ##### 3.3.5.2 Finding by tag
 
-Finds any task that has a specified tag.  The search is case-sensitive.
+Finds any task that has a specified tag.  The search is not case-sensitive.
 
 Format: `find /t[TAG]`
 
@@ -385,9 +403,11 @@ These are the parameters required in the command:
 
 Example of usage:
 ```
->>> find /tTodo
+T:$ find /tTodo
+-------------------------------------------------------------
 Here are the tasks I found:
 1:[o] Read book (by: Oct 19 2020 06.00 PM)(tag: Todo)
+-------------------------------------------------------------
 ```
 
 #### 3.3.6 Deleting a task: `delete`
@@ -405,10 +425,12 @@ This is the parameter required in the command:
 Example of usage:
 
 ```
->>> delete 1
+T:$ delete 1
+-------------------------------------------------------------
 Noted. I've removed this task:
 [x] Read book (by: Oct 19 2020 06.00 PM)
 	Now you have 4 tasks in the list.
+-------------------------------------------------------------
 ```
 
 <br>
@@ -451,8 +473,10 @@ Example of usage:
 Let's say you want to take notes for CS2113T, a module you're currently taking.
 
 ```
->>> add /nCS2113T
+N:$ add /nCS2113T
+-------------------------------------------------------------
 Added notebook with title: CS2113T
+-------------------------------------------------------------
 ```
 
 >:warning: Ensure that your notebook title is preceded by "/n", or an error message will be shown.
@@ -485,10 +509,13 @@ Now that you have a notebook for `CS2113T`, you can make a `section` for each ac
 > :bulb: Remember to select the `CS2113T` notebook!
 
 ```
->>> add /sW1: Java
+N/CS2113T:$ add /sW1: Java
+-------------------------------------------------------------
 Added section with title: W1: Java
+-------------------------------------------------------------
 ```
-
+>:bulb: N/CS2113T:$ means that you have selected the `CS2113T` notebook.
+>
 >:warning: Ensure that your section title is preceded by "/s", or an error message will be shown.
 
 Great! You can now add a `page` (or as many pages as you like) into your new section titled `W1: Java`.
@@ -517,12 +544,15 @@ Example of usage:
 Let's say you want to add a page into a selected notebook `section`.
 
 > :bulb: Remember to select the `W1: Java` section!
+>
+>:bulb: N/CS2113T/W1: Java:$ means that you have selected the `W1: Java` section.
 
 ```
->>> add /pHELLO WORLD; System.out.println("Hello World!");
+N/CS2113T/W1: Java:$ add /pHELLO WORLD; System.out.println("Hello World!");
+-------------------------------------------------------------
 Added page with title: HELLO WORLD
+-------------------------------------------------------------
 ```
-
 You've successfully added a new page into the section `W1: Java` of the notebook `CS2113T`.
 
 >:warning: Ensure that your page title is preceded by "/p" and that there is a ";" to separate the contents from the page title.
@@ -549,18 +579,20 @@ These are the parameters required in the command:
 * `PAGE`: the page title in the expected `section`.
 
 In *NOTEBOOK MODE*:
-* `select /nCS2101 /sW2 /pEmails` - selects the page titled `Emails` in the notebook `CS2101`, under the section `W2`.
-* `select /nCS2101 /sW2` - selects the section titled `W2` in the notebook `CS2101`.
-* `select /nCS2101` - selects the notebook titled `CS2101`.
+* `select /nCS2113T /sW1: Java /pHELLO WORLD` - selects the page titled `HELLO WORLD` in the notebook `CS2113t`, under 
+the section `W1: Java`.
+* `select /nCS2113T /sW1: Java` - selects the section titled `W1: Java` in the notebook `CS2113T`.
+* `select /nCS2113T` - selects the notebook titled `CS2113T`.
 * `select /all` - navigates back into `NOTEBOOK MODE`, where you can list to see all available notebooks.
-> These commands can be run anywhere(i.e in a selected notebook or section) once you're in NOTEBOOK MODE.  
+> :exclamation: These commands can be run anywhere(i.e in a selected notebook or section) once you're in NOTEBOOK MODE.  
 
 In a selected *NOTEBOOK*:
-* `select /s1: What is OOP? /pDefinition` - selects the page titled `Definition`, in the section `1: What is OOP?` of the selected `notebook`.
-* `select /s1: What is OOP?` - selects the section entitled `1: What is OOP?` in the selected `notebook`.
+* `select /sW1: Java /pHELLO WORLD` - selects the page titled `HELLO WORLD`, in the section `W1: Java` of the selected 
+notebook.
+* `select /sW1: Java` - selects the section entitled `W1: Java` in the selected notebook.
 
 In a selected *SECTION*:
-* `select /pDefinition` - selects the page titled `Definition` in the selected `section`.
+* `select /pHELLO WORLD` - selects the page titled `HELLO WORLD` in the selected section.
 
 > :bulb: Whenever you want to select something, you may want to use the list all function, `list /a`
 > to ensure that you're typing in the correct parameters.
@@ -571,8 +603,10 @@ Example of usage:
 If you have a notebook entitled `CS2101`, you can select it by typing `select /nCS2101`.
 
 ```
->>> select /nCS2101
+N:$ select /nCS2101
+-------------------------------------------------------------
 now in notebook book: CS2101
+-------------------------------------------------------------
 ```
 
 <br>
@@ -587,9 +621,9 @@ belongs to. You can learn how to search for all notebooks, sections and pages in
 [Finding notebooks](#345-finding-contents-find).
 
 >:exclamation: The tag is added to the selected notebook, section or page. The tag will not be added to components
->belonging to the selected notebook or section are not tagged.
+> belonging to the selected notebook or section.
 >
->:bulb: Each notebook, section and page can only have one tag. The previous tag will be automatically overwritten
+>:warning: Each notebook, section and page can only have one tag. The previous tag will be automatically overwritten
 >by the new tag and no reminder will be given.
 >
 Format: `tag /t[TAG]`
@@ -604,11 +638,13 @@ Example of usage:
 For example, you would to add a tag "Module" to a notebook titled "CS2101":
 
 >:bulb: Remember to select the notebook "CS2101"!
->
+
 ```
->>> tag /tModule
+N/CS2101:$ tag /tModule
+-------------------------------------------------------------
 Got it! I've tagged this as:
 CS2101 (tag: Module)
+-------------------------------------------------------------
 ```
 
 #### 3.4.4 Listing contents: `list`
@@ -631,13 +667,16 @@ In *NOTEBOOK MODE*,
 Examples of usage:
 
 ```
->>> list
-* CS2113
+N:$ list
+-------------------------------------------------------------
+* CS2113T
 * CG2271
 * CS2101
-
->>> list /s
-* CS2113
+-------------------------------------------------------------
+N:$ list /s
+-------------------------------------------------------------
+* CS2113T
+  |-- W1: Java
   |-- Chapter 1
   |-- Chapter 2
 * CG2271
@@ -645,10 +684,16 @@ Examples of usage:
   |-- Chapter 1
   |-- Chapter 2
   |-- Chapter 3
-
->>> list /a
-* CS2113
+-------------------------------------------------------------
+N:$ list /a
+-------------------------------------------------------------
+* CS2113T
+  |-- W1: Java
+        |-- HELLO WORLD
+            System.out.println("Hello World!");
   |-- Chapter 1
+        |-- Definition
+            What is OOP?
   |-- Chapter 2
 * CG2271
 * CS2101
@@ -659,6 +704,7 @@ Examples of usage:
             Lorem ipsum
   |-- Chapter 2
   |-- Chapter 3
+-------------------------------------------------------------
 ```
 
 <br>
@@ -670,15 +716,18 @@ In a selected *NOTEBOOK*:
 <br>
 
 Examples of usage:
+
+For example, you have selected a notebook titled "CS2101". Below shows the possible outputs when you key in various 
+`list` commands.
 ```
->>> select /nCS2101
-now in notebook book: CS2101
->>>list
+N/CS2101:$ list
+-------------------------------------------------------------
 * Chapter 1
 * Chapter 2
 * Chapter 3
-
->>> list /a
+-------------------------------------------------------------
+N/CS2101:$ list /a
+-------------------------------------------------------------
 * Chapter 1
   |-- Writing email
         Lorem ipsum
@@ -686,6 +735,7 @@ now in notebook book: CS2101
         Lorem ipsum
 * Chapter 2
 * Chapter 3
+-------------------------------------------------------------
 ```
 
 <br>
@@ -696,15 +746,16 @@ In a selected *SECTION*:
 <br>
 
 Example of usage:
+Suppose you have selected a section "Chapter 1" in the notebook "CS2101".
 
 ```
->>> select /sChapter 1
-now in notebook section: Chapter 1
->>> list
+N/CS2101/Chapter 1:$ list
+-------------------------------------------------------------
 * Writing email
     Lorem ipsum
 * Team meeting
     Lorem ipsum
+-------------------------------------------------------------
 ```
 
 <br>
@@ -712,7 +763,7 @@ now in notebook section: Chapter 1
 #### 3.4.5 Finding contents: `find`
 
 Just like how you can find a task in the Timetable mode, you can look for contents in this mode. Even sections and pages
-that do not belong to a select notebook can be found. There are two ways to do so:
+that do not belong to a selected notebook can be found. There are two ways to do so:
 
 ##### 3.4.5.1 Finding by keyword
 
@@ -726,17 +777,23 @@ These are the parameters required in the command:
 
 Example of usage:
 ```
->>> find chapter
+N/CS2101/Chapter 1:$ find chapter
+-------------------------------------------------------------
 I've found these for keyword: chapter
 Sections:
-1. CS2113 |-- Chapter 1
-2. CS2113 |-- Chapter 2
+1. CS2113T |-- Chapter 1
+
+2. CS2113T |-- Chapter 2
+
 3. CS2101 |-- Chapter 1
+
 4. CS2101 |-- Chapter 2
+
 5. CS2101 |-- Chapter 3
+
+-------------------------------------------------------------
 ```
 >:bulb: "|--" indicates "belongs to". You can use this to identify the particular notebook and section a page is in.
-
 
 ##### 3.4.5.2 Finding by tag
 
@@ -750,10 +807,13 @@ These are the parameters required in the command:
 
 Example of usage:
 ```
->>> find /tModule
-I've found these for tag: Module
+N:$ find /tmodule
+-------------------------------------------------------------
+I've found these for tag: module
 Notebooks:
-1. CS2113
+1. CS2101
+
+-------------------------------------------------------------
 ```
 
 #### 3.4.6 Deleting a notebook/section/page: `delete`
@@ -762,40 +822,63 @@ Use the `delete` command to delete an existing notebook, section or page.
 
 > :exclamation: The current selection determines the type you can delete.
 
-Format: `delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
+Format: `delete /n[NOTEBOOK] /s[SECTION] /p[PAGE]`
 
 * `NOTEBOOK`: the title of the notebook to be deleted
 * `SECTION`: the title of the section to be deleted in the selected `NOTEBOOK`
-* `NUMBER`: the page number of the page to be deleted in the selected `SECTION`.
+* `PAGE`: the title of the page to be deleted in the selected `SECTION`.
 
 In *NOTEBOOK MODE*,
-* `delete /nCS2113T /sW10 /p1` deletes page `1` under the section `W10` of the notebook `CS2113T`.
-* `delete /nCS2113T /sW10` deletes the entire section titled `W10` in the notebook `CS2113T`.
-* `delete /nCS2113T` deletes the entire notebook titled `CS2113T`.
+* `delete /nCS2101 /sChapter 1 /pWriting email` deletes page `Writing email` under the section `Chapter 1` of the 
+notebook `CS2101`.
+* `delete /nCS2101 /sChapter 1` deletes the entire section titled `Chapter 1` in the notebook `CS2101`.
+* `delete /nCS2101` deletes the entire notebook titled `CS2101`.
+
+Example of usage:
+```
+N:$ delete /nCS2101 /sChapter 1 /pWriting email
+-------------------------------------------------------------
+Noted. I've removed this page: Writing email
+Lorem ipsum
+-------------------------------------------------------------
+N:$ delete /nCS2101 /sChapter 1
+-------------------------------------------------------------
+Noted. I've removed this section: 
+	Chapter 1
+-------------------------------------------------------------
+```
 
 In a selected *NOTEBOOK*,
-* `delete /s1: What is OOP? /p1` deletes page `1` of the section titled `1: What is OOP?` of the selected notebook.
-* `delete /s1: What is OOP?` deletes the section titled `1: What is OOP?` of the selected notebook.
+* `delete /sW1: Java /pHELLO WORLD` deletes page `HELLO WORLD` of the section titled `W1: Java` of the selected notebook.
+* `delete /sW1: Java` deletes the section titled `W1: Java` of the selected notebook.
 
+Example of usage:
+
+In the notebook `CS2113T`:
+```
+N/CS2113T:$ delete /sW1: Java /pHELLO WORLD
+-------------------------------------------------------------
+Noted. I've removed this page: HELLO WORLD
+System.out.println("Hello World!");
+-------------------------------------------------------------
+N/CS2113T:$ delete /sW1: Java
+-------------------------------------------------------------
+Noted. I've removed this section: 
+	W1: Java
+-------------------------------------------------------------
+```
 In a selected *SECTION*,
 * `delete /p1` deletes page `1` of the selected section.
 
-<br>
+Example of usage:
 
-Examples of usage:
-
+In the section `Chapter 1` of notebook `CS2113T`:
 ```
->>> mode /n
-You are now in notebook mode
->>> delete /nCS2113T /sW10 /p1
-Noted. I've removed this page: HELLO WORLD
-System.out.println("Hello World!")
->>> delete /nCS2113T /sW10
-Noted. I've removed this section:
-	W10
->>> delete /nCS2113T
-Noted. I've removed this notebook:
-    CS2113T
+N/CS2113T/Chapter 1:$ delete /pDefinition
+-------------------------------------------------------------
+Noted. I've removed this page: Definition
+What is OOP?
+-------------------------------------------------------------
 ```
 
 <br>
