@@ -1,5 +1,9 @@
 package zeronote.userinterface.command.timetable;
 
+import zeronote.exceptions.TaskIndexIncorrectFormatException;
+import zeronote.exceptions.TaskIndexOutOfBoundsException;
+import zeronote.exceptions.TaskListEmptyException;
+import zeronote.exceptions.ZeroNoteException;
 import zeronote.tasks.Task;
 import zeronote.tasks.TaskList;
 import zeronote.userinterface.AppState;
@@ -28,22 +32,21 @@ public class DoneCommandTimetableMode extends CliCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws ZeroNoteException {
         taskList = appState.getTaskList();
-        int numberOfTasks = 0;
-        numberOfTasks = taskList.getNumberOfTasks();
+        int numberOfTasks = taskList.getNumberOfTasks();
+        assert numberOfTasks >= 0;
+        if (numberOfTasks == 0) {
+            throw new TaskListEmptyException();
+        }
         try {
             int indexOfNumberAfterDone = Integer.parseInt(this.argument);
             Task taskDone = this.appState.markTaskAsDone(indexOfNumberAfterDone);
             messages.printMarkDone(taskDone);
         } catch (IndexOutOfBoundsException e) {
-            if (numberOfTasks > 0) {
-                System.out.println("Please enter a valid index between 1 and " + numberOfTasks + ".");
-            } else {
-                System.out.println("There are no tasks in the list.");
-            }
+            throw new TaskIndexOutOfBoundsException(String.valueOf(numberOfTasks));
         } catch (NumberFormatException e) {
-            System.out.println("I'm sorry, please enter a valid number!");
+            throw new TaskIndexIncorrectFormatException();
         }
     }
 

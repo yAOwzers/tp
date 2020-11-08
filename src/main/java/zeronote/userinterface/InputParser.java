@@ -11,6 +11,7 @@ import zeronote.exceptions.InvalidSectionException;
 import zeronote.exceptions.InvalidSelectCommandException;
 import zeronote.exceptions.InvalidTagException;
 import zeronote.exceptions.TaskTitleException;
+import zeronote.exceptions.TaskWrongFormatException;
 import zeronote.exceptions.ZeroNoteException;
 import zeronote.notebooks.Notebook;
 import zeronote.notebooks.NotebookShelf;
@@ -46,7 +47,7 @@ public class InputParser {
      * @throws TaskTitleException               when the user's input does not include a task title.
      * @throws IncorrectDeadlineFormatException when the user's input does not include the DEADLINE_DELIMITER.
      */
-    public String parseTaskTitle(String input) throws TaskTitleException, IncorrectDeadlineFormatException {
+    public String parseTaskTitle(String input) throws ZeroNoteException {
         if (input.startsWith(AddCommandTimetableMode.TASK_DELIMITER) && input.contains(
                 AddCommandTimetableMode.DEADLINE_DELIMITER)) {
             String taskTitle = input.substring(AddCommandTimetableMode.TASK_DELIMITER.length());
@@ -58,8 +59,8 @@ public class InputParser {
             }
 
             return taskTitle;
-        } else {
-            throw new IncorrectDeadlineFormatException();
+        }  else {
+            throw new TaskWrongFormatException();
         }
     }
 
@@ -237,7 +238,7 @@ public class InputParser {
      * @param input is the user's input.
      * @return the section title input by the user.
      * @throws InvalidSectionException when the user's input does not contain the section delimiter, or when the
-     *                                 section title is blank.
+     *                                 section title is blank
      */
     public String parseSectionTitle(String input) throws InvalidSectionException {
         try {
@@ -262,6 +263,13 @@ public class InputParser {
         }
     }
 
+    /**
+     * Parses the index number from the user's input.
+     *
+     * @param args the user's input.
+     * @return the integer index number.
+     * @throws InvalidIndexException when the user's input is not a valid number.
+     */
     public int parseTaskIndex(String args) throws InvalidIndexException {
         try {
             return Integer.parseInt(args) - 1;
@@ -303,7 +311,7 @@ public class InputParser {
     /**
      * Parses the page contents of the user's input.
      *
-     * @param input is the user's input.
+     * @param input the user's input.
      * @return contents in the page input by the user.
      * @throws InvalidPageException when the user's input does not contain the page content delimiter, or when there
      *                              is no content.
@@ -327,6 +335,12 @@ public class InputParser {
         }
     }
 
+    /**
+     * Parses the keyword and tag.
+     *
+     * @param input the user's input.
+     * @return an array containing the keyword (empty if not specified) and the tag.
+     */
     public String[] parseTagDescription(String input) {
         return input.split(AddCommandTimetableMode.TASK_DELIMITER, 2);
     }
@@ -408,13 +422,13 @@ public class InputParser {
                 try {
                     return new TagCommandTimetableMode(index, splitParams[1].trim(), appState);
                 } catch (IndexOutOfBoundsException e) {
-                    throw new InvalidTagException(argument);
+                    throw new InvalidTagException(userInput);
                 }
             } else {
                 try {
                     return new TagCommandNotebookMode(splitParams[1].trim(), appState);
                 } catch (IndexOutOfBoundsException e) {
-                    throw new InvalidTagException(argument);
+                    throw new InvalidTagException(userInput);
                 }
             }
         case RemoveCommandTimetableMode.COMMAND_WORD:

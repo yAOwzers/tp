@@ -1,23 +1,23 @@
 package zeronote.userinterface.command.timetable;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 import zeronote.exceptions.InvalidTagException;
+import zeronote.exceptions.ZeroNoteException;
 import zeronote.tasks.Task;
 import zeronote.userinterface.AppState;
 
 class FindTaskTest {
 
     @Test
-    void execute_keywordInput_noneFound() {
+    void execute_keywordInput_noneFound()  {
         AppState appState = new AppState();
-        String input = "add /tTask 1 /by12-10-2020 2252";
-        AddCommandTimetableMode a = new AddCommandTimetableMode(input, appState);
-        a.execute();
-
+        Task t = new Task("Task 1","08-11-2020 1456");
+        appState.getTaskList().addTask(t);
         FindCommandTimetableMode f = new FindCommandTimetableMode("test", "", appState);
         f.execute();
         assertEquals(f.getTasksFound().size(), 0);
