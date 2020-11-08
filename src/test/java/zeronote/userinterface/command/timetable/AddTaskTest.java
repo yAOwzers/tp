@@ -5,6 +5,7 @@ import zeronote.exceptions.IncorrectDeadlineFormatException;
 import zeronote.exceptions.TaskTitleException;
 import zeronote.exceptions.TaskWrongFormatException;
 import zeronote.exceptions.ZeroNoteException;
+import zeronote.tasks.TaskList;
 import zeronote.userinterface.AppMode;
 import zeronote.userinterface.AppState;
 import zeronote.userinterface.InputParser;
@@ -55,7 +56,19 @@ public class AddTaskTest {
         assertThrows(TaskTitleException.class, command::execute);
     }
 
-    //@@author neilbaner
+    @Test
+    void addTask_successfully() throws ZeroNoteException {
+        InputParser parser = new InputParser();
+        AppState appState = new AppState();
+        appState.setAppMode(AppMode.TIMETABLE);
+        String inputString = "add /ttask /by10-10-2020 1900";
+        CliCommand command = parser.getCommandFromInput(inputString, appState);
+        command.execute();
+        TaskList tasks = appState.getTaskList();
+        assertEquals(1, tasks.getNumberOfTasks());
+    }
+    
+    //@@author NeilBaner
     @Test
     void addTask_noDeadlineDelimiter() {
         AppState currentAppState = new AppState();
@@ -70,4 +83,3 @@ public class AddTaskTest {
         assertThrows(TaskWrongFormatException.class, command::execute);
     }
 }
-

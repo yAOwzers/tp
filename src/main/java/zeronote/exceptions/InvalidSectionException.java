@@ -1,6 +1,7 @@
 package zeronote.exceptions;
 
-//@@chuckiex3
+//@@author chuckiex3
+
 /**
  * Signals that the user has input an invalid section name.
  */

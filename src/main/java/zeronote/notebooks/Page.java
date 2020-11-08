@@ -12,20 +12,38 @@ public class Page {
         this.content = content;
     }
 
-    //TODO: Add JavaDoc
-
+    /**
+     * Gets the title of the page.
+     *
+     * @return the title of the page.
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Sets the title of the page.
+     *
+     * @param title is the title of the page.
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * Gets the content of the page.
+     *
+     * @return the content of the page.
+     */
     public String getContent() {
         return content;
     }
 
+    /**
+     * Sets the content of the page.
+     *
+     * @param content is the content the user has input on the page.
+     */
     public void setContent(String content) {
         this.content = content;
     }
@@ -53,6 +71,9 @@ public class Page {
         return tag;
     }
 
+    /**
+     * Prints content stored in the page.
+     */
     public void printPage() {
         System.out.println(content);
     }
