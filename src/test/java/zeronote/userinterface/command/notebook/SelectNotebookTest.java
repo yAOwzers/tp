@@ -15,7 +15,7 @@ import zeronote.userinterface.command.CliCommand;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-//@@chuckiex3
+//@@author chuckiex3
 
 public class SelectNotebookTest {
     @Test

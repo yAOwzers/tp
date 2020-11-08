@@ -61,6 +61,11 @@ public class Notebook {
         return sectionArrayList;
     }
 
+    /**
+     * Get the section at a particular index in the ArrayList. Use findSection() to get an index from a given title.
+     *
+     * @param index the index of the section to be found
+     */
     public Section getSectionAtIndex(int index) {
         return sectionArrayList.get(index);
     }

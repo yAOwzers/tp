@@ -68,7 +68,7 @@ public class AddTaskTest {
         assertEquals(1, tasks.getNumberOfTasks());
     }
     
-    //@@author neilbaner
+    //@@author NeilBaner
     @Test
     void addTask_noDeadlineDelimiter() {
         AppState currentAppState = new AppState();

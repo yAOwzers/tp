@@ -15,7 +15,8 @@ import zeronote.userinterface.command.CliCommand;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-//@@chuckiex3
+//@@author chuckiex3
+
 public class AddNotebookTest {
     @Test
     void addNotebook_wrongFormat_expectException() {
