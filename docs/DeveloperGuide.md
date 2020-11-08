@@ -291,15 +291,17 @@ The `Page` object,
 
 ### 3.6. Storage Component
 
-![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_class.jpeg)
+![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_class.jpg)
 
 The `Storage` component,
 
-* Contains the method `saveToFile` to save the current AppState of the application in the `notebooks.txt` and `tasks.txt` files.  
+- Stores user's inputs into .txt files, which are all found under the same `data` directory.  
 
-* Contains the method `readFromFile` to load up data containing the input of the user's previous session on Zer0Note.  
+- Contains the method `saveToFile` to save the current AppState of the application in the `notebooks.txt` and `tasks.txt` files.  
 
-* Saves the name of the user in a `nameOfUser.txt` and reads it back in the form of personalised messages.   
+- Contains the method `readFromFile` to load up data containing the input of the user's previous session on Zer0Note.  
+
+- Saves the name of the user in a `nameOfUser.txt` and reads it back in the form of personalised messages.   
 
 ## 4. Implementation
 
@@ -413,9 +415,11 @@ Step 1. The user types `done 1`. The `done 1` command is passed through `InputPa
 
 Step 2. `execute()` is called, which then initialises a variable `taskList` of type TaskList. The method then calls `AppState#getTaskList`, which returns all exisiting tasks in the current tasklist.  
 
-Step 3. The `execute()` method proceeds to parse the user's intended task index to be marked as done through `Integer.parseInt()`. Using this index, it initialises a varible `taskDone` of type task and calls `AppState#markAsDone(index)`.  
+Step 3. The `execute()` method proceeds to parse the user's intended task index to be marked as done through `Integer.parseInt()`. Using this index, it initialises a variable `taskDone` of type task and calls `AppState#markAsDone(index)`.  
         
-Step 4. After `taskDone` is initialised, a `messages` of type CliMessages calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
+Step 4. `Appstate#markAsDone(index)` calls the `isDone()` method in task, which changes the isDone variable in the specific task to be true.  
+
+Step 5. After `taskDone` is initialised, a `messages` of type CliMessages calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
 
 ##### 4.2.2.2. Design Considerations
 
