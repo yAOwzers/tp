@@ -16,16 +16,22 @@ public class TaskList {
         taskArrayList.add(task);
     }
 
-    public Task removeTask(int indexToRemove) throws IndexOutOfBoundsException {
-        Task removedTask = taskArrayList.remove(indexToRemove);
-        return removedTask;
+    /**
+     * Deletes a task with the specified index from this TaskList.
+     *
+     * @param index the index of the task to be deleted.
+     * @return the task that is deleted.
+     * @throws IndexOutOfBoundsException when the index is out of the bounds of the TaskList
+     */
+    public Task removeTask(int index) throws IndexOutOfBoundsException {
+        return taskArrayList.remove(index);
     }
 
     public int getNumberOfTasks() {
         return taskArrayList.size();
     }
 
-    public Task getTask(int index) throws ZeroNoteException {
+    public Task getTask(int index) throws TaskIndexOutOfBoundsException {
         if (index > taskArrayList.size()) {
             throw new TaskIndexOutOfBoundsException(String.valueOf(index));
         }

@@ -1,7 +1,6 @@
 package zeronote.userinterface.command.notebook;
 
 import zeronote.exceptions.AddCommandNotebookException;
-import zeronote.exceptions.EmptyPageException;
 import zeronote.exceptions.ZeroNoteException;
 import zeronote.notebooks.Notebook;
 import zeronote.notebooks.NotebookShelf;
