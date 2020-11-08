@@ -93,13 +93,14 @@ Here are some icons that will be used in this User Guide:
 * Words within `(parentheses)` are optional user inputs.
   e.g. in `list (/urgent)`, `/urgent` is an optional parameter.
 * Words in [blue]() are clickable links.
-* Within a code segment, the symbols before the `$` symbol indicates the current mode and notebook/section the user is in.
+* Within a code segment, the symbols before the `$` symbol indicates the current address that the user is in.
     * The following symbols represents the respective address:
         * `T:$` - The user is in TimeTable mode.  
         * `N:$` - The user is in Notebook mode.
-        * `N/[NOTEBOOK NAME]` - The user is in Notebook mode, and is in the indicated notebook with 'NOTEBOOK NAME'.
-        * `N/[NOTEBOOK NAME]/[SECTION NAME]` - The user is in Notebook mode, and is in the indicated section with 'SECTION NAME' of the notebook with 'NOTEBOOK NAME'.  
-        
+        * `N/[NOTEBOOK NAME]:$` - The user is in Notebook mode, and is in the indicated notebook with 'NOTEBOOK NAME'.
+        * `N/[NOTEBOOK NAME]/[SECTION NAME]:$` - The user is in Notebook mode, and is in the indicated section with 'SECTION NAME' of the notebook with 'NOTEBOOK NAME'.  
+        * `N/[NOTEBOOK NAME]/[SECTION NAME]/[PAGE NAME]:$` - The user is in Notebook mode, and is in the indicated page with `PAGE NAME`, of the section with 'SECTION NAME', of the notebook with 'NOTEBOOK NAME'.  
+
 Example:
 
 ```

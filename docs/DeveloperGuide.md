@@ -413,7 +413,7 @@ The following is an example of the processes that occur when the user uses the m
         
 4. `Appstate#markAsDone(index)` calls the `isDone()` method in task, which changes the isDone variable in the specific task to be true.  
 
-5. After `taskDone` is initialised, a `messages` of type CliMessages calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
+5. After `taskDone` is initialised, a `CliMessages` object of name `messages` calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
 
 **Design Considerations**
 //WIP
