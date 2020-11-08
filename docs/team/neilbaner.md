@@ -12,12 +12,19 @@ See the [RepoSense Dashboard here](https://nus-cs2113-ay2021s1.github.io/tp-dash
 
 ### Enhancements implemented
 
-* I implemented the `help` and `exit` commands at the very beginning of the project. 
+* I implemented the `help` and `exit` commands at the very beginning of the project. The `help` command provides the
+ user with a condensed version of the user guide for quick reference. The `exit` command exits the program.  
 
-* I implemented the file storage functionality, that allows the application to save the user's progress/data. 
+* I implemented the file storage functionality, that allows the application to save the user's progress/data. It
+involved adding a `serialize()` function to `TaskList`, `NotebookShelf` and all the contained classes, as well as
+utilising these functions to write to a text file. The `Storage` class also fails gracefully if the save files are
+corrupted, throwing useful error messages and not loading potentially garbled data while still loading known-good
+data.  
 
 * Near the end, I implemented the command prompt to show the user's current selection/location in the application
-. This was in response to [this issue](https://github.com/AY2021S1-CS2113T-T12-3/tp/issues/175) from the PE Dry Run. 
+. This was in response to [this issue](https://github.com/AY2021S1-CS2113T-T12-3/tp/issues/175) from the PE Dry Run
+. The prompt is inspired by the UNIX command prompt which displays the selected directory to the left of the user's
+ input, so the user always knows where they are and what directory is being affected by their commands. 
 
 * I helped implement, troubleshoot, and refactor various other features. 
 
@@ -31,9 +38,28 @@ See the [RepoSense Dashboard here](https://nus-cs2113-ay2021s1.github.io/tp-dash
 
 ### Contributions to Developer Guide
 
+* I created the overall architecture diagram. 
+
+* I created the class diagrams for the CLICommand and Notebook components. 
+
+* I created the sequence diagram for the Storage component. 
+
+* I wrote the following sections: 
+
+    * Introduction (all subsections)
+    
+    * Design (Architecture, UI and Commands subsections)
+    
+    * Implementation (Storage subsection)
+    
+    * Documentation (Style Guidance and Diagrams subsections)
+
 ### Contributions to team-based tasks
 
 * I set up the organisation and repository for the team on GitHub. 
+
+* I created the project skeleton, with the file and class structure that we would follow in the development of the
+ program. 
 
 * I usually managed the issue tracker, setting up issues/milestones, labels etc. 
 
@@ -42,8 +68,15 @@ See the [RepoSense Dashboard here](https://nus-cs2113-ay2021s1.github.io/tp-dash
 
 ### Reviewing/mentoring contributions
 
+* [Here are all the PRs I commented on or created](https://github.com/AY2021S1-CS2113T-T12-3/tp/pulls?q=is%3Apr+commenter%3Aneilbaner). 
+
+* In group discussions, being the most experienced with Java and OOP, I guided the others and helped them implement
+ OOP features like inheritance, polymorphism etc. 
+
 ### Contributions beyond the project team
 
 * [See here](https://github.com/nus-cs2113-AY2021S1/forum/issues?q=is%3Aissue+commenter%3Aneilbaner+) for my
  contributions to the class forum. Also see 
  [here](https://nus-cs2113-ay2021s1.github.io/dashboards/contents/forum-activities.html). 
+ 
+* I made 12 bug reports during the PE dry run, see [here](https://github.com/NeilBaner/ped/issues). 
