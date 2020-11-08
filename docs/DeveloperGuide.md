@@ -411,15 +411,15 @@ The following sequence diagram shows how the mark as done operation works:
 
 The following is an example of the processes that occur when the user uses the mark as done function:  
 
-Step 1. The user types `done 1`. The `done 1` command is passed through `InputParser#getCommandFromInput`, which constructs a DoneCommandTimetableMode object and calls `DoneCommandTimetable#execute()`.  
+1. The user types `done 1`. The `done 1` command is passed through `InputParser#getCommandFromInput`, which constructs a DoneCommandTimetableMode object and calls `DoneCommandTimetable#execute()`.  
 
-Step 2. `execute()` is called, which then initialises a variable `taskList` of type TaskList. The method then calls `AppState#getTaskList`, which returns all exisiting tasks in the current tasklist.  
+2. `execute()` is called, which then initialises a variable `taskList` of type TaskList. The method then calls `AppState#getTaskList`, which returns all exisiting tasks in the current tasklist.  
 
-Step 3. The `execute()` method proceeds to parse the user's intended task index to be marked as done through `Integer.parseInt()`. Using this index, it initialises a variable `taskDone` of type task and calls `AppState#markAsDone(index)`.  
+3. The `execute()` method proceeds to parse the user's intended task index to be marked as done through `Integer.parseInt()`. Using this index, it initialises a variable `taskDone` of type task and calls `AppState#markAsDone(index)`.  
         
-Step 4. `Appstate#markAsDone(index)` calls the `isDone()` method in task, which changes the isDone variable in the specific task to be true.  
+4. `Appstate#markAsDone(index)` calls the `isDone()` method in task, which changes the isDone variable in the specific task to be true.  
 
-Step 5. After `taskDone` is initialised, a `messages` of type CliMessages calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
+5. After `taskDone` is initialised, a `messages` of type CliMessages calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
 
 ##### 4.2.2.2. Design Considerations
 
