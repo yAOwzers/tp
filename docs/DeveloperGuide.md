@@ -411,7 +411,7 @@ Step 1. The user types `done 1`. The `done 1` command is passed through `InputPa
 Step 2. `execute()` is called, which then initialises a variable `taskList` of type TaskList. The method then calls `AppState#getTaskList`, which returns all exisiting tasks in the current tasklist.  
 
 Step 3. The `execute()` method proceeds to parse the user's intended task index to be marked as done through `Integer.parseInt()`. Using this index, it initialises a varible `taskDone` of type task and calls `AppState#markAsDone(index)`.  
-        
+
 Step 4. After `taskDone` is initialised, a `messages` of type CliMessages calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
 
 **Design Considerations**
@@ -868,6 +868,15 @@ The following example is a scenario that demonstrates how exceptions are handled
 
 2. The `hello` command is passed through a switch-case block within `InputParser#getCommandFromInput`.
 
+Here is a small snippet of the switch-case block:
+``` java
+case ModeSwitch.COMMAND_WORD:
+    return new ModeSwitch(argument, appState);
+default:
+    throw new InvalidCommandException(userInput);
+```
+
+
 3. As `hello` is not a command in `Zer0Note`, `InvalidCommandException` which extends `ZeroNoteException` will be thrown.
 
 4. This `ZeroNoteException` is caught by `CliUserInterface#run`, which will then call `ZeroNoteException#printErrorMessage`.
@@ -1231,7 +1240,7 @@ i. Click on the folder that the jar file had been saved in.
 ii. Select both the 'tasks.txt' and 'notebooks.txt'.
 iii. Delete both files.  
 iv. Restart the application by double-clicking the jar file and running Zer0Note.  
-Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1. 
+Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1.
 
 3.2 Dealing with corrupted name file  
 i. Click on the folder that the jar file had been saved in.  
