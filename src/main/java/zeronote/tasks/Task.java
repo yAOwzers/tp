@@ -56,6 +56,12 @@ public class Task {
         return (isDone ? "o" : "x");
     }
 
+    /**
+     * Sets the tag for this task.
+     *
+     * @param tag the tag of the task.
+     * @throws InvalidTagException when the user inputs an empty tag.
+     */
     public void setTag(String tag) throws InvalidTagException {
         if (!tag.equals("")) {
             this.tag = tag;
@@ -64,6 +70,11 @@ public class Task {
         }
     }
 
+    /**
+     * Gets the tag of the task.
+     *
+     * @return the tag of the task.
+     */
     public String getTag() {
         return tag;
     }
