@@ -86,6 +86,7 @@ public class CliUserInterface {
         System.out.flush();
     }
 
+    //@author yAOwzers
     /**
      * Checks if the user had already input their name into Zer0Note for the personalised message
      * generator feature.
