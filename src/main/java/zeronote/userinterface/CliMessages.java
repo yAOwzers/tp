@@ -1,5 +1,6 @@
 package zeronote.userinterface;
 
+import zeronote.exceptions.ZeroNoteException;
 import zeronote.notebooks.Notebook;
 import zeronote.notebooks.Page;
 import zeronote.notebooks.Section;
@@ -86,9 +87,9 @@ public class CliMessages {
         }
     }
 
-    public void printAddedTaskMessage(TaskList tasksList, String title) {
-        //String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //System.out.println(personalMessage);
+    public void printAddedTaskMessage(TaskList tasksList, String title) throws ZeroNoteException {
+        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
+        //        System.out.println(personalMessage);
         System.out.println("Added: " + title);
         System.out.println(tasksList.getNumberOfTasks() + ":" + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
     }
