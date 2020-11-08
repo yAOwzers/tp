@@ -28,11 +28,21 @@ public class Task {
         return dueDateTime;
     }
 
+    /**
+     * Returns the date specified in the deadline.
+     *
+     * @return date given by user.
+     */
     public LocalDate getDueDate() {
         String[] dayTime = by.split(" ", 2);
         return LocalDate.parse(dayTime[0].trim());
     }
 
+    /**
+     * Reformats time, from 24h to 12h format.
+     *
+     * @return time in 12h format, hh MM AM/PM.
+     */
     public LocalTime getTime() {
         String[] dayTime = by.split(" ", 2);
         return LocalTime.parse(dayTime[1].trim());
@@ -46,6 +56,12 @@ public class Task {
         return this.title;
     }
 
+    /**
+     * Reformats the date from dd/MM/yyyy to MMM dd yyyy.
+     *
+     * @return date in MMM dd yyyy.
+     * @throws ParseException when the date input by the user does not follow the expected format.
+     */
     public String reformatDate() throws ParseException {
         Date date = dateTime.parse(by);
         this.dueDateTime = date;

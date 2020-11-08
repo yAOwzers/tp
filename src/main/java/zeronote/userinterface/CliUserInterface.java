@@ -6,6 +6,7 @@ import zeronote.storage.Storage;
 import zeronote.userinterface.command.CliCommand;
 import zeronote.userinterface.command.Exit;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class CliUserInterface {
@@ -85,6 +86,13 @@ public class CliUserInterface {
         System.out.flush();
     }
 
+    //@@author yAOwzers
+    /**
+     * Checks if the user had already input their name into Zer0Note for the personalised message
+     * generator feature.
+     *
+     * @throws IOException when the user enters an invalid input.
+     */
     private void checkNameOfUser() {
         if (appState.getUserName().equals("")) {
             messages.printFillInNameOfUserMessage();
