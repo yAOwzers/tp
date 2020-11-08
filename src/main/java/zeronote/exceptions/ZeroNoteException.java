@@ -1,5 +1,7 @@
 package zeronote.exceptions;
 
+//@@NeilBaner
+
 public abstract class ZeroNoteException extends Exception {
     public String problematicInput;
 
