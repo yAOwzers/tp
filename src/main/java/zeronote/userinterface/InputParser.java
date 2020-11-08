@@ -12,6 +12,7 @@ import zeronote.exceptions.InvalidSectionException;
 import zeronote.exceptions.InvalidSelectCommandException;
 import zeronote.exceptions.InvalidTagException;
 import zeronote.exceptions.TaskTitleException;
+import zeronote.exceptions.TaskWrongFormatException;
 import zeronote.exceptions.ZeroNoteException;
 import zeronote.notebooks.Notebook;
 import zeronote.notebooks.NotebookShelf;
@@ -47,7 +48,7 @@ public class InputParser {
      * @throws TaskTitleException               when the user's input does not include a task title.
      * @throws IncorrectDeadlineFormatException when the user's input does not include the DEADLINE_DELIMITER.
      */
-    public String parseTaskTitle(String input) throws TaskTitleException, IncorrectDeadlineFormatException {
+    public String parseTaskTitle(String input) throws ZeroNoteException {
         if (input.startsWith(AddCommandTimetableMode.TASK_DELIMITER) && input.contains(
                 AddCommandTimetableMode.DEADLINE_DELIMITER)) {
             String taskTitle = input.substring(AddCommandTimetableMode.TASK_DELIMITER.length());
@@ -59,8 +60,8 @@ public class InputParser {
             }
 
             return taskTitle;
-        } else {
-            throw new IncorrectDeadlineFormatException();
+        }  else {
+            throw new TaskWrongFormatException();
         }
     }
 
