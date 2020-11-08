@@ -16,6 +16,7 @@
 [**3. Features**](#3-features) <br>
 &nbsp;&nbsp;[3.1 Viewing the user guide: `help`](#31-viewing-the-user-guide-help) <br>
 &nbsp;&nbsp;[3.2 Switching between the two modes: `mode`](#32-switching-between-the-two-modes-mode) <br>
+&nbsp;&nbsp;[3.3  Personalised Messages](#35-personalised-message) <br>
 &nbsp;&nbsp;[3.3 Timetable Mode](#33-timetable-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3.1 Adding a task: `add`](#331-adding-a-task-add) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3.2 Marking a task as done: `done`](#332-marking-a-task-as-done-done) <br>
@@ -41,7 +42,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.1 Finding by keyword](#3351-finding-by-keyword) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.2 Finding by tag](#3452-finding-by-tag) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.6 Deleting a notebook/section/page: `delete`](#346-deleting-a-notebooksectionpage-delete) <br>
-&nbsp;&nbsp;[3.5 Exiting the program: `exit`](#35-exiting-the-program-exit) <br>
+&nbsp;&nbsp;[3.6 Exiting the program: `exit`](#36-exiting-the-program-exit) <br>
 [**4. FAQ**](#4-faq) <br>
 [**5. Command Summary**](#5-command-summary) <br>
 [**6. For advanced users: Editing your save file**](#6-for-advanced-users-editing-your-save-file)<br>
@@ -167,6 +168,35 @@ Format: `mode /n`
 Format: `mode /t`
 
 <br>
+
+### 3.3 Personalised Messages  
+
+A personalised message will be printed out to the user whenever a particular command has been entered by the user.
+Personalised messages will include an encouraging message followed by the name provided upon launch of Zer0Note.
+
+Example of how a personalised message will look like:  
+```
+I like how you think, Tom
+```
+
+Commands that include personalised messages are:  
+1. `add`  
+2. `done`
+3. `list`
+4. `delete`
+5. `tag`  
+6. `find`
+
+Example of usage:
+```
+>>> add /tRead book /by19-10-2020 1800
+{personalised message}
+Added: Read Book
+1:[x] Read book (by: Oct 19 2020 06.00 PM)
+```
+
+> :exclamation: {personalised message} is a placeholder for the various personalised message that a user will receive.
+
 
 ### 3.3 Timetable Mode
 
@@ -800,7 +830,7 @@ Noted. I've removed this notebook:
 
 <br>
 
-### 3.5 Exiting the program: `exit`
+### 3.6 Exiting the program: `exit`
 
 To close the program, type `exit`.
 
