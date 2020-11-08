@@ -91,10 +91,8 @@ public class SelectNotebookTest {
         InputParser parser = new InputParser();
         String inputString = "select /ntest_notebook /sse /ppage";
         CliCommand command = parser.getCommandFromInput(inputString, appState);
-        String argument = "/ntest_notebook /sse /ppage";
-        command.execute();
         assertThrows(ZeroNoteException.class, () -> {
-            parser.extractParams(argument, appState);
+            command.execute();
         });
     }
 }
