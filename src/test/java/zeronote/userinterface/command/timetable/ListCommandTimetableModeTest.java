@@ -7,20 +7,19 @@ import zeronote.userinterface.AppState;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-// @@author longngng
-class ListTaskTest {
+class ListCommandTimetableModeTest {
 
     @Test
     void execute_invalidInput_exceptionThrown() {
         AppState appState = new AppState();
-        String input = "list /d";
+        String input = "/u/u";
 
         ListCommandTimetableMode listCommandTimetableMode = new ListCommandTimetableMode(input, appState);
         try {
             listCommandTimetableMode.execute();
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("list /d", e.problematicInput);
+            assertEquals("There not exists such options", e.problematicInput);
         }
     }
 }

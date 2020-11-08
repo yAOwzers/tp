@@ -25,22 +25,19 @@ public class AddCommandTimetableMode extends CliCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws ZeroNoteException {
         InputParser parser = new InputParser();
         TaskList currentTaskList = appState.getTaskList();
+        if (!argument.contains(DEADLINE_DELIMITER)) {
+            throw new TaskWrongFormatException();
+        }
         try {
-            if (argument.contains(DEADLINE_DELIMITER)) {
-                String title = parser.parseTaskTitle(argument);
-                String deadline = parser.parseDeadline(argument);
-                currentTaskList.addTask(new Task(title, deadline));
-                messages.printAddedTaskMessage(currentTaskList, title);
-            } else {
-                throw new TaskWrongFormatException();
-            }
+            String title = parser.parseTaskTitle(argument);
+            String deadline = parser.parseDeadline(argument);
+            currentTaskList.addTask(new Task(title, deadline));
+            messages.printAddedTaskMessage(currentTaskList, title);
         } catch (ArrayIndexOutOfBoundsException a) {
             System.out.println("\tPlease type in the format: add /tTITLE /byDEADLINE");
-        } catch (ZeroNoteException z) {
-            z.printErrorMessage();
         }
     }
 
