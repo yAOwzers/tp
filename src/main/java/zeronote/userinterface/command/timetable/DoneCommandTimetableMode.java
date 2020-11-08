@@ -13,7 +13,6 @@ import zeronote.userinterface.command.CliCommand;
 //@@author yAOwzers
 /**
  * Marks a specific task in the tasklist in Zer0Note as done.
- *
  */
 public class DoneCommandTimetableMode extends CliCommand {
 
