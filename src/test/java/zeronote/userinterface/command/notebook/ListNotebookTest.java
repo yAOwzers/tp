@@ -9,7 +9,7 @@ import zeronote.userinterface.AppState;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-//@@longngng
+//@@author longngng
 class ListNotebookTest {
     @Test
     void execute_validInput_success() {
@@ -32,7 +32,7 @@ class ListNotebookTest {
             listCommandNotebookMode.execute();
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("list /d", e.problematicInput);
+            assertEquals(input, e.problematicInput);
         } catch (IncorrectAppModeException e) {
             e.printStackTrace();
         }

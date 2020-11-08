@@ -67,8 +67,6 @@ public class InputParser {
         }
     }
 
-    //@@author chuckiex3
-
     /**
      * Parses user's input to extract deadline in TIMETABLE mode.
      *
@@ -93,8 +91,6 @@ public class InputParser {
         }
     }
 
-    //@@author chuckiex3
-
     /**
      * Checks if [deadline] input by the user is in the correct format.
      *
@@ -110,8 +106,6 @@ public class InputParser {
             return false;
         }
     }
-
-    //@@author chuckiex3
 
     /**
      * Parses user's input to extract notebook title, section title or page number whenever applicable for
@@ -142,8 +136,6 @@ public class InputParser {
         }
     }
 
-    //@@author chuckiex3
-
     /**
      * Extracts the notebook title, as well as the section title and page number, if provided.
      *
@@ -172,8 +164,6 @@ public class InputParser {
         }
     }
 
-    //@@author chuckiex3
-
     /**
      * Parses the user's input to extract the section title, and the page number if provided by the user.
      *
@@ -200,8 +190,6 @@ public class InputParser {
         }
     }
 
-    //@@author chuckiex3
-
     /**
      * Parses the user's input to extract the page number, and content (only if applicable).
      *
@@ -223,8 +211,6 @@ public class InputParser {
         System.out.println("now in " + appState.getAppMode() + ": " + appState.getCurrentPage().getTitle());
         page.printPage();
     }
-
-    //@@author chuckiex3
 
     /**
      * Parses notebook title from the user's input.
@@ -248,8 +234,6 @@ public class InputParser {
             throw new InvalidNotebookException(input);
         }
     }
-
-    //@@author chuckiex3
 
     /**
      * Parses section title from the user's input.
@@ -282,7 +266,7 @@ public class InputParser {
         }
     }
 
-    //@@author
+    //@@author Lusi711
     public int parseTaskIndex(String args) throws InvalidIndexException {
         try {
             return Integer.parseInt(args) - 1;
@@ -323,8 +307,6 @@ public class InputParser {
         }
     }
 
-    //@@author chuckiex3
-
     /**
      * Parses the page contents of the user's input.
      *
@@ -352,9 +334,11 @@ public class InputParser {
         }
     }
 
+    //@@author Lusi711
     public String[] parseTagDescription(String input) {
         return input.split(AddCommandTimetableMode.TASK_DELIMITER, 2);
     }
+
 
     public CliCommand getCommandFromInput(String userInput, AppState appState) throws ZeroNoteException {
         String trimmedInput = userInput.trim();
