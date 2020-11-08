@@ -415,9 +415,6 @@ The following is an example of the processes that occur when the user uses the m
 
 5. After `taskDone` is initialised, a `CliMessages` object of name `messages` calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
 
-**Design Considerations**
-//WIP
-
 #### 4.2.3. Tag Feature
 The user can tag `Task`s in the `TaskList`. This section describes the implementation and design considerations for this
 feature.

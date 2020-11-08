@@ -102,7 +102,7 @@ Here are some icons that will be used in this User Guide:
         * `N/[NOTEBOOK NAME]/[SECTION NAME]/[PAGE NAME]:$` - The user is in Notebook mode, and is in the indicated page with `PAGE NAME`, of the section with 'SECTION NAME', of the notebook with 'NOTEBOOK NAME'.  
 
 Example:
-
+____
 ```
 N:$ select /sChapter 1
 -------------------------------------------------------------
