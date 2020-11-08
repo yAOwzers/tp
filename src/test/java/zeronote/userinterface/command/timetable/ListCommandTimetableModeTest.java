@@ -19,7 +19,7 @@ class ListCommandTimetableModeTest {
             listCommandTimetableMode.execute();
             fail();
         } catch (InvalidCommandException e) {
-            assertEquals("There not exists such options", e.problematicInput);
+            assertEquals("/u/u", e.problematicInput);
         }
     }
 }
