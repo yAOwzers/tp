@@ -39,6 +39,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class InputParser {
+    //@@author chuckiex3
+
     /**
      * Parses the user's input to extract the task title in TIMETABLE mode.
      *
@@ -263,6 +265,8 @@ public class InputParser {
         }
     }
 
+    //@@author Lusi711
+
     /**
      * Parses the index number from the user's input.
      *
@@ -277,6 +281,8 @@ public class InputParser {
             throw new InvalidIndexException(args);
         }
     }
+
+    //@@author chuckiex3
 
     /**
      * Parses the page title input by the user.
@@ -335,6 +341,8 @@ public class InputParser {
         }
     }
 
+    //@@author Lusi711
+    
     /**
      * Parses the keyword and tag.
      *
@@ -344,6 +352,7 @@ public class InputParser {
     public String[] parseTagDescription(String input) {
         return input.split(AddCommandTimetableMode.TASK_DELIMITER, 2);
     }
+
 
     public CliCommand getCommandFromInput(String userInput, AppState appState) throws ZeroNoteException {
         String trimmedInput = userInput.trim();
