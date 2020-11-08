@@ -18,12 +18,11 @@
   - Managed release `v2.0` on GitHub
 - Documentation:
     - User Guide:
-        - Added documentation for `Quick Start`, the features `add` and `select` [#69](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/69), [#109](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/109),...
+        - Added documentation for `Quick Start`, the features `add` and `select` [#69](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/69), [#109](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/109)
         - Tweaked existing documentation of features [#109](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/109), [#130](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/130)
     - Developer Guide:
         - Added implementation details of the add and select features, as well as error handling.
-
 - Community:
-  - PRs reviewed (with non-trivial comments) [#193](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/193), [#129](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/129)
+  - PRs reviewed (with non-trivial comments) [#212](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/212), [#193](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/193), [#129](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/129)
   - Contributed to forum [#121](https://github.com/nus-cs2113-AY2021S1/forum/issues/121)
   - Reported bugs and suggestions for other teams [WatchNext](https://github.com/nus-cs2113-AY2021S1/tp/pull/26), [Nav@NUS](https://github.com/AY2021S1-CS2113T-F14-3/tp/issues/173)
