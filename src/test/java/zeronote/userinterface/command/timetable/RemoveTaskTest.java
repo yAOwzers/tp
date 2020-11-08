@@ -1,17 +1,17 @@
 package zeronote.userinterface.command.timetable;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
-
+import zeronote.exceptions.ZeroNoteException;
 import zeronote.tasks.Task;
 import zeronote.tasks.TaskList;
 import zeronote.userinterface.AppState;
 
-//@@Lusi711
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+//@@author Lusi711
 class RemoveTaskTest {
     @Test
-    void execute_DeleteTaskOne_NoTasksInTaskList() {
+    void execute_DeleteTaskOne_NoTasksInTaskList() throws ZeroNoteException {
         TaskList tasksList = new TaskList();
         Task t = new Task("Task 1", "12-10-2020 2252");
         tasksList.addTask(t);
@@ -25,7 +25,7 @@ class RemoveTaskTest {
     }
 
     @Test
-    void execute_InvalidTaskNumber_NoTasksInTaskList() {
+    void execute_InvalidTaskNumber_NoTasksInTaskList() throws ZeroNoteException {
         TaskList tasksList = new TaskList();
         Task t = new Task("Task 1", "12-10-2020 2252");
         tasksList.addTask(t);

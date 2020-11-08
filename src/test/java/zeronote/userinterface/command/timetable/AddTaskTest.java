@@ -40,7 +40,7 @@ public class AddTaskTest {
         appState.setAppMode(AppMode.TIMETABLE);
         String inputString = "add /t /by18-10-2020 1900";
         String argument = "/t /by18-10-2020 1900";
-        CliCommand command  = parser.getCommandFromInput(inputString, appState);
+        CliCommand command = parser.getCommandFromInput(inputString, appState);
 
         assertThrows(TaskTitleException.class, command::execute);
     }
@@ -52,7 +52,7 @@ public class AddTaskTest {
         appState.setAppMode(AppMode.TIMETABLE);
         String inputString = "add /t /by";
         String argument = "/t /by";
-        CliCommand command  = parser.getCommandFromInput(inputString, appState);
+        CliCommand command = parser.getCommandFromInput(inputString, appState);
         assertThrows(TaskTitleException.class, command::execute);
     }
 
@@ -67,7 +67,7 @@ public class AddTaskTest {
         TaskList tasks = appState.getTaskList();
         assertEquals(1, tasks.getNumberOfTasks());
     }
-    
+
     //@@author NeilBaner
     @Test
     void addTask_noDeadlineDelimiter() {
