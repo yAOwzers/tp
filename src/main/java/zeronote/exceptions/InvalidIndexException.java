@@ -1,6 +1,7 @@
 package zeronote.exceptions;
 
 //@@author Lusi711
+
 /**
  * Signals that the user has input an invalid number e.g. letters.
  */

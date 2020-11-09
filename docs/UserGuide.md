@@ -104,7 +104,7 @@ Here are some icons that will be used in this User Guide:
         * `N/[NOTEBOOK NAME]/[SECTION NAME]/[PAGE NAME]:$` - The user is in Notebook mode, and is in the indicated page with `PAGE NAME`, of the section with 'SECTION NAME', of the notebook with 'NOTEBOOK NAME'.  
 
 Example:
-
+____
 ```
 N:$ select /sChapter 1
 -------------------------------------------------------------
@@ -208,6 +208,8 @@ N:$ mode /t
 You are now in timetable mode
 -------------------------------------------------------------
 ```
+
+>:warning: Entering an invalid mode, such as /d, will give you an error
 
 <br>
 
@@ -421,6 +423,8 @@ T:$ list /u
 
 If you're in a time crunch, you can list out top urgent tasks that have not been done, sorted by deadlines. If there
 are many undone tasks, only the top three urgent ones will be displayed.
+
+> :bulb: Use this command to prioritize what you need to get done first 
 
 Format: `list /urgent`
 
@@ -781,6 +785,9 @@ N:$ list /a
 -------------------------------------------------------------
 ```
 
+> :bulb: Use `list` first to see the titles only before, otherwise you could be overwhelmed with the details of all the 
+> notebooks
+
 <br>
 
 In a selected *NOTEBOOK*:
@@ -830,6 +837,8 @@ N/CS2101/Chapter 1:$ list
 -------------------------------------------------------------
 ```
 
+>:warning: Entering a non-existing option, such as /t, will give you an error
+
 <br>
 
 #### 3.5.5 Finding contents: `find`
@@ -866,7 +875,7 @@ Sections:
 
 -------------------------------------------------------------
 ```
->:bulb: "|--" indicates "belongs to". You can use this to identify the particular notebook and section a page is in.
+>:bulb: "\|--" indicates "belongs to". You can use this to identify the particular notebook and section a page is in.
 
 #### 3.5.5.2 Finding by tag
 

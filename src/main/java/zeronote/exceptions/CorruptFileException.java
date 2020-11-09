@@ -1,4 +1,5 @@
 package zeronote.exceptions;
+// @@author neilbaner
 
 /**
  * Signals an error in reading of the desired file.
