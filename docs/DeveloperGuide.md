@@ -1,7 +1,7 @@
 # Developer Guide for Zer0Note
 
 ## Table Of Contents
-[1. Introduction](#1-introduction-neil) <br>
+[1. Introduction](#1-introduction) <br>
 &nbsp;&nbsp;[1.1. Welcome!](#11-welcome)<br>
 &nbsp;&nbsp;[1.2. How to use this document](#12-how-to-use-this-document)<br>
 [2. Setting up](#2-setting-up) <br>
@@ -279,7 +279,7 @@ The `Page` object,
 - contains a title, and the content of the page as a String object.
 - has a `tag` field that user can be set and get.
 
-<!-- @@author yAOwzers>
+<!-- @@author yAOwzers-->
 ### 3.6. Storage Component
 
 ![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_class.jpg)
