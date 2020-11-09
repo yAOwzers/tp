@@ -17,9 +17,9 @@ It helps users to keep track of deadlines and take notes quickly.
 **Zer0Note** is designed for users who love typing, and the command line! 
 
 Useful links:
-* [User Guide](UserGuide.md)
-* [Developer Guide](DeveloperGuide.md)
-* [About Us](AboutUs.md)
+* [User Guide](docs/UserGuide.md)
+* [Developer Guide](docs/DeveloperGuide.md)
+* [About Us](docs/AboutUs.md)
 
 Contributors:
 * [Francene Mooi](docs/team/chuckiex3.md)

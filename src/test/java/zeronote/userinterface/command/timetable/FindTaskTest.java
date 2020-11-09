@@ -63,11 +63,4 @@ class FindTaskTest {
         f.execute();
         assertEquals(f.getTasksFound().size(), 1);
     }
-
-    @Test
-    void isPersonalised_noInput_ReturnsTrue() {
-        AppState appState = new AppState();
-        FindCommandTimetableMode f = new FindCommandTimetableMode("", "", appState);
-        assertTrue(f.isPersonalised());
-    }
 }

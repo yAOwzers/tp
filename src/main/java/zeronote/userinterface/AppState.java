@@ -77,7 +77,7 @@ public class AppState {
         this.currentPage = currentPage;
     }
 
-    //@@author
+    //@@author yAOwzers
     public TaskList getTaskList() {
         return taskList;
     }
@@ -86,7 +86,6 @@ public class AppState {
         this.taskList = taskList;
     }
 
-    //@@author yA0wzers
     public Task markTaskAsDone(int index) throws ZeroNoteException {
         return taskList.markAsDone(index);
     }
