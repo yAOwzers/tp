@@ -816,13 +816,13 @@ The following example is a scenario that demonstrates how exceptions are handled
 
 2. The `hello` command is passed through a switch-case block within `InputParser#getCommandFromInput`.
 
-Here is a small snippet of the switch-case block:
-``` java
-case ModeSwitch.COMMAND_WORD:
+    Here is a small snippet of the switch-case block:
+    ``` java
+    case ModeSwitch.COMMAND_WORD:
     return new ModeSwitch(argument, appState);
-default:
+    default:
     throw new InvalidCommandException(userInput);
-```
+    ```
 
 3. As `hello` is not a command in `Zer0Note`, `InvalidCommandException` which extends `ZeroNoteException` will be thrown.
 
