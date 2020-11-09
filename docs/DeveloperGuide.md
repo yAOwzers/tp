@@ -59,9 +59,7 @@
 <hr>
 <hr>
 
-<!-- @@author neilbaner -->
-
-## 1. Introduction (Neil)
+## 1. Introduction
 
 ### 1.1. Welcome!
 Welcome, and thank you for choosing to help contribute to Zer0Note! Zer0Note is a command-line based note-taking and
@@ -169,7 +167,7 @@ The following section describes the design and implementation of the product. UM
 to explain some aspects of the code. If you are unfamiliar with UML, the diagrams should still be fairly
 understandable. However, you may wish to consult [[CS2113/T] Modeling](https://nus-cs2113-ay2021s1.github.io/website/se-book-adapted/chapters/modeling.html) for a quick introduction to UML.
 
-### 3.1 Architecture (Neil)
+### 3.1 Architecture
 
 **How the architecture components interact with each other**
 
@@ -185,16 +183,14 @@ the sense that it interacts directly with the user, and it passes along the inpu
 classes such as `InputParser` and the various `CliCommand` classes to execute the instructions provided by the user
 . This is explained in more detail in the following sections.
 
-### 3.2 UI Component (Neil)
+### 3.2 UI Component
 
 The user interface of **Zer0Note** is provided by the class `CliUserInterface`. It is instantiated once in the main
 method, and its `run()` method is called to start the UI for the application.
 
-
 The `CliUserInterface` class contains an instance of `AppState`. This is a class that, as the name implies, contains
 the current state of the running instance of the application. For example, it contains the user data, the current mode,
 the navigation state (i.e. currently chosen notebook/section/page).
-
 
 The process below describes the operation of the `run()` method in `CliUserInterface`:
 * The method `loadState()` is called, which loads the save file, and populates the `AppState` object with the
@@ -208,7 +204,7 @@ command with `CliCommand.execute()` (learn more [here](#33-commands-component-ne
 caught in the `run()` method. Upon catching an exception, the `printErrorMessage()` method is called to display the
 appropriate error message to the usaer. See [here]() for more information on how exceptions work in **Zer0Note**.
 
-### 3.3. Commands Component (Neil)
+### 3.3. Commands Component
 
 Every command that a user can input into **Zer0Note** is represented by an object that extends the abstract class
 `CliCommand`. `CliCommand` contains some basic fields and methods that are shared by all types of commands, such as:
@@ -232,6 +228,7 @@ And this diagram describes the `CliCommand`s related to the Notebook mode.
 ![UML diagrams for Notebook Commands](diagrams/class/jpeg/notebook_commands.jpg)
 Figure [3]. Class diagram for Notebook commands
 
+<!-- @@author longngng -->
 ### 3.4. Tasks Component
 
 ![UML Diagram from Task Component](diagrams/class/jpeg/taskComponent.jpg)
@@ -282,7 +279,6 @@ The `Page` object,
 - has a `tag` field that user can be set and get.
 
 <!-- @@author neilbaner -->
-
 ### 3.6. Storage Component
 
 ![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_class.jpg)
@@ -308,6 +304,7 @@ The following section describes the implementation of certain key features in th
 provides some background into our (the original developers of Zer0Note) thinking and the rationale behind the
 decisions.
 
+<!-- @@author longngng -->
 ### 4.1. Mode Switch Feature
 
 #### 4.1.1. Implementation
@@ -336,6 +333,7 @@ or `NOTEBOOK_SHELF` or throw an `InvalidCommandException`.
 Step 4. To signal that the user has successfully changed the mode, a message is printed with the current mode of the
 program.  
 
+<!-- @@author chuckiex3 -->
 ### 4.2. Timetable Mode
 
 #### 4.2.1. TaskList Management Feature
@@ -368,6 +366,8 @@ The UML sequence diagram below shows how the add task command works.
 Figure [8]. Sequence diagram for the Add Task Command
 
 <hr>
+
+<!-- @@author Lusi711 -->
 TaskList also allows the deletion of tasks by the user.
 
 The figure below shows how the delete task command works:
@@ -395,6 +395,7 @@ NotebookShelf.
     - Cons: It takes more resources to implement. The constant factor for a hashing algorithm is significant and not
      worth the tradeoff for smaller amounts of data, like a typical user would be likely to generate.
 
+<!-- @@author yAOwzers -->
 #### 4.2.2. Mark as done feature  
 
 **Implementation**  
@@ -418,6 +419,7 @@ The following is an example of the processes that occur when the user uses the m
 
 5. After `taskDone` is initialised, a `CliMessages` object of name `messages` calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
 
+<!-- @@author Lusi711 -->
 #### 4.2.3. Tag Feature
 The user can tag `Task`s in the `TaskList`. This section describes the implementation and design considerations for this
 feature.
@@ -453,8 +455,9 @@ This section describes some of the considerations involved when designing the ta
 - **Alternative 2:** Store as a Hash Table with the key as the tag and value as `Task`
     - Pros: It has a better time complexity for search operations since this data structure is more optimized (O(1) can
     be achieved).
-    - Cons: It is hard to retrieve the tag for a specific `Task` due to the structure of the key-value pair.
+    - Cons: Takes up storage space
 
+<!-- @@author longngng -->
 #### 4.2.4. List Feature
 
 **Implementation**
@@ -475,6 +478,7 @@ based on the due date of the `Task` objects in the list.
 
 Step 3. The program prints up to three tasks in the sorted list.
 
+<!-- @@author Lusi711 -->
 #### 4.2.5. Search Feature
 This feature allows the user to search for tasks by keyword or by tag. Refer to [Tag Feature](#423-tag-feature) for more
  information on the implementation of tags.
@@ -513,6 +517,7 @@ This section describes some considerations involved when designing the find feat
     - Cons: Unable to be returned directly by `InputParser#getCommandFromInput` as they are not subclasses of the
     `CliCommand` class. An if-else statement is still required inside the`FindCommandTimetableMode#execute` method.
 
+<!-- @@author chuckiex3 -->
 ### 4.3. Notebook Mode
 
 #### 4.3.1. Notebook Management Feature
@@ -547,6 +552,8 @@ The UML sequence diagram below shows how the add notebook command works.
 Figure [14]. Sequence diagram for Add Command in Notebook Mode
 
 <hr>
+
+<!-- @@author Lusi711 -->
 Notebook Mode also allows the user to remove a notebook/section/page.
 
 The figure below shows how the "delete notebook" command works:
@@ -565,6 +572,7 @@ class.
     c. If the user is in a section, `execute()` calls `removeFromSection(Section)`.
 5. `CliUserInterface#IsTriggerAutosave` is called to verify whether a change has been made in the NotebookShelf.
 
+<!-- @@author chuckiex3 -->
 #### 4.3.2. Select Feature
 
 The user can `select` a `Notebook`, `Section` or `Page` to view its contents. This section describes the implementation and design considerations for this feature.
@@ -601,6 +609,7 @@ Figure [16]. Sequence diagram for Select Command in Notebook Mode
     - Pros: The command the user has to type is much shorter.
     - Cons: If the user has notebooks/sections with the same name, he cannot be sure that the item he wants will be selected correctly.
 
+<!-- @@author Lusi711 -->
 #### 4.3.3. Tag Feature
 
 The user can add a `tag` to a `Notebook`, `Section` or `Page`. This section describes the implementation and design
@@ -637,6 +646,7 @@ This section describes some of the considerations involved when designing the ta
     be achieved).
     - Cons: It is hard to retrieve the tag for a specific `Task` due to the structure of the key-value pair.
 
+<!-- @@author Lusi711 -->
 #### 4.3.4. Search Feature
 
 This feature works similarly to the [search feature](#425-search-feature) in the Timetable mode. Refer to
@@ -664,6 +674,7 @@ and pages found.
     - Pros: Has better time complexity of O(n) as it only needs to iterate through each list.
     - Cons: Unable to output the notebook and section that a page belongs to to the user
 
+<!-- @@author longngng -->
 #### 4.3.5. List Feature
 
 **Implementation**
@@ -790,6 +801,7 @@ etc. ). It then stores the loaded `TaskList` and `NotebookShelf` to a new instan
 
 <br>
 
+<!-- @@author chuckiex3 -->
 ### 4.5 Error Handling
 
 The `ZeroNoteException` class extends `Exception` by printing an error message to the user when the user encounters an exception.
@@ -815,6 +827,7 @@ default:
 
 <br>
 
+<!-- @@author yAOwzers -->
 ### 4.6 Personalised Messages
 
 The `PersonalisedMessageGenerator` class prints out a personalised message to the users after particular commands 
@@ -838,7 +851,7 @@ Assuming that the user has input the username of 'Tom' into Zer0Note.
 <hr>
 <hr>
 
-<!-- @@author neilbaner -->
+<!-- @@author-->
 
 ## 5. Documentation
 
