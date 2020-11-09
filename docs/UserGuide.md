@@ -214,7 +214,7 @@ You are now in timetable mode
 We have included personalised messages to compliment your works!
 
 A personalised message will be printed out to you in the command line interface whenever you enter a particular command.
-Personalised messages will include a random generated encouraging message followed by the name provided by you upon launch of Zer0Note.
+Personalised messages will include a random generated encouraging message followed by the name provided by you upon the launch of Zer0Note.
 
 Example of how a personalised message will look like:  
 ```

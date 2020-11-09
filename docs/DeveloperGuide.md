@@ -1050,7 +1050,7 @@ i. Prerequisites: User must be in the Timetable mode. Enter `mode /t` command to
 ii. Test case: `add /t test task /by 10-10-2020 2000`  
 Expected: Task is added into the tasklist with a success message printed.  
 iii. Test case: `add /t test task`  
-Expected: An error messsage will be printed in the command line interface.  
+Expected: An error message will be printed in the command line interface.  
 iv. Test case: `add`  
 Expected: An error message along with a formatting guideline message will be printed.  
 v. Test case: `add /t test task /by 2020-10-10 2000`  
@@ -1063,9 +1063,9 @@ i. Prerequisites: User must be in the Timetable mode. Enter `mode /t` command to
 ii. Test case: `done 1`  
 Expected: First task should be marked as done in the tasklist.  
 iii. Test case: `done 0`  
-Expected: An error messsage along with a formatting guideline message will be printed in the command line interface.  
+Expected: An error message along with a formatting guideline message will be printed in the command line interface.  
 iv. Other incorrect done commands to try: `done`, `done x` (where x is larger than the number of tasks in the tasklist)  
-Expected: An error messsage along with a formatting guideline message will be printed in the command line interface.  
+Expected: An error message along with a formatting guideline message will be printed in the command line interface.  
 
 #### 2.4 Tagging a Task
 
