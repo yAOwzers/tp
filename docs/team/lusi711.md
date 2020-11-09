@@ -4,7 +4,7 @@
 This project portfolio page aims to record my contributions to the Zer0Note project.
 
 **Zer0Note** is a note taking and organisation application meant for students(especially those who can type fast).
-We aim to help our target users integrate and speed up the notetaking and scheduling processes.
+We aim to help our target users integrate and speed up the note-taking and scheduling processes.
 
 **Zer0Note** consists of two modes: Timetable and Notebook. The Timetable mode manages the tasks input by the user while
 the Notebook mode manages the user's notes.
@@ -23,7 +23,7 @@ All my work can be viewed [here](https://nus-cs2113-ay2021s1.github.io/tp-dashbo
     - What it does: This feature allows the user to find tasks, and notebooks, sections and pages, from the respective
     modes in two ways. The user can search for all titles that contain a keyword, or search for all that have a specified 
     tag (Refer below).
-    -Justification: This feature improves the product significantly as:
+    - Justification: This feature improves the product significantly as:
         - The feature efficiently saves time in terms of searching tasks and notes manually.
         - The feature allows the user to revise previous tasks and notes.
     - Highlights: This enhancement handles finding by keyword and tag within a single class `FindCommand`.
