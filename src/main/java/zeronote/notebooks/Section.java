@@ -50,7 +50,7 @@ public class Section {
         pageArrayList.add(p);
     }
 
-    // @@author Lusi711
+    //@@author chuckiex3
 
     /**
      * Find a page with a given title in this section.
@@ -69,10 +69,12 @@ public class Section {
         return notFound;
     }
 
+    //@@author Lusi711
+
     /**
      * Deletes a page with a specified index from this section.
      *
-     * @param index index of the page to deleted.
+     * @param index the index of the page to deleted.
      * @return the page that is deleted.
      * @throws InvalidPageException when the specified page does not exist.
      */
