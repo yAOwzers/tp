@@ -77,7 +77,6 @@ public class Notebook {
     public Section getSectionAtIndex(int index) {
         return sectionArrayList.get(index);
     }
-    // @@author chuckiex3
 
     // @@author chuckiex3
 
