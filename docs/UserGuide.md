@@ -12,42 +12,44 @@
 ## Table of Contents
 [**1. Introduction**](#1-introduction) <br>
 &nbsp;&nbsp;[1.1. How to use this guide](#11-how-to-use-this-guide) <br>
+&nbsp;&nbsp;[1.1.1. Icons and their meanings](#111-icons-and-their-meanings) <br>
+&nbsp;&nbsp;[1.1.2. Notes about the format](#112-notes-about-the-format) <br>
 [**2. Quick Start**](#2-quick-start) <br>
 [**3. Features**](#3-features) <br>
-&nbsp;&nbsp;[3.1 Viewing the user guide: `help`](#31-viewing-the-user-guide-help) <br>
-&nbsp;&nbsp;[3.2 Switching between the two modes: `mode`](#32-switching-between-the-two-modes-mode) <br>
-&nbsp;&nbsp;[3.3  Personalised Messages](#33-personalised-messages) <br>
-&nbsp;&nbsp;[3.4 Timetable Mode](#34-timetable-mode) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1 Adding a task: `add`](#341-adding-a-task-add) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2 Marking a task as done: `done`](#342-marking-a-task-as-done-done) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3 Tagging a task: `tag`](#343-tagging-tasks-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4 Listing tasks: `list`](#344-listing-tasks-list) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.1 Listing all tasks](#3441-listing-all-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.2 Listing done tasks](#3442-listing-done-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.3 Listing undone tasks](#3443-listing-undone-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.4 Listing urgent tasks](#3444-listing-urgent-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5 Finding tasks: `find`](#345-finding-tasks-find) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.1 Finding by keyword](#3451-finding-by-keyword) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.2 Finding by tag](#3452-finding-by-tag) <br>
+&nbsp;&nbsp;[3.1. Viewing the user guide: `help`](#31-viewing-the-user-guide-help) <br>
+&nbsp;&nbsp;[3.2. Switching between the two modes: `mode`](#32-switching-between-the-two-modes-mode) <br>
+&nbsp;&nbsp;[3.3.  Personalised Messages](#33-personalised-messages) <br>
+&nbsp;&nbsp;[3.4. Timetable Mode](#34-timetable-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1. Adding a task: `add`](#341-adding-a-task-add) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2. Marking a task as done: `done`](#342-marking-a-task-as-done-done) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3. Tagging a task: `tag`](#343-tagging-tasks-tag) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4. Listing tasks: `list`](#344-listing-tasks-list) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.1. Listing all tasks](#3441-listing-all-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.2. Listing done tasks](#3442-listing-done-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.3. Listing undone tasks](#3443-listing-undone-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.4. Listing urgent tasks](#3444-listing-urgent-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5. Finding tasks: `find`](#345-finding-tasks-find) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.1. Finding by keyword](#3451-finding-by-keyword) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.2. Finding by tag](#3452-finding-by-tag) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. Deleting a task: `delete`](#346-deleting-a-task-delete) <br>
-&nbsp;&nbsp;[3.5 Notebook Mode](#35-notebook-mode) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1 Adding a notebook/section/page: `add`](#351-adding-a-notebooksectionpage-add) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.1 Adding a notebook](#3511-adding-a-notebook) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.2 Adding a section](#3512-adding-a-section) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.3 Adding a page](#3513-adding-a-page) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.2 Selecting a notebook/section/page: `select`](#352-selecting-a-notebooksectionpage-select) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.3 Tagging a notebook/section/page: `tag`](#353-tagging-a-notebooksectionpage-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.4 Listing contents: `list`](#354-listing-contents-list) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5 Finding contents: `find`](#355-finding-contents-find) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5.1 Finding by keyword](#3551-finding-by-keyword) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5.2 Finding by tag](#3552-finding-by-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.6 Deleting a notebook/section/page: `delete`](#356-deleting-a-notebooksectionpage-delete) <br>
-&nbsp;&nbsp;[3.6 Exiting the program: `exit`](#36-exiting-the-program-exit) <br>
+&nbsp;&nbsp;[3.5. Notebook Mode](#35-notebook-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1. Adding a notebook/section/page: `add`](#351-adding-a-notebooksectionpage-add) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.1. Adding a notebook](#3511-adding-a-notebook) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.2. Adding a section](#3512-adding-a-section) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.3. Adding a page](#3513-adding-a-page) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.2. Selecting a notebook/section/page: `select`](#352-selecting-a-notebooksectionpage-select) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.3. Tagging a notebook/section/page: `tag`](#353-tagging-a-notebooksectionpage-tag) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.4. Listing contents: `list`](#354-listing-contents-list) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5. Finding contents: `find`](#355-finding-contents-find) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5.1. Finding by keyword](#3551-finding-by-keyword) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5.2. Finding by tag](#3552-finding-by-tag) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.6. Deleting a notebook/section/page: `delete`](#356-deleting-a-notebooksectionpage-delete) <br>
+&nbsp;&nbsp;[3.6. Exiting the program: `exit`](#36-exiting-the-program-exit) <br>
 [**4. FAQ**](#4-faq) <br>
 [**5. Command Summary**](#5-command-summary) <br>
 [**6. For advanced users: Editing your save file**](#6-for-advanced-users-editing-your-save-file)<br>
-&nbsp;&nbsp;[6.1 The tasks save file](#61-the-tasks-save-file)<br>
-&nbsp;&nbsp;[6.2 The notebooks save file](#62-the-notebooks-save-file)<br>
+&nbsp;&nbsp;[6.1. The tasks save file](#61-the-tasks-save-file)<br>
+&nbsp;&nbsp;[6.2. The notebooks save file](#62-the-notebooks-save-file)<br>
 
 <hr>
 
@@ -934,9 +936,9 @@ This section answers some frequently asked questions.
 
 ### How do I transfer my data to another computer?
 
-The save files for Zer0Note are stored in the same directory as the Zer0Note JAR file. You may move the entire
-directory to another computer and Zer0Note will continue to work with your saved data. Alternatively, you may move
-just the files named `nameOfUser.txt`, `notebooks.txt` and `tasks.txt` to another computer, into the directory
+The save files for Zer0Note are stored in a directory named `data`, in the same directory as the Zer0Note JAR file. 
+You may move the entire directory to another computer and Zer0Note will continue to work with your saved data. 
+Alternatively, you may move just the `data` directory to another computer, into the directory
 containing the Zer0Note JAR file on that computer.
 
 ### Where do I find the release?
@@ -1025,6 +1027,8 @@ The following table is a cheatsheet of the commands available in Notebook Mode.
 you so desire. We realise that power users may wish to use a different text editor such as vim or Visual Studio Code
 to edit their notes, while also taking advantage of the organisation features of Zer0Note. If you wish to edit the
 save file by yourself, here's a detailed guide on the contents of the save file and how to edit it.
+
+The save files are stored in a directory `data` in the same directory as the Zer0Note JAR file. 
 
 > :exclamation: **Zer0Note** is very sensitive to the format of the saved file! If there are any errors in the save
 > file, **Zer0Note** will not load it at all, since it cannot be sure if any of the file is uncorrupted. Proceed with
