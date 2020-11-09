@@ -10,6 +10,7 @@ import zeronote.userinterface.AppState;
 import zeronote.userinterface.command.CliCommand;
 
 //@@author longngng
+
 /**
  * Represents the executor created when command list is input in the notebook mode.
  */
@@ -76,8 +77,8 @@ public class ListCommandNotebookMode extends CliCommand {
     /**
      * Lists the content based on the argument of the command.
      *
-     * @throws InvalidCommandException if an invalid argument is given
-     * @throws IncorrectAppModeException if the application is is TIMETABLE mode
+     * @throws InvalidCommandException if an invalid argument is given.
+     * @throws IncorrectAppModeException if the application is is TIMETABLE mode.
      */
     @Override
     public void execute() throws IncorrectAppModeException, InvalidCommandException {
@@ -110,11 +111,9 @@ public class ListCommandNotebookMode extends CliCommand {
             }
             break;
         case NOTEBOOK_SECTION:
-            switch (commandParams) {
-            case(""):
+            if ("".equals(commandParams)) {
                 listSection(appState.getCurrentSection());
-                break;
-            default:
+            } else {
                 throw new InvalidCommandException(commandParams);
             }
             break;
