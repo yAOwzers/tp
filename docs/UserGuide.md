@@ -1001,7 +1001,7 @@ The following table is a cheatsheet of the commands available in Timetable Mode.
 [List tasks](#344-listing-tasks-list): `list` | list (/u) (/d) (/urgent) |
 [Finding tasks](#345-finding-tasks-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find book 2) find /tTodo
 [Delete a task](#346-deleting-a-task-delete): `delete` | delete [INDEX] | delete 1
-[Switch to notebook mode](#32-switching-between-the-two-modes-mode): `mode` | mode /n |
+[Switch to notebook mode](#321-switching-to-the-notebook-mode): `mode` | mode /n |
 
 ### Notebook Mode
 
@@ -1017,7 +1017,7 @@ The following table is a cheatsheet of the commands available in Notebook Mode.
 [List contents](#354-listing-contents-list): `list` | list (/s) (/a) |
 [Find](#355-finding-contents-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find chapter 2) find /tModule
 [Delete](#356-deleting-a-notebooksectionpage-delete): `delete` | 1) delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER] | select /nCS2113T /sW10 /p1
-[Switch to timetable mode](#32-switching-between-the-two-modes-mode): `mode` | mode /t |
+[Switch to timetable mode](#322-switching-to-the-timetable-mode): `mode` | mode /t |
 
 <hr>
 
