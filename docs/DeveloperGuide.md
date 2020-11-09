@@ -933,6 +933,7 @@ There are two ways to run tests.
 ### 6.2. Types of tests
 
 This project has one type of test:
+
 Unit tests targeting the lowest level methods/classes.
 e.g. `teetwelvedashthree.zeronote.userinterface.command.notebook.AddNotebookTest`
 
