@@ -93,13 +93,18 @@ public class CliUserInterface {
      *
      * @throws IOException when the user enters an invalid input.
      */
-    private void checkNameOfUser() {
+    private void checkNameOfUser() throws ZeroNoteException {
         if (appState.getUserName().equals("")) {
             messages.printFillInNameOfUserMessage();
             String userName = keyboardScanner.nextLine();
             appState.setUserName(userName);
+            saveState();
             msgGenerator = new PersonalMessageGenerator(userName);
             msgGenerator.greetFirstTimeUser();
+        } else {
+            String userName = appState.getUserName();
+            msgGenerator = new PersonalMessageGenerator(userName);
+            msgGenerator.greetUser();
         }
     }
 
@@ -112,8 +117,13 @@ public class CliUserInterface {
         }
         startUI();
         String userInput;
-        checkNameOfUser();
-        msgGenerator = new PersonalMessageGenerator(appState.getUserName());
+        try {
+            checkNameOfUser();
+            msgGenerator = new PersonalMessageGenerator(appState.getUserName());
+        }  catch (ZeroNoteException e) {
+            e.printErrorMessage();
+            messages.printLineSeparator();
+        }
         while (!toQuit) {
             printPrompt();
             userInput = keyboardScanner.nextLine();

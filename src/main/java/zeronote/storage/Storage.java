@@ -22,9 +22,9 @@ import java.util.Scanner;
  */
 public class Storage {
 
-    private final String tasksFilePath = "tasks.txt";
-    private final String notebooksFilePath = "notebooks.txt";
-    private final String nameFilepath = "nameOfUser.txt";
+    private final String tasksFilePath = "data/tasks.txt";
+    private final String notebooksFilePath = "data/notebooks.txt";
+    private final String nameFilepath = "data/nameOfUser.txt";
 
     /**
      * Saves the tasks to the specified path.
