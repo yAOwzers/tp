@@ -1,3 +1,5 @@
+// @@author neilbaner
+
 package zeronote.userinterface;
 
 import zeronote.exceptions.CorruptFileException;
@@ -6,6 +8,7 @@ import zeronote.storage.Storage;
 import zeronote.userinterface.command.CliCommand;
 import zeronote.userinterface.command.Exit;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class CliUserInterface {
@@ -85,13 +88,25 @@ public class CliUserInterface {
         System.out.flush();
     }
 
-    private void checkNameOfUser() {
+    //@@author yAOwzers
+    /**
+     * Checks if the user had already input their name into Zer0Note for the personalised message
+     * generator feature.
+     *
+     * @throws IOException when the user enters an invalid input.
+     */
+    private void checkNameOfUser() throws ZeroNoteException {
         if (appState.getUserName().equals("")) {
             messages.printFillInNameOfUserMessage();
             String userName = keyboardScanner.nextLine();
             appState.setUserName(userName);
+            saveState();
             msgGenerator = new PersonalMessageGenerator(userName);
             msgGenerator.greetFirstTimeUser();
+        } else {
+            String userName = appState.getUserName();
+            msgGenerator = new PersonalMessageGenerator(userName);
+            msgGenerator.greetUser();
         }
     }
 
@@ -104,8 +119,13 @@ public class CliUserInterface {
         }
         startUI();
         String userInput;
-        checkNameOfUser();
-        msgGenerator = new PersonalMessageGenerator(appState.getUserName());
+        try {
+            checkNameOfUser();
+            msgGenerator = new PersonalMessageGenerator(appState.getUserName());
+        }  catch (ZeroNoteException e) {
+            e.printErrorMessage();
+            messages.printLineSeparator();
+        }
         while (!toQuit) {
             printPrompt();
             userInput = keyboardScanner.nextLine();

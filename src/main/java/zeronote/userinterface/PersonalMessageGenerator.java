@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+//@@author yAOwzers
 public class PersonalMessageGenerator {
 
     private static final int NUMBER_OF_MESSAGES = 14;
@@ -15,14 +16,12 @@ public class PersonalMessageGenerator {
         this.userName = userName;
     }
 
+    //@@author neilbaner
     /**
      * Generates a random personal encouragement message as taken from txt/personalMessages.txt file along
      * with a random user name from txt/nameOfUser file.
      *
      * @return the generated message.
-     *
-     * @author neilbaner
-     * @author yAOwzers
      */
     public String generatePersonalisedMessage() {
         ClassLoader classLoader = PersonalMessageGenerator.class.getClassLoader();
@@ -43,6 +42,11 @@ public class PersonalMessageGenerator {
         return personalMessage;
     }
 
+    //@@author yAOwzers
+    /**
+     * Prints a welcome message to users who have yet to input their name into Zer0Note.
+     *
+     */
     public void greetFirstTimeUser() {
         System.out.println("It's nice to meet you " + userName + "!" + " How may I be of service?");
     }
