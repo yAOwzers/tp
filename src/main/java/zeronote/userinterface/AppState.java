@@ -8,6 +8,11 @@ import zeronote.notebooks.Section;
 import zeronote.tasks.Task;
 import zeronote.tasks.TaskList;
 
+//@@author longngng
+
+/**
+ * Represents the current mode and state the app is in.
+ */
 public class AppState {
     private AppMode appMode;
     private TaskList taskList;
@@ -15,8 +20,6 @@ public class AppState {
     private Notebook currentNotebook;
     private Section currentSection;
     private Page currentPage;
-    private int indexOfCurrentNotebook;
-    private int indexOfCurrentSection;
     private int indexOfCurrentPage;
     private String userName;
 
@@ -39,6 +42,7 @@ public class AppState {
         return currentBookShelf;
     }
 
+    //@@author chuckiex3
     public void setCurrentBookShelf(NotebookShelf currentBookShelf) {
         this.currentBookShelf = currentBookShelf;
     }
@@ -59,6 +63,7 @@ public class AppState {
         this.currentSection = currentSection;
     }
 
+    //@@author Lusi711
     public Page getCurrentPage() {
         return currentPage;
     }
@@ -72,6 +77,7 @@ public class AppState {
         this.currentPage = currentPage;
     }
 
+    //@@author yAOwzers
     public TaskList getTaskList() {
         return taskList;
     }
@@ -80,29 +86,11 @@ public class AppState {
         this.taskList = taskList;
     }
 
-    public int getIndexOfCurrentNotebook() {
-        return indexOfCurrentNotebook;
-    }
-
-    public void setIndexOfCurrentNotebook(int indexOfCurrentNotebook) {
-        this.indexOfCurrentNotebook = indexOfCurrentNotebook;
-    }
-
     public Task markTaskAsDone(int index) throws ZeroNoteException {
-        Task task = this.taskList.markAsDone(index);
-        return task;
+        return taskList.markAsDone(index);
     }
 
-    @Deprecated
-    public int getIndexOfCurrentSection() {
-        return indexOfCurrentSection;
-    }
-
-    @Deprecated
-    public void setIndexOfCurrentSection(int indexOfCurrentSection) {
-        this.indexOfCurrentSection = indexOfCurrentSection;
-    }
-
+    //@@author Lusi711
     public int getIndexOfCurrentPage() {
         return indexOfCurrentPage;
     }
@@ -111,6 +99,7 @@ public class AppState {
         this.indexOfCurrentPage = indexOfCurrentPage;
     }
 
+    //@@author neilbaner
     public String getUserName() {
         return userName;
     }

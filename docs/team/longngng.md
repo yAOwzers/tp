@@ -49,3 +49,4 @@ Zer0Note is a note taking and organisation application meant for students(especi
     
     -  Made 8 bugs reports during the PE dry run, see [here](https://github.com/longngng/ped/issues).
     -  Review and catch bug for other team's DG, see [here](https://github.com/nus-cs2113-AY2021S1/tp/pull/29) 
+

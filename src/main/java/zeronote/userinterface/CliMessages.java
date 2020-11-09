@@ -1,6 +1,7 @@
 package zeronote.userinterface;
 
-import zeronote.exceptions.TaskIndexOutOfBoundsException;
+import java.util.ArrayList;
+
 import zeronote.exceptions.ZeroNoteException;
 import zeronote.notebooks.Notebook;
 import zeronote.notebooks.Page;
@@ -8,9 +9,7 @@ import zeronote.notebooks.Section;
 import zeronote.tasks.Task;
 import zeronote.tasks.TaskList;
 
-import java.util.ArrayList;
-
-//@@author NeilBaner
+//@@author neilbaner
 
 /**
  * A class containing all the messages displayed to the user during operation.
@@ -18,21 +17,39 @@ import java.util.ArrayList;
 public class CliMessages {
     private static final String REMOVE_TASK_SUCCESS_MESSAGE = "Noted. I've removed this task:";
 
-    public static void printRemoveNotebookMessage(Notebook notebook) {
+    //@@author Lusi711
+
+    /**
+     * Prints the success message after deleting a notebook.
+     *
+     * @param notebook the notebook that was deleted.
+     */
+    public void printRemoveNotebookMessage(Notebook notebook) {
         System.out.println("Noted. I've removed this notebook: ");
         System.out.println("\t" + notebook.getTitle());
     }
 
-    public static void printRemoveSectionMessage(Section section) {
+    /**
+     * Prints the success message after deleting a section.
+     *
+     * @param section the section that was deleted.
+     */
+    public void printRemoveSectionMessage(Section section) {
         System.out.println("Noted. I've removed this section: ");
         System.out.println("\t" + section.getTitle());
     }
 
-    public static void printRemovePageMessage(Page page) {
+    /**
+     * Prints the success message after deleting a page.
+     *
+     * @param page the page that was deleted.
+     */
+    public void printRemovePageMessage(Page page) {
         System.out.println("Noted. I've removed this page: " + page.getTitle());
         page.printPage();
     }
 
+    //@@author neilbaner
     public static void printCorruptTaskFile() {
         System.out.println("There was some error reading the Tasks file; something has likely been corrupted");
         System.out.println("You may continue, and ZeroNote will start from scratch with no Task data. ");
@@ -67,7 +84,7 @@ public class CliMessages {
         System.out.println("Task save file was not found. A new save file will be created upon exit. ");
     }
 
-    //@@author Lusi711
+    //@@author chuckiex3
 
     /**
      * Prints the success message after deleting a task.
@@ -75,7 +92,7 @@ public class CliMessages {
      * @param deletedTask   the Task that had been deleted.
      * @param numberOfTasks the total number of tasks in the TaskList.
      */
-    public static void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
+    public void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
         System.out.println(REMOVE_TASK_SUCCESS_MESSAGE);
         System.out.println(deletedTask.toString());
         if (numberOfTasks == 1) {
@@ -85,14 +102,12 @@ public class CliMessages {
         }
     }
 
-    //@@author chuckiex3
-
     /**
      * Print the name of the task that has been successfully added into the user's task list.
      *
-     * @param tasksList is the user's task list.
-     * @param title     is the task description.
-     * @throws ZeroNoteException is thrown if the task index is invalid.
+     * @param tasksList the user's task list.
+     * @param title     the task description.
+     * @throws ZeroNoteException if the task index is invalid.
      */
     public void printAddedTaskMessage(TaskList tasksList, String title) throws ZeroNoteException {
         System.out.println("Added: " + title);
@@ -100,7 +115,7 @@ public class CliMessages {
                 + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
     }
 
-    //@@author NeilBaner
+    //@@author neilbaner
     public void printAddTaskHelp() {
         System.out.println("To add a task with a deadline to the task list: ");
         System.out.println("add /t[TASK] /by[dd-MM-yyyy] [hhmm]");
@@ -281,6 +296,7 @@ public class CliMessages {
         System.out.println("Bye!");
     }
 
+    //@@author yAOwzers
     public void printMarkDone(Task task) {
         String markDoneMessage = "Yay! I've marked this task as done:";
         System.out.println(markDoneMessage + "\n " + task);
@@ -326,6 +342,7 @@ public class CliMessages {
     public void printLineSeparator() {
         System.out.println("-------------------------------------------------------------");
     }
+
 
     public void printFillInNameOfUserMessage() {
         System.out.println("Hi there! Sorry I don't think we have met, how may I address you?");

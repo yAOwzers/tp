@@ -51,6 +51,7 @@ public class RemoveCommandTimetableMode extends CliCommand {
         }
     }
 
+    //@@author yAOwzers
     @Override
     public boolean isTriggerAutoSave() {
         return isAutoSave;

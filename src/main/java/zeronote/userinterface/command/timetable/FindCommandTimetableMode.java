@@ -23,7 +23,6 @@ public class FindCommandTimetableMode extends CliCommand {
     private String keyword;
     private String tag;
     private ArrayList<Task> tasksFound = new ArrayList<>();
-    private boolean isPersonalised = true;
 
     public FindCommandTimetableMode(String keyword, String tag, AppState appState) {
         this.keyword = keyword.toLowerCase();
@@ -57,10 +56,9 @@ public class FindCommandTimetableMode extends CliCommand {
     /**
      * Finds and stores all tasks containing the specified keyword.
      *
-     * @param tasks the list of tasks entered by the user
+     * @param tasks the list of tasks entered by the user.
      */
     private void getTasksWithTitleContainingKeyword(TaskList tasks) {
-        ArrayList<Task> matchedTasks = new ArrayList<>();
         for (Task task : tasks.getTaskArrayList()) {
             Set<String> wordsInTitle = new HashSet<>(getWordsInTitle(task.getTitle()));
             for (String word : wordsInTitle) {
@@ -74,10 +72,9 @@ public class FindCommandTimetableMode extends CliCommand {
     /**
      * Finds and stores all tasks with the specified tag.
      *
-     * @param tasks the list of tasks entered by the user
+     * @param tasks the list of tasks entered by the user.
      */
     private void getTasksWithTagsContainingKeyword(TaskList tasks) {
-        ArrayList<Task> matchedTasks = new ArrayList<>();
         for (Task task : tasks.getTaskArrayList()) {
             String taskTag = task.getTag().toLowerCase();
             if (!taskTag.equals("") && taskTag.contains(tag)) {
@@ -86,16 +83,17 @@ public class FindCommandTimetableMode extends CliCommand {
         }
     }
 
+    /**
+     * Gets all tasks that were found.
+     *
+     * @return the list of tasks that were found.
+     */
     public ArrayList<Task> getTasksFound() {
         return tasksFound;
     }
 
     private List<String> getWordsInTitle(String title) {
         return Arrays.asList(title.toLowerCase().split(" "));
-    }
-
-    public boolean isPersonalised() {
-        return isPersonalised;
     }
 
 }

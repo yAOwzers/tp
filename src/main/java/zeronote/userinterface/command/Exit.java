@@ -1,9 +1,9 @@
-// @@author neilbaner
-
 package zeronote.userinterface.command;
 
 import zeronote.userinterface.AppState;
 import zeronote.userinterface.CliMessages;
+
+// @@author neilbaner
 
 public class Exit extends CliCommand {
     public static final String COMMAND_WORD = "exit";

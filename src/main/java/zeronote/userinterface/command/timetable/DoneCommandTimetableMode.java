@@ -1,6 +1,6 @@
 package zeronote.userinterface.command.timetable;
 
-import zeronote.exceptions.TaskIndexIncorrectFormatException;
+import zeronote.exceptions.IndexIncorrectFormatException;
 import zeronote.exceptions.TaskIndexOutOfBoundsException;
 import zeronote.exceptions.TaskListEmptyException;
 import zeronote.exceptions.ZeroNoteException;
@@ -22,7 +22,6 @@ public class DoneCommandTimetableMode extends CliCommand {
     private AppState appState;
     private String argument;
     private CliMessages messages = new CliMessages();
-    private TaskList taskList;
 
     public DoneCommandTimetableMode(String argument, AppState appState) {
         this.argument = argument;
@@ -32,7 +31,7 @@ public class DoneCommandTimetableMode extends CliCommand {
 
     @Override
     public void execute() throws ZeroNoteException {
-        taskList = appState.getTaskList();
+        TaskList taskList = appState.getTaskList();
         int numberOfTasks = taskList.getNumberOfTasks();
         assert numberOfTasks >= 0;
         if (numberOfTasks == 0) {
@@ -45,7 +44,7 @@ public class DoneCommandTimetableMode extends CliCommand {
         } catch (IndexOutOfBoundsException e) {
             throw new TaskIndexOutOfBoundsException(String.valueOf(numberOfTasks));
         } catch (NumberFormatException e) {
-            throw new TaskIndexIncorrectFormatException();
+            throw new IndexIncorrectFormatException();
         }
     }
 
