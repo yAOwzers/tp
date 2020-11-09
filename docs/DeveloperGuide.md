@@ -233,6 +233,7 @@ And this diagram describes the `CliCommand`s related to the Notebook mode.
 Figure [3]. Class diagram for Notebook commands
 
 <!-- @@author longngng -->
+
 ### 3.4. Tasks Component
 
 ![UML Diagram from Task Component](diagrams/class/jpeg/taskComponent.jpg)
@@ -310,6 +311,7 @@ provides some background into our (the original developers of Zer0Note) thinking
 decisions.
 
 <!-- @@author longngng -->
+
 ### 4.1. Mode Switch Feature
 
 #### 4.1.1. Implementation
@@ -796,6 +798,8 @@ etc. ). It then stores the loaded `TaskList` and `NotebookShelf` to a new instan
 
 <br>
 
+<!-- @@author chuckiex3 -->
+
 ### 4.5. Error Handling
 
 The `ZeroNoteException` class extends `Exception` by printing an error message to the user when the user encounters an exception.
@@ -906,6 +910,7 @@ Figure [21]. Screenshot of `Save as PDF` settings
 <hr>
 <hr>
 
+<!-- @@author -->
 ## 6. Testing
 
 The following section describes the testing methodologies followed in this project to ensure high-quality, bug-free
