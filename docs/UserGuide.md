@@ -204,6 +204,8 @@ You are now in timetable mode
 -------------------------------------------------------------
 ```
 
+>:warning: Entering an invalid mode, such as /d, will give you an error
+
 <br>
 
 ### 3.3 Personalised Messages  
@@ -416,6 +418,8 @@ T:$ list /u
 
 If you're in a time crunch, you can list out top urgent tasks that have not been done, sorted by deadlines. If there
 are many undone tasks, only the top three urgent ones will be displayed.
+
+> :bulb: Use this command to prioritize what you need to get done first 
 
 Format: `list /urgent`
 
@@ -776,6 +780,9 @@ N:$ list /a
 -------------------------------------------------------------
 ```
 
+> :bulb: Use `list` first to see the titles only before, otherwise you could be overwhelmed with the details of all the 
+> notebooks
+
 <br>
 
 In a selected *NOTEBOOK*:
@@ -824,6 +831,8 @@ N/CS2101/Chapter 1:$ list
     Lorem ipsum
 -------------------------------------------------------------
 ```
+
+>:warning: Entering a non-existing option, such as /t, will give you an error
 
 <br>
 
