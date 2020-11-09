@@ -283,11 +283,11 @@ The `Page` object,
 - contains a title, and the content of the page as a String object.
 - has a `tag` field that user can be set and get.
 
-<!-- @@author yAOwzers-->
+<!-- @@author yAOwzers -->
 
 ### 3.6. Storage Component
 
-![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_class.jpg)
+![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_Class.jpg)
 Figure [6]. Class diagram for the Storage component
 
 The `Storage` component,
