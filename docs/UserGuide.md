@@ -87,7 +87,7 @@ Here are some icons that will be used in this User Guide:
 :bulb: | This is a tip. A tip gives you a suggestion when using **Zer0Note**.
 :warning: | This is a warning. A warning suggests that you **may** get an error.
 
-
+<!-- @@author yAOwzers-->
 #### 1.1.2. Notes about the format
 
 * Words/sections that look like this: `example`, are code snippets.
@@ -208,6 +208,7 @@ You are now in timetable mode
 
 >:warning: Entering an invalid mode, such as /d, will give you an error
 
+<!-- @@author yAOwzers-->
 ### 3.3. Personalised Messages  
 
 We have included personalised messages to compliment your works!
@@ -287,7 +288,7 @@ With that, you've successfully added a task titled `Read book`, with the deadlin
 > Both task titles and deadlines should not be blank!
 
 
-
+<!-- @@author yAOwzers-->
 #### 3.4.2. Marking a task as done: `done`
 
 Marks an existing `task` as done in the current task list.
@@ -298,8 +299,6 @@ This is the parameter required in the command:
 
 * `INDEX`: Index of the existing task in the current task list.
 
-
-
 Example of usage:
 
 ```
@@ -309,8 +308,6 @@ Yay! I've marked this task as done:
  [o] Read book
 -------------------------------------------------------------
 ```
-
-
 
 #### 3.4.3. Tagging tasks: `tag`
 
@@ -534,8 +531,6 @@ This is the parameter required in the command:
 
 * `NOTEBOOK`: the name of the notebook.
 
-
-
 Example of usage:
 
 Let's say you want to take notes for CS2113T, a module you're currently taking.
@@ -551,9 +546,6 @@ Added notebook with title: CS2113T
 
 Now that you have added a new notebook for `CS2113T`, you can add a `section`!
 
-
-
-
 #### 3.5.1.2. Adding a section
 
 Use the `add /s` command to add a `section`  into the [selected](#352-selecting-a-notebooksectionpage-select) `notebook`.
@@ -567,8 +559,6 @@ Format: `add /s[SECTION]`
 This is the parameter required in the command:
 
 * `SECTION`: the name of the section in the selected `notebook`.
-
-
 
 Example of usage:
 
@@ -604,8 +594,6 @@ These are the parameters required in the command:
 * `PAGE`: the name of the page in the selected `section`.
 * `PAGE CONTENT`: the contents that you would like to store in the `page`.
 
-
-
 Example of usage:
 
 Let's say you want to add a page into a selected notebook `section`.
@@ -622,9 +610,6 @@ You've successfully added a new page into the section `W1: Java` of the notebook
 
 >:warning: Ensure that your page title is preceded by "/p" and that there is a ";" to separate the contents from the page title.
 > Otherwise, an error message will be shown. 
-
-
-
 
 #### 3.5.2. Selecting a notebook/section/page: `select`
 
@@ -662,8 +647,6 @@ In a selected *SECTION*:
 > :bulb: Whenever you want to select something, you may want to use the list all function, `list /a`
 > to ensure that you're typing in the correct parameters.
 
-
-
 Example of usage:
 If you have a notebook entitled `CS2101`, you can select it by typing `select /nCS2101`.
 
@@ -673,8 +656,6 @@ N:$ select /nCS2101
 now in notebook book: CS2101
 -------------------------------------------------------------
 ```
-
-
 
 #### 3.5.3. Tagging a notebook/section/page: `tag`
 
@@ -775,13 +756,9 @@ N:$ list /a
 > :bulb: Use `list` first to see the titles only before, otherwise you could be overwhelmed with the details of all the 
 > notebooks
 
-
-
 In a selected *NOTEBOOK*:
 - `list` displays the titles of all the sections in the selected notebook.
 - `list /a` displays all sections and pages in the selected notebook.
-
-
 
 Examples of usage:
 
@@ -804,8 +781,6 @@ N/CS2101:$ list /a
 -------------------------------------------------------------
 ```
 
-
-
 In a selected *SECTION*:
 - `list` displays all the pages in the selected section.
 
@@ -825,8 +800,6 @@ N/CS2101/Chapter 1:$ list
 ```
 
 >:warning: Entering a non-existing option, such as /t, will give you an error
-
-
 
 #### 3.5.5. Finding contents: `find`
 

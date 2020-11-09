@@ -287,7 +287,7 @@ The `Page` object,
 - contains a title, and the content of the page as a String object.
 - has a `tag` field that user can be set and get.
 
-<!-- @@author neilbaner -->
+<!-- @@author yAOwzers-->
 
 ### 3.6. Storage Component
 
@@ -398,6 +398,8 @@ NotebookShelf.
     - Pros: It has a better time complexity and reduce the work in scaling stage since this data structure is more optimized (O(1) can be achieved).
     - Cons: It takes more resources to implement. The constant factor for a hashing algorithm is significant and not
      worth the tradeoff for smaller amounts of data, like a typical user would be likely to generate.
+
+<!-- @@author yAOwzers-->
 
 #### 4.2.2. Mark as done feature  
 
@@ -815,6 +817,8 @@ default:
 
 <br>
 
+<!-- @@author yAOwzers-->
+
 ### 4.6 Personalised Messages
 
 The `PersonalisedMessageGenerator` class prints out a personalised message to the users after particular commands 
@@ -836,7 +840,9 @@ Assuming that the user has input the username of 'Tom' into Zer0Note.
 
 <br>
 
-### 4.7 [Proposed] Save feature for the tagging function
+<!-- @@author yAOwzers-->
+
+### 4.7 (Proposed) Save feature for the tagging function
 
 The proposed save feature for the tagging function will be to save the user's respective tags under both tasks and notebooks into the `data` folder. 
 The save feature will be included in the Storage class as a `saveTags()` method, similar to the other save features (eg. `saveTask()` method). 
@@ -997,6 +1003,8 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 <br>
 <hr>
 <hr>
+
+<!-- @@author yAOwzers-->
 
 ## Appendix F: Instructions for manual testing
 
