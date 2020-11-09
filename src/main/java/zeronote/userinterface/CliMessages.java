@@ -29,8 +29,6 @@ public class CliMessages {
     }
 
     public static void printRemovePageMessage(Page page) {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         System.out.println("Noted. I've removed this page: " + page.getTitle());
         page.printPage();
     }
@@ -297,8 +295,6 @@ public class CliMessages {
      * @param tag         the tag description.
      */
     public void printTagNotebookMessage(String description, String tag) {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         String createTagMessage = "Got it! I've tagged this as:\n";
         System.out.println(createTagMessage + description + " (tag: " + tag + ")");
     }
