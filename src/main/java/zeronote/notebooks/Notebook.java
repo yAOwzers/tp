@@ -99,7 +99,7 @@ public class Notebook {
         sectionArrayList.add(s);
     }
 
-    // @@author neilbaner
+    // @@author chuckiex3
 
     /**
      * Find a section with a given title in this notebook.
@@ -130,7 +130,6 @@ public class Notebook {
     }
 
     // @@author neilbaner
-    //TODO: Add JavaDoc for serialize() method
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();

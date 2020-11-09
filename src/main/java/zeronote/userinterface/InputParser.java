@@ -106,7 +106,7 @@ public class InputParser {
         return true;
     }
 
-    //@@author
+    //@@author chuckiex3
 
     /**
      * Parses user's input to extract notebook title, section title or page number whenever applicable for
@@ -318,7 +318,7 @@ public class InputParser {
         }
     }
 
-    //@@author
+    //@@author chuckiex3
     /**
      * Parses the page contents of the user's input.
      *
