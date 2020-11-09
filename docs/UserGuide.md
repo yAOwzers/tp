@@ -1062,11 +1062,16 @@ save file by yourself, here's a detailed guide on the contents of the save file 
 
 The tasks save file is formatted as follows.
 
-First, one line containing only an integer number `n` indicating the number of tasks in the list.
+First, one line containing only a number indicating the number of tasks in the list.
 
-This is followed by `n` sets of 3 lines each. The first line contains the name of the task. The second line contains
-the deadline of the task, in the format `dd-MM-YYYY hhmm`. The third line contains a value `true` or `false`,
-indicating whether the task is done. `true` means it is done, `false` means it is not done.
+Then, we have each of your tasks, stored as 3 lines each. 
+
+The first line contains the title of the task. 
+
+The second line contains the due date and time of the task, formatted as `DD-MM-YYYY HHMM`. 
+
+The third line contains `true` or `false`, indicating if the task has been marked as done. (`true` means it has been
+ marked as done, `false` means it has not)
 
 Here is an example of the contents of a tasks save file:
 
@@ -1082,6 +1087,12 @@ Read Book
 19-10-2020 1800
 false
 ```
+
+The first line indicates that there are 3 tasks saved. 
+
+Then, 3 tasks, titled "Code for CS2113T Team Project", "Read about hydrogen fuel cells" and "Read Book" respectively
+, are stored as described above. For example, the first task, titled "Code for CS2113T Team Project" is due on the
+ 10th of November 2020, at 12 noon. It has not been marked as done. 
 
 <br>
 
