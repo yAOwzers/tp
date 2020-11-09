@@ -809,7 +809,6 @@ default:
     throw new InvalidCommandException(userInput);
 ```
 
-
 3. As `hello` is not a command in `Zer0Note`, `InvalidCommandException` which extends `ZeroNoteException` will be thrown.
 
 4. This `ZeroNoteException` is caught by `CliUserInterface#run`, which will then call `ZeroNoteException#printErrorMessage`.
@@ -839,7 +838,14 @@ Assuming that the user has input the username of 'Tom' into Zer0Note.
 
 ### 4.7 [Proposed] Save feature for the tagging function
 
-The 
+The proposed save feature for the tagging function will be to save the user's respective tags under both tasks and notebooks into the `data` folder. 
+The save feature will be included in the Storage class as a `saveTags()` method, similar to the other save features (eg. `saveTask()` method). 
+This `saveTags()` method will be included under the `saveToFile()` method.
+
+1. `saveTags()` will get the NotebookShelf and TaskList objects from the current appState, passed in as a parameter. 
+2. After which, it iterates through the lists of `Task` objects in the `TaskList` and `Notebook` objects in the `NotebookShelf`, 
+calling each of their `serialize()` methods, which in turn calls the `serialize()` methods for each of their contained objects (if applicable). 
+3. The `saveToFile()` method then uses `FileWriter`s to write to `File` objects, saving the serialized version of the application state to two text files.
 
 <br>
 <hr>
