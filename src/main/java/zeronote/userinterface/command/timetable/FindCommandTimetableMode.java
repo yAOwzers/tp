@@ -85,9 +85,9 @@ public class FindCommandTimetableMode extends CliCommand {
     }
 
     /**
-     * Gets all tasks that were found
+     * Gets all tasks that were found.
      *
-     * @return the list of tasks that were found
+     * @return the list of tasks that were found.
      */
     public ArrayList<Task> getTasksFound() {
         return tasksFound;
