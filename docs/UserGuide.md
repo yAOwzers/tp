@@ -244,7 +244,6 @@ Added: Read Book
 
 > :exclamation: {personalised message} is a placeholder for the various personalised message that a user will receive.
 
-
 ### 3.4. Timetable Mode
 
 Keeping up with deadlines may seem like a daunting task, especially when you're already busy with school.
