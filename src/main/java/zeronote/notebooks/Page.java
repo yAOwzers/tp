@@ -56,6 +56,7 @@ public class Page {
     }
 
     //@@author Lusi711
+
     /**
      * Sets the tag of this page.
      *
@@ -80,6 +81,7 @@ public class Page {
     }
 
     //@@author chuckiex3
+
     /**
      * Prints content stored in the page.
      */

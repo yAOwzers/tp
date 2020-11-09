@@ -22,7 +22,7 @@ public class CliMessages {
     /**
      * Prints the success message after deleting a notebook.
      *
-     * @param notebook the notebook that was deleted
+     * @param notebook the notebook that was deleted.
      */
     public void printRemoveNotebookMessage(Notebook notebook) {
         System.out.println("Noted. I've removed this notebook: ");
@@ -32,7 +32,7 @@ public class CliMessages {
     /**
      * Prints the success message after deleting a section.
      *
-     * @param section the section that was deleted
+     * @param section the section that was deleted.
      */
     public void printRemoveSectionMessage(Section section) {
         System.out.println("Noted. I've removed this section: ");
@@ -42,7 +42,7 @@ public class CliMessages {
     /**
      * Prints the success message after deleting a page.
      *
-     * @param page the page that was deleted
+     * @param page the page that was deleted.
      */
     public void printRemovePageMessage(Page page) {
         System.out.println("Noted. I've removed this page: " + page.getTitle());
@@ -105,9 +105,9 @@ public class CliMessages {
     /**
      * Print the name of the task that has been successfully added into the user's task list.
      *
-     * @param tasksList is the user's task list.
-     * @param title     is the task description.
-     * @throws ZeroNoteException is thrown if the task index is invalid.
+     * @param tasksList the user's task list.
+     * @param title     the task description.
+     * @throws ZeroNoteException if the task index is invalid.
      */
     public void printAddedTaskMessage(TaskList tasksList, String title) throws ZeroNoteException {
         System.out.println("Added: " + title);

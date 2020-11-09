@@ -24,8 +24,8 @@ public class Notebook {
     /**
      * Sets the tag of this notebook.
      *
-     * @param tag the tag of the notebook
-     * @throws InvalidTagException when the user inputs an empty tag
+     * @param tag the tag of the notebook.
+     * @throws InvalidTagException when the user inputs an empty tag.
      */
     public void setTag(String tag) throws InvalidTagException {
         if (!tag.equals("")) {
@@ -38,7 +38,7 @@ public class Notebook {
     /**
      * Gets the tag of this notebook.
      *
-     * @return the tag of the notebook
+     * @return the tag of the notebook.
      */
     public String getTag() {
         return tag;
@@ -49,7 +49,7 @@ public class Notebook {
     /**
      * Get the title of this notebook.
      *
-     * @return the title of the notebook
+     * @return the title of the notebook.
      */
     public String getTitle() {
         return title;
@@ -58,7 +58,7 @@ public class Notebook {
     /**
      * Set the title of this notebook.
      *
-     * @param title the desired new title of the notebook
+     * @param title the desired new title of the notebook.
      */
     public void setTitle(String title) {
         this.title = title;
@@ -72,7 +72,7 @@ public class Notebook {
     /**
      * Get the section at a particular index in the ArrayList. Use findSection() to get an index from a given title.
      *
-     * @param index the index of the section to be found
+     * @param index the index of the section to be found.
      */
     public Section getSectionAtIndex(int index) {
         return sectionArrayList.get(index);
@@ -84,7 +84,7 @@ public class Notebook {
      * Add a new section with a given title to this notebook.
      *
      * @param title the title of the section to be added.
-     * @throws DuplicateFoundException when the user inputs a section title that has already been used
+     * @throws DuplicateFoundException when the user inputs a section title that has already been used.
      */
     public void addSection(String title) throws DuplicateFoundException {
         for (Section s : sectionArrayList) {
@@ -104,8 +104,8 @@ public class Notebook {
     /**
      * Find a section with a given title in this notebook.
      *
-     * @param searchKey the title of the section to search for in the notebook
-     * @return the index of the section with the given title, -1 if not found
+     * @param searchKey the title of the section to search for in the notebook.
+     * @return the index of the section with the given title, -1 if not found.
      */
     public int findSection(String searchKey) {
         int index = 0;
@@ -123,7 +123,7 @@ public class Notebook {
     /**
      * Remove a section from the notebook.
      *
-     * @param index the index of the section to remove
+     * @param index the index of the section to remove.
      */
     public Section removeSection(int index) {
         return sectionArrayList.remove(index);

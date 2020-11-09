@@ -1,10 +1,10 @@
 package zeronote.notebooks;
 
+import java.util.ArrayList;
+
 import zeronote.exceptions.DuplicateFoundException;
 import zeronote.exceptions.InvalidPageException;
 import zeronote.exceptions.InvalidTagException;
-
-import java.util.ArrayList;
 
 // @@author neilbaner
 
@@ -29,6 +29,7 @@ public class Section {
     }
 
     // @@author chuckiex3
+
     /**
      * Add a new page with a given title to this section.
      *
@@ -50,6 +51,7 @@ public class Section {
     }
 
     // @@author Lusi711
+
     /**
      * Find a page with a given title in this section.
      *
@@ -71,8 +73,8 @@ public class Section {
      * Deletes a page with a specified index from this section.
      *
      * @param index index of the page to deleted.
-     * @return the page that is deleted
-     * @throws InvalidPageException when the specified page does not exist
+     * @return the page that is deleted.
+     * @throws InvalidPageException when the specified page does not exist.
      */
     public Page removePage(int index) throws InvalidPageException {
         try {
@@ -98,7 +100,7 @@ public class Section {
      * Sets the tag for this page.
      *
      * @param tag the tag for the page.
-     * @throws InvalidTagException when the user enters an empty tag
+     * @throws InvalidTagException when the user enters an empty tag.
      */
     public void setTag(String tag) throws InvalidTagException {
         if (!tag.equals("")) {

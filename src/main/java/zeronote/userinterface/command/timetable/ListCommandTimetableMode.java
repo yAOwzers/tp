@@ -24,7 +24,7 @@ public class ListCommandTimetableMode extends CliCommand {
     /**
      * Lists the content based on the argument of the command.
      *
-     * @throws InvalidCommandException if an invalid argument is given
+     * @throws InvalidCommandException if an invalid argument is given.
      */
     @Override
     public void execute() throws InvalidCommandException {

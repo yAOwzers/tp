@@ -74,8 +74,8 @@ public class RemoveCommandNotebookMode extends CliCommand {
     /**
      * Deletes a page that belongs to the specified section.
      *
-     * @param section the section that the page to be deleted is in
-     * @throws InvalidPageException when the specified page does not exist in the section
+     * @param section the section that the page to be deleted is in.
+     * @throws InvalidPageException when the specified page does not exist in the section.
      */
     private void removeFromSection(Section section) throws InvalidPageException {
         int indexOfPage = section.findPage(pageTitleToRemove);
@@ -86,9 +86,9 @@ public class RemoveCommandNotebookMode extends CliCommand {
     /**
      * Deletes a section or a page that belongs to the specified notebook.
      *
-     * @param notebook the notebook that the section or page to be deleted is in
-     * @throws InvalidPageException when the specified page does not exist in the notebook
-     * @throws InvalidSectionException when the specified section does not exist in the notebook
+     * @param notebook the notebook that the section or page to be deleted is in.
+     * @throws InvalidPageException when the specified page does not exist in the notebook.
+     * @throws InvalidSectionException when the specified section does not exist in the notebook.
      */
     private void removeFromNotebook(Notebook notebook) throws InvalidPageException, InvalidSectionException {
         if (!sectionTitleToRemove.equals("") && !pageTitleToRemove.equals("")) {
@@ -116,9 +116,9 @@ public class RemoveCommandNotebookMode extends CliCommand {
     /**
      * Deletes a notebook, section or a page.
      *
-     * @throws InvalidNotebookException when the specified notebook does not exist
-     * @throws InvalidSectionException when the specified section does not exist
-     * @throws InvalidPageException when the specified page does not exist
+     * @throws InvalidNotebookException when the specified notebook does not exist.
+     * @throws InvalidSectionException when the specified section does not exist.
+     * @throws InvalidPageException when the specified page does not exist.
      */
     private void removeFromNotebookShelf() throws InvalidNotebookException, InvalidSectionException,
             InvalidPageException {

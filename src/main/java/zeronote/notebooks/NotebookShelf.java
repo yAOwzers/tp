@@ -43,7 +43,7 @@ public class NotebookShelf {
     /**
      * Get the notebook at a particular index in the ArrayList. Use findNotebook() to get an index from a given title.
      *
-     * @param index the index of the notebook to be found
+     * @param index the index of the notebook to be found.
      */
     public Notebook getNotebookAtIndex(int index) {
         return notebooksArrayList.get(index);
@@ -73,15 +73,14 @@ public class NotebookShelf {
     /**
      * Removes a notebook with the specified index from the shelf.
      *
-     * @param index the index of the notebook to be removed
-     * @return the notebook that is removed
+     * @param index the index of the notebook to be removed.
+     * @return the notebook that is removed.
      */
     public Notebook removeNotebook(int index) {
         return notebooksArrayList.remove(index);
     }
 
     //@@author neilbaner
-    // TODO: add JavaDoc for serialize() method
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();

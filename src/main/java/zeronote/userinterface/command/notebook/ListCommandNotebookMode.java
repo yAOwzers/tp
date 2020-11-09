@@ -77,8 +77,8 @@ public class ListCommandNotebookMode extends CliCommand {
     /**
      * Lists the content based on the argument of the command.
      *
-     * @throws InvalidCommandException if an invalid argument is given
-     * @throws IncorrectAppModeException if the application is is TIMETABLE mode
+     * @throws InvalidCommandException if an invalid argument is given.
+     * @throws IncorrectAppModeException if the application is is TIMETABLE mode.
      */
     @Override
     public void execute() throws IncorrectAppModeException, InvalidCommandException {

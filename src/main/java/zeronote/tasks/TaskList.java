@@ -26,7 +26,7 @@ public class TaskList {
      *
      * @param index the index of the task to be deleted.
      * @return the task that is deleted.
-     * @throws IndexOutOfBoundsException when the index is out of the bounds of the TaskList
+     * @throws IndexOutOfBoundsException when the index is out of the bounds of the TaskList.
      */
     public Task removeTask(int index) throws IndexOutOfBoundsException {
         return taskArrayList.remove(index);
