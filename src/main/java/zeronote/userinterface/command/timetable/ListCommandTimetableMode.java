@@ -1,5 +1,6 @@
 package zeronote.userinterface.command.timetable;
 
+import zeronote.exceptions.IncorrectAppModeException;
 import zeronote.exceptions.InvalidCommandException;
 import zeronote.tasks.Task;
 import zeronote.userinterface.AppState;
@@ -8,6 +9,10 @@ import zeronote.userinterface.command.CliCommand;
 import java.util.ArrayList;
 import java.util.Collections;
 
+//@@author longngng
+/**
+ * Represents the executor created when command list is input in the timetable mode.
+ */
 public class ListCommandTimetableMode extends CliCommand {
     public static final String COMMAND_WORD = "list";
 
@@ -17,6 +22,11 @@ public class ListCommandTimetableMode extends CliCommand {
         PRINTS_PERSONAL_MESSAGE = true;
     }
 
+    /**
+     * Lists the content based on the argument of the command.
+     *
+     * @throws InvalidCommandException if an invalid argument is given
+     */
     @Override
     public void execute() throws InvalidCommandException {
         try {

@@ -1,9 +1,6 @@
 package zeronote.userinterface.command.notebook;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
-
 import zeronote.exceptions.DuplicateFoundException;
 import zeronote.exceptions.InvalidCommandException;
 import zeronote.exceptions.ZeroNoteException;
@@ -13,8 +10,13 @@ import zeronote.notebooks.Section;
 import zeronote.userinterface.AppMode;
 import zeronote.userinterface.AppState;
 import zeronote.userinterface.InputParser;
+import zeronote.userinterface.command.CliCommand;
 
-//@@chuckiex3
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+//@@author chuckiex3
+
 public class AddNotebookTest {
     @Test
     void addNotebook_wrongFormat_expectException() {
@@ -81,5 +83,17 @@ public class AddNotebookTest {
         assertThrows(ZeroNoteException.class, () -> {
             parser.getCommandFromInput(inputString, appState);
         });
+    }
+
+    @Test
+    void addNotebook_successfully() throws ZeroNoteException {
+        InputParser parser = new InputParser();
+        AppState appState = new AppState();
+        appState.setAppMode(AppMode.NOTEBOOK_SHELF);
+        String inputString = "add /nNotebook 365";
+        CliCommand command = parser.getCommandFromInput(inputString, appState);
+        command.execute();
+        NotebookShelf bookshelf = appState.getCurrentBookShelf();
+        assertEquals(1, bookshelf.getNotebooksArrayList().size());
     }
 }

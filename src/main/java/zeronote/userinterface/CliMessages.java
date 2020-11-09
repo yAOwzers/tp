@@ -1,13 +1,14 @@
 package zeronote.userinterface;
 
-import java.util.ArrayList;
-
+import zeronote.exceptions.TaskIndexOutOfBoundsException;
 import zeronote.exceptions.ZeroNoteException;
 import zeronote.notebooks.Notebook;
 import zeronote.notebooks.Page;
 import zeronote.notebooks.Section;
 import zeronote.tasks.Task;
 import zeronote.tasks.TaskList;
+
+import java.util.ArrayList;
 
 //@@author NeilBaner
 
@@ -16,25 +17,18 @@ import zeronote.tasks.TaskList;
  */
 public class CliMessages {
     private static final String REMOVE_TASK_SUCCESS_MESSAGE = "Noted. I've removed this task:";
-    private static PersonalMessageGenerator msgGenerator;
 
     public static void printRemoveNotebookMessage(Notebook notebook) {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         System.out.println("Noted. I've removed this notebook: ");
         System.out.println("\t" + notebook.getTitle());
     }
 
     public static void printRemoveSectionMessage(Section section) {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         System.out.println("Noted. I've removed this section: ");
         System.out.println("\t" + section.getTitle());
     }
 
     public static void printRemovePageMessage(Page page) {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         System.out.println("Noted. I've removed this page: " + page.getTitle());
         page.printPage();
     }
@@ -74,6 +68,7 @@ public class CliMessages {
     }
 
     //@@author Lusi711
+
     /**
      * Prints the success message after deleting a task.
      *
@@ -81,8 +76,6 @@ public class CliMessages {
      * @param numberOfTasks the total number of tasks in the TaskList.
      */
     public static void printRemoveTaskMessage(Task deletedTask, int numberOfTasks) {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         System.out.println(REMOVE_TASK_SUCCESS_MESSAGE);
         System.out.println(deletedTask.toString());
         if (numberOfTasks == 1) {
@@ -92,19 +85,22 @@ public class CliMessages {
         }
     }
 
-    //@@author
-    public void printAddedTaskMessage(TaskList tasksList, String title) {
-        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        System.out.println(personalMessage);
+    //@@author chuckiex3
+
+    /**
+     * Print the name of the task that has been successfully added into the user's task list.
+     *
+     * @param tasksList is the user's task list.
+     * @param title     is the task description.
+     * @throws ZeroNoteException is thrown if the task index is invalid.
+     */
+    public void printAddedTaskMessage(TaskList tasksList, String title) throws ZeroNoteException {
         System.out.println("Added: " + title);
-        try {
-            System.out.println(tasksList.getNumberOfTasks() + ":"
-                    + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
-        } catch (ZeroNoteException zne) {
-            zne.printErrorMessage();
-        }
+        System.out.println(tasksList.getNumberOfTasks() + ":"
+                + tasksList.getTask(tasksList.getNumberOfTasks() - 1));
     }
 
+    //@@author NeilBaner
     public void printAddTaskHelp() {
         System.out.println("To add a task with a deadline to the task list: ");
         System.out.println("add /t[TASK] /by[dd-MM-yyyy] [hhmm]");
@@ -299,8 +295,6 @@ public class CliMessages {
      * @param tag         the tag description.
      */
     public void printTagNotebookMessage(String description, String tag) {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         String createTagMessage = "Got it! I've tagged this as:\n";
         System.out.println(createTagMessage + description + " (tag: " + tag + ")");
     }
@@ -311,8 +305,6 @@ public class CliMessages {
      * @param task the task that is tagged.
      */
     public void printTagTaskMessage(Task task) {
-        //        String personalMessage = msgGenerator.generatePersonalisedMessage();
-        //        System.out.println(personalMessage);
         String createTagMessage = "Got it! I've tagged this as:\n";
         System.out.println(createTagMessage + task);
     }
@@ -330,7 +322,7 @@ public class CliMessages {
         }
     }
 
-    //@@author
+    //@@author yAOwzers
     public void printLineSeparator() {
         System.out.println("-------------------------------------------------------------");
     }

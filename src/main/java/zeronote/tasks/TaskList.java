@@ -1,3 +1,5 @@
+// @@author neilbaner
+
 package zeronote.tasks;
 
 import zeronote.exceptions.TaskIndexOutOfBoundsException;
@@ -40,7 +42,7 @@ public class TaskList {
 
     public Task markAsDone(int i) throws ZeroNoteException {
         if (i > taskArrayList.size()) {
-            throw new TaskIndexOutOfBoundsException(String.valueOf(i));
+            throw new TaskIndexOutOfBoundsException(String.valueOf(taskArrayList.size()));
         }
         Task task = this.taskArrayList.get(i - 1);
         task.markAsDone();

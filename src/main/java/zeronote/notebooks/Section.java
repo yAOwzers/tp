@@ -1,3 +1,5 @@
+// @@author neilbaner
+
 package zeronote.notebooks;
 
 import zeronote.exceptions.DuplicateFoundException;
@@ -12,23 +14,27 @@ public class Section {
     private final ArrayList<Page> pageArrayList;
     private static final int notFound = -1;
 
+    // @@author neilbaner
     public Section(String title) {
         this.title = title;
         pageArrayList = new ArrayList<>();
     }
 
+    // @@author neilbaner
     public String getTitle() {
         return title;
     }
 
+    // @@author neilbaner
     public void setTitle(String title) {
         this.title = title;
     }
 
+    // @@author chuckiex3
     /**
      * Add a new page with a given title to this section.
      *
-     * @param title the title of the page to be added
+     * @param title the title of the page to be added.
      * @throws DuplicateFoundException when the user inputs a page title that has already been used.
      */
     public void addPage(String title, String content) throws DuplicateFoundException {
@@ -44,10 +50,11 @@ public class Section {
         pageArrayList.add(p);
     }
 
+    // @@author neilbaner
     /**
      * Find a page with a given title in this section.
      *
-     * @param searchKey the title of the section to search for in the section.
+     * @param searchKey the title of the page to search for in the section.
      * @return the index of the page with the given title, -1 if not found.
      */
     public int findPage(String searchKey) {
@@ -61,6 +68,7 @@ public class Section {
         return notFound;
     }
 
+    // @@author neilbaner
     /**
      * Deletes a page with a specified index from this section.
      *
@@ -76,10 +84,12 @@ public class Section {
         }
     }
 
+    // @@author neilbaner
     public Page getPageAtIndex(int index) {
         return pageArrayList.get(index);
     }
 
+    // @@author neilbaner
     public ArrayList<Page> getPageArrayList() {
         return pageArrayList;
     }
@@ -96,6 +106,7 @@ public class Section {
         return tag;
     }
 
+    // @@author neilbaner
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();
