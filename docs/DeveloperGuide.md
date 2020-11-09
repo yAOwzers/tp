@@ -59,6 +59,8 @@
 <hr>
 <hr>
 
+<!-- @@author neilbaner -->
+
 ## 1. Introduction (Neil)
 
 ### 1.1. Welcome!
@@ -129,18 +131,17 @@ code to improve Zer0Note.
 
 ### 2.2. Setting up the project in your computer
 
->:exclamation: **Caution:** Follow the steps in the following guide precisely.
->Things will not work out if you deviate in some steps.
+>:exclamation: Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
 
 1. **Fork** this repo, and **clone** the fork into your computer.
-2. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
+2. Open IntelliJ (if you are not in the welcome screen, click **`File`** > **`Close Project`** to close the existing project dialog first).
 3. Set up the correct JDK version for Gradle  
-   a. Click `Configure` > `Project Defaults` > `Project Structure`  
-   b. Click `New...` and find the directory of the JDK.
-4. Click `Import Project`
-5. Locate the `build.gradle` file and select it. Click `OK`.
-6. Click `Open as Project`.
-7. Click `OK` to accept the default settings.
+   a. Click **`Configure`** > **`Project Defaults`** > **`Project Structure`**  
+   b. Click **`New...`** and find the directory of the JDK.
+4. Click **`Import Project`**.
+5. Locate the **`build.gradle`** file and select it. Click **`OK`**.
+6. Click **`Open as Project`**.
+7. Click **`OK`** to accept the default settings.
 
 ### 2.3. Verifying the setup
 
@@ -159,6 +160,8 @@ to set up IDEA’s coding style to match ours.
 <br>
 <hr>
 <hr>
+
+<!-- @@author neilbaner -->
 
 ## 3. Design
 
@@ -186,25 +189,21 @@ classes such as `InputParser` and the various `CliCommand` classes to execute th
 The user interface of **Zer0Note** is provided by the class `CliUserInterface`. It is instantiated once in the main
 method, and its `run()` method is called to start the UI for the application.
 
-The class diagram below describes the `CliUserInterface` class, and the classes it depends on.
 
 The `CliUserInterface` class contains an instance of `AppState`. This is a class that, as the name implies, contains
 the current state of the running instance of the application. For example, it contains the user data, the current mode,
 the navigation state (i.e. currently chosen notebook/section/page).
 
-The following sequence diagram describes the operation of the `run()` method in `CliUserInterface`.
 
-First, the method `loadState()` is called, which loads the save file, and populates the `AppState` object with the
+The process below describes the operation of the `run()` method in `CliUserInterface`:
+* The method `loadState()` is called, which loads the save file, and populates the `AppState` object with the
 previously saved user data.
-
-Then, the `startUI()` method is called to display the welcome message to the user.
-
-The `CliUserInterface` class then continuously gets the input from the user. It then uses the `InputParser` class to
+* The `startUI()` method is called to display the welcome message to the user.
+* The `CliUserInterface` class then continuously gets the input from the user. It then uses the `InputParser` class to
 parse this input and creates a new `CliCommand` object based on the command entered by the user. It executes the
 command with `CliCommand.execute()` (learn more [here](#33-commands-component-neil)), which will use or modify the
 `AppState` instance to make the requested change.
-
-If any of these steps encounters an error, an exception of the type `ZeroNoteException` is thrown by the method, and
+* If any of these steps encounters an error, an exception of the type `ZeroNoteException` is thrown by the method, and
 caught in the `run()` method. Upon catching an exception, the `printErrorMessage()` method is called to display the
 appropriate error message to the usaer. See [here]() for more information on how exceptions work in **Zer0Note**.
 
@@ -279,6 +278,8 @@ The `Page` object,
 
 - contains a title, and the content of the page as a String object.
 - has a `tag` field that user can be set and get.
+
+<!-- @@author neilbaner -->
 
 ### 3.6. Storage Component
 
@@ -680,6 +681,7 @@ Step 2. `execute()` is called, which then calls the print functions based on the
 Step 3. The program prints the contents corresponding to the input or throw an exception if the command is
 invalid.
 
+<!-- @@author neilbaner -->
 ### 4.4. Storage (Neil)
 
 The `Storage` class reads and writes the application state to and from a text file.
@@ -832,6 +834,8 @@ Assuming that the user has input the username of 'Tom' into Zer0Note.
 <br>
 <hr>
 <hr>
+
+<!-- @@author neilbaner -->
 
 ## 5. Documentation
 
