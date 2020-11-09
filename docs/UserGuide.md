@@ -1178,8 +1178,7 @@ For example, a saved notebook shelf might look like this:
 
 The first line indicates that you have 2 notebooks saved in the Notebook Shelf.
 
-Then, you have 2 notebooks, titled "CS2113T" and "CS2101" respectively. They are represented as described in [6.2.3
-. Notebooks](#623-notebooks).
+Then, you have 2 notebooks, titled "CS2113T" and "CS2101" respectively. They are represented as described in [6.2.3. Notebooks](#623-notebooks).
 
 Notebook "CS2113T" contains 4 sections, titled "Java", "OOP", "UML" and "Assertions" respectively. The sections are
 stored as described in [6.2.2. Sections](#622-sections).
