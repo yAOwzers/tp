@@ -10,46 +10,46 @@
 ```
 
 ## Table of Contents
-[**1. Introduction**](#1-introduction) <br>
-&nbsp;&nbsp;[1.1. How to use this guide](#11-how-to-use-this-guide) <br>
-[**2. Quick Start**](#2-quick-start) <br>
-[**3. Features**](#3-features) <br>
-&nbsp;&nbsp;[3.1 Viewing the user guide: `help`](#31-viewing-the-user-guide-help) <br>
-&nbsp;&nbsp;[3.2 Switching between the two modes: `mode`](#32-switching-between-the-two-modes-mode) <br>
-&nbsp;&nbsp;[3.3  Personalised Messages](#33-personalised-messages) <br>
-&nbsp;&nbsp;[3.4 Timetable Mode](#34-timetable-mode) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1 Adding a task: `add`](#341-adding-a-task-add) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2 Marking a task as done: `done`](#342-marking-a-task-as-done-done) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3 Tagging a task: `tag`](#343-tagging-tasks-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4 Listing tasks: `list`](#344-listing-tasks-list) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.1 Listing all tasks](#3441-listing-all-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.2 Listing done tasks](#3442-listing-done-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.3 Listing undone tasks](#3443-listing-undone-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.4 Listing urgent tasks](#3444-listing-urgent-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5 Finding tasks: `find`](#345-finding-tasks-find) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.1 Finding by keyword](#3451-finding-by-keyword) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.2 Finding by tag](#3452-finding-by-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. Deleting a task: `delete`](#346-deleting-a-task-delete) <br>
-&nbsp;&nbsp;[3.5 Notebook Mode](#35-notebook-mode) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1 Adding a notebook/section/page: `add`](#351-adding-a-notebooksectionpage-add) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.1 Adding a notebook](#3511-adding-a-notebook) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.2 Adding a section](#3512-adding-a-section) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.3 Adding a page](#3513-adding-a-page) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.2 Selecting a notebook/section/page: `select`](#352-selecting-a-notebooksectionpage-select) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.3 Tagging a notebook/section/page: `tag`](#353-tagging-a-notebooksectionpage-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.4 Listing contents: `list`](#354-listing-contents-list) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5 Finding contents: `find`](#355-finding-contents-find) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5.1 Finding by keyword](#3551-finding-by-keyword) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5.2 Finding by tag](#3552-finding-by-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.6 Deleting a notebook/section/page: `delete`](#356-deleting-a-notebooksectionpage-delete) <br>
-&nbsp;&nbsp;[3.6 Exiting the program: `exit`](#36-exiting-the-program-exit) <br>
-[**4. FAQ**](#4-faq) <br>
-[**5. Command Summary**](#5-command-summary) <br>
-[**6. For advanced users: Editing your save file**](#6-for-advanced-users-editing-your-save-file)<br>
-&nbsp;&nbsp;[6.1 The tasks save file](#61-the-tasks-save-file)<br>
-&nbsp;&nbsp;[6.2 The notebooks save file](#62-the-notebooks-save-file)<br>
+[**1. Introduction**](#1-introduction) 
+&nbsp;&nbsp;[1.1. How to use this guide](#11-how-to-use-this-guide) 
+[**2. Quick Start**](#2-quick-start) 
+[**3. Features**](#3-features) 
+&nbsp;&nbsp;[3.1 Viewing the user guide: `help`](#31-viewing-the-user-guide-help) 
+&nbsp;&nbsp;[3.2 Switching between the two modes: `mode`](#32-switching-between-the-two-modes-mode) 
+&nbsp;&nbsp;[3.3  Personalised Messages](#33-personalised-messages) 
+&nbsp;&nbsp;[3.4 Timetable Mode](#34-timetable-mode) 
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1 Adding a task: `add`](#341-adding-a-task-add) 
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2 Marking a task as done: `done`](#342-marking-a-task-as-done-done) 
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3 Tagging a task: `tag`](#343-tagging-tasks-tag) 
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4 Listing tasks: `list`](#344-listing-tasks-list) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.1 Listing all tasks](#3441-listing-all-tasks) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.2 Listing done tasks](#3442-listing-done-tasks) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.3 Listing undone tasks](#3443-listing-undone-tasks) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.4 Listing urgent tasks](#3444-listing-urgent-tasks) 
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5 Finding tasks: `find`](#345-finding-tasks-find) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.1 Finding by keyword](#3451-finding-by-keyword) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.2 Finding by tag](#3452-finding-by-tag) 
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. Deleting a task: `delete`](#346-deleting-a-task-delete) 
+&nbsp;&nbsp;[3.5 Notebook Mode](#35-notebook-mode) 
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1 Adding a notebook/section/page: `add`](#351-adding-a-notebooksectionpage-add) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.1 Adding a notebook](#3511-adding-a-notebook) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.2 Adding a section](#3512-adding-a-section) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.3 Adding a page](#3513-adding-a-page) 
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.2 Selecting a notebook/section/page: `select`](#352-selecting-a-notebooksectionpage-select) 
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.3 Tagging a notebook/section/page: `tag`](#353-tagging-a-notebooksectionpage-tag) 
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.4 Listing contents: `list`](#354-listing-contents-list) 
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5 Finding contents: `find`](#355-finding-contents-find) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5.1 Finding by keyword](#3551-finding-by-keyword) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5.2 Finding by tag](#3552-finding-by-tag) 
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.6 Deleting a notebook/section/page: `delete`](#356-deleting-a-notebooksectionpage-delete) 
+&nbsp;&nbsp;[3.6 Exiting the program: `exit`](#36-exiting-the-program-exit) 
+[**4. FAQ**](#4-faq) 
+[**5. Command Summary**](#5-command-summary) 
+[**6. For advanced users: Editing your save file**](#6-for-advanced-users-editing-your-save-file)
+&nbsp;&nbsp;[6.1 The tasks save file](#61-the-tasks-save-file)
+&nbsp;&nbsp;[6.2 The notebooks save file](#62-the-notebooks-save-file)
 
-<br>
+
 
 <!-- @@author neilbaner-->
 ## 1. Introduction
@@ -67,7 +67,7 @@ guide to all the features in the application. A condensed version of this guide 
 too, for quick reference while you're using **Zer0Note**. To learn how to access the built-in user guide, see
 [Section 3.1](#31-viewing-the-user-guide-help).
 
-<br>
+
 
 <!-- @@author neilbaner-->
 ### 1.1 How to use this guide
@@ -85,8 +85,8 @@ Here are some icons that will be used in this User Guide:
 :bulb: | This is a tip. A tip gives you a suggestion when using **Zer0Note**.
 :warning: | This is a warning. A warning suggests that you **may** get an error.
 
-<br>
-<hr>
+
+
 
 :exclamation: Notes about the format:
 * Words/sections that look like this: `example`, are code snippets.
@@ -95,16 +95,15 @@ Here are some icons that will be used in this User Guide:
 * Words within `(parentheses)` are optional user inputs.
   e.g. in `list (/urgent)`, `/urgent` is an optional parameter.
 * Words in [blue]() are clickable links.
-* Within a code segment, the symbols before the `$` symbol indicates the current address that the user is in.
-    * The following symbols represents the respective address:
-        * `T:$` - The user is in TimeTable mode.  
-        * `N:$` - The user is in Notebook mode.
-        * `N/[NOTEBOOK NAME]:$` - The user is in Notebook mode, and is in the indicated notebook with 'NOTEBOOK NAME'.
-        * `N/[NOTEBOOK NAME]/[SECTION NAME]:$` - The user is in Notebook mode, and is in the indicated section with 'SECTION NAME' of the notebook with 'NOTEBOOK NAME'.  
-        * `N/[NOTEBOOK NAME]/[SECTION NAME]/[PAGE NAME]:$` - The user is in Notebook mode, and is in the indicated page with `PAGE NAME`, of the section with 'SECTION NAME', of the notebook with 'NOTEBOOK NAME'.  
+* Within a code segment, the symbols before the `$` symbol indicate the current address that the user is in. The
+ following symbols represent the current address:
+    * `T:$` - The user is in TimeTable mode.  
+    * `N:$` - The user is in Notebook mode.
+    * `N/[NOTEBOOK NAME]:$` - The user is in Notebook mode, and is in the indicated notebook with 'NOTEBOOK NAME'.
+    * `N/[NOTEBOOK NAME]/[SECTION NAME]:$` - The user is in Notebook mode, and is in the indicated section with 'SECTION NAME' of the notebook with 'NOTEBOOK NAME'.  
+    * `N/[NOTEBOOK NAME]/[SECTION NAME]/[PAGE NAME]:$` - The user is in Notebook mode, and is in the indicated page with `PAGE NAME`, of the section with 'SECTION NAME', of the notebook with 'NOTEBOOK NAME'.  
 
 Example:
-____
 ```
 N:$ select /sChapter 1
 -------------------------------------------------------------
@@ -114,7 +113,8 @@ N:$ select /sChapter 1
 
 * `select /sChapter 1` is the user's input, and `now in notebook section: Chapter 1` is the output message. 
 
-* When the current address name is longer than 10 characters, a `...` symbol will be printed after the first 7, to
+* When any of the titles in the current address is longer than 10 characters, a `...` symbol will be printed after the
+ first 7, to
  represent the remaining characters.  
 
 Example:
@@ -125,7 +125,7 @@ N/noteboo...:$
 
 * where `N/` indicates that the user is in Notebook Mode and `noteboo...` is the name of the Notebook, which has more than 7 characters.  
 
-<br>
+
 
 
 ## 2. Quick Start
@@ -154,7 +154,7 @@ or an open-source alternative like [AdoptOpenJDK](https://adoptopenjdk.net/index
 
 Great! Now that you have successfully run Zer0Note, go ahead and try out the different commands available (shown in section 3. Features).
 
-<br>
+
 
 ## 3. Features
 
@@ -167,7 +167,7 @@ This section introduces the available features, and the format required for each
 The following sections will explain more about the different commands that can be used in anywhere,
 and commands specific to [Timetable Mode](#34-timetable-mode) and [Notebook Mode](#35-notebook-mode).
 
-<br>
+
 
 <!-- @@author neilbaner-->
 ### 3.1 Viewing the user guide: `help`
@@ -178,7 +178,7 @@ To view the user guide for the timetable mode, type in `help timetable`.
 
 To view the user guide for the notebook mode, type in `help notebook`.
 
-<br>
+
 
 ### 3.2 Switching between the two modes: `mode`
 
@@ -211,7 +211,7 @@ You are now in timetable mode
 
 >:warning: Entering an invalid mode, such as /d, will give you an error
 
-<br>
+
 
 ### 3.3 Personalised Messages  
 
@@ -257,7 +257,7 @@ You can then mark them as done when you're finished with them, or delete them if
 
 The following sections explain the various features you can use while you are in the Timetable Mode.
 
-<br>
+
 
 #### 3.4.1 Adding a task: `add`
 
@@ -271,7 +271,7 @@ These are the parameters required in the command:
 * `dd-MM-yyyy`: the due date of the task, in the format day/month/year.
 * `hhmm`: time the task is due, in 24h format.
 
-<br>
+
 
 Example of usage:
 Let's say you have to read a book for one of your modules.
@@ -289,7 +289,7 @@ With that, you've successfully added a task titled `Read book`, with the deadlin
 >:warning: Please remember to type the deadline in the correct format, or else an error message will be shown.
 > Both task titles and deadlines should not be blank!
 
-<br>
+
 
 #### 3.4.2 Marking a task as done: `done`
 
@@ -301,7 +301,7 @@ This is the parameter required in the command:
 
 * `INDEX`: Index of the existing task in the current task list.
 
-<br>
+
 
 Example of usage:
 
@@ -313,7 +313,7 @@ Yay! I've marked this task as done:
 -------------------------------------------------------------
 ```
 
-<br>
+
 
 #### 3.4.3 Tagging tasks: `tag`
 
@@ -333,7 +333,7 @@ These are the parameters required in the command:
 * `INDEX`: index number of the intended task in the full task list
 * `TAG`: text description of the tag
 
-<br>
+
 
 Example of usage:
 For example, if you want to tag the first task in the list as "Todo", after `T:$` in the command window, type "tag 1 /tTodo".
@@ -346,14 +346,14 @@ Got it! I've tagged this as:
  [o] Read book (by: Oct 19 2020 06.00PM)(tag: Todo)
 -------------------------------------------------------------
 ```
-<br>
+
 
 #### 3.4.4 Listing tasks: `list`
 
 Use the `list` command to list the tasks you have added to **Zer0Note**. There are 4 ways you can use this
 command, described below:
 
-<br>
+
 
 #### 3.4.4.1 Listing all tasks
 
@@ -361,7 +361,7 @@ When you want to have a look at your task list, you can list out all the existin
 
 Format: `list`
 
-<br>
+
 
 Example of usage:
 
@@ -376,7 +376,7 @@ T:$ list
 -------------------------------------------------------------
 ```
 
-<br>
+
 
 #### 3.4.4.2 Listing done tasks
 
@@ -384,7 +384,7 @@ When you want to keep track of your progress, you can list out all the tasks tha
 
 Format: `list /d`
 
-<br>
+
 
 Example of usage:
 
@@ -396,7 +396,7 @@ T:$ list /d
 -------------------------------------------------------------
 ```
 
-<br>
+
 
 #### 3.4.4.3 Listing undone tasks
 
@@ -404,7 +404,7 @@ If you want to have a look at what you need to do, you can list out all the task
 
 Format: `list /u`
 
-<br>
+
 
 Example of usage:
 
@@ -417,7 +417,7 @@ T:$ list /u
 -------------------------------------------------------------
 ```
 
-<br>
+
 
 #### 3.4.4.4 Listing urgent tasks
 
@@ -428,7 +428,7 @@ are many undone tasks, only the top three urgent ones will be displayed.
 
 Format: `list /urgent`
 
-<br>
+
 
 Example of usage:
 
@@ -441,7 +441,7 @@ T:$ list /urgent
 -------------------------------------------------------------
 ```
 
-<br>
+
 
 #### 3.4.5 Finding tasks `find`
 
@@ -501,7 +501,7 @@ This is the parameter required in the command:
 
 * `INDEX`: index number of the intended task in the full task list
 
-<br>
+
 
 Example of usage:
 
@@ -514,7 +514,7 @@ Noted. I've removed this task:
 -------------------------------------------------------------
 ```
 
-<br>
+
 
 ### 3.5 Notebook Mode
 
@@ -547,7 +547,7 @@ This is the parameter required in the command:
 
 * `NOTEBOOK`: the name of the notebook.
 
-<br>
+
 
 Example of usage:
 
@@ -565,7 +565,7 @@ Added notebook with title: CS2113T
 Now that you have added a new notebook for `CS2113T`, you can add a `section`!
 
 
-<br>
+
 
 #### 3.5.1.2 Adding a section
 
@@ -581,7 +581,7 @@ This is the parameter required in the command:
 
 * `SECTION`: the name of the section in the selected `notebook`.
 
-<br>
+
 
 Example of usage:
 
@@ -600,7 +600,7 @@ Added section with title: W1: Java
 
 Great! You can now add a `page` (or as many pages as you like) into your new section titled `W1: Java`.
 
-<br>
+
 
 #### 3.5.1.3 Adding a page
 
@@ -617,7 +617,7 @@ These are the parameters required in the command:
 * `PAGE`: the name of the page in the selected `section`.
 * `PAGE CONTENT`: the contents that you would like to store in the `page`.
 
-<br>
+
 
 Example of usage:
 
@@ -637,7 +637,7 @@ You've successfully added a new page into the section `W1: Java` of the notebook
 > Otherwise, an error message will be shown. 
 
 
-<br>
+
 
 #### 3.5.2 Selecting a notebook/section/page: `select`
 
@@ -675,7 +675,7 @@ In a selected *SECTION*:
 > :bulb: Whenever you want to select something, you may want to use the list all function, `list /a`
 > to ensure that you're typing in the correct parameters.
 
-<br>
+
 
 Example of usage:
 If you have a notebook entitled `CS2101`, you can select it by typing `select /nCS2101`.
@@ -687,7 +687,7 @@ now in notebook book: CS2101
 -------------------------------------------------------------
 ```
 
-<br>
+
 
 #### 3.5.3 Tagging a notebook/section/page: `tag`
 
@@ -710,7 +710,7 @@ These are the parameters required in the command:
 
 * `TAG`: text description of the tag
 
-<br>
+
 
 Example of usage:
 For example, you would to add a tag "Module" to a notebook titled "CS2101":
@@ -740,7 +740,7 @@ In *NOTEBOOK MODE*,
 - `list /s` displays the titles of notebooks together with titles of sections.
 - `list /a` displays all notebooks, sections and pages.
 
-<br>
+
 
 Examples of usage:
 
@@ -788,13 +788,13 @@ N:$ list /a
 > :bulb: Use `list` first to see the titles only before, otherwise you could be overwhelmed with the details of all the 
 > notebooks
 
-<br>
+
 
 In a selected *NOTEBOOK*:
 - `list` displays the titles of all the sections in the selected notebook.
 - `list /a` displays all sections and pages in the selected notebook.
 
-<br>
+
 
 Examples of usage:
 
@@ -817,12 +817,12 @@ N/CS2101:$ list /a
 -------------------------------------------------------------
 ```
 
-<br>
+
 
 In a selected *SECTION*:
 - `list` displays all the pages in the selected section.
 
-<br>
+
 
 Example of usage:
 Suppose you have selected a section "Chapter 1" in the notebook "CS2101".
@@ -839,7 +839,7 @@ N/CS2101/Chapter 1:$ list
 
 >:warning: Entering a non-existing option, such as /t, will give you an error
 
-<br>
+
 
 #### 3.5.5 Finding contents: `find`
 
@@ -963,13 +963,13 @@ What is OOP?
 -------------------------------------------------------------
 ```
 
-<br>
+
 
 ### 3.6 Exiting the program: `exit`
 
 To close the program, type `exit`.
 
-<br>
+
 
 <!-- @@author neilbaner-->
 
@@ -1007,7 +1007,7 @@ our GitHub repository](https://github.com/AY2021S1-CS2113T-T12-3/tp). We recomme
 [Developer Guide](https://ay2021s1-cs2113t-t12-3.github.io/tp/DeveloperGuide.html) to better understand the code, 
 especially if you want to contribute to development. 
 
-<br>
+
 
 ## 5. Command Summary
 
@@ -1059,7 +1059,7 @@ The following table is a cheatsheet of the commands available in Notebook Mode.
 [Delete](#356-deleting-a-notebooksectionpage-delete): `delete` | 1) delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER] | select /nCS2113T /sW10 /p1
 [Switch to timetable mode](#32-switching-between-the-two-modes-mode): `mode` | mode /t |
 
-<br>
+
 
 <!-- @@author neilbaner-->
 
@@ -1074,7 +1074,7 @@ save file by yourself, here's a detailed guide on the contents of the save file 
 > file, **Zer0Note** will not load it at all, since it cannot be sure if any of the file is uncorrupted. Proceed with
 > caution!
 
-<br>
+
 
 ### 6.1. The tasks save file
 
@@ -1114,7 +1114,7 @@ Then, 3 tasks, titled "Code for CS2113T Team Project", "Read about hydrogen fuel
 , are stored as described above. For example, the first task, titled "Code for CS2113T Team Project" is due on the
  10th of November 2020, at 12 noon. It has not been marked as done. 
 
-<br>
+
 
 ### 6.2. The notebooks save file
 
