@@ -87,6 +87,7 @@ Here are some icons that will be used in this User Guide:
 :bulb: | This is a tip. A tip gives you a suggestion when using **Zer0Note**.
 :warning: | This is a warning. A warning suggests that you **may** get an error.
 
+<!-- @@author yAOwzers-->
 
 #### 1.1.2. Notes about the format
 
