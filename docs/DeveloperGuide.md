@@ -142,14 +142,14 @@ code to improve Zer0Note.
 >:exclamation: Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
 
 1. **Fork** this repo, and **clone** the fork into your computer.
-2. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
+2. Open IntelliJ (if you are not in the welcome screen, click **`File`** > **`Close Project`** to close the existing project dialog first).
 3. Set up the correct JDK version for Gradle  
-   a. Click `Configure` > `Project Defaults` > `Project Structure`  
-   b. Click `New...` and find the directory of the JDK.
-4. Click `Import Project`
-5. Locate the `build.gradle` file and select it. Click `OK`.
-6. Click `Open as Project`.
-7. Click `OK` to accept the default settings.
+   a. Click **`Configure`** > **`Project Defaults`** > **`Project Structure`**  
+   b. Click **`New...`** and find the directory of the JDK.
+4. Click **`Import Project`**.
+5. Locate the **`build.gradle`** file and select it. Click **`OK`**.
+6. Click **`Open as Project`**.
+7. Click **`OK`** to accept the default settings.
 
 ### 2.3. Verifying the setup
 
