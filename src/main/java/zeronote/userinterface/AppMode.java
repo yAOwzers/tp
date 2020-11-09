@@ -1,5 +1,7 @@
 package zeronote.userinterface;
 
+//@@author longngng
+
 public enum AppMode {
     TIMETABLE,
     NOTEBOOK_SHELF,

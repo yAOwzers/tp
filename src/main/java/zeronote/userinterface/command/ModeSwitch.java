@@ -5,6 +5,7 @@ import zeronote.userinterface.AppMode;
 import zeronote.userinterface.AppState;
 
 //@@author longngng
+
 /**
  * Represents the executor created when command mode is input.
  */
@@ -19,7 +20,7 @@ public class ModeSwitch extends CliCommand {
     /**
      * Changes the mode in AppMode field of the AppState object.
      *
-     * @throws InvalidCommandException if the an invalid argument is given
+     * @throws InvalidCommandException if the an invalid argument is given.
      */
     @Override
     public void execute() throws InvalidCommandException {
