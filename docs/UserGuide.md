@@ -873,7 +873,7 @@ Sections:
 
 -------------------------------------------------------------
 ```
->:bulb: "|--" indicates "belongs to". You can use this to identify the particular notebook and section a page is in.
+>:bulb: `|--` indicates "belongs to". You can use this to identify the particular notebook and section a page is in.
 
 #### 3.5.5.2 Finding by tag
 
