@@ -283,7 +283,7 @@ The `Page` object,
 <!-- @@author yAOwzers-->
 ### 3.6. Storage Component
 
-![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_class.jpg)
+![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_Class.jpg)
 Figure [6]. Class diagram for the Storage component
 
 The `Storage` component,
