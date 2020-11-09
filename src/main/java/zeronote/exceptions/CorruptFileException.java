@@ -1,4 +1,5 @@
 package zeronote.exceptions;
+
 // @@author neilbaner
 
 /**
