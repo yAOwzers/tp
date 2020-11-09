@@ -104,7 +104,6 @@ Here are some icons that will be used in this User Guide:
         * `N/[NOTEBOOK NAME]/[SECTION NAME]/[PAGE NAME]:$` - The user is in Notebook mode, and is in the indicated page with `PAGE NAME`, of the section with 'SECTION NAME', of the notebook with 'NOTEBOOK NAME'.  
 
 Example:
-____
 ```
 N:$ select /sChapter 1
 -------------------------------------------------------------
@@ -126,7 +125,6 @@ N/noteboo...:$
 * where `N/` indicates that the user is in Notebook Mode and `noteboo...` is the name of the Notebook, which has more than 7 characters.  
 
 <br>
-
 
 ## 2. Quick Start
 
