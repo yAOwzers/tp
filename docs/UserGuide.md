@@ -18,6 +18,8 @@
 [**3. Features**](#3-features) <br>
 &nbsp;&nbsp;[3.1. Viewing the user guide: `help`](#31-viewing-the-user-guide-help) <br>
 &nbsp;&nbsp;[3.2. Switching between the two modes: `mode`](#32-switching-between-the-two-modes-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1. Switching to the notebook mode](#321-switching-to-the-notebook-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2. Switching to the timetable mode](#322-switching-to-the-timetable-mode) <br>
 &nbsp;&nbsp;[3.3.  Personalised Messages](#33-personalised-messages) <br>
 &nbsp;&nbsp;[3.4. Timetable Mode](#34-timetable-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.1. Adding a task: `add`](#341-adding-a-task-add) <br>
@@ -662,7 +664,7 @@ belongs to. You can learn how to search for all notebooks, sections and pages in
 >:exclamation: The tag is added to the selected notebook, section or page. The tag will not be added to components
 > belonging to the selected notebook or section.
 >
->:warning: Each notebook, section and page can only have one tag. The previous tag will be automatically overwritten
+>:exclamation: Each notebook, section and page can only have one tag. The previous tag will be automatically overwritten
 >by the new tag and no reminder will be given.
 
 Format: `tag /t[TAG]`
