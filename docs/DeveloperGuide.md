@@ -10,9 +10,9 @@
 &nbsp;&nbsp;[2.3. Verifying the setup](#23-verifying-the-setup) <br>
 &nbsp;&nbsp;[2.4. Configure coding style](#24-configure-the-coding-style) <br>
 [3. Design](#3-design) <br>
-&nbsp;&nbsp;[3.1. Architecture](#31-architecture-neil) <br>
-&nbsp;&nbsp;[3.2. UI Component](#32-ui-component-neil) <br>
-&nbsp;&nbsp;[3.3. Commands Component](#33-commands-component-neil) <br>
+&nbsp;&nbsp;[3.1. Architecture](#31-architecture) <br>
+&nbsp;&nbsp;[3.2. UI Component](#32-ui-component) <br>
+&nbsp;&nbsp;[3.3. Commands Component](#33-commands-component) <br>
 &nbsp;&nbsp;[3.4. Tasks Component](#34-tasks-component) <br>
 &nbsp;&nbsp;[3.5. Notebooks Component](#35-notebooks-component)<br>
 &nbsp;&nbsp;[3.6. Storage Component](#36-storage-component)<br>
@@ -29,7 +29,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.2. Select Feature](#432-select-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.3. Tag Feature](#433-tag-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.4. Search Feature](#434-search-feature) <br>
-&nbsp;&nbsp;[4.4. Storage](#44-storage-neil) <br>
+&nbsp;&nbsp;[4.4. Storage](#44-storage) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.1. Storage Format](#441-storage-format) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.1. TaskList](#4411-tasklist) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.2. Page](#4412-page) <br>
