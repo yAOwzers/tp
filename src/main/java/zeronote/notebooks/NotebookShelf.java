@@ -1,4 +1,5 @@
 // @@author neilbaner
+
 package zeronote.notebooks;
 
 import zeronote.exceptions.DuplicateFoundException;

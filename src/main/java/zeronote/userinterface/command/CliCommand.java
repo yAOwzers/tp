@@ -1,4 +1,5 @@
 // @@author neilbaner
+
 package zeronote.userinterface.command;
 
 import zeronote.exceptions.IncorrectAppModeException;

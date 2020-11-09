@@ -1,9 +1,9 @@
 package zeronote.notebooks;
 
-import java.util.ArrayList;
-
 import zeronote.exceptions.DuplicateFoundException;
 import zeronote.exceptions.InvalidTagException;
+
+import java.util.ArrayList;
 
 public class Notebook {
     private String title;
@@ -20,6 +20,7 @@ public class Notebook {
      * Sets the tag of this notebook.
      *
      * @param tag the tag of the notebook
+     *
      * @throws InvalidTagException when the user inputs an empty tag
      */
     public void setTag(String tag) throws InvalidTagException {
@@ -39,6 +40,7 @@ public class Notebook {
         return tag;
     }
     // @@author neilbaner
+
     /**
      * Get the title of this notebook.
      *
@@ -48,6 +50,7 @@ public class Notebook {
         return title;
     }
     // @@author neilbaner
+
     /**
      * Set the title of this notebook.
      *
@@ -56,11 +59,13 @@ public class Notebook {
     public void setTitle(String title) {
         this.title = title;
     }
+
     // @@author neilbaner
     public ArrayList<Section> getSectionArrayList() {
         return sectionArrayList;
     }
     // @@author neilbaner
+
     /**
      * Get the section at a particular index in the ArrayList. Use findSection() to get an index from a given title.
      *
@@ -70,10 +75,12 @@ public class Notebook {
         return sectionArrayList.get(index);
     }
     // @@author neilbaner
+
     /**
      * Add a new section with a given title to this notebook.
      *
      * @param title the title of the section to be added
+     *
      * @throws DuplicateFoundException when the user inputs a section title that has already been used
      */
     public void addSection(String title) throws DuplicateFoundException {
@@ -91,10 +98,12 @@ public class Notebook {
     }
 
     // @@author neilbaner
+
     /**
      * Find a section with a given title in this notebook.
      *
      * @param searchKey the title of the section to search for in the notebook
+     *
      * @return the index of the section with the given title, -1 if not found
      */
     public int findSection(String searchKey) {
@@ -109,6 +118,7 @@ public class Notebook {
     }
 
     // @@author neilbaner
+
     /**
      * Remove a section from the notebook.
      *
