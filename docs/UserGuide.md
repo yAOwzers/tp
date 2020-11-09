@@ -161,7 +161,7 @@ This section introduces the available features, and the format required for each
 2. Notebook Mode
 
 The following sections will explain more about the different commands that can be used in anywhere,
-and commands specific to [Timetable Mode](#33-timetable-mode) and [Notebook Mode](#34-notebook-mode).
+and commands specific to [Timetable Mode](#34-timetable-mode) and [Notebook Mode](#35-notebook-mode).
 
 <br>
 
@@ -183,9 +183,26 @@ This command allows you to switch from notebook mode (at the bookshelf level) to
 
 Format: `mode /n`
 
+Example of usage:
+
+```
+T:$ mode /n
+-------------------------------------------------------------
+You are now in notebook mode
+-------------------------------------------------------------
+```
+
 - Switch to the timetable mode
 
 Format: `mode /t`
+
+Example of usage:
+```
+N:$ mode /t
+-------------------------------------------------------------
+You are now in timetable mode
+-------------------------------------------------------------
+```
 
 <br>
 
@@ -297,11 +314,11 @@ You have added a few tasks, and completed some of them. Congratulations! After r
 tasks come from the same module, or that some are non-academic-related. Is there any way you can categorise them together?
 
 This command lets you add a single `tag` to an existing `task` to remind you of the category it belongs to. You can
-learn how to search for all tasks with the same `tag` in [Finding tasks](#335-finding-tasks-find).
+learn how to search for all tasks with the same `tag` in [Finding tasks by tag](#3452-finding-by-tag).
 
 >:bulb: Each task can only have one tag. The previous tag will be automatically overwritten by the new tag and no
 >reminder will be given.
->
+
 Format: `tag [INDEX] /t[TAG]`
 
 These are the parameters required in the command:
@@ -312,6 +329,8 @@ These are the parameters required in the command:
 <br>
 
 Example of usage:
+For example, if you want to tag the first task in the list as "Todo", after `T:$` in the command window, type "tag 1 /tTodo".
+Below shows the expected output:
 
 ```
 T:$ tag 1 /tTodo
@@ -320,7 +339,6 @@ Got it! I've tagged this as:
  [o] Read book (by: Oct 19 2020 06.00PM)(tag: Todo)
 -------------------------------------------------------------
 ```
-
 <br>
 
 #### 3.4.4 Listing tasks: `list`
@@ -446,7 +464,7 @@ T:$ find book
 
 #### 3.4.5.2 Finding by tag
 
-Finds any task that has a specified tag.  The search is case-sensitive.
+Finds any task that has a specified tag.  The search is not case-sensitive.
 
 Format: `find /t[TAG]`
 
@@ -542,7 +560,7 @@ Now that you have added a new notebook for `CS2113T`, you can add a `section`!
 
 #### 3.5.1.2 Adding a section
 
-Use the `add /s` command to add a `section`  into the [selected](#342-selecting-a-notebooksectionpage-select) `notebook`.
+Use the `add /s` command to add a `section`  into the [selected](#352-selecting-a-notebooksectionpage-select) `notebook`.
 
 >:bulb: You must select a `notebook` before adding a section!
 >
@@ -577,7 +595,7 @@ Great! You can now add a `page` (or as many pages as you like) into your new sec
 
 #### 3.5.1.3 Adding a page
 
-Use the `add /p` command to add a `page`  into the [selected](#342-selecting-a-notebooksectionpage-select) `section`.
+Use the `add /p` command to add a `page`  into the [selected](#352-selecting-a-notebooksectionpage-select) `section`.
 >:bulb: You must select a `section` before adding a page!
 >
 > :warning: Please also make sure not to use ";" in your page title! ";" should only be used to 
@@ -604,7 +622,6 @@ N/CS2113T/W1: Java:$ add /pHELLO WORLD; System.out.println("Hello World!");
 Added page with title: HELLO WORLD
 -------------------------------------------------------------
 ```
-
 You've successfully added a new page into the section `W1: Java` of the notebook `CS2113T`.
 
 >:warning: Ensure that your page title is preceded by "/p" and that there is a ";" to separate the contents from the page title.
@@ -618,9 +635,9 @@ You've successfully added a new page into the section `W1: Java` of the notebook
 After adding a `notebook`, `section` or `page`, you may want to view its contents.
 Use the `select` command to select a `notebook`, `section`, `page` or a combination of the three.
 
-> :bulb: When you want to [`add` a `section`](#3412-adding-a-section), you must select a `notebook` first.
+> :bulb: When you want to [`add` a `section`](#3512-adding-a-section), you must select a `notebook` first.
 >
-> :bulb: When you want to [`add` a `page`](#3413-adding-a-page), you must select a `section` first.
+> :bulb: When you want to [`add` a `page`](#3513-adding-a-page), you must select a `section` first.
 
 Format: `select /n[NOTEBOOK] /s[SECTION] /p[PAGE]`
 
@@ -631,18 +648,20 @@ These are the parameters required in the command:
 * `PAGE`: the page title in the expected `section`.
 
 In *NOTEBOOK MODE*:
-* `select /nCS2101 /sW2 /pEmails` - selects the page titled `Emails` in the notebook `CS2101`, under the section `W2`.
-* `select /nCS2101 /sW2` - selects the section titled `W2` in the notebook `CS2101`.
-* `select /nCS2101` - selects the notebook titled `CS2101`.
+* `select /nCS2113T /sW1: Java /pHELLO WORLD` - selects the page titled `HELLO WORLD` in the notebook `CS2113t`, under 
+the section `W1: Java`.
+* `select /nCS2113T /sW1: Java` - selects the section titled `W1: Java` in the notebook `CS2113T`.
+* `select /nCS2113T` - selects the notebook titled `CS2113T`.
 * `select /all` - navigates back into `NOTEBOOK MODE`, where you can list to see all available notebooks.
-> These commands can be run anywhere(i.e in a selected notebook or section) once you're in NOTEBOOK MODE.  
+> :exclamation: These commands can be run anywhere(i.e in a selected notebook or section) once you're in NOTEBOOK MODE.  
 
 In a selected *NOTEBOOK*:
-* `select /s1: What is OOP? /pDefinition` - selects the page titled `Definition`, in the section `1: What is OOP?` of the selected `notebook`.
-* `select /s1: What is OOP?` - selects the section entitled `1: What is OOP?` in the selected `notebook`.
+* `select /sW1: Java /pHELLO WORLD` - selects the page titled `HELLO WORLD`, in the section `W1: Java` of the selected 
+notebook.
+* `select /sW1: Java` - selects the section entitled `W1: Java` in the selected notebook.
 
 In a selected *SECTION*:
-* `select /pDefinition` - selects the page titled `Definition` in the selected `section`.
+* `select /pHELLO WORLD` - selects the page titled `HELLO WORLD` in the selected section.
 
 > :bulb: Whenever you want to select something, you may want to use the list all function, `list /a`
 > to ensure that you're typing in the correct parameters.
@@ -668,12 +687,12 @@ inspirations you have.
 
 This command lets you add a single `tag` to a selected `notebook`, `section` or `tag` to remind you of the category it
 belongs to. You can learn how to search for all notebooks, sections and pages in the bookshelf with the same `tag` in
-[Finding notebooks](#345-finding-contents-find).
+[Finding by tag](#3552-finding-by-tag).
 
 >:exclamation: The tag is added to the selected notebook, section or page. The tag will not be added to components
->belonging to the selected notebook or section are not tagged.
+> belonging to the selected notebook or section.
 >
->:bulb: Each notebook, section and page can only have one tag. The previous tag will be automatically overwritten
+>:warning: Each notebook, section and page can only have one tag. The previous tag will be automatically overwritten
 >by the new tag and no reminder will be given.
 >
 Format: `tag /t[TAG]`
@@ -688,9 +707,9 @@ Example of usage:
 For example, you would to add a tag "Module" to a notebook titled "CS2101":
 
 >:bulb: Remember to select the notebook "CS2101"!
->
+
 ```
-N:$ tag /tModule
+N/CS2101:$ tag /tModule
 -------------------------------------------------------------
 Got it! I've tagged this as:
 CS2101 (tag: Module)
@@ -719,13 +738,14 @@ Examples of usage:
 ```
 N:$ list
 -------------------------------------------------------------
-* CS2113
+* CS2113T
 * CG2271
 * CS2101
 -------------------------------------------------------------
 N:$ list /s
 -------------------------------------------------------------
-* CS2113
+* CS2113T
+  |-- W1: Java
   |-- Chapter 1
   |-- Chapter 2
 * CG2271
@@ -736,8 +756,13 @@ N:$ list /s
 -------------------------------------------------------------
 N:$ list /a
 -------------------------------------------------------------
-* CS2113
+* CS2113T
+  |-- W1: Java
+        |-- HELLO WORLD
+            System.out.println("Hello World!");
   |-- Chapter 1
+        |-- Definition
+            What is OOP?
   |-- Chapter 2
 * CG2271
 * CS2101
@@ -762,17 +787,13 @@ In a selected *NOTEBOOK*:
 Examples of usage:
 
 ```
-N:$ select /nCS2101
--------------------------------------------------------------
-now in notebook book: CS2101
--------------------------------------------------------------
-N:$ list
+N/CS2101:$ list
 -------------------------------------------------------------
 * Chapter 1
 * Chapter 2
 * Chapter 3
 -------------------------------------------------------------
-N:$ list /a
+N/CS2101:$ list /a
 -------------------------------------------------------------
 * Chapter 1
   |-- Writing email
@@ -792,13 +813,10 @@ In a selected *SECTION*:
 <br>
 
 Example of usage:
+Suppose you have selected a section "Chapter 1" in the notebook "CS2101".
 
 ```
-N/CS2113T:$ select /sChapter 1
--------------------------------------------------------------
-now in notebook section: Chapter 1
--------------------------------------------------------------
-N/CS2113T:$ list
+N/CS2101/Chapter 1:$ list
 -------------------------------------------------------------
 * Writing email
     Lorem ipsum
@@ -812,7 +830,7 @@ N/CS2113T:$ list
 #### 3.5.5 Finding contents: `find`
 
 Just like how you can find a task in the Timetable mode, you can look for contents in this mode. Even sections and pages
-that do not belong to a select notebook can be found. There are two ways to do so:
+that do not belong to a selected notebook can be found. There are two ways to do so:
 
 #### 3.5.5.1 Finding by keyword
 
@@ -831,15 +849,19 @@ N:$ find chapter
 -------------------------------------------------------------
 I've found these for keyword: chapter
 Sections:
-1. CS2113 |-- Chapter 1
-2. CS2113 |-- Chapter 2
+1. CS2113T |-- Chapter 1
+
+2. CS2113T |-- Chapter 2
+
 3. CS2101 |-- Chapter 1
+
 4. CS2101 |-- Chapter 2
+
 5. CS2101 |-- Chapter 3
+
 -------------------------------------------------------------
 ```
 >:bulb: "|--" indicates "belongs to". You can use this to identify the particular notebook and section a page is in.
-
 
 #### 3.5.5.2 Finding by tag
 
@@ -853,11 +875,12 @@ These are the parameters required in the command:
 
 Example of usage:
 ```
-N:$ find /tModule
+N:$ find /tmodule
 -------------------------------------------------------------
-I've found these for tag: Module
+I've found these for tag: module
 Notebooks:
-1. CS2113
+1. CS2101
+
 -------------------------------------------------------------
 ```
 
@@ -867,47 +890,62 @@ Use the `delete` command to delete an existing notebook, section or page.
 
 > :exclamation: The current selection determines the type you can delete.
 
-Format: `delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER]`
+Format: `delete /n[NOTEBOOK] /s[SECTION] /p[PAGE]`
 
 * `NOTEBOOK`: the title of the notebook to be deleted
 * `SECTION`: the title of the section to be deleted in the selected `NOTEBOOK`
-* `NUMBER`: the page number of the page to be deleted in the selected `SECTION`.
+* `PAGE`: the title of the page to be deleted in the selected `SECTION`.
 
 In *NOTEBOOK MODE*,
-* `delete /nCS2113T /sW10 /p1` deletes page `1` under the section `W10` of the notebook `CS2113T`.
-* `delete /nCS2113T /sW10` deletes the entire section titled `W10` in the notebook `CS2113T`.
-* `delete /nCS2113T` deletes the entire notebook titled `CS2113T`.
+* `delete /nCS2101 /sChapter 1 /pWriting email` deletes page `Writing email` under the section `Chapter 1` of the 
+notebook `CS2101`.
+* `delete /nCS2101 /sChapter 1` deletes the entire section titled `Chapter 1` in the notebook `CS2101`.
+* `delete /nCS2101` deletes the entire notebook titled `CS2101`.
+
+Example of usage:
+```
+N:$ delete /nCS2101 /sChapter 1 /pWriting email
+-------------------------------------------------------------
+Noted. I've removed this page: Writing email
+Lorem ipsum
+-------------------------------------------------------------
+N:$ delete /nCS2101 /sChapter 1
+-------------------------------------------------------------
+Noted. I've removed this section: 
+	Chapter 1
+-------------------------------------------------------------
+```
 
 In a selected *NOTEBOOK*,
-* `delete /s1: What is OOP? /p1` deletes page `1` of the section titled `1: What is OOP?` of the selected notebook.
-* `delete /s1: What is OOP?` deletes the section titled `1: What is OOP?` of the selected notebook.
+* `delete /sW1: Java /pHELLO WORLD` deletes page `HELLO WORLD` of the section titled `W1: Java` of the selected notebook.
+* `delete /sW1: Java` deletes the section titled `W1: Java` of the selected notebook.
 
+Example of usage:
+
+In the notebook `CS2113T`:
+```
+N/CS2113T:$ delete /sW1: Java /pHELLO WORLD
+-------------------------------------------------------------
+Noted. I've removed this page: HELLO WORLD
+System.out.println("Hello World!");
+-------------------------------------------------------------
+N/CS2113T:$ delete /sW1: Java
+-------------------------------------------------------------
+Noted. I've removed this section: 
+	W1: Java
+-------------------------------------------------------------
+```
 In a selected *SECTION*,
 * `delete /p1` deletes page `1` of the selected section.
 
-<br>
+Example of usage:
 
-Examples of usage:
-
+In the section `Chapter 1` of notebook `CS2113T`:
 ```
-T:$ mode /n
+N/CS2113T/Chapter 1:$ delete /pDefinition
 -------------------------------------------------------------
-You are now in notebook mode
--------------------------------------------------------------
-N:$ delete /nCS2113T /sW10 /p1
--------------------------------------------------------------
-Noted. I've removed this page: HELLO WORLD
-System.out.println("Hello World!")
--------------------------------------------------------------
-N:$ delete /nCS2113T /sW10
--------------------------------------------------------------
-Noted. I've removed this section:
-	W10
--------------------------------------------------------------
-N:$ delete /nCS2113T
--------------------------------------------------------------
-Noted. I've removed this notebook:
-    CS2113T
+Noted. I've removed this page: Definition
+What is OOP?
 -------------------------------------------------------------
 ```
 
@@ -970,7 +1008,7 @@ The following table shows you a list of commands that can be used anywhere, and 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
 [Help](#31-viewing-the-user-guide-help): `help` | 1) help 2) help timetable 3) help notebook |
-[Exit](#35-exiting-the-program-exit) `exit` | exit |
+[Exit](#36-exiting-the-program-exit) `exit` | exit |
 
 
 ### Timetable Mode
@@ -981,12 +1019,12 @@ The following table is a cheatsheet of the commands available in Timetable Mode.
 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
-[Add a task](#331-adding-a-task-add): `add` | add /t[TASK] /by[dd-MM-yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
-[Mark a task as done](#332-marking-a-task-as-done-done): `done` | done [INDEX] | done 1
-[Tag a task](#333-tagging-tasks-tag): `tag` | tag [INDEX] /t[TAG] | tag 1 /tCS2113T
-[List tasks](#334-listing-tasks-list): `list` | list (/u) (/d) (/urgent) |
-[Finding tasks](#335-finding-tasks-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find book 2) find /tTodo
-[Delete a task](#336-deleting-a-task-delete): `delete` | delete [INDEX] | delete 1
+[Add a task](#341-adding-a-task-add): `add` | add /t[TASK] /by[dd-MM-yyyy] [hhmm] | add /tcoding /by19-10-2020 1705
+[Mark a task as done](#342-marking-a-task-as-done-done): `done` | done [INDEX] | done 1
+[Tag a task](#343-tagging-tasks-tag): `tag` | tag [INDEX] /t[TAG] | tag 1 /tCS2113T
+[List tasks](#344-listing-tasks-list): `list` | list (/u) (/d) (/urgent) |
+[Finding tasks](#345-finding-tasks-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find book 2) find /tTodo
+[Delete a task](#346-deleting-a-task-delete): `delete` | delete [INDEX] | delete 1
 [Switch to notebook mode](#32-switching-between-the-two-modes-mode): `mode` | mode /n |
 
 ### Notebook Mode
@@ -997,12 +1035,12 @@ The following table is a cheatsheet of the commands available in Notebook Mode.
 
 **Command** | **Format** | **Example**
 ----------- | ---------- | -----------
-[Add](#341-adding-a-notebooksectionpage-add): `add` | 1) add /n[NOTEBOOK] 2) add /s[SECTION] 3) add /p[PAGE]; [CONTENT] | add /nCS2101
-[Select](#342-selecting-a-notebooksectionpage-select): `select` | 1) select /n[NOTEBOOK] 2) select /s[SECTION] 3) select /p[NUMBER] | select /nCS2101
-[Tag](#343-tagging-a-notebooksectionpage-tag): `tag` | tag /t[TAG] | tag /tCS2113T
-[List contents](#344-listing-contents-list): `list` | list (/s) (/a) |
-[Find](#345-finding-contents-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find chapter 2) find /tModule
-[Delete](#346-deleting-a-notebooksectionpage-delete): `delete` | 1) delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER] | select /nCS2113T /sW10 /p1
+[Add](#351-adding-a-notebooksectionpage-add): `add` | 1) add /n[NOTEBOOK] 2) add /s[SECTION] 3) add /p[PAGE]; [CONTENT] | add /nCS2101
+[Select](#352-selecting-a-notebooksectionpage-select): `select` | 1) select /n[NOTEBOOK] 2) select /s[SECTION] 3) select /p[NUMBER] | select /nCS2101
+[Tag](#353-tagging-a-notebooksectionpage-tag): `tag` | tag /t[TAG] | tag /tCS2113T
+[List contents](#354-listing-contents-list): `list` | list (/s) (/a) |
+[Find](#355-finding-contents-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find chapter 2) find /tModule
+[Delete](#356-deleting-a-notebooksectionpage-delete): `delete` | 1) delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER] | select /nCS2113T /sW10 /p1
 [Switch to timetable mode](#32-switching-between-the-two-modes-mode): `mode` | mode /t |
 
 <br>
