@@ -1,11 +1,9 @@
-// @@author neilbaner
-
 package zeronote.userinterface.command;
 
-import zeronote.exceptions.IncorrectAppModeException;
-import zeronote.exceptions.InvalidCommandException;
 import zeronote.exceptions.ZeroNoteException;
 import zeronote.userinterface.AppState;
+
+// @@author neilbaner
 
 public abstract class CliCommand {
     public static final String COMMAND_WORD = "mode";
@@ -13,10 +11,6 @@ public abstract class CliCommand {
     protected String commandParams;
     protected static boolean isAutoSave = false;
     protected static boolean PRINTS_PERSONAL_MESSAGE = true;
-
-    public static String getCommandWord() {
-        return COMMAND_WORD;
-    }
 
     public abstract void execute() throws ZeroNoteException;
 
@@ -28,18 +22,22 @@ public abstract class CliCommand {
         this.appState = appState;
     }
 
+    //@@author chuckiex3
     public String getCommandParams() {
         return commandParams;
     }
 
+    //@@author neilbaner
     public void setCommandParams(String params) {
         commandParams = params;
     }
 
+    //@@author yAOwzers
     public boolean isTriggerAutoSave() {
         return isAutoSave;
     }
 
+    //@@author neilbaner
     public boolean printsPersonalMessage() {
         return PRINTS_PERSONAL_MESSAGE;
     }

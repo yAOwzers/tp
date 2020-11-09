@@ -154,6 +154,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
         }
     }
 
+    //@@author yAOwzers
     @Override
     public boolean isTriggerAutoSave() {
         return isAutoSave;

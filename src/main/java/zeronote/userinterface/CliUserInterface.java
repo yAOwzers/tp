@@ -1,15 +1,14 @@
-// @@author neilbaner
-
 package zeronote.userinterface;
 
-import zeronote.exceptions.CorruptFileException;
+import zeronote.exceptions.FileSavingException;
 import zeronote.exceptions.ZeroNoteException;
 import zeronote.storage.Storage;
 import zeronote.userinterface.command.CliCommand;
 import zeronote.userinterface.command.Exit;
 
-import java.io.IOException;
 import java.util.Scanner;
+
+// @@author neilbaner
 
 public class CliUserInterface {
     private AppState appState;
@@ -24,12 +23,12 @@ public class CliUserInterface {
         keyboardScanner = new Scanner(System.in);
     }
 
-    private void loadState() throws CorruptFileException {
+    private void loadState() {
         Storage storage = new Storage();
         appState = storage.readFromFile();
     }
 
-    private void saveState() throws ZeroNoteException {
+    private void saveState() throws FileSavingException {
         Storage storage = new Storage();
         storage.saveToFile(appState);
     }
@@ -93,9 +92,9 @@ public class CliUserInterface {
      * Checks if the user had already input their name into Zer0Note for the personalised message
      * generator feature.
      *
-     * @throws IOException when the user enters an invalid input.
+     * @throws ZeroNoteException when the user enters an invalid input.
      */
-    private void checkNameOfUser() throws ZeroNoteException {
+    private void checkNameOfUser() throws ZeroNoteException{
         if (appState.getUserName().equals("")) {
             messages.printFillInNameOfUserMessage();
             String userName = keyboardScanner.nextLine();
@@ -110,13 +109,9 @@ public class CliUserInterface {
         }
     }
 
-
+    //@@author neilbaner
     public void run() {
-        try {
-            loadState();
-        } catch (CorruptFileException e) {
-            e.printErrorMessage();
-        }
+        loadState();
         startUI();
         String userInput;
         try {
@@ -167,10 +162,4 @@ public class CliUserInterface {
         System.out.println("|_ _ _|  \\ _ _| |_|    |_ _ _| | _| \\_|  \\ _ /   |_ _|  \\ _ _|");
         System.out.println("You are now in timetable mode");
     }
-
-    @Deprecated
-    public String printExit() {
-        return "GOODBYE HOPE TO SEE YOU AGAIN";
-    }
-
 }

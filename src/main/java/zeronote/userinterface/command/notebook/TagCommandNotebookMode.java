@@ -57,6 +57,7 @@ public class TagCommandNotebookMode extends CliCommand {
         }
     }
 
+    //@@author yAOwzers
     @Override
     public boolean isTriggerAutoSave() {
         return isAutoSave;

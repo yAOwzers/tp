@@ -1,11 +1,14 @@
-// @@author neilbaner
-
 package zeronote.notebooks;
 
 import zeronote.exceptions.DuplicateFoundException;
 
 import java.util.ArrayList;
 
+// @@author neilbaner
+
+/**
+ * Class to represent a bookshelf that stores Notebooks.
+ */
 public class NotebookShelf {
     private final ArrayList<Notebook> notebooksArrayList;
     private static final int notFound = -1;
@@ -14,10 +17,12 @@ public class NotebookShelf {
         notebooksArrayList = new ArrayList<>();
     }
 
+    //@@author longngng
     public ArrayList<Notebook> getNotebooksArrayList() {
         return notebooksArrayList;
     }
 
+    //@@author neilbaner
     /**
      * Find the notebook on the shelf with the given title.
      *
@@ -44,6 +49,7 @@ public class NotebookShelf {
         return notebooksArrayList.get(index);
     }
 
+    //@@author chuckiex3
     /**
      * Add a notebook with a given title to the shelf.
      *
@@ -63,6 +69,7 @@ public class NotebookShelf {
         notebooksArrayList.add(n);
     }
 
+    //@@author Lusi711
     /**
      * Removes a notebook with the specified index from the shelf.
      *
@@ -73,6 +80,7 @@ public class NotebookShelf {
         return notebooksArrayList.remove(index);
     }
 
+    //@@author neilbaner
     // TODO: add JavaDoc for serialize() method
     public String serialize() {
         StringBuilder serialized = new StringBuilder();

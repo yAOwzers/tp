@@ -60,7 +60,6 @@ public class FindCommandTimetableMode extends CliCommand {
      * @param tasks the list of tasks entered by the user
      */
     private void getTasksWithTitleContainingKeyword(TaskList tasks) {
-        ArrayList<Task> matchedTasks = new ArrayList<>();
         for (Task task : tasks.getTaskArrayList()) {
             Set<String> wordsInTitle = new HashSet<>(getWordsInTitle(task.getTitle()));
             for (String word : wordsInTitle) {
@@ -77,7 +76,6 @@ public class FindCommandTimetableMode extends CliCommand {
      * @param tasks the list of tasks entered by the user
      */
     private void getTasksWithTagsContainingKeyword(TaskList tasks) {
-        ArrayList<Task> matchedTasks = new ArrayList<>();
         for (Task task : tasks.getTaskArrayList()) {
             String taskTag = task.getTag().toLowerCase();
             if (!taskTag.equals("") && taskTag.contains(tag)) {

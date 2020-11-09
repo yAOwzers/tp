@@ -10,6 +10,7 @@ import zeronote.userinterface.AppState;
 import zeronote.userinterface.command.CliCommand;
 
 //@@author longngng
+
 /**
  * Represents the executor created when command list is input in the notebook mode.
  */
@@ -110,11 +111,9 @@ public class ListCommandNotebookMode extends CliCommand {
             }
             break;
         case NOTEBOOK_SECTION:
-            switch (commandParams) {
-            case(""):
+            if ("".equals(commandParams)) {
                 listSection(appState.getCurrentSection());
-                break;
-            default:
+            } else {
                 throw new InvalidCommandException(commandParams);
             }
             break;

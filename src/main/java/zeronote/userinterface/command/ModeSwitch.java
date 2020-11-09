@@ -5,6 +5,7 @@ import zeronote.userinterface.AppMode;
 import zeronote.userinterface.AppState;
 
 //@@author longngng
+
 /**
  * Represents the executor created when command mode is input.
  */

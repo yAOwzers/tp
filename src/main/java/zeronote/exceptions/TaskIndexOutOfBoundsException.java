@@ -1,6 +1,7 @@
 package zeronote.exceptions;
 
 // @@author neilbaner
+
 public class TaskIndexOutOfBoundsException extends ZeroNoteException {
     public TaskIndexOutOfBoundsException(String enteredCommand) {
         super(enteredCommand);

@@ -1,8 +1,8 @@
-// @@author neilbaner
-
 package zeronote;
 
 import zeronote.userinterface.CliUserInterface;
+
+// @@author neilbaner
 
 public class ZeroNote {
 

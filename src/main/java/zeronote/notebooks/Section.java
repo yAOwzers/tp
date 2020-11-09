@@ -1,5 +1,3 @@
-// @@author neilbaner
-
 package zeronote.notebooks;
 
 import zeronote.exceptions.DuplicateFoundException;
@@ -8,24 +6,24 @@ import zeronote.exceptions.InvalidTagException;
 
 import java.util.ArrayList;
 
+// @@author neilbaner
+
 public class Section {
     private String title;
     private String tag = "";
     private final ArrayList<Page> pageArrayList;
     private static final int notFound = -1;
 
-    // @@author neilbaner
     public Section(String title) {
         this.title = title;
         pageArrayList = new ArrayList<>();
     }
 
-    // @@author neilbaner
+    // @@author longngng
     public String getTitle() {
         return title;
     }
 
-    // @@author neilbaner
     public void setTitle(String title) {
         this.title = title;
     }
@@ -46,11 +44,12 @@ public class Section {
         pageArrayList.add(new Page(title, content));
     }
 
+    //@@author neilbaner
     public void addPage(Page p) {
         pageArrayList.add(p);
     }
 
-    // @@author neilbaner
+    // @@author Lusi711
     /**
      * Find a page with a given title in this section.
      *
@@ -68,7 +67,6 @@ public class Section {
         return notFound;
     }
 
-    // @@author neilbaner
     /**
      * Deletes a page with a specified index from this section.
      *
@@ -94,6 +92,14 @@ public class Section {
         return pageArrayList;
     }
 
+    //@@author Lusi711
+
+    /**
+     * Sets the tag for this page.
+     *
+     * @param tag the tag for the page.
+     * @throws InvalidTagException when the user enters an empty tag
+     */
     public void setTag(String tag) throws InvalidTagException {
         if (!tag.equals("")) {
             this.tag = tag;
@@ -102,6 +108,11 @@ public class Section {
         }
     }
 
+    /**
+     * Gets the tag for this page.
+     *
+     * @return the tag of this page.
+     */
     public String getTag() {
         return tag;
     }
