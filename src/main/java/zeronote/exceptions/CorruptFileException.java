@@ -1,5 +1,8 @@
 package zeronote.exceptions;
 
+/**
+ * Signals an error in reading of the desired file.
+ */
 public class CorruptFileException extends ZeroNoteException {
     public CorruptFileException(String enteredCommand) {
         super(enteredCommand);
