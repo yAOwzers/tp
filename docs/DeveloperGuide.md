@@ -41,6 +41,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.2. Reading the application state](#4422-reading-the-application-state) <br>
 &nbsp;&nbsp;[4.5. Error handling](#45-error-handling) <br>
 &nbsp;&nbsp;[4.6. Personalised Messages](#46-personalised-messages) <br>
+&nbsp;&nbsp;[4.7. (Proposed) Save feature for the tagging function](#47-proposed-save-feature-for-the-tagging-function) <br>
 [5. Documentation](#5-documentation) <br>
 &nbsp;&nbsp;[5.1. Setting up and maintaining the project website](#51-setting-up-and-maintaining-the-project-website) <br>
 &nbsp;&nbsp;[5.2. Style guidance](#52-style-guidance) <br>
