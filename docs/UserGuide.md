@@ -697,7 +697,7 @@ belongs to. You can learn how to search for all notebooks, sections and pages in
 >
 >:warning: Each notebook, section and page can only have one tag. The previous tag will be automatically overwritten
 >by the new tag and no reminder will be given.
->
+
 Format: `tag /t[TAG]`
 
 These are the parameters required in the command:

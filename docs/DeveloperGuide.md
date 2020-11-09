@@ -176,6 +176,7 @@ understandable. However, you may wish to consult [[CS2113/T] Modeling](https://n
 The following diagram provides a rough overview of how **Zer0Note** is built.
 
 ![Architecture Diagram](diagrams/class/jpeg/architecture_neil.jpg)
+
 Figure [1]. Architecture of the application
 
 The `CliUserInteface` (see [here](#32-ui-component-neil)) is the "highest" layer of the application, in
@@ -234,6 +235,7 @@ Figure [3]. Class diagram for Notebook commands
 ### 3.4. Tasks Component
 
 ![UML Diagram from Task Component](diagrams/class/jpeg/taskComponent.jpg)
+
 Figure [4]. Class diagram for the Task component
 
 The `Tasks` component,
@@ -522,6 +524,7 @@ can be done without affecting other instances at all, while updating the `Notebo
 This section explains the implementation and design considerations for managing `Notebook`s.
 
 **Implementation**
+
 There are two main functions in notebook management: add and remove.
 <br>
 
@@ -873,6 +876,7 @@ Here are the steps to convert the project documentation files to PDF format.
 For best results, use the settings indicated in the screenshot below.
 
 <img src= "https://se-education.org/guides/tutorials/images/chrome_save_as_pdf.png">
+Figure [21]. Screenshot of `Save as PDF` settings
 
 <br>
 <hr>

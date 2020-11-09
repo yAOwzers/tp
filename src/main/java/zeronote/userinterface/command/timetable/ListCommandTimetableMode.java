@@ -1,6 +1,5 @@
 package zeronote.userinterface.command.timetable;
 
-import zeronote.exceptions.IncorrectAppModeException;
 import zeronote.exceptions.InvalidCommandException;
 import zeronote.tasks.Task;
 import zeronote.userinterface.AppState;
@@ -25,7 +24,7 @@ public class ListCommandTimetableMode extends CliCommand {
     /**
      * Lists the content based on the argument of the command.
      *
-     * @throws InvalidCommandException if an invalid argument is given
+     * @throws InvalidCommandException if an invalid argument is given.
      */
     @Override
     public void execute() throws InvalidCommandException {
@@ -57,7 +56,7 @@ public class ListCommandTimetableMode extends CliCommand {
         Collections.sort(urgentTaskLists, new SortByDate());
         int i = 1;
         for (Task task : urgentTaskLists) {
-            if (task.isDone() == true) {
+            if (task.isDone()) {
                 continue;
             }
             System.out.print(i++ + ":");
