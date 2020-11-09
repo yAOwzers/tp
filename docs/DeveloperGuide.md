@@ -281,7 +281,7 @@ Figure [6]. Class diagram for the Storage component
 
 The `Storage` component,
 
-- Stores user's inputs into .txt files, which are all found under the same directory.  
+- Stores user's inputs into .txt files, which are all found under the same directory as the JAR file.  
 
 - Contains the method `saveToFile` to save the current AppState of the application in the `notebooks.txt` and `tasks.txt` files.  
 
@@ -854,7 +854,7 @@ Assuming the user has input the username of 'Tom' into Zer0Note.
 
 ### 4.7. (Proposed) Save feature for the tagging function
 
-The proposed save feature for the tagging function will be to save the user's respective tags under both tasks and notebooks into the `tasks.txt` and `notebooks.txt` files in the same directory.   
+The proposed save feature for the tagging function will be to save the user's respective tags under both tasks and notebooks into the `tasks.txt` and `notebooks.txt` files in the same directory as the JAR file.   
 The save feature will be included in the Storage class as a `saveTags()` method, similar to the other save features (eg. `saveTask()` method). 
 This `saveTags()` method will be included under the `saveToFile()` method.
 
