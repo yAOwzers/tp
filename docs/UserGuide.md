@@ -12,42 +12,44 @@
 ## Table of Contents
 [**1. Introduction**](#1-introduction) <br>
 &nbsp;&nbsp;[1.1. How to use this guide](#11-how-to-use-this-guide) <br>
+&nbsp;&nbsp;[1.1.1. Icons and their meanings](#111-icons-and-their-meanings) <br>
+&nbsp;&nbsp;[1.1.2. Notes about the format](#112-notes-about-the-format) <br>
 [**2. Quick Start**](#2-quick-start) <br>
 [**3. Features**](#3-features) <br>
-&nbsp;&nbsp;[3.1 Viewing the user guide: `help`](#31-viewing-the-user-guide-help) <br>
-&nbsp;&nbsp;[3.2 Switching between the two modes: `mode`](#32-switching-between-the-two-modes-mode) <br>
-&nbsp;&nbsp;[3.3  Personalised Messages](#33-personalised-messages) <br>
-&nbsp;&nbsp;[3.4 Timetable Mode](#34-timetable-mode) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1 Adding a task: `add`](#341-adding-a-task-add) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2 Marking a task as done: `done`](#342-marking-a-task-as-done-done) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3 Tagging a task: `tag`](#343-tagging-tasks-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4 Listing tasks: `list`](#344-listing-tasks-list) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.1 Listing all tasks](#3441-listing-all-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.2 Listing done tasks](#3442-listing-done-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.3 Listing undone tasks](#3443-listing-undone-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.4 Listing urgent tasks](#3444-listing-urgent-tasks) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5 Finding tasks: `find`](#345-finding-tasks-find) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.1 Finding by keyword](#3451-finding-by-keyword) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.2 Finding by tag](#3452-finding-by-tag) <br>
+&nbsp;&nbsp;[3.1. Viewing the user guide: `help`](#31-viewing-the-user-guide-help) <br>
+&nbsp;&nbsp;[3.2. Switching between the two modes: `mode`](#32-switching-between-the-two-modes-mode) <br>
+&nbsp;&nbsp;[3.3.  Personalised Messages](#33-personalised-messages) <br>
+&nbsp;&nbsp;[3.4. Timetable Mode](#34-timetable-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1. Adding a task: `add`](#341-adding-a-task-add) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2. Marking a task as done: `done`](#342-marking-a-task-as-done-done) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3. Tagging a task: `tag`](#343-tagging-tasks-tag) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4. Listing tasks: `list`](#344-listing-tasks-list) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.1. Listing all tasks](#3441-listing-all-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.2. Listing done tasks](#3442-listing-done-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.3. Listing undone tasks](#3443-listing-undone-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4.4. Listing urgent tasks](#3444-listing-urgent-tasks) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5. Finding tasks: `find`](#345-finding-tasks-find) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.1. Finding by keyword](#3451-finding-by-keyword) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5.2. Finding by tag](#3452-finding-by-tag) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. Deleting a task: `delete`](#346-deleting-a-task-delete) <br>
-&nbsp;&nbsp;[3.5 Notebook Mode](#35-notebook-mode) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1 Adding a notebook/section/page: `add`](#351-adding-a-notebooksectionpage-add) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.1 Adding a notebook](#3511-adding-a-notebook) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.2 Adding a section](#3512-adding-a-section) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.3 Adding a page](#3513-adding-a-page) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.2 Selecting a notebook/section/page: `select`](#352-selecting-a-notebooksectionpage-select) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.3 Tagging a notebook/section/page: `tag`](#353-tagging-a-notebooksectionpage-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.4 Listing contents: `list`](#354-listing-contents-list) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5 Finding contents: `find`](#355-finding-contents-find) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5.1 Finding by keyword](#3551-finding-by-keyword) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5.2 Finding by tag](#3552-finding-by-tag) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5.6 Deleting a notebook/section/page: `delete`](#356-deleting-a-notebooksectionpage-delete) <br>
-&nbsp;&nbsp;[3.6 Exiting the program: `exit`](#36-exiting-the-program-exit) <br>
+&nbsp;&nbsp;[3.5. Notebook Mode](#35-notebook-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1. Adding a notebook/section/page: `add`](#351-adding-a-notebooksectionpage-add) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.1. Adding a notebook](#3511-adding-a-notebook) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.2. Adding a section](#3512-adding-a-section) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.1.3. Adding a page](#3513-adding-a-page) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.2. Selecting a notebook/section/page: `select`](#352-selecting-a-notebooksectionpage-select) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.3. Tagging a notebook/section/page: `tag`](#353-tagging-a-notebooksectionpage-tag) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.4. Listing contents: `list`](#354-listing-contents-list) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5. Finding contents: `find`](#355-finding-contents-find) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5.1. Finding by keyword](#3551-finding-by-keyword) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.5.5.2. Finding by tag](#3552-finding-by-tag) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5.6. Deleting a notebook/section/page: `delete`](#356-deleting-a-notebooksectionpage-delete) <br>
+&nbsp;&nbsp;[3.6. Exiting the program: `exit`](#36-exiting-the-program-exit) <br>
 [**4. FAQ**](#4-faq) <br>
 [**5. Command Summary**](#5-command-summary) <br>
 [**6. For advanced users: Editing your save file**](#6-for-advanced-users-editing-your-save-file)<br>
-&nbsp;&nbsp;[6.1 The tasks save file](#61-the-tasks-save-file)<br>
-&nbsp;&nbsp;[6.2 The notebooks save file](#62-the-notebooks-save-file)<br>
+&nbsp;&nbsp;[6.1. The tasks save file](#61-the-tasks-save-file)<br>
+&nbsp;&nbsp;[6.2. The notebooks save file](#62-the-notebooks-save-file)<br>
 
 <hr>
 
@@ -56,7 +58,7 @@
 
 Welcome, and thank you for choosing **Zer0Note**!
 
-**Zer0Note** is a note taking and organisation application meant for students(especially those who can type fast).
+**Zer0Note** is a note taking and organisation application meant for students (especially those who can type fast).
 It combines the features of note-taking apps (like OneNote) with the interaction speed of command-line based tools like vim and emacs.
 It helps students (like yourself!) to keep track of deadlines and take notes quickly.
 
@@ -112,7 +114,7 @@ N:$ select /sChapter 1
 -------------------------------------------------------------
 ```
 
-* `select /sChapter 1` is the user's input, and `now in notebook section: Chapter 1` is the output message. 
+* `select /sChapter 1` is the user's input, and `now in notebook section: Chapter 1` is the output message.
 
 * When any of the titles in the current address is longer than 10 characters, a `...` symbol will be printed after the
  first 7, to
@@ -146,7 +148,7 @@ or an open-source alternative like [AdoptOpenJDK](https://adoptopenjdk.net/index
     *Figure 1. Changing directory in Windows command prompt*
 
 5. Type `chcp 65001` and press Enter.
-6. Type `java -jar [CS2113T-T12-3][Zer0Note].jar` and press Enter.
+6. Type `java -jar Zer0Note.jar` and press Enter.
 7. If successful, you will see the following message.
 
     ![Welcome message](images/welcome.png)
@@ -403,7 +405,7 @@ T:$ list /u
 If you're in a time crunch, you can list out top urgent tasks that have not been done, sorted by deadlines. If there
 are many undone tasks, only the top three urgent ones will be displayed.
 
-> :bulb: Use this command to prioritize what you need to get done first 
+> :bulb: Use this command to prioritize what you need to get done first
 
 Format: `list /urgent`
 
@@ -507,7 +509,7 @@ lecture, and pages for different concepts.
 
 Within `Notebook Mode`, you can `add` a `notebook`, `section` or a `page`. This section will guide you through these commands.
 
-> :warning: This feature does not support adding a notebook, section and page (or any combination of the 3) 
+> :warning: This feature does not support adding a notebook, section and page (or any combination of the 3)
 > all at once. e.g. `add /nSchool /sAdmin /p1: Modules` will throw an error.
 
 #### 3.5.1.1. Adding a notebook
@@ -573,7 +575,7 @@ Great! You can now add a `page` (or as many pages as you like) into your new sec
 Use the `add /p` command to add a `page`  into the [selected](#352-selecting-a-notebooksectionpage-select) `section`.
 >:bulb: You must select a `section` before adding a page!
 >
-> :warning: Please also make sure not to use ";" in your page title! ";" should only be used to 
+> :warning: Please also make sure not to use ";" in your page title! ";" should only be used to
 > separate the page title from its contents.
 
 Format: `add /p[PAGE]; [PAGE CONTENT]`
@@ -598,7 +600,7 @@ Added page with title: HELLO WORLD
 You've successfully added a new page into the section `W1: Java` of the notebook `CS2113T`.
 
 >:warning: Ensure that your page title is preceded by "/p" and that there is a ";" to separate the contents from the page title.
-> Otherwise, an error message will be shown. 
+> Otherwise, an error message will be shown.
 
 #### 3.5.2. Selecting a notebook/section/page: `select`
 
@@ -618,7 +620,7 @@ These are the parameters required in the command:
 * `PAGE`: the page title in the expected `section`.
 
 In *NOTEBOOK MODE*:
-* `select /nCS2113T /sW1: Java /pHELLO WORLD` - selects the page titled `HELLO WORLD` in the notebook `CS2113t`, under 
+* `select /nCS2113T /sW1: Java /pHELLO WORLD` - selects the page titled `HELLO WORLD` in the notebook `CS2113t`, under
 the section `W1: Java`.
 * `select /nCS2113T /sW1: Java` - selects the section titled `W1: Java` in the notebook `CS2113T`.
 * `select /nCS2113T` - selects the notebook titled `CS2113T`.
@@ -626,7 +628,7 @@ the section `W1: Java`.
 > :exclamation: These commands can be run anywhere(i.e in a selected notebook or section) once you're in NOTEBOOK MODE.  
 
 In a selected *NOTEBOOK*:
-* `select /sW1: Java /pHELLO WORLD` - selects the page titled `HELLO WORLD`, in the section `W1: Java` of the selected 
+* `select /sW1: Java /pHELLO WORLD` - selects the page titled `HELLO WORLD`, in the section `W1: Java` of the selected
 notebook.
 * `select /sW1: Java` - selects the section entitled `W1: Java` in the selected notebook.
 
@@ -743,7 +745,7 @@ N:$ list /a
 -------------------------------------------------------------
 ```
 
-> :bulb: Use `list` first to see the titles only before, otherwise you could be overwhelmed with the details of all the 
+> :bulb: Use `list` first to see the titles only before, otherwise you could be overwhelmed with the details of all the
 > notebooks
 
 In a selected *NOTEBOOK*:
@@ -797,10 +799,10 @@ that do not belong to a selected notebook can be found. There are two ways to do
 
 #### 3.5.5.1. Finding by keyword
 
-If there is a particular keyword in the title of the various notebooks, sections and pages that you are looking for, 
+If there is a particular keyword in the title of the various notebooks, sections and pages that you are looking for,
 this find by keyword feature will certainly help!
 
-This feature finds all notebooks, sections and pages that contain the keyword in their title. 
+This feature finds all notebooks, sections and pages that contain the keyword in their title.
 The search is not case-sensitive.
 
 Format: `find [KEYWORD]`
@@ -832,7 +834,7 @@ Sections:
 
 #### 3.5.5.2. Finding by tag
 
-Instead of finding a keyword from the title of the notebooks, sections and pages, you can search for specific 
+Instead of finding a keyword from the title of the notebooks, sections and pages, you can search for specific
 keywords in your tags that you had included as well!
 
 This feature finds all notebooks, sections and pages that has a specified tag. The search is case-sensitive.
@@ -867,7 +869,7 @@ Format: `delete /n[NOTEBOOK] /s[SECTION] /p[PAGE]`
 * `PAGE`: the title of the page to be deleted in the selected `SECTION`.
 
 In *NOTEBOOK MODE*,
-* `delete /nCS2101 /sChapter 1 /pWriting email` deletes page `Writing email` under the section `Chapter 1` of the 
+* `delete /nCS2101 /sChapter 1 /pWriting email` deletes page `Writing email` under the section `Chapter 1` of the
 notebook `CS2101`.
 * `delete /nCS2101 /sChapter 1` deletes the entire section titled `Chapter 1` in the notebook `CS2101`.
 * `delete /nCS2101` deletes the entire notebook titled `CS2101`.
@@ -881,7 +883,7 @@ Lorem ipsum
 -------------------------------------------------------------
 N:$ delete /nCS2101 /sChapter 1
 -------------------------------------------------------------
-Noted. I've removed this section: 
+Noted. I've removed this section:
 	Chapter 1
 -------------------------------------------------------------
 ```
@@ -901,7 +903,7 @@ System.out.println("Hello World!");
 -------------------------------------------------------------
 N/CS2113T:$ delete /sW1: Java
 -------------------------------------------------------------
-Noted. I've removed this section: 
+Noted. I've removed this section:
 	W1: Java
 -------------------------------------------------------------
 ```
@@ -934,33 +936,33 @@ This section answers some frequently asked questions.
 
 ### How do I transfer my data to another computer?
 
-The save files for Zer0Note are stored in the same directory as the Zer0Note JAR file. You may move the entire
-directory to another computer and Zer0Note will continue to work with your saved data. Alternatively, you may move
-just the files named `nameOfUser.txt`, `notebooks.txt` and `tasks.txt` to another computer, into the directory
-containing the Zer0Note JAR file on that computer. 
+The save files for Zer0Note are stored in a directory named `data`, in the same directory as the Zer0Note JAR file. 
+You may move the entire directory to another computer and Zer0Note will continue to work with your saved data. 
+Alternatively, you may move just the `data` directory to another computer, into the directory
+containing the Zer0Note JAR file on that computer.
 
-### Where do I find the release? 
+### Where do I find the release?
 
-You can find it [here](https://github.com/AY2021S1-CS2113T-T12-3/tp/releases). 
+You can find it [here](https://github.com/AY2021S1-CS2113T-T12-3/tp/releases).
 
 ### I found a bug! Where do I report it?
 
 Oh no! We tried to make Zer0Note as bug-free as possible, but sadly, we may have missed some. Please add an issue to
 our issue tracker [on GitHub over here](https://github.com/AY2021S1-CS2113T-T12-3/tp/issues), and we will attempt to
-fix it as soon as possible. 
+fix it as soon as possible.
 
 ### I have a feature idea for Zer0Note! Can I suggest it to the developers?
 
-Thank you for using Zer0Note, we're glad you have a feature idea! Please submit it to 
+Thank you for using Zer0Note, we're glad you have a feature idea! Please submit it to
 [our issue tracker](https://github.com/AY2021S1-CS2113T-T12-3/tp/issues) as well. While we cannot guarantee that we
-will implement your suggestion (sorry!) we will read all suggestions and consider them for future updates. 
+will implement your suggestion (sorry!) we will read all suggestions and consider them for future updates.
 
 ### How does Zer0Note work under the hood?
 
 We're delighted that you're curious about how Zer0Note works! Our code is fully open-source and can be accessed [on
-our GitHub repository](https://github.com/AY2021S1-CS2113T-T12-3/tp). We recommend you read our 
-[Developer Guide](https://ay2021s1-cs2113t-t12-3.github.io/tp/DeveloperGuide.html) to better understand the code, 
-especially if you want to contribute to development. 
+our GitHub repository](https://github.com/AY2021S1-CS2113T-T12-3/tp). We recommend you read our
+[Developer Guide](https://ay2021s1-cs2113t-t12-3.github.io/tp/DeveloperGuide.html) to better understand the code,
+especially if you want to contribute to development.
 
 <hr>
 
@@ -1026,6 +1028,8 @@ you so desire. We realise that power users may wish to use a different text edit
 to edit their notes, while also taking advantage of the organisation features of Zer0Note. If you wish to edit the
 save file by yourself, here's a detailed guide on the contents of the save file and how to edit it.
 
+The save files are stored in a directory `data` in the same directory as the Zer0Note JAR file. 
+
 > :exclamation: **Zer0Note** is very sensitive to the format of the saved file! If there are any errors in the save
 > file, **Zer0Note** will not load it at all, since it cannot be sure if any of the file is uncorrupted. Proceed with
 > caution!
@@ -1038,11 +1042,11 @@ The tasks save file is formatted as follows.
 
 First, one line containing only a number indicating the number of tasks in the list.
 
-Then, we have each of your tasks, stored as 3 lines each. 
+Then, we have each of your tasks, stored as 3 lines each.
 
-The first line contains the title of the task. 
+The first line contains the title of the task.
 
-The second line contains the due date and time of the task, formatted as `DD-MM-YYYY HHMM`. 
+The second line contains the due date and time of the task, formatted as `DD-MM-YYYY HHMM`.
 
 The third line contains `true` or `false`, indicating if the task has been marked as done. (`true` means it has been
  marked as done, `false` means it has not)
@@ -1062,42 +1066,42 @@ Read Book
 false
 ```
 
-> :bulb: The above is a valid save file. It illustrates how the full `tasks.txt` save file should look. 
+> :bulb: The above is a valid save file. It illustrates how the full `tasks.txt` save file should look.
 
-The first line indicates that you have 3 tasks saved. 
+The first line indicates that you have 3 tasks saved.
 
 Then, 3 tasks, titled "Code for CS2113T Team Project", "Read about hydrogen fuel cells" and "Read Book" respectively
 , are stored as described above. For example, the first task, titled "Code for CS2113T Team Project" is due on the
- 10th of November 2020, at 12 noon. It has not been marked as done. 
+ 10th of November 2020, at 12 noon. It has not been marked as done.
 
 
 
 ### 6.2. The notebooks save file
 
-Here is how the notebooks save file looks. 
+Here is how the notebooks save file looks.
 
 #### 6.2.1. Pages
 
-A page is saved as two consecutive lines of text. The first line is the title of the notebook, while the second line is the content. 
+A page is saved as two consecutive lines of text. The first line is the title of the notebook, while the second line is the content.
 
-For example, a page might be represented like this: 
+For example, a page might be represented like this:
 
 ```
 What is Java?
 Java is a programming language used by 3 billion devices.
 ```
 
-The first line, that says "What is Java", is the title of the page, while the second line is the content of that page. 
+The first line, that says "What is Java", is the title of the page, while the second line is the content of that page.
 
-#### 6.2.2. Sections 
+#### 6.2.2. Sections
 
-The first line of a section contains the title of the section. 
+The first line of a section contains the title of the section.
 
 The second line of a section contains just a number. This number indicates the number of pages in the section.
 
-Then, all the pages of the section are represented as described in [6.2.1. Pages](#6.2.1.-Pages). 
+Then, all the pages of the section are represented as described in [6.2.1. Pages](#6.2.1.-Pages).
 
-For example, a section might be represented like this: 
+For example, a section might be represented like this:
 
 ```
 Java
@@ -1108,22 +1112,22 @@ Why Java?
 It's highly portable and relatively fast.
 ```
 
-The first line, "Java", is the title of the section. 
+The first line, "Java", is the title of the section.
 
-The second line indicates that the section has 2 pages. 
+The second line indicates that the section has 2 pages.
 
 Then, you have 2 pages, titled "What is Java" and "Why Java" respectively. They are represented as described in [6.2.1
-. Pages](#6.2.1.-Pages). 
+. Pages](#6.2.1.-Pages).
 
 #### 6.2.3. Notebooks
 
-The first line of a notebook contains the title of the notebook. 
+The first line of a notebook contains the title of the notebook.
 
-The second line of a notebook contains just a number. This number indicates the number of sections in the notebook. 
+The second line of a notebook contains just a number. This number indicates the number of sections in the notebook.
 
-Then, all the sections of the notebook are represented as described in [6.2.2. Sections](#6.2.2.-Sections). 
+Then, all the sections of the notebook are represented as described in [6.2.2. Sections](#6.2.2.-Sections).
 
-For example, a saved notebook might look like this: 
+For example, a saved notebook might look like this:
 
 ```
 CS2113T
@@ -1150,34 +1154,34 @@ Why assertions?
 Honestly I don't know.
 ```
 
-The first line, "CS2113T", is the title of the notebook. 
+The first line, "CS2113T", is the title of the notebook.
 
-The second line indicates that the notebook has 4 sections. 
+The second line indicates that the notebook has 4 sections.
 
 Then, you have 4 sections, titled "Java", "OOP", "UML" and "Assertions" respectively. They are represented as described
- in [6.2.2. Sections](#6.2.2.-Sections). 
+ in [6.2.2. Sections](#6.2.2.-Sections).
 
 #### 6.2.4. The Notebook Shelf
 
-The notebook shelf is what is stored in the save file. It represents all your notebooks, sections, and pages at once. It is formatted as follows. 
+The notebook shelf is what is stored in the save file. It represents all your notebooks, sections, and pages at once. It is formatted as follows.
 
-The first line contains just a number. This number indicates the number of notebooks in your Notebook Shelf. 
+The first line contains just a number. This number indicates the number of notebooks in your Notebook Shelf.
 
-Then, all the notebooks on your Notebook Shelf are represented as described in [6.2.3. Notebooks](#6.2.3.-Notebooks). 
+Then, all the notebooks on your Notebook Shelf are represented as described in [6.2.3. Notebooks](#6.2.3.-Notebooks).
 
-For example, a saved notebook shelf might look like this: 
+For example, a saved notebook shelf might look like this:
 
 ![](images/Notebookshelfexplanation.png)
 
-> :bulb: The above is a valid save file. It illustrates how the full `notebooks.txt` save file should look. 
+> :bulb: The above is a valid save file. It illustrates how the full `notebooks.txt` save file should look.
 
-The first line indicates that you have 2 notebooks saved in the Notebook Shelf. 
+The first line indicates that you have 2 notebooks saved in the Notebook Shelf.
 
 Then, you have 2 notebooks, titled "CS2113T" and "CS2101" respectively. They are represented as described in [6.2.3
 . Notebooks](#623-notebooks).
 
 Notebook "CS2113T" contains 4 sections, titled "Java", "OOP", "UML" and "Assertions" respectively. The sections are
-stored as described in [6.2.2. Sections](#622-sections). 
+stored as described in [6.2.2. Sections](#622-sections).
 
 Section "Java" contains 2 pages, titled "What is Java?" and "Why Java?" respectively. The pages are stored as
- described in [6.2.1. Pages](#621-pages). 
+ described in [6.2.1. Pages](#621-pages).
