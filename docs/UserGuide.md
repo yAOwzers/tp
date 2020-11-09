@@ -70,10 +70,12 @@ too, for quick reference while you're using **Zer0Note**. To learn how to access
 
 
 <!-- @@author neilbaner-->
-### 1.1 How to use this guide
+### 1.1. How to use this guide
 
 This user guide will give you a step-by-step tutorial on how to use each of the commands.
 By using these commands, you will be able to keep track of your deadlines and organise your notes!
+
+#### 1.1.1. Icons and their meanings
 
 Here are some icons that will be used in this User Guide:
 
@@ -86,9 +88,8 @@ Here are some icons that will be used in this User Guide:
 :warning: | This is a warning. A warning suggests that you **may** get an error.
 
 
+#### 1.1.2. Notes about the format
 
-
-:exclamation: Notes about the format:
 * Words/sections that look like this: `example`, are code snippets.
 * Words/phrases within `[square brackets]` are the expected user inputs.
   e.g. in `add /n[NOTEBOOK]`, `NOTEBOOK` is a parameter which can be used as `add /nCS2101`
@@ -169,7 +170,7 @@ and commands specific to [Timetable Mode](#34-timetable-mode) and [Notebook Mode
 
 
 <!-- @@author neilbaner-->
-### 3.1 Viewing the user guide: `help`
+### 3.1. Viewing the user guide: `help`
 
 Whenever you need help, you can view the full built-in user guide by typing in `help`.
 
@@ -179,7 +180,7 @@ To view the user guide for the notebook mode, type in `help notebook`.
 
 
 
-### 3.2 Switching between the two modes: `mode`
+### 3.2. Switching between the two modes: `mode`
 
 This command allows you to switch from notebook mode (at the bookshelf level) to the timetable mode, or vice versa.
 
@@ -212,7 +213,7 @@ You are now in timetable mode
 
 
 
-### 3.3 Personalised Messages  
+### 3.3. Personalised Messages  
 
 A personalised message will be printed out to the user whenever a particular command has been entered by the user.
 Personalised messages will include a random generated encouraging message followed by the name provided by the user upon launch of Zer0Note.
@@ -245,7 +246,7 @@ Added: Read Book
 > :exclamation: {personalised message} is a placeholder for the various personalised message that a user will receive.
 
 
-### 3.4 Timetable Mode
+### 3.4. Timetable Mode
 
 Keeping up with deadlines may seem like a daunting task, especially when you're already busy with school.
 With Zer0Note's Timetable Mode, you'll be able to manage a list of tasks.
@@ -258,7 +259,7 @@ The following sections explain the various features you can use while you are in
 
 
 
-#### 3.4.1 Adding a task: `add`
+#### 3.4.1. Adding a task: `add`
 
 This command lets you `add` a `task` with a deadline to the task list.
 
@@ -290,7 +291,7 @@ With that, you've successfully added a task titled `Read book`, with the deadlin
 
 
 
-#### 3.4.2 Marking a task as done: `done`
+#### 3.4.2. Marking a task as done: `done`
 
 Marks an existing `task` as done in the current task list.
 
@@ -314,7 +315,7 @@ Yay! I've marked this task as done:
 
 
 
-#### 3.4.3 Tagging tasks: `tag`
+#### 3.4.3. Tagging tasks: `tag`
 
 You have added a few tasks, and completed some of them. Congratulations! After reviewing, you realise that some of the
 tasks come from the same module, or that some are non-academic-related. Is there any way you can categorise them together?
@@ -347,14 +348,14 @@ Got it! I've tagged this as:
 ```
 
 
-#### 3.4.4 Listing tasks: `list`
+#### 3.4.4. Listing tasks: `list`
 
 Use the `list` command to list the tasks you have added to **Zer0Note**. There are 4 ways you can use this
 command, described below:
 
 
 
-#### 3.4.4.1 Listing all tasks
+#### 3.4.4.1. Listing all tasks
 
 When you want to have a look at your task list, you can list out all the existing tasks.
 
@@ -377,7 +378,7 @@ T:$ list
 
 
 
-#### 3.4.4.2 Listing done tasks
+#### 3.4.4.2. Listing done tasks
 
 When you want to keep track of your progress, you can list out all the tasks that are marked as done.
 
@@ -397,7 +398,7 @@ T:$ list /d
 
 
 
-#### 3.4.4.3 Listing undone tasks
+#### 3.4.4.3. Listing undone tasks
 
 If you want to have a look at what you need to do, you can list out all the tasks that are not marked as done.
 
@@ -418,7 +419,7 @@ T:$ list /u
 
 
 
-#### 3.4.4.4 Listing urgent tasks
+#### 3.4.4.4. Listing urgent tasks
 
 If you're in a time crunch, you can list out top urgent tasks that have not been done, sorted by deadlines. If there
 are many undone tasks, only the top three urgent ones will be displayed.
@@ -442,7 +443,7 @@ T:$ list /urgent
 
 
 
-#### 3.4.5 Finding tasks `find`
+#### 3.4.5. Finding tasks `find`
 
 Your tasklist has grown, and it becomes a pain to go through every single task in the list. Filtering the list by
 completion and deadline does not provide the intended result either. Don't worry! You can search for any task directly
@@ -450,7 +451,7 @@ too.
 
 There are two ways to find a task:
 
-#### 3.4.5.1 Finding by keyword
+#### 3.4.5.1. Finding by keyword
 
 Finds any task that contains the keyword in the task description.  The search is not case-sensitive.
 
@@ -470,7 +471,7 @@ T:$ find book
 -------------------------------------------------------------
 ```
 
-#### 3.4.5.2 Finding by tag
+#### 3.4.5.2. Finding by tag
 
 Finds any task that has a specified tag.  The search is not case-sensitive.
 
@@ -490,7 +491,7 @@ Here are the tasks I found:
 -------------------------------------------------------------
 ```
 
-#### 3.4.6 Deleting a task: `delete`
+#### 3.4.6. Deleting a task: `delete`
 
 Use the `delete` command to delete tasks you previously added to **Zer0Note**.
 
@@ -515,7 +516,7 @@ Noted. I've removed this task:
 
 
 
-### 3.5 Notebook Mode
+### 3.5. Notebook Mode
 
 In a semester, an average student takes about 4-5 modules. You can use **Zer0Note** to keep all your notes and
 thoughts about all those different classes in one place. This can help you organise your thoughts better!
@@ -527,14 +528,14 @@ Each notebook contains sections, and each section contains pages. Each page hold
 For example, you can keep one notebook for each module you take, one section for each week or
 lecture, and pages for different concepts.  
 
-#### 3.5.1 Adding a notebook/section/page: `add`
+#### 3.5.1. Adding a notebook/section/page: `add`
 
 Within `Notebook Mode`, you can `add` a `notebook`, `section` or a `page`. This section will guide you through these commands.
 
 > :warning: This feature does not support adding a notebook, section and page (or any combination of the 3) 
 > all at once. e.g. `add /nSchool /sAdmin /p1: Modules` will throw an error.
 
-#### 3.5.1.1 Adding a notebook
+#### 3.5.1.1. Adding a notebook
 
 Use the `add /n` command to add a `notebook`  into the `notebook shelf`.
 
@@ -566,7 +567,7 @@ Now that you have added a new notebook for `CS2113T`, you can add a `section`!
 
 
 
-#### 3.5.1.2 Adding a section
+#### 3.5.1.2. Adding a section
 
 Use the `add /s` command to add a `section`  into the [selected](#352-selecting-a-notebooksectionpage-select) `notebook`.
 
@@ -601,7 +602,7 @@ Great! You can now add a `page` (or as many pages as you like) into your new sec
 
 
 
-#### 3.5.1.3 Adding a page
+#### 3.5.1.3. Adding a page
 
 Use the `add /p` command to add a `page`  into the [selected](#352-selecting-a-notebooksectionpage-select) `section`.
 >:bulb: You must select a `section` before adding a page!
@@ -638,7 +639,7 @@ You've successfully added a new page into the section `W1: Java` of the notebook
 
 
 
-#### 3.5.2 Selecting a notebook/section/page: `select`
+#### 3.5.2. Selecting a notebook/section/page: `select`
 
 After adding a `notebook`, `section` or `page`, you may want to view its contents.
 Use the `select` command to select a `notebook`, `section`, `page` or a combination of the three.
@@ -688,7 +689,7 @@ now in notebook book: CS2101
 
 
 
-#### 3.5.3 Tagging a notebook/section/page: `tag`
+#### 3.5.3. Tagging a notebook/section/page: `tag`
 
 You have now several notebooks in the bookshelf. Some come from the same module, while others are just a running list of
 inspirations you have.
@@ -724,7 +725,7 @@ CS2101 (tag: Module)
 -------------------------------------------------------------
 ```
 
-#### 3.5.4 Listing contents: `list`
+#### 3.5.4. Listing contents: `list`
 
 Use the `list` command to view the content of the bookshelf, a selected book or a selected section.
 
@@ -840,12 +841,12 @@ N/CS2101/Chapter 1:$ list
 
 
 
-#### 3.5.5 Finding contents: `find`
+#### 3.5.5. Finding contents: `find`
 
 Just like how you can find a task in the Timetable mode, you can look for contents in this mode. Even sections and pages
 that do not belong to a selected notebook can be found. There are two ways to do so:
 
-#### 3.5.5.1 Finding by keyword
+#### 3.5.5.1. Finding by keyword
 
 Finds all notebooks, sections and pages that contain the keyword in their title.  The search is not case-sensitive.
 
@@ -876,7 +877,7 @@ Sections:
 ```
 >:bulb: "|--" indicates "belongs to". You can use this to identify the particular notebook and section a page is in.
 
-#### 3.5.5.2 Finding by tag
+#### 3.5.5.2. Finding by tag
 
 Finds all notebooks, sections and pages that has a specified tag.  The search is case-sensitive.
 
@@ -897,7 +898,7 @@ Notebooks:
 -------------------------------------------------------------
 ```
 
-#### 3.5.6 Deleting a notebook/section/page: `delete`
+#### 3.5.6. Deleting a notebook/section/page: `delete`
 
 Use the `delete` command to delete an existing notebook, section or page.
 
@@ -964,7 +965,7 @@ What is OOP?
 
 
 
-### 3.6 Exiting the program: `exit`
+### 3.6. Exiting the program: `exit`
 
 To close the program, type `exit`.
 
