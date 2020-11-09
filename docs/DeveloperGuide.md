@@ -59,6 +59,8 @@
 <hr>
 <hr>
 
+<!-- @@author neilbaner -->
+
 ## 1. Introduction (Neil)
 
 ### 1.1. Welcome!
@@ -159,6 +161,8 @@ to set up IDEA’s coding style to match ours.
 <br>
 <hr>
 <hr>
+
+<!-- @@author neilbaner -->
 
 ## 3. Design
 
@@ -282,6 +286,8 @@ The `Page` object,
 
 - contains a title, and the content of the page as a String object.
 - has a `tag` field that user can be set and get.
+
+<!-- @@author neilbaner -->
 
 ### 3.6. Storage Component
 
@@ -414,9 +420,6 @@ The following is an example of the processes that occur when the user uses the m
 4. `Appstate#markAsDone(index)` calls the `isDone()` method in task, which changes the isDone variable in the specific task to be true.  
 
 5. After `taskDone` is initialised, a `CliMessages` object of name `messages` calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
-
-**Design Considerations**
-//WIP
 
 #### 4.2.3. Tag Feature
 The user can tag `Task`s in the `TaskList`. This section describes the implementation and design considerations for this
@@ -677,6 +680,8 @@ invalid.
 **Design Considerations**
 //WIP?
 
+<!-- @@author neilbaner -->
+
 ### 4.4. Storage (Neil)
 
 The `Storage` class reads and writes the application state to and from a text file.
@@ -833,6 +838,8 @@ Assuming that the user has input the username of 'Tom' into Zer0Note.
 <br>
 <hr>
 <hr>
+
+<!-- @@author neilbaner -->
 
 ## 5. Documentation
 

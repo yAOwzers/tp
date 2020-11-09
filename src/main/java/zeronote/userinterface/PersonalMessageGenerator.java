@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-//@author yAOwzers
+//@@author yAOwzers
 public class PersonalMessageGenerator {
 
     private static final int NUMBER_OF_MESSAGES = 14;
