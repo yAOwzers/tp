@@ -5,16 +5,28 @@ import java.util.ArrayList;
 import zeronote.exceptions.DuplicateFoundException;
 import zeronote.exceptions.InvalidTagException;
 
+/**
+ * Class to represent a notebook that stores an array of sections.
+ */
 public class Notebook {
     private String title;
     private String tag = "";
     private final ArrayList<Section> sectionArrayList;
+    private static final int notFound = -1;
 
     public Notebook(String title) {
         this.title = title;
         sectionArrayList = new ArrayList<>();
     }
 
+    //@@author Lusi711
+
+    /**
+     * Sets the tag of this notebook.
+     *
+     * @param tag the tag of the notebook.
+     * @throws InvalidTagException when the user inputs an empty tag.
+     */
     public void setTag(String tag) throws InvalidTagException {
         if (!tag.equals("")) {
             this.tag = tag;
@@ -23,14 +35,21 @@ public class Notebook {
         }
     }
 
+    /**
+     * Gets the tag of this notebook.
+     *
+     * @return the tag of the notebook.
+     */
     public String getTag() {
         return tag;
     }
 
+    // @@author longngng
+
     /**
      * Get the title of this notebook.
      *
-     * @return the title of the notebook
+     * @return the title of the notebook.
      */
     public String getTitle() {
         return title;
@@ -39,24 +58,32 @@ public class Notebook {
     /**
      * Set the title of this notebook.
      *
-     * @param title the desired new title of the notebook
+     * @param title the desired new title of the notebook.
      */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    //@@author neilbaner
     public ArrayList<Section> getSectionArrayList() {
         return sectionArrayList;
     }
 
+    /**
+     * Get the section at a particular index in the ArrayList. Use findSection() to get an index from a given title.
+     *
+     * @param index the index of the section to be found.
+     */
     public Section getSectionAtIndex(int index) {
         return sectionArrayList.get(index);
     }
 
+    // @@author chuckiex3
+
     /**
      * Add a new section with a given title to this notebook.
      *
-     * @param title the title of the section to be added
+     * @param title the title of the section to be added.
      * @throws DuplicateFoundException when the user inputs a section title that has already been used.
      */
     public void addSection(String title) throws DuplicateFoundException {
@@ -72,11 +99,13 @@ public class Notebook {
         sectionArrayList.add(s);
     }
 
+    // @@author neilbaner
+
     /**
      * Find a section with a given title in this notebook.
      *
-     * @param searchKey the title of the section to search for in the notebook
-     * @return the index of the section with the given title, -1 if not found
+     * @param searchKey the title of the section to search for in the notebook.
+     * @return the index of the section with the given title, -1 if not found.
      */
     public int findSection(String searchKey) {
         int index = 0;
@@ -86,18 +115,22 @@ public class Notebook {
             }
             index++;
         }
-        return -1;
+        return notFound;
     }
+
+    // @@author Lusi711
 
     /**
      * Remove a section from the notebook.
      *
-     * @param indexToRemove the index of the section to remove
+     * @param index the index of the section to remove.
      */
-    public Section removeSection(int indexToRemove) {
-        return sectionArrayList.remove(indexToRemove);
+    public Section removeSection(int index) {
+        return sectionArrayList.remove(index);
     }
 
+    // @@author neilbaner
+    //TODO: Add JavaDoc for serialize() method
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();

@@ -1,3 +1,5 @@
+// @@author neilbaner
+
 package zeronote.storage;
 
 import zeronote.exceptions.FileSavingException;
@@ -22,16 +24,15 @@ import java.util.Scanner;
  */
 public class Storage {
 
-    private final String tasksFilePath = "tasks.txt";
-    private final String notebooksFilePath = "notebooks.txt";
-    private final String nameFilepath = "nameOfUser.txt";
+    private final String tasksFilePath = "data/tasks.txt";
+    private final String notebooksFilePath = "data/notebooks.txt";
+    private final String nameFilepath = "data/nameOfUser.txt";
 
     /**
      * Saves the tasks to the specified path.
      *
-     * @param currentAppState the AppState of the running instance
-     *
-     * @throws FileSavingException of there is an error saving the file
+     * @param currentAppState the AppState of the running instance.
+     * @throws FileSavingException of there is an error saving the file.
      */
     public void saveTasks(AppState currentAppState) throws FileSavingException {
         File tasksFile = new File(tasksFilePath);
@@ -49,9 +50,8 @@ public class Storage {
     /**
      * Saves the notebooks to the specified path.
      *
-     * @param currentAppState the AppState of the running instance
-     *
-     * @throws FileSavingException if there is an error saving the notebooks
+     * @param currentAppState the AppState of the running instance.
+     * @throws FileSavingException if there is an error saving the notebooks.
      */
     public void saveNotebooks(AppState currentAppState) throws FileSavingException {
         File notebooksFile = new File(notebooksFilePath);
@@ -69,9 +69,8 @@ public class Storage {
     /**
      * Saves the username to the specified path.
      *
-     * @param currentAppState the AppState of the running instance
-     *
-     * @throws FileSavingException if there is an error saving the username
+     * @param currentAppState the AppState of the running instance.
+     * @throws FileSavingException if there is an error saving the username.
      */
     public void saveUserName(AppState currentAppState) throws FileSavingException {
         File userNameFile = new File(nameFilepath);
@@ -88,9 +87,8 @@ public class Storage {
     /**
      * Save the current application state to 3 text files.
      *
-     * @param currentAppState the AppState of the running instance
-     *
-     * @throws FileSavingException if there is an error saving the instance
+     * @param currentAppState the AppState of the running instance.
+     * @throws FileSavingException if there is an error saving the instance.
      */
     public void saveToFile(AppState currentAppState) throws FileSavingException {
         saveTasks(currentAppState);
@@ -101,7 +99,7 @@ public class Storage {
     /**
      * Read the tasks previously saved to a text file.
      *
-     * @param loadedAppState the AppState of the running instance
+     * @param loadedAppState the AppState of the running instance.
      */
     public void readTasks(AppState loadedAppState) {
         TaskList loadedTaskList = new TaskList(); // temporary TaskList
@@ -199,13 +197,11 @@ public class Storage {
         return loadedAppState;
     }
 
+    // @@author yAOwzers
     @Deprecated
     public boolean isNameOfUserFilled() {
         File nameOfUserFile = new File(this.nameFilepath);
-        if (nameOfUserFile.length() == 0 || !nameOfUserFile.exists()) {
-            return false;
-        }
-        return true;
+        return nameOfUserFile.length() != 0 && nameOfUserFile.exists();
     }
 
     @Deprecated

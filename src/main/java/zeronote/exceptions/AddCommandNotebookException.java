@@ -1,6 +1,6 @@
 package zeronote.exceptions;
 
-//@@chuckiex3
+//@@author chuckiex3
 
 /**
  * Signals that the user is unable to add a notebook, section or page.

@@ -9,6 +9,9 @@ import java.util.Date;
 
 import zeronote.exceptions.InvalidTagException;
 
+/**
+ * Represents a task.
+ */
 public class Task {
     private final String title;
     private final String by;
@@ -24,20 +27,34 @@ public class Task {
         this.isDone = false;
     }
 
+    //@@author longngng
     public Date getDueDateTime() {
         return dueDateTime;
     }
 
+    //@@author chuckiex3
+
+    /**
+     * Returns the date specified in the deadline.
+     *
+     * @return date given by user.
+     */
     public LocalDate getDueDate() {
         String[] dayTime = by.split(" ", 2);
         return LocalDate.parse(dayTime[0].trim());
     }
 
+    /**
+     * Reformats time, from 24h to 12h format.
+     *
+     * @return time in 12h format, hh MM AM/PM.
+     */
     public LocalTime getTime() {
         String[] dayTime = by.split(" ", 2);
         return LocalTime.parse(dayTime[1].trim());
     }
 
+    // @@author yAOwzers
     public void markAsDone() {
         this.isDone = true;
     }
@@ -46,6 +63,14 @@ public class Task {
         return this.title;
     }
 
+    //@@author chuckiex3
+
+    /**
+     * Reformats the date from dd/MM/yyyy to MMM dd yyyy.
+     *
+     * @return date in MMM dd yyyy.
+     * @throws ParseException when the date input by the user does not follow the expected format.
+     */
     public String reformatDate() throws ParseException {
         Date date = dateTime.parse(by);
         this.dueDateTime = date;
@@ -56,6 +81,14 @@ public class Task {
         return (isDone ? "o" : "x");
     }
 
+    //@@author Lusi711
+
+    /**
+     * Sets the tag for this task.
+     *
+     * @param tag the tag of the task.
+     * @throws InvalidTagException when the user inputs an empty tag.
+     */
     public void setTag(String tag) throws InvalidTagException {
         if (!tag.equals("")) {
             this.tag = tag;
@@ -64,14 +97,21 @@ public class Task {
         }
     }
 
+    /**
+     * Gets the tag of the task.
+     *
+     * @return the tag of the task.
+     */
     public String getTag() {
         return tag;
     }
 
+    //@@author longngng
     public boolean isDone() {
         return isDone;
     }
 
+    //@@author chuckiex3
     @Override
     public String toString() {
         try {
@@ -83,6 +123,7 @@ public class Task {
         return null;
     }
 
+    // @@author neilbaner
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();

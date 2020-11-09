@@ -9,6 +9,12 @@ import zeronote.userinterface.CliMessages;
 import zeronote.userinterface.InputParser;
 import zeronote.userinterface.command.CliCommand;
 
+//@@author chuckiex3
+
+/**
+ * Command class to add a task with a deadline into the user's task list.
+ * Neither the task nor deadline should be blank.
+ */
 public class AddCommandTimetableMode extends CliCommand {
     public static final String COMMAND_WORD = "add";
     public static final String TASK_DELIMITER = "/t";
@@ -25,25 +31,23 @@ public class AddCommandTimetableMode extends CliCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws ZeroNoteException {
         InputParser parser = new InputParser();
         TaskList currentTaskList = appState.getTaskList();
+        if (!argument.contains(DEADLINE_DELIMITER)) {
+            throw new TaskWrongFormatException();
+        }
         try {
-            if (argument.contains(DEADLINE_DELIMITER)) {
-                String title = parser.parseTaskTitle(argument);
-                String deadline = parser.parseDeadline(argument);
-                currentTaskList.addTask(new Task(title, deadline));
-                messages.printAddedTaskMessage(currentTaskList, title);
-            } else {
-                throw new TaskWrongFormatException();
-            }
+            String title = parser.parseTaskTitle(argument);
+            String deadline = parser.parseDeadline(argument);
+            currentTaskList.addTask(new Task(title, deadline));
+            messages.printAddedTaskMessage(currentTaskList, title);
         } catch (ArrayIndexOutOfBoundsException a) {
             System.out.println("\tPlease type in the format: add /tTITLE /byDEADLINE");
-        } catch (ZeroNoteException z) {
-            z.printErrorMessage();
         }
     }
 
+    //@@author yAOwzers
     @Override
     public boolean isTriggerAutoSave() {
         return isAutoSave;

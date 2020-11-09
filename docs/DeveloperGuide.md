@@ -18,35 +18,17 @@
 &nbsp;&nbsp;[3.6. Storage Component](#36-storage-component)<br>
 [4. Implementation](#4-implementation) <br>
 &nbsp;&nbsp;[4.1. Mode Switch Feature](#41-mode-switch-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.1.1. Implementation](#411-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.1.2. Design Considerations](#412-design-considerations) <br>
 &nbsp;&nbsp;[4.2. Timetable Mode](#42-timetable-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.1. Tasklist Management Feature](#421-tasklist-management-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.1.1. Implementation](#4211-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.1.2. Design Considerations](#4212-design-considerations) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.2. Mark as done Feature](#422-mark-as-done-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.1. Implementation](#4221-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2.2. Design Considerations](#4222-design-considerations) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.3. Tag Feature](#423-tag-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.3.1. Implementation](#4231-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.3.2. Design Considerations](#4232-design-considerations) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.4. List Feature](#424-list-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.4.1. Implementation](#4241-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.2.5. Search Feature](#425-search-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.5.1. Implementation](#4251-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2.5.2. Design Considerations](#4252-design-considerations) <br>
 &nbsp;&nbsp;[4.3. Notebook Mode](#43-notebook-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.1. Notebook Management Feature](#431-notebook-management-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.1.1. Implementation](#4311-implementation) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.2. Select Feature](#432-select-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.1. Implementation](#4321-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2.2. Design Considerations](#4322-design-considerations) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.3. Tag Feature](#433-tag-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.1. Implementation](#4331-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3.2. Design Considerations](#4332-design-considerations) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.4. Search Feature](#434-search-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.4.1. Implementation](#4341-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.3.4.2. Design Considerations](#4342-design-considerations) <br>
 &nbsp;&nbsp;[4.4. Storage](#44-storage-neil) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.1. Storage Format](#441-storage-format) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.1. TaskList](#4411-tasklist) <br>
@@ -58,6 +40,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.1. Saving the application state](#4421-saving-the-application-state) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.2. Reading the application state](#4422-reading-the-application-state) <br>
 &nbsp;&nbsp;[4.5. Error handling](#45-error-handling) <br>
+&nbsp;&nbsp;[4.6. Personalised Messages](#46-personalised-messages) <br>
 [5. Documentation](#5-documentation) <br>
 &nbsp;&nbsp;[5.1. Setting up and maintaining the project website](#51-setting-up-and-maintaining-the-project-website) <br>
 &nbsp;&nbsp;[5.2. Style guidance](#52-style-guidance) <br>
@@ -72,6 +55,11 @@
 [Appendix D: Non-Functional Requirements](#appendix-d-non-functional-requirements) <br>
 [Appendix E: Glossary](#appendix-e-glossary) <br>
 [Appendix F: Instructions for manual testing](#appendix-f-instructions-for-manual-testing) <br>
+
+<hr>
+<hr>
+
+<!-- @@author neilbaner -->
 
 ## 1. Introduction (Neil)
 
@@ -127,6 +115,10 @@ Example:
 
 > :exclamation: **Caution** Follow the steps in the following guide precisely.
 
+<br>
+<hr>
+<hr>
+
 ## 2. Setting up
 
 The following section describes how to set up the coding environment on your own computer, in order to start writing
@@ -139,18 +131,17 @@ code to improve Zer0Note.
 
 ### 2.2. Setting up the project in your computer
 
->:exclamation: **Caution:** Follow the steps in the following guide precisely.
->Things will not work out if you deviate in some steps.
+>:exclamation: Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
 
 1. **Fork** this repo, and **clone** the fork into your computer.
-2. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
+2. Open IntelliJ (if you are not in the welcome screen, click **`File`** > **`Close Project`** to close the existing project dialog first).
 3. Set up the correct JDK version for Gradle  
-   a. Click `Configure` > `Project Defaults` > `Project Structure`  
-   b. Click `New...` and find the directory of the JDK.
-4. Click `Import Project`
-5. Locate the `build.gradle` file and select it. Click `OK`.
-6. Click `Open as Project`.
-7. Click `OK` to accept the default settings.
+   a. Click **`Configure`** > **`Project Defaults`** > **`Project Structure`**  
+   b. Click **`New...`** and find the directory of the JDK.
+4. Click **`Import Project`**.
+5. Locate the **`build.gradle`** file and select it. Click **`OK`**.
+6. Click **`Open as Project`**.
+7. Click **`OK`** to accept the default settings.
 
 ### 2.3. Verifying the setup
 
@@ -166,6 +157,12 @@ to set up IDEA’s coding style to match ours.
 >Optionally, you can follow the guide [[se-edu/guides] Using Checkstyle](https://se-education.org/guides/tutorials/checkstyle.html)
 >to find how to use the CheckStyle within IDEA e.g., to report problems as you write code.
 
+<br>
+<hr>
+<hr>
+
+<!-- @@author neilbaner -->
+
 ## 3. Design
 
 The following section describes the design and implementation of the product. UML diagrams and code snippets are used
@@ -180,6 +177,8 @@ The following diagram provides a rough overview of how **Zer0Note** is built.
 
 ![Architecture Diagram](diagrams/class/jpeg/architecture_neil.jpg)
 
+Figure [1]. Architecture of the application
+
 The `CliUserInteface` (see [here](#32-ui-component-neil)) is the "highest" layer of the application, in
 the sense that it interacts directly with the user, and it passes along the input to other classes. The
 `CliUserInterface` contains the state of the application, stored in an instance of `AppState`. It then uses the other
@@ -191,31 +190,23 @@ classes such as `InputParser` and the various `CliCommand` classes to execute th
 The user interface of **Zer0Note** is provided by the class `CliUserInterface`. It is instantiated once in the main
 method, and its `run()` method is called to start the UI for the application.
 
-The class diagram below describes the `CliUserInterface` class, and the classes it depends on.
-
-// TODO: add class diagram for CliUserInterface
 
 The `CliUserInterface` class contains an instance of `AppState`. This is a class that, as the name implies, contains
 the current state of the running instance of the application. For example, it contains the user data, the current mode,
 the navigation state (i.e. currently chosen notebook/section/page).
 
-The following sequence diagram describes the operation of the `run()` method in `CliUserInterface`.
 
-// TODO: add sequence diagram.
-
-First, the method `loadState()` is called, which loads the save file, and populates the `AppState` object with the
+The process below describes the operation of the `run()` method in `CliUserInterface`:
+* The method `loadState()` is called, which loads the save file, and populates the `AppState` object with the
 previously saved user data.
-
-Then, the `startUI()` method is called to display the welcome message to the user.
-
-The `CliUserInterface` class then continuously gets the input from the user. It then uses the `InputParser` class to
+* The `startUI()` method is called to display the welcome message to the user.
+* The `CliUserInterface` class then continuously gets the input from the user. It then uses the `InputParser` class to
 parse this input and creates a new `CliCommand` object based on the command entered by the user. It executes the
 command with `CliCommand.execute()` (learn more [here](#33-commands-component-neil)), which will use or modify the
 `AppState` instance to make the requested change.
-
-If any of these steps encounters an error, an exception of the type `ZeroNoteException` is thrown by the method, and
+* If any of these steps encounters an error, an exception of the type `ZeroNoteException` is thrown by the method, and
 caught in the `run()` method. Upon catching an exception, the `printErrorMessage()` method is called to display the
-appropriate error message to the user. See [here]() for more information on how exceptions work in **Zer0Note**.
+appropriate error message to the usaer. See [here]() for more information on how exceptions work in **Zer0Note**.
 
 ### 3.3. Commands Component (Neil)
 
@@ -234,18 +225,18 @@ The following 2 UML diagrams show the different types of `CliCommand` components
 This diagram describes the `CliCommand`s related to the Timetable mode.
 
 ![UML diagram for Timetable Commands](diagrams/class/jpeg/timetable_commands.jpg)
+Figure [2]. Class diagram for Timetable commands
 
 And this diagram describes the `CliCommand`s related to the Notebook mode.
 
 ![UML diagrams for Notebook Commands](diagrams/class/jpeg/notebook_commands.jpg)
-
-// TODO: add the new commands for "Find", "Tag", "SortByDate".
+Figure [3]. Class diagram for Notebook commands
 
 ### 3.4. Tasks Component
 
 ![UML Diagram from Task Component](diagrams/class/jpeg/taskComponent.jpg)
 
-Figure []. Structure of Tasks Component
+Figure [4]. Class diagram for the Task component
 
 The `Tasks` component,
 
@@ -254,13 +245,13 @@ The `Tasks` component,
 
 The `TaskList` class,
 
-- has methods to add a new `Task` object and remove existing one at an index.
+- has methods `TaskList#addTask()` to add a new `Task` object and `TaskList#removeTask()` to remove an existing one at 
+an index.
 
 ### 3.5. Notebooks Component
 
-![UML diagram for Notebooks Component](diagrams/class/jpeg/notebooks_simplified.jpg)
-
-Figure []. Structure of Notebooks Component
+![UML diagram for Notebooks Component](diagrams/class/jpeg/notebooks_v2.jpg)
+Figure [5]. Class diagram for the Notebooks component
 
 The `Notebooks` class,
 
@@ -269,19 +260,20 @@ The `Notebooks` class,
 
 The `NotebookShelf` class,
 
-- has methods to add new `Notebook` object and remove existing one.
-- has methods to search through to find a `Notebook` object with matching titles.
+- has methods `NotebookShelf#addNotebook()` to add new `Notebook` object and `NotebookShelf#removeNotebook()` remove an 
+existing one.
+- has methods `NotebookShelf#findNotebook()` to search through to find a `Notebook` object with matching titles.
 
 The `Notebook` class,
 
 - contains a title and a list of `Section` objects.
-- has methods to add new `Section` object or remove existing one.
+- has methods `Notebook#addSection()` to add a new `Section` and `Notebook#removeSection()` to remove an existing one.
 - has a `tag` field that user can be set and get.
 
 The `Section` object,
 
 - contains a title and list of `Page` objects.
-- has methods to add new `Page` object or remove existing one.
+- has methods `Section#addPage()` to add a new `Page` object and `Section#removePage()` to remove an existing one.
 - has a `tag` field that user can be set and get.
 
 The `Page` object,
@@ -289,17 +281,26 @@ The `Page` object,
 - contains a title, and the content of the page as a String object.
 - has a `tag` field that user can be set and get.
 
+<!-- @@author neilbaner -->
+
 ### 3.6. Storage Component
 
-![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_class.jpeg)
+![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_class.jpg)
+Figure [6]. Class diagram for the Storage component
 
 The `Storage` component,
 
-* Contains the method `saveToFile` to save the current AppState of the application in the `notebooks.txt` and `tasks.txt` files.  
+- Stores user's inputs into .txt files, which are all found under the same `data` directory.  
 
-* Contains the method `readFromFile` to load up data containing the input of the user's previous session on Zer0Note.  
+- Contains the method `saveToFile` to save the current AppState of the application in the `notebooks.txt` and `tasks.txt` files.  
 
-* Saves the name of the user in a `nameOfUser.txt` and reads it back in the form of personalised messages.   
+- Contains the method `readFromFile` to load up data containing the input of the user's previous session on Zer0Note.  
+
+- Saves the name of the user in a `nameOfUser.txt` and reads it back in the form of personalised messages.   
+
+<br>
+<hr>
+<hr>
 
 ## 4. Implementation
 
@@ -312,11 +313,14 @@ decisions.
 #### 4.1.1. Implementation
 
 The mode switch mechanism is facilitated by `AppState`. It contains an `AppMode` object and can be accessed from
-`Mode Switch` object.
+`Mode Switch` object. The `AppMode` is a enum which have five possible values: `TIMETABLE`, `NOTEBOOK_SHELF`, `NOTEBOOK_BOOK`,
+`NOTEBOOK_SECTION`, `NOTEBOOK_PAGE`. Users can only use the `mode` command to switch to either TIMETABLE or NOTEBOOK_SHELF 
+modes. The rest of the modes are used by developers when implementing the `select` command.
 
 The following sequence diagram shows how the mode switch operation works:
 
 ![Sequence Diagram for Mode Switch Command](diagrams/class/jpeg/SequenceDiagram_ModeSwitch.jpg)
+Figure [7]. Sequence diagram for the Mode Switch Command
 
 Given below is an example usage scenario and how the find mode switch function behaves.
 
@@ -332,15 +336,11 @@ or `NOTEBOOK_SHELF` or throw an `InvalidCommandException`.
 Step 4. To signal that the user has successfully changed the mode, a message is printed with the current mode of the
 program.  
 
-#### 4.1.2. Design Considerations
-
-/* work in progress */
-
 ### 4.2. Timetable Mode
 
 #### 4.2.1. TaskList Management Feature
 
-##### 4.2.1.1. Implementation
+**Implementation**
 
 `TaskList` is implemented to manage and store the tasks input by the user. It comprises an `ArrayList` list of
  `Task`s, and a few helper methods.
@@ -365,30 +365,28 @@ Given below is an example usage scenario and how the add task function behaves.
 
 The UML sequence diagram below shows how the add task command works.
 ![Sequence Diagram for Add Task Command](diagrams/class/jpeg/add_task.jpg)
+Figure [8]. Sequence diagram for the Add Task Command
 
 <hr>
 TaskList also allows the deletion of tasks by the user.
 
 The figure below shows how the delete task command works:
-![Sequence Diagram for Delete Task Command](diagrams/class/jpeg/SequenceDiagram_RemoveTimetable.jpg)
+![Sequence Diagram for Delete Task Command](diagrams/class/jpeg/delete_task.jpg)
+Figure [9]. Sequence diagram for the Delete Task Command
 
 Here are the general steps that the command goes through when the user inputs "delete 1":
 1. The `CliUserInterface` receives the "delete 1" input by the user and passes it to the `InputParser` class.
 2. `InputParser` parses the input to determine the type of command and the index of the task that is required to delete.
-The Parser then constructs a `RemoveCommandTimetableMode` with constructor as shown below.
-```java
-public RemoveCommandTimetableMode(int indexToRemove, AppState uiMode) {
-    this.setAppState(uiMode);
-    this.indexToRemove = indexToRemove;
-}
-```
-3. Method **execute()** then calls the `TaskList` stored in `AppState` to update the deletion of the task.
-It also constructs `CliMessages` to display messages to the user.
-4. If the deletion is successful, `CliMessages` displays the message to the user.
+3. `InputParser` constructs a `RemoveCommandTimetableMode` and passes the index number to the class.
+4. `RemoveCommandTimetableMode#execute()` is called to delete the task.
+5. If the task is deleted, `RemoveCommandTimetableMode#execute()` also calls `CliMessages#printRemoveTaskMessage` to
+display the success message to the user.
+6. `CliUserInterface#IsTriggerAutosave` is called to verify whether a change has been made in the TaskList or
+NotebookShelf.
 
-##### 4.2.1.2. Design Considerations
+**Design Considerations**
 
-###### Aspect: How to store tasks in `TaskList`
+*Aspect: How to store tasks in `TaskList`*
 - **Alternative 1 (current choice):** Store as an `ArrayList` of tasks
     - Pros: It is easier to implement because the code base are list based.
     - Cons: It is unoptimized in terms of complexity, which requires more work for scaling of the application.
@@ -399,66 +397,55 @@ It also constructs `CliMessages` to display messages to the user.
 
 #### 4.2.2. Mark as done feature  
 
-##### 4.2.2.1. Implementation  
+**Implementation**  
 
 The `Task` class contains a member `isDone` of Boolean type.
 
 The following sequence diagram shows how the mark as done operation works:  
 
-![Sequence diagram for Storage](diagrams/class/jpeg/DoneCommand_Sequence_diagram.jpg)
+![Sequence diagram for Mark as done](diagrams/class/jpeg/DoneCommand_Sequence_diagram.jpg)
+Figure [10]. Sequence diagram for Mark as Done Command
 
 The following is an example of the processes that occur when the user uses the mark as done function:  
 
-Step 1. The user types `done 1`. The `done 1` command is passed through `InputParser#getCommandFromInput`, which constructs a DoneCommandTimetableMode object and calls `DoneCommandTimetable#execute()`.  
+1. The user types `done 1`. The `done 1` command is passed through `InputParser#getCommandFromInput`, which constructs a DoneCommandTimetableMode object and calls `DoneCommandTimetable#execute()`.  
 
-Step 2. `execute()` is called, which then initialises a variable `taskList` of type TaskList. The method then calls `AppState#getTaskList`, which returns all exisiting tasks in the current tasklist.  
+2. `execute()` is called, which then initialises a variable `taskList` of type TaskList. The method then calls `AppState#getTaskList`, which returns all exisiting tasks in the current tasklist.  
 
-Step 3. The `execute()` method proceeds to parse the user's intended task index to be marked as done through `Integer.parseInt()`. Using this index, it initialises a varible `taskDone` of type task and calls `AppState#markAsDone(index)`.  
+3. The `execute()` method proceeds to parse the user's intended task index to be marked as done through `Integer.parseInt()`. Using this index, it initialises a variable `taskDone` of type task and calls `AppState#markAsDone(index)`.  
         
-Step 4. After `taskDone` is initialised, a `messages` of type CliMessages calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
+4. `Appstate#markAsDone(index)` calls the `isDone()` method in task, which changes the isDone variable in the specific task to be true.  
 
-##### 4.2.2.2. Design Considerations
+5. After `taskDone` is initialised, a `CliMessages` object of name `messages` calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
 
 #### 4.2.3. Tag Feature
 The user can tag `Task`s in the `TaskList`. This section describes the implementation and design considerations for this
 feature.
 
-##### 4.2.3.1. Implementation
+**Implementation**
 The `Task` class contains a member `tag` of String type.
 
 The figure below shows how the tag operation works:
 
-![Sequence Diagram for Tag Timetable command](diagrams/class/jpeg/SequenceDiagram_TagTimetable.jpg)
+![Sequence Diagram for Tag Timetable command](diagrams/class/jpeg/tag_task.jpg)
+Figure [11]. Sequence diagram for Tag Timetable Command
 
-There are 3 crucial processes during the tag operation. When the user enters `tag 1 /tCS2113T` into the command window while using the application:
+There are the general steps during the tag operation. When the user enters `tag 1 /tCS2113T` into the command window
+while using the application:
+1. The `CliUserInterface` receives the "tag 1 /tCS2113T" input by the user and passes it to the `InputParser` class.
+2. `InputParser#getCommandFromInput` parses the input to get the task index number and the tag description
+3. `InputParser#getCommandFromInput` then constructs the `TagCommandTimetableMode` class and returns it to
+`CliUserInterface`.
+4. `TagCommandTimetableMode#execute()` is called to tag the task.
+5. If the tag is added successfully, `TagCommandTimetableMode#execute()` calls `CliMessages#printTagTaskMessage` to
+display the success message to the user.
+6. `CliUserInterface#IsTriggerAutosave` is called to verify whether a change has been made in the TaskList or
+NotebookShelf.
 
-**Input Parsing**
-1. `CliUserInterface` receives the "tag 1 /tCS2113T" input by the user and calls the `executeCommand` method.
-2. Method `executeCommand` constructs the `InputParser` class and calls `InputParser#getCommandFromInput` to pass the
-input to `InputParser`.
-3. `InputParser#getCommandFromInput`calls `InputParser#parseTagDescription` to separate the index from the tag.
-4. If the application is in the timetable mode, `InputParser#getCommandFromInput` then parses the index and constructs
-the `TagCommandTimetableMode` class.
-5. `InputParser#getCommandFromInput` returns `TagCommandTimetableMode` back to `CliUserInterface`
-
-**Command Execution**
-1. `CliUserInterface#executeCommand` calls `TagCommandTimetableMode#execute` to execute the command.
-2. In `TagCommandTimetableMode#execute()`, the `CliMessages` class, which prints any outputs to the user, is constructed.
-3. `Tasklist#getTask` returns the `Task` that is specified by the index.
-4. `Task#setTag` changes the `tag` member of `Task` to the tag input by the user.
-5. If the tag is successful, `CliMessages#printTagTaskMessage` displays the message to the user.
-
-**Storage**
-1. `CliUserInterface#executeCommand` finally calls `TagCommandTimetableMode#isTriggerAutoSave` method to check whether a change
-has been made.
-2. If the method returns `True`, `CliUserInterface#executeCommand`calls `saveState` method to save the
-current list.
-3. The tag operation ends.
-
-##### 4.2.3.2. Design Considerations
+**Design Considerations**
 This section describes some of the considerations involved when designing the tag feature.
 
-###### Aspect: How to store the tags
+*Aspect: How to store the tags*
 - **Alternative 1 (current choice):** Store as a private `String` member in every task
     - Pros: It is easy to access for print operations.
     - Cons: It is unoptimized in terms of complexity for search operations, which requires more work for scaling of the
@@ -470,11 +457,12 @@ This section describes some of the considerations involved when designing the ta
 
 #### 4.2.4. List Feature
 
-##### 4.2.4.1. Implementation
+**Implementation**
 
 The following sequence diagram shows how the list operation works:
 
 ![Sequence Diagram for List Urgent](diagrams/class/jpeg/SequenceDiagram_ListUrgent.jpg)
+Figure [12]. Sequence diagram for List Command in Timetable Mode
 
 Given below is an example usage scenario and how the list function behaves.
 
@@ -488,54 +476,37 @@ based on the due date of the `Task` objects in the list.
 Step 3. The program prints up to three tasks in the sorted list.
 
 #### 4.2.5. Search Feature
-This feature allows the user to search for tasks by keyword or by tag. Refer to
-[Tag Feature](#423-tag-feature) for more information on the implementation of tags.
+This feature allows the user to search for tasks by keyword or by tag. Refer to [Tag Feature](#423-tag-feature) for more
+ information on the implementation of tags.
 
 This section explains the implementation and design considerations for the search feature.
 
-##### 4.2.5.1. Implementation
+**Implementation**
 
-The search feature is mainly executed by a `FindCommandTimetableMode` class. The following sequence diagram shows an
-example of how the complete command works:
+The class `FindCommandTimetableMode` executes the search feature. The following sequence diagram shows an example of
+how the complete command works:
 
-![Sequence Diagram for Find command](diagrams/class/jpeg/SequenceDiagram_FindTimetable.jpg)
+![Sequence Diagram for Find command](diagrams/class/jpeg/find_task.jpg)
+Figure [13]. Sequence diagram for Find Command in Timetable Mode
 
-There are 3 crucial processes during the search operation. For example, when the user enters `find ` into the command
-window while using the application:
+For example, when the user enters `find /tCS2113T` into the command window while using the application:
+1. The `CliUserInterface` receives the "find /tCS2113T" input by the user and passes it to the `InputParser` class.
+2. `InputParser#getCommandFromInput` parses the input to return an empty keyword and the tag description.
+3. `InputParser#getCommandFromInput` then constructs the `FindCommandTimetableMode` class and returns it to
+`CliUserInterface`.
+4. `FindCommandTimetableMode#execute()` is called to conduct the search.
+    a. If tag is empty, `execute()` calls `getTasksWithTitleContainingKeyword(tasks)`, which returns all tasks which
+    contain the keyword in their title.
+    b. If keyword is empty, `execute()` calls `getTasksWithTag(tasks)`, which returns all tasks with the tag.
+5. If the tag is added successfully, `TagCommandTimetableMode#execute()` displays all found tasks to the user.
+6. `CliUserInterface#IsTriggerAutosave` is called to verify whether a change has been made in the TaskList or
+NotebookShelf.
 
-**Input Parsing**
-1. `CliUserInterface` receives the "find " input by the user and calls the `executeCommand` method.
-2. Method `executeCommand` constructs the `InputParser` class and calls `InputParser#getCommandFromInput` to pass the
-input to `InputParser`.
-3. Method `InputParser#getCommandFromInput` does the following:<br>
-    a. Calls `InputParser#parseTagDescription` to identify the keyword or tag. The `keyword` and `tag` are set as empty
-    if they are not specified.<br>
-    b. Constructs the `FindCommandTimetableMode` class. <br>
-    c. Returns `FindCommandTimetableMode` back to `CliUserInterface`. <br>
-
-**Command Execution**
-1. `CliUserInterface#executeCommand` calls `FindCommandTimetableMode#execute` to execute the command.
-2. Method `FindCommandTimetableMode#execute()` does the following:<br>
-    a. Constructs `CliMessages` class, which prints any outputs to the user<br>
-    b. Obtains the full tasklist `tasks` from `AppState#getTaskList`<br>
-    c. If `keyword` is specified (not empty), `getTasksWithTitleContainingKeyword(tasks)` is calle, which returns a
-    list of tasks with their titles containing `keyword`.<br>
-    d. Else, if the `tag` is specified (not empty), `getTasksWithTagsContainingKeyword(tasks)` is called, which returns
-    a list of tasks with their tags matching `tag`. This is the method called in this example.<br>
-    e. Calls `CliMessages#printFoundTasksMessage` to display the message to the user.
-
-**Storage**
-1. `CliUserInterface#executeCommand` calls `FindCommandTimetableMode#isTriggerAutoSave` method to check whether a change
-has been made.
-2. If the method returns `True`, `CliUserInterface#executeCommand` calls `saveState` method to save the
-current list.
-3. The find operation ends.
-
-##### 4.2.5.2. Design Considerations
+**Design Considerations**
 
 This section describes some considerations involved when designing the find feature.
 
-**Aspect: Distinction between finding by keyword and finding by tag**
+*Aspect: Distinction between finding by keyword and finding by tag*
 - **Alternative 1 (current choice):** Handle as a if-else statement in a single class
 - **Alternative 2:** Two different classes that are subclasses to a class `FindCommandTimetableMode`
     - Pros: Higher level of abstraction
@@ -552,7 +523,8 @@ can be done without affecting other instances at all, while updating the `Notebo
 
 This section explains the implementation and design considerations for managing `Notebook`s.
 
-##### 4.3.1.1 Implementation
+**Implementation**
+
 There are two main functions in notebook management: add and remove.
 <br>
 
@@ -572,39 +544,32 @@ Given below is an example usage scenario and how the add notebook function behav
 
 The UML sequence diagram below shows how the add notebook command works.
 ![Sequence Diagram for Add Notebook Command](diagrams/class/jpeg/add_notebook.jpg)
+Figure [14]. Sequence diagram for Add Command in Notebook Mode
 
 <hr>
 Notebook Mode also allows the user to remove a notebook/section/page.
 
-The figure below shows how the "remove task" command works:
-![Sequence Diagram for Delete Task Command](diagrams/class/jpeg/SequenceDiagram_RemoveNotebook.jpg)
+The figure below shows how the "delete notebook" command works:
+![Sequence Diagram for Delete Notebook Command](diagrams/class/jpeg/delete_notebook.jpg)
+Figure [15]. Sequence diagram for Delete Command in Notebook Mode
 
-After calling `InputParser#getCommandFromInput` from `CliUserInterface`:
-1. `InputParser` parses the input to return the `notebookTitleToRemove`, `sectionTitleToRemove` and `pageNumberToRemove`.
-Some of these members may be empty.
-2. `InputParser` constructs and returns the `RemoveCommandNotebookMode` class with constructor as shown below:
-```java
-public RemoveCommandNotebookMode(String notebookTitle, String sectionTitle,
-                                     int pageNumber, AppState appState) {
-    this.appState = appState;
-    notebookTitleToRemove = notebookTitle;
-    sectionTitleToRemove = sectionTitle;
-    pageNumberToRemove = pageNumber;
-
-    currentBookshelf = appState.getCurrentBookShelf();
-    currentNotebook = appState.getCurrentNotebook();
-    currentSection = appState.getCurrentSection();
-}
-```
-3. Method **execute()** is called by `CliUserInterface` to delete a notebook, section, or page, depending on the input.
-A switch-case block is used to determine the method to call based on the `appMode`.
-4. If the deletion is successful, `CliMessages` displays the message to the user.
+The sequence diagram above depicts an example where the user wants to delete a page:
+1. The `CliUserInterface` receives the "delete /nCS2113T /sTP /p11" input by the user and passes it to the `InputParser`
+class.
+2. `InputParser#getCommandFromInput` parses the input to return the notebook title "CS2113T", section title "TP", and the page title "11".
+3. `InputParser#getCommandFromInput` then constructs the `RemoveCommandNotebookMode` class and returns it to
+ `CliUserInterface`.
+4. `RemoveCommandNotebookMode#execute()` is called to delete the page.
+    a. If the user is in a bookshelf, `execute()` calls `removeFromNotebookshelf()`.
+    b. If the user is in a notebook, `execute()` calls `removeFromNotebook(Notebook)`.
+    c. If the user is in a section, `execute()` calls `removeFromSection(Section)`.
+5. `CliUserInterface#IsTriggerAutosave` is called to verify whether a change has been made in the NotebookShelf.
 
 #### 4.3.2. Select Feature
 
 The user can `select` a `Notebook`, `Section` or `Page` to view its contents. This section describes the implementation and design considerations for this feature.
 
-##### 4.3.2.1. Implementation
+**Implementation**
 
 Given below is an example usage scenario and how the select notebook function behaves.
 
@@ -623,11 +588,12 @@ Given below is an example usage scenario and how the select notebook function be
 7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
 
 The UML sequence diagram below shows how the select notebook command works.
-![Sequence Diagram for Add Task Command](diagrams/class/jpeg/select_notebook.jpg)
+![Sequence Diagram for Select Command](diagrams/class/jpeg/select_notebook.jpg)
+Figure [16]. Sequence diagram for Select Command in Notebook Mode
 
-##### 4.3.2.2. Design Considerations
+**Design Considerations**
 
-###### Aspect: How much navigability the Select function should have
+*Aspect: How much navigability the Select function should have*
 - **Alternative 1 (current choice):** The user must always select the notebook title if he wants to choose a section or page within it.
     - Pros: It is easy to catch exceptions when the notebook/section does not exist. This also ensures that even if there are 2 sections in 2 different notebooks with the same name, the user can select the correct section.
     - Cons: The format for the command is longer.
@@ -640,44 +606,28 @@ The UML sequence diagram below shows how the select notebook command works.
 The user can add a `tag` to a `Notebook`, `Section` or `Page`. This section describes the implementation and design
 considerations for this feature.
 
-##### 4.3.3.1. Implementation
+**Implementation**
 The `Notebook`, `Section` and `Page` classes each contain a member `tag` of type String.
 
 The figure below shows how the tag operation works:
 
-![Sequence Diagram for Tag Notebook command](diagrams/class/jpeg/SequenceDiagram_TagNotebook.jpg)
+![Sequence Diagram for Tag Notebook command](diagrams/class/jpeg/tag_notebook.jpg)
+Figure [17]. Sequence diagram for Tag Command in Notebook Mode
 
-There are 3 crucial processes during the tag operation. When the user enters `tag /tCS2113T` into the command window while using the application:
+When the user enters `tag /tCS2113T` into the command window while using the application:
+1. The `CliUserInterface` receives the "tag /tCS2113T" input by the user and passes it to the `InputParser`
+class.
+2. `CliUserInterface#executeCommand(String argument)` calls `InputParser#getCommandFromInput`.
+2. `InputParser#getCommandFromInput` first parses the input to return the tag "CS2113T".
+3. `InputParser#getCommandFromInput` then constructs the `TagCommandNotebookMode` class and returns it to
+ `CliUserInterface`.
+4. `TagCommandNotebookMode#execute()` is called to add a tag to the notebook/section/page the user is in.
+5. `CliUserInterface#IsTriggerAutosave` is called to verify whether a change has been made in the NotebookShelf.
 
-**Input Parsing**
-1. `CliUserInterface` receives the "tag /tCS2113T" input by the user and calls the `executeCommand` method.
-2. Method `executeCommand` constructs the `InputParser` class and calls `InputParser#getCommandFromInput` to pass the
-input to `InputParser`.
-3. `InputParser#getCommandFromInput`calls `InputParser#parseTagDescription` to separate the index from the tag.
-4. If the application is in the notebook mode, `InputParser#getCommandFromInput` constructs the
-`TagCommandTimetableMode` class. Note that `AppState#getCurrentNotebook`, `AppState#getCurrentSection` and
-`AppState#getCurrentPage` are called to determine the state of the application.
-5. `InputParser#getCommandFromInput` returns `TagCommandNotebookMode` back to `CliUserInterface`.
-
-**Command Execution**
-1. `CliUserInterface#executeCommand` calls `TagCommandNotebookMode#execute` to execute the command.
-2. `TagCommandNotebookMode#execute()` first constructs the `CliMessages` class, which prints any outputs to the user.
-3. `AppState#getAppMode` returns where the user is.
-3. If the user is in a `Notebook`, `Section` or `Page`, `Notebook#setTag`, `Section#setTag` or `Page#setTag` is called
-respectively to change the tag of the current notebook.
-4. If the tag is successful, `CliMessages#printTagNotebookMessage` displays the message to the user.
-
-**Storage**
-1. `CliUserInterface#executeCommand` finally calls `TagCommandNotebookMode#isTriggerAutoSave` method to check whether a
-change has been made.
-2. If the method returns `True`, `CliUserInterface#executeCommand`calls `saveState` method to save the
-current list.
-3. The tag operation ends.
-
-##### 4.3.3.2. Design Considerations
+**Design Considerations**
 This section describes some of the considerations involved when designing the tag feature.
 
-###### Aspect: How to store the tags
+*Aspect: How to store the tags*
 - **Alternative 1 (current choice):** Store as a private `String` member in every task
     - Pros: It is easy to access for print operations.
     - Cons: It is unoptimized in terms of complexity for search operations, which requires more work for scaling of the
@@ -692,58 +642,36 @@ This section describes some of the considerations involved when designing the ta
 This feature works similarly to the [search feature](#425-search-feature) in the Timetable mode. Refer to
 [Tag Feature](#433-tag-feature) for more information on the implementation of tags in the Notebook mode.
 
-##### 4.3.4.1. Implementation
+**Implementation**
 
 The following sequence diagram shows how the search feature works in the notebook mode:
 
-![Sequence Diagram for Find Notebook Command](diagrams/class/jpeg/SequenceDiagram_FindNotebook.jpg)
+![Sequence Diagram for Find Notebook Command](diagrams/class/jpeg/find_notebook.jpg)
+Figure [18]. Sequence diagram for Find Command in Notebook Mode
 
-As the implementation of the search feature in the Notebook mode is similar to that in the Timetable mode, this section
-only covers the main differences in the two.
+As the implementation of the search feature in the Notebook mode is similar to that in the Timetable mode, except:
+- The `CliMessages` class is constructed in `FindCommandNotebookMode#execute()` to display all the notebooks, sections
+and pages found.
 
-**Input Parsing**
-- If the application is in the Notebook mode, `InputParser#getCommandFromInput` constructs the `FindCommandNotebookMode`
-class.
+**Design Considerations**
 
-###### Aspect: How much navigability the Select function should have
-- **Alternative 1 (current choice):** The user must always select the notebook title if he wants to choose a section or page within it.
-    - Pros: It is easy to catch exceptions when the notebook/section does not exist. This also ensures that even if there are 2 sections in 2 different notebooks with the same name, the user can select the correct section.
-    - Cons: The format for the command is longer.
-- **Alternative 2**: The user can select a notebook/section/page wherever he wants.
-    - Pros: The command the user has to type is much shorter.
-    - Cons: If the user has notebooks/sections with the same name, he cannot be sure that the item he wants will be selected correctly.
-
-**Command Execution**
-Method `FindCommandNotebookMode#execute()` does the following:<br>
-a. Constructs `CliMessages` class, which prints any outputs to the user<br>
-b. If `keyword` is specified (not empty), `getAllWithTitleContainingKeyword()` is called.
-`getAllWithTitleContainingKeyword()`searches for all notebooks, sections and pages that have titles that contain the
-keyword. <br>
-c. Else, if the `tag` is specified (not empty), `getAllWithTagsContainingKeyword` is called. This method finds
-all notebooks, sections and pages that have tags that fit `tag`.<br>
-d. The messages to output to the user are added to `ArrayList`s.
-e. Calls `CliMessages#printFoundNotebooksMessages`, `CliMessages#printFoundSectionsMessages` and
-`CliMessages#printFoundPagesMessages` are called if `Notebook`s, `Section`s and `Page`s are found respectively. These
-methods output the titles of the found notebooks, sections and pages to the user.
-
-##### 4.3.4.2. Design Considerations
-
-Aspect: Way to search through the notebook shelf
+*Aspect: Way to search through the notebook shelf*
 - **Alternative 1 (current choice):** Loop through every page, section and notebook
     - Pros: Able to trace the notebook and section that a found page belongs to. This makes it more convenient to show
     to the user.
     - Cons: It is unoptimized in terms of complexity, with a complexity of O(n<sup>3</sup>).
 - **Alternative 2:** Store all notebooks, sections and pages into respective lists
     - Pros: Has better time complexity of O(n) as it only needs to iterate through each list.
-    - Cons: Unable to output the notebook and section a page belongs to to the user
+    - Cons: Unable to output the notebook and section that a page belongs to to the user
 
 #### 4.3.5. List Feature
 
-##### 4.3.5.1. Implementation
+**Implementation**
 
 The following sequence diagram shows how the list operation in the notebook mode works:
 
 ![Sequence Diagram for List](diagrams/class/jpeg/SequenceDiagram_ListSection.jpg)
+Figure [19]. Sequence diagram for List Command in Notebook Mode
 
 Given below is an example usage scenario and how the list function behaves.
 
@@ -756,13 +684,12 @@ Step 2. `execute()` is called, which then calls the print functions based on the
 Step 3. The program prints the contents corresponding to the input or throw an exception if the command is
 invalid.
 
-##### 4.3.5.2. Design Considerations
-
+<!-- @@author neilbaner -->
 ### 4.4. Storage (Neil)
 
 The `Storage` class reads and writes the application state to and from a text file.
 
-#### 4.4.1. Storage format
+### 4.4.1. Storage format
 
 This section describes the format used to store the TaskList and NotebookShelf from the application state in a plain
 text file.
@@ -770,7 +697,7 @@ text file.
 :exclamation: The operating system newline character is used to terminate lines; that is, `\r\n` on Windows and
 `\n` on UNIX-based systems.
 
-##### 4.4.1.1. TaskList
+#### 4.4.1.1. TaskList
 
 For `TaskList`, the format is as follows:
 
@@ -781,35 +708,35 @@ For `TaskList`, the format is as follows:
 * The third line contains a value `true` or `false`, indicating whether the task is done. (`true` means done,
 `false` means not done.)
 
-##### 4.4.1.2. Page
+#### 4.4.1.2. Page
 
 For a single page, the format is as follows:
 
 * One line containing the title of the page.
 * One line containing the content of the page. Newline characters in the content are replaced with the string `"~~~"`.
 
-##### 4.4.1.3. Section
+#### 4.4.1.3. Section
 
 For a single section, the format is as follows:
 
 * One line containing an integer `p`, the number of pages in the section.
 * `p` pages are then described, as specified [here](#4412-page).
 
-##### 4.4.1.4. Notebook
+#### 4.4.1.4. Notebook
 
 For a single notebook, the format is as follows:
 
 * One line containing an integer `s`, the number of sections.
 * `s` sections are then described, as specified [here](#4413-section)
 
-##### 4.4.1.5. NotebookShelf
+#### 4.4.1.5. NotebookShelf
 
 For `NotebookShelf`, the format is as follows:
 
 * One line containing an integer `n`, the number of notebooks.
 * `n` notebooks are then described, as specified [here](#4414-notebook).
 
-#### 4.4.2 Implementation
+### 4.4.2 Implementation
 
 `TaskList`, `Task`,`NotebookShelf`, `Notebook`, `Section`, and `page` contain methods called `serialize()`.
 These methods return`String` representations of themselves, as specified [here](#441-storage-format).  
@@ -826,11 +753,12 @@ it and combines their outputs with a `StringBuilder`.
 The `serialize()` method in `Section` calls the `serialize()` methods for every `Page` object within it and
 combines their outputs with a `StringBuilder`.
 
-##### 4.4.2.1. Saving the application state
+#### 4.4.2.1. Saving the application state
 
 The following sequence diagram describes the operation of the `saveToFile()` operation.
 
 ![Sequence Diagram for saveToFile command](diagrams/class/jpeg/storage_neil.jpg)
+Figure [20]. Sequence diagram for save application method
 
 Note: The diagram above does not show how the `saveToFile()` method saves `Task` objects from the `TaskList`, in
 the interest of brevity. The operation of the method is very similar for the `TaskList`, except the hierarchy is much
@@ -844,14 +772,9 @@ described above in the sequence diagram, it iterates through the lists of `Task`
 `serialize()` methods for each of their contained objects (if applicable). The `saveToFile()` method then uses
 `FileWriter`s to write to `File` objects, saving the serialized version of the application state to two text files.
 
-##### 4.4.2.2. Reading the application state
+#### 4.4.2.2. Reading the application state
 
 The following sequence diagram describes the operation of the `readFromFile()` operation.
-
-// TODO: Add a sequence diagram to this section.
-
-Note: As above, the diagram omits the reading of the `TaskList` from the text file in the interest of brevity. Again,
-this operation is similar to that for `NotebookShelf` but much simpler.
 
 The `Storage.readFromFile()` method creates an instance of `AppState` based on the contents of the saved text files, and
 returns said instance of `AppState` if reading the save files was successful, and a blank instance otherwise.
@@ -877,11 +800,45 @@ The following example is a scenario that demonstrates how exceptions are handled
 
 2. The `hello` command is passed through a switch-case block within `InputParser#getCommandFromInput`.
 
+Here is a small snippet of the switch-case block:
+``` java
+case ModeSwitch.COMMAND_WORD:
+    return new ModeSwitch(argument, appState);
+default:
+    throw new InvalidCommandException(userInput);
+```
+
+
 3. As `hello` is not a command in `Zer0Note`, `InvalidCommandException` which extends `ZeroNoteException` will be thrown.
 
 4. This `ZeroNoteException` is caught by `CliUserInterface#run`, which will then call `ZeroNoteException#printErrorMessage`.
 
 <br>
+
+### 4.6 Personalised Messages
+
+The `PersonalisedMessageGenerator` class prints out a personalised message to the users after particular commands 
+are executed successfully. A personal message is generated by randomising an encouraging message, and is printed 
+together with the name entered by the user upon launch of Zer0Note.
+
+The following is an example of how the `PersonalisedMessageGenerator` class is used:  
+Assuming that the user has input the username of 'Tom' into Zer0Note.  
+
+1. User adds a task with the given deadline.
+
+2. `execute()` is called, where the boolean method `printsPersonalisedMessage()` in the `CliCommand` class is called.
+
+3. `printsPersonalisedMessage()` returns a boolean variable of the name `PRINTS_PERSONAL_MESSAGE`, which determines whether a personalised message will be printed for the given command. 
+
+4. `printsPersonalisedMessage()` returns true for the `add` command, which calls the `generatePersonalisedMessage()` method in `PersonalMessageGenerator` class. 
+
+5. `generatePersonalisedMessage()` returns a string which contains the random generated personal message to the user.  
+
+<br>
+<hr>
+<hr>
+
+<!-- @@author neilbaner -->
 
 ## 5. Documentation
 
@@ -919,6 +876,11 @@ Here are the steps to convert the project documentation files to PDF format.
 For best results, use the settings indicated in the screenshot below.
 
 <img src= "https://se-education.org/guides/tutorials/images/chrome_save_as_pdf.png">
+Figure [21]. Screenshot of `Save as PDF` settings
+
+<br>
+<hr>
+<hr>
 
 ## 6. Testing
 
@@ -939,7 +901,11 @@ There are two ways to run tests.
 
 This project has one type of test:
 Unit tests targeting the lowest level methods/classes.
-e.g. `teetwelvedashthree.zeronote.userinterface.command.notebook.AddNotebookModeTest`
+e.g. `teetwelvedashthree.zeronote.userinterface.command.notebook.AddNotebookTest`
+
+<br>
+<hr>
+<hr>
 
 ## Appendix A: Project Scope
 
@@ -953,6 +919,10 @@ e.g. `teetwelvedashthree.zeronote.userinterface.command.notebook.AddNotebookMode
 **Value proposition**:<br>
 manage both tasks and notes faster and lighter than a typical mouse/GUI driven app
 
+<br>
+<hr>
+<hr>
+
 ## Appendix B: User Stories
 
 Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikely to have) - `*`
@@ -964,6 +934,10 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 |`***`|new user|have usage instructions|refer to instructions when I forget how to use the App|
 |`**`|forgetful user|see the most urgent tasks|prioritise my tasks|
 |`*`|long-time user|have personalised messages|feel attached to my notes|
+
+<br>
+<hr>
+<hr>
 
 ## Appendix C: Use Cases
 
@@ -987,16 +961,28 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 
 /* work in progress */
 
+<br>
+<hr>
+<hr>
+
 ## Appendix D: Non-Functional Requirements
 
 1. Should work on any *mainstream OS* as long as it has Java `11` or above installed.
 2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
+<br>
+<hr>
+<hr>
+
 ## Appendix E: Glossary
 
 * **Mainstream OS**: Windows, Linux, macOS
 * **Notebook shelf**: a list of all notebooks entered by the user
+
+<br>
+<hr>
+<hr>
 
 ## Appendix F: Instructions for manual testing
 
@@ -1210,7 +1196,7 @@ i. Click on the folder that the jar file had been saved in.
 ii. Select both the 'tasks.txt' and 'notebooks.txt'.
 iii. Delete both files.  
 iv. Restart the application by double-clicking the jar file and running Zer0Note.  
-Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1. 
+Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1.
 
 3.2 Dealing with corrupted name file  
 i. Click on the folder that the jar file had been saved in.  

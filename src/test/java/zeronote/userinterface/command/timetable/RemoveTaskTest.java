@@ -1,25 +1,40 @@
 package zeronote.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
+import zeronote.exceptions.ZeroNoteException;
+import zeronote.tasks.Task;
 import zeronote.tasks.TaskList;
 import zeronote.userinterface.AppState;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//@@Lusi711
+//@@author Lusi711
 class RemoveTaskTest {
     @Test
-    void execute_DeleteTaskOne_NoTasksInTaskList() {
-        TaskList taskslist = new TaskList();
+    void execute_DeleteTaskOne_NoTasksInTaskList() throws ZeroNoteException {
+        TaskList tasksList = new TaskList();
+        Task t = new Task("Task 1", "12-10-2020 2252");
+        tasksList.addTask(t);
         AppState appState = new AppState();
+        appState.setTaskList(tasksList);
 
-        String input = "add /tTask1 /by12-10-2020 2252";
-        AddCommandTimetableMode addTimetableMode = new AddCommandTimetableMode(input,appState);
-        addTimetableMode.execute();
+        RemoveCommandTimetableMode r = new RemoveCommandTimetableMode(0, appState);
+        r.execute();
 
-        RemoveCommandTimetableMode removeTimetableMode = new RemoveCommandTimetableMode(1,appState);
-        removeTimetableMode.execute();
+        assertEquals(0, appState.getTaskList().getNumberOfTasks());
+    }
 
-        assertEquals(taskslist.getNumberOfTasks(), 0);
+    @Test
+    void execute_InvalidTaskNumber_NoTasksInTaskList() throws ZeroNoteException {
+        TaskList tasksList = new TaskList();
+        Task t = new Task("Task 1", "12-10-2020 2252");
+        tasksList.addTask(t);
+        AppState appState = new AppState();
+        appState.setTaskList(tasksList);
+
+        RemoveCommandTimetableMode r = new RemoveCommandTimetableMode(-1, appState);
+        r.execute();
+
+        assertEquals(1, appState.getTaskList().getNumberOfTasks());
     }
 }

@@ -8,6 +8,10 @@ import zeronote.userinterface.command.CliCommand;
 import java.util.ArrayList;
 import java.util.Collections;
 
+//@@author longngng
+/**
+ * Represents the executor created when command list is input in the timetable mode.
+ */
 public class ListCommandTimetableMode extends CliCommand {
     public static final String COMMAND_WORD = "list";
 
@@ -17,6 +21,11 @@ public class ListCommandTimetableMode extends CliCommand {
         PRINTS_PERSONAL_MESSAGE = true;
     }
 
+    /**
+     * Lists the content based on the argument of the command.
+     *
+     * @throws InvalidCommandException if an invalid argument is given.
+     */
     @Override
     public void execute() throws InvalidCommandException {
         try {
@@ -34,7 +43,7 @@ public class ListCommandTimetableMode extends CliCommand {
                 printAllTasks();
                 break;
             default:
-                throw new InvalidCommandException("There not exists such options");
+                throw new InvalidCommandException(commandParams);
             }
         } catch (NullPointerException e) {
             System.out.println("The list of tasks is empty");
@@ -47,7 +56,7 @@ public class ListCommandTimetableMode extends CliCommand {
         Collections.sort(urgentTaskLists, new SortByDate());
         int i = 1;
         for (Task task : urgentTaskLists) {
-            if (task.isDone() == true) {
+            if (task.isDone()) {
                 continue;
             }
             System.out.print(i++ + ":");

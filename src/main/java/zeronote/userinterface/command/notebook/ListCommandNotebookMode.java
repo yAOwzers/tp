@@ -9,6 +9,11 @@ import zeronote.notebooks.Section;
 import zeronote.userinterface.AppState;
 import zeronote.userinterface.command.CliCommand;
 
+//@@author longngng
+
+/**
+ * Represents the executor created when command list is input in the notebook mode.
+ */
 public class ListCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "list";
 
@@ -69,6 +74,12 @@ public class ListCommandNotebookMode extends CliCommand {
         }
     }
 
+    /**
+     * Lists the content based on the argument of the command.
+     *
+     * @throws InvalidCommandException if an invalid argument is given.
+     * @throws IncorrectAppModeException if the application is is TIMETABLE mode.
+     */
     @Override
     public void execute() throws IncorrectAppModeException, InvalidCommandException {
         switch (appState.getAppMode()) {
@@ -84,7 +95,7 @@ public class ListCommandNotebookMode extends CliCommand {
                 listBookshelf_n(appState.getCurrentBookShelf());
                 break;
             default:
-                throw new InvalidCommandException("There not exists such options");
+                throw new InvalidCommandException(commandParams);
             }
             break;
         case NOTEBOOK_BOOK:
@@ -96,16 +107,14 @@ public class ListCommandNotebookMode extends CliCommand {
                 listNotebook_s(appState.getCurrentNotebook());
                 break;
             default:
-                throw new InvalidCommandException("There not exists such options");
+                throw new InvalidCommandException(commandParams);
             }
             break;
         case NOTEBOOK_SECTION:
-            switch (commandParams) {
-            case(""):
+            if ("".equals(commandParams)) {
                 listSection(appState.getCurrentSection());
-                break;
-            default:
-                throw new InvalidCommandException("There not exists such options");
+            } else {
+                throw new InvalidCommandException(commandParams);
             }
             break;
         default:

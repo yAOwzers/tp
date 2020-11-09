@@ -13,14 +13,17 @@ import zeronote.userinterface.AppState;
 import zeronote.userinterface.CliMessages;
 import zeronote.userinterface.command.CliCommand;
 
+//@@author Lusi711
+
+/**
+ * Command class to delete a notebook, section, or page, as specified by the user. Users are restricted by the mode the
+ * app is in.
+ */
 public class RemoveCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "delete";
 
     private CliMessages cliMessages = new CliMessages();
-    private NotebookShelf currentBookshelf;
-    private Notebook currentNotebook;
     private String notebookTitleToRemove;
-    private Section currentSection;
     private String sectionTitleToRemove;
     private String pageTitleToRemove;
 
@@ -33,13 +36,12 @@ public class RemoveCommandNotebookMode extends CliCommand {
         sectionTitleToRemove = sectionTitle;
         pageTitleToRemove = pageTitle;
 
-        currentBookshelf = appState.getCurrentBookShelf();
-        currentNotebook = appState.getCurrentNotebook();
-        currentSection = appState.getCurrentSection();
-
         PRINTS_PERSONAL_MESSAGE = true;
     }
 
+    /**
+     * Executes the command to delete a notebook, section, or page.
+     */
     public void execute() {
         try {
             switch (appState.getAppMode()) {
@@ -53,13 +55,13 @@ public class RemoveCommandNotebookMode extends CliCommand {
                 if (!notebookTitleToRemove.equals("")) {
                     throw new IncorrectAppModeException();
                 }
-                removeFromNotebook(currentNotebook);
+                removeFromNotebook(appState.getCurrentNotebook());
                 break;
             case NOTEBOOK_SECTION:
                 if (!notebookTitleToRemove.equals("") || !sectionTitleToRemove.equals("")) {
                     throw new IncorrectAppModeException();
                 }
-                removeFromSection(currentSection);
+                removeFromSection(appState.getCurrentSection());
                 break;
             default:
                 throw new IncorrectAppModeException();
@@ -69,12 +71,25 @@ public class RemoveCommandNotebookMode extends CliCommand {
         }
     }
 
+    /**
+     * Deletes a page that belongs to the specified section.
+     *
+     * @param section the section that the page to be deleted is in.
+     * @throws InvalidPageException when the specified page does not exist in the section.
+     */
     private void removeFromSection(Section section) throws InvalidPageException {
         int indexOfPage = section.findPage(pageTitleToRemove);
         Page pageRemoved = section.removePage(indexOfPage);
         cliMessages.printRemovePageMessage(pageRemoved);
     }
 
+    /**
+     * Deletes a section or a page that belongs to the specified notebook.
+     *
+     * @param notebook the notebook that the section or page to be deleted is in.
+     * @throws InvalidPageException when the specified page does not exist in the notebook.
+     * @throws InvalidSectionException when the specified section does not exist in the notebook.
+     */
     private void removeFromNotebook(Notebook notebook) throws InvalidPageException, InvalidSectionException {
         if (!sectionTitleToRemove.equals("") && !pageTitleToRemove.equals("")) {
             int indexOfSectionToRemove = notebook.findSection(sectionTitleToRemove);
@@ -85,7 +100,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
                 throw new InvalidSectionException(sectionTitleToRemove);
             }
             removeFromSection(section);
-        } else if (!sectionTitleToRemove.equals("") && pageTitleToRemove.equals("")) {
+        } else if (!sectionTitleToRemove.equals("")) {
             int indexOfSectionToRemove = notebook.findSection(sectionTitleToRemove);
             try {
                 Section sectionRemoved = notebook.removeSection(indexOfSectionToRemove);
@@ -98,8 +113,18 @@ public class RemoveCommandNotebookMode extends CliCommand {
         }
     }
 
+    /**
+     * Deletes a notebook, section or a page.
+     *
+     * @throws InvalidNotebookException when the specified notebook does not exist.
+     * @throws InvalidSectionException when the specified section does not exist.
+     * @throws InvalidPageException when the specified page does not exist.
+     */
     private void removeFromNotebookShelf() throws InvalidNotebookException, InvalidSectionException,
             InvalidPageException {
+
+        assert !notebookTitleToRemove.equals("");
+        NotebookShelf currentBookshelf = appState.getCurrentBookShelf();
         int indexOfNotebookToRemove = currentBookshelf.findNotebook(notebookTitleToRemove);
 
         if (!notebookTitleToRemove.equals("") && !sectionTitleToRemove.equals("")) {
@@ -111,8 +136,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
             }
             removeFromNotebook(notebook);
             return;
-        } else if (!notebookTitleToRemove.equals("") && sectionTitleToRemove.equals("")
-                && pageTitleToRemove.equals("")) {
+        } else if (!notebookTitleToRemove.equals("") && pageTitleToRemove.equals("")) {
             try {
                 Notebook notebookRemoved = currentBookshelf.removeNotebook(indexOfNotebookToRemove);
                 cliMessages.printRemoveNotebookMessage(notebookRemoved);
@@ -130,6 +154,7 @@ public class RemoveCommandNotebookMode extends CliCommand {
         }
     }
 
+    //@@author yAOwzers
     @Override
     public boolean isTriggerAutoSave() {
         return isAutoSave;

@@ -1,27 +1,30 @@
 package zeronote.userinterface;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import zeronote.exceptions.IncorrectDeadlineFormatException;
-import zeronote.exceptions.InvalidIndexException;
-import zeronote.exceptions.ZeroNoteException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import zeronote.exceptions.IncorrectDeadlineFormatException;
+import zeronote.exceptions.IndexIncorrectFormatException;
+import zeronote.exceptions.InvalidCommandException;
+import zeronote.exceptions.ZeroNoteException;
+import zeronote.userinterface.command.CliCommand;
+
 class InputParserTest {
     @Test
-    void parseTaskIndex_validNumber_success() throws InvalidIndexException {
+    void parseTaskIndex_validNumber_success() throws IndexIncorrectFormatException {
         InputParser parser = new InputParser();
         String num = "2";
-        assertEquals(1,parser.parseTaskIndex(num));
+        assertEquals(1, parser.parseTaskIndex(num));
     }
 
     @Test
     void parseTaskIndex_InvalidString_numberFormatExceptionThrown() {
         InputParser parser = new InputParser();
         String num = "num";
-        Assertions.assertThrows(InvalidIndexException.class, () -> {
+        Assertions.assertThrows(IndexIncorrectFormatException.class, () -> {
             parser.parseTaskIndex(num);
         });
     }
@@ -98,5 +101,47 @@ class InputParserTest {
         InputParser parser = new InputParser();
         String input = "/tBlowing Bubbles /by";
         assertThrows(IncorrectDeadlineFormatException.class, () -> parser.parseDeadline(input));
+    }
+
+    @Test
+    void parseCommand_validInput_Sucess() {
+        AppState appState = new AppState();
+        InputParser parser = new InputParser();
+        String input = "list /d";
+        CliCommand command;
+        try {
+            command = parser.getCommandFromInput(input, appState);
+            assertEquals("/d", command.getCommandParams());
+        } catch (ZeroNoteException e) {
+            System.out.println("ZeroNoteException Catched");
+        }
+    }
+
+    @Test
+    void parseCommand_inputWithSpaces_Sucess() throws ZeroNoteException {
+        AppState appState = new AppState();
+        InputParser parser = new InputParser();
+        String input = "list    /d  ";
+        CliCommand command;
+        command = parser.getCommandFromInput(input, appState);
+        assertEquals("/d", command.getCommandParams());
+    }
+
+    @Test
+    void parseCommand_inputWithDuplications_Sucess() throws ZeroNoteException {
+        AppState appState = new AppState();
+        InputParser parser = new InputParser();
+        String input = "list /d /d    ";
+        CliCommand command;
+        command = parser.getCommandFromInput(input, appState);
+        assertEquals("/d /d", command.getCommandParams());
+    }
+
+    @Test
+    void parseCommand_emptyInput_exceptionThrown() throws ZeroNoteException {
+        AppState appState = new AppState();
+        InputParser parser = new InputParser();
+        String input = "";
+        assertThrows(InvalidCommandException.class, () -> parser.getCommandFromInput(input, appState));
     }
 }

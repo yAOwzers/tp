@@ -1,11 +1,19 @@
 package zeronote.userinterface.command.timetable;
 
+import zeronote.exceptions.IndexIncorrectFormatException;
+import zeronote.exceptions.TaskIndexOutOfBoundsException;
+import zeronote.exceptions.TaskListEmptyException;
+import zeronote.exceptions.ZeroNoteException;
 import zeronote.tasks.Task;
 import zeronote.tasks.TaskList;
 import zeronote.userinterface.AppState;
 import zeronote.userinterface.CliMessages;
 import zeronote.userinterface.command.CliCommand;
 
+//@@author yAOwzers
+/**
+ * Marks a specific task in the tasklist in Zer0Note as done.
+ */
 public class DoneCommandTimetableMode extends CliCommand {
 
     public static final String COMMAND_WORD = "done";
@@ -14,7 +22,6 @@ public class DoneCommandTimetableMode extends CliCommand {
     private AppState appState;
     private String argument;
     private CliMessages messages = new CliMessages();
-    private TaskList taskList;
 
     public DoneCommandTimetableMode(String argument, AppState appState) {
         this.argument = argument;
@@ -23,25 +30,25 @@ public class DoneCommandTimetableMode extends CliCommand {
     }
 
     @Override
-    public void execute() {
-        taskList = appState.getTaskList();
-        int numberOfTasks = 0;
-        numberOfTasks = taskList.getNumberOfTasks();
+    public void execute() throws ZeroNoteException {
+        TaskList taskList = appState.getTaskList();
+        int numberOfTasks = taskList.getNumberOfTasks();
+        assert numberOfTasks >= 0;
+        if (numberOfTasks == 0) {
+            throw new TaskListEmptyException();
+        }
         try {
             int indexOfNumberAfterDone = Integer.parseInt(this.argument);
             Task taskDone = this.appState.markTaskAsDone(indexOfNumberAfterDone);
             messages.printMarkDone(taskDone);
         } catch (IndexOutOfBoundsException e) {
-            if (numberOfTasks > 0) {
-                System.out.println("Please enter a valid index between 1 and " + numberOfTasks + ".");
-            } else {
-                System.out.println("There are no tasks in the list.");
-            }
+            throw new TaskIndexOutOfBoundsException(String.valueOf(numberOfTasks));
         } catch (NumberFormatException e) {
-            System.out.println("I'm sorry, please enter a valid number!");
+            throw new IndexIncorrectFormatException();
         }
     }
 
+    //@@author neilbaner
     @Override
     public boolean isTriggerAutoSave() {
         return isAutoSave;

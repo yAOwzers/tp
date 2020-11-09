@@ -4,22 +4,30 @@ import zeronote.exceptions.DuplicateFoundException;
 
 import java.util.ArrayList;
 
+// @@author neilbaner
+
+/**
+ * Class to represent a bookshelf that stores Notebooks.
+ */
 public class NotebookShelf {
     private final ArrayList<Notebook> notebooksArrayList;
+    private static final int notFound = -1;
 
     public NotebookShelf() {
         notebooksArrayList = new ArrayList<>();
     }
 
+    //@@author longngng
     public ArrayList<Notebook> getNotebooksArrayList() {
         return notebooksArrayList;
     }
 
+    //@@author neilbaner
     /**
      * Find the notebook on the shelf with the given title.
      *
-     * @param title the title of the notebook we want to find
-     * @return the index of the notebook we want to find
+     * @param title the title of the notebook the user wants to find.
+     * @return the index of the notebook the user wants to find.
      */
     public int findNotebook(String title) {
         int index = 0;
@@ -29,18 +37,19 @@ public class NotebookShelf {
             }
             index++;
         }
-        return -1;
+        return notFound;
     }
 
     /**
      * Get the notebook at a particular index in the ArrayList. Use findNotebook() to get an index from a given title.
      *
-     * @param index the index of the notebook to be found
+     * @param index the index of the notebook to be found.
      */
     public Notebook getNotebookAtIndex(int index) {
         return notebooksArrayList.get(index);
     }
 
+    //@@author chuckiex3
     /**
      * Add a notebook with a given title to the shelf.
      *
@@ -60,10 +69,18 @@ public class NotebookShelf {
         notebooksArrayList.add(n);
     }
 
-    public Notebook removeNotebook(int indexToRemove) {
-        return notebooksArrayList.remove(indexToRemove);
+    //@@author Lusi711
+    /**
+     * Removes a notebook with the specified index from the shelf.
+     *
+     * @param index the index of the notebook to be removed.
+     * @return the notebook that is removed.
+     */
+    public Notebook removeNotebook(int index) {
+        return notebooksArrayList.remove(index);
     }
 
+    //@@author neilbaner
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();

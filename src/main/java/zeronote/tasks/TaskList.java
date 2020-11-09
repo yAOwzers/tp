@@ -1,7 +1,13 @@
 package zeronote.tasks;
 
+import zeronote.exceptions.TaskIndexOutOfBoundsException;
+import zeronote.exceptions.ZeroNoteException;
+
 import java.util.ArrayList;
 
+/**
+ * Represents a list of tasks.
+ */
 public class TaskList {
     private final ArrayList<Task> taskArrayList;
 
@@ -9,33 +15,52 @@ public class TaskList {
         taskArrayList = new ArrayList<>();
     }
 
+    //@@author chuckiex3
     public void addTask(Task task) {
         taskArrayList.add(task);
     }
 
-    public Task removeTask(int indexToRemove) throws IndexOutOfBoundsException {
-        Task removedTask = taskArrayList.remove(indexToRemove);
-        return removedTask;
+    //@@author Lusi711
+    /**
+     * Deletes a task with the specified index from this TaskList.
+     *
+     * @param index the index of the task to be deleted.
+     * @return the task that is deleted.
+     * @throws IndexOutOfBoundsException when the index is out of the bounds of the TaskList.
+     */
+    public Task removeTask(int index) throws IndexOutOfBoundsException {
+        return taskArrayList.remove(index);
     }
 
+    //@@author chuckiex3
     public int getNumberOfTasks() {
         return taskArrayList.size();
     }
 
-    public Task getTask(int index) throws IndexOutOfBoundsException {
+    //@@author Lusi711
+    public Task getTask(int index) throws TaskIndexOutOfBoundsException {
+        if (index > taskArrayList.size()) {
+            throw new TaskIndexOutOfBoundsException(String.valueOf(index));
+        }
         return taskArrayList.get(index);
     }
 
-    public Task markAsDone(int i) {
+    //@@author yAOwzers
+    public Task markAsDone(int i) throws ZeroNoteException {
+        if (i > taskArrayList.size()) {
+            throw new TaskIndexOutOfBoundsException(String.valueOf(taskArrayList.size()));
+        }
         Task task = this.taskArrayList.get(i - 1);
         task.markAsDone();
         return task;
     }
 
+    //@@author longngng
     public ArrayList<Task> getTaskArrayList() {
         return taskArrayList;
     }
 
+    //@@author neilbaner
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();

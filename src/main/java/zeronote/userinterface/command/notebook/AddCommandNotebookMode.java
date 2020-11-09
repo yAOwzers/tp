@@ -1,7 +1,6 @@
 package zeronote.userinterface.command.notebook;
 
 import zeronote.exceptions.AddCommandNotebookException;
-import zeronote.exceptions.EmptyPageException;
 import zeronote.exceptions.ZeroNoteException;
 import zeronote.notebooks.Notebook;
 import zeronote.notebooks.NotebookShelf;
@@ -9,6 +8,11 @@ import zeronote.notebooks.Section;
 import zeronote.userinterface.AppState;
 import zeronote.userinterface.command.CliCommand;
 
+//@@author chuckiex3
+
+/**
+ * Command class to add a notebook/section/page.
+ */
 public class AddCommandNotebookMode extends CliCommand {
     public static final String COMMAND_WORD = "add";
     public static final String NOTEBOOK_DELIMITER = "/n";
@@ -38,32 +42,26 @@ public class AddCommandNotebookMode extends CliCommand {
         this.content = content;
     }
 
-    public void execute() {
-        try {
-            switch (appState.getAppMode()) {
-            case NOTEBOOK_SHELF:
-                currentBookshelf.addNotebook(title);
-                System.out.println("Added notebook with title: " + title);
-                break;
-            case NOTEBOOK_BOOK:
-                currentNotebook.addSection(title);
-                System.out.println("Added section with title : " + title);
-                break;
-            case NOTEBOOK_SECTION:
-                if (content == "") {
-                    throw new EmptyPageException();
-                }
-                currentSection.addPage(title, content);
-                System.out.println("Added page with title: " + title);
-                break;
-            default:
-                throw new AddCommandNotebookException(title);
-            }
-        } catch (ZeroNoteException e) {
-            e.printErrorMessage();
+    public void execute() throws ZeroNoteException {
+        switch (appState.getAppMode()) {
+        case NOTEBOOK_SHELF:
+            currentBookshelf.addNotebook(title);
+            System.out.println("Added notebook with title: " + title);
+            break;
+        case NOTEBOOK_BOOK:
+            currentNotebook.addSection(title);
+            System.out.println("Added section with title : " + title);
+            break;
+        case NOTEBOOK_SECTION:
+            currentSection.addPage(title, content);
+            System.out.println("Added page with title: " + title);
+            break;
+        default:
+            throw new AddCommandNotebookException(title);
         }
     }
 
+    //@@author yAOwzers
     @Override
     public boolean isTriggerAutoSave() {
         return isAutoSave;

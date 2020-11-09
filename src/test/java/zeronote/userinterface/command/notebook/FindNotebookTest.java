@@ -1,4 +1,4 @@
-package teetwelvedashthree.zeronote.userinterface.command.notebook;
+package zeronote.userinterface.command.notebook;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -15,7 +15,7 @@ import zeronote.userinterface.AppMode;
 import zeronote.userinterface.AppState;
 import zeronote.userinterface.command.notebook.FindCommandNotebookMode;
 
-class FindCommandNotebookModeTest {
+class FindNotebookTest {
     @Test
     void execute_keywordInput_noResults() {
         Section s = new Section("Section 1");
