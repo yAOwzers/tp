@@ -1101,7 +1101,7 @@ The first line of a section contains the title of the section.
 
 The second line of a section contains just a number. This number indicates the number of pages in the section.
 
-Then, all the pages of the section are represented as described in [6.2.1. Pages](#6.2.1.-Pages).
+Then, all the pages of the section are represented as described in [6.2.1. Pages](#621-pages).
 
 For example, a section might be represented like this:
 
@@ -1118,8 +1118,7 @@ The first line, "Java", is the title of the section.
 
 The second line indicates that the section has 2 pages.
 
-Then, you have 2 pages, titled "What is Java" and "Why Java" respectively. They are represented as described in [6.2.1
-. Pages](#6.2.1.-Pages).
+Then, you have 2 pages, titled "What is Java" and "Why Java" respectively. They are represented as described in [6.2.1. Pages](#621-pages).
 
 #### 6.2.3. Notebooks
 
@@ -1127,7 +1126,7 @@ The first line of a notebook contains the title of the notebook.
 
 The second line of a notebook contains just a number. This number indicates the number of sections in the notebook.
 
-Then, all the sections of the notebook are represented as described in [6.2.2. Sections](#6.2.2.-Sections).
+Then, all the sections of the notebook are represented as described in [6.2.2. Sections](#622-sections).
 
 For example, a saved notebook might look like this:
 
@@ -1161,7 +1160,7 @@ The first line, "CS2113T", is the title of the notebook.
 The second line indicates that the notebook has 4 sections.
 
 Then, you have 4 sections, titled "Java", "OOP", "UML" and "Assertions" respectively. They are represented as described
- in [6.2.2. Sections](#6.2.2.-Sections).
+ in [6.2.2. Sections](#622-sections).
 
 #### 6.2.4. The Notebook Shelf
 
@@ -1169,7 +1168,7 @@ The notebook shelf is what is stored in the save file. It represents all your no
 
 The first line contains just a number. This number indicates the number of notebooks in your Notebook Shelf.
 
-Then, all the notebooks on your Notebook Shelf are represented as described in [6.2.3. Notebooks](#6.2.3.-Notebooks).
+Then, all the notebooks on your Notebook Shelf are represented as described in [6.2.3. Notebooks](#623-notebooks).
 
 For example, a saved notebook shelf might look like this:
 
