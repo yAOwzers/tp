@@ -1,7 +1,7 @@
 # Developer Guide for Zer0Note
 
 ## Table Of Contents
-[1. Introduction](#1-introduction-neil) <br>
+[1. Introduction](#1-introduction) <br>
 &nbsp;&nbsp;[1.1. Welcome!](#11-welcome)<br>
 &nbsp;&nbsp;[1.2. How to use this document](#12-how-to-use-this-document)<br>
 [2. Setting up](#2-setting-up) <br>
@@ -10,9 +10,9 @@
 &nbsp;&nbsp;[2.3. Verifying the setup](#23-verifying-the-setup) <br>
 &nbsp;&nbsp;[2.4. Configure coding style](#24-configure-the-coding-style) <br>
 [3. Design](#3-design) <br>
-&nbsp;&nbsp;[3.1. Architecture](#31-architecture-neil) <br>
-&nbsp;&nbsp;[3.2. UI Component](#32-ui-component-neil) <br>
-&nbsp;&nbsp;[3.3. Commands Component](#33-commands-component-neil) <br>
+&nbsp;&nbsp;[3.1. Architecture](#31-architecture) <br>
+&nbsp;&nbsp;[3.2. UI Component](#32-ui-component) <br>
+&nbsp;&nbsp;[3.3. Commands Component](#33-commands-component) <br>
 &nbsp;&nbsp;[3.4. Tasks Component](#34-tasks-component) <br>
 &nbsp;&nbsp;[3.5. Notebooks Component](#35-notebooks-component)<br>
 &nbsp;&nbsp;[3.6. Storage Component](#36-storage-component)<br>
@@ -29,7 +29,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.2. Select Feature](#432-select-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.3. Tag Feature](#433-tag-feature) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.4. Search Feature](#434-search-feature) <br>
-&nbsp;&nbsp;[4.4. Storage](#44-storage-neil) <br>
+&nbsp;&nbsp;[4.4. Storage](#44-storage) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.1. Storage Format](#441-storage-format) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.1. TaskList](#4411-tasklist) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.2. Page](#4412-page) <br>
@@ -41,6 +41,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.2. Reading the application state](#4422-reading-the-application-state) <br>
 &nbsp;&nbsp;[4.5. Error handling](#45-error-handling) <br>
 &nbsp;&nbsp;[4.6. Personalised Messages](#46-personalised-messages) <br>
+&nbsp;&nbsp;[4.7. (Proposed) Save feature for the tagging function](#47-proposed-save-feature-for-the-tagging-function) <br>
 [5. Documentation](#5-documentation) <br>
 &nbsp;&nbsp;[5.1. Setting up and maintaining the project website](#51-setting-up-and-maintaining-the-project-website) <br>
 &nbsp;&nbsp;[5.2. Style guidance](#52-style-guidance) <br>
@@ -279,10 +280,10 @@ The `Page` object,
 - contains a title, and the content of the page as a String object.
 - has a `tag` field that user can be set and get.
 
-<!-- @@author yAOwzers>
+<!-- @@author yAOwzers-->
 ### 3.6. Storage Component
 
-![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_class.jpg)
+![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_Class.jpg)
 Figure [6]. Class diagram for the Storage component
 
 The `Storage` component,
@@ -816,13 +817,13 @@ The following example is a scenario that demonstrates how exceptions are handled
 
 2. The `hello` command is passed through a switch-case block within `InputParser#getCommandFromInput`.
 
-Here is a small snippet of the switch-case block:
-``` java
-case ModeSwitch.COMMAND_WORD:
+    Here is a small snippet of the switch-case block:
+    ``` java
+    case ModeSwitch.COMMAND_WORD:
     return new ModeSwitch(argument, appState);
-default:
+    default:
     throw new InvalidCommandException(userInput);
-```
+    ```
 
 3. As `hello` is not a command in `Zer0Note`, `InvalidCommandException` which extends `ZeroNoteException` will be thrown.
 
@@ -933,6 +934,7 @@ There are two ways to run tests.
 ### 6.2. Types of tests
 
 This project has one type of test:
+
 Unit tests targeting the lowest level methods/classes.
 e.g. `teetwelvedashthree.zeronote.userinterface.command.notebook.AddNotebookTest`
 
