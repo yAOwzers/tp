@@ -51,6 +51,7 @@
 
 <br>
 
+<!-- @@author neilbaner-->
 ## 1. Introduction
 
 Welcome, and thank you for choosing **Zer0Note**!
@@ -68,6 +69,7 @@ too, for quick reference while you're using **Zer0Note**. To learn how to access
 
 <br>
 
+<!-- @@author neilbaner-->
 ### 1.1 How to use this guide
 
 This user guide will give you a step-by-step tutorial on how to use each of the commands.
@@ -112,7 +114,8 @@ N:$ select /sChapter 1
 
 * `select /sChapter 1` is the user's input, and `now in notebook section: Chapter 1` is the output message. 
 
-* When the current address name is longer than 7 characters, a `...` symbol will be printed to represent the remaining characters.  
+* When the current address name is longer than 10 characters, a `...` symbol will be printed after the first 7, to
+ represent the remaining characters.  
 
 Example:
 
@@ -123,6 +126,7 @@ N/noteboo...:$
 * where `N/` indicates that the user is in Notebook Mode and `noteboo...` is the name of the Notebook, which has more than 7 characters.  
 
 <br>
+
 
 ## 2. Quick Start
 
@@ -165,6 +169,7 @@ and commands specific to [Timetable Mode](#34-timetable-mode) and [Notebook Mode
 
 <br>
 
+<!-- @@author neilbaner-->
 ### 3.1 Viewing the user guide: `help`
 
 Whenever you need help, you can view the full built-in user guide by typing in `help`.
@@ -957,6 +962,8 @@ To close the program, type `exit`.
 
 <br>
 
+<!-- @@author neilbaner-->
+
 ## 4. FAQ
 
 This section answers some frequently asked questions.
@@ -1045,6 +1052,8 @@ The following table is a cheatsheet of the commands available in Notebook Mode.
 
 <br>
 
+<!-- @@author neilbaner-->
+
 ## 6. For advanced users: Editing your save file
 
 **Zer0Note** saves your tasks as a plain text file, in a format designed to be easy to read, understand and modify if
@@ -1062,11 +1071,16 @@ save file by yourself, here's a detailed guide on the contents of the save file 
 
 The tasks save file is formatted as follows.
 
-First, one line containing only an integer number `n` indicating the number of tasks in the list.
+First, one line containing only a number indicating the number of tasks in the list.
 
-This is followed by `n` sets of 3 lines each. The first line contains the name of the task. The second line contains
-the deadline of the task, in the format `dd-MM-YYYY hhmm`. The third line contains a value `true` or `false`,
-indicating whether the task is done. `true` means it is done, `false` means it is not done.
+Then, we have each of your tasks, stored as 3 lines each. 
+
+The first line contains the title of the task. 
+
+The second line contains the due date and time of the task, formatted as `DD-MM-YYYY HHMM`. 
+
+The third line contains `true` or `false`, indicating if the task has been marked as done. (`true` means it has been
+ marked as done, `false` means it has not)
 
 Here is an example of the contents of a tasks save file:
 
@@ -1083,41 +1097,70 @@ Read Book
 false
 ```
 
+> :bulb: The above is a valid save file. It illustrates how the full `tasks.txt` save file should look. 
+
+The first line indicates that you have 3 tasks saved. 
+
+Then, 3 tasks, titled "Code for CS2113T Team Project", "Read about hydrogen fuel cells" and "Read Book" respectively
+, are stored as described above. For example, the first task, titled "Code for CS2113T Team Project" is due on the
+ 10th of November 2020, at 12 noon. It has not been marked as done. 
+
 <br>
 
 ### 6.2. The notebooks save file
 
-The notebooks save file is formatted as follows.
+Here is how the notebooks save file looks. 
 
-First, one line containing only an integer number `n` indicating the number of notebooks on the shelf.
+#### 6.2.1. Pages
 
-This is followed by `n` sets of lines, describing each of the `n` notebooks. The `i`th set describes the `i`th
-notebook.
+A page is saved as two consecutive lines of text. The first line is the title of the notebook, while the second line is the content. 
 
-The first line in the set contains the title of the `i`th notebook.
-
-The next line in the set contains only an integer number `s` indicating the number of sections in the `i`th notebook.
-
-This is followed by `s` sets of lines, describing each of the `s` sections in notebook `i`. The `j`th set describes
-the `j`th section in the `i`th notebook.
-
-The first line in the `j`th set contains the title of the `j`th section of the `i`th notebook.
-
-The next line in the set contains only an integer number `p` indicating the number of pages in the `j`th section of
- the `i`th notebook.
-
-This is followed by `p` sets of 2 lines each. The `k`th set describes the `k`th page, of the `j`th section, of the `i
-`th notebook.
-
-The first line of the `k`th set contains the title of the page.
-
-The second line of the `k`th set contains the content of the page. The newline characters in the content of the
-page are replaced by `~~~`.  
-
-Here is an example of a notebooks save file:
+For example, a page might be represented like this: 
 
 ```
+What is Java?
+Java is a programming language used by 3 billion devices.
+```
+
+The first line, that says "What is Java", is the title of the page, while the second line is the content of that page. 
+
+#### 6.2.2. Sections 
+
+The first line of a section contains the title of the section. 
+
+The second line of a section contains just a number. This number indicates the number of pages in the section.
+
+Then, all the pages of the section are represented as described in [6.2.1. Pages](#6.2.1.-Pages). 
+
+For example, a section might be represented like this: 
+
+```
+Java
 2
+What is Java?
+Java is a programming language used by 3 billion devices.
+Why Java?
+It's highly portable and relatively fast.
+```
+
+The first line, "Java", is the title of the section. 
+
+The second line indicates that the section has 2 pages. 
+
+Then, you have 2 pages, titled "What is Java" and "Why Java" respectively. They are represented as described in [6.2.1
+. Pages](#6.2.1.-Pages). 
+
+#### 6.2.3. Notebooks
+
+The first line of a notebook contains the title of the notebook. 
+
+The second line of a notebook contains just a number. This number indicates the number of sections in the notebook. 
+
+Then, all the sections of the notebook are represented as described in [6.2.2. Sections](#6.2.2.-Sections). 
+
+For example, a saved notebook might look like this: 
+
+```
 CS2113T
 4
 Java
@@ -1140,20 +1183,36 @@ Assertions
 1
 Why assertions?
 Honestly I don't know.
-CS2101
-2
-User Guides
-2
-What are UGs?
-UGs are documents for the user to read to understand how to use the product
-How to write UGs?
-Be user focused. That's all.
-Developer Guides
-3
-What are DGs?
-DGs are documents for the developer to understand how the program is written.
-How to write DGs?
-Make sure the level of technicality is appropriate.
-Diagrams
-Make sure diagrams use UML.
 ```
+
+The first line, "CS2113T", is the title of the notebook. 
+
+The second line indicates that the notebook has 4 sections. 
+
+Then, you have 4 sections, titled "Java", "OOP", "UML" and "Assertions" respectively. They are represented as described
+ in [6.2.2. Sections](#6.2.2.-Sections). 
+
+#### 6.2.4. The Notebook Shelf
+
+The notebook shelf is what is stored in the save file. It represents all your notebooks, sections, and pages at once. It is formatted as follows. 
+
+The first line contains just a number. This number indicates the number of notebooks in your Notebook Shelf. 
+
+Then, all the notebooks on your Notebook Shelf are represented as described in [6.2.3. Notebooks](#6.2.3.-Notebooks). 
+
+For example, a saved notebook shelf might look like this: 
+
+![](images/Notebookshelfexplanation.png)
+
+> :bulb: The above is a valid save file. It illustrates how the full `notebooks.txt` save file should look. 
+
+The first line indicates that you have 2 notebooks saved in the Notebook Shelf. 
+
+Then, you have 2 notebooks, titled "CS2113T" and "CS2101" respectively. They are represented as described in [6.2.3
+. Notebooks](#623-notebooks).
+
+Notebook "CS2113T" contains 4 sections, titled "Java", "OOP", "UML" and "Assertions" respectively. The sections are
+stored as described in [6.2.2. Sections](#622-sections). 
+
+Section "Java" contains 2 pages, titled "What is Java?" and "Why Java?" respectively. The pages are stored as
+ described in [6.2.1. Pages](#621-pages). 
