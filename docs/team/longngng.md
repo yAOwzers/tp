@@ -48,5 +48,7 @@ It helps users to keep track of deadlines and take notes quickly.
     - Fix bug from others' code before the release of the first JAR file [(#143)](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/143)
 
 - **Contributions beyond the project team**
- 
-    -  I made 8 bugs reports during the PE dry run, see [here](https://github.com/longngng/ped/issues). 
+    
+    -  Made 8 bugs reports during the PE dry run, see [here](https://github.com/longngng/ped/issues).
+    -  Review and catch bug for other team's DG, see [here](https://github.com/nus-cs2113-AY2021S1/tp/pull/29) 
+     

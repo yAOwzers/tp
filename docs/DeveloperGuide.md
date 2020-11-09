@@ -173,6 +173,7 @@ understandable. However, you may wish to consult [[CS2113/T] Modeling](https://n
 The following diagram provides a rough overview of how **Zer0Note** is built.
 
 ![Architecture Diagram](diagrams/class/jpeg/architecture_neil.jpg)
+Figure [1]. Architecture of the application
 
 The `CliUserInteface` (see [here](#32-ui-component-neil)) is the "highest" layer of the application, in
 the sense that it interacts directly with the user, and it passes along the input to other classes. The
@@ -187,15 +188,11 @@ method, and its `run()` method is called to start the UI for the application.
 
 The class diagram below describes the `CliUserInterface` class, and the classes it depends on.
 
-// TODO: add class diagram for CliUserInterface
-
 The `CliUserInterface` class contains an instance of `AppState`. This is a class that, as the name implies, contains
 the current state of the running instance of the application. For example, it contains the user data, the current mode,
 the navigation state (i.e. currently chosen notebook/section/page).
 
 The following sequence diagram describes the operation of the `run()` method in `CliUserInterface`.
-
-// TODO: add sequence diagram.
 
 First, the method `loadState()` is called, which loads the save file, and populates the `AppState` object with the
 previously saved user data.
@@ -209,7 +206,7 @@ command with `CliCommand.execute()` (learn more [here](#33-commands-component-ne
 
 If any of these steps encounters an error, an exception of the type `ZeroNoteException` is thrown by the method, and
 caught in the `run()` method. Upon catching an exception, the `printErrorMessage()` method is called to display the
-appropriate error message to the user. See [here]() for more information on how exceptions work in **Zer0Note**.
+appropriate error message to the usaer. See [here]() for more information on how exceptions work in **Zer0Note**.
 
 ### 3.3. Commands Component (Neil)
 
@@ -228,18 +225,17 @@ The following 2 UML diagrams show the different types of `CliCommand` components
 This diagram describes the `CliCommand`s related to the Timetable mode.
 
 ![UML diagram for Timetable Commands](diagrams/class/jpeg/timetable_commands.jpg)
+Figure [2]. Class diagram for Timetable commands
 
 And this diagram describes the `CliCommand`s related to the Notebook mode.
 
 ![UML diagrams for Notebook Commands](diagrams/class/jpeg/notebook_commands.jpg)
-
-// TODO: add the new commands for "Find", "Tag", "SortByDate".
+Figure [3]. Class diagram for Notebook commands
 
 ### 3.4. Tasks Component
 
 ![UML Diagram from Task Component](diagrams/class/jpeg/taskComponent.jpg)
-
-Figure []. Structure of Tasks Component
+Figure [4]. Class diagram for the Task component
 
 The `Tasks` component,
 
@@ -248,13 +244,13 @@ The `Tasks` component,
 
 The `TaskList` class,
 
-- has methods to add a new `Task` object and remove existing one at an index.
+- has methods `TaskList#addTask()` to add a new `Task` object and `TaskList#removeTask()` to remove an existing one at 
+an index.
 
 ### 3.5. Notebooks Component
 
-![UML diagram for Notebooks Component](diagrams/class/jpeg/notebooks_simplified.jpg)
-
-Figure []. Structure of Notebooks Component
+![UML diagram for Notebooks Component](diagrams/class/jpeg/notebooks_v2.jpg)
+Figure [5]. Class diagram for the Notebooks component
 
 The `Notebooks` class,
 
@@ -263,19 +259,20 @@ The `Notebooks` class,
 
 The `NotebookShelf` class,
 
-- has methods to add new `Notebook` object and remove existing one.
-- has methods to search through to find a `Notebook` object with matching titles.
+- has methods `NotebookShelf#addNotebook()` to add new `Notebook` object and `NotebookShelf#removeNotebook()` remove an 
+existing one.
+- has methods `NotebookShelf#findNotebook()` to search through to find a `Notebook` object with matching titles.
 
 The `Notebook` class,
 
 - contains a title and a list of `Section` objects.
-- has methods to add new `Section` object or remove existing one.
+- has methods `Notebook#addSection()` to add a new `Section` and `Notebook#removeSection()` to remove an existing one.
 - has a `tag` field that user can be set and get.
 
 The `Section` object,
 
 - contains a title and list of `Page` objects.
-- has methods to add new `Page` object or remove existing one.
+- has methods `Section#addPage()` to add a new `Page` object and `Section#removePage()` to remove an existing one.
 - has a `tag` field that user can be set and get.
 
 The `Page` object,
@@ -286,6 +283,7 @@ The `Page` object,
 ### 3.6. Storage Component
 
 ![UML diagram for Storage](diagrams/class/jpeg/Storage_UML_class.jpg)
+Figure [6]. Class diagram for the Storage component
 
 The `Storage` component,
 
@@ -312,11 +310,14 @@ decisions.
 #### 4.1.1. Implementation
 
 The mode switch mechanism is facilitated by `AppState`. It contains an `AppMode` object and can be accessed from
-`Mode Switch` object.
+`Mode Switch` object. The `AppMode` is a enum which have five possible values: `TIMETABLE`, `NOTEBOOK_SHELF`, `NOTEBOOK_BOOK`,
+`NOTEBOOK_SECTION`, `NOTEBOOK_PAGE`. Users can only use the `mode` command to switch to either TIMETABLE or NOTEBOOK_SHELF 
+modes. The rest of the modes are used by developers when implementing the `select` command.
 
 The following sequence diagram shows how the mode switch operation works:
 
 ![Sequence Diagram for Mode Switch Command](diagrams/class/jpeg/SequenceDiagram_ModeSwitch.jpg)
+Figure [7]. Sequence diagram for the Mode Switch Command
 
 Given below is an example usage scenario and how the find mode switch function behaves.
 
@@ -331,10 +332,6 @@ or `NOTEBOOK_SHELF` or throw an `InvalidCommandException`.
 
 Step 4. To signal that the user has successfully changed the mode, a message is printed with the current mode of the
 program.  
-
-#### 4.1.2. Design Considerations
-
-/* work in progress */
 
 ### 4.2. Timetable Mode
 
@@ -365,12 +362,14 @@ Given below is an example usage scenario and how the add task function behaves.
 
 The UML sequence diagram below shows how the add task command works.
 ![Sequence Diagram for Add Task Command](diagrams/class/jpeg/add_task.jpg)
+Figure [8]. Sequence diagram for the Add Task Command
 
 <hr>
 TaskList also allows the deletion of tasks by the user.
 
 The figure below shows how the delete task command works:
 ![Sequence Diagram for Delete Task Command](diagrams/class/jpeg/delete_task.jpg)
+Figure [9]. Sequence diagram for the Delete Task Command
 
 Here are the general steps that the command goes through when the user inputs "delete 1":
 1. The `CliUserInterface` receives the "delete 1" input by the user and passes it to the `InputParser` class.
@@ -401,7 +400,8 @@ The `Task` class contains a member `isDone` of Boolean type.
 
 The following sequence diagram shows how the mark as done operation works:  
 
-![Sequence diagram for Storage](diagrams/class/jpeg/DoneCommand_Sequence_diagram.jpg)
+![Sequence diagram for Mark as done](diagrams/class/jpeg/DoneCommand_Sequence_diagram.jpg)
+Figure [10]. Sequence diagram for Mark as Done Command
 
 The following is an example of the processes that occur when the user uses the mark as done function:  
 
@@ -415,9 +415,6 @@ The following is an example of the processes that occur when the user uses the m
 
 5. After `taskDone` is initialised, a `CliMessages` object of name `messages` calls a method `printMarkDone(taskDone)` with the variable `taskDone` as the argument, which in turn prints a success message with the respective task to the user.   
 
-**Design Considerations**
-//WIP
-
 #### 4.2.3. Tag Feature
 The user can tag `Task`s in the `TaskList`. This section describes the implementation and design considerations for this
 feature.
@@ -428,6 +425,7 @@ The `Task` class contains a member `tag` of String type.
 The figure below shows how the tag operation works:
 
 ![Sequence Diagram for Tag Timetable command](diagrams/class/jpeg/tag_task.jpg)
+Figure [11]. Sequence diagram for Tag Timetable Command
 
 There are the general steps during the tag operation. When the user enters `tag 1 /tCS2113T` into the command window
 while using the application:
@@ -461,6 +459,7 @@ This section describes some of the considerations involved when designing the ta
 The following sequence diagram shows how the list operation works:
 
 ![Sequence Diagram for List Urgent](diagrams/class/jpeg/SequenceDiagram_ListUrgent.jpg)
+Figure [12]. Sequence diagram for List Command in Timetable Mode
 
 Given below is an example usage scenario and how the list function behaves.
 
@@ -485,6 +484,7 @@ The class `FindCommandTimetableMode` executes the search feature. The following 
 how the complete command works:
 
 ![Sequence Diagram for Find command](diagrams/class/jpeg/find_task.jpg)
+Figure [13]. Sequence diagram for Find Command in Timetable Mode
 
 For example, when the user enters `find /tCS2113T` into the command window while using the application:
 1. The `CliUserInterface` receives the "find /tCS2113T" input by the user and passes it to the `InputParser` class.
@@ -540,12 +540,14 @@ Given below is an example usage scenario and how the add notebook function behav
 
 The UML sequence diagram below shows how the add notebook command works.
 ![Sequence Diagram for Add Notebook Command](diagrams/class/jpeg/add_notebook.jpg)
+Figure [14]. Sequence diagram for Add Command in Notebook Mode
 
 <hr>
 Notebook Mode also allows the user to remove a notebook/section/page.
 
 The figure below shows how the "delete notebook" command works:
 ![Sequence Diagram for Delete Notebook Command](diagrams/class/jpeg/delete_notebook.jpg)
+Figure [15]. Sequence diagram for Delete Command in Notebook Mode
 
 The sequence diagram above depicts an example where the user wants to delete a page:
 1. The `CliUserInterface` receives the "delete /nCS2113T /sTP /p11" input by the user and passes it to the `InputParser`
@@ -582,7 +584,8 @@ Given below is an example usage scenario and how the select notebook function be
 7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
 
 The UML sequence diagram below shows how the select notebook command works.
-![Sequence Diagram for Add Task Command](diagrams/class/jpeg/select_notebook.jpg)
+![Sequence Diagram for Select Command](diagrams/class/jpeg/select_notebook.jpg)
+Figure [16]. Sequence diagram for Select Command in Notebook Mode
 
 **Design Considerations**
 
@@ -605,6 +608,7 @@ The `Notebook`, `Section` and `Page` classes each contain a member `tag` of type
 The figure below shows how the tag operation works:
 
 ![Sequence Diagram for Tag Notebook command](diagrams/class/jpeg/tag_notebook.jpg)
+Figure [17]. Sequence diagram for Tag Command in Notebook Mode
 
 When the user enters `tag /tCS2113T` into the command window while using the application:
 1. The `CliUserInterface` receives the "tag /tCS2113T" input by the user and passes it to the `InputParser`
@@ -639,6 +643,7 @@ This feature works similarly to the [search feature](#425-search-feature) in the
 The following sequence diagram shows how the search feature works in the notebook mode:
 
 ![Sequence Diagram for Find Notebook Command](diagrams/class/jpeg/find_notebook.jpg)
+Figure [18]. Sequence diagram for Find Command in Notebook Mode
 
 As the implementation of the search feature in the Notebook mode is similar to that in the Timetable mode, except:
 - The `CliMessages` class is constructed in `FindCommandNotebookMode#execute()` to display all the notebooks, sections
@@ -662,6 +667,7 @@ and pages found.
 The following sequence diagram shows how the list operation in the notebook mode works:
 
 ![Sequence Diagram for List](diagrams/class/jpeg/SequenceDiagram_ListSection.jpg)
+Figure [19]. Sequence diagram for List Command in Notebook Mode
 
 Given below is an example usage scenario and how the list function behaves.
 
@@ -673,9 +679,6 @@ Step 2. `execute()` is called, which then calls the print functions based on the
 
 Step 3. The program prints the contents corresponding to the input or throw an exception if the command is
 invalid.
-
-**Design Considerations**
-//WIP?
 
 ### 4.4. Storage (Neil)
 
@@ -750,6 +753,7 @@ combines their outputs with a `StringBuilder`.
 The following sequence diagram describes the operation of the `saveToFile()` operation.
 
 ![Sequence Diagram for saveToFile command](diagrams/class/jpeg/storage_neil.jpg)
+Figure [20]. Sequence diagram for save application method
 
 Note: The diagram above does not show how the `saveToFile()` method saves `Task` objects from the `TaskList`, in
 the interest of brevity. The operation of the method is very similar for the `TaskList`, except the hierarchy is much
@@ -766,11 +770,6 @@ described above in the sequence diagram, it iterates through the lists of `Task`
 #### 4.4.2.2. Reading the application state
 
 The following sequence diagram describes the operation of the `readFromFile()` operation.
-
-// TODO: Add a sequence diagram to this section.
-
-Note: As above, the diagram omits the reading of the `TaskList` from the text file in the interest of brevity. Again,
-this operation is similar to that for `NotebookShelf` but much simpler.
 
 The `Storage.readFromFile()` method creates an instance of `AppState` based on the contents of the saved text files, and
 returns said instance of `AppState` if reading the save files was successful, and a blank instance otherwise.
