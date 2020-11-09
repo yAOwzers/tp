@@ -128,7 +128,7 @@ N/noteboo...:$
 
 <hr>
 
-
+<!-- @@author chuckiex3-->
 ## 2. Quick Start
 
 Here is a list of instructions on how you can download Zer0Note!
@@ -177,6 +177,7 @@ To view the user guide for the timetable mode, type in `help timetable`.
 
 To view the user guide for the notebook mode, type in `help notebook`.
 
+<!-- @@author longngng-->
 ### 3.2. Switching between the two modes: `mode`
 
 This command allows you to switch from notebook mode (at the bookshelf level) to the timetable mode, or vice versa.
@@ -208,6 +209,7 @@ You are now in timetable mode
 
 >:warning: Entering an invalid mode, such as /d, will give you an error
 
+<!-- @@author yAOwzers-->
 ### 3.3. Personalised Messages  
 
 A personalised message will be printed out to the user whenever a particular command has been entered by the user.
@@ -240,7 +242,7 @@ Added: Read Book
 
 > :exclamation: {personalised message} is a placeholder for the various personalised message that a user will receive.
 
-
+<!-- @@author chuckiex3-->
 ### 3.4. Timetable Mode
 
 Keeping up with deadlines may seem like a daunting task, especially when you're already busy with school.
@@ -252,8 +254,7 @@ You can then mark them as done when you're finished with them, or delete them if
 
 The following sections explain the various features you can use while you are in the Timetable Mode.
 
-
-
+<!-- @@author chuckiex3-->
 #### 3.4.1. Adding a task: `add`
 
 This command lets you `add` a `task` with a deadline to the task list.
@@ -285,8 +286,7 @@ With that, you've successfully added a task titled `Read book`, with the deadlin
 >:warning: Please remember to type the deadline in the correct format, or else an error message will be shown.
 > Both task titles and deadlines should not be blank!
 
-
-
+<!-- @@author yAOwzers-->
 #### 3.4.2. Marking a task as done: `done`
 
 Marks an existing `task` as done in the current task list.
@@ -296,8 +296,6 @@ Format: `done [INDEX]`
 This is the parameter required in the command:
 
 * `INDEX`: Index of the existing task in the current task list.
-
-
 
 Example of usage:
 
@@ -309,8 +307,7 @@ Yay! I've marked this task as done:
 -------------------------------------------------------------
 ```
 
-
-
+<!-- @@author Lusi711-->
 #### 3.4.3. Tagging tasks: `tag`
 
 You have added a few tasks, and completed some of them. Congratulations! After reviewing, you realise that some of the
@@ -329,9 +326,8 @@ These are the parameters required in the command:
 * `INDEX`: index number of the intended task in the full task list
 * `TAG`: text description of the tag
 
-
-
 Example of usage:
+
 For example, if you want to tag the first task in the list as "Todo", after `T:$` in the command window, type "tag 1 /tTodo".
 Below shows the expected output:
 
@@ -343,12 +339,11 @@ Got it! I've tagged this as:
 -------------------------------------------------------------
 ```
 
-
+<!-- @@author longngng-->
 #### 3.4.4. Listing tasks: `list`
 
 Use the `list` command to list the tasks you have added to **Zer0Note**. There are 4 ways you can use this
 command, described below:
-
 
 
 #### 3.4.4.1. Listing all tasks
@@ -372,15 +367,11 @@ T:$ list
 -------------------------------------------------------------
 ```
 
-
-
 #### 3.4.4.2. Listing done tasks
 
 When you want to keep track of your progress, you can list out all the tasks that are marked as done.
 
 Format: `list /d`
-
-
 
 Example of usage:
 
@@ -392,15 +383,11 @@ T:$ list /d
 -------------------------------------------------------------
 ```
 
-
-
 #### 3.4.4.3. Listing undone tasks
 
 If you want to have a look at what you need to do, you can list out all the tasks that are not marked as done.
 
 Format: `list /u`
-
-
 
 Example of usage:
 
@@ -413,8 +400,6 @@ T:$ list /u
 -------------------------------------------------------------
 ```
 
-
-
 #### 3.4.4.4. Listing urgent tasks
 
 If you're in a time crunch, you can list out top urgent tasks that have not been done, sorted by deadlines. If there
@@ -423,8 +408,6 @@ are many undone tasks, only the top three urgent ones will be displayed.
 > :bulb: Use this command to prioritize what you need to get done first 
 
 Format: `list /urgent`
-
-
 
 Example of usage:
 
@@ -437,8 +420,7 @@ T:$ list /urgent
 -------------------------------------------------------------
 ```
 
-
-
+<!-- @@author Lusi711-->
 #### 3.4.5. Finding tasks `find`
 
 Your tasklist has grown, and it becomes a pain to go through every single task in the list. Filtering the list by
@@ -510,8 +492,7 @@ Noted. I've removed this task:
 -------------------------------------------------------------
 ```
 
-
-
+<!-- @@author chuckiex3-->
 ### 3.5. Notebook Mode
 
 In a semester, an average student takes about 4-5 modules. You can use **Zer0Note** to keep all your notes and
@@ -561,8 +542,6 @@ Added notebook with title: CS2113T
 Now that you have added a new notebook for `CS2113T`, you can add a `section`!
 
 
-
-
 #### 3.5.1.2. Adding a section
 
 Use the `add /s` command to add a `section`  into the [selected](#352-selecting-a-notebooksectionpage-select) `notebook`.
@@ -576,8 +555,6 @@ Format: `add /s[SECTION]`
 This is the parameter required in the command:
 
 * `SECTION`: the name of the section in the selected `notebook`.
-
-
 
 Example of usage:
 
@@ -597,7 +574,6 @@ Added section with title: W1: Java
 Great! You can now add a `page` (or as many pages as you like) into your new section titled `W1: Java`.
 
 
-
 #### 3.5.1.3. Adding a page
 
 Use the `add /p` command to add a `page`  into the [selected](#352-selecting-a-notebooksectionpage-select) `section`.
@@ -612,8 +588,6 @@ These are the parameters required in the command:
 
 * `PAGE`: the name of the page in the selected `section`.
 * `PAGE CONTENT`: the contents that you would like to store in the `page`.
-
-
 
 Example of usage:
 
@@ -631,8 +605,6 @@ You've successfully added a new page into the section `W1: Java` of the notebook
 
 >:warning: Ensure that your page title is preceded by "/p" and that there is a ";" to separate the contents from the page title.
 > Otherwise, an error message will be shown. 
-
-
 
 
 #### 3.5.2. Selecting a notebook/section/page: `select`
@@ -672,7 +644,6 @@ In a selected *SECTION*:
 > to ensure that you're typing in the correct parameters.
 
 
-
 Example of usage:
 
 If you have a notebook entitled `CS2101`, you can select it by typing `select /nCS2101`.
@@ -684,8 +655,7 @@ now in notebook book: CS2101
 -------------------------------------------------------------
 ```
 
-
-
+<!-- @@author Lusi711-->
 #### 3.5.3. Tagging a notebook/section/page: `tag`
 
 You have now several notebooks in the bookshelf. Some come from the same module, while others are just a running list of
@@ -708,7 +678,6 @@ These are the parameters required in the command:
 * `TAG`: text description of the tag
 
 
-
 Example of usage:
 For example, you would to add a tag "Module" to a notebook titled "CS2101":
 
@@ -722,6 +691,7 @@ CS2101 (tag: Module)
 -------------------------------------------------------------
 ```
 
+<!-- @@author longngng-->
 #### 3.5.4. Listing contents: `list`
 
 Use the `list` command to view the content of the bookshelf, a selected book or a selected section.
@@ -736,8 +706,6 @@ In *NOTEBOOK MODE*,
 - `list` displays the titles of notebooks in the shelf.
 - `list /s` displays the titles of notebooks together with titles of sections.
 - `list /a` displays all notebooks, sections and pages.
-
-
 
 Examples of usage:
 
@@ -786,12 +754,9 @@ N:$ list /a
 > notebooks
 
 
-
 In a selected *NOTEBOOK*:
 - `list` displays the titles of all the sections in the selected notebook.
 - `list /a` displays all sections and pages in the selected notebook.
-
-
 
 Examples of usage:
 
@@ -837,7 +802,7 @@ N/CS2101/Chapter 1:$ list
 >:warning: Entering a non-existing option, such as /t, will give you an error
 
 
-
+<!-- @@author Lusi711-->
 #### 3.5.5. Finding contents: `find`
 
 Just like how you can find a task in the Timetable mode, you can look for contents in this mode. Even sections and pages
@@ -960,8 +925,7 @@ What is OOP?
 -------------------------------------------------------------
 ```
 
-
-
+<!-- @@author longngng-->
 ### 3.6. Exiting the program: `exit`
 
 To close the program, type `exit`.
@@ -1006,6 +970,7 @@ especially if you want to contribute to development.
 
 <hr>
 
+<!-- @@author-->
 ## 5. Command Summary
 
 This section lists all the commands available in **Zer0Note**! There are general commands that can be used anywhere, as well as commands that are specific to the mode you are in!
