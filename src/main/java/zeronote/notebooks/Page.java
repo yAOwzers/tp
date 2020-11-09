@@ -2,18 +2,22 @@ package zeronote.notebooks;
 
 import zeronote.exceptions.InvalidTagException;
 
+// @@author neilbaner
+
+/**
+ * Class to represent a page.
+ */
 public class Page {
     private String title;
     private String content;
     private String tag = "";
 
-    // @@author neilbaner
     public Page(String title, String content) {
         this.title = title;
         this.content = content;
     }
 
-    // @@author neilbaner
+    // @@author longngng
 
     /**
      * Gets the title of the page.
@@ -24,8 +28,6 @@ public class Page {
         return title;
     }
 
-    // @@author neilbaner
-
     /**
      * Sets the title of the page.
      *
@@ -34,8 +36,6 @@ public class Page {
     public void setTitle(String title) {
         this.title = title;
     }
-    
-    // @@author neilbaner
 
     /**
      * Gets the content of the page.
@@ -45,8 +45,6 @@ public class Page {
     public String getContent() {
         return content;
     }
-
-    // @@author neilbaner
 
     /**
      * Sets the content of the page.
@@ -83,6 +81,8 @@ public class Page {
     public String getTag() {
         return tag;
     }
+
+    //@@author chuckiex3
 
     /**
      * Prints content stored in the page.

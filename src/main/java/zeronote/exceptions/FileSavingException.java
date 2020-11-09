@@ -1,7 +1,6 @@
 package zeronote.exceptions;
 
 // @@author neilbaner
-// TODO: Add JavaDoc for this exception
 
 public class FileSavingException extends ZeroNoteException {
     public FileSavingException(String enteredCommand) {

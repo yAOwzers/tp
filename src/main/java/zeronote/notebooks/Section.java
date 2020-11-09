@@ -1,12 +1,12 @@
-// @@author neilbaner
-
 package zeronote.notebooks;
+
+import java.util.ArrayList;
 
 import zeronote.exceptions.DuplicateFoundException;
 import zeronote.exceptions.InvalidPageException;
 import zeronote.exceptions.InvalidTagException;
 
-import java.util.ArrayList;
+// @@author neilbaner
 
 public class Section {
     private String title;
@@ -14,23 +14,22 @@ public class Section {
     private final ArrayList<Page> pageArrayList;
     private static final int notFound = -1;
 
-    // @@author neilbaner
     public Section(String title) {
         this.title = title;
         pageArrayList = new ArrayList<>();
     }
 
-    // @@author neilbaner
+    // @@author longngng
     public String getTitle() {
         return title;
     }
 
-    // @@author neilbaner
     public void setTitle(String title) {
         this.title = title;
     }
 
     // @@author chuckiex3
+
     /**
      * Add a new page with a given title to this section.
      *
@@ -46,9 +45,12 @@ public class Section {
         pageArrayList.add(new Page(title, content));
     }
 
+    //@@author neilbaner
     public void addPage(Page p) {
         pageArrayList.add(p);
     }
+
+    //@@author chuckiex3
 
     /**
      * Find a page with a given title in this section.
@@ -67,13 +69,14 @@ public class Section {
         return notFound;
     }
 
-    // @@author Lusi711
+    //@@author Lusi711
+
     /**
      * Deletes a page with a specified index from this section.
      *
-     * @param index index of the page to deleted.
-     * @return the page that is deleted
-     * @throws InvalidPageException when the specified page does not exist
+     * @param index the index of the page to deleted.
+     * @return the page that is deleted.
+     * @throws InvalidPageException when the specified page does not exist.
      */
     public Page removePage(int index) throws InvalidPageException {
         try {
@@ -93,7 +96,14 @@ public class Section {
         return pageArrayList;
     }
 
-    // @@author Lusi711
+    //@@author Lusi711
+
+    /**
+     * Sets the tag for this page.
+     *
+     * @param tag the tag for the page.
+     * @throws InvalidTagException when the user enters an empty tag.
+     */
     public void setTag(String tag) throws InvalidTagException {
         if (!tag.equals("")) {
             this.tag = tag;
@@ -102,6 +112,11 @@ public class Section {
         }
     }
 
+    /**
+     * Gets the tag for this page.
+     *
+     * @return the tag of this page.
+     */
     public String getTag() {
         return tag;
     }

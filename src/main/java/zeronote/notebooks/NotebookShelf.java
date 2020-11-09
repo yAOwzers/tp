@@ -1,11 +1,14 @@
-// @@author neilbaner
-
 package zeronote.notebooks;
 
 import zeronote.exceptions.DuplicateFoundException;
 
 import java.util.ArrayList;
 
+// @@author neilbaner
+
+/**
+ * Class to represent a bookshelf that stores Notebooks.
+ */
 public class NotebookShelf {
     private final ArrayList<Notebook> notebooksArrayList;
     private static final int notFound = -1;
@@ -14,11 +17,12 @@ public class NotebookShelf {
         notebooksArrayList = new ArrayList<>();
     }
 
+    //@@author longngng
     public ArrayList<Notebook> getNotebooksArrayList() {
         return notebooksArrayList;
     }
 
-    //@@author chuckiex3
+    //@@author neilbaner
     /**
      * Find the notebook on the shelf with the given title.
      *
@@ -39,12 +43,13 @@ public class NotebookShelf {
     /**
      * Get the notebook at a particular index in the ArrayList. Use findNotebook() to get an index from a given title.
      *
-     * @param index the index of the notebook to be found
+     * @param index the index of the notebook to be found.
      */
     public Notebook getNotebookAtIndex(int index) {
         return notebooksArrayList.get(index);
     }
 
+    //@@author chuckiex3
     /**
      * Add a notebook with a given title to the shelf.
      *
@@ -65,12 +70,11 @@ public class NotebookShelf {
     }
 
     //@@author Lusi711
-
     /**
      * Removes a notebook with the specified index from the shelf.
      *
-     * @param index the index of the notebook to be removed
-     * @return the notebook that is removed
+     * @param index the index of the notebook to be removed.
+     * @return the notebook that is removed.
      */
     public Notebook removeNotebook(int index) {
         return notebooksArrayList.remove(index);
