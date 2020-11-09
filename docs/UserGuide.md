@@ -176,6 +176,7 @@ To view the user guide for the timetable mode, type in `help timetable`.
 
 To view the user guide for the notebook mode, type in `help notebook`.
 
+<!-- @@author longngng -->
 ### 3.2. Switching between the two modes: `mode`
 
 This command allows you to switch from notebook mode (at the bookshelf level) to the timetable mode, or vice versa.
@@ -341,7 +342,7 @@ Got it! I've tagged this as:
 -------------------------------------------------------------
 ```
 
-
+<!-- @@author longngng -->
 #### 3.4.4. Listing tasks: `list`
 
 Use the `list` command to list the tasks you have added to **Zer0Note**. There are 4 ways you can use this
@@ -719,6 +720,7 @@ CS2101 (tag: Module)
 -------------------------------------------------------------
 ```
 
+<!-- @@author longngng -->
 #### 3.5.4. Listing contents: `list`
 
 Use the `list` command to view the content of the bookshelf, a selected book or a selected section.
@@ -957,8 +959,7 @@ What is OOP?
 -------------------------------------------------------------
 ```
 
-
-
+<!-- @@author longngng -->
 ### 3.6. Exiting the program: `exit`
 
 To close the program, type `exit`.
