@@ -157,14 +157,29 @@ public class FindCommandNotebookMode extends CliCommand {
         return false;
     }
 
+    /**
+     * Gets all notebooks that were found.
+     *
+     * @return the titles of the found notebooks.
+     */
     public ArrayList<String> getNotebookMessages() {
         return notebookMessages;
     }
 
+    /**
+     * Gets all sections that were found.
+     *
+     * @return the titles of the found sections.
+     */
     public ArrayList<String> getSectionMessages() {
         return sectionMessages;
     }
 
+    /**
+     * Gets all pages that were found.
+     *
+     * @return the pages of the found sections.
+     */
     public ArrayList<String> getPageMessages() {
         return pageMessages;
     }

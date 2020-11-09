@@ -1,6 +1,6 @@
 package zeronote.exceptions;
 
-//@@Lusi711
+//@@author Lusi711
 
 /**
  * Signals that the user entered an empty tag.

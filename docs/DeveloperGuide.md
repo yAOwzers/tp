@@ -176,6 +176,7 @@ understandable. However, you may wish to consult [[CS2113/T] Modeling](https://n
 The following diagram provides a rough overview of how **Zer0Note** is built.
 
 ![Architecture Diagram](diagrams/class/jpeg/architecture_neil.jpg)
+
 Figure [1]. Architecture of the application
 
 The `CliUserInteface` (see [here](#32-ui-component-neil)) is the "highest" layer of the application, in
@@ -231,9 +232,11 @@ And this diagram describes the `CliCommand`s related to the Notebook mode.
 ![UML diagrams for Notebook Commands](diagrams/class/jpeg/notebook_commands.jpg)
 Figure [3]. Class diagram for Notebook commands
 
+<!-- @@author longngng -->
 ### 3.4. Tasks Component
 
 ![UML Diagram from Task Component](diagrams/class/jpeg/taskComponent.jpg)
+
 Figure [4]. Class diagram for the Task component
 
 The `Tasks` component,
@@ -306,6 +309,7 @@ The following section describes the implementation of certain key features in th
 provides some background into our (the original developers of Zer0Note) thinking and the rationale behind the
 decisions.
 
+<!-- @@author longngng -->
 ### 4.1. Mode Switch Feature
 
 #### 4.1.1. Implementation
@@ -455,6 +459,7 @@ This section describes some of the considerations involved when designing the ta
     be achieved).
     - Cons: It is hard to retrieve the tag for a specific `Task` due to the structure of the key-value pair.
 
+<!-- @@author longngng -->
 #### 4.2.4. List Feature
 
 **Implementation**
@@ -524,6 +529,7 @@ can be done without affecting other instances at all, while updating the `Notebo
 This section explains the implementation and design considerations for managing `Notebook`s.
 
 **Implementation**
+
 There are two main functions in notebook management: add and remove.
 <br>
 
@@ -663,6 +669,7 @@ and pages found.
     - Pros: Has better time complexity of O(n) as it only needs to iterate through each list.
     - Cons: Unable to output the notebook and section that a page belongs to to the user
 
+<!-- @@author longngng -->
 #### 4.3.5. List Feature
 
 **Implementation**
@@ -893,6 +900,7 @@ Here are the steps to convert the project documentation files to PDF format.
 For best results, use the settings indicated in the screenshot below.
 
 <img src= "https://se-education.org/guides/tutorials/images/chrome_save_as_pdf.png">
+Figure [21]. Screenshot of `Save as PDF` settings
 
 <br>
 <hr>

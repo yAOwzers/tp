@@ -1,17 +1,13 @@
-// @@author neilbaner
-
 package zeronote.userinterface.command;
 
 import zeronote.userinterface.CliMessages;
 
+// @@author neilbaner
+
 /**
  * This class is to be instantiated when the user enters the keyword "help". The arguments for the command are then
  * passed into the Help object, and executing it will display help appropriately.
- *
- * @author neilbaner
- * @version 0.1
  */
-
 public class Help extends CliCommand {
     public static final String COMMAND_WORD = "help";
     // the arguments added by the user

@@ -1,5 +1,3 @@
-// @@author neilbaner
-
 package zeronote.tasks;
 
 import java.text.DateFormat;
@@ -11,6 +9,9 @@ import java.util.Date;
 
 import zeronote.exceptions.InvalidTagException;
 
+/**
+ * Represents a task.
+ */
 public class Task {
     private final String title;
     private final String by;
@@ -26,9 +27,12 @@ public class Task {
         this.isDone = false;
     }
 
+    //@@author longngng
     public Date getDueDateTime() {
         return dueDateTime;
     }
+
+    //@@author chuckiex3
 
     /**
      * Returns the date specified in the deadline.
@@ -50,15 +54,16 @@ public class Task {
         return LocalTime.parse(dayTime[1].trim());
     }
 
-    // @@author neilbaner
+    // @@author yAOwzers
     public void markAsDone() {
         this.isDone = true;
     }
 
-    // @@author neilbaner
     public String getTitle() {
         return this.title;
     }
+
+    //@@author chuckiex3
 
     /**
      * Reformats the date from dd/MM/yyyy to MMM dd yyyy.
@@ -75,6 +80,8 @@ public class Task {
     public String getStatusIcon() {
         return (isDone ? "o" : "x");
     }
+
+    //@@author Lusi711
 
     /**
      * Sets the tag for this task.
@@ -99,10 +106,12 @@ public class Task {
         return tag;
     }
 
+    //@@author longngng
     public boolean isDone() {
         return isDone;
     }
 
+    //@@author chuckiex3
     @Override
     public String toString() {
         try {
