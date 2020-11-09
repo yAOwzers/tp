@@ -31,14 +31,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.3.4. Search Feature](#434-search-feature) <br>
 &nbsp;&nbsp;[4.4. Storage](#44-storage) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.1. Storage Format](#441-storage-format) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.1. TaskList](#4411-tasklist) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.2. Page](#4412-page) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.3. Section](#4413-section) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.4. Notebook](#4414-notebook) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1.5. NotebookShelf](#4415-notebookshelf) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[4.4.2. Implementation](#442-implementation) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.1. Saving the application state](#4421-saving-the-application-state) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2.2. Reading the application state](#4422-reading-the-application-state) <br>
 &nbsp;&nbsp;[4.5. Error handling](#45-error-handling) <br>
 &nbsp;&nbsp;[4.6. Personalised Messages](#46-personalised-messages) <br>
 &nbsp;&nbsp;[4.7. (Proposed) Save feature for the tagging function](#47-proposed-save-feature-for-the-tagging-function) <br>
@@ -179,7 +172,7 @@ The following diagram provides a rough overview of how **Zer0Note** is built.
 
 Figure [1]. Architecture of the application
 
-The `CliUserInterface` (see [here](#32-ui-component-neil)) is the "highest" layer of the application, in
+The `CliUserInterface` (see [here](#32-ui-component)) is the "highest" layer of the application, in
 the sense that it interacts directly with the user, and it passes along the input to other classes. The
 `CliUserInterface` contains the state of the application, stored in an instance of `AppState`. It then uses the other
 classes such as `InputParser` and the various `CliCommand` classes to execute the instructions provided by the user
@@ -200,11 +193,11 @@ previously saved user data.
 * The `startUI()` method is called to display the welcome message to the user.
 * The `CliUserInterface` class then continuously gets the input from the user. It then uses the `InputParser` class to
 parse this input and creates a new `CliCommand` object based on the command entered by the user. It executes the
-command with `CliCommand.execute()` (learn more [here](#33-commands-component-neil)), which will use or modify the
+command with `CliCommand.execute()` (learn more [here](#33-commands-component)), which will use or modify the
 `AppState` instance to make the requested change.
 * If any of these steps encounters an error, an exception of the type `ZeroNoteException` is thrown by the method, and
 caught in the `run()` method. Upon catching an exception, the `printErrorMessage()` method is called to display the
-appropriate error message to the user. See [here]() for more information on how exceptions work in **Zer0Note**.
+appropriate error message to the user. See [here](#45-error-handling) for more information on how exceptions work in **Zer0Note**.
 
 ### 3.3. Commands Component
 
@@ -398,7 +391,6 @@ NotebookShelf.
     - Cons: It takes more resources to implement. The constant factor for a hashing algorithm is significant and not
      worth the tradeoff for smaller amounts of data, like a typical user would be likely to generate. 
 
-<!-- @@author yAOwzers-->
 
 <!-- @@author yAOwzers -->
 #### 4.2.2. Mark as done feature  
@@ -410,6 +402,7 @@ The `Task` class contains a member `isDone` of Boolean type.
 The following sequence diagram shows how the mark as done operation works:  
 
 ![Sequence diagram for Mark as done](diagrams/class/jpeg/DoneCommand_Sequence_diagram.jpg)
+
 Figure [10]. Sequence diagram for Mark as Done Command
 
 The following is an example of the processes that occur when the user uses the mark as done function:  
@@ -430,11 +423,13 @@ The user can tag `Task`s in the `TaskList`. This section describes the implement
 feature.
 
 **Implementation**
+
 The `Task` class contains a member `tag` of String type.
 
 The figure below shows how the tag operation works:
 
 ![Sequence Diagram for Tag Timetable command](diagrams/class/jpeg/tag_task.jpg)
+
 Figure [11]. Sequence diagram for Tag Timetable Command
 
 There are the general steps during the tag operation. When the user enters `tag 1 /tCS2113T` into the command window
@@ -470,6 +465,7 @@ This section describes some considerations involved when designing the tag featu
 The following sequence diagram shows how the list operation works:
 
 ![Sequence Diagram for List Urgent](diagrams/class/jpeg/SequenceDiagram_ListUrgent.jpg)
+
 Figure [12]. Sequence diagram for List Command in Timetable Mode
 
 Given below is an example usage scenario and how the list function behaves.
@@ -621,6 +617,7 @@ The user can add a `tag` to a `Notebook`, `Section` or `Page`. This section desc
 considerations for this feature.
 
 **Implementation**
+
 The `Notebook`, `Section` and `Page` classes each contain a member `tag` of type String.
 
 The figure below shows how the tag operation works:
@@ -701,7 +698,7 @@ Step 3. The program prints the contents corresponding to the input or throw an e
 invalid.
 
 <!-- @@author neilbaner -->
-### 4.4. Storage (Neil)
+### 4.4. Storage
 
 The `Storage` class reads and writes the application state to and from a text file.
 
@@ -910,6 +907,7 @@ Here are the steps to convert the project documentation files to PDF format.
 For best results, use the settings indicated in the screenshot below.
 
 <img src= "https://se-education.org/guides/tutorials/images/chrome_save_as_pdf.png">
+
 Figure [21]. Screenshot of `Save as PDF` settings
 
 <br>
@@ -1288,19 +1286,22 @@ Expected: An error message along with a formatting guideline message will be pri
 3.1. Dealing with corrupted data files  
 i. Click on the folder that the jar file had been saved in.  
 ii. Select all the 'tasks.txt', 'notebooks.txt' and 'nameOfUser.txt' files.  
-iii. Delete both files.  
+iii. Delete all the files.  
 iv. Restart the application by double-clicking the jar file and running Zer0Note.  
-Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1.
+Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1.  
 
 3.2. Dealing with corrupted name file  
 i. Click on the folder that the jar file had been saved in.  
 ii. Select the 'nameOfUser.txt' file.   
 iii. Delete the file named 'nameOfUser.txt'  
 iv. Restart the application by double-clicking the jar file. Re-enter the name of user.  
+Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1.  
 
 3.3. Changing of saved name  
 i. Click on the folder that the jar file had been saved in.  
 ii. Double-click the 'nameOfUser.txt' file to edit it.  
 iii. Change the name in the txt file with the desired name and save the file.  
 iv. Re-run Zer0Note with the desired name.  
+Expected: The Command Line Interface should launch with a welcome note from Zer0Note with the desired name that was entered
+in the nameOfUser.txt file.
  

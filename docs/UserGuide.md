@@ -18,6 +18,8 @@
 [**3. Features**](#3-features) <br>
 &nbsp;&nbsp;[3.1. Viewing the user guide: `help`](#31-viewing-the-user-guide-help) <br>
 &nbsp;&nbsp;[3.2. Switching between the two modes: `mode`](#32-switching-between-the-two-modes-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1. Switching to the notebook mode](#321-switching-to-the-notebook-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2. Switching to the timetable mode](#322-switching-to-the-timetable-mode) <br>
 &nbsp;&nbsp;[3.3.  Personalised Messages](#33-personalised-messages) <br>
 &nbsp;&nbsp;[3.4. Timetable Mode](#34-timetable-mode) <br>
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4.1. Adding a task: `add`](#341-adding-a-task-add) <br>
@@ -662,7 +664,7 @@ belongs to. You can learn how to search for all notebooks, sections and pages in
 >:exclamation: The tag is added to the selected notebook, section or page. The tag will not be added to components
 > belonging to the selected notebook or section.
 >
->:warning: Each notebook, section and page can only have one tag. The previous tag will be automatically overwritten
+>:exclamation: Each notebook, section and page can only have one tag. The previous tag will be automatically overwritten
 >by the new tag and no reminder will be given.
 
 Format: `tag /t[TAG]`
@@ -999,7 +1001,7 @@ The following table is a cheatsheet of the commands available in Timetable Mode.
 [List tasks](#344-listing-tasks-list): `list` | list (/u) (/d) (/urgent) |
 [Finding tasks](#345-finding-tasks-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find book 2) find /tTodo
 [Delete a task](#346-deleting-a-task-delete): `delete` | delete [INDEX] | delete 1
-[Switch to notebook mode](#32-switching-between-the-two-modes-mode): `mode` | mode /n |
+[Switch to notebook mode](#321-switching-to-the-notebook-mode): `mode` | mode /n |
 
 ### Notebook Mode
 
@@ -1015,7 +1017,7 @@ The following table is a cheatsheet of the commands available in Notebook Mode.
 [List contents](#354-listing-contents-list): `list` | list (/s) (/a) |
 [Find](#355-finding-contents-find): `find` | 1) find [KEYWORD] 2) find /t[TAG] | 1) find chapter 2) find /tModule
 [Delete](#356-deleting-a-notebooksectionpage-delete): `delete` | 1) delete /n[NOTEBOOK] /s[SECTION] /p[NUMBER] | select /nCS2113T /sW10 /p1
-[Switch to timetable mode](#32-switching-between-the-two-modes-mode): `mode` | mode /t |
+[Switch to timetable mode](#322-switching-to-the-timetable-mode): `mode` | mode /t |
 
 <hr>
 
@@ -1097,7 +1099,7 @@ The first line of a section contains the title of the section.
 
 The second line of a section contains just a number. This number indicates the number of pages in the section.
 
-Then, all the pages of the section are represented as described in [6.2.1. Pages](#6.2.1.-Pages).
+Then, all the pages of the section are represented as described in [6.2.1. Pages](#621-pages).
 
 For example, a section might be represented like this:
 
@@ -1114,8 +1116,7 @@ The first line, "Java", is the title of the section.
 
 The second line indicates that the section has 2 pages.
 
-Then, you have 2 pages, titled "What is Java" and "Why Java" respectively. They are represented as described in [6.2.1
-. Pages](#6.2.1.-Pages).
+Then, you have 2 pages, titled "What is Java" and "Why Java" respectively. They are represented as described in [6.2.1. Pages](#621-pages).
 
 #### 6.2.3. Notebooks
 
@@ -1123,7 +1124,7 @@ The first line of a notebook contains the title of the notebook.
 
 The second line of a notebook contains just a number. This number indicates the number of sections in the notebook.
 
-Then, all the sections of the notebook are represented as described in [6.2.2. Sections](#6.2.2.-Sections).
+Then, all the sections of the notebook are represented as described in [6.2.2. Sections](#622-sections).
 
 For example, a saved notebook might look like this:
 
@@ -1157,7 +1158,7 @@ The first line, "CS2113T", is the title of the notebook.
 The second line indicates that the notebook has 4 sections.
 
 Then, you have 4 sections, titled "Java", "OOP", "UML" and "Assertions" respectively. They are represented as described
- in [6.2.2. Sections](#6.2.2.-Sections).
+ in [6.2.2. Sections](#622-sections).
 
 #### 6.2.4. The Notebook Shelf
 
@@ -1165,7 +1166,7 @@ The notebook shelf is what is stored in the save file. It represents all your no
 
 The first line contains just a number. This number indicates the number of notebooks in your Notebook Shelf.
 
-Then, all the notebooks on your Notebook Shelf are represented as described in [6.2.3. Notebooks](#6.2.3.-Notebooks).
+Then, all the notebooks on your Notebook Shelf are represented as described in [6.2.3. Notebooks](#623-notebooks).
 
 For example, a saved notebook shelf might look like this:
 
@@ -1175,8 +1176,7 @@ For example, a saved notebook shelf might look like this:
 
 The first line indicates that you have 2 notebooks saved in the Notebook Shelf.
 
-Then, you have 2 notebooks, titled "CS2113T" and "CS2101" respectively. They are represented as described in [6.2.3
-. Notebooks](#623-notebooks).
+Then, you have 2 notebooks, titled "CS2113T" and "CS2101" respectively. They are represented as described in [6.2.3. Notebooks](#623-notebooks).
 
 Notebook "CS2113T" contains 4 sections, titled "Java", "OOP", "UML" and "Assertions" respectively. The sections are
 stored as described in [6.2.2. Sections](#622-sections).
