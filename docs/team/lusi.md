@@ -48,7 +48,4 @@ Here are the other contributions I made to the project team:
 - Update issue tracker: [#65](https://github.com/AY2021S1-CS2113T-T12-3/tp/issues/65), [#181](https://github.com/AY2021S1-CS2113T-T12-3/tp/issues/181)
 - Reviewed teammates' pull requests on GitHub: [#44](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/44),
 [#77](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/77), [#129](https://github.com/AY2021S1-CS2113T-T12-3/tp/pull/129)
-
-### Contributions to User Guide
-
-### Contributions to Developer Guide
+- Reported bugs and suggestions for other teams in the class. See [here](https://github.com/Lusi711/ped)
