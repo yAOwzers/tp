@@ -1,3 +1,4 @@
+// @@author neilbaner
 package zeronote.tasks;
 
 import java.text.DateFormat;
@@ -48,10 +49,12 @@ public class Task {
         return LocalTime.parse(dayTime[1].trim());
     }
 
+    // @@author neilbaner
     public void markAsDone() {
         this.isDone = true;
     }
 
+    // @@author neilbaner
     public String getTitle() {
         return this.title;
     }
@@ -110,6 +113,7 @@ public class Task {
         return null;
     }
 
+    // @@author neilbaner
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();

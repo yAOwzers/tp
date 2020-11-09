@@ -38,7 +38,7 @@ public class Notebook {
     public String getTag() {
         return tag;
     }
-
+    // @@author neilbaner
     /**
      * Get the title of this notebook.
      *
@@ -47,7 +47,7 @@ public class Notebook {
     public String getTitle() {
         return title;
     }
-
+    // @@author neilbaner
     /**
      * Set the title of this notebook.
      *
@@ -56,11 +56,11 @@ public class Notebook {
     public void setTitle(String title) {
         this.title = title;
     }
-
+    // @@author neilbaner
     public ArrayList<Section> getSectionArrayList() {
         return sectionArrayList;
     }
-
+    // @@author neilbaner
     /**
      * Get the section at a particular index in the ArrayList. Use findSection() to get an index from a given title.
      *
@@ -69,7 +69,7 @@ public class Notebook {
     public Section getSectionAtIndex(int index) {
         return sectionArrayList.get(index);
     }
-
+    // @@author neilbaner
     /**
      * Add a new section with a given title to this notebook.
      *
@@ -85,10 +85,12 @@ public class Notebook {
         sectionArrayList.add(new Section(title));
     }
 
+    // @@author neilbaner
     public void addSection(Section s) {
         sectionArrayList.add(s);
     }
 
+    // @@author neilbaner
     /**
      * Find a section with a given title in this notebook.
      *
@@ -106,6 +108,7 @@ public class Notebook {
         return notFound;
     }
 
+    // @@author neilbaner
     /**
      * Remove a section from the notebook.
      *
@@ -115,6 +118,7 @@ public class Notebook {
         return sectionArrayList.remove(indexToRemove);
     }
 
+    // @@author neilbaner
     //TODO: Add JavaDoc for serialize() method
     public String serialize() {
         StringBuilder serialized = new StringBuilder();

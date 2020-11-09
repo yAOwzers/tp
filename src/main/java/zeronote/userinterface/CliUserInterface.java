@@ -1,3 +1,4 @@
+// @@author neilbaner
 package zeronote.userinterface;
 
 import zeronote.exceptions.CorruptFileException;

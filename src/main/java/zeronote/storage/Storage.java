@@ -1,3 +1,4 @@
+// @@author neilbaner
 package zeronote.storage;
 
 import zeronote.exceptions.FileSavingException;
@@ -199,6 +200,7 @@ public class Storage {
         return loadedAppState;
     }
 
+    // @@author yAOwzers
     @Deprecated
     public boolean isNameOfUserFilled() {
         File nameOfUserFile = new File(this.nameFilepath);

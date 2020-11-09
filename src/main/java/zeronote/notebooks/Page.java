@@ -7,10 +7,13 @@ public class Page {
     private String content;
     private String tag = "";
 
+    // @@author neilbaner
     public Page(String title, String content) {
         this.title = title;
         this.content = content;
     }
+
+    // @@author neilbaner
 
     /**
      * Gets the title of the page.
@@ -21,6 +24,8 @@ public class Page {
         return title;
     }
 
+    // @@author neilbaner
+
     /**
      * Sets the title of the page.
      *
@@ -29,6 +34,7 @@ public class Page {
     public void setTitle(String title) {
         this.title = title;
     }
+    // @@author neilbaner
 
     /**
      * Gets the content of the page.
@@ -38,6 +44,7 @@ public class Page {
     public String getContent() {
         return content;
     }
+    // @@author neilbaner
 
     /**
      * Sets the content of the page.
@@ -52,6 +59,7 @@ public class Page {
      * Sets the tag of this page.
      *
      * @param tag the tag of the page.
+     *
      * @throws InvalidTagException when the user inputs an empty tag.
      */
     public void setTag(String tag) throws InvalidTagException {
@@ -78,6 +86,7 @@ public class Page {
         System.out.println(content);
     }
 
+    // @@author neilbaner
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();
