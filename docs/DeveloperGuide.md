@@ -836,6 +836,12 @@ Assuming that the user has input the username of 'Tom' into Zer0Note.
 5. `generatePersonalisedMessage()` returns a string which contains the random generated personal message to the user.  
 
 <br>
+
+### 4.7 [Proposed] Save feature for the tagging function
+
+The 
+
+<br>
 <hr>
 <hr>
 
