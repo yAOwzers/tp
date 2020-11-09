@@ -843,8 +843,10 @@ The save feature will be included in the Storage class as a `saveTags()` method,
 This `saveTags()` method will be included under the `saveToFile()` method.
 
 1. `saveTags()` will get the NotebookShelf and TaskList objects from the current appState, passed in as a parameter. 
+
 2. After which, it iterates through the lists of `Task` objects in the `TaskList` and `Notebook` objects in the `NotebookShelf`, 
 calling each of their `serialize()` methods, which in turn calls the `serialize()` methods for each of their contained objects (if applicable). 
+
 3. The `saveToFile()` method then uses `FileWriter`s to write to `File` objects, saving the serialized version of the application state to two text files.
 
 <br>
