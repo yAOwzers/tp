@@ -88,7 +88,8 @@ Here are some icons that will be used in this User Guide:
 :warning: | This is a warning. A warning suggests that you **may** get an error.
 
 
-#### 1.1.2. Notes about the format:
+#### 1.1.2. Notes about the format
+
 * Words/sections that look like this: `example`, are code snippets.
 * Words/phrases within `[square brackets]` are the expected user inputs.
   e.g. in `add /n[NOTEBOOK]`, `NOTEBOOK` is a parameter which can be used as `add /nCS2101`
