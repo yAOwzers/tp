@@ -71,8 +71,6 @@ public class Page {
         }
     }
 
-    //@@author chuckiex3
-
     /**
      * Gets the tag of this page.
      *
