@@ -12,8 +12,8 @@
 ## Table of Contents
 [**1. Introduction**](#1-introduction) <br>
 &nbsp;&nbsp;[1.1. How to use this guide](#11-how-to-use-this-guide) <br>
-&nbsp;&nbsp;[1.1.1. Icons and their meanings](#111-icons-and-their-meanings) <br>
-&nbsp;&nbsp;[1.1.2. Notes about the format](#112-notes-about-the-format) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[1.1.1. Icons and their meanings](#111-icons-and-their-meanings) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[1.1.2. Notes about the format](#112-notes-about-the-format) <br>
 [**2. Quick Start**](#2-quick-start) <br>
 [**3. Features**](#3-features) <br>
 &nbsp;&nbsp;[3.1. Viewing the user guide: `help`](#31-viewing-the-user-guide-help) <br>
@@ -321,7 +321,8 @@ This command lets you add a single `tag` to an existing `task` to remind you of 
 learn how to search for all tasks with the same `tag` in [Finding tasks by tag](#3452-finding-by-tag).
 
 >:bulb: Each task can only have one tag. The previous tag will be automatically overwritten by the new tag and no
->reminder will be given.
+>reminder will be given.  
+>:exclamation: Tags will not be saved upon exit of the application.  
 
 Format: `tag [INDEX] /t[TAG]`
 
@@ -665,7 +666,7 @@ belongs to. You can learn how to search for all notebooks, sections and pages in
 > belonging to the selected notebook or section.
 >
 >:exclamation: Each notebook, section and page can only have one tag. The previous tag will be automatically overwritten
->by the new tag and no reminder will be given.
+>by the new tag and no reminder will be given. Tags will not be saved upon exit of the application.
 
 Format: `tag /t[TAG]`
 

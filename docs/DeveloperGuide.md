@@ -420,7 +420,7 @@ The following is an example of the processes that occur when the user uses the m
 <!-- @@author Lusi711 -->
 #### 4.2.3. Tag Feature
 The user can tag `Task`s in the `TaskList`. This section describes the implementation and design considerations for this
-feature.
+feature.  
 
 **Implementation**
 
@@ -1186,9 +1186,9 @@ Expected: An error message along with a formatting guideline message (missing fo
 
 2.7.1. Finding all tasks that contains a specified keyword.  
 i. Prerequisites: User must be in the Timetable mode. Enter `mode /t` command to enter Timetable mode. List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
-ii. Test case: `Find Project`  
+ii. Test case: `find Project`  
 Expected: All tasks with tags that contains the word 'Project' will be printed. If the tasks do not have tags, it will list the tasks with titles that contain the keyword 'Project'.  
-iii. Test case: `Find`  
+iii. Test case: `find`  
 Expected: An error message along with a formatting guideline message will be printed in the command line interface.  
 
 #### 2.8. Adding a Notebook/Section/Page
@@ -1276,9 +1276,9 @@ Expected: An error message along with a formatting guideline message will be pri
 
 2.13.1. Finding all notebooks/sections/pages that contains a specified keyword.  
 i. Prerequisites: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. List all notebooks/sections/pages in the notebookShelf using the `list /a` command. There must be existing notebooks/sections/pages in the list.  
-ii. Test case: `Find Project`  
+ii. Test case: `find Project`  
 Expected: All notebooks/sections/pages with tags that contains the word 'Project' will be printed. If the notebooks/sections/pages do not have tags, it will list the notebooks/sections/pages with titles that contain the keyword 'Project'.  
-iii. Test case: `Find`   
+iii. Test case: `find`   
 Expected: An error message along with a formatting guideline message will be printed in the command line interface.  
 
 ### 3. Saving Data
