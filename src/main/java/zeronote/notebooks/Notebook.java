@@ -74,7 +74,7 @@ public class Notebook {
     public Section getSectionAtIndex(int index) {
         return sectionArrayList.get(index);
     }
-    // @@author neilbaner
+    // @@author chuckiex3
 
     /**
      * Add a new section with a given title to this notebook.
