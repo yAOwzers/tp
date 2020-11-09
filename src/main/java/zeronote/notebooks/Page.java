@@ -34,6 +34,7 @@ public class Page {
     public void setTitle(String title) {
         this.title = title;
     }
+    
     // @@author neilbaner
 
     /**
@@ -44,6 +45,7 @@ public class Page {
     public String getContent() {
         return content;
     }
+
     // @@author neilbaner
 
     /**
@@ -55,11 +57,12 @@ public class Page {
         this.content = content;
     }
 
+    //@@author Lusi711
+
     /**
      * Sets the tag of this page.
      *
      * @param tag the tag of the page.
-     *
      * @throws InvalidTagException when the user inputs an empty tag.
      */
     public void setTag(String tag) throws InvalidTagException {
@@ -69,6 +72,8 @@ public class Page {
             throw new InvalidTagException("tag /t" + tag);
         }
     }
+
+    //@@author chuckiex3
 
     /**
      * Gets the tag of this page.

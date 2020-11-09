@@ -20,7 +20,6 @@ public class Notebook {
      * Sets the tag of this notebook.
      *
      * @param tag the tag of the notebook
-     *
      * @throws InvalidTagException when the user inputs an empty tag
      */
     public void setTag(String tag) throws InvalidTagException {
@@ -64,6 +63,7 @@ public class Notebook {
     public ArrayList<Section> getSectionArrayList() {
         return sectionArrayList;
     }
+
     // @@author neilbaner
 
     /**
@@ -74,13 +74,13 @@ public class Notebook {
     public Section getSectionAtIndex(int index) {
         return sectionArrayList.get(index);
     }
-    // @@author neilbaner
+
+    // @@author chuckiex3
 
     /**
      * Add a new section with a given title to this notebook.
      *
      * @param title the title of the section to be added
-     *
      * @throws DuplicateFoundException when the user inputs a section title that has already been used
      */
     public void addSection(String title) throws DuplicateFoundException {
@@ -97,13 +97,12 @@ public class Notebook {
         sectionArrayList.add(s);
     }
 
-    // @@author neilbaner
+    // @@author chuckiex3
 
     /**
      * Find a section with a given title in this notebook.
      *
      * @param searchKey the title of the section to search for in the notebook
-     *
      * @return the index of the section with the given title, -1 if not found
      */
     public int findSection(String searchKey) {
@@ -117,7 +116,7 @@ public class Notebook {
         return notFound;
     }
 
-    // @@author neilbaner
+    // @@author Lusi711
 
     /**
      * Remove a section from the notebook.
@@ -129,7 +128,6 @@ public class Notebook {
     }
 
     // @@author neilbaner
-    //TODO: Add JavaDoc for serialize() method
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();

@@ -50,7 +50,6 @@ public class Section {
         pageArrayList.add(p);
     }
 
-    // @@author neilbaner
     /**
      * Find a page with a given title in this section.
      *
@@ -68,7 +67,7 @@ public class Section {
         return notFound;
     }
 
-    // @@author neilbaner
+    // @@author Lusi711
     /**
      * Deletes a page with a specified index from this section.
      *
@@ -94,6 +93,7 @@ public class Section {
         return pageArrayList;
     }
 
+    // @@author Lusi711
     public void setTag(String tag) throws InvalidTagException {
         if (!tag.equals("")) {
             this.tag = tag;

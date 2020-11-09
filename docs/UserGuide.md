@@ -128,6 +128,7 @@ N/noteboo...:$
 
 <hr>
 
+
 ## 2. Quick Start
 
 Here is a list of instructions on how you can download Zer0Note!
@@ -268,6 +269,7 @@ These are the parameters required in the command:
 
 
 Example of usage:
+
 Let's say you have to read a book for one of your modules.
 
 ```
@@ -672,6 +674,7 @@ In a selected *SECTION*:
 
 
 Example of usage:
+
 If you have a notebook entitled `CS2101`, you can select it by typing `select /nCS2101`.
 
 ```

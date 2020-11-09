@@ -18,6 +18,7 @@ public class NotebookShelf {
         return notebooksArrayList;
     }
 
+    //@@author chuckiex3
     /**
      * Find the notebook on the shelf with the given title.
      *
@@ -63,6 +64,8 @@ public class NotebookShelf {
         notebooksArrayList.add(n);
     }
 
+    //@@author Lusi711
+
     /**
      * Removes a notebook with the specified index from the shelf.
      *
@@ -73,7 +76,7 @@ public class NotebookShelf {
         return notebooksArrayList.remove(index);
     }
 
-    // TODO: add JavaDoc for serialize() method
+    //@@author neilbaner
     public String serialize() {
         StringBuilder serialized = new StringBuilder();
         String lineSeparator = System.lineSeparator();
