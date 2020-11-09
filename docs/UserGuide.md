@@ -1087,34 +1087,96 @@ false
 
 ### 6.2. The notebooks save file
 
-The notebooks save file is formatted as follows.
+Here is how the notebooks save file looks. 
 
-First, one line containing only an integer number `n` indicating the number of notebooks on the shelf.
+#### 6.2.1. Pages
 
-This is followed by `n` sets of lines, describing each of the `n` notebooks. The `i`th set describes the `i`th
-notebook.
+A page is saved as two consecutive lines of text. The first line is the title of the notebook, while the second line is the content. 
 
-The first line in the set contains the title of the `i`th notebook.
+For example, a page might be represented like this: 
 
-The next line in the set contains only an integer number `s` indicating the number of sections in the `i`th notebook.
+```
+What is Java?
+Java is a programming language used by 3 billion devices.
+```
 
-This is followed by `s` sets of lines, describing each of the `s` sections in notebook `i`. The `j`th set describes
-the `j`th section in the `i`th notebook.
+The first line, that says "What is Java", is the title of the page, while the second line is the content of that page. 
 
-The first line in the `j`th set contains the title of the `j`th section of the `i`th notebook.
+#### 6.2.2. Sections 
 
-The next line in the set contains only an integer number `p` indicating the number of pages in the `j`th section of
- the `i`th notebook.
+The first line of a section contains the title of the section. 
 
-This is followed by `p` sets of 2 lines each. The `k`th set describes the `k`th page, of the `j`th section, of the `i
-`th notebook.
+The second line of a section contains just a number. This number indicates the number of pages in the section.
 
-The first line of the `k`th set contains the title of the page.
+Then, all the pages of the section are represented as described in [6.2.1. Pages](#6.2.1.-Pages). 
 
-The second line of the `k`th set contains the content of the page. The newline characters in the content of the
-page are replaced by `~~~`.  
+For example, a section might be represented like this: 
 
-Here is an example of a notebooks save file:
+```
+Java
+2
+What is Java?
+Java is a programming language used by 3 billion devices.
+Why Java?
+It's highly portable and relatively fast.
+```
+
+The first line, "Java", is the title of the section. 
+
+The second line indicates that the section has 2 pages. 
+
+Then, we have 2 pages, titled "What is Java" and "Why Java" respectively. They are represented as described in [6.2.1. Pages](#6.2.1.-Pages). 
+
+#### 6.2.3. Notebooks
+
+The first line of a notebook contains the title of the notebook. 
+
+The second line of a notebook contains just a number. This number indicates the number of sections in the notebook. 
+
+Then, all the sections of the notebook are represented as described in [6.2.2. Sections](#6.2.2.-Sections). 
+
+For example, a saved notebook might look like this: 
+
+```
+CS2113T
+4
+Java
+2
+What is Java?
+Java is a programming language used by 3 billion devices.
+Why Java?
+It's highly portable and relatively fast.
+OOP
+1
+What is OOP?
+OOP is Object Oriented Programming.
+UML
+2
+What is UML?
+UML is Unified Modeling Language.
+Why UML?
+UML is used to draw diagrams to explain your code to noobs.
+Assertions
+1
+Why assertions?
+Honestly I don't know.
+```
+
+The first line, "CS2113T", is the title of the notebook. 
+
+The second line indicates that the notebook has 4 sections. 
+
+Then, we have 4 sections, titled "Java", "OOP", "UML" and "Assertions" respectively. They are represented as described in [6.2.2. Sections](#6.2.2.-Sections). 
+
+#### 6.2.4. The Notebook Shelf
+
+The notebook shelf is what is stored in the save file. It represents all your notebooks, sections, and pages at once. It is formatted as follows. 
+
+The first line contains just a number. This number indicates the number of notebooks in your Notebook Shelf. 
+
+Then, all the notebooks on your Notebook Shelf are reprsesented as described in [6.2.3. Notebooks](#6.2.3.-Notebooks). 
+
+For example, a saved notebook shelf might look like this: 
 
 ```
 2
@@ -1157,3 +1219,9 @@ Make sure the level of technicality is appropriate.
 Diagrams
 Make sure diagrams use UML.
 ```
+
+> :bulb: The above is a valid save file. It illustrates how the full `notebooks.txt` save file should look. 
+
+The first line indicates that you have 2 notebooks saved in the Notebook Shelf. 
+
+Then, we have 2 notebooks, titled "CS2113T" and "CS2101" respectively. They are represented as described in [6.2.3. Notebooks](#6.2.3.-Notebooks).
