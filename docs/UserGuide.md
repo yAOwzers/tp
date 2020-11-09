@@ -135,7 +135,7 @@ N/noteboo...:$
 <!-- @@author chuckiex3-->
 ## 2. Quick Start
 
-Here is a list of instructions on how you can download Zer0Note!
+Here is a list of instructions on how you can run Zer0Note!
 
 1. Ensure that you have Java 11 or above installed. You may use the
 [Oracle Java SE runtime](https://www.oracle.com/java/technologies/javase-downloads.html)
