@@ -1088,6 +1088,8 @@ Read Book
 false
 ```
 
+> :bulb: The above is a valid save file. It illustrates how the full `tasks.txt` save file should look. 
+
 The first line indicates that there are 3 tasks saved. 
 
 Then, 3 tasks, titled "Code for CS2113T Team Project", "Read about hydrogen fuel cells" and "Read Book" respectively
