@@ -941,8 +941,8 @@ This section answers some frequently asked questions.
 
 The save files for Zer0Note are stored in the same directory as the Zer0Note JAR file. 
 You may move the entire directory to another computer and Zer0Note will continue to work with your saved data. 
-Alternatively, you may just move the Zer0Note JAR file directory to another computer, into the directory
-containing the Zer0Note JAR file on that computer.
+Alternatively, you may just move the 'tasks.txt', 'notebooks.txt' and 'nameOfUser.txt' files in the Zer0Note JAR file 
+directory to another computer, into the directory containing the Zer0Note JAR file on that computer.
 
 ### Where do I find the release?
 
