@@ -146,7 +146,7 @@ or an open-source alternative like [AdoptOpenJDK](https://adoptopenjdk.net/index
     *Figure 1. Changing directory in Windows command prompt*
 
 5. Type `chcp 65001` and press Enter.
-6. Type `java -jar Zer0Note.jar` and press Enter.
+6. Type `java -jar [CS2113T-T12-3][Zer0Note].jar` and press Enter.
 7. If successful, you will see the following message.
 
     ![Welcome message](images/welcome.png)
@@ -177,7 +177,7 @@ To view the user guide for the timetable mode, type in `help timetable`.
 
 To view the user guide for the notebook mode, type in `help notebook`.
 
-<!-- @@author longngng-->
+<!-- @@author longngng -->
 ### 3.2. Switching between the two modes: `mode`
 
 This command allows you to switch from notebook mode (at the bookshelf level) to the timetable mode, or vice versa.
@@ -339,7 +339,7 @@ Got it! I've tagged this as:
 -------------------------------------------------------------
 ```
 
-<!-- @@author longngng-->
+<!-- @@author longngng -->
 #### 3.4.4. Listing tasks: `list`
 
 Use the `list` command to list the tasks you have added to **Zer0Note**. There are 4 ways you can use this
@@ -670,7 +670,7 @@ belongs to. You can learn how to search for all notebooks, sections and pages in
 >
 >:warning: Each notebook, section and page can only have one tag. The previous tag will be automatically overwritten
 >by the new tag and no reminder will be given.
->
+
 Format: `tag /t[TAG]`
 
 These are the parameters required in the command:
@@ -691,7 +691,8 @@ CS2101 (tag: Module)
 -------------------------------------------------------------
 ```
 
-<!-- @@author longngng-->
+
+<!-- @@author longngng -->
 #### 3.5.4. Listing contents: `list`
 
 Use the `list` command to view the content of the bookshelf, a selected book or a selected section.
@@ -925,7 +926,9 @@ What is OOP?
 -------------------------------------------------------------
 ```
 
+
 <!-- @@author longngng-->
+
 ### 3.6. Exiting the program: `exit`
 
 To close the program, type `exit`.
