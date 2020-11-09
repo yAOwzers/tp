@@ -167,8 +167,6 @@ This section introduces the available features, and the format required for each
 The following sections will explain more about the different commands that can be used in anywhere,
 and commands specific to [Timetable Mode](#34-timetable-mode) and [Notebook Mode](#35-notebook-mode).
 
-
-
 <!-- @@author neilbaner-->
 ### 3.1. Viewing the user guide: `help`
 
@@ -178,13 +176,11 @@ To view the user guide for the timetable mode, type in `help timetable`.
 
 To view the user guide for the notebook mode, type in `help notebook`.
 
-
-
 ### 3.2. Switching between the two modes: `mode`
 
 This command allows you to switch from notebook mode (at the bookshelf level) to the timetable mode, or vice versa.
 
-- Switch to the notebook mode
+#### 3.2.1. Switching to the notebook mode
 
 Format: `mode /n`
 
@@ -197,7 +193,7 @@ You are now in notebook mode
 -------------------------------------------------------------
 ```
 
-- Switch to the timetable mode
+#### 3.2.2. Switching to the timetable mode
 
 Format: `mode /t`
 
@@ -210,8 +206,6 @@ You are now in timetable mode
 ```
 
 >:warning: Entering an invalid mode, such as /d, will give you an error
-
-
 
 ### 3.3. Personalised Messages  
 
@@ -875,7 +869,7 @@ Sections:
 
 -------------------------------------------------------------
 ```
->:bulb: "|--" indicates "belongs to". You can use this to identify the particular notebook and section a page is in.
+>:bulb: `|--` indicates "belongs to". You can use this to identify the particular notebook and section a page is in.
 
 #### 3.5.5.2. Finding by tag
 
