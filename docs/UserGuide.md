@@ -88,7 +88,6 @@ Here are some icons that will be used in this User Guide:
 :warning: | This is a warning. A warning suggests that you **may** get an error.
 
 <!-- @@author yAOwzers-->
-
 #### 1.1.2. Notes about the format
 
 * Words/sections that look like this: `example`, are code snippets.
@@ -213,12 +212,14 @@ You are now in timetable mode
 <!-- @@author yAOwzers-->
 ### 3.3. Personalised Messages  
 
-A personalised message will be printed out to the user whenever a particular command has been entered by the user.
-Personalised messages will include a random generated encouraging message followed by the name provided by the user upon launch of Zer0Note.
+We have included personalised messages to compliment your works!
+
+A personalised message will be printed out to you in the command line interface whenever you enter a particular command.
+Personalised messages will include a random generated encouraging message followed by the name provided by you upon the launch of Zer0Note.
 
 Example of how a personalised message will look like:  
 ```
-I like how you think, Tom
+I like how you think, Tom.
 ```
 
 Commands that include personalised messages are:  
@@ -267,8 +268,6 @@ These are the parameters required in the command:
 * `TASK`: name of the task.
 * `dd-MM-yyyy`: the due date of the task, in the format day/month/year.
 * `hhmm`: time the task is due, in 24h format.
-
-
 
 Example of usage:
 
@@ -352,8 +351,6 @@ command, described below:
 When you want to have a look at your task list, you can list out all the existing tasks.
 
 Format: `list`
-
-
 
 Example of usage:
 
@@ -525,8 +522,6 @@ This is the parameter required in the command:
 
 * `NOTEBOOK`: the name of the notebook.
 
-
-
 Example of usage:
 
 Let's say you want to take notes for CS2113T, a module you're currently taking.
@@ -541,7 +536,6 @@ Added notebook with title: CS2113T
 >:warning: Ensure that your notebook title is preceded by "/n", or an error message will be shown.
 
 Now that you have added a new notebook for `CS2113T`, you can add a `section`!
-
 
 #### 3.5.1.2. Adding a section
 
@@ -574,7 +568,6 @@ Added section with title: W1: Java
 
 Great! You can now add a `page` (or as many pages as you like) into your new section titled `W1: Java`.
 
-
 #### 3.5.1.3. Adding a page
 
 Use the `add /p` command to add a `page`  into the [selected](#352-selecting-a-notebooksectionpage-select) `section`.
@@ -606,7 +599,6 @@ You've successfully added a new page into the section `W1: Java` of the notebook
 
 >:warning: Ensure that your page title is preceded by "/p" and that there is a ";" to separate the contents from the page title.
 > Otherwise, an error message will be shown. 
-
 
 #### 3.5.2. Selecting a notebook/section/page: `select`
 
@@ -643,7 +635,6 @@ In a selected *SECTION*:
 
 > :bulb: Whenever you want to select something, you may want to use the list all function, `list /a`
 > to ensure that you're typing in the correct parameters.
-
 
 Example of usage:
 
@@ -755,7 +746,6 @@ N:$ list /a
 > :bulb: Use `list` first to see the titles only before, otherwise you could be overwhelmed with the details of all the 
 > notebooks
 
-
 In a selected *NOTEBOOK*:
 - `list` displays the titles of all the sections in the selected notebook.
 - `list /a` displays all sections and pages in the selected notebook.
@@ -781,12 +771,8 @@ N/CS2101:$ list /a
 -------------------------------------------------------------
 ```
 
-
-
 In a selected *SECTION*:
 - `list` displays all the pages in the selected section.
-
-
 
 Example of usage:
 Suppose you have selected a section "Chapter 1" in the notebook "CS2101".
@@ -803,7 +789,6 @@ N/CS2101/Chapter 1:$ list
 
 >:warning: Entering a non-existing option, such as /t, will give you an error
 
-
 <!-- @@author Lusi711-->
 #### 3.5.5. Finding contents: `find`
 
@@ -812,7 +797,11 @@ that do not belong to a selected notebook can be found. There are two ways to do
 
 #### 3.5.5.1. Finding by keyword
 
-Finds all notebooks, sections and pages that contain the keyword in their title.  The search is not case-sensitive.
+If there is a particular keyword in the title of the various notebooks, sections and pages that you are looking for, 
+this find by keyword feature will certainly help!
+
+This feature finds all notebooks, sections and pages that contain the keyword in their title. 
+The search is not case-sensitive.
 
 Format: `find [KEYWORD]`
 
@@ -843,7 +832,10 @@ Sections:
 
 #### 3.5.5.2. Finding by tag
 
-Finds all notebooks, sections and pages that has a specified tag.  The search is case-sensitive.
+Instead of finding a keyword from the title of the notebooks, sections and pages, you can search for specific 
+keywords in your tags that you had included as well!
+
+This feature finds all notebooks, sections and pages that has a specified tag. The search is case-sensitive.
 
 Format: `find /t[TAG]`
 
@@ -927,9 +919,7 @@ What is OOP?
 -------------------------------------------------------------
 ```
 
-
 <!-- @@author longngng-->
-
 ### 3.6. Exiting the program: `exit`
 
 To close the program, type `exit`.

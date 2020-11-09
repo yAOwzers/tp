@@ -23,7 +23,6 @@ public class FindCommandTimetableMode extends CliCommand {
     private String keyword;
     private String tag;
     private ArrayList<Task> tasksFound = new ArrayList<>();
-    private boolean isPersonalised = true;
 
     public FindCommandTimetableMode(String keyword, String tag, AppState appState) {
         this.keyword = keyword.toLowerCase();
@@ -95,10 +94,6 @@ public class FindCommandTimetableMode extends CliCommand {
 
     private List<String> getWordsInTitle(String title) {
         return Arrays.asList(title.toLowerCase().split(" "));
-    }
-
-    public boolean isPersonalised() {
-        return isPersonalised;
     }
 
 }

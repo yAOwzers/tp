@@ -48,7 +48,6 @@ public class DoneCommandTimetableMode extends CliCommand {
         }
     }
 
-    //@@author neilbaner
     @Override
     public boolean isTriggerAutoSave() {
         return isAutoSave;

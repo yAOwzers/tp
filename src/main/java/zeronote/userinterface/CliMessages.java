@@ -338,12 +338,12 @@ public class CliMessages {
         }
     }
 
-    //@@author neilbaner
+    //@@author yAOwzers
     public void printLineSeparator() {
         System.out.println("-------------------------------------------------------------");
     }
 
-    //@@author yAOwzers
+
     public void printFillInNameOfUserMessage() {
         System.out.println("Hi there! Sorry I don't think we have met, how may I address you?");
     }
