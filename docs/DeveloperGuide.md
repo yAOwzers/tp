@@ -139,8 +139,7 @@ code to improve Zer0Note.
 
 ### 2.2. Setting up the project in your computer
 
->:exclamation: **Caution:** Follow the steps in the following guide precisely.
->Things will not work out if you deviate in some steps.
+>:exclamation: Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
 
 1. **Fork** this repo, and **clone** the fork into your computer.
 2. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
@@ -191,29 +190,19 @@ classes such as `InputParser` and the various `CliCommand` classes to execute th
 The user interface of **Zer0Note** is provided by the class `CliUserInterface`. It is instantiated once in the main
 method, and its `run()` method is called to start the UI for the application.
 
-The class diagram below describes the `CliUserInterface` class, and the classes it depends on.
-
-// TODO: add class diagram for CliUserInterface
-
 The `CliUserInterface` class contains an instance of `AppState`. This is a class that, as the name implies, contains
 the current state of the running instance of the application. For example, it contains the user data, the current mode,
 the navigation state (i.e. currently chosen notebook/section/page).
 
-The following sequence diagram describes the operation of the `run()` method in `CliUserInterface`.
-
-// TODO: add sequence diagram.
-
-First, the method `loadState()` is called, which loads the save file, and populates the `AppState` object with the
+The process below describes the operation of the `run()` method in `CliUserInterface`:
+* The method `loadState()` is called, which loads the save file, and populates the `AppState` object with the
 previously saved user data.
-
-Then, the `startUI()` method is called to display the welcome message to the user.
-
-The `CliUserInterface` class then continuously gets the input from the user. It then uses the `InputParser` class to
+* The `startUI()` method is called to display the welcome message to the user.
+* The `CliUserInterface` class then continuously gets the input from the user. It then uses the `InputParser` class to
 parse this input and creates a new `CliCommand` object based on the command entered by the user. It executes the
 command with `CliCommand.execute()` (learn more [here](#33-commands-component-neil)), which will use or modify the
 `AppState` instance to make the requested change.
-
-If any of these steps encounters an error, an exception of the type `ZeroNoteException` is thrown by the method, and
+* If any of these steps encounters an error, an exception of the type `ZeroNoteException` is thrown by the method, and
 caught in the `run()` method. Upon catching an exception, the `printErrorMessage()` method is called to display the
 appropriate error message to the user. See [here]() for more information on how exceptions work in **Zer0Note**.
 
