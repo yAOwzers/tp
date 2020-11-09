@@ -1285,7 +1285,7 @@ Expected: An error message along with a formatting guideline message will be pri
 
 3.1. Dealing with corrupted data files  
 i. Click on the folder that the jar file had been saved in.  
-ii. Select both the 'tasks.txt' and 'notebooks.txt'.
+ii. Select both the 'tasks.txt' and 'notebooks.txt'.<br>
 iii. Delete both files.  
 iv. Restart the application by double-clicking the jar file and running Zer0Note.  
 Expected: The Command Line Interface should launch with a welcome note from Zer0Note as shown in Appendix F, 1.1.
