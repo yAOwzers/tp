@@ -204,6 +204,7 @@ public class Storage {
         return nameOfUserFile.length() != 0 && nameOfUserFile.exists();
     }
 
+    //@@author yAOwzers
     @Deprecated
     public void saveNameOfUser() {
         File file = new File(this.nameFilepath);
@@ -214,8 +215,6 @@ public class Storage {
             String userInput = keyboard.nextLine();
             FileWriter nameOfUserFileToSave = new FileWriter(this.nameFilepath);
             nameOfUserFileToSave.write(userInput);
-            //            msgGenerator.setChosenName(userInput);
-            //            msgGenerator.greetFirstTimeUser();
             nameOfUserFileToSave.close();
         } catch (IOException e) {
             System.out.println("Error in FileSaving");
