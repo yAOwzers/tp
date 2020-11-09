@@ -210,12 +210,14 @@ You are now in timetable mode
 
 ### 3.3. Personalised Messages  
 
-A personalised message will be printed out to the user whenever a particular command has been entered by the user.
-Personalised messages will include a random generated encouraging message followed by the name provided by the user upon launch of Zer0Note.
+We have included personalised messages to compliment your works!
+
+A personalised message will be printed out to you in the command line interface whenever you enter a particular command.
+Personalised messages will include a random generated encouraging message followed by the name provided by you upon launch of Zer0Note.
 
 Example of how a personalised message will look like:  
 ```
-I like how you think, Tom
+I like how you think, Tom.
 ```
 
 Commands that include personalised messages are:  
@@ -349,14 +351,11 @@ Use the `list` command to list the tasks you have added to **Zer0Note**. There a
 command, described below:
 
 
-
 #### 3.4.4.1. Listing all tasks
 
 When you want to have a look at your task list, you can list out all the existing tasks.
 
 Format: `list`
-
-
 
 Example of usage:
 
@@ -371,14 +370,11 @@ T:$ list
 -------------------------------------------------------------
 ```
 
-
-
 #### 3.4.4.2. Listing done tasks
 
 When you want to keep track of your progress, you can list out all the tasks that are marked as done.
 
 Format: `list /d`
-
 
 
 Example of usage:
@@ -390,8 +386,6 @@ T:$ list /d
 2:[o] CS2101 OP2 (by: Oct 25 2020 11.00 AM)
 -------------------------------------------------------------
 ```
-
-
 
 #### 3.4.4.3. Listing undone tasks
 
@@ -508,8 +502,6 @@ Noted. I've removed this task:
 	Now you have 4 tasks in the list.
 -------------------------------------------------------------
 ```
-
-
 
 ### 3.5. Notebook Mode
 
@@ -843,7 +835,11 @@ that do not belong to a selected notebook can be found. There are two ways to do
 
 #### 3.5.5.1. Finding by keyword
 
-Finds all notebooks, sections and pages that contain the keyword in their title.  The search is not case-sensitive.
+If there is a particular keyword in the title of the various notebooks, sections and pages that you are looking for, 
+this find by keyword feature will certainly help!
+
+This feature finds all notebooks, sections and pages that contain the keyword in their title. 
+The search is not case-sensitive.
 
 Format: `find [KEYWORD]`
 
@@ -874,7 +870,10 @@ Sections:
 
 #### 3.5.5.2. Finding by tag
 
-Finds all notebooks, sections and pages that has a specified tag.  The search is case-sensitive.
+Instead of finding a keyword from the title of the notebooks, sections and pages, you can search for specific 
+keywords in your tags that you had included as well!
+
+This feature finds all notebooks, sections and pages that has a specified tag. The search is case-sensitive.
 
 Format: `find /t[TAG]`
 
