@@ -59,6 +59,8 @@
 <hr>
 <hr>
 
+<!-- @@author neilbaner -->
+
 ## 1. Introduction (Neil)
 
 ### 1.1. Welcome!
@@ -159,6 +161,8 @@ to set up IDEA’s coding style to match ours.
 <br>
 <hr>
 <hr>
+
+<!-- @@author neilbaner -->
 
 ## 3. Design
 
@@ -282,6 +286,8 @@ The `Page` object,
 
 - contains a title, and the content of the page as a String object.
 - has a `tag` field that user can be set and get.
+
+<!-- @@author neilbaner -->
 
 ### 3.6. Storage Component
 
@@ -677,6 +683,8 @@ invalid.
 **Design Considerations**
 //WIP?
 
+<!-- @@author neilbaner -->
+
 ### 4.4. Storage (Neil)
 
 The `Storage` class reads and writes the application state to and from a text file.
@@ -833,6 +841,8 @@ Assuming that the user has input the username of 'Tom' into Zer0Note.
 <br>
 <hr>
 <hr>
+
+<!-- @@author neilbaner -->
 
 ## 5. Documentation
 

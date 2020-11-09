@@ -51,6 +51,7 @@
 
 <br>
 
+<!-- @@author neilbaner-->
 ## 1. Introduction
 
 Welcome, and thank you for choosing **Zer0Note**!
@@ -68,6 +69,7 @@ too, for quick reference while you're using **Zer0Note**. To learn how to access
 
 <br>
 
+<!-- @@author neilbaner-->
 ### 1.1 How to use this guide
 
 This user guide will give you a step-by-step tutorial on how to use each of the commands.
@@ -112,7 +114,8 @@ N:$ select /sChapter 1
 
 * `select /sChapter 1` is the user's input, and `now in notebook section: Chapter 1` is the output message. 
 
-* When the current address name is longer than 7 characters, a `...` symbol will be printed to represent the remaining characters.  
+* When the current address name is longer than 10 characters, a `...` symbol will be printed after the first 7, to
+ represent the remaining characters.  
 
 Example:
 
@@ -123,6 +126,7 @@ N/noteboo...:$
 * where `N/` indicates that the user is in Notebook Mode and `noteboo...` is the name of the Notebook, which has more than 7 characters.  
 
 <br>
+
 
 ## 2. Quick Start
 
@@ -165,6 +169,7 @@ and commands specific to [Timetable Mode](#34-timetable-mode) and [Notebook Mode
 
 <br>
 
+<!-- @@author neilbaner-->
 ### 3.1 Viewing the user guide: `help`
 
 Whenever you need help, you can view the full built-in user guide by typing in `help`.
@@ -203,6 +208,8 @@ N:$ mode /t
 You are now in timetable mode
 -------------------------------------------------------------
 ```
+
+>:warning: Entering an invalid mode, such as /d, will give you an error
 
 <br>
 
@@ -416,6 +423,8 @@ T:$ list /u
 
 If you're in a time crunch, you can list out top urgent tasks that have not been done, sorted by deadlines. If there
 are many undone tasks, only the top three urgent ones will be displayed.
+
+> :bulb: Use this command to prioritize what you need to get done first 
 
 Format: `list /urgent`
 
@@ -776,6 +785,9 @@ N:$ list /a
 -------------------------------------------------------------
 ```
 
+> :bulb: Use `list` first to see the titles only before, otherwise you could be overwhelmed with the details of all the 
+> notebooks
+
 <br>
 
 In a selected *NOTEBOOK*:
@@ -824,6 +836,8 @@ N/CS2101/Chapter 1:$ list
     Lorem ipsum
 -------------------------------------------------------------
 ```
+
+>:warning: Entering a non-existing option, such as /t, will give you an error
 
 <br>
 
@@ -957,6 +971,8 @@ To close the program, type `exit`.
 
 <br>
 
+<!-- @@author neilbaner-->
+
 ## 4. FAQ
 
 This section answers some frequently asked questions.
@@ -1045,6 +1061,8 @@ The following table is a cheatsheet of the commands available in Notebook Mode.
 
 <br>
 
+<!-- @@author neilbaner-->
+
 ## 6. For advanced users: Editing your save file
 
 **Zer0Note** saves your tasks as a plain text file, in a format designed to be easy to read, understand and modify if
@@ -1090,7 +1108,7 @@ false
 
 > :bulb: The above is a valid save file. It illustrates how the full `tasks.txt` save file should look. 
 
-The first line indicates that there are 3 tasks saved. 
+The first line indicates that you have 3 tasks saved. 
 
 Then, 3 tasks, titled "Code for CS2113T Team Project", "Read about hydrogen fuel cells" and "Read Book" respectively
 , are stored as described above. For example, the first task, titled "Code for CS2113T Team Project" is due on the
@@ -1138,7 +1156,8 @@ The first line, "Java", is the title of the section.
 
 The second line indicates that the section has 2 pages. 
 
-Then, we have 2 pages, titled "What is Java" and "Why Java" respectively. They are represented as described in [6.2.1. Pages](#6.2.1.-Pages). 
+Then, you have 2 pages, titled "What is Java" and "Why Java" respectively. They are represented as described in [6.2.1
+. Pages](#6.2.1.-Pages). 
 
 #### 6.2.3. Notebooks
 
@@ -1179,7 +1198,8 @@ The first line, "CS2113T", is the title of the notebook.
 
 The second line indicates that the notebook has 4 sections. 
 
-Then, we have 4 sections, titled "Java", "OOP", "UML" and "Assertions" respectively. They are represented as described in [6.2.2. Sections](#6.2.2.-Sections). 
+Then, you have 4 sections, titled "Java", "OOP", "UML" and "Assertions" respectively. They are represented as described
+ in [6.2.2. Sections](#6.2.2.-Sections). 
 
 #### 6.2.4. The Notebook Shelf
 
@@ -1187,54 +1207,21 @@ The notebook shelf is what is stored in the save file. It represents all your no
 
 The first line contains just a number. This number indicates the number of notebooks in your Notebook Shelf. 
 
-Then, all the notebooks on your Notebook Shelf are reprsesented as described in [6.2.3. Notebooks](#6.2.3.-Notebooks). 
+Then, all the notebooks on your Notebook Shelf are represented as described in [6.2.3. Notebooks](#6.2.3.-Notebooks). 
 
 For example, a saved notebook shelf might look like this: 
 
-```
-2
-CS2113T
-4
-Java
-2
-What is Java?
-Java is a programming language used by 3 billion devices.
-Why Java?
-It's highly portable and relatively fast.
-OOP
-1
-What is OOP?
-OOP is Object Oriented Programming.
-UML
-2
-What is UML?
-UML is Unified Modeling Language.
-Why UML?
-UML is used to draw diagrams to explain your code to noobs.
-Assertions
-1
-Why assertions?
-Honestly I don't know.
-CS2101
-2
-User Guides
-2
-What are UGs?
-UGs are documents for the user to read to understand how to use the product
-How to write UGs?
-Be user focused. That's all.
-Developer Guides
-3
-What are DGs?
-DGs are documents for the developer to understand how the program is written.
-How to write DGs?
-Make sure the level of technicality is appropriate.
-Diagrams
-Make sure diagrams use UML.
-```
+![](images/Notebookshelfexplanation.png)
 
 > :bulb: The above is a valid save file. It illustrates how the full `notebooks.txt` save file should look. 
 
 The first line indicates that you have 2 notebooks saved in the Notebook Shelf. 
 
-Then, we have 2 notebooks, titled "CS2113T" and "CS2101" respectively. They are represented as described in [6.2.3. Notebooks](#6.2.3.-Notebooks).
+Then, you have 2 notebooks, titled "CS2113T" and "CS2101" respectively. They are represented as described in [6.2.3
+. Notebooks](#623-notebooks).
+
+Notebook "CS2113T" contains 4 sections, titled "Java", "OOP", "UML" and "Assertions" respectively. The sections are
+stored as described in [6.2.2. Sections](#622-sections). 
+
+Section "Java" contains 2 pages, titled "What is Java?" and "Why Java?" respectively. The pages are stored as
+ described in [6.2.1. Pages](#621-pages). 
