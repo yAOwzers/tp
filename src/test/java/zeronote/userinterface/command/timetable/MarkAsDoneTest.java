@@ -1,7 +1,7 @@
 package zeronote.userinterface.command.timetable;
 
 import org.junit.jupiter.api.Test;
-import zeronote.exceptions.TaskIndexIncorrectFormatException;
+import zeronote.exceptions.IndexIncorrectFormatException;
 import zeronote.exceptions.TaskIndexOutOfBoundsException;
 import zeronote.exceptions.TaskListEmptyException;
 import zeronote.tasks.Task;
@@ -71,7 +71,7 @@ public class MarkAsDoneTest {
         current.addTask(toAdd);
 
         CliCommand done = new DoneCommandTimetableMode("rekt lol", appState);
-        assertThrows(TaskIndexIncorrectFormatException.class, done::execute);
+        assertThrows(IndexIncorrectFormatException.class, done::execute);
     }
 
     @Test
