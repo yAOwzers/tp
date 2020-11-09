@@ -1,12 +1,12 @@
 package zeronote.userinterface;
 
+import java.util.Scanner;
+
 import zeronote.exceptions.FileSavingException;
 import zeronote.exceptions.ZeroNoteException;
 import zeronote.storage.Storage;
 import zeronote.userinterface.command.CliCommand;
 import zeronote.userinterface.command.Exit;
-
-import java.util.Scanner;
 
 // @@author neilbaner
 
@@ -88,13 +88,14 @@ public class CliUserInterface {
     }
 
     //@@author yAOwzers
+
     /**
      * Checks if the user had already input their name into Zer0Note for the personalised message
      * generator feature.
      *
      * @throws ZeroNoteException when the user enters an invalid input.
      */
-    private void checkNameOfUser() throws ZeroNoteException{
+    private void checkNameOfUser() throws ZeroNoteException {
         if (appState.getUserName().equals("")) {
             messages.printFillInNameOfUserMessage();
             String userName = keyboardScanner.nextLine();
@@ -117,7 +118,7 @@ public class CliUserInterface {
         try {
             checkNameOfUser();
             msgGenerator = new PersonalMessageGenerator(appState.getUserName());
-        }  catch (ZeroNoteException e) {
+        } catch (ZeroNoteException e) {
             e.printErrorMessage();
             messages.printLineSeparator();
         }
