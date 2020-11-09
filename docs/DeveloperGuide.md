@@ -68,7 +68,7 @@ Welcome, and thank you for choosing to help contribute to Zer0Note! Zer0Note is 
 organisation application. It is designed to combine the features of graphical tools like OneNote and Notion, with
 the editing speed of applications like vim and emacs.
 
-This document is written for developers intending to improve Zer0Note, by fixing bugs, or perhaps adding entirely new
+This document is for developers intending to improve Zer0Note, by fixing bugs, or perhaps adding entirely new
 features. It explains how the project is set up, the architecture used, and the code style you should adopt when
 contributing code to the project.
 
@@ -165,7 +165,7 @@ to set up IDEA’s coding style to match ours.
 
 ## 3. Design
 
-The following section describes the design and implementation of the product. UML diagrams and code snippets are used
+The following section describes the design and implementation of the product. We use UML diagrams and code snippets
 to explain some aspects of the code. If you are unfamiliar with UML, the diagrams should still be fairly
 understandable. However, you may wish to consult [[CS2113/T] Modeling](https://nus-cs2113-ay2021s1.github.io/website/se-book-adapted/chapters/modeling.html) for a quick introduction to UML.
 
@@ -179,7 +179,7 @@ The following diagram provides a rough overview of how **Zer0Note** is built.
 
 Figure [1]. Architecture of the application
 
-The `CliUserInteface` (see [here](#32-ui-component-neil)) is the "highest" layer of the application, in
+The `CliUserInterface` (see [here](#32-ui-component-neil)) is the "highest" layer of the application, in
 the sense that it interacts directly with the user, and it passes along the input to other classes. The
 `CliUserInterface` contains the state of the application, stored in an instance of `AppState`. It then uses the other
 classes such as `InputParser` and the various `CliCommand` classes to execute the instructions provided by the user
@@ -191,7 +191,7 @@ The user interface of **Zer0Note** is provided by the class `CliUserInterface`. 
 method, and its `run()` method is called to start the UI for the application.
 
 
-The `CliUserInterface` class contains an instance of `AppState`. This is a class that, as the name implies, contains
+The `CliUserInterface` class contains an instance of `AppState`. This class, as the name implies, contains
 the current state of the running instance of the application. For example, it contains the user data, the current mode,
 the navigation state (i.e. currently chosen notebook/section/page).
 
@@ -206,7 +206,7 @@ command with `CliCommand.execute()` (learn more [here](#33-commands-component-ne
 `AppState` instance to make the requested change.
 * If any of these steps encounters an error, an exception of the type `ZeroNoteException` is thrown by the method, and
 caught in the `run()` method. Upon catching an exception, the `printErrorMessage()` method is called to display the
-appropriate error message to the usaer. See [here]() for more information on how exceptions work in **Zer0Note**.
+appropriate error message to the user. See [here]() for more information on how exceptions work in **Zer0Note**.
 
 ### 3.3. Commands Component (Neil)
 
@@ -227,7 +227,7 @@ This diagram describes the `CliCommand`s related to the Timetable mode.
 ![UML diagram for Timetable Commands](diagrams/class/jpeg/timetable_commands.jpg)
 Figure [2]. Class diagram for Timetable commands
 
-And this diagram describes the `CliCommand`s related to the Notebook mode.
+This diagram describes the `CliCommand`s related to the Notebook mode.
 
 ![UML diagrams for Notebook Commands](diagrams/class/jpeg/notebook_commands.jpg)
 Figure [3]. Class diagram for Notebook commands
@@ -317,7 +317,8 @@ decisions.
 #### 4.1.1. Implementation
 
 The mode switch mechanism is facilitated by `AppState`. It contains an `AppMode` object and can be accessed from
-`Mode Switch` object. The `AppMode` is a enum which have five possible values: `TIMETABLE`, `NOTEBOOK_SHELF`, `NOTEBOOK_BOOK`,
+`Mode Switch` object. The `AppMode` is an enum which have five possible values: `TIMETABLE`, `NOTEBOOK_SHELF
+`, `NOTEBOOK_BOOK`,
 `NOTEBOOK_SECTION`, `NOTEBOOK_PAGE`. Users can only use the `mode` command to switch to either TIMETABLE or NOTEBOOK_SHELF 
 modes. The rest of the modes are used by developers when implementing the `select` command.
 
@@ -353,7 +354,7 @@ This means that multiple operations such as addition and deletion can be done on
 the contents of other `Task` in the `TaskList`.
 <br>
 
-Given below is an example usage scenario and how the add task function behaves.
+Given below is an example usage scenario and how the Add task function behaves.
 
 1. The user launches the application for the first time. CliUserInterface#executeCommand is called when the user adds a `Task` into the `TaskList`.
 
@@ -380,7 +381,8 @@ Figure [9]. Sequence diagram for the Delete Task Command
 
 Here are the general steps that the command goes through when the user inputs "delete 1":
 1. The `CliUserInterface` receives the "delete 1" input by the user and passes it to the `InputParser` class.
-2. `InputParser` parses the input to determine the type of command and the index of the task that is required to delete.
+2. `InputParser` parses the input to determine the type of command, and the index of the task that is required to
+ delete.
 3. `InputParser` constructs a `RemoveCommandTimetableMode` and passes the index number to the class.
 4. `RemoveCommandTimetableMode#execute()` is called to delete the task.
 5. If the task is deleted, `RemoveCommandTimetableMode#execute()` also calls `CliMessages#printRemoveTaskMessage` to
@@ -393,11 +395,11 @@ NotebookShelf.
 *Aspect: How to store tasks in `TaskList`*
 - **Alternative 1 (current choice):** Store as an `ArrayList` of tasks
     - Pros: It is easier to implement because the code base are list based.
-    - Cons: It is unoptimized in terms of complexity, which requires more work for scaling of the application.
+    - Cons: Searching in an ArrayList will take O(n) time as every index must be checked. 
 - **Alternative 2:** Store as a Hash Table with the key as the index and value as `Task`
-    - Pros: It has a better time complexity and reduce the work in scaling stage since this data structure is more optimized (O(1) can be achieved).
+    - Pros: Searching for a task with a given title in a HashTable is faster, and O(1) time can be achieved. 
     - Cons: It takes more resources to implement. The constant factor for a hashing algorithm is significant and not
-     worth the tradeoff for smaller amounts of data, like a typical user would be likely to generate.
+     worth the tradeoff for smaller amounts of data, like a typical user would be likely to generate. 
 
 <!-- @@author yAOwzers-->
 
@@ -416,7 +418,7 @@ The following is an example of the processes that occur when the user uses the m
 
 1. The user types `done 1`. The `done 1` command is passed through `InputParser#getCommandFromInput`, which constructs a DoneCommandTimetableMode object and calls `DoneCommandTimetable#execute()`.  
 
-2. `execute()` is called, which then initialises a variable `taskList` of type TaskList. The method then calls `AppState#getTaskList`, which returns all exisiting tasks in the current tasklist.  
+2. `execute()` is called, which then initialises a variable `taskList` of type TaskList. The method then calls `AppState#getTaskList`, which returns all existing tasks in the current tasklist.  
 
 3. The `execute()` method proceeds to parse the user's intended task index to be marked as done through `Integer.parseInt()`. Using this index, it initialises a variable `taskDone` of type task and calls `AppState#markAsDone(index)`.  
         
@@ -449,7 +451,7 @@ display the success message to the user.
 NotebookShelf.
 
 **Design Considerations**
-This section describes some of the considerations involved when designing the tag feature.
+This section describes some considerations involved when designing the tag feature.
 
 *Aspect: How to store the tags*
 - **Alternative 1 (current choice):** Store as a private `String` member in every task
@@ -514,7 +516,7 @@ NotebookShelf.
 This section describes some considerations involved when designing the find feature.
 
 *Aspect: Distinction between finding by keyword and finding by tag*
-- **Alternative 1 (current choice):** Handle as a if-else statement in a single class
+- **Alternative 1 (current choice):** Handle as an if-else statement in a single class
 - **Alternative 2:** Two different classes that are subclasses to a class `FindCommandTimetableMode`
     - Pros: Higher level of abstraction
     - Cons: Unable to be returned directly by `InputParser#getCommandFromInput` as they are not subclasses of the
@@ -590,7 +592,7 @@ Given below is an example usage scenario and how the select notebook function be
 
 5. `SelectCommandNotebookMode#execute()` runs, which then calls `InputParser#extractParams`.
 
-6. If the argument typed by the user contains `/n`, which is the Notebook delimitter, `InputParser#extractNotebookParams` is called.
+6. If the argument typed by the user contains `/n`, which is the Notebook delimiter, `InputParser#extractNotebookParams` is called.
 
 7. Within `InputParser#extractNotebookParams`, `AppState#setAppMode` is called to set the `AppMode` as `NOTEBOOK_BOOK`.
 
@@ -632,7 +634,7 @@ class.
 5. `CliUserInterface#IsTriggerAutosave` is called to verify whether a change has been made in the NotebookShelf.
 
 **Design Considerations**
-This section describes some of the considerations involved when designing the tag feature.
+This section describes some considerations involved when designing the tag feature.
 
 *Aspect: How to store the tags*
 - **Alternative 1 (current choice):** Store as a private `String` member in every task
@@ -669,7 +671,7 @@ and pages found.
     - Cons: It is unoptimized in terms of complexity, with a complexity of O(n<sup>3</sup>).
 - **Alternative 2:** Store all notebooks, sections and pages into respective lists
     - Pros: Has better time complexity of O(n) as it only needs to iterate through each list.
-    - Cons: Unable to output the notebook and section that a page belongs to to the user
+    - Cons: Unable to output the notebook and section that a page belongs to the user
 
 <!-- @@author longngng -->
 #### 4.3.5. List Feature
@@ -833,7 +835,7 @@ are executed successfully. A personal message is generated by randomising an enc
 together with the name entered by the user upon launch of Zer0Note.
 
 The following is an example of how the `PersonalisedMessageGenerator` class is used:  
-Assuming that the user has input the username of 'Tom' into Zer0Note.  
+Assuming the user has input the username of 'Tom' into Zer0Note.  
 
 1. User adds a task with the given deadline.
 
@@ -926,7 +928,6 @@ There are two ways to run tests.
     - Open a console and run the command `gradlew clean test` (Mac/Linux: `./gradlew clean test`)
 
 ### 6.2. Types of tests
-{Describe the type of testing used in the code}
 
 This project has one type of test:
 Unit tests targeting the lowest level methods/classes.
@@ -972,6 +973,30 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 
 (For all use cases below, the System is the `Zer0Note` and the Actor is the `user`, unless specified otherwise)
 
+<!-- @@author neilbaner-->
+### Use case: Add task
+
+1. User requests to add a task
+2. Zer0Note adds the task to the list
+3. Zer0Note displays a personalised message to the user. 
+
+#### Extensions
+
+* 1.1 The user did not enter a deadline. 
+    * 1.1.1 Zer0Note shows an error message
+    Use case ends
+* 1.2 The user did not enter a title. 
+    * 1.1.1 Zer0Note shows an error message
+    Use case ends
+* 1.3 The user entered an incorrectly formatted deadline. 
+    * 1.1.1 Zer0Note shows an error message
+    Use case ends
+* 1.4 The user missed one or more arguments. 
+    * 1.1.1 Zer0Note shows an error message
+    Use case ends
+    
+<!-- @@author Lusi711 -->
+
 ### Use case: Delete task
 
 1. User requests to list tasks
@@ -988,7 +1013,42 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
    * 3.1.1. Zer0Note shows an error message.  
         Use case resumes at step 2.
 
-/* work in progress */
+<!-- @@author neilbaner -->
+
+### Use case: Find task
+
+1. User tries to find a task with a given string in the title
+2. Zer0Note prints a list of tasks with titles matching that string
+3. Zer0Note prints a personalised message
+Use case ends
+
+#### Extensions
+
+* 1.1 The task list is empty
+    * 1.1.1 Zer0Note displays an error message stating the task list is empty.
+    * Use case ends
+* 1.2 There is a syntax error
+    * 1.2.1 Zer0Note displays an error message
+    * Use case ends
+
+### Use case: List notebooks
+
+1. User wants to list the notebooks/sections/pages in the current location. 
+2. Zer0Note lists all the notebooks/sections/pages in the current location. 
+3. Zer0Note prints a personalised message. 
+
+<!-- @@author longngng -->
+### Use case: Add tags and find by tags
+
+1. User requests to list tasks
+2. Zer0Note shows a list of tasks
+3. User requests to add a tag to a task in the list
+4. Zer0Note adds the tag to the chosen task
+5. User requests to add the same tag to another task in the list
+6. Zer0Note adds the tag to the chosen task
+7. User requests list tasks with the tag used above
+8. Zer0Note lists out the tasks with the specified tag
+    Use case ends.    
 
 <br>
 <hr>
@@ -1020,8 +1080,6 @@ Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikel
 Given below are instructions to test the app manually.
 >**Note**: These instructions only provide a starting point for testers to work on;
 >testers are expected to do more *exploratory* testing.
-
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
 
 ### 1. Launch and Shutdown
 1.1. Initial launch  
@@ -1119,7 +1177,7 @@ Expected: Mode is switched to Notebook mode.
 iii. Test case: `mode /t`  
 Expected: Mode is switched to Timetable mode.  
 iv. Test case: `mode`  
-Expected: An error message along with a formatting guideline message (missing follow up command '/n' or '/t') will be printed in the command line interface..  
+Expected: An error message along with a formatting guideline message (missing follow up command '/n' or '/t') will be printed in the command line interface.
 
 #### 2.7. Finding a Task using a keyword
 
@@ -1200,11 +1258,11 @@ Expected: All notebooks, sections and pages will be printed out.
 2.11.1.2. Listing the list of notebooks and their sections   
 i. Prerequisites: User must be in a notebook and not in a section.  
 ii. Test case: `list /s`  
-Expected: All notebooks and their respective sections will be printed out.  
+Expected: All notebooks, and their respective sections will be printed out.  
 
 #### 2.12. Tagging a Notebook/Section/Page
 
-2.12.1. Tagging an existing notebooks/sections/pages in the list.  
+2.12.1. Tagging an existing notebook/section/page in the list.  
 i. Prerequisites: User must be in the Notebook mode. Enter `mode /n` command to enter Notebook mode. List all tasks in the tasklist using the `list` command. There must be existing tasks in the list.  
 ii. Test case: `tag /tschoolWork`  
 Expected: Specified name of notebook/section/page in the list is tagged with a tag 'schoolWork'.  
